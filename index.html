@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=9">
 
   <!-- JSON-LD MedicalOrganization Structured Data -->
   <script type="application/ld+json">
@@ -161,7 +161,7 @@
           <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
           <li class="nav-item"><a href="#overview" class="nav-link">About Us</a></li>
           <li class="nav-item"><a href="#specialities" class="nav-link">Specialities</a></li>
-          <li class="nav-item"><a href="#doctors" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="#facilities" class="nav-link">Facilities</a></li>
           <li class="nav-item"><a href="#patient-care" class="nav-link">Patient Care</a></li>
           <li class="nav-item"><a href="#community" class="nav-link">Health Camps</a></li>
@@ -202,7 +202,7 @@
           <li style="--nav-idx: 0;"><a href="#hero" class="mobile-nav-link">Home</a></li>
           <li style="--nav-idx: 1;"><a href="#overview" class="mobile-nav-link">About Us</a></li>
           <li style="--nav-idx: 2;"><a href="#specialities" class="mobile-nav-link">Specialities</a></li>
-          <li style="--nav-idx: 3;"><a href="#doctors" class="mobile-nav-link">Doctors</a></li>
+          <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
           <li style="--nav-idx: 4;"><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
           <li style="--nav-idx: 5;"><a href="#patient-care" class="mobile-nav-link">Patient Care</a></li>
           <li style="--nav-idx: 6;"><a href="#community" class="mobile-nav-link">Health Camps</a></li>
@@ -297,12 +297,12 @@
           </div>
         </div>
 
-        <!-- Hero Right Column: Hospital Building & Floating Badge -->
+        <!-- Hero Right Column: Enlarged Hospital Building & Floating Information Cards -->
         <div class="hero-visual hero-entrance-item" style="--delay: 260ms;">
           <div class="hero-image-wrapper">
             <img 
               src="assets/hospital-building.png" 
-              alt="Sulakshaa Multi Speciality Hospital Modern Building Facade in Mysuru with 24/7 Chemist and Casualty"
+              alt="Sulakshaa Multi Speciality Hospital Modern Building Facade in Mysuru"
               class="hero-building-image main-hospital-popup-img"
               width="600"
               height="600"
@@ -319,12 +319,6 @@
                 <span class="floating-subtitle">Sulakshaa Infrastructure</span>
                 <span class="floating-title">Comprehensive Healthcare Under One Roof</span>
               </div>
-            </div>
-
-            <!-- Facade Kannada & English Badge -->
-            <div class="floating-facade-badge" aria-label="Mysuru Landmark Facility">
-              <span class="facade-kannada">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</span>
-              <span class="facade-english">In-House Chemist &amp; Casualty</span>
             </div>
           </div>
 
@@ -769,7 +763,6 @@
         <div class="doctors-grid">
           <!-- Specialist 1: Dr. Laxme Gowda (Senior Faculty) -->
           <article class="doctor-card featured-doctor-card reveal-on-scroll">
-            <div class="doctor-badge-tag">Senior Clinical Director</div>
             <div class="doctor-card-content">
               <!-- Doctor Portrait Image -->
               <div class="doctor-portrait-box">
@@ -778,8 +771,8 @@
                     src="assets/dr-laxme-gowda.png" 
                     alt="Dr. Laxme Gowda, Senior General Physician at Sulakshaa Multi Speciality Hospital, Mysuru" 
                     class="doctor-photo specialist-portrait-img"
-                    width="150"
-                    height="170"
+                    width="105"
+                    height="120"
                     loading="lazy"
                   >
                 </div>
@@ -818,7 +811,7 @@
                 <div class="doctor-actions">
                   <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Laxme Gowda" data-dept="General Medicine">
                     <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Enquire for Appointment</span>
+                    <span>Book Appointment</span>
                   </a>
                   <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Laxme Gowda">
                     <span>View Profile</span>
@@ -830,7 +823,6 @@
 
           <!-- Specialist 2: Dr. Priya S. Sharma (Cardiology) -->
           <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-badge-tag">Cardiology Consultant</div>
             <div class="doctor-card-content">
               <!-- Doctor Portrait Image -->
               <div class="doctor-portrait-box">
@@ -839,8 +831,8 @@
                     src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=350&h=380&q=80" 
                     alt="Dr. Priya S. Sharma, Consultant Cardiologist at Sulakshaa Hospital" 
                     class="doctor-photo specialist-portrait-img"
-                    width="150"
-                    height="170"
+                    width="105"
+                    height="120"
                     loading="lazy"
                   >
                 </div>
@@ -879,7 +871,7 @@
                 <div class="doctor-actions">
                   <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Priya S. Sharma" data-dept="Cardiac Care">
                     <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Enquire for Appointment</span>
+                    <span>Book Appointment</span>
                   </a>
                   <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Priya S. Sharma">
                     <span>View Profile</span>
@@ -891,7 +883,6 @@
 
           <!-- Specialist 3: Dr. Anand R. Kulkarni (Orthopedics) -->
           <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-badge-tag">Orthopedic Surgeon</div>
             <div class="doctor-card-content">
               <!-- Doctor Portrait Image -->
               <div class="doctor-portrait-box">
@@ -900,8 +891,8 @@
                     src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=350&h=380&q=80" 
                     alt="Dr. Anand R. Kulkarni, Orthopedic and Joint Replacement Specialist" 
                     class="doctor-photo specialist-portrait-img"
-                    width="150"
-                    height="170"
+                    width="105"
+                    height="120"
                     loading="lazy"
                   >
                 </div>
@@ -940,7 +931,7 @@
                 <div class="doctor-actions">
                   <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Anand R. Kulkarni" data-dept="Orthopedics">
                     <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Enquire for Appointment</span>
+                    <span>Book Appointment</span>
                   </a>
                   <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Anand R. Kulkarni">
                     <span>View Profile</span>
@@ -952,17 +943,16 @@
 
           <!-- Specialist 4: Dr. Sneha Hegde (Paediatrics) -->
           <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-badge-tag">Paediatrician &amp; Neonatologist</div>
             <div class="doctor-card-content">
               <!-- Doctor Portrait Image -->
               <div class="doctor-portrait-box">
                 <div class="doctor-photo-wrapper specialist-photo-wrapper">
                   <img 
-                    src="https://images.unsplash.com/photo-1594824813583-11a5113bfcf4?auto=format&fit=crop&w=350&h=380&q=80" 
+                    src="assets/dr-sneha-hegde.jpg" 
                     alt="Dr. Sneha Hegde, Consultant Paediatrician at Sulakshaa Hospital" 
                     class="doctor-photo specialist-portrait-img"
-                    width="150"
-                    height="170"
+                    width="105"
+                    height="120"
                     loading="lazy"
                   >
                 </div>
@@ -1001,9 +991,129 @@
                 <div class="doctor-actions">
                   <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Sneha Hegde" data-dept="Paediatrics">
                     <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Enquire for Appointment</span>
+                    <span>Book Appointment</span>
                   </a>
                   <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Sneha Hegde">
+                    <span>View Profile</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Specialist 5: Dr. Vikram M. Rao (Neurology) -->
+          <article class="doctor-card reveal-on-scroll">
+            <div class="doctor-card-content">
+              <!-- Doctor Portrait Image -->
+              <div class="doctor-portrait-box">
+                <div class="doctor-photo-wrapper specialist-photo-wrapper">
+                  <img 
+                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=350&h=380&q=80" 
+                    alt="Dr. Vikram M. Rao, Consultant Neurologist at Sulakshaa Hospital" 
+                    class="doctor-photo specialist-portrait-img"
+                    width="105"
+                    height="120"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="doctor-experience-tag">
+                  <i data-lucide="award" class="icon-xs"></i> 15+ Years Experience
+                </div>
+              </div>
+
+              <!-- Doctor Details -->
+              <div class="doctor-info">
+                <div class="doctor-header-row">
+                  <div>
+                    <h3 class="doctor-name">Dr. Vikram M. Rao</h3>
+                    <p class="doctor-designation">Consultant Neurologist (MD, DM Neurology)</p>
+                  </div>
+                  <span class="doctor-verified-badge" title="Verified Medical Information">
+                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
+                  </span>
+                </div>
+
+                <p class="doctor-bio">
+                  Expertise in clinical neurology, acute stroke intervention, epilepsy management, migraine evaluation, and peripheral nerve disorders.
+                </p>
+
+                <div class="doctor-meta-list">
+                  <div class="doctor-meta-item">
+                    <i data-lucide="briefcase" class="icon-xs"></i>
+                    <span>Speciality: <strong>Neurology &amp; Brain Health</strong></span>
+                  </div>
+                  <div class="doctor-meta-item">
+                    <i data-lucide="clock" class="icon-xs"></i>
+                    <span>Consultation: <strong>Mon, Wed, Fri (2:00 PM - 6:00 PM)</strong></span>
+                  </div>
+                </div>
+
+                <div class="doctor-actions">
+                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Vikram M. Rao" data-dept="Neurology">
+                    <i data-lucide="calendar" class="icon-xs"></i>
+                    <span>Book Appointment</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Vikram M. Rao">
+                    <span>View Profile</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Specialist 6: Dr. Meera N. Iyer (Maternity Care / OBG) -->
+          <article class="doctor-card reveal-on-scroll">
+            <div class="doctor-card-content">
+              <!-- Doctor Portrait Image -->
+              <div class="doctor-portrait-box">
+                <div class="doctor-photo-wrapper specialist-photo-wrapper">
+                  <img 
+                    src="assets/dr-meera-iyer.jpg" 
+                    alt="Dr. Meera N. Iyer, Senior Obstetrician &amp; Gynaecologist at Sulakshaa Hospital" 
+                    class="doctor-photo specialist-portrait-img"
+                    width="105"
+                    height="120"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="doctor-experience-tag">
+                  <i data-lucide="award" class="icon-xs"></i> 18+ Years Experience
+                </div>
+              </div>
+
+              <!-- Doctor Details -->
+              <div class="doctor-info">
+                <div class="doctor-header-row">
+                  <div>
+                    <h3 class="doctor-name">Dr. Meera N. Iyer</h3>
+                    <p class="doctor-designation">Senior Obstetrician &amp; Gynaecologist (MS OBG, DGO)</p>
+                  </div>
+                  <span class="doctor-verified-badge" title="Verified Medical Information">
+                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
+                  </span>
+                </div>
+
+                <p class="doctor-bio">
+                  Specialized in high-risk pregnancy delivery, comprehensive antenatal wellness, painless labour management, and minimally invasive gynaecological care.
+                </p>
+
+                <div class="doctor-meta-list">
+                  <div class="doctor-meta-item">
+                    <i data-lucide="briefcase" class="icon-xs"></i>
+                    <span>Speciality: <strong>Maternity Care &amp; Gynaecology</strong></span>
+                  </div>
+                  <div class="doctor-meta-item">
+                    <i data-lucide="clock" class="icon-xs"></i>
+                    <span>Consultation: <strong>Mon - Sat (10:00 AM - 3:00 PM)</strong></span>
+                  </div>
+                </div>
+
+                <div class="doctor-actions">
+                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Meera N. Iyer" data-dept="Maternity Care">
+                    <i data-lucide="calendar" class="icon-xs"></i>
+                    <span>Book Appointment</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Meera N. Iyer">
                     <span>View Profile</span>
                   </button>
                 </div>
@@ -1019,12 +1129,17 @@
           </div>
           <div class="roster-banner-content">
             <h4>Multidisciplinary Resident &amp; Visiting Specialists</h4>
-            <p>Our clinical roster also includes visiting specialists across Neurology, Gastroenterology, Oncology, Dermatology, Psychiatry, and Anaesthesiology.</p>
+            <p>Our clinical roster features 16+ experienced specialists across Cardiology, Orthopedics, Neurology, Maternity Care, Gastroenterology, Pulmonology, Nephrology, ENT, Urology, Oncology, Dermatology, and Psychiatry.</p>
           </div>
-          <a href="#enquiry" class="btn btn-outline btn-sm">
-            <span>Enquire Doctor Schedule</span>
-            <i data-lucide="arrow-right" class="icon-xs"></i>
-          </a>
+          <div class="doctor-roster-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="doctors.html" class="btn btn-primary btn-sm">
+              <span>View All 16 Specialists</span>
+              <i data-lucide="arrow-right" class="icon-xs"></i>
+            </a>
+            <a href="#enquiry" class="btn btn-outline btn-sm">
+              <span>Enquire Schedule</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -2042,7 +2157,7 @@
             <li><a href="#hero"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
             <li><a href="#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
             <li><a href="#specialities"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialities</a></li>
-            <li><a href="#doctors"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team</a></li>
+            <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team &amp; Specialists</a></li>
             <li><a href="#facilities"><i data-lucide="chevron-right" class="icon-xs"></i> Infrastructure &amp; Facilities</a></li>
             <li><a href="#patient-care"><i data-lucide="chevron-right" class="icon-xs"></i> Patient Care &amp; Accessibility</a></li>
             <li><a href="#community"><i data-lucide="chevron-right" class="icon-xs"></i> Senior Sunday Health Camp</a></li>

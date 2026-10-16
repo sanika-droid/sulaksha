@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10. Informational Modals (Medical Disclaimer, Privacy, Terms, Doctor Profile)
   initInfoModals();
+
+  // 11. Doctors Directory Page Live Search & Filter System
+  initDoctorsPageFilters();
 });
 
 /**
@@ -458,6 +461,22 @@ function initInteractiveEnquiries() {
       }
     });
   });
+
+  // Handle URL query parameters (e.g. redirected from doctors.html with ?doctor=...&dept=...)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlDept = urlParams.get('dept');
+    const urlDoctor = urlParams.get('doctor');
+
+    if (urlDept) {
+      selectSpeciality(urlDept);
+    }
+    if (urlDoctor && patientMessageInput && !patientMessageInput.value) {
+      patientMessageInput.value = `Consultation appointment requested with ${urlDoctor}${urlDept ? ' (' + urlDept + ')' : ''}.`;
+    }
+  } catch (err) {
+    // URL parsing fallback
+  }
 }
 
 /**
@@ -1042,11 +1061,119 @@ function initInfoModals() {
     'Dr. Sneha Hegde': {
       name: 'Dr. Sneha Hegde',
       role: 'Consultant Paediatrician (MD Paediatrics) &bull; 12+ Years Experience',
-      badge: 'Paediatrics &amp; Neonatology',
-      img: 'https://images.unsplash.com/photo-1594824813583-11a5113bfcf4?auto=format&fit=crop&w=350&h=380&q=80',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'assets/dr-sneha-hegde.jpg',
       speciality: 'General Paediatrics, Newborn Health, Childhood Immunisation, Developmental Milestones &amp; Paediatric Emergency Assessment.',
       philosophy: 'Providing gentle, family-centred healthcare for newborns, children, and adolescents with empathetic communication and meticulous paediatric care.',
       timings: 'Monday to Saturday (9:00 AM - 1:00 PM).'
+    },
+    'Dr. Vikram M. Rao': {
+      name: 'Dr. Vikram M. Rao',
+      role: 'Consultant Neurologist (MBBS, DM Neurology) &bull; 15+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=350&h=380&q=80',
+      speciality: 'Clinical Neurology, Stroke Recovery, Epilepsy &amp; Seizure Disorders, Neuropathy, Migraine &amp; Chronic Headache Assessment.',
+      philosophy: 'Dedicated to precision diagnostic mapping and compassionate management for chronic neurological and neuromuscular conditions.',
+      timings: 'Monday, Wednesday, Friday (2:00 PM - 6:00 PM).'
+    },
+    'Dr. Meera N. Iyer': {
+      name: 'Dr. Meera N. Iyer',
+      role: 'Consultant Obstetrician &amp; Gynaecologist (MBBS, MS OBG, DGO) &bull; 18+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'assets/dr-meera-iyer.jpg',
+      speciality: 'Maternity Care, High-Risk Pregnancy Management, Antenatal &amp; Postnatal Wellness, Women Health Consultations &amp; Minimally Invasive Gynaecology.',
+      philosophy: 'Empowering mothers and families with supportive, attentive, and clinically rigorous maternity care at every step.',
+      timings: 'Monday to Saturday (10:00 AM - 3:00 PM).'
+    },
+    'Dr. Rajesh K. Varma': {
+      name: 'Dr. Rajesh K. Varma',
+      role: 'Consultant Gastroenterologist (MBBS, MD, DNB Gastroenterology) &bull; 13+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=350&h=380&q=80',
+      speciality: 'Digestive Health, Liver Disorders, Gastrointestinal Endoscopy, Acid Peptic Disease &amp; Irritable Bowel Syndrome Care.',
+      philosophy: 'Evidence-based digestive care combining modern diagnostic endoscopy with tailored nutritional and therapeutic support.',
+      timings: 'Tuesday, Thursday, Saturday (11:00 AM - 3:00 PM).'
+    },
+    'Dr. Rashmi Desai': {
+      name: 'Dr. Rashmi Desai',
+      role: 'Consultant Dermatologist (MBBS, MD DVL) &bull; 10+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=350&h=380&q=80',
+      speciality: 'Clinical Dermatology, Eczema, Psoriasis, Skin Allergies, Dermatological Infections &amp; Adolescent Acne Care.',
+      philosophy: 'Holistic clinical evaluation for acute and chronic skin ailments, enhancing patient confidence through evidence-based dermatological care.',
+      timings: 'Monday, Wednesday, Friday (4:00 PM - 7:30 PM).'
+    },
+    'Dr. Suresh Babu': {
+      name: 'Dr. Suresh Babu',
+      role: 'Senior General &amp; Laparoscopic Surgeon (MBBS, MS General Surgery, FMAS) &bull; 20+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=350&h=380&q=80',
+      speciality: 'Minimally Invasive Laparoscopy, Hernia Repair, Appendicectomy, Gallbladder Surgery, Wound Care &amp; Minor Operative Procedures.',
+      philosophy: 'Patient safety, surgical diligence, and swift post-operative rehabilitation through advanced minimally invasive surgical protocols.',
+      timings: 'Monday to Saturday (On-Call &amp; OPD 12:00 PM - 4:00 PM).'
+    },
+    'Dr. Kavitha Sundaram': {
+      name: 'Dr. Kavitha Sundaram',
+      role: 'Consultant Psychiatrist (MBBS, MD Psychiatry) &bull; 11+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=350&h=380&q=80',
+      speciality: 'Adult Mental Health, Anxiety &amp; Depression Counseling, Stress Management, Sleep Disorders &amp; Behavioral Health Therapy.',
+      philosophy: 'Confidential, empathetic, and de-stigmatized mental health care tailored to the psychological and emotional wellness of each individual.',
+      timings: 'Tuesday, Thursday, Saturday (2:00 PM - 5:00 PM).'
+    },
+    'Dr. Arun Kumar S.': {
+      name: 'Dr. Arun Kumar S.',
+      role: 'Consultant Pulmonologist (MBBS, MD, DTCD) &bull; 14+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Pulmonology, Respiratory Disorders, Asthma &amp; COPD Care, Bronchoscopy, Sleep Apnea &amp; Post-Infectious Lung Health.',
+      philosophy: 'Dedicated to comprehensive pulmonary care, early intervention in chronic airways disease, and breathing rehabilitation.',
+      timings: 'Monday to Saturday (10:00 AM - 2:00 PM).'
+    },
+    'Dr. Jayanth Murthy': {
+      name: 'Dr. Jayanth Murthy',
+      role: 'Consultant Nephrologist (MBBS, MD, DM Nephrology) &bull; 16+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Clinical Nephrology, Chronic Kidney Disease, Hypertension Management, Hemodialysis Supervision &amp; Glomerular Disorders.',
+      philosophy: 'Compassionate renal medicine focusing on preserving kidney function, proactive disease management, and patient quality of life.',
+      timings: 'Tuesday, Thursday, Saturday (3:00 PM - 7:00 PM).'
+    },
+    'Dr. Deepa K. Adiga': {
+      name: 'Dr. Deepa K. Adiga',
+      role: 'Consultant ENT Surgeon (MBBS, MS ENT) &bull; 12+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Otorhinolaryngology, Sinusitis &amp; Allergy Management, Micro-Ear Surgery, Hearing Assessment &amp; Tonsillitis Treatment.',
+      philosophy: 'Gentle and precise ear, nose, and throat treatment integrating modern endoscopic diagnostic examination with patient-centric therapies.',
+      timings: 'Monday to Friday (11:00 AM - 3:00 PM).'
+    },
+    'Dr. Sandeep K. Shenoy': {
+      name: 'Dr. Sandeep K. Shenoy',
+      role: 'Consultant Urologist &amp; Andrologist (MBBS, MS, MCh Urology) &bull; 15+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Endourology, Kidney Stones Laser Removal, Prostate Health (BPH), Urinary Tract Infections &amp; Reconstructive Urology.',
+      philosophy: 'Minimally invasive urological techniques ensuring optimal surgical outcomes, rapid recovery, and minimal patient discomfort.',
+      timings: 'Monday, Wednesday, Saturday (2:00 PM - 6:00 PM).'
+    },
+    'Dr. Divya R. Prasad': {
+      name: 'Dr. Divya R. Prasad',
+      role: 'Consultant Eye Surgeon (MBBS, MS Ophthalmology, FICO) &bull; 11+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Comprehensive Ophthalmology, Cataract Evaluation, Glaucoma Screening, Diabetic Retinopathy Assessment &amp; Refractive Care.',
+      philosophy: 'Dedicated to protecting and restoring visual health through thorough clinical examinations and evidence-based eye therapies.',
+      timings: 'Monday to Saturday (9:00 AM - 1:00 PM).'
+    },
+    'Dr. Vinay S. Gowda': {
+      name: 'Dr. Vinay S. Gowda',
+      role: 'Consultant Medical Oncologist (MBBS, MD, DM Oncology) &bull; 13+ Years Experience',
+      badge: 'Consulting Specialist (Demo Faculty)',
+      img: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=400&h=400&q=80',
+      speciality: 'Medical Oncology, Targeted Cancer Therapies, Chemotherapy Protocols, Cancer Screening &amp; Multidisciplinary Tumor Board Care.',
+      philosophy: 'Empathetic, scientifically advanced cancer care prioritizing patient comfort, holistic nutritional support, and tailored treatment plans.',
+      timings: 'Tuesday, Thursday, Friday (1:00 PM - 5:00 PM).'
     }
   };
 
@@ -1082,6 +1209,152 @@ function initInfoModals() {
       );
     });
   });
+}
+
+/**
+ * 11. Doctors Directory Page Live Search & Filter System
+ */
+function initDoctorsPageFilters() {
+  const searchInput = document.getElementById('doctorSearchInput');
+  const searchClearBtn = document.getElementById('doctorSearchClear');
+  const specialitySelect = document.getElementById('doctorSpecialitySelect');
+  const filterChips = document.querySelectorAll('.doctor-chip[data-filter]');
+  const countBadge = document.getElementById('doctorsCountBadge');
+  const clearFiltersBtn = document.getElementById('clearDoctorFiltersBtn');
+  const emptyState = document.getElementById('noDoctorsFound');
+  const resetFiltersBtn = document.getElementById('resetDoctorFiltersBtn');
+  const doctorCards = document.querySelectorAll('.doctor-dir-card');
+
+  if (!doctorCards.length) return; // Not on the doctors directory page
+
+  let activeSpeciality = 'all';
+  let searchQuery = '';
+
+  const applyFilters = () => {
+    let visibleCount = 0;
+    const q = searchQuery.toLowerCase().trim();
+
+    doctorCards.forEach(card => {
+      const cardName = (card.getAttribute('data-doctor-name') || '').toLowerCase();
+      const cardSpec = (card.getAttribute('data-speciality') || '').toLowerCase();
+      const cardBio = (card.textContent || '').toLowerCase();
+
+      const matchesSpeciality = (activeSpeciality === 'all') || 
+        cardSpec === activeSpeciality.toLowerCase() ||
+        cardSpec.includes(activeSpeciality.toLowerCase());
+
+      const matchesSearch = !q || cardName.includes(q) || cardSpec.includes(q) || cardBio.includes(q);
+
+      if (matchesSpeciality && matchesSearch) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Update count badge
+    if (countBadge) {
+      countBadge.textContent = `Showing ${visibleCount} of ${doctorCards.length} Specialists`;
+    }
+
+    // Toggle empty state
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('is-visible');
+        const emptyQueryText = document.getElementById('emptySearchQueryText');
+        if (emptyQueryText) {
+          emptyQueryText.textContent = searchQuery ? `"${searchQuery}"` : activeSpeciality;
+        }
+      } else {
+        emptyState.classList.remove('is-visible');
+      }
+    }
+
+    // Toggle clear filters button visibility
+    if (clearFiltersBtn) {
+      if (activeSpeciality !== 'all' || searchQuery.length > 0) {
+        clearFiltersBtn.style.display = 'inline-flex';
+      } else {
+        clearFiltersBtn.style.display = 'none';
+      }
+    }
+
+    // Toggle search clear 'x' button
+    if (searchClearBtn) {
+      if (searchQuery.length > 0) {
+        searchClearBtn.classList.add('is-visible');
+      } else {
+        searchClearBtn.classList.remove('is-visible');
+      }
+    }
+  };
+
+  // Search input event
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    applyFilters();
+  });
+
+  // Search clear button
+  searchClearBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      searchInput.focus();
+      applyFilters();
+    }
+  });
+
+  // Select dropdown event
+  specialitySelect?.addEventListener('change', (e) => {
+    activeSpeciality = e.target.value;
+    // Sync chips
+    filterChips.forEach(chip => {
+      if (chip.getAttribute('data-filter') === activeSpeciality) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+    applyFilters();
+  });
+
+  // Filter chips click
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.getAttribute('data-filter') || 'all';
+      activeSpeciality = filter;
+
+      filterChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      if (specialitySelect) {
+        specialitySelect.value = filter;
+      }
+
+      applyFilters();
+    });
+  });
+
+  // Reset/Clear buttons
+  const resetAll = () => {
+    activeSpeciality = 'all';
+    searchQuery = '';
+    if (searchInput) searchInput.value = '';
+    if (specialitySelect) specialitySelect.value = 'all';
+    filterChips.forEach(chip => {
+      if (chip.getAttribute('data-filter') === 'all') {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+    applyFilters();
+  };
+
+  clearFiltersBtn?.addEventListener('click', resetAll);
+  resetFiltersBtn?.addEventListener('click', resetAll);
 }
 
 /**
