@@ -5,6 +5,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Initialize Official Splash Screen
+  initSplashScreen();
+
   // 1. Initialize Lucide Icons
   initLucideIcons();
 
@@ -35,6 +38,60 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. Informational Modals (Medical Disclaimer, Privacy, Terms, Doctor Profile)
   initInfoModals();
 });
+
+/**
+ * 0. Sulakshaa Multi Speciality Hospital Splash Screen Controller
+ * Handles initial visit check via sessionStorage, smooth entrance, loading bar, and cleanup
+ */
+function initSplashScreen() {
+  const splash = document.getElementById('splashScreen');
+  if (!splash) return;
+
+  // Check accessibility preference
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Check if already shown during this browser session
+  let alreadyShown = false;
+  try {
+    alreadyShown = Boolean(sessionStorage.getItem('sulakshaa_splash_shown'));
+  } catch (err) {
+    // Storage access fallback
+  }
+
+  if (alreadyShown || isReducedMotion) {
+    if (splash.parentNode) {
+      splash.parentNode.removeChild(splash);
+    }
+    return;
+  }
+
+  // Record that splash was shown for this session
+  try {
+    sessionStorage.setItem('sulakshaa_splash_shown', 'true');
+  } catch (err) {
+    // Ignore storage errors
+  }
+
+  // Lock background scroll during splash
+  document.body.classList.add('splash-active');
+
+  const SPLASH_DURATION = 2400; // 2.4 seconds
+
+  const fadeTimer = setTimeout(() => {
+    splash.classList.add('splash-fade-out');
+    document.body.classList.remove('splash-active');
+
+    const removeTimer = setTimeout(() => {
+      if (splash.parentNode) {
+        splash.parentNode.removeChild(splash);
+      }
+    }, 600);
+
+    window.addEventListener('pagehide', () => clearTimeout(removeTimer), { once: true });
+  }, SPLASH_DURATION);
+
+  window.addEventListener('pagehide', () => clearTimeout(fadeTimer), { once: true });
+}
 
 /**
  * Initialize Lucide icons with error-handling fallback

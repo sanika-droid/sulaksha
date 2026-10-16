@@ -4239,4 +4239,195 @@ button, input, select, textarea {
   .steps-progress-fill {
     transition: none !important;
   }
+
+  .splash-screen {
+    display: none !important;
+  }
 }
+
+/* ==========================================================================
+   22. Sulakshaa Multi Speciality Hospital - Official Splash Screen
+   ========================================================================== */
+.splash-already-shown #splashScreen {
+  display: none !important;
+}
+
+body.splash-active {
+  overflow: hidden !important;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: radial-gradient(circle at center, #FFFFFF 0%, #F5F9FD 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 550ms cubic-bezier(0.4, 0, 0.2, 1), visibility 550ms ease;
+  pointer-events: all;
+}
+
+.splash-screen.splash-fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  max-width: 90vw;
+}
+
+/* Subtle Blue Glow matching hospital blue color palette */
+.splash-glow {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  height: 240px;
+  background: radial-gradient(ellipse at center, rgba(8, 125, 193, 0.22) 0%, rgba(7, 157, 221, 0.12) 45%, transparent 70%);
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 1;
+  animation: splashGlowPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes splashGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.94);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+/* Logo entrance animation: Smooth Fade-In and Scale-Up */
+.splash-logo-container {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  animation: splashLogoEntrance 950ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes splashLogoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.84) translateY(10px);
+    filter: drop-shadow(0 4px 10px rgba(9, 45, 131, 0.04));
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 12px 32px rgba(8, 125, 193, 0.22)) drop-shadow(0 2px 8px rgba(9, 45, 131, 0.08));
+  }
+}
+
+.splash-logo {
+  width: min(340px, 80vw);
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Thin Animated Blue Loading Bar */
+.splash-loader-wrapper {
+  position: relative;
+  z-index: 2;
+  width: min(240px, 68vw);
+  margin-bottom: 1.15rem;
+}
+
+.splash-progress-track {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(8, 125, 193, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.splash-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #092D83 0%, #087DC1 50%, #079DDD 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(7, 157, 221, 0.65);
+  animation: splashProgressFill 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes splashProgressFill {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 32%;
+  }
+  60% {
+    width: 76%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.splash-caption {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  letter-spacing: 0.04em;
+  margin: 0;
+  opacity: 0;
+  animation: splashCaptionFade 800ms ease 400ms forwards;
+}
+
+@keyframes splashCaptionFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .splash-glow {
+    width: 280px;
+    height: 180px;
+  }
+
+  .splash-logo {
+    width: min(270px, 75vw);
+  }
+
+  .splash-loader-wrapper {
+    width: min(200px, 65vw);
+  }
+
+  .splash-caption {
+    font-size: 0.8125rem;
+  }
+}
+

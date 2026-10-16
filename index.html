@@ -79,8 +79,41 @@
     }
   }
   </script>
+
+  <!-- Inline Splash Screen Session Check: Prevents flash on subsequent page visits -->
+  <script>
+    try {
+      if (sessionStorage.getItem('sulakshaa_splash_shown')) {
+        document.documentElement.classList.add('splash-already-shown');
+      }
+    } catch (e) {
+      // Graceful fallback if storage is restricted
+    }
+  </script>
 </head>
 <body>
+  <!-- Sulakshaa Hospital Official Animated Splash Screen -->
+  <div id="splashScreen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading Sulakshaa Multi Speciality Hospital">
+    <div class="splash-content">
+      <div class="splash-glow" aria-hidden="true"></div>
+      <div class="splash-logo-container">
+        <img 
+          src="assets/sulakshaa-logo.png" 
+          alt="Sulakshaa Multi Speciality Hospital" 
+          class="splash-logo" 
+          width="320" 
+          height="84"
+        >
+      </div>
+      <div class="splash-loader-wrapper" aria-hidden="true">
+        <div class="splash-progress-track">
+          <div class="splash-progress-bar"></div>
+        </div>
+      </div>
+      <p class="splash-caption">Compassionate Care. Advanced Medicine.</p>
+    </div>
+  </div>
+
   <!-- Accessibility Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
