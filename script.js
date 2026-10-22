@@ -1313,7 +1313,7 @@ function initInfoModals() {
     'Paediatrics': {
       title: 'Paediatrics & Child Healthcare',
       badge: 'Infant, Child &amp; Adolescent Care',
-      img: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=380&q=80',
+      img: 'assets/paediatrics.png',
       scope: 'Dedicated paediatric and adolescent medicine, immunization schedules, newborn screening, and childhood illness intervention.',
       conditions: 'Paediatric Fevers, Childhood Asthma &amp; Bronchiolitis, Growth &amp; Milestone Delays, Neonatal Jaundice, Nutritional Deficiencies.',
       diagnostics: 'Paediatric Ultrasound, Bilirubin Assays, Digital Pediatric Growth Charting, Stool &amp; Urine Micro-Assays.',
