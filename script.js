@@ -35,11 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. Multi-Step Appointment Booking Form with Transitions & Animated Success
   initMultiStepBookingForm();
 
-  // 10. Informational Modals (Medical Disclaimer, Privacy, Terms, Doctor Profile)
+  // 10. Informational Modals (Medical Disclaimer, Privacy, Terms, Doctor Profile, Speciality Scope)
   initInfoModals();
 
-  // 11. Doctors Directory Page Live Search & Filter System
+  // 11. Facilities Ambient Video Controller
+  initFacilityVideoController();
+
+  // 12. Doctors Directory Page Live Search & Filter System
   initDoctorsPageFilters();
+
+  // 13. Doctors Editorial Showcase Carousel
+  initDoctorsCarousel();
+
+  // 14. Clinical Specialties Journey Showcase Controller
+  initClinicalJourneyShowcase();
+
+  // 15. Doctor Cards 3D Interactive Tilt & Micro-Animations
+  initDoctorCards3DTilt();
 });
 
 /**
@@ -48,7 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function initSplashScreen() {
   const splash = document.getElementById('splashScreen');
-  if (!splash) return;
+  if (!splash) {
+    try {
+      sessionStorage.setItem('sulakshaa_splash_shown', 'true');
+    } catch (e) {}
+    return;
+  }
 
   // Check accessibility preference
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1031,6 +1048,51 @@ function initInfoModals() {
 
   // View Doctor Profile Trigger
   const doctorProfiles = {
+    'Dr. Sarah Johnson': {
+      name: 'Dr. Sarah Johnson',
+      role: 'Consultant Primary Care Physician (MD) &bull; 14+ Years Experience',
+      badge: 'Family Practice Specialist',
+      img: 'https://images.unsplash.com/photo-1594824813571-638f02614d3f?auto=format&fit=crop&w=480&h=420&q=80',
+      speciality: 'Family Medicine, Preventive Healthcare, Lifestyle Disease Assessment, Routine Health Screening, Vaccinations &amp; Comprehensive Wellness.',
+      philosophy: 'Dedicated to compassionate, continuous family healthcare with an emphasis on early detection, preventive guidance, and holistic patient well-being.',
+      timings: 'Monday to Friday (9:00 AM - 1:00 PM).'
+    },
+    'Dr. Michael Chen': {
+      name: 'Dr. Michael Chen',
+      role: 'Senior Consultant Cardiologist (MD, FACC) &bull; 15+ Years Experience',
+      badge: 'Cardiology Specialist',
+      img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=480&h=420&q=80',
+      speciality: 'Preventative Cardiology, Coronary Artery Disease, Hypertension, Non-Invasive Echocardiography &amp; Cardiac Risk Stratification.',
+      philosophy: 'Patient-centred cardiac wellness uniting clinical precision with actionable preventive advice to safeguard long-term cardiovascular vitality.',
+      timings: 'Monday to Saturday (10:00 AM - 2:00 PM).'
+    },
+    'Dr. Amara Okafor': {
+      name: 'Dr. Amara Okafor',
+      role: 'Consultant Paediatrician (MD, FAAP) &bull; 12+ Years Experience',
+      badge: 'Pediatrics Specialist',
+      img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=480&h=420&q=80',
+      speciality: 'General Paediatrics, Newborn Care, Developmental Milestones, Childhood Vaccinations, Asthma &amp; Allergy Management.',
+      philosophy: 'Creating a comforting, joyful clinical environment where children feel secure and parents receive empathetic, expert guidance for growing families.',
+      timings: 'Monday to Friday (9:30 AM - 1:30 PM).'
+    },
+    'Dr. James Rodriguez': {
+      name: 'Dr. James Rodriguez',
+      role: 'Consultant Orthopedic Surgeon (MS Ortho, FAAOS) &bull; 16+ Years Experience',
+      badge: 'Orthopedics Specialist',
+      img: 'https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=480&h=420&q=80',
+      speciality: 'Musculoskeletal Disorders, Arthroscopic Joint Surgery, Sports Medicine, Complex Fracture Fixation &amp; Mobility Restoration.',
+      philosophy: 'Restoring mobility and quality of life through individualized surgical expertise, minimally invasive procedures, and dedicated recovery programs.',
+      timings: 'Tuesday, Thursday, Saturday (2:00 PM - 6:00 PM).'
+    },
+    'Dr. Emily Thompson': {
+      name: 'Dr. Emily Thompson',
+      role: 'Board-Certified Dermatologist (MD, FAAD) &bull; 11+ Years Experience',
+      badge: 'Dermatology Specialist',
+      img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=480&h=420&q=80',
+      speciality: 'Clinical Dermatology, Skin Allergy Assessment, Eczema &amp; Psoriasis Management, Acne Therapy &amp; Dermatological Care.',
+      philosophy: 'Providing evidence-based, compassionate care for acute and chronic skin conditions to foster lasting health and personal confidence.',
+      timings: 'Monday, Wednesday, Friday (3:00 PM - 7:00 PM).'
+    },
     'Dr. Laxme Gowda': {
       name: 'Dr. Laxme Gowda',
       role: 'Senior General Physician (MBBS, MD) &bull; 45+ Years Experience',
@@ -1209,6 +1271,244 @@ function initInfoModals() {
       );
     });
   });
+
+  // Speciality Details Data & Modal Triggers
+  const specialityDetails = {
+    'Cardiac Care': {
+      title: 'Cardiac Care & Cardiovascular Medicine',
+      badge: 'Flagship Department &bull; 24/7 Triage',
+      img: 'assets/cardiac-care.jpg',
+      scope: 'Comprehensive preventive, diagnostic, and emergency cardiology for adult heart diseases, hypertension, and coronary conditions.',
+      conditions: 'Hypertension, Coronary Artery Disease, Angina / Chest Pain, Heart Failure, Arrhythmias, Dyslipidemia &amp; Post-Infarction Rehabilitation.',
+      diagnostics: 'Digital 12-Lead ECG, 2D Echocardiography with Color Doppler, Cardiac Biomarkers (Troponin I), Ambulatory BP Monitoring, Treadmill Stress Testing.',
+      doctors: 'Dr. Priya S. Sharma (MD, DM Cardiology &bull; 16+ Years Experience)'
+    },
+    'Orthopedics': {
+      title: 'Orthopedics, Joint Care & Trauma Surgery',
+      badge: 'Bone, Joint &amp; Spine Care',
+      img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Specialized management of musculoskeletal conditions, accidental trauma, fractures, arthritis, and back/spinal ailments.',
+      conditions: 'Complex Fractures, Osteoarthritis, Degenerative Disc Disease, Joint Dislocations, Tendon Injuries &amp; Osteoporosis.',
+      diagnostics: 'Digital High-Resolution X-Ray, Musculoskeletal Ultrasound, Multi-Slice CT Scanning, Joint Aspiration &amp; Fluid Analysis.',
+      doctors: 'Dr. Anand R. Kulkarni (MS Orthopedics &bull; 15+ Years Experience)'
+    },
+    'Neurology': {
+      title: 'Neurology & Brain Health Sciences',
+      badge: 'Acute Stroke &amp; Epilepsy Center',
+      img: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Clinical diagnosis and therapeutic management of neurological, neuromuscular, cerebrovascular, and cognitive disorders.',
+      conditions: 'Acute Ischemic Stroke, Chronic Migraine &amp; Cluster Headaches, Epilepsy &amp; Seizures, Peripheral Neuropathy, Parkinsonian Tremors.',
+      diagnostics: 'High-Slice CT Neuroimaging, High-Field MRI, Digital Reflex Testing, Neurological Metabolic Panels.',
+      doctors: 'Dr. Vikram M. Rao (MD, DM Neurology &bull; 14+ Years Experience)'
+    },
+    'General Medicine': {
+      title: 'General Medicine & Internal Medicine',
+      badge: 'Senior Faculty Leadership',
+      img: 'assets/general-medicine.png',
+      scope: 'Comprehensive primary adult care, acute fevers, multi-system disorders, diabetes control, and geriatric wellness.',
+      conditions: 'Acute Infectious Fevers, Diabetes Mellitus (Type 1 &amp; 2), Hypertension, Respiratory Infections, Dyslipidemia &amp; Geriatric Multimorbidity.',
+      diagnostics: 'Full Automated Haematology, Glycated Hemoglobin (HbA1c), Comprehensive Metabolic Panel, Stat Electrolytes &amp; ABG.',
+      doctors: 'Dr. Laxme Gowda (Senior General Physician &bull; 45+ Years Leadership)'
+    },
+    'Paediatrics': {
+      title: 'Paediatrics & Child Healthcare',
+      badge: 'Infant, Child &amp; Adolescent Care',
+      img: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Dedicated paediatric and adolescent medicine, immunization schedules, newborn screening, and childhood illness intervention.',
+      conditions: 'Paediatric Fevers, Childhood Asthma &amp; Bronchiolitis, Growth &amp; Milestone Delays, Neonatal Jaundice, Nutritional Deficiencies.',
+      diagnostics: 'Paediatric Ultrasound, Bilirubin Assays, Digital Pediatric Growth Charting, Stool &amp; Urine Micro-Assays.',
+      doctors: 'Dr. Sneha Hegde (MD Paediatrics &bull; 12+ Years Experience)'
+    },
+    'Maternity Care': {
+      title: 'Maternity Care & Obstetrics / Gynaecology',
+      badge: 'Mother &amp; Child Health',
+      img: 'assets/dr-meera-iyer.jpg',
+      scope: 'Evidence-based obstetric care, high-risk pregnancy monitoring, labour suites, and comprehensive women\'s health.',
+      conditions: 'Antenatal Consultations, High-Risk Pregnancies, Gestational Diabetes, Pre-Eclampsia, PCOS/PCOD, Menstrual Health.',
+      diagnostics: '4D Obstetric Sonography, Fetal Heart Doppler, Complete Maternal Antenatal Profiling, Pap Smear &amp; Pelvic Ultrasound.',
+      doctors: 'Dr. Meera N. Iyer (MS OBG, DGO &bull; 18+ Years Experience)'
+    },
+    'Gastroenterology': {
+      title: 'Gastroenterology & Digestive Health',
+      badge: 'GI &amp; Hepatology',
+      img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Comprehensive clinical diagnosis of digestive tract, gastric, liver, gallbladder, and pancreatic disorders.',
+      conditions: 'Acid Reflux (GERD), Peptic Ulcers, Irritable Bowel Syndrome (IBS), Fatty Liver Disease, Acute Pancreatitis, Jaundice.',
+      diagnostics: 'High-Resolution Abdominal Ultrasound, Liver Function Assays, Viral Hepatitis Screening, Stool Occult Blood.',
+      doctors: 'Dr. Rajeshwar Rao (Consultant Gastroenterologist)'
+    },
+    'Oncology': {
+      title: 'Medical Oncology & Cancer Screening',
+      badge: 'Screening &amp; Supportive Care',
+      img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Preventive cancer screening, early symptom assessment, medical oncology coordination, and compassionate supportive therapy.',
+      conditions: 'Early Tumor Screening, Breast &amp; Cervical Health Checks, Gastrointestinal Screening, Supportive Pain Management.',
+      diagnostics: 'High-Slice CT Cross-Sectional Imaging, Tumor Marker Assays, Biopsy Histopathology Coordination, Digital Mammography.',
+      doctors: 'Dr. Manjunath Swamy (Consultant Medical Oncologist)'
+    },
+    'Dermatology': {
+      title: 'Dermatology & Skin Healthcare',
+      badge: 'Clinical Dermatology',
+      img: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Diagnosis and medical management of dermatological diseases, allergies, chronic skin conditions, and hair disorders.',
+      conditions: 'Psoriasis, Atopic Eczema, Severe Acne Vulgaris, Urticaria &amp; Skin Allergies, Fungal &amp; Bacterial Dermatitis, Alopecia.',
+      diagnostics: 'Dermoscopy, Skin Biopsy &amp; Scraping Analysis, Woods Lamp Examination, Allergy Patch Testing.',
+      doctors: 'Dr. Ananya Deshmukh (Consultant Dermatologist)'
+    },
+    'Psychiatry': {
+      title: 'Psychiatry & Behavioral Health',
+      badge: 'Confidential Mental Health',
+      img: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Confidential, empathetic clinical evaluation and psychological support for mood, anxiety, and behavioral health.',
+      conditions: 'Depressive Illness, Generalized Anxiety &amp; Panic, Insomnia &amp; Sleep Cycle Disorders, Stress &amp; Somatoform Conditions.',
+      diagnostics: 'Structured Psychometric Assessments, Sleep Profiling, Comprehensive Neuropsychiatric Review.',
+      doctors: 'Dr. Kavitha Sundaram (Consultant Psychiatrist)'
+    },
+    'General Surgery': {
+      title: 'General & Minimally Invasive Surgery',
+      badge: 'Modular Surgical OT',
+      img: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Elective and emergency surgical consultations for abdominal, soft-tissue, hernia, and acute operative conditions.',
+      conditions: 'Inguinal &amp; Umbilical Hernias, Acute Appendicitis, Gallstone Disease, Wound Care &amp; Diabetic Ulcers, Hydrocele, Minor Surgeries.',
+      diagnostics: 'Pre-Operative CT Imaging, Doppler Ultrasound, Pre-Anesthetic Fitness Workup, Sterile Modular OT Readiness.',
+      doctors: 'Dr. Suresh Babu (Senior General &amp; Laparoscopic Surgeon)'
+    },
+    'Anaesthesiology': {
+      title: 'Anaesthesiology & Critical Care Support',
+      badge: 'Perioperative Safety',
+      img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&h=380&q=80',
+      scope: 'Comprehensive perioperative monitoring, safe general &amp; regional anaesthesia administration, and acute post-op analgesia.',
+      conditions: 'Surgical Pain Management, Acute Perioperative Monitoring, Difficult Airway Management, Critical Resuscitation.',
+      diagnostics: 'Pre-Anesthetic Risk Evaluation, Invasive Arterial Monitoring, Capnography, Blood Gas Assays.',
+      doctors: 'Dr. Sandeep Shenoy (Consultant Anaesthesiologist)'
+    }
+  };
+
+  const specialityTriggers = document.querySelectorAll('.view-speciality-details-btn');
+  specialityTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const specKey = btn.getAttribute('data-speciality');
+      const spec = specialityDetails[specKey];
+      if (!spec) return;
+
+      openModal(
+        spec.title,
+        `
+        <div class="doctor-modal-profile">
+          <div class="doctor-modal-photo-wrap">
+            <img src="${spec.img}" alt="${spec.title}" class="doctor-modal-photo">
+          </div>
+          <div>
+            <span class="doctor-modal-badge">${spec.badge}</span>
+            <h3 class="doctor-modal-name">${spec.title}</h3>
+            <p class="doctor-modal-role">${spec.scope}</p>
+          </div>
+        </div>
+
+        <h4>Conditions Diagnosed &amp; Treated</h4>
+        <p>${spec.conditions}</p>
+
+        <h4>Diagnostic &amp; Clinical Facilities</h4>
+        <p>${spec.diagnostics}</p>
+
+        <h4>Lead Specialists &amp; Consultants</h4>
+        <p><strong>${spec.doctors}</strong></p>
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="#enquiry" class="btn btn-primary btn-sm speciality-modal-book-btn" data-dept="${specKey}">
+            <i data-lucide="calendar" class="icon-xs"></i> Book Appointment in this Department
+          </a>
+          <a href="tel:+918212345678" class="btn btn-outline btn-sm">
+            <i data-lucide="phone" class="icon-xs"></i> Call Reception
+          </a>
+        </div>
+        `
+      );
+
+      // Handle the booking button inside modal
+      setTimeout(() => {
+        const bookBtn = document.querySelector('.speciality-modal-book-btn');
+        bookBtn?.addEventListener('click', () => {
+          closeModal();
+          const dept = bookBtn.getAttribute('data-dept');
+          const specialitySelect = document.getElementById('preferredSpeciality');
+          if (specialitySelect && dept) {
+            for (let i = 0; i < specialitySelect.options.length; i++) {
+              if (specialitySelect.options[i].value === dept || specialitySelect.options[i].text.includes(dept)) {
+                specialitySelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+          const enquirySection = document.getElementById('enquiry');
+          if (enquirySection) {
+            enquirySection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }, 50);
+    });
+  });
+}
+
+/**
+ * 11. Facilities Ambient Video Controller
+ * Handles video playback, play/pause toggle button, and respects reduced motion
+ */
+function initFacilityVideoController() {
+  const video = document.getElementById('facilityHeroVideo');
+  const toggleBtn = document.getElementById('facilityVideoToggle');
+  if (!video || !toggleBtn) return;
+
+  const btnIcon = toggleBtn.querySelector('.video-btn-icon');
+  const btnText = toggleBtn.querySelector('.video-btn-text');
+
+  // Check prefers-reduced-motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    video.pause();
+    updateButtonState(false);
+  }
+
+  function updateButtonState(isPlaying) {
+    if (isPlaying) {
+      if (btnText) btnText.textContent = 'Pause Video';
+      toggleBtn.setAttribute('aria-label', 'Pause background ambient video');
+      toggleBtn.setAttribute('title', 'Pause ambient video');
+      if (btnIcon) {
+        btnIcon.setAttribute('data-lucide', 'pause');
+      }
+    } else {
+      if (btnText) btnText.textContent = 'Play Video';
+      toggleBtn.setAttribute('aria-label', 'Play background ambient video');
+      toggleBtn.setAttribute('title', 'Play ambient video');
+      if (btnIcon) {
+        btnIcon.setAttribute('data-lucide', 'play');
+      }
+    }
+    initLucideIcons();
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play().then(() => {
+        updateButtonState(true);
+      }).catch(err => {
+        console.warn('Video playback notice:', err);
+      });
+    } else {
+      video.pause();
+      updateButtonState(false);
+    }
+  });
+
+  // Listen for reduced motion preference changes
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+    if (e.matches) {
+      video.pause();
+      updateButtonState(false);
+    }
+  });
 }
 
 /**
@@ -1369,3 +1669,136 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+/**
+ * 13. Doctors Editorial Showcase Carousel Controller
+ */
+function initDoctorsCarousel() {
+  const track = document.getElementById('doctorsCarouselTrack');
+  const prevBtn = document.getElementById('carouselPrevBtn');
+  const nextBtn = document.getElementById('carouselNextBtn');
+  if (!track) return;
+
+  const getScrollStep = () => {
+    const firstCard = track.querySelector('.editorial-doc-card');
+    return firstCard ? firstCard.offsetWidth + 20 : 300;
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  // Spotlight active card toggle on hover
+  const cards = track.querySelectorAll('.editorial-doc-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cards.forEach(c => c.classList.remove('is-active-spotlight'));
+      card.classList.add('is-active-spotlight');
+    });
+  });
+}
+
+/**
+ * 14. Clinical Specialties Journey Showcase Controller
+ * Handles interactive clicks on the 4 journey cards, filtering and highlighting the matching doctors
+ */
+function initClinicalJourneyShowcase() {
+  const journeyCards = document.querySelectorAll('.journey-card');
+  const specialitySelect = document.getElementById('doctorSpecialitySelect');
+  const filterChips = document.querySelectorAll('.doctor-chip');
+  const dirSection = document.querySelector('.doctors-directory-section');
+
+  journeyCards.forEach(card => {
+    const activateDepartment = () => {
+      const targetSpeciality = card.getAttribute('data-speciality-target');
+      if (!targetSpeciality) return;
+
+      // Update select dropdown
+      if (specialitySelect) {
+        specialitySelect.value = targetSpeciality;
+        specialitySelect.dispatchEvent(new Event('change'));
+      }
+
+      // Update filter chips
+      filterChips.forEach(chip => {
+        if (chip.getAttribute('data-filter') === targetSpeciality) {
+          chip.click();
+        }
+      });
+
+      // Smooth scroll down to doctor directory
+      if (dirSection) {
+        dirSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Add pulse animation to matching doctor cards
+      setTimeout(() => {
+        const matchingCards = document.querySelectorAll(`.doctor-dir-card[data-speciality="${targetSpeciality}"]`);
+        matchingCards.forEach(mc => {
+          mc.classList.add('highlight-pulse');
+          setTimeout(() => mc.classList.remove('highlight-pulse'), 3600);
+        });
+      }, 500);
+    };
+
+    card.addEventListener('click', activateDepartment);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateDepartment();
+      }
+    });
+  });
+}
+
+/**
+ * 15. Doctor Cards 3D Interactive Tilt & Micro-Animations
+ * Adds smooth cursor-tracking 3D tilt, perspective transformation, and spring-back
+ */
+function initDoctorCards3DTilt() {
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion) return;
+
+  const cards = document.querySelectorAll('.doctor-dir-card, .editorial-doc-card');
+
+  cards.forEach(card => {
+    let ticking = false;
+
+    const handleMouseMove = (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          // Subtle, smooth 3D tilt angles (max ~5deg)
+          const rotateX = ((centerY - y) / centerY) * 4.5;
+          const rotateY = ((x - centerX) / centerX) * 4.5;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    };
+
+    card.addEventListener('mousemove', handleMouseMove, { passive: true });
+    card.addEventListener('mouseleave', handleMouseLeave);
+  });
+}
+
+

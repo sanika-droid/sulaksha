@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=18">
 
   <!-- JSON-LD MedicalOrganization Structured Data -->
   <script type="application/ld+json">
@@ -92,25 +92,35 @@
   </script>
 </head>
 <body>
-  <!-- Sulakshaa Hospital Official Animated Splash Screen -->
+  <!-- Sulakshaa Hospital Official Animated Splash Screen / Launch Screen -->
   <div id="splashScreen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading Sulakshaa Multi Speciality Hospital">
     <div class="splash-content">
       <div class="splash-glow" aria-hidden="true"></div>
+
+      <!-- Hospital Logo -->
       <div class="splash-logo-container">
         <img 
           src="assets/sulakshaa-logo.png" 
-          alt="Sulakshaa Multi Speciality Hospital" 
+          alt="Sulakshaa Multi Speciality Hospital Official Logo" 
           class="splash-logo" 
           width="320" 
           height="84"
         >
       </div>
+
+      <!-- Hospital Name -->
+      <h1 class="splash-hospital-name">Sulakshaa Multi Speciality Hospital</h1>
+      <span class="splash-kannada-name" aria-hidden="true">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</span>
+
+      <!-- Tagline -->
+      <p class="splash-tagline">“Your Health, Our Priority”</p>
+
+      <!-- Animated Loading Indicator / Progress Line -->
       <div class="splash-loader-wrapper" aria-hidden="true">
         <div class="splash-progress-track">
           <div class="splash-progress-bar"></div>
         </div>
       </div>
-      <p class="splash-caption">Compassionate Care. Advanced Medicine.</p>
     </div>
   </div>
 
@@ -164,7 +174,6 @@
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="#facilities" class="nav-link">Facilities</a></li>
           <li class="nav-item"><a href="#patient-care" class="nav-link">Patient Care</a></li>
-          <li class="nav-item"><a href="#community" class="nav-link">Health Camps</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -205,8 +214,7 @@
           <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
           <li style="--nav-idx: 4;"><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
           <li style="--nav-idx: 5;"><a href="#patient-care" class="mobile-nav-link">Patient Care</a></li>
-          <li style="--nav-idx: 6;"><a href="#community" class="mobile-nav-link">Health Camps</a></li>
-          <li style="--nav-idx: 7;"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+          <li style="--nav-idx: 6;"><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-drawer-cta">
           <a href="#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
@@ -529,9 +537,98 @@
           </p>
         </div>
 
+        <!-- Asymmetrical Feature Layout: Prominent Centre of Excellence Spotlight -->
+        <div class="speciality-featured-spotlight reveal-on-scroll">
+          <div class="spotlight-content">
+            <div class="spotlight-badge-row">
+              <span class="spotlight-badge">
+                <i data-lucide="sparkles" class="icon-xs"></i> Flagship Department
+              </span>
+              <span class="spotlight-status">
+                <i data-lucide="activity" class="icon-xs"></i> 24/7 Acute Readiness
+              </span>
+            </div>
+            
+            <h3 class="spotlight-title">Cardiovascular Medicine &amp; Coronary Care</h3>
+            <p class="spotlight-description">
+              Sulakshaa Hospital's flagship cardiac wing provides rapid chest pain triage, preventive cardiology, non-invasive cardiac evaluation, digital 12-lead ECG, 2D echocardiography with Color Doppler, and intensive coronary care beds backed by experienced consultant cardiologists.
+            </p>
+
+            <div class="spotlight-highlights-grid">
+              <div class="spotlight-highlight-card">
+                <div class="highlight-icon">
+                  <i data-lucide="heart-pulse" class="icon-sm"></i>
+                </div>
+                <div>
+                  <strong>Non-Invasive Diagnostic Lab</strong>
+                  <span>Echo-Doppler, treadmill stress tests &amp; Holter</span>
+                </div>
+              </div>
+              <div class="spotlight-highlight-card">
+                <div class="highlight-icon">
+                  <i data-lucide="shield-check" class="icon-sm"></i>
+                </div>
+                <div>
+                  <strong>Zero-Wait Emergency Protocol</strong>
+                  <span>Rapid triage &amp; direct cardiac ICU admission</span>
+                </div>
+              </div>
+              <div class="spotlight-highlight-card">
+                <div class="highlight-icon">
+                  <i data-lucide="users" class="icon-sm"></i>
+                </div>
+                <div>
+                  <strong>Dedicated Senior Faculty</strong>
+                  <span>Consultant cardiology &amp; internal medicine specialists</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="spotlight-actions">
+              <a href="#enquiry" class="btn btn-primary speciality-enquire-btn" data-dept="Cardiac Care">
+                <i data-lucide="calendar" class="icon-xs"></i>
+                <span>Book Cardiac Consultation</span>
+              </a>
+              <button type="button" class="btn btn-outline view-speciality-details-btn" data-speciality="Cardiac Care">
+                <i data-lucide="info" class="icon-xs"></i>
+                <span>Explore Department Scope</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="spotlight-visual">
+            <div class="spotlight-image-wrapper">
+              <img src="assets/cardiac-care.jpg" alt="Sulakshaa Hospital Advanced Cardiac Care & ICU" class="spotlight-main-img" loading="lazy">
+              <div class="spotlight-image-overlay"></div>
+              
+              <!-- Floating Glass Metric Badges -->
+              <div class="floating-spotlight-pill pill-top-right">
+                <span class="pulse-indicator"></span>
+                <div>
+                  <strong>24/7</strong>
+                  <span>Cardiac Triage</span>
+                </div>
+              </div>
+
+              <div class="floating-spotlight-pill pill-bottom-left">
+                <i data-lucide="activity" class="icon-sm text-sky"></i>
+                <div>
+                  <strong>100% Monitored</strong>
+                  <span>Telemetry ICU Beds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="specialities-grid-header reveal-on-scroll">
+          <h3 class="specialities-grid-title">All Clinical Departments &amp; Specialities</h3>
+          <p class="specialities-grid-subtitle">Select any speciality to view conditions treated, associated specialists, and available diagnostic facilities.</p>
+        </div>
+
         <div class="specialities-grid" id="specialitiesGrid">
           <!-- 1. Cardiac Care -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Cardiac Care">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Cardiac Care">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&h=380&q=80" alt="Cardiac Care and Heart Health Department" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -541,15 +638,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Cardiac Care</h3>
               <p class="speciality-desc">Comprehensive cardiovascular assessment, preventive cardiology, ECG, echocardiography, and hypertension management.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Cardiac Care">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Cardiac Care">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Cardiac Care" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 2. Orthopedics -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Orthopedics">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Orthopedics">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&h=380&q=80" alt="Orthopedics, Bone and Joint Care" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -559,15 +662,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Orthopedics</h3>
               <p class="speciality-desc">Specialized management for bone fractures, joint pain, arthritis, spinal care, trauma management, and mobility restoration.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Orthopedics">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Orthopedics">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Orthopedics" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 3. Neurology -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Neurology">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Neurology">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&h=380&q=80" alt="Neurology and Neurological Diagnostics" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -577,15 +686,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Neurology</h3>
               <p class="speciality-desc">Diagnosis and clinical care for chronic headaches, stroke evaluation, neurological disorders, neuropathy, and seizure conditions.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Neurology">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Neurology">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Neurology" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 4. Gastroenterology -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Gastroenterology">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Gastroenterology">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&h=380&q=80" alt="Gastroenterology and Digestive Health" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -595,15 +710,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Gastroenterology</h3>
               <p class="speciality-desc">Digestive health, liver care, gastrointestinal disorders, acid reflux, abdominal pain investigation, and nutritional therapy.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Gastroenterology">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Gastroenterology">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Gastroenterology" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 5. Oncology -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Oncology">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Oncology">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&h=380&q=80" alt="Oncology Screening and Cancer Care" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -613,15 +734,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Oncology</h3>
               <p class="speciality-desc">Compassionate cancer screening, early detection guidance, medical oncology coordination, and supportive care for patients.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Oncology">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Oncology">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Oncology" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 6. Paediatrics -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Paediatrics">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Paediatrics">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=380&q=80" alt="Paediatrics and Child Health Care" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -631,15 +758,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Paediatrics</h3>
               <p class="speciality-desc">Comprehensive child care, neonatal monitoring, immunization programmes, developmental growth checks, and pediatric illness care.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Paediatrics">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Paediatrics">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Paediatrics" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 7. General Medicine -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="General Medicine">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="General Medicine">
             <div class="speciality-image-wrap">
               <img src="assets/general-medicine.png" alt="General Medicine - Compassionate Consultation and Primary Healthcare" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -649,15 +782,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">General Medicine</h3>
               <p class="speciality-desc">Adult primary healthcare, fever evaluation, diabetes control, infectious disease treatment, and preventive lifestyle wellness.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="General Medicine">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="General Medicine">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="General Medicine" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 8. Maternity Care -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Maternity Care">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Maternity Care">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=380&q=80" alt="Maternity Care, Obstetrics and Mother-Baby Care" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -667,15 +806,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Maternity Care</h3>
               <p class="speciality-desc">Antenatal consultations, maternal health support, high-risk pregnancy monitoring, postnatal recovery, and mother-baby care.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Maternity Care">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Maternity Care">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Maternity Care" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 9. Dermatology -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Dermatology">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Dermatology">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&h=380&q=80" alt="Dermatology and Skin Health Clinical Care" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -685,15 +830,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Dermatology</h3>
               <p class="speciality-desc">Clinical evaluation and treatment of skin conditions, allergies, eczema, acne, psoriasis, and dermatological infections.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Dermatology">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Dermatology">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Dermatology" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 10. Psychiatry -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Psychiatry">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Psychiatry">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=600&h=380&q=80" alt="Psychiatry and Behavioral Health Counseling" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -703,15 +854,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Psychiatry</h3>
               <p class="speciality-desc">Confidential mental health support, anxiety and depression counseling, stress management, and behavioural health therapy.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Psychiatry">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Psychiatry">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Psychiatry" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 11. General Surgery -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="General Surgery">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="General Surgery">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=380&q=80" alt="General Surgery Operating Theatre" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -721,15 +878,21 @@
             <div class="speciality-content">
               <h3 class="speciality-name">General Surgery</h3>
               <p class="speciality-desc">Surgical consultations for hernia, appendicitis, gallbladder conditions, wound healing, trauma repair, and minor operative procedures.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="General Surgery">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="General Surgery">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="General Surgery" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
 
           <!-- 12. Anaesthesiology -->
-          <article class="speciality-card reveal-on-scroll" data-speciality="Anaesthesiology">
+          <article class="speciality-card reveal-on-scroll interactive-card" data-speciality="Anaesthesiology">
             <div class="speciality-image-wrap">
               <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&h=380&q=80" alt="Anaesthesiology and Critical Care Monitoring" class="speciality-img" loading="lazy">
               <div class="speciality-icon-badge" aria-hidden="true">
@@ -739,732 +902,398 @@
             <div class="speciality-content">
               <h3 class="speciality-name">Anaesthesiology</h3>
               <p class="speciality-desc">Pre-operative anesthetic assessment, advanced perioperative monitoring, pain medicine, and critical care anesthesia support.</p>
-              <button type="button" class="speciality-enquire-btn" data-dept="Anaesthesiology">
-                <span>Enquire About This Service</span>
-                <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              <div class="speciality-btn-group">
+                <button type="button" class="speciality-enquire-btn" data-dept="Anaesthesiology">
+                  <span>Book Appointment</span>
+                  <i data-lucide="arrow-right" class="icon-xs"></i>
+                </button>
+                <button type="button" class="speciality-scope-btn view-speciality-details-btn" data-speciality="Anaesthesiology" title="View clinical scope &amp; doctors">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <span>Scope</span>
+                </button>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 7. Doctors and Clinical Team Section -->
-    <section class="section doctors-section" id="doctors" aria-labelledby="doctors-heading">
-      <div class="container">
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-tag">Clinical Leadership</span>
-          <h2 id="doctors-heading" class="section-title">Meet Our Medical Team</h2>
-          <p class="section-subtitle">
-            Our medical staff is led by experienced physicians committed to ethical practice, clinical diligence, and patient well-being.
-          </p>
-        </div>
+    <!-- 8. Advanced Infrastructure and Facilities Section: Cinematic Visual Experience -->
+    <section class="section facilities-section cinematic-facilities-experience" id="facilities" aria-labelledby="facilities-heading">
+      <!-- 8.1 Cinematic Video Hero Container -->
+      <div class="facility-cinematic-hero-wrapper reveal-on-scroll">
+        <div class="facility-video-stage">
+          <!-- Ambient Hospital Tour Video Container with High-Res Poster Fallback -->
+          <video 
+            id="facilityHeroVideo" 
+            class="facility-ambient-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            poster="assets/hospital-building.png"
+            aria-label="Sulakshaa Hospital modern infrastructure and clinical facilities ambient tour"
+          >
+            <!-- To connect a local licensed hospital tour video, place 'hospital-tour.mp4' in the assets folder and uncomment below: -->
+            <!-- <source src="assets/hospital-tour.mp4" type="video/mp4"> -->
+          </video>
+          <div class="facility-video-overlay" aria-hidden="true"></div>
 
-        <div class="doctors-grid">
-          <!-- Specialist 1: Dr. Laxme Gowda (Senior Faculty) -->
-          <article class="doctor-card featured-doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="assets/dr-laxme-gowda.png" 
-                    alt="Dr. Laxme Gowda, Senior General Physician at Sulakshaa Multi Speciality Hospital, Mysuru" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 45+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Laxme Gowda</h3>
-                    <p class="doctor-designation">Senior General Physician (MBBS, MD)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  A revered medical practitioner in Mysuru with over <strong>45 years of clinical medical experience</strong>. Dr. Laxme Gowda brings profound diagnostic wisdom and comprehensive adult medicine expertise to Sulakshaa Multi Speciality Hospital.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>General Medicine &amp; Chronic Care</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Mon - Sat (OPD Daily Token)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Laxme Gowda" data-dept="General Medicine">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Laxme Gowda">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Specialist 2: Dr. Priya S. Sharma (Cardiology) -->
-          <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=350&h=380&q=80" 
-                    alt="Dr. Priya S. Sharma, Consultant Cardiologist at Sulakshaa Hospital" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 16+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Priya S. Sharma</h3>
-                    <p class="doctor-designation">Consultant Cardiologist (MD, DM Cardiology)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  Specialized in clinical cardiology, 2D echocardiography, preventative cardiovascular care, and acute coronary management with international fellowship credentials.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>Cardiac Care &amp; Preventative Heart Health</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Mon - Fri (10:00 AM - 2:00 PM)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Priya S. Sharma" data-dept="Cardiac Care">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Priya S. Sharma">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Specialist 3: Dr. Anand R. Kulkarni (Orthopedics) -->
-          <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=350&h=380&q=80" 
-                    alt="Dr. Anand R. Kulkarni, Orthopedic and Joint Replacement Specialist" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 14+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Anand R. Kulkarni</h3>
-                    <p class="doctor-designation">Senior Orthopedic Surgeon (MS Ortho, DNB)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  Renowned specialist in primary and complex joint replacements, arthroscopic sports injuries, complex bone fracture stabilization, and degenerative spine therapy.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>Orthopedics &amp; Joint Reconstruction</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Tue, Thu, Sat (3:00 PM - 7:00 PM)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Anand R. Kulkarni" data-dept="Orthopedics">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Anand R. Kulkarni">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Specialist 4: Dr. Sneha Hegde (Paediatrics) -->
-          <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="assets/dr-sneha-hegde.jpg" 
-                    alt="Dr. Sneha Hegde, Consultant Paediatrician at Sulakshaa Hospital" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 12+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Sneha Hegde</h3>
-                    <p class="doctor-designation">Consultant Paediatrician (MD Paediatrics)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  Devoted pediatric clinician offering child healthcare, newborn baby care, developmental monitoring, and pediatric emergency management in Mysuru.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>Paediatrics &amp; Child Health Care</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Mon - Sat (9:00 AM - 1:00 PM)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Sneha Hegde" data-dept="Paediatrics">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Sneha Hegde">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Specialist 5: Dr. Vikram M. Rao (Neurology) -->
-          <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=350&h=380&q=80" 
-                    alt="Dr. Vikram M. Rao, Consultant Neurologist at Sulakshaa Hospital" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 15+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Vikram M. Rao</h3>
-                    <p class="doctor-designation">Consultant Neurologist (MD, DM Neurology)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  Expertise in clinical neurology, acute stroke intervention, epilepsy management, migraine evaluation, and peripheral nerve disorders.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>Neurology &amp; Brain Health</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Mon, Wed, Fri (2:00 PM - 6:00 PM)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Vikram M. Rao" data-dept="Neurology">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Vikram M. Rao">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Specialist 6: Dr. Meera N. Iyer (Maternity Care / OBG) -->
-          <article class="doctor-card reveal-on-scroll">
-            <div class="doctor-card-content">
-              <!-- Doctor Portrait Image -->
-              <div class="doctor-portrait-box">
-                <div class="doctor-photo-wrapper specialist-photo-wrapper">
-                  <img 
-                    src="assets/dr-meera-iyer.jpg" 
-                    alt="Dr. Meera N. Iyer, Senior Obstetrician &amp; Gynaecologist at Sulakshaa Hospital" 
-                    class="doctor-photo specialist-portrait-img"
-                    width="105"
-                    height="120"
-                    loading="lazy"
-                  >
-                </div>
-                <div class="doctor-experience-tag">
-                  <i data-lucide="award" class="icon-xs"></i> 18+ Years Experience
-                </div>
-              </div>
-
-              <!-- Doctor Details -->
-              <div class="doctor-info">
-                <div class="doctor-header-row">
-                  <div>
-                    <h3 class="doctor-name">Dr. Meera N. Iyer</h3>
-                    <p class="doctor-designation">Senior Obstetrician &amp; Gynaecologist (MS OBG, DGO)</p>
-                  </div>
-                  <span class="doctor-verified-badge" title="Verified Medical Information">
-                    <i data-lucide="check-circle" class="icon-xs"></i> Verified Faculty
-                  </span>
-                </div>
-
-                <p class="doctor-bio">
-                  Specialized in high-risk pregnancy delivery, comprehensive antenatal wellness, painless labour management, and minimally invasive gynaecological care.
-                </p>
-
-                <div class="doctor-meta-list">
-                  <div class="doctor-meta-item">
-                    <i data-lucide="briefcase" class="icon-xs"></i>
-                    <span>Speciality: <strong>Maternity Care &amp; Gynaecology</strong></span>
-                  </div>
-                  <div class="doctor-meta-item">
-                    <i data-lucide="clock" class="icon-xs"></i>
-                    <span>Consultation: <strong>Mon - Sat (10:00 AM - 3:00 PM)</strong></span>
-                  </div>
-                </div>
-
-                <div class="doctor-actions">
-                  <a href="#enquiry" class="btn btn-primary btn-sm doctor-enquire-btn" data-doctor="Dr. Meera N. Iyer" data-dept="Maternity Care">
-                    <i data-lucide="calendar" class="icon-xs"></i>
-                    <span>Book Appointment</span>
-                  </a>
-                  <button type="button" class="btn btn-outline btn-sm view-profile-btn" data-doctor="Dr. Meera N. Iyer">
-                    <span>View Profile</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Specialist Visiting Roster Callout Banner -->
-        <div class="doctor-roster-banner reveal-on-scroll">
-          <div class="roster-banner-icon">
-            <i data-lucide="users" class="icon-md"></i>
+          <!-- Video Playback Control & Accessibility Toggle -->
+          <div class="facility-video-controls">
+            <button 
+              type="button" 
+              class="facility-video-ctrl-btn" 
+              id="facilityVideoToggle" 
+              aria-label="Pause background ambient video" 
+              title="Pause ambient video"
+            >
+              <i data-lucide="pause" class="icon-xs video-btn-icon"></i>
+              <span class="video-btn-text">Pause Video</span>
+            </button>
+            <span class="facility-video-tag">
+              <i data-lucide="video" class="icon-xs"></i> 4K Facility Tour Preview
+            </span>
           </div>
-          <div class="roster-banner-content">
-            <h4>Multidisciplinary Resident &amp; Visiting Specialists</h4>
-            <p>Our clinical roster features 16+ experienced specialists across Cardiology, Orthopedics, Neurology, Maternity Care, Gastroenterology, Pulmonology, Nephrology, ENT, Urology, Oncology, Dermatology, and Psychiatry.</p>
-          </div>
-          <div class="doctor-roster-actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <a href="doctors.html" class="btn btn-primary btn-sm">
-              <span>View All 16 Specialists</span>
-              <i data-lucide="arrow-right" class="icon-xs"></i>
-            </a>
-            <a href="#enquiry" class="btn btn-outline btn-sm">
-              <span>Enquire Schedule</span>
-            </a>
+
+          <!-- Hero Content Layer -->
+          <div class="container facility-hero-inner">
+            <div class="facility-hero-text">
+              <span class="badge-pill pulse-badge mb-3">
+                <i data-lucide="shield-plus" class="icon-xs"></i> Purpose-Built Healthcare Complex
+              </span>
+              <h2 id="facilities-heading" class="facility-hero-headline">
+                Advanced Facilities. <span class="text-sky-gradient">Cinematic Precision.</span>
+              </h2>
+              <p class="facility-hero-subhead">
+                Explore Sulakshaa Multi Speciality Hospital's 100-bed purpose-built clinical infrastructure in Mysuru — integrating rapid 24/7 casualty triage, advanced radiological diagnostics, sterile surgical suites, and calming patient recovery spaces.
+              </p>
+
+              <!-- Quick Infrastructure Badges -->
+              <div class="facility-key-stats-strip">
+                <div class="facility-stat-item">
+                  <i data-lucide="bed" class="icon-sm"></i>
+                  <div>
+                    <strong>100-Bed Complex*</strong>
+                    <span>General, Semi-Private &amp; ICU</span>
+                  </div>
+                </div>
+                <div class="facility-stat-item">
+                  <i data-lucide="shield-alert" class="icon-sm"></i>
+                  <div>
+                    <strong>24/7 Casualty Triage</strong>
+                    <span>Zero-Delay Emergency Admission</span>
+                  </div>
+                </div>
+                <div class="facility-stat-item">
+                  <i data-lucide="pill" class="icon-sm"></i>
+                  <div>
+                    <strong>In-House Pharmacy</strong>
+                    <span>Ground Floor 24/7 Chemist</span>
+                  </div>
+                </div>
+                <div class="facility-stat-item">
+                  <i data-lucide="accessibility" class="icon-sm"></i>
+                  <div>
+                    <strong>100% Accessible</strong>
+                    <span>Barrier-Free Ramps &amp; Elevators</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- 8. Advanced Infrastructure and Facilities Section -->
-    <section class="section facilities-section" id="facilities" aria-labelledby="facilities-heading">
       <div class="container">
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-tag">Hospital Infrastructure</span>
-          <h2 id="facilities-heading" class="section-title">Advanced Facilities. Thoughtful Care.</h2>
-          <p class="section-subtitle">
-            A purpose-built 100-bed hospital setup (subject to final publication confirmation) designed for patient recovery, emergency responsiveness, and diagnostic capability.
-          </p>
+        <!-- 8.2 Alternating Full-Width Infrastructure Showcase Sections -->
+        <div class="facility-showcase-panels-list">
+
+          <!-- Panel 1: 24/7 Emergency & Critical Care (Image Left, Content Right) -->
+          <article class="facility-showcase-panel reveal-on-scroll">
+            <div class="showcase-visual-col">
+              <div class="showcase-img-wrap">
+                <img 
+                  src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=900&h=600&q=80" 
+                  alt="24/7 Casualty and Emergency Trauma Unit at Sulakshaa Hospital" 
+                  class="showcase-img"
+                  loading="lazy"
+                >
+                <div class="showcase-img-overlay"></div>
+                <div class="showcase-floating-badge badge-emergency">
+                  <i data-lucide="ambulance" class="icon-sm"></i>
+                  <span>24/7 Casualty Triage</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-content-col">
+              <span class="showcase-tag">Emergency Medicine</span>
+              <h3 class="showcase-title">Immediate Triage &amp; Critical Trauma Stabilization</h3>
+              <p class="showcase-desc">
+                Our emergency wing features direct-access ambulance porticos, dedicated resuscitation bays, point-of-care vital telemetry, and on-duty emergency medical officers prepared 24 hours a day, 365 days a year to manage acute trauma, cardiac events, and surgical emergencies without delay.
+              </p>
+              <div class="showcase-specs-list">
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Zero-Wait Triage Scoring Protocol
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Dedicated Shock &amp; Resuscitation Bay
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Direct Elevator Route to OT &amp; ICU
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> 24/7 On-Call Trauma Surgical Specialists
+                </div>
+              </div>
+              <div class="showcase-action">
+                <a href="tel:+918212345678" class="btn btn-emergency btn-sm">
+                  <i data-lucide="phone-call" class="icon-xs"></i>
+                  <span>Call Emergency Desk: +91 821 234 5678*</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 2: Advanced Diagnostic Imaging (Content Left, Image Right) -->
+          <article class="facility-showcase-panel panel-reverse reveal-on-scroll">
+            <div class="showcase-visual-col">
+              <div class="showcase-img-wrap">
+                <img 
+                  src="assets/advanced-diagnostics.png" 
+                  alt="Sulakshaa Hospital Advanced Diagnostic Imaging and Radiology" 
+                  class="showcase-img"
+                  loading="lazy"
+                >
+                <div class="showcase-img-overlay"></div>
+                <div class="showcase-floating-badge badge-diagnostics">
+                  <i data-lucide="scan" class="icon-sm"></i>
+                  <span>Precision Imaging</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-content-col">
+              <span class="showcase-tag">Radiology &amp; Imaging</span>
+              <h3 class="showcase-title">High-Definition Computed Tomography &amp; Digital Radiology</h3>
+              <p class="showcase-desc">
+                Fast, clear, and low-dose diagnostic imaging conducted in-house. Equipped with high-slice computed tomography (CT), high-resolution magnetic resonance imaging (MRI) capabilities, low-radiation digital radiography (X-Ray), and 4D color Doppler ultrasound for comprehensive cross-sectional pathology.
+              </p>
+              <div class="showcase-specs-list">
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Multi-Slice High-Precision CT Scanning
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Neuro &amp; Spine MRI Imaging
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Low-Dose Digital X-Ray (Instant Verification)
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Comprehensive 4D Color Doppler Sonography
+                </div>
+              </div>
+              <div class="showcase-action">
+                <a href="#enquiry" class="btn btn-primary btn-sm speciality-enquire-btn" data-dept="Diagnostics">
+                  <i data-lucide="calendar" class="icon-xs"></i>
+                  <span>Schedule Diagnostic Scan</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 3: Automated Clinical Laboratory (Image Left, Content Right) -->
+          <article class="facility-showcase-panel reveal-on-scroll">
+            <div class="showcase-visual-col">
+              <div class="showcase-img-wrap">
+                <img 
+                  src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&h=600&q=80" 
+                  alt="Fully Automated Pathology & Biochemistry Laboratory at Sulakshaa Hospital" 
+                  class="showcase-img"
+                  loading="lazy"
+                >
+                <div class="showcase-img-overlay"></div>
+                <div class="showcase-floating-badge badge-lab">
+                  <i data-lucide="flask-conical" class="icon-sm"></i>
+                  <span>Automated Lab</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-content-col">
+              <span class="showcase-tag">Laboratory Services</span>
+              <h3 class="showcase-title">Automated Clinical Biochemistry &amp; Haematology</h3>
+              <p class="showcase-desc">
+                High-throughput automated clinical analyzers delivering rapid turnaround times for complete blood counts, cardiac enzymes (Troponin I), arterial blood gas (ABG), lipid profiles, renal function, liver enzymes, and microbiological cultures under strict quality verification.
+              </p>
+              <div class="showcase-specs-list">
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Same-Day Emergency Blood Assays
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Stat Cardiac Biomarkers &amp; Electrolytes
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Clinical Microbiology &amp; Culture Testing
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Barcoded Samples for Zero Specimen Error
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 4: Central Monitored Intensive Care Units (Content Left, Image Right) -->
+          <article class="facility-showcase-panel panel-reverse reveal-on-scroll">
+            <div class="showcase-visual-col">
+              <div class="showcase-img-wrap">
+                <img 
+                  src="assets/cardiac-care.jpg" 
+                  alt="Sulakshaa Hospital Monitored Intensive Care Unit and Cardiac Beds" 
+                  class="showcase-img"
+                  loading="lazy"
+                >
+                <div class="showcase-img-overlay"></div>
+                <div class="showcase-floating-badge badge-icu">
+                  <i data-lucide="heart-pulse" class="icon-sm"></i>
+                  <span>Intensive Care (ICU)</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-content-col">
+              <span class="showcase-tag">Critical Care Infrastructure</span>
+              <h3 class="showcase-title">Central Monitored ICU &amp; Coronary Care Units</h3>
+              <p class="showcase-desc">
+                Equipped for acute medical, surgical, and coronary intensive care. Includes advanced multi-parameter cardiac telemetry, invasive and non-invasive mechanical ventilators, negative pressure isolation capability, and dedicated bedside nursing ratios for unstable clinical patients.
+              </p>
+              <div class="showcase-specs-list">
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> 24/7 Central Nursing Station Telemetry
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Advanced Mechanical Ventilators &amp; BiPAP
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Sterile Modular Air Filtration System
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Resident Intensivists &amp; Anaesthetists
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 5: Patient Recovery Suites & 24/7 In-House Chemist (Image Left, Content Right) -->
+          <article class="facility-showcase-panel reveal-on-scroll">
+            <div class="showcase-visual-col">
+              <div class="showcase-img-wrap">
+                <img 
+                  src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=900&h=600&q=80" 
+                  alt="Sulakshaa 24/7 In-House Pharmacy and Patient Recovery Suites" 
+                  class="showcase-img"
+                  loading="lazy"
+                >
+                <div class="showcase-img-overlay"></div>
+                <div class="showcase-floating-badge badge-pharmacy">
+                  <i data-lucide="store" class="icon-sm"></i>
+                  <span>24/7 In-House Chemist</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-content-col">
+              <span class="showcase-tag">Comfort &amp; Amenities</span>
+              <h3 class="showcase-title">Inpatient Recovery Suites, Amenities &amp; 24/7 Chemist</h3>
+              <p class="showcase-desc">
+                Thoughtfully crafted healing spaces designed for patient comfort and family ease. Features private and semi-private recovery rooms, barrier-free access with gentle entry ramps and stretcher-sized elevators, plus an authentic ground-floor 24/7 stocked pharmacy.
+              </p>
+              <div class="showcase-specs-list">
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Ground Floor 24/7 Stocked Pharmacy
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> 100% Barrier-Free Wheelchair Accessibility
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Air-Conditioned Private &amp; Semi-Private Rooms
+                </div>
+                <div class="showcase-spec-pill">
+                  <i data-lucide="check" class="icon-xs"></i> Dedicated Nursing &amp; Attendant Lounges
+                </div>
+              </div>
+            </div>
+          </article>
+
         </div>
 
-        <!-- Infrastructure Summary Callout -->
-        <div class="infra-callout reveal-on-scroll">
-          <div class="infra-callout-item">
-            <i data-lucide="bed" class="icon-md"></i>
-            <div>
-              <strong>100-Bed Capacity*</strong>
-              <span>General, Semi-Private &amp; ICU Care</span>
-            </div>
+        <!-- 8.3 Responsive Hospital Visual Tour Gallery -->
+        <div class="facilities-gallery-section reveal-on-scroll">
+          <div class="section-header text-center">
+            <span class="section-tag">Visual Tour</span>
+            <h3 class="facilities-gallery-title">Hospital Infrastructure Gallery</h3>
+            <p class="section-subtitle">A glimpse inside our specialized clinical facilities, diagnostics, and recovery wings in Mysuru.</p>
           </div>
-          <div class="infra-callout-item">
-            <i data-lucide="shield-plus" class="icon-md"></i>
-            <div>
-              <strong>24/7 Casualty &amp; Triage</strong>
-              <span>Immediate Emergency Management</span>
+
+          <div class="facilities-gallery-grid">
+            <!-- 1. Hospital Exterior & Portico -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Hospital Building Exterior & Main Entrance">
+              <img src="assets/hospital-building.png" alt="Sulakshaa Multi Speciality Hospital Exterior & Reception Portico, Mysuru" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="map-pin" class="icon-xs"></i> Campus</span>
+                <h4 class="gallery-caption">Main Hospital Complex &amp; Portico</h4>
+                <p class="gallery-subcaption">Mysuru, Karnataka</p>
+              </div>
             </div>
-          </div>
-          <div class="infra-callout-item">
-            <i data-lucide="pill" class="icon-md"></i>
-            <div>
-              <strong>In-House Chemist</strong>
-              <span>Fully Stocked Pharmacy on Ground Floor</span>
+
+            <!-- 2. Diagnostic Center -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Advanced Diagnostic Imaging Suite">
+              <img src="assets/advanced-diagnostics.png" alt="Advanced CT, MRI and Diagnostic Imaging Gantry at Sulakshaa Hospital" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="scan" class="icon-xs"></i> Imaging</span>
+                <h4 class="gallery-caption">Advanced Diagnostic Imaging Center</h4>
+                <p class="gallery-subcaption">CT, MRI &amp; Ultrasound</p>
+              </div>
             </div>
-          </div>
-          <div class="infra-callout-item">
-            <i data-lucide="accessibility" class="icon-md"></i>
-            <div>
-              <strong>100% Accessible</strong>
-              <span>Ramps, Elevators &amp; Dedicated Facilities</span>
+
+            <!-- 3. Monitored Cardiac & ICU -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Cardiac Telemetry and Intensive Care Unit">
+              <img src="assets/cardiac-care.jpg" alt="Monitored Intensive Care Unit and Cardiac Beds at Sulakshaa Hospital" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="heart-pulse" class="icon-xs"></i> Critical Care</span>
+                <h4 class="gallery-caption">Monitored Cardiac &amp; ICU Bays</h4>
+                <p class="gallery-subcaption">24/7 Telemetry Surveillance</p>
+              </div>
+            </div>
+
+            <!-- 4. General Medicine Consultation -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="General Medicine Outpatient Consultation Suite">
+              <img src="assets/general-medicine.png" alt="General Medicine Consultation Room and Primary Healthcare Desk" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="stethoscope" class="icon-xs"></i> OPD</span>
+                <h4 class="gallery-caption">Outpatient Consultation Suites</h4>
+                <p class="gallery-subcaption">Spacious Clinical Chambers</p>
+              </div>
+            </div>
+
+            <!-- 5. Automated Pathology Lab -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Automated Pathology Laboratory">
+              <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=700&h=480&q=80" alt="Clinical Pathology and Biochemistry Diagnostic Laboratory" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="flask-conical" class="icon-xs"></i> Lab</span>
+                <h4 class="gallery-caption">Automated Clinical Pathology Lab</h4>
+                <p class="gallery-subcaption">Fast-Track Blood Profiles</p>
+              </div>
+            </div>
+
+            <!-- 6. In-House Chemist -->
+            <div class="gallery-item" tabindex="0" role="button" aria-label="In-House 24/7 Pharmacy">
+              <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=700&h=480&q=80" alt="Sulakshaa In-House 24/7 Pharmacy and Chemist Counter" class="gallery-img" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-badge"><i data-lucide="store" class="icon-xs"></i> Pharmacy</span>
+                <h4 class="gallery-caption">24/7 In-House Chemist &amp; Supplies</h4>
+                <p class="gallery-subcaption">Ground Floor Accessible</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Comprehensive Facility Cards Grid with Floating Animations and Image Showcase -->
-        <div class="facilities-grid" id="facilitiesGrid">
-          <!-- 1. 24/7 Casualty and Emergency Services -->
-          <article class="facility-card emergency-highlight-card reveal-on-scroll">
-            <div class="facility-badge">Critical Care</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="24/7 Casualty & Emergency Ward at Sulakshaa Hospital" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="ambulance" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">24/7 Casualty &amp; Emergency Services</h3>
-              <p class="facility-text">Round-the-clock emergency admission, trauma management, and rapid stabilization led by trained medical officers and nursing staff.</p>
-            </div>
-          </article>
-
-          <!-- 2. Emergency Triage -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Rapid Assessment</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Emergency Triage & Vital Signs Evaluation Area" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="stethoscope" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Emergency Triage</h3>
-              <p class="facility-text">Systematic patient assessment on arrival to prioritize acute care needs without delay, ensuring urgent cases receive immediate intervention.</p>
-            </div>
-          </article>
-
-          <!-- 3. In-house Pharmacy -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Ground Floor</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Sulakshaa In-house Chemist & 24/7 Pharmacy Counter" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="store" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">In-house Pharmacy (Chemist)</h3>
-              <p class="facility-text">Dedicated ground-floor pharmacy dispensing authentic prescription medicines, surgical consumables, and emergency pharmaceutical supplies.</p>
-            </div>
-          </article>
-
-          <!-- 4. Laboratory Services -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Diagnostics</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Automated Clinical Pathology & Biochemistry Laboratory at Sulakshaa Hospital" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="flask-conical" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Laboratory Services</h3>
-              <p class="facility-text">Pathology, biochemistry, hematology, and microbiological investigations supporting accurate clinical diagnosis and treatment monitoring.</p>
-            </div>
-          </article>
-
-          <!-- 5. CT Scan -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">High Precision</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="High-Slice Computed Tomography (CT Scan) Diagnostic Suite" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="scan" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">CT Scan Diagnostics</h3>
-              <p class="facility-text">High-resolution computed tomography providing cross-sectional imaging for head trauma, abdominal diagnostics, and vascular analysis.</p>
-            </div>
-          </article>
-
-          <!-- 6. MRI Imaging -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Neuro &amp; Spine</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1583912267550-d44d9c9a008c?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Magnetic Resonance Imaging (MRI) Diagnostic Gantry" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="disc" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">MRI Imaging</h3>
-              <p class="facility-text">Advanced magnetic resonance imaging for detailed evaluation of neurological, spine, musculoskeletal, and soft-tissue conditions.</p>
-            </div>
-          </article>
-
-          <!-- 7. Digital X-ray -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Digital Radiography</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Digital X-Ray System for Bone & Chest Imaging" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="file-digit" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Digital X-Ray</h3>
-              <p class="facility-text">Low-radiation digital radiography for quick bone fracture assessment, chest diagnostics, and pre-operative orthopaedic evaluations.</p>
-            </div>
-          </article>
-
-          <!-- 8. Comprehensive Radiology -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Ultrasound &amp; Doppler</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Diagnostic Ultrasound & Sonography Workstation" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="monitor" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Comprehensive Radiology</h3>
-              <p class="facility-text">Ultrasound sonography, colour Doppler studies, and diagnostic radiological reporting conducted by qualified radiologists.</p>
-            </div>
-          </article>
-
-          <!-- 9. Wheelchair-Accessible Entrances -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Barrier-Free</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Wheelchair-Accessible Hospital Entrance with Gentle Ramps and Wide Corridors" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="accessibility" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Wheelchair-Accessible Entrances</h3>
-              <p class="facility-text">Step-free entrance ramps, wide automated corridors, and patient assistance wheelchairs available right at the arrival portico.</p>
-            </div>
-          </article>
-
-          <!-- 10. Patient Recovery Rooms -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Inpatient Wards</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Comfortable Inpatient Recovery Room with Advanced Monitoring" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="bed" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Patient Rooms &amp; Recovery Wards</h3>
-              <p class="facility-text">Hygienic general, semi-private, and private inpatient rooms with medical gas pipelines, nurse calling systems, and ergonomic beds.</p>
-            </div>
-          </article>
-
-          <!-- 11. Sterile Operation Theatres -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Surgical Suites</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Sterile Modular Operation Theatre with Laminar Air Flow" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="activity" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Sterile Operation Theatres (OT)</h3>
-              <p class="facility-text">Advanced modular surgical theatres equipped with laminar airflow, LED surgical lights, anaesthesia workstations, and infection control.</p>
-            </div>
-          </article>
-
-          <!-- 12. Dedicated Nursing Room for Mothers -->
-          <article class="facility-card reveal-on-scroll">
-            <div class="facility-badge facility-badge-secondary">Maternal &amp; Infant</div>
-            <div class="facility-image-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=600&h=380&q=80" 
-                alt="Private and Quiet Nursing Room for Mothers and Infants" 
-                class="facility-card-img" 
-                loading="lazy" 
-                width="400" 
-                height="220"
-              >
-              <div class="facility-image-overlay" aria-hidden="true"></div>
-              <div class="facility-icon-wrap" aria-hidden="true">
-                <i data-lucide="baby" class="icon-md"></i>
-              </div>
-            </div>
-            <div class="facility-content">
-              <h3 class="facility-title">Dedicated Nursing Room for Mothers</h3>
-              <p class="facility-text">A private, hygienic, quiet environment designed for nursing mothers and infants, providing dignified and supportive family care.</p>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -1584,78 +1413,6 @@
       </div>
     </section>
 
-    <!-- 11. Community Health and Welfare Section -->
-    <section class="section community-section" id="community" aria-labelledby="community-heading">
-      <div class="container">
-        <div class="section-header text-center reveal-on-scroll">
-          <span class="section-tag">Community Outreach</span>
-          <h2 id="community-heading" class="section-title">Better Health for Our Community</h2>
-          <p class="section-subtitle">
-            Promoting preventive wellness in Mysuru through subsidized health camps, elderly care initiatives, and community medical awareness.
-          </p>
-        </div>
-
-        <div class="community-campaign-card reveal-on-scroll">
-          <div class="campaign-grid">
-            <div class="campaign-visual">
-              <div class="campaign-graphic-box">
-                <div class="graphic-badge">
-                  <i data-lucide="heart-pulse" class="icon-lg"></i>
-                </div>
-                <div class="graphic-title-group">
-                  <span class="graphic-tag">Flagship Community Initiative</span>
-                  <h3 class="graphic-title">Senior Sunday</h3>
-                  <span class="graphic-subtitle">ಸುಲಕ್ಷಾ ಹಿರಿಯ ನಾಗರಿಕರ ಆರೋಗ್ಯ ಸೇವೆ</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="campaign-details">
-              <div class="campaign-header">
-                <span class="badge-pill bg-light-blue text-navy">
-                  <i data-lucide="calendar" class="icon-xs"></i> Community Preventive Screening
-                </span>
-                <h3 class="campaign-name">"Senior Sunday" Health Wellness Initiative</h3>
-              </div>
-
-              <p class="campaign-description">
-                The <strong>"Senior Sunday"</strong> programme is Sulakshaa Multi Speciality Hospital's dedicated community health outreach tailored specifically for senior citizens in Mysuru. This recurring initiative emphasizes early screening, blood pressure monitoring, blood sugar checks, geriatric consultations, and lifestyle counseling.
-              </p>
-
-              <div class="campaign-features-list">
-                <div class="campaign-feature">
-                  <i data-lucide="check-circle" class="icon-xs text-blue"></i>
-                  <span>Free / Subsidized Preventive Health Screenings</span>
-                </div>
-                <div class="campaign-feature">
-                  <i data-lucide="check-circle" class="icon-xs text-blue"></i>
-                  <span>Geriatric Health &amp; General Physician Consultations</span>
-                </div>
-                <div class="campaign-feature">
-                  <i data-lucide="check-circle" class="icon-xs text-blue"></i>
-                  <span>Hypertension &amp; Diabetes Monitoring Advice</span>
-                </div>
-                <div class="campaign-feature">
-                  <i data-lucide="check-circle" class="icon-xs text-blue"></i>
-                  <span>Community Wellness Seminars &amp; Diet Counselling</span>
-                </div>
-              </div>
-
-              <div class="campaign-action-row">
-                <a href="#enquiry" class="btn btn-primary campaign-enquire-btn" data-reason="Senior Sunday Health Camp Enquiry">
-                  <i data-lucide="info" class="icon-sm"></i>
-                  <span>Enquire About Upcoming Camps</span>
-                </a>
-                <span class="campaign-disclaimer">
-                  * Dates, eligibility criteria, and camp schedules are announced periodically by the hospital desk.
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 12. Appointment Enquiry Section -->
     <section class="section enquiry-section" id="enquiry" aria-labelledby="enquiry-heading">
       <div class="container">
@@ -1756,7 +1513,7 @@
                       <button type="button" class="dept-chip" data-dept="Cardiac Care">Cardiac Care</button>
                       <button type="button" class="dept-chip" data-dept="Orthopedics">Orthopedics</button>
                       <button type="button" class="dept-chip" data-dept="Paediatrics">Paediatrics</button>
-                      <button type="button" class="dept-chip" data-dept="Senior Sunday">Senior Sunday Camp</button>
+                      <button type="button" class="dept-chip" data-dept="Neurology">Neurology</button>
                     </div>
                   </div>
 
@@ -1788,7 +1545,6 @@
                         <option value="General Surgery">General Surgery</option>
                         <option value="Anaesthesiology">Anaesthesiology</option>
                         <option value="Diagnostic Imaging">Diagnostics (CT / MRI / X-ray)</option>
-                        <option value="Senior Sunday">Senior Sunday Community Camp</option>
                         <option value="Other Consultation">Other Medical Enquiry</option>
                       </select>
                     </div>
@@ -2160,7 +1916,6 @@
             <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team &amp; Specialists</a></li>
             <li><a href="#facilities"><i data-lucide="chevron-right" class="icon-xs"></i> Infrastructure &amp; Facilities</a></li>
             <li><a href="#patient-care"><i data-lucide="chevron-right" class="icon-xs"></i> Patient Care &amp; Accessibility</a></li>
-            <li><a href="#community"><i data-lucide="chevron-right" class="icon-xs"></i> Senior Sunday Health Camp</a></li>
             <li><a href="#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Directions</a></li>
           </ul>
         </div>
