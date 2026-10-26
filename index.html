@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=21">
 
   <!-- JSON-LD MedicalOrganization Structured Data -->
   <script type="application/ld+json">
@@ -94,6 +94,12 @@
 <body>
   <!-- Sulakshaa Hospital Official Animated Splash Screen / Launch Screen -->
   <div id="splashScreen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading Sulakshaa Multi Speciality Hospital">
+    <!-- Skip Intro Button -->
+    <button type="button" id="splashSkipBtn" class="splash-skip-btn" aria-label="Skip Introduction to Homepage">
+      <span>Skip Intro</span>
+      <i data-lucide="skip-forward" class="icon-xs"></i>
+    </button>
+
     <div class="splash-content">
       <div class="splash-glow" aria-hidden="true"></div>
 
@@ -113,7 +119,7 @@
       <span class="splash-kannada-name" aria-hidden="true">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</span>
 
       <!-- Tagline -->
-      <p class="splash-tagline">“Your Health, Our Priority”</p>
+      <p class="splash-tagline">“Advanced Care. Compassionate Hearts.”</p>
 
       <!-- Animated Loading Indicator / Progress Line -->
       <div class="splash-loader-wrapper" aria-hidden="true">
@@ -235,6 +241,14 @@
 
     <!-- 4. Hero Section -->
     <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <!-- Cinematic Video / Ambient Poster Backdrop -->
+      <div class="hero-video-backdrop" aria-hidden="true">
+        <video class="hero-bg-video" autoplay muted loop playsinline poster="assets/hospital-building.png">
+          <source src="assets/hero-hospital.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
       <div class="hero-background-decorations" aria-hidden="true">
         <div class="decor-circle decor-1"></div>
         <div class="decor-circle decor-2"></div>
@@ -251,13 +265,12 @@
           </div>
           
           <h1 id="hero-title" class="hero-heading hero-entrance-item" style="--delay: 160ms;">
-            Compassionate Care. <br>
-            <span class="gradient-text">Advanced Medicine.</span> <br>
-            Better Lives.
+            Advanced Care. <br>
+            <span class="gradient-text">Compassionate Hearts.</span>
           </h1>
 
           <p class="hero-description hero-entrance-item" style="--delay: 240ms;">
-            Your health deserves expert attention, advanced diagnostics, and compassionate care. Discover comprehensive medical services at <strong>Sulakshaa Multi Speciality Hospital</strong>, Mysuru.
+            Excellence in multispeciality medicine, 24/7 emergency casualty, and advanced diagnostics. Delivering patient-first healing and clinical precision at <strong>Sulakshaa Multi Speciality Hospital</strong>, Mysuru.
           </p>
 
           <div class="hero-cta-group hero-entrance-item" style="--delay: 320ms;">
@@ -266,9 +279,13 @@
               <span>Book an Appointment</span>
             </a>
             <a href="#specialities" class="btn btn-outline btn-lg">
-              <span>Explore Our Specialities</span>
+              <span>Explore Specialities</span>
               <i data-lucide="arrow-right" class="icon-md"></i>
             </a>
+            <button type="button" class="btn btn-tour-play btn-lg" id="heroTourPlayBtn" aria-label="Watch Hospital Facilities Video Tour">
+              <span class="tour-play-circle"><i data-lucide="play" class="icon-sm"></i></span>
+              <span>Watch Tour</span>
+            </button>
           </div>
 
           <!-- Trust Highlights -->
@@ -537,86 +554,170 @@
           </p>
         </div>
 
-        <!-- Asymmetrical Feature Layout: Prominent Centre of Excellence Spotlight -->
-        <div class="speciality-featured-spotlight reveal-on-scroll">
-          <div class="spotlight-content">
-            <div class="spotlight-badge-row">
-              <span class="spotlight-badge">
-                <i data-lucide="sparkles" class="icon-xs"></i> Flagship Department
-              </span>
-              <span class="spotlight-status">
-                <i data-lucide="activity" class="icon-xs"></i> 24/7 Acute Readiness
-              </span>
-            </div>
-            
-            <h3 class="spotlight-title">Cardiovascular Medicine &amp; Coronary Care</h3>
-            <p class="spotlight-description">
-              Sulakshaa Hospital's flagship cardiac wing provides rapid chest pain triage, preventive cardiology, non-invasive cardiac evaluation, digital 12-lead ECG, 2D echocardiography with Color Doppler, and intensive coronary care beds backed by experienced consultant cardiologists.
-            </p>
+        <!-- Animated Video-Style Medical Specialties Cinema Showcase -->
+        <div class="speciality-cinema-container reveal-on-scroll" id="specialityCinema" role="region" aria-roledescription="carousel" aria-label="Medical Specialties Showcase">
+          <div class="cinema-viewport">
+            <div class="cinema-slides-track" id="cinemaSlidesTrack">
 
-            <div class="spotlight-highlights-grid">
-              <div class="spotlight-highlight-card">
-                <div class="highlight-icon">
-                  <i data-lucide="heart-pulse" class="icon-sm"></i>
+              <!-- Slide 1: Cardiology -->
+              <div class="cinema-slide active" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 6: Cardiology">
+                <div class="cinema-media-wrap">
+                  <img src="assets/journey-cardiology.jpg" alt="Cardiac catheterization and heart monitoring at Sulakshaa Hospital" class="cinema-media-img" loading="eager">
+                  <div class="cinema-overlay"></div>
                 </div>
-                <div>
-                  <strong>Non-Invasive Diagnostic Lab</strong>
-                  <span>Echo-Doppler, treadmill stress tests &amp; Holter</span>
-                </div>
-              </div>
-              <div class="spotlight-highlight-card">
-                <div class="highlight-icon">
-                  <i data-lucide="shield-check" class="icon-sm"></i>
-                </div>
-                <div>
-                  <strong>Zero-Wait Emergency Protocol</strong>
-                  <span>Rapid triage &amp; direct cardiac ICU admission</span>
-                </div>
-              </div>
-              <div class="spotlight-highlight-card">
-                <div class="highlight-icon">
-                  <i data-lucide="users" class="icon-sm"></i>
-                </div>
-                <div>
-                  <strong>Dedicated Senior Faculty</strong>
-                  <span>Consultant cardiology &amp; internal medicine specialists</span>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="heart-pulse" class="icon-xs"></i> Centre of Excellence</span>
+                  <h3 class="cinema-title">Cardiology &amp; Cardiac Care</h3>
+                  <p class="cinema-caption">Advanced non-invasive cardiac evaluation, rapid chest pain triage, 2D Echocardiography with Color Doppler, and intensive coronary care monitoring.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="Cardiac Care">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="Cardiac Care">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
                 </div>
               </div>
+
+              <!-- Slide 2: Neurology -->
+              <div class="cinema-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 6: Neurology">
+                <div class="cinema-media-wrap">
+                  <img src="assets/journey-neurosurgery.jpg" alt="Precision neurological care and brain diagnostics at Sulakshaa Hospital" class="cinema-media-img" loading="lazy">
+                  <div class="cinema-overlay"></div>
+                </div>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="activity" class="icon-xs"></i> Advanced Neuroscience</span>
+                  <h3 class="cinema-title">Neurology &amp; Brain Health</h3>
+                  <p class="cinema-caption">Comprehensive stroke intervention protocols, digital EEG investigations, migraine clinics, and compassionate neurological rehabilitation.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="Neurology">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="Neurology">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Orthopaedics -->
+              <div class="cinema-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 6: Orthopaedics">
+                <div class="cinema-media-wrap">
+                  <img src="assets/journey-robotic-surgery.jpg" alt="Orthopedic surgery and joint restoration at Sulakshaa Hospital" class="cinema-media-img" loading="lazy">
+                  <div class="cinema-overlay"></div>
+                </div>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="shield" class="icon-xs"></i> Bones, Joints &amp; Mobility</span>
+                  <h3 class="cinema-title">Orthopaedics &amp; Joint Replacement</h3>
+                  <p class="cinema-caption">Minimally invasive joint reconstruction, arthroscopy, acute trauma fracture stabilization, and personalized physical mobility rehabilitation.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="Orthopedics">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="Orthopedics">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Paediatrics -->
+              <div class="cinema-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 6: Paediatrics">
+                <div class="cinema-media-wrap">
+                  <img src="assets/paediatrics.png" alt="Paediatric physician examining infant with stethoscope at Sulakshaa Hospital" class="cinema-media-img" loading="lazy">
+                  <div class="cinema-overlay"></div>
+                </div>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="baby" class="icon-xs"></i> Child &amp; Adolescent Health</span>
+                  <h3 class="cinema-title">Paediatrics &amp; Child Healthcare</h3>
+                  <p class="cinema-caption">Gentle newborn clinical evaluations, milestone developmental assessments, complete vaccination scheduling, and compassionate pediatric illness care.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="Paediatrics">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="Paediatrics">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Gynaecology / Maternity Care -->
+              <div class="cinema-slide" data-index="4" role="group" aria-roledescription="slide" aria-label="5 of 6: Gynaecology">
+                <div class="cinema-media-wrap">
+                  <img src="assets/dr-meera-iyer.jpg" alt="Maternity care and obstetrics consultation at Sulakshaa Hospital" class="cinema-media-img" loading="lazy">
+                  <div class="cinema-overlay"></div>
+                </div>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="heart" class="icon-xs"></i> Mother &amp; Child Health</span>
+                  <h3 class="cinema-title">Gynaecology &amp; Maternity Care</h3>
+                  <p class="cinema-caption">Empathetic antenatal care, high-risk pregnancy monitoring, dedicated labour delivery suites, and comprehensive women's health guidance.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="Maternity Care">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="Maternity Care">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6: General Medicine -->
+              <div class="cinema-slide" data-index="5" role="group" aria-roledescription="slide" aria-label="6 of 6: General Medicine">
+                <div class="cinema-media-wrap">
+                  <img src="assets/general-medicine.png" alt="General Medicine outpatient care and clinical leadership at Sulakshaa Hospital" class="cinema-media-img" loading="lazy">
+                  <div class="cinema-overlay"></div>
+                </div>
+                <div class="cinema-content">
+                  <span class="cinema-badge"><i data-lucide="stethoscope" class="icon-xs"></i> Comprehensive Primary Care</span>
+                  <h3 class="cinema-title">General Medicine &amp; Primary Care</h3>
+                  <p class="cinema-caption">Thorough outpatient medical evaluations, diabetes and hypertension management, senior geriatric health, and coordinated clinical diagnostics.</p>
+                  <div class="cinema-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm cinema-enquire-btn" data-dept="General Medicine">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+                    </a>
+                    <button type="button" class="btn btn-outline-white btn-sm view-speciality-details-btn" data-speciality="General Medicine">
+                      <i data-lucide="info" class="icon-xs"></i> View Clinical Scope
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            <div class="spotlight-actions">
-              <a href="#enquiry" class="btn btn-primary speciality-enquire-btn" data-dept="Cardiac Care">
-                <i data-lucide="calendar" class="icon-xs"></i>
-                <span>Book Cardiac Consultation</span>
-              </a>
-              <button type="button" class="btn btn-outline view-speciality-details-btn" data-speciality="Cardiac Care">
-                <i data-lucide="info" class="icon-xs"></i>
-                <span>Explore Department Scope</span>
+            <!-- Cinema Controls Bar -->
+            <div class="cinema-controls-bar">
+              <!-- Play / Pause Toggle Button -->
+              <button type="button" class="cinema-ctrl-btn" id="cinemaPlayPauseBtn" aria-label="Pause slideshow">
+                <i data-lucide="pause" class="icon-xs"></i>
               </button>
+
+              <!-- Progress Dots Indicators -->
+              <div class="cinema-dots-track" id="cinemaDotsTrack" role="tablist" aria-label="Specialty slide selectors">
+                <button type="button" class="cinema-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1: Cardiology"></button>
+                <button type="button" class="cinema-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2: Neurology"></button>
+                <button type="button" class="cinema-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3: Orthopaedics"></button>
+                <button type="button" class="cinema-dot" data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4: Paediatrics"></button>
+                <button type="button" class="cinema-dot" data-slide="4" role="tab" aria-selected="false" aria-label="Slide 5: Gynaecology"></button>
+                <button type="button" class="cinema-dot" data-slide="5" role="tab" aria-selected="false" aria-label="Slide 6: General Medicine"></button>
+              </div>
+
+              <!-- Prev / Next Arrows -->
+              <div class="cinema-nav-arrows">
+                <button type="button" class="cinema-ctrl-btn" id="cinemaPrevBtn" aria-label="Previous specialty">
+                  <i data-lucide="chevron-left" class="icon-sm"></i>
+                </button>
+                <button type="button" class="cinema-ctrl-btn" id="cinemaNextBtn" aria-label="Next specialty">
+                  <i data-lucide="chevron-right" class="icon-sm"></i>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div class="spotlight-visual">
-            <div class="spotlight-image-wrapper">
-              <img src="assets/cardiac-care.jpg" alt="Sulakshaa Hospital Advanced Cardiac Care & ICU" class="spotlight-main-img" loading="lazy">
-              <div class="spotlight-image-overlay"></div>
-              
-              <!-- Floating Glass Metric Badges -->
-              <div class="floating-spotlight-pill pill-top-right">
-                <span class="pulse-indicator"></span>
-                <div>
-                  <strong>24/7</strong>
-                  <span>Cardiac Triage</span>
-                </div>
-              </div>
-
-              <div class="floating-spotlight-pill pill-bottom-left">
-                <i data-lucide="activity" class="icon-sm text-sky"></i>
-                <div>
-                  <strong>100% Monitored</strong>
-                  <span>Telemetry ICU Beds</span>
-                </div>
-              </div>
+            <!-- Animated Slide Progress Bar -->
+            <div class="cinema-progress-line" aria-hidden="true">
+              <div class="cinema-progress-fill" id="cinemaProgressFill"></div>
             </div>
           </div>
         </div>
@@ -914,6 +1015,446 @@
               </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Featured Medical Specialists Section -->
+    <section class="section featured-doctors-section" id="featured-doctors" aria-labelledby="featured-doctors-heading">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Senior Medical Faculty</span>
+          <h2 id="featured-doctors-heading" class="section-title">Meet Our Leading Specialists</h2>
+          <p class="section-subtitle">
+            Consult experienced practitioners dedicated to empathetic listening, clinical accuracy, and advanced multidisciplinary treatment in Mysuru.
+          </p>
+        </div>
+
+        <div class="doctors-ticker-hint-bar">
+          <span class="doctors-ticker-hint">
+            <span class="ticker-pulse-dot"></span>
+            <span>Continuous Medical Faculty Showcase &bull; Left to Right &bull; Hover to Pause</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Full-Width Infinite Moving Doctors Carousel (Left-to-Right Continuous Motion) -->
+      <div class="doctors-marquee-container" id="doctorsMarqueeContainer">
+        <div class="doctors-marquee-viewport" role="region" aria-roledescription="carousel" aria-label="Leading Doctors Infinite Showcase">
+          <div class="doctors-marquee-track" id="doctorsMarqueeTrack">
+            
+            <!-- Group 1 (Original Cards) -->
+            <div class="doctors-marquee-group" id="doctorsMarqueeGroup1">
+              
+              <!-- Doctor 1: Dr. Laxme Gowda -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/dr-laxme-gowda.png" alt="Dr. Laxme Gowda, MBBS, MD General Medicine at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">General Medicine</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 45+ Yrs Leadership</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Laxme Gowda</h3>
+                    <p class="featured-doc-title">Senior Consultant Physician &amp; Clinical Director</p>
+                    <p class="featured-doc-qual">MBBS, MD (General Medicine)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Veteran medical leader providing master clinical diagnosis, chronic lifestyle disease therapy, and holistic geriatric care in Mysuru.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Laxme Gowda" data-dept="General Medicine">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 2: Dr. Priya S. Sharma (Fixed High-Resolution Image) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80" alt="Dr. Priya S. Sharma, MD, DM Cardiology at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Cardiac Care</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 16+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Priya S. Sharma</h3>
+                    <p class="featured-doc-title">Consultant Cardiologist</p>
+                    <p class="featured-doc-qual">MD, DM (Cardiology)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Cardiovascular specialist dedicated to preventative cardiology, coronary evaluations, hypertension management, and cardiac rehabilitation.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Priya S. Sharma" data-dept="Cardiac Care">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 3: Dr. Anand R. Kulkarni -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80" alt="Dr. Anand R. Kulkarni, MS Ortho, DNB Orthopedic Surgery at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Orthopedics</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 18+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Anand R. Kulkarni</h3>
+                    <p class="featured-doc-title">Senior Orthopedic &amp; Joint Surgeon</p>
+                    <p class="featured-doc-qual">MS Ortho, DNB (Orthopedic Surgery)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Expert in joint reconstruction, arthroscopic surgery, fracture management, and advanced musculoskeletal rehabilitation.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Anand R. Kulkarni" data-dept="Orthopedics">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 4: Dr. Sneha Hegde -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/paediatrics.png" alt="Dr. Sneha Hegde, MD Paediatrics, DCH at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Paediatrics</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 12+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Sneha Hegde</h3>
+                    <p class="featured-doc-title">Consultant Paediatrician</p>
+                    <p class="featured-doc-qual">MD Paediatrics, DCH</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Compassionate child health physician delivering gentle neonatal care, immunization monitoring, developmental checkups, and pediatric triage.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Sneha Hegde" data-dept="Paediatrics">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 5: Dr. Vikram M. Rao -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80" alt="Dr. Vikram M. Rao, MBBS, DM Neurology at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Neurology</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 14+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Vikram M. Rao</h3>
+                    <p class="featured-doc-title">Consultant Neurologist</p>
+                    <p class="featured-doc-qual">MBBS, DM (Neurology)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Specialist in clinical neurology, acute stroke evaluation, epilepsy care, chronic headache disorders, and neuromuscular diagnostics.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Vikram M. Rao" data-dept="Neurology">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 6: Dr. Meera N. Iyer -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/dr-meera-iyer.jpg" alt="Dr. Meera N. Iyer, MBBS, MS OBG, DGO at Sulakshaa Hospital" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Maternity Care</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 18+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Meera N. Iyer</h3>
+                    <p class="featured-doc-title">Consultant Obstetrician &amp; Gynaecologist</p>
+                    <p class="featured-doc-qual">MBBS, MS OBG, DGO</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Dedicated women's healthcare practitioner providing empathetic antenatal monitoring, safe deliveries, and comprehensive gynaecological care.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Meera N. Iyer" data-dept="Maternity Care">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" title="View in Doctors Directory">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Group 2 (Identical Duplicate for Seamless Infinite Left-to-Right Loop, Screen Reader Hidden) -->
+            <div class="doctors-marquee-group" id="doctorsMarqueeGroup2" aria-hidden="true">
+              
+              <!-- Doctor 1 (Clone) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/dr-laxme-gowda.png" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">General Medicine</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 45+ Yrs Leadership</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Laxme Gowda</h3>
+                    <p class="featured-doc-title">Senior Consultant Physician &amp; Clinical Director</p>
+                    <p class="featured-doc-qual">MBBS, MD (General Medicine)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Veteran medical leader providing master clinical diagnosis, chronic lifestyle disease therapy, and holistic geriatric care in Mysuru.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Laxme Gowda" data-dept="General Medicine" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 2 (Clone, Fixed Image) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Cardiac Care</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 16+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Priya S. Sharma</h3>
+                    <p class="featured-doc-title">Consultant Cardiologist</p>
+                    <p class="featured-doc-qual">MD, DM (Cardiology)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Cardiovascular specialist dedicated to preventative cardiology, coronary evaluations, hypertension management, and cardiac rehabilitation.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Priya S. Sharma" data-dept="Cardiac Care" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 3 (Clone) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Orthopedics</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 18+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Anand R. Kulkarni</h3>
+                    <p class="featured-doc-title">Senior Orthopedic &amp; Joint Surgeon</p>
+                    <p class="featured-doc-qual">MS Ortho, DNB (Orthopedic Surgery)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Expert in joint reconstruction, arthroscopic surgery, fracture management, and advanced musculoskeletal rehabilitation.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Anand R. Kulkarni" data-dept="Orthopedics" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 4 (Clone) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/paediatrics.png" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Paediatrics</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 12+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Sneha Hegde</h3>
+                    <p class="featured-doc-title">Consultant Paediatrician</p>
+                    <p class="featured-doc-qual">MD Paediatrics, DCH</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Compassionate child health physician delivering gentle neonatal care, immunization monitoring, developmental checkups, and pediatric triage.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Sneha Hegde" data-dept="Paediatrics" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 5 (Clone) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Neurology</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 14+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Vikram M. Rao</h3>
+                    <p class="featured-doc-title">Consultant Neurologist</p>
+                    <p class="featured-doc-qual">MBBS, DM (Neurology)</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Specialist in clinical neurology, acute stroke evaluation, epilepsy care, chronic headache disorders, and neuromuscular diagnostics.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Vikram M. Rao" data-dept="Neurology" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Doctor 6 (Clone) -->
+              <article class="featured-doctor-card">
+                <div class="featured-doc-image-wrap">
+                  <img src="assets/dr-meera-iyer.jpg" alt="" class="featured-doc-img" loading="lazy">
+                  <span class="featured-doc-dept-badge">Maternity Care</span>
+                  <span class="featured-doc-exp-tag"><i data-lucide="award" class="icon-xs"></i> 18+ Yrs Exp</span>
+                </div>
+                <div class="featured-doc-body">
+                  <div class="featured-doc-info">
+                    <h3 class="featured-doc-name">Dr. Meera N. Iyer</h3>
+                    <p class="featured-doc-title">Consultant Obstetrician &amp; Gynaecologist</p>
+                    <p class="featured-doc-qual">MBBS, MS OBG, DGO</p>
+                  </div>
+                  <p class="featured-doc-desc">
+                    Dedicated women's healthcare practitioner providing empathetic antenatal monitoring, safe deliveries, and comprehensive gynaecological care.
+                  </p>
+                  <div class="featured-doc-actions">
+                    <a href="#enquiry" class="btn btn-primary btn-sm featured-doc-book-btn" data-doctor="Dr. Meera N. Iyer" data-dept="Maternity Care" tabindex="-1">
+                      <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                    </a>
+                    <a href="doctors.html" class="btn btn-outline btn-sm" tabindex="-1">
+                      Profile <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="featured-doctors-footer text-center reveal-on-scroll">
+          <a href="doctors.html" class="btn btn-primary btn-lg shadow-lift">
+            <span>Explore Complete Faculty Directory (12 Specialists)</span>
+            <i data-lucide="arrow-right" class="icon-sm"></i>
+          </a>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 7b. Why Choose Sulakshaa Hospital Section -->
+    <section class="section why-choose-section" id="why-choose" aria-labelledby="why-choose-heading">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Clinical Trust &amp; Integrity</span>
+          <h2 id="why-choose-heading" class="section-title">Why Patients Choose Sulakshaa</h2>
+          <p class="section-subtitle">
+            Built on a four-decade legacy of ethical medicine, clinical precision, and warm community care in Mysuru.
+          </p>
+        </div>
+
+        <div class="why-choose-grid">
+          <!-- Pillar 1 -->
+          <div class="why-choose-card reveal-on-scroll">
+            <div class="why-icon-box">
+              <i data-lucide="award" class="icon-lg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-card-title">45+ Years Clinical Leadership</h3>
+              <p class="why-card-desc">
+                Directed by veteran clinicians who prioritize patient wellbeing above all else, ensuring evidence-based medical decisions and trusted counsel.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="why-choose-card reveal-on-scroll">
+            <div class="why-icon-box">
+              <i data-lucide="ambulance" class="icon-lg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-card-title">24/7 Casualty &amp; Emergency Care</h3>
+              <p class="why-card-desc">
+                Round-the-clock emergency medical response with rapid triage, critical care stabilization, on-site diagnostics, and fully staffed casualty suites.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="why-choose-card reveal-on-scroll">
+            <div class="why-icon-box">
+              <i data-lucide="scan" class="icon-lg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-card-title">Advanced Diagnostics Under One Roof</h3>
+              <p class="why-card-desc">
+                Fully automated clinical pathology, digital ultrasonography, ECG, Echocardiography, and rapid lab tests for prompt, accurate clinical interventions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="why-choose-card reveal-on-scroll">
+            <div class="why-icon-box">
+              <i data-lucide="heart-handshake" class="icon-lg"></i>
+            </div>
+            <div class="why-content">
+              <h3 class="why-card-title">Transparent &amp; Patient-First Ethics</h3>
+              <p class="why-card-desc">
+                Clear clinical counseling, dignified patient communication, barrier-free hospital accessibility, and transparent healthcare administration.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1334,80 +1875,296 @@
 
     <!-- 10. Patient Care and Accessibility Section -->
     <section class="section patient-care-section" id="patient-care" aria-labelledby="care-heading">
-      <div class="container">
+      <!-- Ambient Slow-Motion Floating Circles & Subtle Glowing Rings -->
+      <div class="patient-care-ambient-circles" aria-hidden="true">
+        <div class="ambient-circle ambient-circle-1"></div>
+        <div class="ambient-circle ambient-circle-2"></div>
+        <div class="ambient-circle ambient-circle-3"></div>
+        <div class="ambient-circle ambient-circle-4"></div>
+        <div class="ambient-ring ambient-ring-1"></div>
+        <div class="ambient-ring ambient-ring-2"></div>
+        <div class="ambient-ring ambient-ring-3"></div>
+      </div>
+
+      <div class="container care-content-container">
         <div class="section-header text-center reveal-on-scroll">
           <span class="section-tag">Patient Experience</span>
           <h2 id="care-heading" class="section-title">Care That Puts Patients First</h2>
           <p class="section-subtitle">
             We believe that medical excellence is strongest when accompanied by kindness, clear communication, and barrier-free hospital navigation.
           </p>
+
+          <!-- Orbit Interactive Control & Status Bar -->
+          <div class="orbit-status-bar" aria-label="Orbit animation controls">
+            <button type="button" class="orbit-ctrl-pill" id="orbitPlayPauseBtn" aria-label="Pause circular orbit animation">
+              <span class="orbit-ctrl-dot"></span>
+              <span id="orbitPlayPauseIcon"><i data-lucide="pause" class="icon-xs"></i></span>
+              <span id="orbitPlayPauseText">Continuous Orbit (Hover any card to pause)</span>
+            </button>
+          </div>
         </div>
 
-        <div class="care-pillars-grid">
-          <!-- Pillar 1 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="calendar-heart" class="icon-lg"></i>
+        <!-- Premium Circular Orbit Card Carousel Stage -->
+        <div class="care-orbit-stage" id="patientCareOrbitStage" role="region" aria-roledescription="circular carousel" aria-label="Patient Care Pillars Orbit">
+          
+          <!-- Central Hub / Core Landmark -->
+          <div class="orbit-center-hub" aria-hidden="true">
+            <div class="orbit-center-pulse"></div>
+            <div class="orbit-center-core">
+              <div class="orbit-center-icon-wrap">
+                <i data-lucide="heart-handshake" class="orbit-center-icon"></i>
+              </div>
+              <strong class="orbit-center-title">Patient-First</strong>
+              <span class="orbit-center-desc">Care Pillars</span>
             </div>
-            <h3 class="pillar-title">Assistance With Appointments</h3>
-            <p class="pillar-text">
-              Our front desk helps coordinate consultations with specialists, assisting with registration, OPD tokens, and appointment scheduling to minimize unnecessary delays.
-            </p>
           </div>
 
-          <!-- Pillar 2 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="compass" class="icon-lg"></i>
-            </div>
-            <h3 class="pillar-title">Patient &amp; Attendant Guidance</h3>
-            <p class="pillar-text">
-              Clear hospital floor wayfinding, helpdesk personnel, and compassionate patient guides ensure families feel oriented, informed, and supported during their stay.
-            </p>
+          <!-- Decorative Orbit Concentric Radar / Guide Rings -->
+          <div class="orbit-guide-ring ring-orbit-path" aria-hidden="true">
+            <!-- 6 Guide Nodes along orbit circumference -->
+            <span class="orbit-node node-1" style="--node-angle: 0deg;"></span>
+            <span class="orbit-node node-2" style="--node-angle: 60deg;"></span>
+            <span class="orbit-node node-3" style="--node-angle: 120deg;"></span>
+            <span class="orbit-node node-4" style="--node-angle: 180deg;"></span>
+            <span class="orbit-node node-5" style="--node-angle: 240deg;"></span>
+            <span class="orbit-node node-6" style="--node-angle: 300deg;"></span>
           </div>
+          <div class="orbit-guide-ring ring-inner-path" aria-hidden="true"></div>
+          <div class="orbit-guide-ring ring-outer-path" aria-hidden="true"></div>
 
-          <!-- Pillar 3 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="accessibility" class="icon-lg"></i>
+          <!-- Rotating Orbit Track (50s continuous linear cycle) -->
+          <div class="orbit-track" id="patientCareOrbitTrack">
+
+            <!-- Pillar 1 (0 deg / 3 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 0deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Assistance With Appointments">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="calendar-heart" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Assistance With Appointments</h3>
+                      <p class="pillar-text">
+                        Our front desk helps coordinate consultations with specialists, assisting with registration, OPD tokens, and appointment scheduling to minimize unnecessary delays.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="pillar-title">Wheelchair-Accessible Facilities</h3>
-            <p class="pillar-text">
-              Barrier-free architecture featuring smooth entrance ramps, elevator access to all wards, wide clinical doorways, and accessible restrooms.
-            </p>
+
+            <!-- Pillar 2 (60 deg / 5 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 60deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Patient & Attendant Guidance">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="compass" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Patient &amp; Attendant Guidance</h3>
+                      <p class="pillar-text">
+                        Clear hospital floor wayfinding, helpdesk personnel, and compassionate patient guides ensure families feel oriented, informed, and supported during their stay.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 3 (120 deg / 7 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 120deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Wheelchair-Accessible Facilities">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="accessibility" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Wheelchair-Accessible Facilities</h3>
+                      <p class="pillar-text">
+                        Barrier-free architecture featuring smooth entrance ramps, elevator access to all wards, wide clinical doorways, and accessible restrooms.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 4 (180 deg / 9 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 180deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Support for Mothers & Families">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="heart" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Support for Mothers &amp; Families</h3>
+                      <p class="pillar-text">
+                        Dedicated private feeding rooms for mothers, comfortable attendant waiting areas, and a patient relations team ready to assist with non-clinical questions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 5 (240 deg / 11 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 240deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Clear Directions & Contact">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="map" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Clear Directions &amp; Contact</h3>
+                      <p class="pillar-text">
+                        Convenient location in Mysuru with straightforward road connectivity, prominent building signage in Kannada and English, and dedicated help lines.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 6 (300 deg / 1 o'clock) -->
+            <div class="orbit-card-slot" style="--slot-angle: 300deg;">
+              <div class="orbit-card-counter">
+                <div class="orbit-card-rotor">
+                  <div class="orbit-card-content">
+                    <div class="care-pillar-card" tabindex="0" role="article" aria-label="Transparent Medical Care">
+                      <div class="pillar-icon-box">
+                        <div class="pillar-icon-glow" aria-hidden="true"></div>
+                        <div class="pillar-icon">
+                          <i data-lucide="shield-check" class="icon-lg"></i>
+                        </div>
+                      </div>
+                      <h3 class="pillar-title">Transparent Medical Care</h3>
+                      <p class="pillar-text">
+                        We practice honest healthcare communication. Doctors and clinical teams explain diagnosis, investigation needs, and care plans without misleading claims.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+        </div>
 
-          <!-- Pillar 4 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="heart" class="icon-lg"></i>
-            </div>
-            <h3 class="pillar-title">Support for Mothers &amp; Families</h3>
-            <p class="pillar-text">
-              Dedicated private feeding rooms for mothers, comfortable attendant waiting areas, and a patient relations team ready to assist with non-clinical questions.
-            </p>
+        <!-- Mobile Scroll Indicator Hint & Dots -->
+        <div class="orbit-mobile-nav" id="orbitMobileNav" aria-hidden="true">
+          <span class="orbit-mobile-hint"><i data-lucide="move-horizontal" class="icon-xs"></i> Swipe to explore all 6 care pillars</span>
+          <div class="orbit-mobile-dots">
+            <span class="orbit-mob-dot active" data-index="0"></span>
+            <span class="orbit-mob-dot" data-index="1"></span>
+            <span class="orbit-mob-dot" data-index="2"></span>
+            <span class="orbit-mob-dot" data-index="3"></span>
+            <span class="orbit-mob-dot" data-index="4"></span>
+            <span class="orbit-mob-dot" data-index="5"></span>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Pillar 5 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="map" class="icon-lg"></i>
-            </div>
-            <h3 class="pillar-title">Clear Directions &amp; Contact</h3>
-            <p class="pillar-text">
-              Convenient location in Mysuru with straightforward road connectivity, prominent building signage in Kannada and English, and dedicated help lines.
-            </p>
-          </div>
+    <!-- 11. Patient Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Voices of Trust &amp; Recovery</span>
+          <h2 id="testimonials-heading" class="section-title">What Our Patients Say</h2>
+          <p class="section-subtitle">
+            Authentic experiences from patients and families treated with empathy, dignity, and clinical excellence at Sulakshaa Multi Speciality Hospital.
+          </p>
+        </div>
 
-          <!-- Pillar 6 -->
-          <div class="care-pillar-card reveal-on-scroll">
-            <div class="pillar-icon">
-              <i data-lucide="shield-check" class="icon-lg"></i>
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <article class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
             </div>
-            <h3 class="pillar-title">Transparent Medical Care</h3>
-            <p class="pillar-text">
-              We practice honest healthcare communication. Doctors and clinical teams explain diagnosis, investigation needs, and care plans without misleading claims.
+            <p class="testimonial-quote">
+              “When my father developed sudden chest tightness, the 24/7 casualty team at Sulakshaa acted within minutes. Dr. Priya Sharma and the ICU nursing staff provided exemplary care and clear explanations at every step. Today he is healthy and back to his morning walks.”
             </p>
+            <div class="testimonial-author-row">
+              <div class="author-avatar-initials">RK</div>
+              <div class="author-details">
+                <strong class="author-name">Ramesh Kumar</strong>
+                <span class="author-meta">Vijayanagar, Mysuru &bull; Cardiac Care Recovery</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+            </div>
+            <p class="testimonial-quote">
+              “Dr. Sneha Hegde is remarkably gentle with infants. She diagnosed my 10-month-old daughter’s wheezing accurately without overprescribing medications. The pediatric OPD is welcoming, hygienic, and makes young parents feel truly supported.”
+            </p>
+            <div class="testimonial-author-row">
+              <div class="author-avatar-initials">AR</div>
+              <div class="author-details">
+                <strong class="author-name">Ananya Rao</strong>
+                <span class="author-meta">Kuvempunagar, Mysuru &bull; Paediatric Care</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+              <i data-lucide="star" class="icon-xs star-filled"></i>
+            </div>
+            <p class="testimonial-quote">
+              “Dr. Laxme Gowda is a true veteran clinician. He spent ample time listening to my chronic history and tailored an effective lifestyle plan. The hospital environment is clean, peaceful, and barrier-free with wheelchair ramps everywhere.”
+            </p>
+            <div class="testimonial-author-row">
+              <div class="author-avatar-initials">SM</div>
+              <div class="author-details">
+                <strong class="author-name">Somashekar M.</strong>
+                <span class="author-meta">Saraswathipuram, Mysuru &bull; Senior Geriatric Care</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="testimonials-trust-badge text-center reveal-on-scroll">
+          <div class="trust-pill-compact">
+            <i data-lucide="shield-check" class="icon-xs"></i>
+            <span>Verified Patient Experience &bull; Ethical, Patient-Centred Medicine in Mysuru</span>
           </div>
         </div>
       </div>
@@ -1997,19 +2754,69 @@
     </div>
   </div>
 
+  <!-- Hospital Facilities Video Tour Modal -->
+  <div class="modal-backdrop" id="tourModal" role="dialog" aria-modal="true" aria-labelledby="tourModalTitle" aria-hidden="true">
+    <div class="modal-dialog tour-modal-dialog">
+      <div class="modal-header">
+        <div class="tour-header-badge">
+          <i data-lucide="building-2" class="icon-xs"></i>
+          <span>Campus Visual Tour</span>
+        </div>
+        <h3 id="tourModalTitle" class="modal-title">Sulakshaa Hospital Campus Experience</h3>
+        <button type="button" class="modal-close-btn" id="tourModalCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x" class="icon-md"></i>
+        </button>
+      </div>
+      <div class="modal-body tour-modal-body">
+        <div class="tour-modal-media">
+          <img src="assets/hospital-building.png" alt="Sulakshaa Hospital Campus in Mysuru" class="tour-modal-img" id="tourModalImg">
+          <div class="tour-modal-media-caption">
+            <h4 id="tourModalCaptionTitle">Modern Multispeciality Hospital Building</h4>
+            <p id="tourModalCaptionDesc">Central location in Mysuru featuring 24/7 casualty emergency, inpatient wards, advanced diagnostics, and barrier-free patient access.</p>
+          </div>
+        </div>
+        <div class="tour-modal-thumbs">
+          <button type="button" class="tour-thumb-btn active" data-src="assets/hospital-building.png" data-title="Modern Hospital Building Facade" data-desc="Central location in Mysuru with 24/7 emergency casualty reception and ambulance bay.">
+            <img src="assets/hospital-building.png" alt="Hospital Building">
+            <span>Exterior</span>
+          </button>
+          <button type="button" class="tour-thumb-btn" data-src="assets/cardiac-care.jpg" data-title="Intensive Coronary Care &amp; ICU" data-desc="Fully equipped multi-parameter patient telemetry, sterile ICU environment, and 24/7 emergency monitoring.">
+            <img src="assets/cardiac-care.jpg" alt="Cardiac ICU">
+            <span>Cardiac ICU</span>
+          </button>
+          <button type="button" class="tour-thumb-btn" data-src="assets/advanced-diagnostics.png" data-title="Advanced Diagnostic Laboratory" data-desc="Automated clinical pathology, digital ultrasonography, and comprehensive diagnostic imaging suite.">
+            <img src="assets/advanced-diagnostics.png" alt="Diagnostics">
+            <span>Diagnostics</span>
+          </button>
+          <button type="button" class="tour-thumb-btn" data-src="assets/general-medicine.png" data-title="Outpatient Consultation Suites" data-desc="Comfortable, private OPD consultation rooms designed for thorough, compassionate clinical discussions.">
+            <img src="assets/general-medicine.png" alt="OPD Consultation">
+            <span>OPD Suites</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer tour-modal-footer">
+        <a href="#enquiry" class="btn btn-primary" id="tourBookBtn">
+          <i data-lucide="calendar" class="icon-sm"></i>
+          <span>Book Consultation</span>
+        </a>
+        <button type="button" class="btn btn-outline" id="tourModalDoneBtn">Close Tour</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container for Form Feedback -->
   <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
   <!-- Animated Back To Top Button with Scroll Progress -->
   <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top of page">
     <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46">
-      <circle class="progress-ring-circle-bg" stroke="rgba(9, 45, 131, 0.12)" stroke-width="3" fill="transparent" r="20" cx="23" cy="23" />
+      <circle class="progress-ring-circle-bg" stroke="rgba(11, 37, 104, 0.12)" stroke-width="3" fill="transparent" r="20" cx="23" cy="23" />
       <circle class="progress-ring-circle" id="progressRingCircle" stroke="var(--primary-blue)" stroke-width="3" stroke-dasharray="125.66" stroke-dashoffset="125.66" fill="transparent" r="20" cx="23" cy="23" stroke-linecap="round" />
     </svg>
     <i data-lucide="arrow-up" class="back-to-top-icon"></i>
   </button>
 
   <!-- Core JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js?v=21"></script>
 </body>
 </html>

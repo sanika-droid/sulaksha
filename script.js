@@ -52,6 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 15. Doctor Cards 3D Interactive Tilt & Micro-Animations
   initDoctorCards3DTilt();
+
+  // 16. Animated Medical Specialties Cinema Showcase
+  initSpecialityCinema();
+
+  // 17. Campus Video & Visual Tour Modal
+  initCampusTourModal();
+
+  // 18. Patient Care Circular-Orbit Card Carousel
+  initPatientCareOrbit();
+
+  // 19. Leading Specialists Continuous Infinite Marquee
+  initDoctorsMarquee();
 });
 
 /**
@@ -95,20 +107,29 @@ function initSplashScreen() {
   // Lock background scroll during splash
   document.body.classList.add('splash-active');
 
-  const SPLASH_DURATION = 2400; // 2.4 seconds
-
-  const fadeTimer = setTimeout(() => {
+  const dismissSplash = () => {
+    if (splash.classList.contains('splash-fade-out')) return;
     splash.classList.add('splash-fade-out');
     document.body.classList.remove('splash-active');
 
-    const removeTimer = setTimeout(() => {
+    setTimeout(() => {
       if (splash.parentNode) {
         splash.parentNode.removeChild(splash);
       }
-    }, 600);
+    }, 650);
+  };
 
-    window.addEventListener('pagehide', () => clearTimeout(removeTimer), { once: true });
-  }, SPLASH_DURATION);
+  // Skip Intro Button Event Listener
+  const skipBtn = document.getElementById('splashSkipBtn');
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      dismissSplash();
+    });
+  }
+
+  const SPLASH_DURATION = 2300; // 2.3 seconds
+  const fadeTimer = setTimeout(dismissSplash, SPLASH_DURATION);
 
   window.addEventListener('pagehide', () => clearTimeout(fadeTimer), { once: true });
 }
@@ -391,7 +412,7 @@ function initActiveNavHighlight() {
  * Connect Specialities and Doctor Cards to the Appointment Form
  */
 function initInteractiveEnquiries() {
-  const specialityButtons = document.querySelectorAll('.speciality-enquire-btn');
+  const specialityButtons = document.querySelectorAll('.speciality-enquire-btn, .cinema-enquire-btn');
   const specialitySelect = document.getElementById('preferredSpeciality');
   const patientMessageInput = document.getElementById('patientMessage');
   const enquirySection = document.getElementById('enquiry');
@@ -437,8 +458,8 @@ function initInteractiveEnquiries() {
     });
   });
 
-  // Doctor Enquiry click
-  const doctorEnquireButtons = document.querySelectorAll('.doctor-enquire-btn');
+  // Doctor Enquiry click (from featured cards and directory)
+  const doctorEnquireButtons = document.querySelectorAll('.doctor-enquire-btn, .featured-doc-book-btn');
   doctorEnquireButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const doctor = btn.getAttribute('data-doctor') || 'Dr. Laxme Gowda';
@@ -912,7 +933,7 @@ function showToast(title, message, type = 'info') {
   toast.className = `toast toast-${type}`;
   toast.setAttribute('role', 'alert');
 
-  const iconColor = type === 'success' ? '#16865C' : '#087DC1';
+  const iconColor = type === 'success' ? '#16865C' : '#0088D1';
 
   toast.innerHTML = `
     <div class="toast-icon">
@@ -1801,4 +1822,387 @@ function initDoctorCards3DTilt() {
   });
 }
 
+/**
+ * 16. Animated Medical Specialties Cinema Showcase Controller
+ * Smooth auto-advancing slideshow with crossfades, progress bar, play/pause controls,
+ * swipe gestures, keyboard navigation, and prefers-reduced-motion support.
+ */
+function initSpecialityCinema() {
+  const cinemaContainer = document.getElementById('specialityCinema');
+  if (!cinemaContainer) return;
 
+  const slides = cinemaContainer.querySelectorAll('.cinema-slide');
+  const dots = cinemaContainer.querySelectorAll('.cinema-dot');
+  const playPauseBtn = document.getElementById('cinemaPlayPauseBtn');
+  const prevBtn = document.getElementById('cinemaPrevBtn');
+  const nextBtn = document.getElementById('cinemaNextBtn');
+  const progressFill = document.getElementById('cinemaProgressFill');
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let isPlaying = true;
+  let timer = null;
+  const slideDuration = 5500; // 5.5 seconds per specialty
+
+  // Accessibility: Respect reduced motion preference
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion) {
+    isPlaying = false;
+  }
+
+  const updateProgressAnimation = (start = true) => {
+    if (!progressFill) return;
+    progressFill.style.transition = 'none';
+    progressFill.style.width = '0%';
+    if (start && isPlaying) {
+      // Force repaint
+      void progressFill.offsetWidth;
+      progressFill.style.transition = `width ${slideDuration}ms linear`;
+      progressFill.style.width = '100%';
+    }
+  };
+
+  const goToSlide = (newIndex) => {
+    slides[currentIndex].classList.remove('active');
+    slides[currentIndex].setAttribute('aria-hidden', 'true');
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.remove('active');
+      dots[currentIndex].setAttribute('aria-selected', 'false');
+    }
+
+    currentIndex = (newIndex + slides.length) % slides.length;
+
+    slides[currentIndex].classList.add('active');
+    slides[currentIndex].setAttribute('aria-hidden', 'false');
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.add('active');
+      dots[currentIndex].setAttribute('aria-selected', 'true');
+    }
+
+    updateProgressAnimation(true);
+  };
+
+  const nextSlide = () => goToSlide(currentIndex + 1);
+  const prevSlide = () => goToSlide(currentIndex - 1);
+
+  const startAutoplay = () => {
+    if (isReducedMotion) return;
+    stopAutoplay();
+    isPlaying = true;
+    updateProgressAnimation(true);
+    timer = setInterval(nextSlide, slideDuration);
+    if (playPauseBtn) {
+      playPauseBtn.innerHTML = '<i data-lucide="pause" class="icon-xs"></i>';
+      playPauseBtn.setAttribute('aria-label', 'Pause slideshow');
+      initLucideIcons();
+    }
+  };
+
+  const stopAutoplay = () => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+    isPlaying = false;
+    if (progressFill) {
+      const computedWidth = window.getComputedStyle(progressFill).width;
+      progressFill.style.transition = 'none';
+      progressFill.style.width = computedWidth;
+    }
+    if (playPauseBtn) {
+      playPauseBtn.innerHTML = '<i data-lucide="play" class="icon-xs"></i>';
+      playPauseBtn.setAttribute('aria-label', 'Play slideshow');
+      initLucideIcons();
+    }
+  };
+
+  // Play/Pause button toggle
+  playPauseBtn?.addEventListener('click', () => {
+    if (isPlaying) {
+      stopAutoplay();
+    } else {
+      startAutoplay();
+    }
+  });
+
+  // Prev / Next controls
+  prevBtn?.addEventListener('click', () => {
+    prevSlide();
+    if (isPlaying) startAutoplay();
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    nextSlide();
+    if (isPlaying) startAutoplay();
+  });
+
+  // Dot button clicks
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetIdx = parseInt(dot.getAttribute('data-slide'), 10);
+      if (!isNaN(targetIdx) && targetIdx !== currentIndex) {
+        goToSlide(targetIdx);
+        if (isPlaying) startAutoplay();
+      }
+    });
+  });
+
+  // Pause on hover, resume on mouse leave (if was playing)
+  let resumeOnLeave = false;
+  cinemaContainer.addEventListener('mouseenter', () => {
+    if (isPlaying) {
+      resumeOnLeave = true;
+      stopAutoplay();
+    }
+  });
+
+  cinemaContainer.addEventListener('mouseleave', () => {
+    if (resumeOnLeave) {
+      resumeOnLeave = false;
+      startAutoplay();
+    }
+  });
+
+  // Keyboard navigation
+  cinemaContainer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSlide();
+      if (isPlaying) startAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextSlide();
+      if (isPlaying) startAutoplay();
+    }
+  });
+
+  // Touch Swipe for Mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  cinemaContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  cinemaContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      if (isPlaying) startAutoplay();
+    }
+  }, { passive: true });
+
+  // Initial autoplay start
+  if (!isReducedMotion) {
+    startAutoplay();
+  }
+}
+
+/**
+ * 17. Campus Video & Visual Tour Modal Controller
+ * Connects hero "Watch Tour" button to an interactive high-resolution gallery modal with thumbnails
+ */
+function initCampusTourModal() {
+  const tourModal = document.getElementById('tourModal');
+  const heroTourBtn = document.getElementById('heroTourPlayBtn');
+  const closeBtn = document.getElementById('tourModalCloseBtn');
+  const doneBtn = document.getElementById('tourModalDoneBtn');
+  const bookBtn = document.getElementById('tourBookBtn');
+  const tourImg = document.getElementById('tourModalImg');
+  const captionTitle = document.getElementById('tourModalCaptionTitle');
+  const captionDesc = document.getElementById('tourModalCaptionDesc');
+  const thumbs = document.querySelectorAll('.tour-thumb-btn');
+
+  if (!tourModal || !heroTourBtn) return;
+
+  const openTourModal = () => {
+    tourModal.classList.add('is-open');
+    tourModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    initLucideIcons();
+  };
+
+  const closeTourModal = () => {
+    tourModal.classList.remove('is-open');
+    tourModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  heroTourBtn.addEventListener('click', openTourModal);
+  closeBtn?.addEventListener('click', closeTourModal);
+  doneBtn?.addEventListener('click', closeTourModal);
+
+  // Close when clicking backdrop
+  tourModal.addEventListener('click', (e) => {
+    if (e.target === tourModal) {
+      closeTourModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && tourModal.classList.contains('is-open')) {
+      closeTourModal();
+    }
+  });
+
+  // Switch image on thumbnail click
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+
+      const src = thumb.getAttribute('data-src');
+      const title = thumb.getAttribute('data-title');
+      const desc = thumb.getAttribute('data-desc');
+
+      if (tourImg && src) {
+        tourImg.style.opacity = '0.4';
+        tourImg.src = src;
+        setTimeout(() => {
+          tourImg.style.opacity = '1';
+        }, 120);
+      }
+      if (captionTitle && title) captionTitle.textContent = title;
+      if (captionDesc && desc) captionDesc.textContent = desc;
+    });
+  });
+
+  // Book Consultation inside tour modal
+  bookBtn?.addEventListener('click', () => {
+    closeTourModal();
+    const enquiry = document.getElementById('enquiry');
+    if (enquiry) {
+      enquiry.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+/**
+ * 18. Patient Care Circular-Orbit Card Carousel Controller
+ * Handles continuous orbit pause/resume controls, keyboard accessibility,
+ * and mobile swipe pagination sync.
+ */
+function initPatientCareOrbit() {
+  const orbitStage = document.getElementById('patientCareOrbitStage');
+  const playPauseBtn = document.getElementById('orbitPlayPauseBtn');
+  const playPauseIcon = document.getElementById('orbitPlayPauseIcon');
+  const playPauseText = document.getElementById('orbitPlayPauseText');
+  const orbitTrack = document.getElementById('patientCareOrbitTrack');
+  const mobileDots = document.querySelectorAll('.orbit-mob-dot');
+  const cards = orbitStage ? orbitStage.querySelectorAll('.care-pillar-card') : [];
+
+  if (!orbitStage) return;
+
+  let isPaused = false;
+
+  const updatePlayPauseUI = (paused) => {
+    isPaused = paused;
+    if (paused) {
+      orbitStage.classList.add('is-paused');
+      if (playPauseBtn) {
+        playPauseBtn.setAttribute('aria-label', 'Resume circular orbit animation');
+      }
+      if (playPauseIcon) {
+        playPauseIcon.innerHTML = '<i data-lucide="play" class="icon-xs"></i>';
+      }
+      if (playPauseText) {
+        playPauseText.textContent = 'Orbit Paused (Click to resume)';
+      }
+    } else {
+      orbitStage.classList.remove('is-paused');
+      if (playPauseBtn) {
+        playPauseBtn.setAttribute('aria-label', 'Pause circular orbit animation');
+      }
+      if (playPauseIcon) {
+        playPauseIcon.innerHTML = '<i data-lucide="pause" class="icon-xs"></i>';
+      }
+      if (playPauseText) {
+        playPauseText.textContent = 'Continuous Orbit (Hover any card to pause)';
+      }
+    }
+    initLucideIcons();
+  };
+
+  playPauseBtn?.addEventListener('click', () => {
+    updatePlayPauseUI(!isPaused);
+  });
+
+  // Keyboard accessibility: pause when card focused, resume on blur
+  cards.forEach(card => {
+    card.addEventListener('focus', () => {
+      orbitStage.classList.add('is-paused');
+    });
+    card.addEventListener('blur', () => {
+      if (!isPaused) {
+        orbitStage.classList.remove('is-paused');
+      }
+    });
+  });
+
+  // Mobile Swipe Dots Sync (when in swipeable slider mode)
+  if (orbitTrack && mobileDots.length > 0) {
+    let scrollTimeout;
+    orbitTrack.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const trackLeft = orbitTrack.scrollLeft;
+        const cardWidth = orbitTrack.firstElementChild ? orbitTrack.firstElementChild.offsetWidth : 280;
+        const activeIdx = Math.round(trackLeft / cardWidth);
+
+        mobileDots.forEach((dot, idx) => {
+          if (idx === activeIdx) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }, 60);
+    }, { passive: true });
+
+    // Click dot to scroll to card on mobile
+    mobileDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const targetIdx = parseInt(dot.getAttribute('data-index'), 10);
+        const cardSlot = orbitTrack.children[targetIdx];
+        if (cardSlot) {
+          cardSlot.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    });
+  }
+}
+
+/**
+ * 19. Leading Specialists Infinite Moving Marquee Controller
+ * Adds touch interaction and accessible keyboard focus support to pause/resume the continuous carousel.
+ */
+function initDoctorsMarquee() {
+  const container = document.getElementById('doctorsMarqueeContainer');
+  const track = document.getElementById('doctorsMarqueeTrack');
+  if (!container || !track) return;
+
+  // Touch pause for mobile devices
+  container.addEventListener('touchstart', () => {
+    track.classList.add('is-paused');
+  }, { passive: true });
+
+  container.addEventListener('touchend', () => {
+    track.classList.remove('is-paused');
+  }, { passive: true });
+
+  // Keyboard accessibility
+  container.addEventListener('focusin', () => {
+    track.classList.add('is-paused');
+  });
+
+  container.addEventListener('focusout', () => {
+    track.classList.remove('is-paused');
+  });
+}
