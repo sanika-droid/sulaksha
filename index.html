@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=24">
 
   <!-- JSON-LD MedicalOrganization Structured Data -->
   <script type="application/ld+json">
@@ -523,23 +523,6 @@
           </article>
         </div>
 
-        <!-- Overview Descriptive Banner -->
-        <div class="overview-intro-box reveal-on-scroll">
-          <div class="intro-box-content">
-            <div class="intro-text">
-              <h3>A Modern Medical Facility in the Heart of Mysuru</h3>
-              <p>
-                Sulakshaa Multi Speciality Hospital was founded to bridge the gap between quality tertiary healthcare and compassionate community service. Our hospital integrates emergency care, modern surgical theatres, in-house pharmacy, and comprehensive outpatient clinics in an environment designed for healing.
-              </p>
-            </div>
-            <div class="intro-action">
-              <a href="#specialities" class="btn btn-primary">
-                <span>View All Specialities</span>
-                <i data-lucide="chevron-right" class="icon-sm"></i>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1015,6 +998,14 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <!-- View More / Less Specialities Toggle Button -->
+        <div class="specialities-toggle-container text-center reveal-on-scroll">
+          <button type="button" class="btn-toggle-specialities" id="toggleSpecialitiesBtn" aria-expanded="false" aria-controls="specialitiesGrid">
+            <span class="btn-toggle-text">View More Specialities</span>
+            <i data-lucide="chevron-down" class="btn-toggle-icon icon-sm"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -2817,6 +2808,6 @@
   </button>
 
   <!-- Core JavaScript -->
-  <script src="script.js?v=21"></script>
+  <script src="script.js?v=22"></script>
 </body>
 </html>

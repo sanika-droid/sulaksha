@@ -1379,14 +1379,15 @@ button, input, select, textarea {
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  max-width: 1040px;
+  margin: 0 auto 2rem auto;
 }
 
 .overview-card {
   background-color: #FFFFFF;
   border: 1px solid var(--borders);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
   transition: all var(--transition-normal);
   display: flex;
@@ -1394,7 +1395,7 @@ button, input, select, textarea {
 }
 
 .overview-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--primary-blue);
   box-shadow: var(--shadow-md);
 }
@@ -1402,7 +1403,7 @@ button, input, select, textarea {
 .overview-card-image-wrap {
   position: relative;
   width: 100%;
-  height: 195px;
+  height: 145px;
   overflow: hidden;
   background-color: var(--soft-background);
 }
@@ -1416,15 +1417,15 @@ button, input, select, textarea {
 }
 
 .overview-card:hover .overview-card-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .overview-card .overview-icon-container {
   position: absolute;
-  bottom: 12px;
-  right: 16px;
-  width: 48px;
-  height: 48px;
+  bottom: 10px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -1440,6 +1441,11 @@ button, input, select, textarea {
   z-index: 2;
 }
 
+.overview-card .overview-icon-container i {
+  width: 18px;
+  height: 18px;
+}
+
 .overview-card:hover .overview-icon-container {
   background-color: var(--primary-blue);
   color: #FFFFFF;
@@ -1448,7 +1454,7 @@ button, input, select, textarea {
 }
 
 .overview-card-body {
-  padding: 1.4rem 1.45rem 1.5rem;
+  padding: 1rem 1.15rem 1.15rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1456,30 +1462,31 @@ button, input, select, textarea {
 
 .overview-card-title {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--primary-navy);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.35;
 }
 
 .overview-card-text {
-  font-size: 0.9375rem;
+  font-size: 0.835rem;
   color: var(--secondary-text);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
   flex-grow: 1;
 }
 
 .overview-card-footer {
-  padding-top: 0.85rem;
+  padding-top: 0.65rem;
   border-top: 1px solid var(--border-subtle);
 }
 
 .overview-highlight {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
+  gap: 0.35rem;
+  font-size: 0.775rem;
   font-weight: 600;
   color: var(--primary-blue);
 }
@@ -1528,42 +1535,109 @@ button, input, select, textarea {
 .specialities-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-  perspective: 1200px;
+  gap: 1.5rem;
   align-items: stretch;
   justify-content: center;
+}
+
+/* Initially display only 6 speciality cards */
+.specialities-grid .speciality-card:nth-child(n+7) {
+  display: none;
+}
+
+/* When expanded, reveal remaining cards with smooth fade-in */
+.specialities-grid.is-expanded .speciality-card:nth-child(n+7) {
+  display: flex;
+  animation: specialityCardFadeIn 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes specialityCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .speciality-card {
   background-color: #FFFFFF;
   border: 1px solid var(--borders);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 280ms ease,
-              background-color 280ms ease;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 260ms ease,
+              border-color 260ms ease;
   display: flex;
   flex-direction: column;
   position: relative;
   height: 100%;
-  transform-style: preserve-3d;
   will-change: transform, box-shadow;
+  box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05);
 }
 
-/* Subtle 3D tilt & smooth lift on hover (limited to 4-5 degrees) */
+/* Subtle, stable hover lift without overlapping neighboring cards */
 @media (hover: hover) {
   .speciality-card:hover {
-    transform: translateY(-7px) rotateX(4.5deg) rotateY(-3.5deg);
-    border-color: rgba(8, 125, 193, 0.45);
-    box-shadow: 0 20px 38px -10px rgba(9, 45, 131, 0.16),
-                0 8px 18px -4px rgba(8, 125, 193, 0.12),
-                0 0 0 1px rgba(8, 125, 193, 0.18);
+    transform: translateY(-5px);
+    border-color: rgba(0, 136, 209, 0.45);
+    box-shadow: 0 14px 28px rgba(11, 37, 104, 0.12),
+                0 2px 6px rgba(11, 37, 104, 0.04);
   }
+}
 
-  .speciality-card:nth-child(even):hover {
-    transform: translateY(-7px) rotateX(4.5deg) rotateY(3.5deg);
-  }
+/* Toggle Button Container & Styling */
+.specialities-toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.btn-toggle-specialities {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  color: var(--primary-navy);
+  border: 1.5px solid var(--primary-blue);
+  box-shadow: 0 4px 14px rgba(11, 37, 104, 0.08);
+  cursor: pointer;
+  transition: all 240ms ease;
+  outline: none;
+}
+
+.btn-toggle-specialities:hover {
+  background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 136, 209, 0.28);
+}
+
+.btn-toggle-specialities:active {
+  transform: translateY(0);
+}
+
+.btn-toggle-specialities .btn-toggle-icon {
+  transition: transform 300ms ease;
+  color: var(--primary-blue);
+}
+
+.btn-toggle-specialities:hover .btn-toggle-icon {
+  color: #FFFFFF;
+}
+
+.btn-toggle-specialities.is-expanded .btn-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .speciality-image-wrap {
@@ -2414,58 +2488,53 @@ button, input, select, textarea {
   color: var(--danger-red);
 }
 
-/* Doctors Directory Grid - Exact 3 columns desktop, 2 tablet, 1 mobile */
+/* Doctors Directory Grid: Desktop 3 or 4 columns, Tablet 2 columns, Mobile 1 column */
 .doctor-dir-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  perspective: 1200px;
+  gap: 1.5rem;
   align-items: stretch;
 }
 
-/* Doctor Directory Card - Compact, rounded corners, subtle white border, soft shadow */
+/* Doctor Directory Card - Clean, premium healthcare card with soft shadow and subtle lift */
 .doctor-dir-card {
   background-color: #FFFFFF;
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 18px;
+  border: 1px solid var(--borders);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06),
-              0 2px 4px rgba(15, 23, 42, 0.02);
-  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 280ms ease;
-  transform-style: preserve-3d;
+  box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 260ms ease,
+              border-color 260ms ease;
   will-change: transform, box-shadow;
+  padding: 0;
 }
 
-/* 3D tilt & smooth hover lift */
+/* Smooth subtle 4-6px lift without layout shifts or 3D jumps */
 @media (hover: hover) {
   .doctor-dir-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(12, 155, 145, 0.45);
-    box-shadow: 0 16px 32px -6px rgba(16, 36, 58, 0.15),
-                0 0 0 1px rgba(12, 155, 145, 0.25);
-  }
-
-  .doctor-dir-card:nth-child(even):hover {
-    transform: translateY(-5px);
+    border-color: rgba(0, 136, 209, 0.35);
+    box-shadow: 0 14px 28px rgba(11, 37, 104, 0.12),
+                0 2px 6px rgba(11, 37, 104, 0.04);
   }
 }
 
-/* Doctor Portrait Top Section - Deep Navy & Teal Ambient Stage */
+/* Doctor Portrait Top Section - Flush to top/left/right boundaries */
 .doctor-dir-img-wrap {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 25%, #183554 0%, #10243A 65%, #08756E 100%);
+  background: linear-gradient(135deg, #061743 0%, #0B2568 60%, #0088D1 100%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .doctor-portrait-stage {
@@ -2475,6 +2544,7 @@ button, input, select, textarea {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  overflow: hidden;
 }
 
 .doctor-dir-img {
@@ -2483,70 +2553,37 @@ button, input, select, textarea {
   object-fit: cover;
   object-position: top center;
   display: block;
-  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1), filter 350ms ease;
-  will-change: transform;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .doctor-dir-card:hover .doctor-dir-img {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
-/* Speciality Pill Floating Top-Left */
+/* Doctor Specialty Pill inside White Info Section (No overlap on image) */
 .doctor-dir-speciality-pill {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(15, 23, 42, 0.85);
-  color: #FFFFFF;
-  font-size: 0.6875rem;
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--light-blue);
+  color: var(--primary-blue);
+  font-size: 0.725rem;
   font-weight: 700;
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 2;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.4rem;
+  border: 1px solid rgba(8, 125, 193, 0.2);
   letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Faculty Badge Floating Top-Right */
-.doctor-dir-faculty-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: 9999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.faculty-verified {
-  background-color: rgba(16, 185, 129, 0.95);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.faculty-consultant {
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--brand-teal-dark);
-  border: 1px solid rgba(12, 155, 145, 0.25);
-}
-
-/* Bottom Information White Section */
+/* Separate White Content Section Below Image */
 .doctor-dir-body {
-  padding: 1rem 1.15rem 1rem;
+  padding: 1.25rem 1.35rem 1.35rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   background-color: #FFFFFF;
+  position: relative;
+  z-index: 1;
 }
 
 .doctor-info-top {
@@ -2554,37 +2591,38 @@ button, input, select, textarea {
 }
 
 .doctor-dir-name {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--primary-navy);
-  line-height: 1.25;
-  margin-bottom: 0.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
   transition: color 200ms ease;
 }
 
 .doctor-dir-card:hover .doctor-dir-name {
-  color: var(--brand-teal);
+  color: var(--primary-blue);
 }
 
 .doctor-dir-qualifications {
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--brand-teal-dark);
+  color: var(--primary-blue);
   line-height: 1.35;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Short Clinical Description */
 .doctor-dir-bio {
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: #475569;
-  margin-bottom: 0.55rem;
+  font-size: 0.825rem;
+  line-height: 1.5;
+  color: var(--secondary-text);
+  margin-bottom: 0.75rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 2.5em;
 }
 
 /* Patient Care & Rating Row */
@@ -2593,11 +2631,11 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-bottom: 0.55rem;
-  padding: 0.35rem 0.6rem;
-  background: #F0F9FF;
-  border-radius: 8px;
-  border: 1px solid #E0F2FE;
+  margin-bottom: 0.65rem;
+  padding: 0.4rem 0.65rem;
+  background: var(--light-blue);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 136, 209, 0.15);
 }
 
 .doctor-care-pill {
@@ -2606,17 +2644,17 @@ button, input, select, textarea {
   gap: 0.35rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #0369A1;
+  color: var(--primary-navy);
 }
 
 .doctor-care-pill i {
-  color: #0284C7;
+  color: var(--primary-blue);
 }
 
 .doctor-rating-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.25rem;
   font-size: 0.72rem;
   font-weight: 700;
   color: #B45309;
@@ -2634,59 +2672,60 @@ button, input, select, textarea {
 .doctor-dir-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 0.75rem;
-  background-color: #F8FAFC;
-  border-radius: 8px;
-  padding: 0.45rem 0.65rem;
-  border: 1px solid #E2E8F0;
+  gap: 0.3rem;
+  margin-bottom: 0.85rem;
+  background-color: var(--soft-background);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-subtle);
 }
 
 .doctor-dir-meta-row {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.72rem;
-  color: #64748B;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  color: var(--secondary-text);
   line-height: 1.3;
 }
 
 .doctor-dir-meta-row i {
-  color: #0284C7;
+  color: var(--primary-blue);
   flex-shrink: 0;
 }
 
 .doctor-dir-meta-row strong {
-  color: #1E293B;
+  color: var(--primary-navy);
+  font-weight: 600;
 }
 
-/* Doctor Actions Section: Compact side-by-side buttons */
+/* Doctor Actions Section: Perfectly aligned side-by-side buttons */
 .doctor-dir-actions {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid #F1F5F9;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
 }
 
-/* Prominent Cyan/Blue "Book an Appointment" Button */
+/* Prominent Navy/Blue "Book an Appointment" Button */
 .btn-book-appointment {
-  flex: 1.3;
+  flex: 1.15;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  padding: 0.55rem 0.75rem;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
+  padding: 0.6rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%);
   color: #FFFFFF !important;
   font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.28);
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 10px rgba(0, 136, 209, 0.22);
+  transition: all 200ms ease;
   letter-spacing: 0.01em;
   border: none;
   cursor: pointer;
@@ -2694,9 +2733,9 @@ button, input, select, textarea {
 }
 
 .btn-book-appointment:hover {
-  background: linear-gradient(135deg, #0369A1 0%, #0284C7 100%);
+  background: linear-gradient(135deg, #061743 0%, #006CA6 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.38);
+  box-shadow: 0 6px 16px rgba(0, 136, 209, 0.35);
   color: #FFFFFF !important;
 }
 
@@ -2704,19 +2743,19 @@ button, input, select, textarea {
   transform: translateY(0);
 }
 
-/* Secondary View Profile Button */
+/* Secondary "View Profile" Button - Dignified Light Blue/Navy Aesthetic */
 .doctor-dir-profile-btn {
-  flex: 1;
+  flex: 0.85;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
-  padding: 0.55rem 0.65rem;
-  border-radius: 9999px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  color: #334155;
-  font-size: 0.78rem;
+  gap: 0.25rem;
+  padding: 0.6rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--light-blue);
+  border: 1px solid rgba(0, 136, 209, 0.25);
+  color: var(--primary-navy);
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 200ms ease;
@@ -2725,18 +2764,24 @@ button, input, select, textarea {
 
 .doctor-dir-profile-btn i {
   transition: transform 200ms ease;
-  color: #64748B;
+  color: var(--primary-blue);
 }
 
 .doctor-dir-profile-btn:hover {
-  background: #E2E8F0;
-  color: #0F172A;
-  border-color: #CBD5E1;
+  background: var(--primary-navy);
+  color: #FFFFFF;
+  border-color: var(--primary-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11, 37, 104, 0.15);
 }
 
 .doctor-dir-profile-btn:hover i {
   transform: translate(2px, -2px);
-  color: #0284C7;
+  color: #FFFFFF;
+}
+
+.doctor-dir-profile-btn:active {
+  transform: translateY(0);
 }
 
 /* Empty State */
@@ -2820,11 +2865,18 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-/* Responsive Rules: Exactly 3 desktop, 2 tablet, 1 mobile */
+/* Responsive Rules: Desktop 3 columns, Tablet 2 columns, Mobile 1 column */
+@media (min-width: 1025px) {
+  .doctor-dir-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .doctor-dir-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.15rem;
+    gap: 1.25rem;
   }
 
   .doctors-filter-top-row {
@@ -2837,6 +2889,15 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  .doctor-dir-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .doctor-dir-img-wrap {
+    height: 220px;
+  }
+
   .doctors-help-callout {
     flex-direction: column;
     align-items: flex-start;
@@ -2849,17 +2910,6 @@ button, input, select, textarea {
 
   .doctors-help-actions .btn {
     width: 100%;
-  }
-}
-
-@media (max-width: 640px) {
-  .doctor-dir-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
-  }
-
-  .doctor-dir-img-wrap {
-    height: 200px;
   }
 }
 
@@ -3111,19 +3161,21 @@ button, input, select, textarea {
    11. Emergency Care Banner
    -------------------------------------------------------------------------- */
 .emergency-banner-section {
-  padding-top: 1rem;
-  padding-bottom: 0.75rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.25rem;
   background-color: var(--bg-white);
 }
 
 .emergency-banner-card {
   background: var(--emergency-gradient);
   border-radius: var(--radius-xl);
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.75rem, 4vw, 3.5rem);
+  padding: clamp(3rem, 5.5vw, 4.25rem) clamp(2rem, 4.5vw, 3.75rem);
   color: #FFFFFF;
-  box-shadow: 0 16px 40px rgba(9, 45, 131, 0.28);
+  box-shadow: 0 20px 48px rgba(9, 45, 131, 0.28);
   position: relative;
   overflow: hidden;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .emergency-banner-card::before {
@@ -3131,8 +3183,8 @@ button, input, select, textarea {
   position: absolute;
   top: -80px;
   right: -80px;
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   pointer-events: none;
@@ -3141,28 +3193,28 @@ button, input, select, textarea {
 .emergency-banner-content {
   position: relative;
   z-index: 2;
-  max-width: 820px;
+  max-width: 920px;
 }
 
 .emergency-icon-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  padding: 0.35rem 0.9rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  padding: 0.4rem 1.05rem;
   border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
 .emergency-cross {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   background-color: #FFFFFF;
   color: var(--danger-red);
   font-weight: 900;
@@ -3172,38 +3224,40 @@ button, input, select, textarea {
 
 .emergency-heading {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
-  font-weight: 700;
+  font-size: clamp(2.15rem, 4vw, 2.85rem);
+  font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.01em;
 }
 
 .emergency-description {
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   line-height: 1.7;
   color: #EAF6FC;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .emergency-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.15rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
 .btn-emergency-call {
   background-color: #FFFFFF;
   color: var(--primary-navy);
   font-weight: 700;
-  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   border-radius: var(--radius-md);
   border: 1px solid #FFFFFF;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  gap: 0.6rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   transition: all var(--transition-fast);
 }
 
@@ -3211,30 +3265,34 @@ button, input, select, textarea {
   background-color: var(--light-blue);
   color: var(--primary-navy);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
 }
 
 .btn-emergency-directions {
   background-color: transparent;
   color: #FFFFFF;
   font-weight: 600;
-  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   transition: all var(--transition-fast);
 }
 
 .btn-emergency-directions:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
   border-color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .emergency-footnote {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
@@ -4212,6 +4270,9 @@ button, input, select, textarea {
    -------------------------------------------------------------------------- */
 .enquiry-section {
   background-color: var(--bg-white);
+  padding-top: 1.5rem;
+  padding-bottom: 2.25rem;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
 .enquiry-card-wrapper {
@@ -4220,52 +4281,54 @@ button, input, select, textarea {
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--borders);
   overflow: hidden;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .enquiry-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1.25fr;
 }
 
 .enquiry-info-column {
   background: var(--brand-gradient);
   color: #FFFFFF;
-  padding: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.6rem, 2.8vw, 2.25rem) clamp(1.6rem, 3.2vw, 2.5rem);
   display: flex;
   flex-direction: column;
 }
 
 .enquiry-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .enquiry-subtext {
-  font-size: 0.96875rem;
+  font-size: 0.875rem;
   color: #EAF6FC;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
 .enquiry-contact-points {
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
-  margin-bottom: 1.75rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .enquiry-point {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .enquiry-point-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-sm);
   display: flex;
@@ -4277,16 +4340,16 @@ button, input, select, textarea {
 
 .enquiry-point strong {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: #FFFFFF;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
 }
 
 .enquiry-point p {
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   color: #DCE7F0;
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .enquiry-reassurance {
@@ -4294,64 +4357,64 @@ button, input, select, textarea {
   background-color: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  padding: 1rem;
+  padding: 0.75rem 0.95rem;
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   color: #EAF6FC;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .enquiry-form-column {
-  padding: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.6rem, 2.8vw, 2.25rem) clamp(1.6rem, 3.5vw, 2.85rem);
   background-color: #FFFFFF;
 }
 
 .form-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.85rem;
 }
 
 .form-kicker-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   background-color: var(--light-blue);
   color: var(--primary-blue);
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.45rem;
 }
 
 .form-header h3 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--primary-navy);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .form-header p {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--secondary-text);
 }
 
 /* Multi-Step Progress Tracker */
 .form-steps-tracker {
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.95rem;
   position: relative;
 }
 
 .steps-progress-track {
-  height: 4px;
+  height: 3px;
   background-color: var(--borders);
   border-radius: var(--radius-full);
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.55rem;
   overflow: hidden;
 }
 
@@ -4438,7 +4501,7 @@ button, input, select, textarea {
 .form-step-container.active {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.85rem;
   opacity: 1;
   transform: translateX(0);
   animation: stepFadeIn 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -4457,20 +4520,20 @@ button, input, select, textarea {
 
 .step-intro-header {
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.75rem;
-  margin-bottom: 0.25rem;
+  padding-bottom: 0.45rem;
+  margin-bottom: 0;
 }
 
 .step-title {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--primary-navy);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 .step-desc {
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   color: var(--secondary-text);
   margin: 0;
 }
@@ -4479,7 +4542,7 @@ button, input, select, textarea {
 .quick-chips-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .quick-chips-label {
@@ -4494,15 +4557,15 @@ button, input, select, textarea {
 .quick-chips-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .dept-chip {
   background-color: var(--soft-background);
   border: 1px solid var(--borders);
   border-radius: var(--radius-full);
-  padding: 0.35rem 0.85rem;
-  font-size: 0.78125rem;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--main-text);
   cursor: pointer;
@@ -4641,12 +4704,12 @@ button, input, select, textarea {
 
 .form-control {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.65rem;
+  padding: 0.58rem 0.9rem 0.58rem 2.45rem;
   border: 1px solid var(--borders);
   border-radius: var(--radius-md);
   background-color: #FFFFFF;
   color: var(--main-text);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   transition: all var(--transition-fast);
 }
 
@@ -4691,10 +4754,10 @@ button, input, select, textarea {
   background: linear-gradient(135deg, #F6FAFD 0%, #EAF6FC 100%);
   border: 1px solid var(--borders);
   border-radius: var(--radius-md);
-  padding: 1.15rem 1.25rem;
+  padding: 1rem 1.15rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .summary-item {
@@ -4724,12 +4787,12 @@ button, input, select, textarea {
 /* Step Navigation Buttons */
 .step-nav-buttons {
   display: flex;
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
 }
 
 .step-nav-buttons.split-buttons {
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .step-nav-buttons .btn {
@@ -4737,11 +4800,13 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  padding: 0.6rem 1.35rem;
+  font-size: 0.875rem;
   transition: all var(--transition-fast);
 }
 
 .step-prev-btn {
-  padding: 0.75rem 1.25rem;
+  padding: 0.6rem 1.15rem;
   color: var(--secondary-text);
 }
 
@@ -6994,28 +7059,33 @@ body.splash-active {
 
 .facilities-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery-item {
   position: relative;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  height: 180px;
+  height: 270px;
   background-color: var(--soft-background);
-  box-shadow: 0 6px 16px rgba(9, 45, 131, 0.07);
-  border: 1px solid rgba(220, 231, 240, 0.9);
+  box-shadow: 0 4px 18px rgba(9, 45, 131, 0.08);
+  border: 1px solid rgba(220, 231, 240, 0.85);
   cursor: pointer;
   outline: none;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 240ms ease;
 }
 
 .gallery-item:hover,
 .gallery-item:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(9, 45, 131, 0.15);
+  box-shadow: 0 14px 30px rgba(9, 45, 131, 0.16);
   border-color: var(--primary-blue);
 }
 
@@ -7023,12 +7093,13 @@ body.splash-active {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-item:hover .gallery-img,
 .gallery-item:focus-visible .gallery-img {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 .gallery-overlay {
@@ -7315,6 +7386,16 @@ body.splash-active {
   }
 }
 
+@media (max-width: 768px) {
+  .facilities-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .gallery-item {
+    height: 220px;
+  }
+}
+
 @media (max-width: 640px) {
   .spotlight-highlights-grid {
     grid-template-columns: 1fr;
@@ -7326,9 +7407,6 @@ body.splash-active {
     grid-template-columns: 1fr;
   }
   .showcase-specs-list {
-    grid-template-columns: 1fr;
-  }
-  .facilities-gallery-grid {
     grid-template-columns: 1fr;
   }
   .featured-faculty-actions .btn {
@@ -7675,44 +7753,6 @@ body.splash-active {
   transform: translate(2px, -2px);
 }
 
-/* Enhance Doctor Directory Cards with the Same Rounded Inner Photo Aesthetic */
-.doctor-dir-card {
-  padding: 12px 12px 18px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
-}
-
-.doctor-dir-img-wrap {
-  border-radius: 14px;
-  height: 200px;
-  margin-bottom: 12px;
-}
-
-.doctor-dir-card:hover {
-  border-color: rgba(29, 104, 255, 0.25);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.09);
-}
-
-.doctor-dir-actions .doctor-dir-profile-btn {
-  background: #1D68FF;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 9999px;
-  padding: 0.55rem 1rem;
-  box-shadow: 0 4px 14px rgba(29, 104, 255, 0.3);
-}
-
-.doctor-dir-actions .doctor-dir-profile-btn:hover {
-  background: #1557E0;
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(29, 104, 255, 0.45);
-}
-
-.doctor-dir-actions .btn-primary {
-  border-radius: 9999px;
-}
 
 /* ==========================================================================
    25. CLINICAL JOURNEY SHOWCASE (Teal Panoramic Flagship)
@@ -8021,8 +8061,7 @@ body.splash-active {
    26. DOCTOR CARD ENHANCED ANIMATIONS (For Each Doctor Card)
    ========================================================================== */
 
-/* 3D Perspective & Transition Properties for each Doctor Card */
-.doctor-dir-card,
+/* Editorial Doctor Cards in Carousel */
 .editorial-doc-card {
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -8035,74 +8074,26 @@ body.splash-active {
   overflow: hidden;
 }
 
-/* Shimmer Sheen Layer across every doctor card on hover */
-.doctor-dir-card::before,
-.editorial-doc-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 45%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 55%
-  );
-  transform: rotate(-35deg) translateY(-100%);
-  transition: transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  z-index: 6;
-  opacity: 0;
-}
-
-.doctor-dir-card:hover::before,
-.editorial-doc-card:hover::before {
-  opacity: 1;
-  transform: rotate(-35deg) translateY(100%);
-}
-
-/* Hover Elevation & Luminous Shadow for each card */
 @media (hover: hover) {
-  .doctor-dir-card:hover,
   .editorial-doc-card:hover {
-    transform: translateY(-8px) scale(1.015);
+    transform: translateY(-6px);
     border-color: rgba(14, 165, 233, 0.4);
-    box-shadow: 0 22px 44px -8px rgba(8, 125, 193, 0.22),
-                0 0 0 1px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 16px 36px -8px rgba(8, 125, 193, 0.2);
   }
 }
 
-/* Animated Portrait Zoom */
-.doctor-dir-img-wrap,
 .editorial-card-photo-wrap {
   position: relative;
   overflow: hidden;
 }
 
-.doctor-dir-img,
 .editorial-card-img {
-  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 350ms ease;
+  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-.doctor-dir-card:hover .doctor-dir-img,
 .editorial-doc-card:hover .editorial-card-img {
-  transform: scale(1.08);
-}
-
-/* Animated Twinkle on Rating Star */
-.doctor-dir-card:hover .icon-star-filled,
-.editorial-doc-card:hover .icon-star-filled {
-  animation: starTwinkle 700ms ease;
-}
-
-@keyframes starTwinkle {
-  0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.35) rotate(15deg); filter: drop-shadow(0 0 6px #F59E0B); }
-  100% { transform: scale(1) rotate(0deg); }
+  transform: scale(1.05);
 }
 
 /* Animated Verified Badge Heartbeat Pulse */

@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 19. Leading Specialists Continuous Infinite Marquee
   initDoctorsMarquee();
+
+  // 20. Specialities Grid 6-Card Toggle Controller
+  initSpecialitiesToggle();
 });
 
 /**
@@ -1781,45 +1784,10 @@ function initClinicalJourneyShowcase() {
 }
 
 /**
- * 15. Doctor Cards 3D Interactive Tilt & Micro-Animations
- * Adds smooth cursor-tracking 3D tilt, perspective transformation, and spring-back
+ * 15. Doctor Cards Hover Controller (Smooth CSS transitions handle elevation without JS layout shifts)
  */
 function initDoctorCards3DTilt() {
-  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (isReducedMotion) return;
-
-  const cards = document.querySelectorAll('.doctor-dir-card, .editorial-doc-card');
-
-  cards.forEach(card => {
-    let ticking = false;
-
-    const handleMouseMove = (e) => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-
-          // Subtle, smooth 3D tilt angles (max ~5deg)
-          const rotateX = ((centerY - y) / centerY) * 4.5;
-          const rotateY = ((x - centerX) / centerX) * 4.5;
-
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px)`;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    const handleMouseLeave = () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    };
-
-    card.addEventListener('mousemove', handleMouseMove, { passive: true });
-    card.addEventListener('mouseleave', handleMouseLeave);
-  });
+  // Pure CSS transitions handle the clean 4-6px lift smoothly without mousemove jitter or layout shifts
 }
 
 /**
@@ -2074,6 +2042,51 @@ function initCampusTourModal() {
     });
   });
 
+  // Connect .gallery-item cards to open tour modal preview
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach(item => {
+    const handleGalleryOpen = () => {
+      const img = item.querySelector('.gallery-img');
+      const caption = item.querySelector('.gallery-caption');
+      const subcaption = item.querySelector('.gallery-subcaption');
+
+      if (img && tourImg) {
+        tourImg.style.opacity = '0.4';
+        tourImg.src = img.src;
+        tourImg.alt = img.alt || 'Sulakshaa Hospital Facility';
+        setTimeout(() => {
+          tourImg.style.opacity = '1';
+        }, 120);
+      }
+      if (captionTitle && caption) {
+        captionTitle.textContent = caption.textContent;
+      }
+      if (captionDesc && subcaption) {
+        captionDesc.textContent = subcaption.textContent;
+      }
+
+      // Sync active state on thumbnails
+      thumbs.forEach(thumb => {
+        const thumbSrc = thumb.getAttribute('data-src');
+        if (img && (thumbSrc === img.getAttribute('src') || img.src.includes(thumbSrc))) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+
+      openTourModal();
+    };
+
+    item.addEventListener('click', handleGalleryOpen);
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleGalleryOpen();
+      }
+    });
+  });
+
   // Book Consultation inside tour modal
   bookBtn?.addEventListener('click', () => {
     closeTourModal();
@@ -2206,3 +2219,41 @@ function initDoctorsMarquee() {
     track.classList.remove('is-paused');
   });
 }
+
+/**
+ * 20. Specialities Grid Expand / Collapse Controller
+ * Displays 6 cards initially, toggles remaining cards on click with smooth scroll/reveal
+ */
+function initSpecialitiesToggle() {
+  const toggleBtn = document.getElementById('toggleSpecialitiesBtn');
+  const grid = document.getElementById('specialitiesGrid');
+  if (!toggleBtn || !grid) return;
+
+  const btnText = toggleBtn.querySelector('.btn-toggle-text');
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = grid.classList.toggle('is-expanded');
+    toggleBtn.classList.toggle('is-expanded', isExpanded);
+    toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+
+    if (btnText) {
+      btnText.textContent = isExpanded ? 'View Less Specialities' : 'View More Specialities';
+    }
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    // When collapsing, smoothly scroll to top of specialities if past it
+    if (!isExpanded) {
+      const specialitiesSection = document.getElementById('specialities');
+      if (specialitiesSection) {
+        const rect = specialitiesSection.getBoundingClientRect();
+        if (rect.top < -50) {
+          specialitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+  });
+}
+
