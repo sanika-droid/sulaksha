@@ -203,38 +203,38 @@
         </button>
       </div>
     </div>
+  </header>
 
-    <!-- Mobile Drawer Navigation -->
-    <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
-      <div class="mobile-nav-inner">
-        <div class="mobile-nav-header">
-          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
-          <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
-            <i data-lucide="x" class="icon-md"></i>
-          </button>
-        </div>
-        <ul class="mobile-nav-list">
-          <li style="--nav-idx: 0;"><a href="#hero" class="mobile-nav-link">Home</a></li>
-          <li style="--nav-idx: 1;"><a href="#overview" class="mobile-nav-link">About Us</a></li>
-          <li style="--nav-idx: 2;"><a href="#specialities" class="mobile-nav-link">Specialities</a></li>
-          <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
-          <li style="--nav-idx: 4;"><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
-          <li style="--nav-idx: 5;"><a href="#patient-care" class="mobile-nav-link">Patient Care</a></li>
-          <li style="--nav-idx: 6;"><a href="#contact" class="mobile-nav-link">Contact</a></li>
-        </ul>
-        <div class="mobile-drawer-cta">
-          <a href="#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
-            <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
-          </a>
-          <a href="tel:+918212345678" class="btn btn-emergency btn-block mobile-drawer-btn">
-            <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
-          </a>
-        </div>
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <div class="mobile-nav-header">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
+        <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
+          <i data-lucide="x" class="icon-md"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li style="--nav-idx: 0;"><a href="#hero" class="mobile-nav-link">Home</a></li>
+        <li style="--nav-idx: 1;"><a href="#overview" class="mobile-nav-link">About Us</a></li>
+        <li style="--nav-idx: 2;"><a href="#specialities" class="mobile-nav-link">Specialities</a></li>
+        <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
+        <li style="--nav-idx: 4;"><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
+        <li style="--nav-idx: 5;"><a href="#patient-care" class="mobile-nav-link">Patient Care</a></li>
+        <li style="--nav-idx: 6;"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
+          <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+        </a>
+        <a href="tel:+918212345678" class="btn btn-emergency btn-block mobile-drawer-btn">
+          <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
+        </a>
       </div>
     </div>
-    <!-- Mobile Backdrop Overlay -->
-    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-  </header>
+  </div>
+  <!-- Mobile Backdrop Overlay -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 
   <!-- Main Content Landmark -->
   <main id="main-content">
@@ -334,17 +334,6 @@
               loading="eager"
             >
             <div class="hero-image-overlay" aria-hidden="true"></div>
-
-            <!-- Floating Information Card -->
-            <div class="floating-info-card" role="note" aria-label="Hospital feature">
-              <div class="floating-icon">
-                <i data-lucide="building-2" class="icon-md"></i>
-              </div>
-              <div class="floating-text">
-                <span class="floating-subtitle">Sulakshaa Infrastructure</span>
-                <span class="floating-title">Comprehensive Healthcare Under One Roof</span>
-              </div>
-            </div>
           </div>
 
           <!-- Staggered Hospital Image Cards Showcase -->
@@ -1020,13 +1009,6 @@
             Consult experienced practitioners dedicated to empathetic listening, clinical accuracy, and advanced multidisciplinary treatment in Mysuru.
           </p>
         </div>
-
-        <div class="doctors-ticker-hint-bar">
-          <span class="doctors-ticker-hint">
-            <span class="ticker-pulse-dot"></span>
-            <span>Continuous Medical Faculty Showcase &bull; Left to Right &bull; Hover to Pause</span>
-          </span>
-        </div>
       </div>
 
       <!-- Full-Width Infinite Moving Doctors Carousel (Left-to-Right Continuous Motion) -->
@@ -1380,7 +1362,6 @@
           </a>
         </div>
       </div>
-      </div>
     </section>
 
     <!-- 7b. Why Choose Sulakshaa Hospital Section -->
@@ -1470,23 +1451,6 @@
             <!-- <source src="assets/hospital-tour.mp4" type="video/mp4"> -->
           </video>
           <div class="facility-video-overlay" aria-hidden="true"></div>
-
-          <!-- Video Playback Control & Accessibility Toggle -->
-          <div class="facility-video-controls">
-            <button 
-              type="button" 
-              class="facility-video-ctrl-btn" 
-              id="facilityVideoToggle" 
-              aria-label="Pause background ambient video" 
-              title="Pause ambient video"
-            >
-              <i data-lucide="pause" class="icon-xs video-btn-icon"></i>
-              <span class="video-btn-text">Pause Video</span>
-            </button>
-            <span class="facility-video-tag">
-              <i data-lucide="video" class="icon-xs"></i> 4K Facility Tour Preview
-            </span>
-          </div>
 
           <!-- Hero Content Layer -->
           <div class="container facility-hero-inner">
@@ -1884,15 +1848,6 @@
           <p class="section-subtitle">
             We believe that medical excellence is strongest when accompanied by kindness, clear communication, and barrier-free hospital navigation.
           </p>
-
-          <!-- Orbit Interactive Control & Status Bar -->
-          <div class="orbit-status-bar" aria-label="Orbit animation controls">
-            <button type="button" class="orbit-ctrl-pill" id="orbitPlayPauseBtn" aria-label="Pause circular orbit animation">
-              <span class="orbit-ctrl-dot"></span>
-              <span id="orbitPlayPauseIcon"><i data-lucide="pause" class="icon-xs"></i></span>
-              <span id="orbitPlayPauseText">Continuous Orbit (Hover any card to pause)</span>
-            </button>
-          </div>
         </div>
 
         <!-- Premium Circular Orbit Card Carousel Stage -->
