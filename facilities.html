@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Facilities &amp; Clinical Infrastructure | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Explore the modern medical facilities, 24/7 casualty trauma unit, intensive care ICU, multi-slice CT scanning, advanced pathology lab, modular operation theatres, and pharmacy at Sulakshaa Hospital Mysuru.">
+  <meta name="keywords" content="hospital facilities mysuru, trauma casualty mysuru, ICU care, CT scan mysuru, pathology lab, modular operation theatres, 24/7 chemist mysuru">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=28">
+
+  <style>
+    /* Dedicated Facilities Page Styles */
+    .facilities-page-hero {
+      background: linear-gradient(135deg, #071948 0%, #0B2568 55%, #004D99 100%);
+      color: #FFFFFF;
+      padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facilities-page-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 136, 209, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .facilities-page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .facilities-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .facilities-breadcrumbs a {
+      color: #7CD4FD;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .facilities-breadcrumbs a:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    .facilities-breadcrumbs span.current {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .facilities-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #8DEBBA;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .facilities-hero-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .facilities-hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 780px;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .facilities-hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .facility-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .facility-stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7CD4FD;
+    }
+
+    .facility-stat-number {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .facility-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* All Facilities Grid Styling - Compact Vertical Size */
+    .facilities-main-section {
+      padding: clamp(2rem, 3.5vw, 3rem) 0;
+      background-color: var(--soft-background, #F8FAFC);
+    }
+
+    .facilities-page-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 991px) {
+      .facilities-page-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .facilities-page-card {
+      display: flex;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      color: inherit;
+      height: 155px;
+      min-height: 155px;
+      max-height: 165px;
+    }
+
+    .facilities-page-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(11, 37, 104, 0.12);
+      border-color: #0088D1;
+    }
+
+    .facilities-page-media {
+      flex: 0 0 35%;
+      width: 35%;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 155px;
+    }
+
+    .facilities-page-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .facilities-page-card:hover .facilities-page-media img {
+      transform: scale(1.05);
+    }
+
+    .facilities-page-body {
+      flex: 1;
+      padding: 0.8rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .facilities-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.12rem 0.5rem;
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .facilities-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.25rem;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .facilities-desc {
+      color: #4B617E;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .facilities-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #0088D1;
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-top: auto;
+      transition: gap 0.2s ease;
+    }
+
+    .facilities-page-card:hover .facilities-card-link {
+      gap: 0.5rem;
+      color: #075E94;
+    }
+
+    @media (max-width: 640px) {
+      .facilities-page-card {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        max-height: none;
+      }
+      .facilities-page-media {
+        flex: none;
+        width: 100%;
+        height: 130px;
+        min-height: 130px;
+      }
+      .facilities-page-body {
+        padding: 0.85rem 1rem;
+      }
+      .facilities-title {
+        white-space: normal;
+      }
+    }
+
+    /* Facilities Bottom CTA Bar */
+    .facilities-cta-banner {
+      background: #FFFFFF;
+      border: 1px solid #D7E5F2;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3.5rem;
+      box-shadow: 0 4px 18px rgba(11, 37, 104, 0.05);
+    }
+
+    .facilities-cta-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.5rem;
+    }
+
+    .facilities-cta-text {
+      color: #556B88;
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .facilities-cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Emergency & Quick Contact Bar -->
+  <aside class="top-announcement-bar" aria-label="Hospital Emergency Quick Contact">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <span class="emergency-badge-pulse" aria-hidden="true"></span>
+        <span class="announcement-title">24/7 Emergency &amp; Trauma Care:</span>
+        <a href="tel:+918212345678" class="emergency-call-link" aria-label="Call Emergency: +91 821 234 5678">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <strong>+91 821 234 5678</strong>
+        </a>
+      </div>
+      <div class="announcement-right">
+        <span class="announcement-item">
+          <i data-lucide="map-pin" class="icon-xs"></i>
+          <span>Sayyaji Rao Road, Mysuru, Karnataka</span>
+        </span>
+        <span class="announcement-item hide-mobile">
+          <i data-lucide="clock" class="icon-xs"></i>
+          <span>OPD: 9:00 AM – 8:00 PM</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Hospital Brand Identity -->
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Official Logo" class="brand-logo" width="145" height="42">
+        <div class="brand-text-container">
+          <span class="brand-subtext">Mysuru, Karnataka</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="index.html#specialities" class="nav-link">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link active">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNavMenu" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <div class="mobile-nav-header">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
+        <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
+          <i data-lucide="x" class="icon-md"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li style="--nav-idx: 0;"><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li style="--nav-idx: 1;"><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
+        <li style="--nav-idx: 2;"><a href="index.html#specialities" class="mobile-nav-link">Departments</a></li>
+        <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
+        <li style="--nav-idx: 4;"><a href="facilities.html" class="mobile-nav-link active">Facilities &amp; Services</a></li>
+        <li style="--nav-idx: 5;"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+        <li style="--nav-idx: 6;"><a href="index.html#blog" class="mobile-nav-link">Blog</a></li>
+        <li style="--nav-idx: 7;"><a href="index.html#contact" class="mobile-nav-link">Contact Us</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="index.html#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
+          <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+        </a>
+        <a href="tel:+918212345678" class="btn btn-emergency btn-block mobile-drawer-btn">
+          <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+  <!-- Facilities Hero Section -->
+  <section class="facilities-page-hero">
+    <div class="container">
+      <nav class="facilities-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <span class="current">Facilities &amp; Services</span>
+      </nav>
+      
+      <div class="facilities-hero-badge">
+        <i data-lucide="shield-check" class="icon-xs"></i> Advanced Medical Infrastructure
+      </div>
+      <h1 class="facilities-hero-title">Key Hospital Facilities &amp; Services</h1>
+      <p class="facilities-hero-subtitle">
+        Explore our comprehensive clinical facilities, precision diagnostic services, ICU monitoring, sterile surgical suites, and round-the-clock emergency infrastructure in Mysuru.
+      </p>
+
+      <div class="facilities-hero-stats">
+        <div class="facility-stat-item">
+          <div class="facility-stat-icon"><i data-lucide="clock" class="icon-sm"></i></div>
+          <div>
+            <div class="facility-stat-number">24/7</div>
+            <div class="facility-stat-label">Emergency &amp; Trauma Care</div>
+          </div>
+        </div>
+        <div class="facility-stat-item">
+          <div class="facility-stat-icon"><i data-lucide="heart-pulse" class="icon-sm"></i></div>
+          <div>
+            <div class="facility-stat-number">Advanced ICU</div>
+            <div class="facility-stat-label">Bedside Telemetry &amp; Ventilators</div>
+          </div>
+        </div>
+        <div class="facility-stat-item">
+          <div class="facility-stat-icon"><i data-lucide="activity" class="icon-sm"></i></div>
+          <div>
+            <div class="facility-stat-number">Modular OT</div>
+            <div class="facility-stat-label">Laminar Airflow Surgery Suites</div>
+          </div>
+        </div>
+        <div class="facility-stat-item">
+          <div class="facility-stat-icon"><i data-lucide="store" class="icon-sm"></i></div>
+          <div>
+            <div class="facility-stat-number">24 Hours</div>
+            <div class="facility-stat-label">In-House Chemist &amp; Supplies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Facilities Cards Grid -->
+  <main class="facilities-main-section" id="main-content">
+    <div class="container">
+      
+      <div class="section-header text-center">
+        <span class="badge badge-accent">CLINICAL EXCELLENCE</span>
+        <h2 class="section-title">Specialized Hospital Infrastructure</h2>
+        <p class="section-subtitle">
+          Click any facility to view comprehensive equipment details, operating standards, and specialized patient capabilities.
+        </p>
+      </div>
+
+      <div class="facilities-page-grid">
+
+        <!-- Card 1: 24/7 Casualty & Emergency Trauma Unit -->
+        <a href="facility-details.html?id=emergency-trauma" class="facilities-page-card" aria-label="View 24/7 Casualty & Emergency Trauma Unit Details">
+          <div class="facilities-page-media">
+            <img 
+              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&h=450&q=80" 
+              alt="24/7 Casualty and Emergency Trauma Unit at Sulakshaa Hospital" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="shield-alert" class="icon-xs"></i> Emergency &amp; Critical Care
+            </span>
+            <h3 class="facilities-title">24/7 Casualty &amp; Emergency Trauma Unit</h3>
+            <p class="facilities-desc">Immediate triage, dedicated resuscitation bays, point-of-care vital telemetry, and 24/7 emergency medical officers prepared for acute trauma and emergencies.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 2: Advanced Diagnostic Imaging & CT Scanning -->
+        <a href="facility-details.html?id=radiology-imaging" class="facilities-page-card" aria-label="View Advanced Diagnostic Imaging & CT Scanning Details">
+          <div class="facilities-page-media">
+            <img 
+              src="assets/advanced-diagnostics.png" 
+              alt="Advanced Diagnostic Imaging and CT Scanning Suite" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="scan" class="icon-xs"></i> Radiology &amp; Imaging
+            </span>
+            <h3 class="facilities-title">Advanced Diagnostic Imaging &amp; CT Scanning</h3>
+            <p class="facilities-desc">High-definition multi-slice CT scanning, digital X-Ray, and 4D color Doppler ultrasound delivering fast, low-dose cross-sectional imaging for diagnostic precision.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 3: Automated Clinical Pathology & Biochemistry Lab -->
+        <a href="facility-details.html?id=clinical-laboratory" class="facilities-page-card" aria-label="View Automated Clinical Pathology & Biochemistry Lab Details">
+          <div class="facilities-page-media">
+            <img 
+              src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=700&h=450&q=80" 
+              alt="Automated Clinical Pathology and Biochemistry Laboratory" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="flask-conical" class="icon-xs"></i> Laboratory &amp; Diagnostics
+            </span>
+            <h3 class="facilities-title">Automated Clinical Pathology &amp; Biochemistry Lab</h3>
+            <p class="facilities-desc">High-throughput automated clinical analyzers delivering rapid turnaround times for complete blood counts, cardiac biomarkers, infectious profiles, and metabolic screening.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 4: Monitored Intensive Care & Coronary Units (ICU) -->
+        <a href="facility-details.html?id=intensive-care" class="facilities-page-card" aria-label="View Monitored Intensive Care & Coronary Units (ICU) Details">
+          <div class="facilities-page-media">
+            <img 
+              src="assets/cardiac-care.jpg" 
+              alt="Monitored Intensive Care Unit and Cardiac Beds" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="heart-pulse" class="icon-xs"></i> Intensive Care Unit (ICU)
+            </span>
+            <h3 class="facilities-title">Monitored Intensive Care &amp; Coronary Units (ICU)</h3>
+            <p class="facilities-desc">Multi-parameter bedside telemetry, invasive mechanical ventilators, centralized monitoring stations, and 1:1 dedicated critical-care nursing for acute conditions.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 5: Inpatient Recovery Suites & Private Rooms -->
+        <a href="facility-details.html?id=inpatient-recovery" class="facilities-page-card" aria-label="View Inpatient Recovery Suites & Private Rooms Details">
+          <div class="facilities-page-media">
+            <img 
+              src="assets/sulakshaa-opd-lounge.png" 
+              alt="Sulakshaa Inpatient Recovery Suites and Patient Amenities" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="bed" class="icon-xs"></i> Inpatient Rooms &amp; Recovery
+            </span>
+            <h3 class="facilities-title">Inpatient Recovery Suites &amp; Private Rooms</h3>
+            <p class="facilities-desc">Comfortable healing accommodations featuring private suites, semi-private rooms, and deluxe wards with 100% barrier-free wheelchair access and companion amenities.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 6: 24/7 In-House Chemist & Emergency Pharmacy -->
+        <a href="facility-details.html?id=inhouse-pharmacy" class="facilities-page-card" aria-label="View 24/7 In-House Chemist & Emergency Pharmacy Details">
+          <div class="facilities-page-media">
+            <img 
+              src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=700&h=450&q=80" 
+              alt="Sulakshaa 24/7 In-House Pharmacy Counter" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="store" class="icon-xs"></i> In-House Pharmacy
+            </span>
+            <h3 class="facilities-title">24/7 In-House Chemist &amp; Emergency Pharmacy</h3>
+            <p class="facilities-desc">Fully licensed 24-hour hospital pharmacy stocked with emergency medications, critical care injectables, post-surgical dressings, and everyday outpatient prescriptions.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 7: Sterile Surgical Operation Theatres (OT) -->
+        <a href="facility-details.html?id=surgical-facilities" class="facilities-page-card" aria-label="View Sterile Surgical Operation Theatres (OT) Details">
+          <div class="facilities-page-media">
+            <img 
+              src="assets/journey-robotic-surgery.jpg" 
+              alt="Modular Surgical Operation Theatres at Sulakshaa Hospital" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="activity" class="icon-xs"></i> Surgical Facilities
+            </span>
+            <h3 class="facilities-title">Sterile Surgical Operation Theatres (OT)</h3>
+            <p class="facilities-desc">Purpose-built sterile operating suites equipped with laminar airflow, advanced anesthesia workstations, electrocautery, and post-operative recovery bays.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 8: OPD Consultation Clinics & Patient Waiting Lounge -->
+        <a href="facility-details.html?id=outpatient-lounge" class="facilities-page-card" aria-label="View OPD Consultation Clinics & Patient Waiting Lounge Details">
+          <div class="facilities-page-media">
+            <img 
+              src="assets/sulakshaa-reception.jpg" 
+              alt="Central Reception and OPD Waiting Lounge at Sulakshaa Hospital" 
+              loading="lazy"
+            >
+          </div>
+          <div class="facilities-page-body">
+            <span class="facilities-badge">
+              <i data-lucide="armchair" class="icon-xs"></i> Consultation &amp; Outpatient
+            </span>
+            <h3 class="facilities-title">OPD Clinics &amp; Patient Waiting Lounge</h3>
+            <p class="facilities-desc">Spacious registration desks, digital queue management, comfortable air-conditioned waiting lounges, and private consulting chambers for specialist outpatient clinics.</p>
+            <span class="facilities-card-link">
+              <span>Explore Facility Specifications</span> <i data-lucide="arrow-right" class="icon-xs"></i>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Facilities CTA Banner -->
+      <div class="facilities-cta-banner">
+        <h3 class="facilities-cta-title">Need Specialized Clinical Care or Inpatient Admission?</h3>
+        <p class="facilities-cta-text">
+          Our administrative helpdesk and clinical liaison team are available 24/7 to assist with facility tours, patient admission guidance, diagnostics booking, and insurance cashless desk support.
+        </p>
+        <div class="facilities-cta-actions">
+          <a href="index.html#enquiry" class="btn btn-primary btn-lg">
+            <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+          </a>
+          <a href="tel:+918212345678" class="btn btn-outline-emergency btn-lg">
+            <i data-lucide="phone-call" class="icon-sm"></i> Call 24/7 Emergency: +91 821 234 5678
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Standard Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-col brand-col">
+        <div class="footer-logo-row">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital" class="footer-logo" width="135" height="38">
+        </div>
+        <p class="footer-desc">
+          Sulakshaa Multi Speciality Hospital provides advanced clinical care, 24/7 emergency services, and compassionate patient healing in Mysuru, Karnataka.
+        </p>
+      </div>
+
+      <div class="footer-col links-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="index.html#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Us</a></li>
+          <li><a href="index.html#specialities"><i data-lucide="chevron-right" class="icon-xs"></i> Departments</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Our Doctors</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Facilities &amp; Services</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="index.html#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4 class="footer-heading">Contact &amp; Emergency</h4>
+        <p class="footer-contact-item"><i data-lucide="map-pin" class="icon-xs"></i> Sayyaji Rao Road, Mysuru, Karnataka 570021</p>
+        <p class="footer-contact-item"><i data-lucide="phone-call" class="icon-xs"></i> Emergency: +91 821 234 5678</p>
+        <p class="footer-contact-item"><i data-lucide="mail" class="icon-xs"></i> info@sulakshaahospital.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p>&copy; 2026 Sulakshaa Multi Speciality Hospital. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide icons
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    // Mobile Drawer Navigation Handler
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileClose = document.getElementById('mobileCloseBtn');
+    const mobileDrawer = document.getElementById('mobileNavMenu');
+    const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+
+    function toggleMobileMenu(open) {
+      if (!mobileDrawer) return;
+      if (open) {
+        mobileDrawer.classList.add('is-open');
+        mobileDrawer.setAttribute('aria-hidden', 'false');
+        if (mobileBackdrop) mobileBackdrop.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileDrawer.classList.remove('is-open');
+        mobileDrawer.setAttribute('aria-hidden', 'true');
+        if (mobileBackdrop) mobileBackdrop.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (mobileBtn) mobileBtn.addEventListener('click', () => toggleMobileMenu(true));
+    if (mobileClose) mobileClose.addEventListener('click', () => toggleMobileMenu(false));
+    if (mobileBackdrop) mobileBackdrop.addEventListener('click', () => toggleMobileMenu(false));
+  </script>
+</body>
+</html>

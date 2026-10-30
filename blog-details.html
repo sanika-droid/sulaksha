@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Health Insights &amp; Clinical Blog | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" id="pageMetaDesc" content="Read expert medical articles, health insights, and clinical advice from senior specialists at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=32">
+
+  <style>
+    /* ==========================================================================
+       Sulakshaa Hospital – Dedicated Blog Detail Page Styles
+       ========================================================================== */
+    .blog-detail-page {
+      background-color: var(--soft-background, #F5F9FD);
+      color: var(--main-text, #1E293B);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-detail-main {
+      flex: 1;
+      padding-top: clamp(1.5rem, 3vw, 2.5rem);
+      padding-bottom: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    /* Breadcrumbs Navigation */
+    .blog-breadcrumbs-nav {
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+    }
+
+    .blog-breadcrumbs a {
+      color: #0088D1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.18s ease;
+    }
+
+    .blog-breadcrumbs a:hover {
+      color: #0B2568;
+      text-decoration: underline;
+    }
+
+    .blog-breadcrumbs .current-crumb {
+      color: #0B2568;
+      font-weight: 600;
+      max-width: 380px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Article Hero Card */
+    .blog-hero-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+      box-shadow: 0 4px 20px rgba(11, 37, 104, 0.04);
+      margin-bottom: 2rem;
+    }
+
+    .blog-hero-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #0B2568;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.28rem 0.85rem;
+      border-radius: 50px;
+    }
+
+    .blog-verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #DCFCE7;
+      color: #15803D;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      border: 1px solid rgba(22, 163, 74, 0.2);
+    }
+
+    .blog-main-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.65rem, 3vw, 2.45rem);
+      font-weight: 800;
+      color: #0B2568;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .blog-meta-strip {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.75rem, 2vw, 1.75rem);
+      font-size: 0.84rem;
+      color: #556B88;
+      flex-wrap: wrap;
+      padding-top: 0.85rem;
+      border-top: 1px solid #EDF2F7;
+    }
+
+    .blog-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .blog-author-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0088D1;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Two-Column Layout Grid */
+    .blog-layout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    /* Left Column – Article Content Container */
+    .blog-article-wrapper {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(11, 37, 104, 0.04);
+    }
+
+    .blog-featured-media {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      background: #0B2568;
+    }
+
+    .blog-featured-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .blog-media-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(11, 37, 104, 0.85) 100%);
+      color: #FFFFFF;
+      padding: 1.5rem 1.5rem 0.85rem;
+      font-size: 0.8rem;
+    }
+
+    .blog-article-content {
+      padding: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    /* Lead Introduction */
+    .article-lead {
+      font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+      line-height: 1.7;
+      color: #1E293B;
+      font-weight: 500;
+      margin-bottom: 1.85rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #EDF2F7;
+    }
+
+    .article-section-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-top: 2rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .article-paragraph {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: #334155;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Bullet List with Icons */
+    .article-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .article-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.94rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .article-bullet-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #EBF8FF;
+      color: #0088D1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* Clinical Tip / Doctor Callout Box */
+    .doctor-callout-box {
+      background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+      border-left: 4px solid #0088D1;
+      border-radius: 0 12px 12px 0;
+      padding: 1.35rem 1.6rem;
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .doctor-callout-icon {
+      flex-shrink: 0;
+      color: #0088D1;
+      width: 28px;
+      height: 28px;
+      margin-top: 2px;
+    }
+
+    .doctor-callout-text h4 {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.35rem;
+    }
+
+    .doctor-callout-text p {
+      font-size: 0.9rem;
+      color: #0369A1;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Supporting Content Image */
+    .article-secondary-media {
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+    }
+
+    .article-secondary-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-secondary-caption {
+      background: #F8FAFC;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #64748B;
+      border-top: 1px solid #EDF2F7;
+      text-align: center;
+    }
+
+    /* Conclusion Box */
+    .article-conclusion {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .article-conclusion h3 {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-conclusion p {
+      font-size: 0.93rem;
+      color: #475569;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Article Sharing & Utilities Bar */
+    .article-utilities-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #EDF2F7;
+      flex-wrap: wrap;
+    }
+
+    .share-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .share-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    .share-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .share-btn:hover {
+      background: #0088D1;
+      color: #FFFFFF;
+      border-color: #0088D1;
+      transform: translateY(-2px);
+    }
+
+    /* Prev / Next Article Navigation */
+    .article-adjacent-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid #EDF2F7;
+    }
+
+    .adjacent-card {
+      padding: 1.15rem;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      background: #FAFAFA;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+
+    .adjacent-card:hover {
+      background: #F0F9FF;
+      border-color: #0088D1;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 136, 209, 0.08);
+    }
+
+    .adjacent-card.next {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .adjacent-label {
+      font-size: 0.75rem;
+      color: #64748B;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .adjacent-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0B2568;
+      line-height: 1.35;
+    }
+
+    .back-to-blogs-row {
+      margin-top: 1.75rem;
+      text-align: center;
+    }
+
+    /* Right Column – Sidebar Styling */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: sticky;
+      top: 90px;
+    }
+
+    .sidebar-widget {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 1.35rem 1.25rem;
+      box-shadow: 0 2px 10px rgba(11, 37, 104, 0.03);
+    }
+
+    .widget-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid #EBF4FC;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Senior Specialists List */
+    .specialist-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .specialist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.65rem 0.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.18s ease;
+    }
+
+    .specialist-item:hover {
+      background-color: #F8FAFC;
+    }
+
+    .specialist-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid #0088D1;
+      background: #EBF8FF;
+    }
+
+    .specialist-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .specialist-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #0B2568;
+      margin-bottom: 2px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .specialist-dept {
+      font-size: 0.75rem;
+      color: #0088D1;
+      font-weight: 600;
+      display: block;
+    }
+
+    /* Related Articles List */
+    .related-articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .related-article-item {
+      display: flex;
+      gap: 0.85rem;
+      text-decoration: none;
+      align-items: center;
+      padding: 0.4rem;
+      border-radius: 8px;
+      transition: background-color 0.18s ease;
+    }
+
+    .related-article-item:hover {
+      background-color: #F1F5F9;
+    }
+
+    .related-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #0B2568;
+    }
+
+    .related-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .related-cat {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #0088D1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .related-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #0B2568;
+      line-height: 1.35;
+      margin-bottom: 3px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .related-date {
+      font-size: 0.72rem;
+      color: #64748B;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Appointment Action Widget */
+    .appointment-widget {
+      background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%);
+      color: #FFFFFF;
+      border: none;
+      text-align: center;
+      padding: 1.75rem 1.25rem;
+    }
+
+    .appointment-widget h3 {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.45rem;
+    }
+
+    .appointment-widget p {
+      font-size: 0.85rem;
+      color: #E0F2FE;
+      line-height: 1.5;
+      margin-bottom: 1.15rem;
+    }
+
+    .appointment-widget .btn-widget-book {
+      background: #FFFFFF;
+      color: #0B2568;
+      font-weight: 700;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .appointment-widget .btn-widget-book:hover {
+      background: #F0F9FF;
+      transform: translateY(-2px);
+    }
+
+    /* Emergency Casualty Widget */
+    .emergency-widget {
+      background: #FFF5F5;
+      border: 1px solid #FECACA;
+      padding: 1.35rem 1.25rem;
+    }
+
+    .emergency-widget-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #DC2626;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .emergency-widget p {
+      font-size: 0.82rem;
+      color: #7F1D1D;
+      line-height: 1.45;
+      margin-bottom: 0.85rem;
+    }
+
+    .emergency-call-btn {
+      background: #DC2626;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    .emergency-call-btn:hover {
+      background: #B91C1C;
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .blog-layout-grid {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 1.5rem;
+      }
+      .blog-featured-media {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .blog-layout-grid {
+        grid-template-columns: 1fr;
+      }
+      .blog-sidebar {
+        position: static;
+        margin-top: 1.5rem;
+      }
+      .blog-featured-media {
+        height: 280px;
+      }
+      .article-adjacent-nav {
+        grid-template-columns: 1fr;
+      }
+      .adjacent-card.next {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-featured-media {
+        height: 220px;
+      }
+      .blog-article-content {
+        padding: 1.25rem 1rem;
+      }
+      .blog-hero-card {
+        padding: 1.25rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="blog-detail-page">
+
+  <!-- Top Announcement Bar -->
+  <header class="top-bar" aria-label="Hospital Emergency Contact Bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-item emergency-item">
+          <i data-lucide="phone-call" class="icon-xs" aria-hidden="true"></i>
+          <strong>24/7 Casualty &amp; Triage:</strong> 
+          <a href="tel:+918212345678" class="top-bar-link">+91 821 234 5678*</a>
+        </span>
+        <span class="top-bar-divider" aria-hidden="true">|</span>
+        <span class="top-bar-item">
+          <i data-lucide="map-pin" class="icon-xs" aria-hidden="true"></i>
+          <span>Mysuru, Karnataka</span>
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html#enquiry" class="top-bar-action-link">
+          <i data-lucide="calendar" class="icon-xs"></i>
+          <span>Doctor Consultation</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Official Logo" class="brand-logo" width="145" height="42">
+        <div class="brand-text-container">
+          <span class="brand-subtext">Mysuru, Karnataka</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link active">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNavMenu" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-identity">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital Logo" class="brand-logo" width="130" height="38">
+        </a>
+        <button type="button" class="mobile-drawer-close" id="mobileDrawerCloseBtn" aria-label="Close navigation menu">
+          <i data-lucide="x" class="icon-md"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
+        <li><a href="departments.html" class="mobile-nav-link">Departments</a></li>
+        <li><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
+        <li><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
+        <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+        <li><a href="index.html#blog" class="mobile-nav-link active">Blog</a></li>
+        <li><a href="index.html#contact" class="mobile-nav-link">Contact Us</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="index.html#enquiry" class="btn btn-primary btn-block">
+          <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+        </a>
+        <a href="tel:+918212345678" class="btn btn-emergency btn-block">
+          <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+  <!-- Main Content Area -->
+  <main class="blog-detail-main" id="mainContent">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <nav class="blog-breadcrumbs-nav" aria-label="Breadcrumb">
+        <div class="blog-breadcrumbs">
+          <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+          <i data-lucide="chevron-right" class="icon-xs"></i>
+          <a href="index.html#blog">Health Insights &amp; Blog</a>
+          <i data-lucide="chevron-right" class="icon-xs"></i>
+          <span class="current-crumb" id="breadcrumbTitle">Article Details</span>
+        </div>
+      </nav>
+
+      <!-- Blog Hero Card -->
+      <header class="blog-hero-card">
+        <div class="blog-hero-top">
+          <span class="blog-category-pill" id="articleCategory">Category</span>
+          <span class="blog-verified-badge"><i data-lucide="shield-check" class="icon-xs"></i> Medically Reviewed</span>
+        </div>
+        
+        <h1 class="blog-main-title" id="articleTitle">Article Title</h1>
+        
+        <div class="blog-meta-strip">
+          <div class="blog-meta-item">
+            <span class="blog-author-avatar" id="authorAvatar">SH</span>
+            <div>
+              <span id="articleAuthor" style="font-weight: 600; color: #0B2568;">Sulakshaa Medical Faculty</span>
+            </div>
+          </div>
+          <div class="blog-meta-item">
+            <i data-lucide="calendar" class="icon-xs"></i>
+            <span id="articleDate">Oct 2026</span>
+          </div>
+          <div class="blog-meta-item">
+            <i data-lucide="clock" class="icon-xs"></i>
+            <span id="articleReadTime">5 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Two-Column Layout -->
+      <div class="blog-layout-grid">
+        
+        <!-- Left: Main Article -->
+        <article class="blog-article-wrapper">
+          <div class="blog-featured-media">
+            <img src="assets/blog-preventive-health.jpg" alt="Article Featured Image" class="blog-featured-img" id="featuredImg">
+            <div class="blog-media-caption" id="featuredImgCaption">Sulakshaa Multi Speciality Hospital Clinical Guidance</div>
+          </div>
+
+          <div class="blog-article-content" id="articleBody">
+            <!-- Injected via JavaScript based on Article ID -->
+          </div>
+
+          <!-- Article Utilities (Share & Bookmark) -->
+          <div style="padding: 0 clamp(1.75rem, 4vw, 3rem) clamp(1.75rem, 4vw, 3rem);">
+            <div class="article-utilities-bar">
+              <div class="share-group">
+                <span class="share-label">Share This Guidance:</span>
+                <a href="#" class="share-btn" id="shareWhatsApp" aria-label="Share on WhatsApp"><i data-lucide="message-circle" class="icon-xs"></i></a>
+                <a href="#" class="share-btn" id="shareTwitter" aria-label="Share on X / Twitter"><i data-lucide="twitter" class="icon-xs"></i></a>
+                <button type="button" class="share-btn" id="shareCopyBtn" aria-label="Copy Article Link"><i data-lucide="link" class="icon-xs"></i></button>
+                <button type="button" class="share-btn" id="printArticleBtn" aria-label="Print Article"><i data-lucide="printer" class="icon-xs"></i></button>
+              </div>
+              <a href="index.html#enquiry" class="btn btn-outline btn-sm">
+                <i data-lucide="calendar" class="icon-xs"></i> Consult A Specialist
+              </a>
+            </div>
+
+            <!-- Adjacent Article Navigation -->
+            <div class="article-adjacent-nav">
+              <a href="#" class="adjacent-card prev" id="prevArticleCard">
+                <span class="adjacent-label"><i data-lucide="arrow-left" class="icon-xs"></i> Previous Article</span>
+                <span class="adjacent-title" id="prevArticleTitle">Previous Story</span>
+              </a>
+              <a href="#" class="adjacent-card next" id="nextArticleCard">
+                <span class="adjacent-label">Next Article <i data-lucide="arrow-right" class="icon-xs"></i></span>
+                <span class="adjacent-title" id="nextArticleTitle">Next Story</span>
+              </a>
+            </div>
+
+            <div class="back-to-blogs-row">
+              <a href="index.html#blog" class="btn btn-outline btn-sm">
+                <i data-lucide="arrow-left" class="icon-xs"></i> Back to All Health Insights
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right: Sidebar -->
+        <aside class="blog-sidebar" aria-label="Sidebar Resources">
+          
+          <!-- Senior Specialists Widget -->
+          <div class="sidebar-widget">
+            <h3 class="widget-title">
+              <span>Senior Specialists</span>
+              <i data-lucide="stethoscope" class="icon-xs" style="color: #0088D1;"></i>
+            </h3>
+            <div class="specialist-list">
+              <a href="doctors.html" class="specialist-item">
+                <img src="assets/dr-laxme-gowda.png" alt="Dr. Laxme Gowda" class="specialist-avatar" onerror="this.src='assets/general-medicine.png'">
+                <div class="specialist-info">
+                  <strong class="specialist-name">Dr. Laxme Gowda</strong>
+                  <span class="specialist-dept">General Medicine &bull; 45+ Yrs</span>
+                </div>
+                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
+              </a>
+              <a href="doctors.html" class="specialist-item">
+                <div class="specialist-avatar" style="display:flex;align-items:center;justify-content:center;background:#0B2568;color:#FFF;font-weight:700;font-size:0.8rem;">PS</div>
+                <div class="specialist-info">
+                  <strong class="specialist-name">Dr. Priya S. Sharma</strong>
+                  <span class="specialist-dept">Consultant Cardiologist &bull; 16+ Yrs</span>
+                </div>
+                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
+              </a>
+              <a href="doctors.html" class="specialist-item">
+                <div class="specialist-avatar" style="display:flex;align-items:center;justify-content:center;background:#0088D1;color:#FFF;font-weight:700;font-size:0.8rem;">AK</div>
+                <div class="specialist-info">
+                  <strong class="specialist-name">Dr. Anand R. Kulkarni</strong>
+                  <span class="specialist-dept">Orthopedic Surgeon &bull; Joint Care</span>
+                </div>
+                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Related Health Articles Widget -->
+          <div class="sidebar-widget">
+            <h3 class="widget-title">
+              <span>Related Articles</span>
+              <i data-lucide="book-open" class="icon-xs" style="color: #0088D1;"></i>
+            </h3>
+            <div class="related-articles-list" id="relatedArticlesList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Book Appointment Widget -->
+          <div class="sidebar-widget appointment-widget">
+            <i data-lucide="calendar-heart" class="icon-lg" style="margin-bottom: 0.65rem;"></i>
+            <h3>Need Clinical Advice?</h3>
+            <p>Consult with experienced clinical consultants at Sulakshaa Hospital for personalized medical evaluation.</p>
+            <a href="index.html#enquiry" class="btn-widget-book">
+              <i data-lucide="calendar" class="icon-xs"></i> Book Consultation
+            </a>
+          </div>
+
+          <!-- 24/7 Emergency Casualty Widget -->
+          <div class="sidebar-widget emergency-widget">
+            <div class="emergency-widget-header">
+              <i data-lucide="alert-circle" class="icon-sm"></i>
+              <span>24/7 Emergency Casualty</span>
+            </div>
+            <p>For sudden chest tightness, breathlessness, pediatric distress, or trauma, report immediately to our casualty.</p>
+            <a href="tel:+918212345678" class="emergency-call-btn">
+              <i data-lucide="phone-call" class="icon-xs"></i> Call Casualty: +91 821 234 5678*
+            </a>
+          </div>
+
+          <!-- Hospital Contact Info -->
+          <div class="sidebar-widget" style="font-size: 0.84rem; color: #556B88;">
+            <h4 style="font-family: var(--font-heading); color: #0B2568; font-size: 0.95rem; margin-bottom: 0.5rem;">
+              <i data-lucide="map-pin" class="icon-xs" style="color: #0088D1; display: inline;"></i> Sulakshaa Hospital
+            </h4>
+            <p style="margin-bottom: 0.65rem; line-height: 1.45;">Centrally situated in Mysuru, Karnataka with barrier-free patient access, 24/7 diagnostic labs, and dedicated ambulance bays.</p>
+            <a href="https://maps.google.com/?q=Sulakshaa+Multi+Speciality+Hospital+Mysuru" target="_blank" rel="noopener noreferrer" style="color: #0088D1; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;">
+              <span>Get Driving Directions</span>
+              <i data-lucide="external-link" class="icon-xs"></i>
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Hospital Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital" class="footer-logo" width="160" height="46">
+            <p class="footer-tagline">Providing ethical, advanced, and patient-centered multi-speciality clinical healthcare in Mysuru.</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
+            <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Departments</a></li>
+            <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Specialist Doctors</a></li>
+            <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Facilities</a></li>
+            <li><a href="index.html#blog"><i data-lucide="chevron-right" class="icon-xs"></i> Health Insights &amp; Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">24/7 Helpline</h4>
+          <p style="font-size:0.86rem; color:#A0AEC0; margin-bottom:0.75rem;">Casualty Emergency &amp; Triage:</p>
+          <a href="tel:+918212345678" style="color:#FFF; font-weight:700; font-size:1.05rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:1rem;">
+            <i data-lucide="phone-call" class="icon-sm" style="color:#0088D1;"></i> +91 821 234 5678*
+          </a>
+          <p style="font-size:0.78rem; color:#718096; line-height:1.4;">* Dial 112 for pan-India emergency services.</p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved. Ethical Healthcare.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Articles Database & Interactive Loader Script -->
+  <script>
+    const BLOG_ARTICLES = {
+      'preventive-health': {
+        id: 'preventive-health',
+        title: 'Value of Annual Preventive Health Screenings',
+        category: 'Preventive Health',
+        date: 'Oct 2026',
+        readTime: '4 min read',
+        author: 'Dr. Laxme Gowda, Senior Physician',
+        authorInitials: 'LG',
+        image: 'assets/blog-preventive-health.jpg',
+        imageCaption: 'Early diagnostics and preventative screenings safeguard long-term wellness.',
+        metaDesc: 'Discover why annual preventive checkups detect silent conditions like hypertension and prediabetes early at Sulakshaa Multi Speciality Hospital.',
+        lead: 'In modern preventative medicine, proactive screening represents the single most effective barrier against lifestyle disorders. Periodic clinical checks detect silent physiological changes long before overt symptoms manifest.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="stethoscope" class="icon-sm"></i> Why "Feeling Fine" Isn’t Always Enough</h2>
+          <p class="article-paragraph">
+            Many chronic conditions—such as essential hypertension, early-stage type-2 diabetes, dyslipidemia, and renal strain—develop quietly without noticeable pain or discomfort. By the time noticeable symptoms like persistent fatigue, chest tightness, or blurry vision arise, organ strain may already be established.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="alert-circle" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Senior Clinician Insight</h4>
+              <p>“Detecting high blood sugar or elevated blood pressure early gives patients the golden opportunity to correct values through guided nutrition, moderate activity, and minimal medication before target organs are impacted.” — Dr. Laxme Gowda</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="clipboard-check" class="icon-sm"></i> Essential Baseline Screening Battery</h2>
+          <p class="article-paragraph">
+            Depending on age, family clinical history, and occupational stress levels, our clinical faculty recommends the following periodic evaluations:
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Fasting Blood Glucose &amp; HbA1c:</strong> Evaluates three-month glycaemic control, identifying prediabetes stages where lifestyle reversal is most successful.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Complete Lipid Panel:</strong> Measures LDL, HDL, triglycerides, and total cholesterol to map cardiovascular risk profiles accurately.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Renal &amp; Liver Function Tests (KFT / LFT):</strong> Assesses creatinine, urea, and transaminases to ensure vital filtration pathways are working without burden.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Resting Electrocardiogram (ECG):</strong> Screens heart rhythm, conduction intervals, and early signs of left ventricular hypertrophy.</span>
+            </li>
+          </ul>
+
+          <div class="article-secondary-media">
+            <img src="assets/advanced-diagnostics.png" alt="Advanced Clinical Diagnostic Laboratory" class="article-secondary-img">
+            <div class="article-secondary-caption">Sulakshaa Hospital Diagnostic Suite: Automated biochemical pathology &amp; high-precision reporting.</div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="heart-pulse" class="icon-sm"></i> Personalized Preventive Schedules by Age</h2>
+          <p class="article-paragraph">
+            Young adults aged 20–35 with a sedentary lifestyle benefit from baseline screening every two years. For individuals above 35 years or those with a familial history of heart disease, annual comprehensive health panels are clinically advised.
+          </p>
+
+          <div class="article-conclusion">
+            <h3>Summary &amp; Clinical Recommendation</h3>
+            <p>Annual health evaluations are not about discovering illness—they are about establishing peace of mind and creating an evidence-based roadmap for lasting vitality. Our diagnostic laboratory and internal medicine physicians at Sulakshaa Multi Speciality Hospital provide same-day report consultations to discuss tailored lifestyle interventions.</p>
+          </div>
+        `
+      },
+      'cardiology': {
+        id: 'cardiology',
+        title: 'Daily Habits for Cardiovascular Wellness',
+        category: 'Cardiology',
+        date: 'Oct 2026',
+        readTime: '5 min read',
+        author: 'Dr. Priya S. Sharma, Consultant Cardiologist',
+        authorInitials: 'PS',
+        image: 'assets/blog-cardiology.jpg',
+        imageCaption: 'Consistent daily lifestyle habits protect coronary circulation and arterial elasticity.',
+        metaDesc: 'Evidence-based cardiovascular health habits from cardiologist Dr. Priya Sharma at Sulakshaa Hospital, Mysuru.',
+        lead: 'Heart health is not defined by rare intensive workouts, but by daily, sustainable micro-habits. Simple dietary choices, structured brisk walking, and stress modulation drastically lower coronary artery risk over decades.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="activity" class="icon-sm"></i> The Power of 30 Minutes Daily Movement</h2>
+          <p class="article-paragraph">
+            The myocardium is a muscle that responds powerfully to aerobic conditioning. Engaging in 30 minutes of brisk walking, swimming, or cycling five days a week enhances coronary collateral circulation, improves vascular endothelial function, and raises beneficial HDL cholesterol.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="heart" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Cardiology Faculty Advice</h4>
+              <p>“You do not need to run marathons to protect your heart. 30 minutes of continuous brisk walking—at a pace where you can talk but not sing—is clinically shown to reduce coronary events by up to 35%.” — Dr. Priya S. Sharma</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="shield-alert" class="icon-sm"></i> Sodium Awareness &amp; Endothelial Health</h2>
+          <p class="article-paragraph">
+            Dietary sodium directly influences blood volume and arterial wall tension. Moderating processed foods, commercial pickles, and packaged snacks while prioritizing potassium-rich whole foods like tender coconut water, leafy greens, and lentils preserves normal arterial stiffness.
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Prioritize Unprocessed Foods:</strong> Cook fresh vegetables and legumes with measured iodized salt rather than pre-salted mixes.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Hydrate Consistently:</strong> Adequate water intake maintains blood viscosity and prevents dehydration-related pulse acceleration.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Restful Sleep Architecture:</strong> 7 to 8 hours of uninterrupted sleep lowers baseline sympathetic nervous tone and morning cortisol spikes.</span>
+            </li>
+          </ul>
+
+          <div class="article-secondary-media">
+            <img src="assets/cardiac-care.jpg" alt="Sulakshaa Hospital Cardiac Care Unit" class="article-secondary-img">
+            <div class="article-secondary-caption">Sulakshaa Hospital ICU: Multi-parameter telemetry &amp; 24/7 coronary monitoring facilities.</div>
+          </div>
+
+          <div class="article-conclusion">
+            <h3>When to Seek Immediate Cardiac Assessment</h3>
+            <p>If you experience unusual retrosternal chest heaviness, radiation of discomfort to the left arm or jaw during exertion, unexplained shortness of breath, or cold sweating, seek immediate medical assessment at our 24/7 Casualty &amp; ICU facility without delay.</p>
+          </div>
+        `
+      },
+      'paediatrics': {
+        id: 'paediatrics',
+        title: 'Safeguarding Children During Weather Shifts',
+        category: 'Pediatric Care',
+        date: 'Sep 2026',
+        readTime: '4 min read',
+        author: 'Pediatric Faculty, Sulakshaa Hospital',
+        authorInitials: 'PF',
+        image: 'assets/paediatrics.png',
+        imageCaption: 'Gentle clinical care and practical guidance for infants and growing children.',
+        metaDesc: 'Pediatric guidelines on preventing seasonal wheezing, fevers, and viral illnesses in children during weather transitions.',
+        lead: 'Seasonal weather shifts in Mysuru often trigger sudden spikes in pediatric viral fevers, seasonal bronchiolitis, and allergen sensitivity. Equipping parents with early preventive protocols prevents unnecessary emergency visits.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="baby" class="icon-sm"></i> Understanding Pediatric Respiratory Vulnerability</h2>
+          <p class="article-paragraph">
+            Children have narrower airways and developing immune systems. When ambient humidity drops or morning temperatures fluctuate, respiratory mucosa dry out, facilitating viral entry. Common culprits include Rhinovirus and RSV (Respiratory Syncytial Virus).
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="smile" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Pediatrician Clinical Note</h4>
+              <p>“Never administer over-the-counter cough syrups or adult antipyretics to infants without pediatric dosing. Most viral fevers resolve safely with adequate hydration, saline nasal drops, and temperature regulation.”</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="thermometer" class="icon-sm"></i> Core Home Care Steps During Seasonal Shifts</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Frequent Small Sips of Warm Fluids:</strong> Warm water, tender coconut, and clear soups prevent dehydration and thin mucus secretions.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Saline Nasal Drops for Congestion:</strong> Gentle isotonic saline drops before feeds and sleep clear blocked nasal passages safely.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Layering Clothes Appropriately:</strong> Keep chest and feet protected during cool early mornings and late evenings without overheating.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Timely Immunization:</strong> Ensure seasonal flu shots and routine childhood vaccines are fully up to date as per the national immunization chart.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>Red Flag Signs Requiring Prompt Consultation</h3>
+            <p>Consult our pediatric OPD or emergency desk immediately if your child displays rapid breathing with chest retractions, refusal to feed or nurse, lethargy, or high-grade fever persisting beyond 48 hours.</p>
+          </div>
+        `
+      },
+      'diabetes-care': {
+        id: 'diabetes-care',
+        title: 'Managing Blood Sugar & Renal Protection',
+        category: 'Diabetes & Nephrology',
+        date: 'Sep 2026',
+        readTime: '5 min read',
+        author: 'Dr. Laxme Gowda, Internal Medicine & Diabetology',
+        authorInitials: 'LG',
+        image: 'assets/general-medicine.png',
+        imageCaption: 'Integrated diabetes management protects microvascular circulation and renal function.',
+        metaDesc: 'Clinical approaches to long-term glycaemic stability and diabetic kidney protection by Dr. Laxme Gowda at Sulakshaa Hospital.',
+        lead: 'Effective type-2 diabetes management goes far beyond taking a morning pill. Long-term microvascular protection—especially of delicate glomeruli in the kidneys—relies on steady HbA1c control and early urinary albumin detection.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="droplet" class="icon-sm"></i> The Vital Link Between Blood Sugar and Kidneys</h2>
+          <p class="article-paragraph">
+            The kidneys filter over 180 liters of blood daily through millions of tiny capillary clusters called nephrons. Chronic hyperglycemia damages these delicate filters, leading to diabetic nephropathy. Because early renal strain has zero symptoms, regular laboratory screening is indispensable.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Senior Physician Guidance</h4>
+              <p>“An annual Urine Albumin-to-Creatinine Ratio (uACR) test detects microalbuminuria years before serum creatinine rises. Early intervention with kidney-protective medications can halt or reverse diabetic renal decline.” — Dr. Laxme Gowda</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="check-circle" class="icon-sm"></i> Three Pillars of Diabetic Renal Protection</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Maintain Target Blood Pressure (&lt; 130/80 mmHg):</strong> High blood pressure accelerates kidney damage twice as fast as elevated sugar alone.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Avoid Indiscriminate Painkiller (NSAID) Use:</strong> Over-the-counter painkillers like ibuprofen can trigger acute kidney injury in diabetic patients.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Individualized Carbohydrate Timing:</strong> Distribute complex whole grains evenly across meals to prevent postprandial glucose surges.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>Comprehensive Diabetic Care at Sulakshaa</h3>
+            <p>Our internal medicine wing provides structured diabetic reviews including HbA1c testing, diabetic foot sensation exams, lipid monitoring, and individualized nutritional advice.</p>
+          </div>
+        `
+      },
+      'orthopedics': {
+        id: 'orthopedics',
+        title: 'Recognizing Knee Arthritis & Joint Health',
+        category: 'Orthopedic Care',
+        date: 'Aug 2026',
+        readTime: '5 min read',
+        author: 'Dr. Anand R. Kulkarni, Orthopedic Surgeon',
+        authorInitials: 'AK',
+        image: 'assets/blog-orthopedics.jpg',
+        imageCaption: 'Preserving joint cartilage through non-surgical therapies, strengthening, and early orthopaedic care.',
+        metaDesc: 'Practical orthopaedic guidance on managing knee osteoarthritis, quadriceps strengthening, and joint longevity.',
+        lead: 'Knee osteoarthritis is one of the most common degenerative joint conditions affecting adults above 45. Recognizing early cartilage strain allows for conservative, non-surgical management that keeps you walking comfortably for years.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="bone" class="icon-sm"></i> Early Signs of Knee Cartilage Wear</h2>
+          <p class="article-paragraph">
+            Osteoarthritis doesn’t happen overnight. It begins with micro-wear in articular cartilage. Common early warning indicators include stiffness after getting out of bed that eases after 10 minutes, clicking or grinding sounds (crepitus) on stairs, and localized aching after prolonged standing.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="activity" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Orthopedic Surgeon Advice</h4>
+              <p>“Strengthening the quadriceps and hamstring muscles acts like an internal shock absorber for the knee joint, reducing mechanical load on cartilage by up to 40%.” — Dr. Anand R. Kulkarni</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="list-checks" class="icon-sm"></i> Joint-Friendly Daily Practices</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Low-Impact Aerobic Conditioning:</strong> Stationary cycling, swimming, and level walking nourish joint cartilage without compressive shock.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Weight Optimization:</strong> Every kilogram of body weight shed relieves four kilograms of cumulative pressure across the knee during walking.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Supportive Footwear:</strong> Cushioned, well-fitted footwear with good arch support prevents knee and ankle misalignment.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>When Is Orthopedic Evaluation Needed?</h3>
+            <p>If knee pain restricts normal walking, produces night pain, or causes visible joint swelling, visit our Orthopedics OPD for digital radiographic assessment, physiotherapy guidance, and targeted clinical solutions.</p>
+          </div>
+        `
+      },
+      'emergency-care': {
+        id: 'emergency-care',
+        title: 'The Golden Hour in Acute Medical Care',
+        category: 'Emergency & Critical Care',
+        date: 'Aug 2026',
+        readTime: '4 min read',
+        author: 'Emergency Response Directorate',
+        authorInitials: 'ER',
+        image: 'assets/gallery-isolated-icu.jpg',
+        imageCaption: 'Sulakshaa Hospital 24/7 Casualty Emergency & Multi-Bed Resuscitation Bay.',
+        metaDesc: 'Learn the critical importance of the Golden Hour in stroke, cardiac emergencies, and trauma from the casualty team at Sulakshaa Hospital.',
+        lead: 'In emergency medicine, the first 60 minutes following acute cardiovascular events, stroke symptoms, or severe trauma are known as the "Golden Hour". Timely hospital arrival during this window drastically maximizes functional recovery.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="clock-alert" class="icon-sm"></i> Why Every Minute Matters</h2>
+          <p class="article-paragraph">
+            During acute coronary occlusion or ischemic stroke, millions of oxygen-deprived cells perish with every passing minute. Rapid hospital arrival enables clinicians to initiate vital diagnostic protocols—such as immediate ECG, point-of-care cardiac enzymes, and neuroimaging—before irreversible tissue necrosis occurs.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="alert-triangle" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>24/7 Casualty Protocol</h4>
+              <p>“Do not wait to see if chest tightness or sudden facial numbness goes away. Immediate hospital triage with multi-parameter telemetry saves lives.”</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="shield-alert" class="icon-sm"></i> Recognizing F.A.S.T. Stroke Signs</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Face Drooping:</strong> One side of the face droops or is numb when the person tries to smile.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Arm Weakness:</strong> One arm feels weak or numb when raised forward.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Speech Difficulty:</strong> Slurred speech or difficulty repeating a simple sentence.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Time to Call Casualty:</strong> If any of these signs appear, transfer directly to our emergency casualty department immediately.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>Sulakshaa 24/7 Casualty Preparedness</h3>
+            <p>Our emergency entrance is equipped with zero-barrier stretcher access, crash carts, continuous defibrillator monitoring, and immediate on-call medical specialists.</p>
+          </div>
+        `
+      },
+      'dermatology': {
+        id: 'dermatology',
+        title: 'Clinical Care for Skin Barrier & Hair Wellness',
+        category: 'Dermatology',
+        date: 'Aug 2026',
+        readTime: '4 min read',
+        author: 'Dermatology Faculty, Sulakshaa Hospital',
+        authorInitials: 'DF',
+        image: 'assets/blog-preventive-health.jpg',
+        imageCaption: 'Evidence-based dermatological guidance for skin barrier health and scalp vitality.',
+        metaDesc: 'Medical dermatologist advice on preserving skin barrier integrity, managing scalp conditions, and avoiding harsh cosmetic products.',
+        lead: 'The skin is our body’s largest barrier organ. Protecting its natural lipid mantel prevents chronic eczematous flares, contact dermatitis, and premature photoaging.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="sparkles" class="icon-sm"></i> Preserving the Stratum Corneum</h2>
+          <p class="article-paragraph">
+            The outermost layer of our skin relies on a delicate balance of ceramides, cholesterol, and fatty acids. Over-cleansing with harsh foaming soaps and aggressive physical scrubs strips this protective lipid layer, creating microscopic fissures where environmental irritants and allergens penetrate.
+          </p>
+          <div class="doctor-callout-box">
+            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Dermatology Clinical Guideline</h4>
+              <p>“Apply a fragrance-free, ceramide-rich moisturizer within three minutes of bathing while the skin is still slightly damp. This traps hydration and seals the epidermal barrier.”</p>
+            </div>
+          </div>
+          <h2 class="article-section-title"><i data-lucide="sun" class="icon-sm"></i> Daily Broad-Spectrum Sun Protection</h2>
+          <p class="article-paragraph">
+            Ultraviolet A (UVA) and Ultraviolet B (UVB) rays penetrate year-round regardless of cloud cover. A broad-spectrum SPF 30+ mineral or hybrid sunscreen applied to exposed facial and neck skin protects collagen fibers from photo-breakdown and reduces post-inflammatory hyperpigmentation.
+          </p>
+          <div class="article-conclusion">
+            <h3>Dermatology OPD at Sulakshaa Hospital</h3>
+            <p>For recurrent rashes, persistent acne, hair thinning, or suspicious mole evaluations, consult our certified clinical dermatology specialists.</p>
+          </div>
+        `
+      },
+      'womens-health': {
+        id: 'womens-health',
+        title: 'Key Preventive Milestones in Women’s Health',
+        category: 'Women’s Healthcare',
+        date: 'Jul 2026',
+        readTime: '5 min read',
+        author: 'Obstetrics & Gynaecology Faculty',
+        authorInitials: 'OG',
+        image: 'assets/paediatrics.png',
+        imageCaption: 'Compassionate, evidence-based healthcare across all life stages of womanhood.',
+        metaDesc: 'Essential screening milestones, bone density checks, and reproductive wellness advice for women at Sulakshaa Hospital.',
+        lead: 'Women’s healthcare needs evolve distinctively across adolescence, reproductive years, and menopausal transitions. Structured periodic evaluations ensure hormonal balance, bone density protection, and early cervical/breast screening.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="heart" class="icon-sm"></i> Proactive Screening by Life Stage</h2>
+          <p class="article-paragraph">
+            Regular clinical exams, pelvic ultrasonography, and periodic Pap smears identify benign cysts, fibroids, or cellular shifts long before they produce distressing symptoms. In later reproductive years, bone mineral density (DEXA) scans detect early osteopenia.
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Anemia &amp; Iron Stores:</strong> Checking Serum Ferritin alongside hemoglobin prevents chronic fatigue and hair loss common in childbearing years.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Thyroid Function (TSH):</strong> Subclinical hypothyroidism frequently impacts menstrual regularity, metabolic rate, and emotional vitality.</span>
+            </li>
+          </ul>
+          <div class="article-conclusion">
+            <h3>Dedicated Maternity &amp; Gynaecology Suite</h3>
+            <p>Sulakshaa Hospital provides warm, dignified gynaecological care and family planning guidance in an empathetic and private environment.</p>
+          </div>
+        `
+      }
+    };
+
+    // Article IDs in sequential order for Prev/Next navigation
+    const ARTICLE_ORDER = ['preventive-health', 'cardiology', 'paediatrics', 'diabetes-care', 'orthopedics', 'emergency-care', 'dermatology', 'womens-health'];
+
+    function renderBlogDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let articleId = urlParams.get('id');
+
+      if (!articleId || !BLOG_ARTICLES[articleId]) {
+        articleId = 'preventive-health';
+      }
+
+      const article = BLOG_ARTICLES[articleId];
+
+      // Update Head Metadata
+      document.title = `${article.title} | Sulakshaa Hospital Blog`;
+      document.getElementById('pageTitle').textContent = `${article.title} | Sulakshaa Hospital Blog`;
+      document.getElementById('pageMetaDesc').setAttribute('content', article.metaDesc);
+
+      // Update Hero Section
+      document.getElementById('breadcrumbTitle').textContent = article.title;
+      document.getElementById('articleCategory').textContent = article.category;
+      document.getElementById('articleTitle').textContent = article.title;
+      document.getElementById('articleAuthor').textContent = article.author;
+      document.getElementById('authorAvatar').textContent = article.authorInitials || 'SH';
+      document.getElementById('articleDate').textContent = article.date;
+      document.getElementById('articleReadTime').textContent = article.readTime;
+
+      // Update Featured Media
+      const featImg = document.getElementById('featuredImg');
+      featImg.src = article.image;
+      featImg.alt = article.title;
+      document.getElementById('featuredImgCaption').textContent = article.imageCaption;
+
+      // Render Body Content
+      const bodyEl = document.getElementById('articleBody');
+      bodyEl.innerHTML = `
+        <div class="article-lead">${article.lead}</div>
+        ${article.content}
+      `;
+
+      // Update Prev / Next Cards
+      const currentIndex = ARTICLE_ORDER.indexOf(articleId);
+      const prevIndex = (currentIndex - 1 + ARTICLE_ORDER.length) % ARTICLE_ORDER.length;
+      const nextIndex = (currentIndex + 1) % ARTICLE_ORDER.length;
+
+      const prevArticle = BLOG_ARTICLES[ARTICLE_ORDER[prevIndex]];
+      const nextArticle = BLOG_ARTICLES[ARTICLE_ORDER[nextIndex]];
+
+      const prevCard = document.getElementById('prevArticleCard');
+      prevCard.href = `blog-details.html?id=${prevArticle.id}`;
+      document.getElementById('prevArticleTitle').textContent = prevArticle.title;
+
+      const nextCard = document.getElementById('nextArticleCard');
+      nextCard.href = `blog-details.html?id=${nextArticle.id}`;
+      document.getElementById('nextArticleTitle').textContent = nextArticle.title;
+
+      // Render Related Articles in Sidebar (Exclude Current)
+      const relatedContainer = document.getElementById('relatedArticlesList');
+      relatedContainer.innerHTML = '';
+
+      const relatedIds = ARTICLE_ORDER.filter(id => id !== articleId).slice(0, 4);
+      relatedIds.forEach(id => {
+        const item = BLOG_ARTICLES[id];
+        const a = document.createElement('a');
+        a.href = `blog-details.html?id=${item.id}`;
+        a.className = 'related-article-item';
+        a.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" class="related-thumb" loading="lazy">
+          <div class="related-body">
+            <span class="related-cat">${item.category}</span>
+            <strong class="related-title">${item.title}</strong>
+            <span class="related-date"><i data-lucide="calendar" class="icon-xs"></i> ${item.date}</span>
+          </div>
+        `;
+        relatedContainer.appendChild(a);
+      });
+
+      // Update Social Share links
+      const currentUrl = encodeURIComponent(window.location.href);
+      const shareTitle = encodeURIComponent(`${article.title} - Sulakshaa Hospital`);
+      document.getElementById('shareWhatsApp').href = `https://api.whatsapp.com/send?text=${shareTitle}%20${currentUrl}`;
+      document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${currentUrl}`;
+
+      // Initialize Lucide Icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Scroll to top of content smoothly on article switch
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBlogDetail();
+      window.addEventListener('popstate', renderBlogDetail);
+
+      // Mobile Menu Drawer Functionality
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileNavMenu');
+      const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+      const mobileClose = document.getElementById('mobileDrawerCloseBtn');
+
+      function toggleMobileMenu(open) {
+        if (!mobileMenu) return;
+        if (open) {
+          mobileMenu.classList.add('is-open');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          if (mobileBackdrop) mobileBackdrop.classList.add('is-visible');
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileMenu.classList.remove('is-open');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          if (mobileBackdrop) mobileBackdrop.classList.remove('is-visible');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', () => toggleMobileMenu(true));
+      if (mobileClose) mobileClose.addEventListener('click', () => toggleMobileMenu(false));
+      if (mobileBackdrop) mobileBackdrop.addEventListener('click', () => toggleMobileMenu(false));
+
+      // Copy Link Button
+      const copyBtn = document.getElementById('shareCopyBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            showToast('Article link copied to clipboard!');
+          }).catch(() => {
+            showToast('Link copied!');
+          });
+        });
+      }
+
+      // Print Article Button
+      const printBtn = document.getElementById('printArticleBtn');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+    });
+
+    // Toast Utility
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'toast-alert is-visible';
+      toast.style.cssText = 'background:#0B2568;color:#FFF;padding:0.75rem 1.25rem;border-radius:8px;font-size:0.85rem;box-shadow:0 4px 14px rgba(0,0,0,0.2);margin-top:0.5rem;';
+      toast.innerHTML = `<i data-lucide="check-circle" class="icon-xs" style="color:#0088D1;margin-right:0.35rem;"></i> ${message}`;
+      container.appendChild(toast);
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.4s ease';
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

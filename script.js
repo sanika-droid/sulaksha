@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Mobile Navigation Drawer Controls & Morphing Hamburger
   initMobileNavigation();
 
+  // 4b. Navigation Dropdown Controls (More / Services)
+  initNavDropdowns();
+
   // 5. Scroll Reveal System (IntersectionObserver)
   initScrollReveal();
 
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 16. Animated Medical Specialties Cinema Showcase
   initSpecialityCinema();
 
-  // 17. Campus Video & Visual Tour Modal
+  // 17. Campus Gallery Modal
   initCampusTourModal();
 
   // 18. Patient Care Circular-Orbit Card Carousel
@@ -67,6 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 20. Specialities Grid 6-Card Toggle Controller
   initSpecialitiesToggle();
+
+  // 21. Hero Facilities Image Crossfade Slideshow
+  initHeroSlideshow();
+
+  // 22. Facilities View All / Show Less Toggle Controller
+  initFacilitiesViewAllToggle();
+
+  // 23. Featured Leading Specialists Horizontal Swipe Controller
+  initFeaturedDoctorsSwipe();
+
+  // 24. Our Departments & Centres of Excellence Horizontal Scroll Controller
+  initDepartmentsCarousel();
+
+  // 26. Patient Testimonials Horizontal Carousel Controller
+  initTestimonialsCarousel();
 });
 
 /**
@@ -231,7 +249,9 @@ function initMobileNavigation() {
   const closeBtn = document.getElementById('mobileCloseBtn');
   const navDrawer = document.getElementById('mobileNavMenu');
   const backdrop = document.getElementById('mobileNavBackdrop');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-btn');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-toggle), .mobile-sub-link, .mobile-drawer-btn');
+  const mobileDropdownToggle = document.getElementById('mobileDropdownBtn');
+  const mobileDropdownParent = mobileDropdownToggle ? mobileDropdownToggle.closest('.mobile-nav-dropdown') : null;
 
   if (!mobileBtn || !navDrawer) return;
 
@@ -251,6 +271,10 @@ function initMobileNavigation() {
     mobileBtn.classList.remove('is-active');
     if (backdrop) backdrop.classList.remove('is-open');
     document.body.style.overflow = '';
+    if (mobileDropdownParent) {
+      mobileDropdownParent.classList.remove('is-open');
+      if (mobileDropdownToggle) mobileDropdownToggle.setAttribute('aria-expanded', 'false');
+    }
   };
 
   mobileBtn.addEventListener('click', () => {
@@ -270,6 +294,17 @@ function initMobileNavigation() {
     backdrop.addEventListener('click', closeDrawer);
   }
 
+  // Mobile Dropdown Accordion Toggle
+  if (mobileDropdownToggle && mobileDropdownParent) {
+    mobileDropdownToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = mobileDropdownParent.classList.toggle('is-open');
+      mobileDropdownToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      const subMenu = mobileDropdownParent.querySelector('.mobile-sub-menu');
+      if (subMenu) subMenu.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+    });
+  }
+
   // Close when clicking mobile links
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -282,6 +317,43 @@ function initMobileNavigation() {
     if (e.key === 'Escape' && navDrawer.classList.contains('is-open')) {
       closeDrawer();
     }
+  });
+}
+
+/**
+ * Desktop Navigation Dropdowns Keyboard & Click Support
+ */
+function initNavDropdowns() {
+  const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
+
+  dropdownItems.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    const menu = dropdown.querySelector('.nav-dropdown-menu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    dropdown.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdown.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    dropdownItems.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 }
 
@@ -398,7 +470,8 @@ function initActiveNavHighlight() {
 
       if (scrollPos >= top && scrollPos < top + height) {
         navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
+          const href = link.getAttribute('href') || '';
+          if (href === `#${id}` || href === `index.html#${id}`) {
             link.classList.add('active');
           } else {
             link.classList.remove('active');
@@ -1758,11 +1831,6 @@ function initClinicalJourneyShowcase() {
         }
       });
 
-      // Smooth scroll down to doctor directory
-      if (dirSection) {
-        dirSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
       // Add pulse animation to matching doctor cards
       setTimeout(() => {
         const matchingCards = document.querySelectorAll(`.doctor-dir-card[data-speciality="${targetSpeciality}"]`);
@@ -1973,7 +2041,7 @@ function initSpecialityCinema() {
 }
 
 /**
- * 17. Campus Video & Visual Tour Modal Controller
+ * 17. Campus Gallery Modal Controller
  * Connects hero "Watch Tour" button to an interactive high-resolution gallery modal with thumbnails
  */
 function initCampusTourModal() {
@@ -1987,7 +2055,7 @@ function initCampusTourModal() {
   const captionDesc = document.getElementById('tourModalCaptionDesc');
   const thumbs = document.querySelectorAll('.tour-thumb-btn');
 
-  if (!tourModal || !heroTourBtn) return;
+  if (!tourModal) return;
 
   const openTourModal = () => {
     tourModal.classList.add('is-open');
@@ -2002,7 +2070,9 @@ function initCampusTourModal() {
     document.body.style.overflow = '';
   };
 
-  heroTourBtn.addEventListener('click', openTourModal);
+  if (heroTourBtn) {
+    heroTourBtn.addEventListener('click', openTourModal);
+  }
   closeBtn?.addEventListener('click', closeTourModal);
   doneBtn?.addEventListener('click', closeTourModal);
 
@@ -2193,31 +2263,11 @@ function initPatientCareOrbit() {
 }
 
 /**
- * 19. Leading Specialists Infinite Moving Marquee Controller
- * Adds touch interaction and accessible keyboard focus support to pause/resume the continuous carousel.
+ * 19. Leading Specialists Responsive Grid Controller
+ * Converted to a clean responsive grid allowing manual vertical scrolling.
  */
 function initDoctorsMarquee() {
-  const container = document.getElementById('doctorsMarqueeContainer');
-  const track = document.getElementById('doctorsMarqueeTrack');
-  if (!container || !track) return;
-
-  // Touch pause for mobile devices
-  container.addEventListener('touchstart', () => {
-    track.classList.add('is-paused');
-  }, { passive: true });
-
-  container.addEventListener('touchend', () => {
-    track.classList.remove('is-paused');
-  }, { passive: true });
-
-  // Keyboard accessibility
-  container.addEventListener('focusin', () => {
-    track.classList.add('is-paused');
-  });
-
-  container.addEventListener('focusout', () => {
-    track.classList.remove('is-paused');
-  });
+  // Static responsive grid with manual scrolling enabled; automatic marquee animation disabled.
 }
 
 /**
@@ -2257,3 +2307,400 @@ function initSpecialitiesToggle() {
   });
 }
 
+/**
+ * 21. Hero Facilities Image Crossfade Slideshow
+ * Smoothly transitions between authentic Sulakshaa Hospital images (Exterior, Reception, OPD Lounge)
+ * Features auto-advance, interactive dot navigation, and hover pause.
+ */
+function initHeroSlideshow() {
+  const container = document.getElementById('heroSlideshow');
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.hero-slide');
+  const dots = container.querySelectorAll('.hero-dot');
+  const prevBtn = container.querySelector('.hero-prev-btn');
+  const nextBtn = container.querySelector('.hero-next-btn');
+  if (slides.length <= 1) return;
+
+  let currentIndex = 0;
+  let intervalId = null;
+  const slideDuration = 4500; // 4.5 seconds per slide for gentle, comfortable pace
+
+  function showSlide(index) {
+    if (index === currentIndex) return;
+
+    slides.forEach((slide, i) => {
+      const isActive = i === index;
+      slide.classList.toggle('active', isActive);
+      slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    dots.forEach((dot, i) => {
+      const isActive = i === index;
+      dot.classList.toggle('active', isActive);
+      dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    intervalId = setInterval(nextSlide, slideDuration);
+  }
+
+  function stopAutoplay() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
+  // Interactive Arrow Clicks
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevSlide();
+      startAutoplay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextSlide();
+      startAutoplay();
+    });
+  }
+
+  // Interactive Dot Clicks
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetIndex = parseInt(dot.getAttribute('data-slide-index') || dot.getAttribute('data-slide-to'), 10);
+      if (!isNaN(targetIndex)) {
+        showSlide(targetIndex);
+        startAutoplay(); // Reset timer after manual selection
+      }
+    });
+  });
+
+  // Keyboard navigation when slideshow is focused
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSlide();
+      startAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextSlide();
+      startAutoplay();
+    }
+  });
+
+  // Pause when hovering over the slideshow container
+  container.addEventListener('mouseenter', stopAutoplay);
+  container.addEventListener('mouseleave', startAutoplay);
+  container.addEventListener('touchstart', stopAutoplay, { passive: true });
+  container.addEventListener('touchend', () => {
+    setTimeout(startAutoplay, 2500);
+  }, { passive: true });
+
+  // Start initial autoplay
+  startAutoplay();
+}
+
+/**
+ * 22. Facilities View All / Show Less Toggle Controller
+ */
+function initFacilitiesViewAllToggle() {
+  const toggleBtn = document.getElementById('viewAllFacilitiesBtn');
+  if (!toggleBtn) return;
+
+  const extraCards = document.querySelectorAll('.facility-card-extra');
+  if (!extraCards.length) {
+    toggleBtn.style.display = 'none';
+    return;
+  }
+
+  let isExpanded = false;
+
+  toggleBtn.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+    toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+    toggleBtn.classList.toggle('is-active', isExpanded);
+
+    const btnText = toggleBtn.querySelector('.btn-text');
+    const btnIcon = toggleBtn.querySelector('.btn-icon');
+
+    extraCards.forEach(card => {
+      card.classList.toggle('is-expanded', isExpanded);
+      card.classList.toggle('is-revealed', isExpanded);
+    });
+
+    if (btnText) {
+      btnText.textContent = isExpanded ? 'Show Less' : 'View All Facilities';
+    }
+
+    if (btnIcon) {
+      btnIcon.setAttribute('data-lucide', isExpanded ? 'chevron-up' : 'chevron-down');
+    }
+
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    // If collapsing, smoothly scroll back to facilities top
+    if (!isExpanded) {
+      const facilitiesSection = document.getElementById('facilities');
+      if (facilitiesSection) {
+        facilitiesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+}
+
+/**
+ * 23. Featured Leading Specialists Horizontal Swipe Controller
+ */
+function initFeaturedDoctorsSwipe() {
+  const viewport = document.getElementById('doctorsMarqueeViewport');
+  const prevBtn = document.getElementById('docSwipePrevBtn');
+  const nextBtn = document.getElementById('docSwipeNextBtn');
+  if (!viewport || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const item = viewport.querySelector('.featured-doctor-card');
+    if (item) {
+      return item.getBoundingClientRect().width + 24;
+    }
+    return 320;
+  }
+
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+  });
+}
+
+/**
+ * 24. Our Departments & Centres of Excellence Horizontal Scroll Controller
+ */
+function initDepartmentsCarousel() {
+  const viewport = document.getElementById('departmentsCarouselViewport');
+  const prevBtn = document.getElementById('deptScrollPrevBtn');
+  const nextBtn = document.getElementById('deptScrollNextBtn');
+  if (!viewport || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const item = viewport.querySelector('.speciality-card');
+    if (item) {
+      return item.getBoundingClientRect().width + 24;
+    }
+    return 340;
+  }
+
+  function updateArrowState() {
+    const tolerance = 6;
+    const isAtStart = viewport.scrollLeft <= tolerance;
+    const isAtEnd = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - tolerance;
+
+    prevBtn.disabled = isAtStart;
+    prevBtn.classList.toggle('is-disabled', isAtStart);
+
+    nextBtn.disabled = isAtEnd;
+    nextBtn.classList.toggle('is-disabled', isAtEnd);
+  }
+
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    setTimeout(updateArrowState, 350);
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    setTimeout(updateArrowState, 350);
+  });
+
+  viewport.addEventListener('scroll', updateArrowState, { passive: true });
+  window.addEventListener('resize', updateArrowState);
+
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    }
+  });
+
+  setTimeout(updateArrowState, 150);
+  initDepartmentCardClicks();
+}
+
+/**
+ * 25. Department Card Navigation Controller
+ * Makes each department card clickable to open department-details.html?dept=<slug>
+ * while preserving inner button behaviors (Book Appointment & Scope)
+ */
+function initDepartmentCardClicks() {
+  const cards = document.querySelectorAll('.departments-carousel-track .speciality-card, #specialitiesGrid .speciality-card, .dept-item');
+  cards.forEach(card => {
+    const slug = card.getAttribute('data-dept-slug') || 'cardiac-care';
+    card.style.cursor = 'pointer';
+
+    card.addEventListener('click', (e) => {
+      // If user clicked directly on an anchor or button inside, allow its natural click
+      if (e.target.closest('a, button')) return;
+      window.location.href = `department-details.html?dept=${slug}`;
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target.closest('a, button')) return;
+        e.preventDefault();
+        window.location.href = `department-details.html?dept=${slug}`;
+      }
+    });
+
+    const knowMoreBtn = card.querySelector('.speciality-know-more-btn');
+    if (knowMoreBtn) {
+      knowMoreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.location.href = `department-details.html?dept=${slug}`;
+      });
+    }
+  });
+}
+
+
+
+/**
+ * 26. Patient Testimonials Horizontal Carousel Controller
+ * Provides manual left/right scrolling, touch swipe, keyboard navigation, and responsive arrow states.
+ * No automatic movement.
+ */
+function initTestimonialsCarousel() {
+  const viewport = document.getElementById('testimonialsCarouselViewport');
+  const prevBtn = document.getElementById('testimonialScrollPrevBtn');
+  const nextBtn = document.getElementById('testimonialScrollNextBtn');
+  if (!viewport || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const card = viewport.querySelector('.testimonial-card');
+    if (card) {
+      return card.getBoundingClientRect().width + 24;
+    }
+    return 384;
+  }
+
+  function updateActiveCard() {
+    const cards = viewport.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+
+    const viewportRect = viewport.getBoundingClientRect();
+    const viewportCenter = viewportRect.left + viewportRect.width / 2;
+
+    let closestCard = null;
+    let closestDist = Infinity;
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const dist = Math.abs(viewportCenter - cardCenter);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestCard = card;
+      }
+    });
+
+    cards.forEach(card => {
+      card.classList.toggle('is-active-card', card === closestCard);
+    });
+  }
+
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (viewport.scrollLeft <= 10) {
+      viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
+    } else {
+      viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    }
+    setTimeout(updateActiveCard, 320);
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    if (viewport.scrollLeft >= maxScroll - 10) {
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    }
+    setTimeout(updateActiveCard, 320);
+  });
+
+  viewport.addEventListener('scroll', updateActiveCard, { passive: true });
+  window.addEventListener('resize', updateActiveCard);
+
+  // Read More / Read Less toggles on long review cards
+  const readMoreButtons = document.querySelectorAll('.testimonial-read-more-btn');
+  readMoreButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const wrap = btn.closest('.testimonial-quote-wrap');
+      if (!wrap) return;
+      const quote = wrap.querySelector('.testimonial-quote');
+      if (!quote) return;
+
+      const isCurrentlyClamped = quote.classList.contains('is-clamped');
+      if (isCurrentlyClamped) {
+        quote.classList.remove('is-clamped');
+        quote.classList.add('is-expanded');
+        btn.textContent = 'Read Less';
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        quote.classList.remove('is-expanded');
+        quote.classList.add('is-clamped');
+        btn.textContent = 'Read More';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Keyboard navigation when focused
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevBtn.click();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextBtn.click();
+    }
+  });
+
+  // Re-run icons initialization for testimonial cards
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
+  }
+
+  setTimeout(updateActiveCard, 150);
+}

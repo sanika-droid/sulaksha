@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facility Overview | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Explore advanced medical infrastructure and specialized facilities at Sulakshaa Multi Speciality Hospital in Mysuru.">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=25">
+
+  <style>
+    /* Facility Details Dedicated Page Styles */
+    .facility-detail-page {
+      background-color: var(--soft-background);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .facility-detail-main {
+      flex: 1;
+      padding-top: clamp(2rem, 3.5vw, 3rem);
+      padding-bottom: clamp(3rem, 5vw, 5rem);
+    }
+
+    .detail-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--secondary-text);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .detail-breadcrumbs a {
+      color: var(--primary-blue);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .detail-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .detail-breadcrumbs span.current {
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .facility-detail-card {
+      background: #FFFFFF;
+      border: 1px solid var(--borders);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .facility-detail-header-bar {
+      padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 3vw, 2.5rem) 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .facility-detail-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid rgba(22, 163, 74, 0.25);
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .facility-detail-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 800;
+      color: var(--primary-navy);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .facility-detail-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(1.75rem, 3vw, 2.75rem);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      align-items: start;
+    }
+
+    .facility-detail-media-wrap {
+      width: 100%;
+      height: clamp(260px, 32vw, 400px);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--borders);
+      background-color: var(--soft-background);
+    }
+
+    .facility-detail-media-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .facility-detail-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .facility-detail-overview-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 0.85rem;
+    }
+
+    .facility-detail-desc {
+      font-size: 0.95rem;
+      color: var(--secondary-text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .facility-detail-features-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary-blue);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .facility-features-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .facility-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.90625rem;
+      color: var(--main-text);
+      font-weight: 500;
+    }
+
+    .facility-feature-item i,
+    .facility-feature-item svg {
+      color: #16A34A;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .facility-detail-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Facilities Quick Switcher Strip */
+    .facilities-quick-switcher {
+      background: #FFFFFF;
+      border: 1px solid var(--borders);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .switcher-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .switcher-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin: 0;
+    }
+
+    .switcher-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    .switcher-link {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.75rem 0.95rem;
+      border: 1px solid var(--borders);
+      border-radius: var(--radius-md);
+      background: var(--soft-background);
+      text-decoration: none;
+      color: var(--primary-navy);
+      font-size: 0.825rem;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+    }
+
+    .switcher-link:hover,
+    .switcher-link.active {
+      border-color: var(--primary-blue);
+      background: var(--light-blue);
+      color: var(--primary-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .switcher-link i {
+      color: var(--primary-blue);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 991px) {
+      .facility-detail-grid {
+        grid-template-columns: 1fr;
+      }
+      .switcher-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .switcher-grid {
+        grid-template-columns: 1fr;
+      }
+      .facility-detail-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .facility-detail-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body class="facility-detail-page">
+
+  <!-- Top Announcement Bar -->
+  <header class="top-bar" aria-label="Hospital Emergency Contact Bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-item emergency-item">
+          <i data-lucide="phone-call" class="icon-xs" aria-hidden="true"></i>
+          <strong>24/7 Casualty &amp; Triage:</strong> 
+          <a href="tel:+918212345678" class="top-bar-link">+91 821 234 5678*</a>
+        </span>
+        <span class="top-bar-divider" aria-hidden="true">|</span>
+        <span class="top-bar-item">
+          <i data-lucide="map-pin" class="icon-xs" aria-hidden="true"></i>
+          <span>Mysuru, Karnataka</span>
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html#enquiry" class="top-bar-action-link">
+          <i data-lucide="calendar" class="icon-xs"></i>
+          <span>Doctor Consultation</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Navigation Header -->
+  <nav class="main-nav" id="mainNavigation" aria-label="Main Navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="brand-logo" width="48" height="48">
+        <div class="brand-text-container">
+          <span class="brand-title">SULAKSHAA</span>
+          <span class="brand-subtext">Multi Speciality Hospital</span>
+        </div>
+      </a>
+      
+      <div class="nav-actions">
+        <a href="facilities.html" class="btn btn-outline btn-sm">
+          <i data-lucide="arrow-left" class="icon-xs"></i> Back to Facilities
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary btn-sm">
+          <i data-lucide="calendar-check" class="icon-xs"></i> Book Appointment
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="facility-detail-main" id="mainContent">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <nav class="detail-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <a href="facilities.html">Facilities &amp; Services</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <span class="current" id="breadcrumbFacilityName">Facility Overview</span>
+      </nav>
+
+      <!-- Facility Overview Card -->
+      <article class="facility-detail-card" id="facilityCardArea">
+        <header class="facility-detail-header-bar">
+          <span class="facility-detail-category-badge" id="facilityCategoryBadge">
+            <i data-lucide="shield-check" class="icon-xs"></i> 
+            <span id="facilityCategoryText">Emergency and Critical Care</span>
+          </span>
+          <h1 class="facility-detail-title" id="facilityTitle">24/7 Casualty &amp; Emergency Trauma Unit</h1>
+        </header>
+
+        <div class="facility-detail-grid">
+          <!-- Facility Image on the Left / Top -->
+          <div class="facility-detail-media-wrap">
+            <img 
+              id="facilityImage" 
+              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&h=450&q=80" 
+              alt="Sulakshaa Hospital Facility Photograph"
+              loading="eager"
+            >
+          </div>
+
+          <!-- Facility Description and Details on the Right -->
+          <div class="facility-detail-info">
+            <h2 class="facility-detail-overview-title">Clinical Scope &amp; Infrastructure Overview</h2>
+            <p class="facility-detail-desc" id="facilityDescription">
+              Immediate triage, resuscitation bays, point-of-care vital telemetry, and on-duty emergency medical officers prepared 24 hours a day to manage acute emergencies. Direct corridor connection ensures rapid admission to intensive care and surgical suites.
+            </p>
+
+            <h3 class="facility-detail-features-title">
+              <i data-lucide="check-circle-2" class="icon-xs"></i> Key Confirmed Services &amp; Capabilities
+            </h3>
+            <ul class="facility-features-checklist" id="facilityFeaturesList">
+              <li class="facility-feature-item"><i data-lucide="check" class="icon-xs"></i> Zero-Wait Emergency Triage Protocol</li>
+              <li class="facility-feature-item"><i data-lucide="check" class="icon-xs"></i> Shock &amp; Acute Resuscitation Bays</li>
+              <li class="facility-feature-item"><i data-lucide="check" class="icon-xs"></i> Direct Rapid Corridor to OT &amp; ICU</li>
+              <li class="facility-feature-item"><i data-lucide="check" class="icon-xs"></i> 24/7 Trauma Specialists On-Duty</li>
+              <li class="facility-feature-item"><i data-lucide="check" class="icon-xs"></i> Bedside Multi-Parameter Vital Telemetry</li>
+            </ul>
+
+            <div class="facility-detail-actions">
+              <a href="index.html#enquiry" class="btn btn-primary btn-lg shadow-lift">
+                <i data-lucide="calendar" class="icon-sm"></i>
+                <span>Book Appointment</span>
+              </a>
+              <a href="facilities.html" class="btn btn-outline btn-lg">
+                <i data-lucide="arrow-left" class="icon-sm"></i>
+                <span>Back to Facilities</span>
+              </a>
+              <a href="tel:+918212345678" class="btn btn-outline-emergency btn-lg" id="emergencyDirectBtn">
+                <i data-lucide="phone-call" class="icon-sm"></i>
+                <span>Call Helpline: +91 821 234 5678*</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- All Facilities Quick Switcher Strip -->
+      <section class="facilities-quick-switcher" aria-labelledby="switcherHeading">
+        <div class="switcher-header">
+          <h2 id="switcherHeading" class="switcher-title">Explore All Hospital Facilities</h2>
+          <a href="facilities.html" class="btn-link">View All Facilities &rarr;</a>
+        </div>
+        <div class="switcher-grid" id="switcherGrid">
+          <!-- Dynamically populated / links to ?id=... -->
+          <a href="facility-details.html?id=emergency-trauma" class="switcher-link" data-id="emergency-trauma">
+            <i data-lucide="shield-alert" class="icon-xs"></i>
+            <span>24/7 Casualty &amp; Trauma</span>
+          </a>
+          <a href="facility-details.html?id=radiology-imaging" class="switcher-link" data-id="radiology-imaging">
+            <i data-lucide="scan" class="icon-xs"></i>
+            <span>Diagnostic Imaging &amp; CT</span>
+          </a>
+          <a href="facility-details.html?id=clinical-laboratory" class="switcher-link" data-id="clinical-laboratory">
+            <i data-lucide="flask-conical" class="icon-xs"></i>
+            <span>Clinical Pathology Lab</span>
+          </a>
+          <a href="facility-details.html?id=intensive-care" class="switcher-link" data-id="intensive-care">
+            <i data-lucide="heart-pulse" class="icon-xs"></i>
+            <span>Intensive Care (ICU)</span>
+          </a>
+          <a href="facility-details.html?id=inpatient-recovery" class="switcher-link" data-id="inpatient-recovery">
+            <i data-lucide="bed" class="icon-xs"></i>
+            <span>Inpatient Rooms &amp; Suites</span>
+          </a>
+          <a href="facility-details.html?id=inhouse-pharmacy" class="switcher-link" data-id="inhouse-pharmacy">
+            <i data-lucide="store" class="icon-xs"></i>
+            <span>24/7 In-House Chemist</span>
+          </a>
+          <a href="facility-details.html?id=surgical-facilities" class="switcher-link" data-id="surgical-facilities">
+            <i data-lucide="activity" class="icon-xs"></i>
+            <span>Surgical Operation Theatres</span>
+          </a>
+          <a href="facility-details.html?id=outpatient-lounge" class="switcher-link" data-id="outpatient-lounge">
+            <i data-lucide="armchair" class="icon-xs"></i>
+            <span>OPD &amp; Patient Lounge</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Hospital Footer -->
+  <footer class="site-footer" style="margin-top: auto; padding: 2.5rem 0 1.5rem; background: #061743; color: #FFFFFF; text-align: center;">
+    <div class="container">
+      <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 0.5rem;">
+        <strong>Sulakshaa Multi Speciality Hospital</strong> — Mysuru, Karnataka, India
+      </p>
+      <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.65);">
+        &copy; 2026 Sulakshaa Multi Speciality Hospital. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Facility Details Controller Script -->
+  <script>
+    // Verified Hospital Facilities Dataset
+    const FACILITIES_DATA = {
+      'emergency-trauma': {
+        title: '24/7 Casualty & Emergency Trauma Unit',
+        category: 'Emergency and Critical Care',
+        icon: 'shield-alert',
+        image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&h=450&q=80',
+        description: 'Sulakshaa Multi Speciality Hospital delivers rapid casualty and trauma care with direct ambulance portico access, dedicated resuscitation bays, point-of-care vital telemetry, and resident emergency medical officers on duty 24 hours a day to stabilize acute emergencies.',
+        features: [
+          'Zero-Wait Emergency Triage Protocol',
+          'Shock & Acute Resuscitation Bays',
+          'Direct Route to OT & ICU Without Delays',
+          '24/7 Emergency Medical Officers & Trauma Specialists',
+          'Bedside Multi-Parameter Vital Telemetry'
+        ]
+      },
+      'radiology-imaging': {
+        title: 'Advanced Diagnostic Imaging & CT Scanning',
+        category: 'Radiology and Imaging',
+        icon: 'scan',
+        image: 'assets/advanced-diagnostics.png',
+        description: 'Equipped with precision multi-slice CT scanning, digital X-Ray, and 4D color Doppler ultrasound. Our radiology infrastructure provides high-definition cross-sectional imaging for accurate clinical diagnosis and emergency trauma assessments.',
+        features: [
+          'Multi-Slice Spiral CT Scanning',
+          'Low-Dose High-Definition Digital X-Ray',
+          '4D Color Doppler Sonography',
+          'Instant Emergency Digital Reporting',
+          'Inpatient Bedside Diagnostic Radiology'
+        ]
+      },
+      'clinical-laboratory': {
+        title: 'Automated Clinical Pathology & Biochemistry Lab',
+        category: 'Laboratory and Diagnostics',
+        icon: 'flask-conical',
+        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=700&h=450&q=80',
+        description: 'Our fully automated hospital pathology laboratory delivers rapid diagnostic turnaround for complete blood counts, cardiac biomarkers (Troponin I), arterial blood gas (ABG), and comprehensive metabolic profiles under stringent quality standards.',
+        features: [
+          'Same-Day Emergency Diagnostic Assays',
+          'Stat Cardiac Biomarkers & Enzymes',
+          'Comprehensive Clinical Biochemistry & Haematology',
+          'Barcoded Specimen Tracking Protocol',
+          'Sterile Blood Collection & Phlebotomy'
+        ]
+      },
+      'intensive-care': {
+        title: 'Monitored Intensive Care & Coronary Units (ICU)',
+        category: 'Intensive Care Unit (ICU)',
+        icon: 'heart-pulse',
+        image: 'assets/cardiac-care.jpg',
+        description: 'Purpose-engineered intensive care unit featuring continuous multi-parameter telemetry, invasive mechanical ventilators, and dedicated 1:1 bedside nursing for acute medical, post-surgical, and coronary patients requiring continuous vital monitoring.',
+        features: [
+          '24/7 Central Nursing Telemetry Monitoring',
+          'Advanced Mechanical Ventilators & Resuscitation',
+          'Sterile Modular Air Filtration Environment',
+          'Resident Intensivists & Critical Care Nurses On Duty',
+          'Defibrillators & Automated Syringe Infusion Pumps'
+        ]
+      },
+      'inpatient-recovery': {
+        title: 'Inpatient Recovery Suites & Private Rooms',
+        category: 'Inpatient Rooms and Recovery',
+        icon: 'bed',
+        image: 'assets/sulakshaa-opd-lounge.png',
+        description: 'Thoughtfully designed patient accommodations providing a hygienic and tranquil healing environment. Accommodations include private air-conditioned suites, semi-private rooms, and general recovery wards with barrier-free wheelchair access.',
+        features: [
+          'Air-Conditioned Private & Deluxe Rooms',
+          'Semi-Private & General Patient Wards',
+          '100% Barrier-Free Wheelchair Access & Ramps',
+          'Dedicated Attendant Seating & Comfortable Lounges',
+          'Stretcher-Sized Bed Elevators'
+        ]
+      },
+      'inhouse-pharmacy': {
+        title: '24/7 In-House Chemist & Emergency Pharmacy',
+        category: 'In-House Pharmacy',
+        icon: 'store',
+        image: 'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=700&h=450&q=80',
+        description: 'Fully licensed on-campus hospital chemist providing round-the-clock availability of verified medications, critical care injectables, cardiology drugs, surgical disposables, and outpatient prescription services.',
+        features: [
+          '24/7 Dispensing Counter on Ground Floor',
+          'Cold-Chain Biologics & Vaccine Storage',
+          'Emergency ICU & OT Supplies Readily Available',
+          'Computerized Batch & Expiry Verification',
+          'Generic & Branded Formulations'
+        ]
+      },
+      'surgical-facilities': {
+        title: 'Sterile Surgical Operation Theatres (OT)',
+        category: 'Surgical Facilities',
+        icon: 'activity',
+        image: 'assets/journey-robotic-surgery.jpg',
+        description: 'Modern modular surgical suites equipped with laminar airflow HEPA filtration, advanced anesthesia workstations, and an adjacent post-anesthesia care unit (PACU) supporting general, orthopedic, and emergency procedures.',
+        features: [
+          'Laminar Airflow HEPA Sterilization',
+          'Advanced Anesthesia Delivery Workstations',
+          'Shadowless Surgical LED Illumination',
+          'Dedicated Post-Anesthesia Recovery Care (PACU)',
+          'Emergency Intraoperative Monitoring'
+        ]
+      },
+      'outpatient-lounge': {
+        title: 'OPD Consultation Clinics & Patient Waiting Lounge',
+        category: 'Consultation and Outpatient Services',
+        icon: 'armchair',
+        image: 'assets/sulakshaa-reception.jpg',
+        description: 'Spacious and welcoming outpatient reception wing featuring digital queue token systems, comfortable air-conditioned seating, private consulting chambers, and prompt patient coordination desks.',
+        features: [
+          'Air-Conditioned Patient Waiting Lounge',
+          'Digital Token Queue Display System',
+          'Central Reception & Registration Desks',
+          'Drinking Water & Accessible Restrooms',
+          'Dedicated Doctor OPD Consultation Chambers'
+        ]
+      }
+    };
+
+    function loadFacilityDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let facilityId = urlParams.get('id') || 'emergency-trauma';
+      
+      if (!FACILITIES_DATA[facilityId]) {
+        facilityId = 'emergency-trauma';
+      }
+
+      const facility = FACILITIES_DATA[facilityId];
+
+      document.title = `${facility.title} | Sulakshaa Hospital`;
+      document.getElementById('breadcrumbFacilityName').textContent = facility.title;
+      document.getElementById('facilityTitle').textContent = facility.title;
+      document.getElementById('facilityCategoryText').textContent = facility.category;
+      document.getElementById('facilityDescription').textContent = facility.description;
+
+      const imgEl = document.getElementById('facilityImage');
+      imgEl.src = facility.image;
+      imgEl.alt = `${facility.title} at Sulakshaa Multi Speciality Hospital`;
+
+      const listEl = document.getElementById('facilityFeaturesList');
+      listEl.innerHTML = '';
+      facility.features.forEach(feat => {
+        const li = document.createElement('li');
+        li.className = 'facility-feature-item';
+        li.innerHTML = `<i data-lucide="check" class="icon-xs"></i> <span>${feat}</span>`;
+        listEl.appendChild(li);
+      });
+
+      // Highlight active switcher link
+      document.querySelectorAll('.switcher-link').forEach(link => {
+        if (link.getAttribute('data-id') === facilityId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Initialize Lucide icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadFacilityDetails);
+  </script>
+</body>
+</html>

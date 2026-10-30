@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Departments &amp; Centres of Excellence | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Explore all clinical departments, specialized medical centres of excellence, and consult specialist doctors at Sulakshaa Multi Speciality Hospital in Mysuru.">
+  <meta name="keywords" content="hospital departments mysuru, cardiology, orthopedics, neurology, obstetrics, gynaecology, paediatrics, dermatology, pulmonology, nephrology, general surgery, ent, urology mysuru">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=27">
+
+  <style>
+    /* Dedicated Departments Listing Page Styles */
+    .depts-page-hero {
+      background: linear-gradient(135deg, #071948 0%, #0B2568 55%, #004D99 100%);
+      color: #FFFFFF;
+      padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .depts-page-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 136, 209, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .depts-page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .depts-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .depts-breadcrumbs a {
+      color: #7CD4FD;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .depts-breadcrumbs a:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    .depts-breadcrumbs span.current {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .depts-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #8DEBBA;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .depts-hero-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .depts-hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 780px;
+      line-height: 1.6;
+    }
+
+    /* Listing Section */
+    .depts-main-section {
+      padding: clamp(3rem, 5vw, 4.5rem) 0;
+      background-color: #F8FAFD;
+    }
+
+    .depts-page-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 1200px) {
+      .depts-page-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .depts-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .depts-page-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .depts-clean-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.05);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .depts-clean-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(11, 37, 104, 0.12);
+      border-color: #0088D1;
+    }
+
+    .depts-clean-icon-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: #EBF4FC;
+      color: #0088D1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: all 0.25s ease;
+    }
+
+    .depts-clean-card:hover .depts-clean-icon-wrap {
+      background: #0B2568;
+      color: #FFFFFF;
+      transform: scale(1.05);
+    }
+
+    .depts-clean-name {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+      transition: color 0.2s ease;
+    }
+
+    .depts-clean-card:hover .depts-clean-name {
+      color: #0088D1;
+    }
+
+    .depts-clean-desc {
+      color: #556B88;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .depts-clean-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #0088D1;
+      margin-top: auto;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .depts-clean-card:hover .depts-clean-link {
+      color: #0B2568;
+      gap: 0.65rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Emergency Bar -->
+  <aside class="top-announcement-bar" aria-label="Hospital Emergency Quick Contact">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <span class="emergency-badge-pulse" aria-hidden="true"></span>
+        <span class="announcement-title">24/7 Emergency &amp; Trauma Care:</span>
+        <a href="tel:+918212345678" class="emergency-call-link">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <strong>+91 821 234 5678</strong>
+        </a>
+      </div>
+      <div class="announcement-right">
+        <span class="announcement-item">
+          <i data-lucide="map-pin" class="icon-xs"></i>
+          <span>Sayyaji Rao Road, Mysuru, Karnataka</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Main Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Hospital">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo" class="brand-logo" width="145" height="42">
+        <div class="brand-text-container">
+          <span class="brand-subtext">Mysuru, Karnataka</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="departments.html" class="nav-link active">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Departments Hero -->
+  <section class="depts-page-hero">
+    <div class="container">
+      <nav class="depts-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <span class="current">Departments</span>
+      </nav>
+
+      <div class="depts-hero-badge">
+        <i data-lucide="shield-check" class="icon-xs"></i> Multispeciality Clinical Care
+      </div>
+      <h1 class="depts-hero-title">Our Departments &amp; Centres of Excellence</h1>
+      <p class="depts-hero-subtitle">
+        Explore our complete range of clinical specialities and surgical centres in Mysuru, led by experienced consultant physicians, surgeons, and dedicated healthcare professionals.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Departments Grid -->
+  <main class="depts-main-section">
+    <div class="container">
+
+      <div class="section-header text-center">
+        <span class="badge badge-accent">COMPREHENSIVE HEALTHCARE</span>
+        <h2 class="section-title">Specialized Clinical Departments</h2>
+        <p class="section-subtitle">
+          Click any department to explore detailed medical scopes, clinical facilities, consultant doctors, FAQs, and appointment booking.
+        </p>
+      </div>
+
+      <div class="depts-page-grid">
+
+        <!-- 1. Cardiology -->
+        <a href="department-details.html?dept=cardiac-care" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="heart-pulse" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Cardiology &amp; Cardiothoracic Surgery</h3>
+          <p class="depts-clean-desc">Comprehensive cardiovascular assessment, preventive cardiology, ECG, 2D echocardiography, and coronary intensive care.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 2. Orthopedics -->
+        <a href="department-details.html?dept=orthopedics" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="bone" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Orthopedics &amp; Joint Replacement</h3>
+          <p class="depts-clean-desc">Specialized management for bone fractures, arthritis, joint replacement, spine care, and mobility rehabilitation.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 3. Neurology -->
+        <a href="department-details.html?dept=neurology" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="brain" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Neurology &amp; Neurosurgery</h3>
+          <p class="depts-clean-desc">Expert neurological evaluation and surgical interventions for stroke, headache, epilepsy, nerve disorders, and spine conditions.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 4. Obstetrics & Gynecology -->
+        <a href="department-details.html?dept=maternity-care" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="baby" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Obstetrics &amp; Gynecology</h3>
+          <p class="depts-clean-desc">Compassionate maternal care, normal &amp; high-risk deliveries, antenatal monitoring, and comprehensive women's health wellness.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 5. General Medicine -->
+        <a href="department-details.html?dept=general-medicine" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="stethoscope" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">General Medicine</h3>
+          <p class="depts-clean-desc">Primary diagnostic care, chronic diabetes, hypertension management, seasonal infections, and comprehensive adult health checkups.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 6. Paediatrics -->
+        <a href="department-details.html?dept=paediatrics" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="smile" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Paediatrics</h3>
+          <p class="depts-clean-desc">Dedicated clinical care for newborns, infants, and adolescents, including immunization schedules, developmental milestones, and pediatric triage.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 7. Dermatology -->
+        <a href="department-details.html?dept=dermatology" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="sparkles" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Dermatology</h3>
+          <p class="depts-clean-desc">Clinical diagnosis and evidence-based treatments for skin allergies, acne, psoriasis, fungal infections, eczema, and hair conditions.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 8. Pulmonology -->
+        <a href="department-details.html?dept=pulmonology" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="wind" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Pulmonology</h3>
+          <p class="depts-clean-desc">Advanced respiratory care for bronchial asthma, COPD, pneumonia, persistent chronic cough, and nocturnal sleep disorders.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 9. Nephrology -->
+        <a href="department-details.html?dept=nephrology" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="activity" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Nephrology</h3>
+          <p class="depts-clean-desc">Comprehensive clinical management for acute and chronic kidney disease, diabetic renal care, electrolyte regulation, and dialysis support.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 10. General Surgery -->
+        <a href="department-details.html?dept=general-surgery" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="scissors" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">General Surgery</h3>
+          <p class="depts-clean-desc">Minimally invasive laparoscopic procedures, hernia repairs, appendectomy, gallbladder surgery, and emergency trauma operations.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 11. ENT -->
+        <a href="department-details.html?dept=ent" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="ear" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">ENT (Ear, Nose &amp; Throat)</h3>
+          <p class="depts-clean-desc">Specialized medical and endoscopic care for ear infections, hearing loss, vertigo, chronic sinusitis, deviated nasal septum, and throat ailments.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+        <!-- 12. Urology -->
+        <a href="department-details.html?dept=urology" class="depts-clean-card">
+          <div class="depts-clean-icon-wrap"><i data-lucide="droplet" class="icon-lg"></i></div>
+          <h3 class="depts-clean-name">Urology</h3>
+          <p class="depts-clean-desc">Advanced diagnosis and surgical treatment for kidney stones, prostate enlargement, urinary tract infections, and bladder conditions.</p>
+          <span class="depts-clean-link"><span>Know More</span> <i data-lucide="arrow-right" class="icon-xs"></i></span>
+        </a>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Standard Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-col brand-col">
+        <div class="footer-logo-row">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital" class="footer-logo" width="135" height="38">
+        </div>
+        <p class="footer-desc">
+          Sulakshaa Multi Speciality Hospital provides advanced clinical care, 24/7 emergency services, and compassionate patient healing in Mysuru, Karnataka.
+        </p>
+      </div>
+
+      <div class="footer-col links-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="index.html#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Us</a></li>
+          <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Departments</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Our Doctors</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Facilities &amp; Services</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="index.html#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4 class="footer-heading">Contact &amp; Emergency</h4>
+        <p class="footer-contact-item"><i data-lucide="map-pin" class="icon-xs"></i> Sayyaji Rao Road, Mysuru, Karnataka 570021</p>
+        <p class="footer-contact-item"><i data-lucide="phone-call" class="icon-xs"></i> Emergency: +91 821 234 5678</p>
+        <p class="footer-contact-item"><i data-lucide="mail" class="icon-xs"></i> info@sulakshaahospital.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p>&copy; 2026 Sulakshaa Multi Speciality Hospital. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

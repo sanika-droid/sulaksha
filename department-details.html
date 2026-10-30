@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department Overview | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Explore advanced clinical departments, specialist consultants, diagnostic procedures, and patient-first treatment at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=28">
+
+  <style>
+    /* -----------------------------------------------------------------------
+       Dedicated Department Details Page Styles
+       ----------------------------------------------------------------------- */
+    .dept-detail-page {
+      background-color: var(--soft-background, #F5F9FD);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dept-detail-main {
+      flex: 1;
+      padding-top: clamp(1.75rem, 3vw, 2.5rem);
+      padding-bottom: clamp(3rem, 5vw, 5rem);
+    }
+
+    /* Breadcrumbs */
+    .dept-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: #4B617E;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .dept-breadcrumbs a {
+      color: #0088D1;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .dept-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .dept-breadcrumbs span.current {
+      color: #0B2568;
+      font-weight: 600;
+    }
+
+    /* Department Hero Banner */
+    .dept-hero-card {
+      background: #FFFFFF;
+      border: 1px solid #D7E5F2;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(11, 37, 104, 0.06);
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: stretch;
+    }
+
+    @media (max-width: 991px) {
+      .dept-hero-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dept-hero-content {
+      padding: clamp(1.75rem, 3.5vw, 2.75rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dept-header-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #0088D1;
+      background: #EBF4FB;
+      border: 1px solid rgba(0, 136, 209, 0.25);
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .dept-hero-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 800;
+      color: #0B2568;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .dept-hero-intro {
+      font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+      line-height: 1.68;
+      color: #4B617E;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Three Action Buttons */
+    .dept-action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .dept-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.45rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-book-dept {
+      background: linear-gradient(135deg, #0088D1 0%, #006CA6 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(0, 136, 209, 0.35);
+    }
+    .btn-book-dept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 136, 209, 0.5);
+      color: #FFFFFF;
+    }
+
+    .btn-opinion-dept {
+      background: #0B2568;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.25);
+    }
+    .btn-opinion-dept:hover {
+      transform: translateY(-2px);
+      background: #163A85;
+      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(11, 37, 104, 0.4);
+    }
+
+    .btn-callback-dept {
+      background: #FFFFFF;
+      color: #0B2568;
+      border: 1.5px solid #D7E5F2;
+      box-shadow: 0 2px 8px rgba(11, 37, 104, 0.05);
+    }
+    .btn-callback-dept:hover {
+      transform: translateY(-2px);
+      border-color: #0088D1;
+      color: #0088D1;
+      box-shadow: 0 4px 14px rgba(0, 136, 209, 0.2);
+    }
+
+    .dept-hero-media {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      background: #0B2568;
+    }
+
+    .dept-hero-img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Grid Layout for Department Sections */
+    .dept-content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 991px) {
+      .dept-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Section Cards */
+    .dept-card-panel {
+      background: #FFFFFF;
+      border: 1px solid #D7E5F2;
+      border-radius: 14px;
+      padding: clamp(1.5rem, 2.5vw, 2rem);
+      box-shadow: 0 3px 14px rgba(11, 37, 104, 0.04);
+      margin-bottom: 2rem;
+    }
+
+    .panel-heading {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid #E5EEF7;
+      padding-bottom: 0.75rem;
+    }
+
+    .panel-heading i {
+      color: #0088D1;
+    }
+
+    /* Overview Text Blocks */
+    .dept-overview-text {
+      color: #4B617E;
+      line-height: 1.7;
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .dept-conditions-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 1rem;
+      margin: 1.25rem 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    @media (max-width: 640px) {
+      .dept-conditions-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dept-condition-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      color: #0B2568;
+      font-weight: 500;
+    }
+
+    .dept-condition-item i {
+      color: #108A5E;
+      flex-shrink: 0;
+    }
+
+    /* Services Grid */
+    .dept-services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .dept-services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dept-service-item {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 1.15rem;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .dept-service-item:hover {
+      transform: translateY(-2px);
+      border-color: #0088D1;
+      background: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.06);
+    }
+
+    .dept-service-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .dept-service-title i {
+      color: #0088D1;
+    }
+
+    .dept-service-desc {
+      font-size: 0.88rem;
+      color: #4B617E;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Doctors Card Layout in Details */
+    .dept-doctors-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .dept-doctor-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 180ms ease;
+    }
+
+    @media (max-width: 640px) {
+      .dept-doctor-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .dept-doctor-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0088D1;
+      flex-shrink: 0;
+      background: #EBF4FB;
+    }
+
+    .dept-doctor-info {
+      flex: 1;
+    }
+
+    .dept-doctor-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .dept-doctor-qual {
+      font-size: 0.85rem;
+      color: #0088D1;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .dept-doctor-role {
+      font-size: 0.85rem;
+      color: #4B617E;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .dept-doc-btn-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .dept-doc-btn-group {
+        justify-content: center;
+      }
+    }
+
+    .btn-doc-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.95rem;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-doc-primary {
+      background: #0088D1;
+      color: #FFFFFF;
+    }
+    .btn-doc-primary:hover {
+      background: #006CA6;
+      color: #FFFFFF;
+    }
+
+    .btn-doc-outline {
+      background: #FFFFFF;
+      border: 1px solid #D7E5F2;
+      color: #0B2568;
+    }
+    .btn-doc-outline:hover {
+      border-color: #0088D1;
+      color: #0088D1;
+    }
+
+    /* FAQ Accordion */
+    .dept-faq-item {
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .dept-faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.25rem;
+      background: #F8FAFC;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #0B2568;
+      transition: background 160ms ease;
+    }
+
+    .dept-faq-question:hover {
+      background: #EBF4FB;
+    }
+
+    .dept-faq-answer {
+      padding: 0 1.25rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms ease, padding 250ms ease;
+      color: #4B617E;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .dept-faq-item.active .dept-faq-answer {
+      padding: 1rem 1.25rem;
+      max-height: 250px;
+    }
+
+    .dept-faq-item.active .dept-faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* Sidebar Quick Nav & Department Switcher */
+    .dept-sidebar-card {
+      background: #FFFFFF;
+      border: 1px solid #D7E5F2;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 14px rgba(11, 37, 104, 0.04);
+      position: sticky;
+      top: 95px;
+    }
+
+    .dept-switcher-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .dept-switcher-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 8px;
+      color: #4B617E;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 160ms ease;
+    }
+
+    .dept-switcher-link:hover {
+      background: #EBF4FB;
+      color: #0088D1;
+    }
+
+    .dept-switcher-link.active {
+      background: #0B2568;
+      color: #FFFFFF;
+    }
+
+    .dept-switcher-link.active i {
+      color: #00A3E0;
+    }
+
+    /* Modal Forms for Second Opinion and Callback */
+    .dept-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 23, 67, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .dept-modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .dept-modal-box {
+      background: #FFFFFF;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 10px 40px rgba(6, 23, 67, 0.25);
+      overflow: hidden;
+      animation: modalPop 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .dept-modal-header {
+      padding: 1.25rem 1.5rem;
+      background: #0B2568;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dept-modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .dept-modal-close {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+    }
+
+    .dept-modal-body {
+      padding: 1.5rem;
+    }
+
+    .dept-form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .dept-form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0B2568;
+      margin-bottom: 0.4rem;
+    }
+
+    .dept-form-input,
+    .dept-form-select,
+    .dept-form-textarea {
+      width: 100%;
+      padding: 0.75rem 0.95rem;
+      border: 1.5px solid #D7E5F2;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: #0B2568;
+      outline: none;
+      transition: border-color 160ms ease;
+    }
+
+    .dept-form-input:focus,
+    .dept-form-select:focus,
+    .dept-form-textarea:focus {
+      border-color: #0088D1;
+    }
+
+    .dept-notice-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #4B617E;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+
+    .dept-modal-alert {
+      padding: 0.85rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .dept-modal-alert.success {
+      display: block;
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid rgba(22, 163, 74, 0.3);
+    }
+  </style>
+</head>
+<body class="dept-detail-page">
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="reading-progress-bar" id="readingProgressBar" aria-hidden="true"></div>
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Official Logo" class="brand-logo" width="145" height="42">
+        <div class="brand-text-container">
+          <span class="brand-subtext">Mysuru, Karnataka</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="index.html#specialities" class="nav-link active">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency" id="headerEmergencyBtn">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="dept-detail-main" id="main-content">
+    <div class="container">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="dept-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <a href="index.html#specialities">Departments</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <span class="current" id="breadcrumbDeptName">Cardiac Care</span>
+      </nav>
+
+      <!-- Department Hero Card -->
+      <section class="dept-hero-card" id="deptHero">
+        <div class="dept-hero-content">
+          <div class="dept-header-pill">
+            <i data-lucide="award" class="icon-xs"></i>
+            <span id="deptCategoryBadge">Centre of Clinical Excellence</span>
+          </div>
+          <h1 class="dept-hero-title" id="deptTitle">Cardiac Care &amp; Heart Health</h1>
+          <p class="dept-hero-intro" id="deptIntro">
+            Comprehensive cardiovascular diagnosis, preventive cardiology, ECG, echocardiography, and evidence-based clinical management for heart diseases in Mysuru.
+          </p>
+
+          <!-- Three Main Action Buttons -->
+          <div class="dept-action-buttons">
+            <a href="index.html#enquiry" class="dept-action-btn btn-book-dept" id="deptBookApptBtn">
+              <i data-lucide="calendar" class="icon-sm"></i>
+              <span>Book an Appointment</span>
+            </a>
+            <button type="button" class="dept-action-btn btn-opinion-dept" id="openSecondOpinionBtn">
+              <i data-lucide="file-text" class="icon-sm"></i>
+              <span>Request a Second Opinion</span>
+            </button>
+            <button type="button" class="dept-action-btn btn-callback-dept" id="openCallbackBtn">
+              <i data-lucide="phone-call" class="icon-sm"></i>
+              <span>Request a Call Back</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="dept-hero-media">
+          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&h=500&q=80" alt="Cardiac Care Department" class="dept-hero-img" id="deptHeroImg">
+        </div>
+      </section>
+
+      <!-- Department Main Content Grid -->
+      <div class="dept-content-grid">
+        <div class="dept-left-col">
+          
+          <!-- C. Overview Section -->
+          <article class="dept-card-panel">
+            <h2 class="panel-heading">
+              <i data-lucide="info" class="icon-md"></i>
+              <span>Department Overview &amp; Clinical Approach</span>
+            </h2>
+            <p class="dept-overview-text" id="deptOverviewText">
+              Our department provides holistic, patient-centered clinical care focused on accurate diagnostic evaluation, personalized treatment pathways, and long-term recovery support.
+            </p>
+            
+            <h3 style="font-family: var(--font-heading); font-size: 1.05rem; color: #0B2568; margin-top: 1.25rem;">
+              Conditions Evaluated &amp; Treated:
+            </h3>
+            <ul class="dept-conditions-list" id="deptConditionsList">
+              <!-- Injected dynamically via JS -->
+            </ul>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.05rem; color: #0B2568; margin-top: 1.25rem;">
+              Patient Care &amp; Clinical Pathway:
+            </h3>
+            <p class="dept-overview-text" id="deptApproachText">
+              Every consultation begins with empathetic listening, comprehensive clinical evaluation, and non-invasive diagnostic investigations. Our multidisciplinary specialists work together to ensure seamless inpatient care, ICU monitoring when required, and dedicated post-discharge follow-up.
+            </p>
+          </article>
+
+          <!-- D. Services Offered -->
+          <article class="dept-card-panel">
+            <h2 class="panel-heading">
+              <i data-lucide="stethoscope" class="icon-md"></i>
+              <span>Specialized Clinical Services</span>
+            </h2>
+            <div class="dept-services-grid" id="deptServicesGrid">
+              <!-- Injected dynamically via JS -->
+            </div>
+          </article>
+
+          <!-- F. Associated Doctors List -->
+          <article class="dept-card-panel">
+            <h2 class="panel-heading">
+              <i data-lucide="users" class="icon-md"></i>
+              <span>Consultant Specialists</span>
+            </h2>
+            <div class="dept-doctors-grid" id="deptDoctorsGrid">
+              <!-- Injected dynamically via JS -->
+            </div>
+          </article>
+
+          <!-- G. Frequently Asked Questions (Accordion) -->
+          <article class="dept-card-panel">
+            <h2 class="panel-heading">
+              <i data-lucide="help-circle" class="icon-md"></i>
+              <span>Frequently Asked Questions</span>
+            </h2>
+            <div class="dept-faqs-container" id="deptFaqsContainer">
+              <!-- Injected dynamically via JS -->
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Sidebar: All Departments Switcher & Emergency Desk -->
+        <aside class="dept-sidebar-col">
+          <div class="dept-sidebar-card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: #0B2568; margin-bottom: 1rem; border-bottom: 1px solid #E5EEF7; padding-bottom: 0.5rem;">
+              Clinical Departments
+            </h3>
+            <ul class="dept-switcher-list" id="deptSwitcherList">
+              <!-- Dynamically populated -->
+            </ul>
+
+            <div style="background: #EBF4FB; border: 1px solid rgba(0, 136, 209, 0.25); border-radius: 8px; padding: 1.15rem; margin-top: 1.5rem; text-align: center;">
+              <i data-lucide="phone-call" style="color: #0088D1; margin-bottom: 0.5rem;" class="icon-md"></i>
+              <h4 style="font-size: 0.95rem; font-family: var(--font-heading); color: #0B2568; margin-bottom: 0.35rem;">24/7 Hospital Casualty</h4>
+              <p style="font-size: 0.82rem; color: #4B617E; margin-bottom: 0.85rem; line-height: 1.4;">Round-the-clock emergency doctors on campus in Mysuru.</p>
+              <a href="tel:+918212345678" class="btn btn-emergency btn-sm btn-block" style="text-decoration: none;">
+                Call +91 821 234 5678
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal 1: Request a Second Opinion -->
+  <div class="dept-modal-backdrop" id="secondOpinionModal" role="dialog" aria-modal="true" aria-labelledby="secondOpinionTitle">
+    <div class="dept-modal-box">
+      <div class="dept-modal-header">
+        <h3 id="secondOpinionTitle" class="dept-modal-title">Request a Second Opinion</h3>
+        <button type="button" class="dept-modal-close" id="closeOpinionModalBtn" aria-label="Close modal">
+          <i data-lucide="x" class="icon-sm"></i>
+        </button>
+      </div>
+      <div class="dept-modal-body">
+        <div id="opinionAlert" class="dept-modal-alert"></div>
+        <form id="opinionForm">
+          <div class="dept-form-group">
+            <label for="opinionName" class="dept-form-label">Patient Full Name *</label>
+            <input type="text" id="opinionName" class="dept-form-input" required placeholder="e.g. Ramesh Kumar">
+          </div>
+          <div class="dept-form-group">
+            <label for="opinionPhone" class="dept-form-label">Phone Number *</label>
+            <input type="tel" id="opinionPhone" class="dept-form-input" required placeholder="e.g. 9876543210">
+          </div>
+          <div class="dept-form-group">
+            <label for="opinionDept" class="dept-form-label">Department</label>
+            <input type="text" id="opinionDept" class="dept-form-input" readonly>
+          </div>
+          <div class="dept-form-group">
+            <label for="opinionConcern" class="dept-form-label">Brief Clinical Concern / Diagnosis *</label>
+            <textarea id="opinionConcern" class="dept-form-textarea" rows="3" required placeholder="Describe previous diagnosis or recommendations..."></textarea>
+          </div>
+          <div class="dept-form-group">
+            <label for="opinionShareMode" class="dept-form-label">How will you share existing reports? *</label>
+            <select id="opinionShareMode" class="dept-form-select" required>
+              <option value="bring-in-person">Bring physical reports during consultation</option>
+              <option value="whatsapp-email">Share via WhatsApp / Email prior to visit</option>
+              <option value="request-call">Discuss over phone call first</option>
+            </select>
+          </div>
+          <div class="dept-notice-box">
+            <i data-lucide="info" class="icon-xs"></i> Front-end simulation: Your request details are recorded for the hospital front desk follow-up.
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.25rem;">
+            Submit Second Opinion Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Request a Call Back -->
+  <div class="dept-modal-backdrop" id="callbackModal" role="dialog" aria-modal="true" aria-labelledby="callbackTitle">
+    <div class="dept-modal-box">
+      <div class="dept-modal-header">
+        <h3 id="callbackTitle" class="dept-modal-title">Request a Call Back</h3>
+        <button type="button" class="dept-modal-close" id="closeCallbackModalBtn" aria-label="Close modal">
+          <i data-lucide="x" class="icon-sm"></i>
+        </button>
+      </div>
+      <div class="dept-modal-body">
+        <div id="callbackAlert" class="dept-modal-alert"></div>
+        <form id="callbackForm">
+          <div class="dept-form-group">
+            <label for="callbackName" class="dept-form-label">Your Name *</label>
+            <input type="text" id="callbackName" class="dept-form-input" required placeholder="e.g. Sunita Devi">
+          </div>
+          <div class="dept-form-group">
+            <label for="callbackPhone" class="dept-form-label">Contact Phone Number *</label>
+            <input type="tel" id="callbackPhone" class="dept-form-input" required placeholder="e.g. 9845012345">
+          </div>
+          <div class="dept-form-group">
+            <label for="callbackDept" class="dept-form-label">Department of Interest</label>
+            <input type="text" id="callbackDept" class="dept-form-input" readonly>
+          </div>
+          <div class="dept-form-group">
+            <label for="callbackTime" class="dept-form-label">Preferred Time for Call Back *</label>
+            <select id="callbackTime" class="dept-form-select" required>
+              <option value="morning">Morning (09:00 AM – 12:00 PM)</option>
+              <option value="afternoon">Afternoon (12:00 PM – 04:00 PM)</option>
+              <option value="evening">Evening (04:00 PM – 08:00 PM)</option>
+              <option value="anytime">Anytime during working hours</option>
+            </select>
+          </div>
+          <div class="dept-notice-box">
+            <i data-lucide="info" class="icon-xs"></i> Front-end verification: Our patient coordination team will reach out at your requested time.
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.25rem;">
+            Submit Call Back Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background: #0B2568; color: #FFFFFF; padding: 2.5rem 0; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container text-center">
+      <p style="margin-bottom: 0.5rem; font-size: 0.92rem;">
+        &copy; 2026 Sulakshaa Multi Speciality Hospital, Mysuru. Dedicated Healthcare Excellence.
+      </p>
+      <p style="font-size: 0.82rem; color: #94A3B8;">
+        Central casualty portico, 24/7 ambulance bay, ICU telemetry, and modern multispeciality clinical consultations.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Department Data & Controller Script -->
+  <script>
+    const DEPARTMENTS_DATA = {
+      'cardiac-care': {
+        name: 'Cardiac Care (Cardiology)',
+        title: 'Cardiac Care & Cardiovascular Health',
+        category: 'Centre of Excellence',
+        image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Comprehensive cardiovascular assessment, preventive heart evaluations, acute cardiac stabilization, and long-term coronary care in Mysuru.',
+        overview: 'The Cardiac Care department at Sulakshaa Hospital focuses on early identification of heart disease, hypertension management, post-cardiac event recovery, and diagnostic screening. Supported by round-the-clock intensive care telemetry, our team ensures rapid response to cardiac discomfort.',
+        conditions: [
+          'Coronary Artery Disease & Angina',
+          'Hypertension & Blood Pressure Fluctuations',
+          'Arrhythmia & Palpitations Evaluation',
+          'Heart Failure Management & Fluid Retention',
+          'High Cholesterol & Atherosclerosis Risk',
+          'Preventive Cardiac Risk Assessments'
+        ],
+        services: [
+          { title: 'Resting 12-Lead ECG', desc: 'Instant bedside multi-channel electrocardiograms with immediate specialist clinical evaluation.' },
+          { title: '2D Echocardiography', desc: 'Precision ultrasound imaging of heart chambers, valves, and ejection fraction assessment.' },
+          { title: 'Preventive Cardiac Profiling', desc: 'Targeted lipid screening, cardiac biomarkers, and lifestyle intervention protocols.' },
+          { title: 'Coronary ICU Telemetry', desc: '24/7 dedicated intensive care vital monitoring for unstable coronary conditions.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Priya S. Sharma',
+            qual: 'MD, DM (Cardiology)',
+            role: 'Consultant Cardiologist & Heart Specialist',
+            image: 'assets/dr-priya-sharma.png'
+          }
+        ],
+        faqs: [
+          { q: 'When should I consult a cardiologist?', a: 'You should seek immediate evaluation if experiencing sudden chest tightness, shortness of breath, unexplained dizziness, palpitations, or persistent high blood pressure.' },
+          { q: 'What should I bring to my cardiac consultation?', a: 'Please bring your previous ECG reports, lipid profile tests, a list of current medications, and past discharge summaries.' },
+          { q: 'Are emergency cardiac beds available 24/7?', a: 'Yes, our hospital casualty casualty and ICU maintain 24-hour telemetry monitoring and resident emergency medical officers.' }
+        ]
+      },
+
+      'orthopedics': {
+        name: 'Orthopedics & Joint Care',
+        title: 'Orthopedics, Bone & Joint Surgery',
+        category: 'Surgical & Trauma Centre',
+        image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Advanced management of bone fractures, degenerative arthritis, sports injuries, spine discomfort, and joint reconstruction.',
+        overview: 'Sulakshaa Hospital’s Orthopedics Centre provides compassionate, precision-driven musculoskeletal care. From emergency fracture fixation and accident trauma triage to conservative joint pain management and post-surgical physiotherapy.',
+        conditions: [
+          'Bone Fractures & Accidental Trauma',
+          'Osteoarthritis & Severe Knee/Hip Pain',
+          'Spinal Spondylosis, Disc Bulge & Sciatica',
+          'Ligament Tears & Sports Injuries',
+          'Osteoporosis & Bone Density Loss',
+          'Tendonitis, Bursitis & Frozen Shoulder'
+        ],
+        services: [
+          { title: 'Fracture Stabilization & Casting', desc: 'Emergency closed reduction, plaster casting, and surgical internal fixation.' },
+          { title: 'Joint Pain & Arthritis Clinic', desc: 'Intra-articular viscosupplementation, PRP guidance, and medical arthritis therapy.' },
+          { title: 'Digital X-Ray & Imaging', desc: 'High-resolution digital skeletal radiography with minimal radiation exposure.' },
+          { title: 'Post-Trauma Rehabilitation', desc: 'Structured physical therapy to restore range of motion and joint stability.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Anand R. Kulkarni',
+            qual: 'MS Ortho, DNB (Orthopedic Surgery)',
+            role: 'Senior Orthopedic & Joint Surgeon',
+            image: 'assets/dr-anand-kulkarni.png'
+          }
+        ],
+        faqs: [
+          { q: 'How do I know if a bone injury is fractured or sprained?', a: 'Severe swelling, inability to bear weight, and deformity require immediate digital X-ray evaluation by our orthopedic team.' },
+          { q: 'Can knee osteoarthritis be treated without surgery?', a: 'Yes, early-stage arthritis is effectively managed with physiotherapy, lifestyle modification, and targeted medications.' }
+        ]
+      },
+
+      'neurology': {
+        name: 'Neurology & Brain Health',
+        title: 'Neurology & Cognitive Sciences',
+        category: 'Diagnostic & Clinical Centre',
+        image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Expert neurological assessment for acute stroke, chronic migraine, peripheral neuropathy, epilepsy, and movement disorders.',
+        overview: 'Our Neurology department delivers prompt evaluation of central and peripheral nervous system disorders. Supported by multi-slice CT scanning and emergency resuscitation bays, we prioritize early neurological triage.',
+        conditions: [
+          'Acute Ischemic & Hemorrhagic Stroke',
+          'Chronic Migraine & Tension Headaches',
+          'Epileptic Seizures & Syncopal Episodes',
+          'Diabetic Neuropathy, Numbness & Tingling',
+          'Parkinson’s Disease & Tremor Disorders',
+          'Vertigo, Vestibular Imbalance & Dizziness'
+        ],
+        services: [
+          { title: 'Emergency Stroke Triage', desc: 'Stat multi-slice neuroimaging and immediate critical stabilization.' },
+          { title: 'Comprehensive Headache Clinic', desc: 'Systematic etiology identification and preventive migraine protocols.' },
+          { title: 'Seizure Management', desc: 'Optimized anticonvulsant therapeutic regimens and lifestyle counsel.' },
+          { title: 'Peripheral Nerve Assessment', desc: 'Clinical evaluation for entrapment neuropathies and nerve compression.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Vikram M. Rao',
+            qual: 'MBBS, DM (Neurology)',
+            role: 'Consultant Neurologist',
+            image: 'assets/dr-vikram-rao.png'
+          }
+        ],
+        faqs: [
+          { q: 'What are the emergency signs of a stroke?', a: 'Remember FAST: Face drooping, Arm weakness, Speech difficulty, and Time to reach our 24/7 emergency casualty portico immediately.' },
+          { q: 'When should a headache be examined by a neurologist?', a: 'Any sudden severe headache ("thunderclap"), headache with vision changes, fever, or progressive worsening requires specialist evaluation.' }
+        ]
+      },
+
+      'gastroenterology': {
+        name: 'Gastroenterology',
+        title: 'Gastroenterology & Digestive Health',
+        category: 'Internal Medicine & Hepatic Care',
+        image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Specialized diagnosis and clinical management of acid peptic disease, hepatic conditions, bowel disorders, and acute pancreatitis.',
+        overview: 'Our Gastroenterology division focuses on restoring digestive harmony and gastrointestinal wellness. Our physicians provide targeted therapy for chronic acid reflux, fatty liver, abdominal pain, and intestinal infections.',
+        conditions: [
+          'Gastroesophageal Reflux Disease (GERD)',
+          'Peptic Ulcer Disease & Gastritis',
+          'Fatty Liver, Hepatitis & Hepatic Dysfunction',
+          'Irritable Bowel Syndrome (IBS) & Colitis',
+          'Acute & Chronic Pancreatitis',
+          'Unexplained Abdominal Pain & Bloating'
+        ],
+        services: [
+          { title: 'Diagnostic Digestive Workup', desc: 'Ultrasonography, automated liver function assays, and stool microbiology.' },
+          { title: 'Liver Health Management', desc: 'Staging, metabolic counseling, and medical therapy for hepatic steatosis.' },
+          { title: 'Nutritional & Dietary Therapy', desc: 'Structured patient meal guidance to alleviate inflammatory gastrointestinal conditions.' },
+          { title: 'Inpatient GI Care', desc: 'Hydration therapy, pain control, and monitoring for acute pancreatitis.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Manjunath Swamy',
+            qual: 'MBBS, MD, DM (Gastroenterology)',
+            role: 'Consultant Gastroenterologist',
+            image: 'assets/dr-manjunath-swamy.png'
+          }
+        ],
+        faqs: [
+          { q: 'How can chronic acidity and GERD be resolved?', a: 'Our gastroenterologist performs clinical assessment to distinguish simple gastritis from ulcer disease, prescribing targeted medical regimens.' }
+        ]
+      },
+
+      'oncology': {
+        name: 'Oncology',
+        title: 'Oncology & Cancer Screening Centre',
+        category: 'Screening & Supportive Care',
+        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Compassionate early detection screening, comprehensive cancer risk assessment, and empathetic supportive medical care in Mysuru.',
+        overview: 'The Oncology service at Sulakshaa Hospital emphasizes early cancer detection, preventive health checkups, histological diagnostic coordination, and holistic patient guidance during challenging clinical journeys.',
+        conditions: [
+          'Breast Lump Evaluation & Mammography Referral',
+          'Cervical Cancer Screening & Pap Smears',
+          'Oral Cavity Lesion & Premalignant Triage',
+          'Gastrointestinal Malignancy Warning Signs',
+          'Unexplained Lymphadenopathy & Weight Loss',
+          'Palliative Symptom Management & Pain Relief'
+        ],
+        services: [
+          { title: 'Comprehensive Cancer Screening', desc: 'Multi-organ early warning checks and clinical examination.' },
+          { title: 'Histopathology Coordination', desc: 'Biopsy processing with accredited pathology laboratories.' },
+          { title: 'Second Opinion Board', desc: 'Review of diagnostic reports, staging scans, and clinical plans.' },
+          { title: 'Supportive Pain Medicine', desc: 'Medical management of discomfort and treatment side effects.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Suresh Babu K.',
+            qual: 'MS (General Surgery), Surgical Oncology Fellow',
+            role: 'Senior Surgical Consultant & Oncology Coordinator',
+            image: 'assets/dr-suresh-babu.png'
+          }
+        ],
+        faqs: [
+          { q: 'Why is early cancer screening important?', a: 'Most malignancies detected in Stage 1 have substantially higher cure rates and require far less invasive treatment protocols.' }
+        ]
+      },
+
+      'paediatrics': {
+        name: 'Paediatrics & Child Health',
+        title: 'Paediatrics & Neonatal Care',
+        category: 'Maternal & Child Health',
+        image: 'assets/paediatrics.png',
+        intro: 'Gentle, nurturing medical care for infants, children, and adolescents, including immunizations and milestone tracking.',
+        overview: 'Sulakshaa Hospital’s Paediatric department provides child-friendly healthcare in a reassuring environment. Our paediatricians manage acute childhood infections, asthma, nutritional deficiencies, and growth milestones.',
+        conditions: [
+          'Acute Pediatric Fevers & Viral Illnesses',
+          'Childhood Asthma, Bronchitis & Allergies',
+          'Neonatal Jaundice & Feeding Difficulties',
+          'Growth Stunting & Nutritional Deficiencies',
+          'Diarrhea, Dehydration & Pediatric Gastro',
+          'Vaccine Preventable Childhood Diseases'
+        ],
+        services: [
+          { title: 'Complete Child Immunization', desc: 'National Immunization Schedule vaccines stored under strict cold-chain.' },
+          { title: 'Developmental Milestone Checks', desc: 'Physical growth, height-weight tracking, and speech/cognitive monitoring.' },
+          { title: 'Pediatric Nebulization Suite', desc: 'Gentle aerosol therapy for acute respiratory distress in children.' },
+          { title: '24/7 Pediatric Casualty Care', desc: 'Immediate triage for febrile convulsions, accidental falls, and high fever.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Sneha Hegde',
+            qual: 'MD Paediatrics, DCH',
+            role: 'Consultant Paediatrician & Neonatologist',
+            image: 'assets/dr-sneha-hegde.png'
+          }
+        ],
+        faqs: [
+          { q: 'Which vaccinations are available for newborns and infants?', a: 'We maintain all routine and optional vaccines according to Indian Academy of Pediatrics (IAP) recommendations.' }
+        ]
+      },
+
+      'general-medicine': {
+        name: 'General Medicine',
+        title: 'General & Internal Medicine',
+        category: 'Primary Healthcare Centre',
+        image: 'assets/general-medicine.png',
+        intro: 'Mysuru’s trusted clinical destination for adult health, diabetes control, viral fever triage, and multisystem medical conditions.',
+        overview: 'Led by seasoned medical directors with over four decades of diagnostic acumen, our General Medicine department provides accurate diagnosis of complex symptoms, lifestyle disease management, and emergency medical stabilization.',
+        conditions: [
+          'Type 2 Diabetes Mellitus & Metabolic Syndrome',
+          'Dengue, Typhoid, Malaria & Seasonal Fevers',
+          'Respiratory Tract Infections, Cough & Pneumonia',
+          'Thyroid Disorders (Hypo/Hyperthyroidism)',
+          'Chronic Kidney Disease Screening & Fluid Balances',
+          'Geriatric Health Concerns & Polypharmacy Review'
+        ],
+        services: [
+          { title: 'Comprehensive Medical Checkup', desc: 'Full-body vital examination, blood chemistry, and health risk appraisal.' },
+          { title: 'Diabetes Management Clinic', desc: 'HbA1c monitoring, organ protection protocols, and insulin adjustment.' },
+          { title: 'Inpatient General Wards & ICU', desc: 'Hygienic recovery beds with continuous nursing care and doctor rounds.' },
+          { title: 'Acute Infectious Disease Ward', desc: 'Barrier nursing and supportive care for severe viral and bacterial fevers.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Laxme Gowda',
+            qual: 'MBBS, MD (General Medicine)',
+            role: 'Senior Consultant Physician & Clinical Director',
+            image: 'assets/dr-laxme-gowda.png'
+          }
+        ],
+        faqs: [
+          { q: 'How often should a diabetic patient have clinical reviews?', a: 'We recommend routine HbA1c reviews every 3 months, alongside annual retinal, renal, and foot nerve examinations.' }
+        ]
+      },
+
+      'maternity-care': {
+        name: 'Maternity Care (OBG)',
+        title: 'Obstetrics & Gynaecological Care',
+        category: 'Women & Child Centre',
+        image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Compassionate maternal health, antenatal monitoring, safe deliveries, and comprehensive gynecological wellness in Mysuru.',
+        overview: 'Sulakshaa Hospital provides personalized, respectful care through every phase of womanhood. From family planning and prenatal care to high-risk pregnancy monitoring and gynecological disorder management.',
+        conditions: [
+          'Routine & High-Risk Pregnancy',
+          'Polycystic Ovarian Syndrome (PCOS / PCOD)',
+          'Uterine Fibroids & Pelvic Endometriosis',
+          'Irregular, Painful or Heavy Menstruation',
+          'Menopausal Symptoms & Bone Density Loss',
+          'Pelvic Infections & Reproductive Health'
+        ],
+        services: [
+          { title: 'Antenatal Clinical Checkups', desc: 'Trimester screening, blood pressure monitoring, and fetal heart checks.' },
+          { title: 'Gynecological Ultrasound', desc: 'Pelvic sonography for ovarian, uterine, and endometrial evaluation.' },
+          { title: 'PCOS Metabolic Counseling', desc: 'Targeted nutritional guidance and hormonal balancing therapy.' },
+          { title: 'Safe Labor & Inpatient Suites', desc: 'Private recovery suites with dedicated midwife support.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Rajeshwari V.',
+            qual: 'MBBS, DGO, DNB (OBG)',
+            role: 'Senior Consultant Obstetrician & Gynaecologist',
+            image: 'assets/dr-rajeshwari.png'
+          }
+        ],
+        faqs: [
+          { q: 'What is included in the routine antenatal checkup package?', a: 'Regular vital monitoring, fetal ultrasound scans, blood sugar screening, iron-calcium supplementation, and diet guidance.' }
+        ]
+      },
+
+      'dermatology': {
+        name: 'Dermatology & Skin Care',
+        title: 'Dermatology, Hair & Nail Care',
+        category: 'Clinical Dermatology Centre',
+        image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Clinical evaluation and therapeutic management for chronic eczema, acne, psoriasis, fungal allergies, and hair loss.',
+        overview: 'Our Dermatology clinic addresses both common and complex skin diseases. Our dermatologist combines evidence-based medical treatments with patient lifestyle guidance to resolve stubborn dermatological conditions.',
+        conditions: [
+          'Acne Vulgaris & Post-Acne Hyperpigmentation',
+          'Eczema, Atopic Dermatitis & Contact Allergies',
+          'Psoriasis & Scalp Flaking Conditions',
+          'Fungal Infections & Ringworm (Tinea)',
+          'Hair Fall, Telogen Effluvium & Alopecia',
+          'Urticaria (Hives) & Acute Skin Rashes'
+        ],
+        services: [
+          { title: 'Skin Allergy Testing & Triage', desc: 'Detailed etiology investigation and oral/topical antihistaminic regimens.' },
+          { title: 'Medical Acne Protocols', desc: 'Retinoid guidance, barrier repair creams, and clinical peels.' },
+          { title: 'Scalp & Hair Analysis', desc: 'Nutritional and hormonal workups for diffuse hair thinning.' },
+          { title: 'Minor Dermatological Procedures', desc: 'Electrocautery for skin tags, wart treatment, and lesion biopsies.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Kavitha Ramesh',
+            qual: 'MBBS, MD (Dermatology, Venereology & Leprosy)',
+            role: 'Consultant Dermatologist',
+            image: 'assets/dr-kavitha-ramesh.png'
+          }
+        ],
+        faqs: [
+          { q: 'Why do over-the-counter steroid creams worsen skin fungal infections?', a: 'Steroid creams suppress local skin immunity, causing fungal organisms to multiply uncontrollably. Always consult a dermatologist.' }
+        ]
+      },
+
+      'psychiatry': {
+        name: 'Psychiatry & Mental Health',
+        title: 'Psychiatry & Behavioral Health',
+        category: 'Mental Wellness Centre',
+        image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Confidential, empathetic mental health care, counseling, anxiety management, and evidence-based behavioral therapy.',
+        overview: 'Mental wellness is integral to physical recovery. Sulakshaa Hospital offers a safe, dignified setting where experienced psychiatrists provide counseling, medical management of mood disorders, and stress reduction.',
+        conditions: [
+          'Generalized Anxiety Disorder & Panic Attacks',
+          'Depressive Disorders & Loss of Motivation',
+          'Insomnia, Sleep Disturbances & Fatigue',
+          'Work-Related Burnout & Chronic Stress',
+          'Obsessive Compulsive Tendencies (OCD)',
+          'Elderly Cognitive Changes & Memory Lapses'
+        ],
+        services: [
+          { title: 'Confidential Clinical Evaluation', desc: 'Compassionate one-on-one psychiatric assessment in private suites.' },
+          { title: 'Pharmacotherapy & Medication Review', desc: 'Modern, well-tolerated neurochemical stabilization regimens.' },
+          { title: 'Stress & Sleep Hygiene Counseling', desc: 'Practical cognitive behavioural tools to restore sleep and peace of mind.' },
+          { title: 'Family Psychoeducation', desc: 'Guidance for caregivers to support recovery at home.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Deepa N.',
+            qual: 'MBBS, MD (Psychiatry)',
+            role: 'Consultant Psychiatrist & Mental Wellness Lead',
+            image: 'assets/dr-deepa.png'
+          }
+        ],
+        faqs: [
+          { q: 'Are psychiatric consultations kept strictly confidential?', a: 'Yes, all clinical discussions, records, and prescriptions are strictly protected by medical confidentiality ethics.' }
+        ]
+      },
+
+      'general-surgery': {
+        name: 'General Surgery',
+        title: 'General & Laparoscopic Surgery',
+        category: 'Surgical Operations Centre',
+        image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Surgical consultations, minimally invasive laparoscopic care, emergency trauma repairs, hernia, and gallbladder surgeries.',
+        overview: 'Sulakshaa Hospital’s Surgical Centre features state-of-the-art modular operating theatres equipped with laminar airflow HEPA filtration. Our surgical team prioritizes minimally invasive techniques for faster recovery.',
+        conditions: [
+          'Inguinal, Umbilical & Incisional Hernias',
+          'Acute & Recurrent Appendicitis',
+          'Gallbladder Stones (Cholelithiasis)',
+          'Hydrocele, Phimosis & Soft Tissue Swellings',
+          'Diabetic Foot Ulcers & Complex Wound Debridement',
+          'Emergency Abdominal Trauma & Hemostasis'
+        ],
+        services: [
+          { title: 'Laparoscopic Appendectomy & Hernia', desc: 'Keyhole surgical repair resulting in minimal scarring and quick discharge.' },
+          { title: 'Sterile Modular Operation Theatres', desc: 'Positive pressure HEPA filtered surgical environments.' },
+          { title: 'Post-Operative PACU Monitoring', desc: 'Continuous vital monitoring by trained surgical nurses and anesthesiologists.' },
+          { title: 'Advanced Wound Care Clinic', desc: 'Modern antiseptic dressings and negative-pressure wound therapy.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Suresh Babu K.',
+            qual: 'MS (General Surgery), FIAGES',
+            role: 'Senior Consultant Surgeon & Laparoscopy Specialist',
+            image: 'assets/dr-suresh-babu.png'
+          }
+        ],
+        faqs: [
+          { q: 'What are the advantages of laparoscopic surgery?', a: 'Smaller incisions, significantly less post-operative pain, lower infection risk, and faster return to work compared to traditional open surgery.' }
+        ]
+      },
+
+      'anaesthesiology': {
+        name: 'Anaesthesiology',
+        title: 'Anaesthesiology & Critical Care',
+        category: 'Perioperative Care Centre',
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Precision perioperative anesthesia, continuous surgical hemodynamic monitoring, post-operative pain medicine, and ICU airway care.',
+        overview: 'Our Anaesthesiology team ensures patient safety and comfort throughout the surgical process. Through comprehensive pre-anesthetic assessments and vigilant intraoperative monitoring, we ensure smooth anesthesia recovery.',
+        conditions: [
+          'Pre-Operative Cardiac & Respiratory Risk Stratification',
+          'Acute Surgical Pain Management',
+          'Critical Airway Compromise & Emergency Intubation',
+          'Severe Sepsis & Hemodynamic Instability',
+          'Ventilator Dependency & Weaning Protocol',
+          'Post-Surgical Pain Medicine Protocols'
+        ],
+        services: [
+          { title: 'Pre-Anesthetic Checkup (PAC)', desc: 'Detailed cardiopulmonary risk appraisal before planned operations.' },
+          { title: 'Multi-Modal Anesthesia Delivery', desc: 'General, spinal, epidural, and peripheral nerve block techniques.' },
+          { title: 'Intraoperative Vital Telemetry', desc: 'Continuous capnography, invasive arterial blood pressure, and pulse oximetry.' },
+          { title: '24/7 ICU Intensivist Coverage', desc: 'Senior anesthesiologists managing high-dependency medical beds.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Pradeep M.',
+            qual: 'MBBS, MD (Anaesthesiology), FIPM',
+            role: 'Senior Consultant Anaesthesiologist & Intensivist',
+            image: 'assets/dr-pradeep.png'
+          }
+        ],
+        faqs: [
+          { q: 'Why is fasting necessary before general anesthesia?', a: 'Fasting prevents gastric contents from entering the lungs (pulmonary aspiration) during anesthesia induction, ensuring utmost safety.' }
+        ]
+      },
+
+      'pulmonology': {
+        name: 'Pulmonology & Respiratory Care',
+        title: 'Pulmonology & Chest Medicine',
+        category: 'Respiratory Care Centre',
+        image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Advanced diagnosis and clinical treatment for chronic bronchial asthma, COPD, pneumonia, sleep apnea, and persistent cough disorders in Mysuru.',
+        overview: 'The Department of Pulmonology at Sulakshaa Multi Speciality Hospital delivers expert pulmonary evaluations, spirometry, and intensive respiratory support. Supported by continuous non-invasive ventilation, nebulization suites, and 24/7 ICU facilities.',
+        conditions: [
+          'Bronchial Asthma & Wheezing Exacerbations',
+          'Chronic Obstructive Pulmonary Disease (COPD)',
+          'Pneumonia, Bronchitis & Chest Infections',
+          'Allergic Rhinitis, Sinusitis & Chronic Cough',
+          'Sleep Apnea & Nocturnal Oxygen Desaturation',
+          'Post-Infection Lung Fibrosis & Breathlessness'
+        ],
+        services: [
+          { title: 'Spirometry & Pulmonary Function (PFT)', desc: 'Objective computerized measurement of lung capacity and airflow dynamics.' },
+          { title: 'Acute Bronchodilation & Nebulization', desc: 'Emergency aerosolized pharmacotherapy for acute bronchial spasms.' },
+          { title: 'Low-Dose Chest HRCT Diagnostics', desc: 'High-resolution cross-sectional radiological imaging for lung parenchyma.' },
+          { title: 'Non-Invasive Respiratory ICU Support', desc: 'CPAP, BiPAP and high-flow oxygen telemetry for respiratory failure.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Ramesh Narayan',
+            qual: 'MBBS, MD (Pulmonary Medicine)',
+            role: 'Consultant Pulmonologist & Chest Physician',
+            image: 'assets/dr-suresh-babu.png'
+          }
+        ],
+        faqs: [
+          { q: 'When should I consult a pulmonologist?', a: 'Consult promptly if you experience cough lasting over 3 weeks, unexplained shortness of breath during exertion, wheezing, or recurrent chest congestion.' },
+          { q: 'What is a Spirometry test?', a: 'Spirometry is a safe, painless breathing test that measures how much air your lungs can hold and how rapidly you can exhale it.' }
+        ]
+      },
+
+      'nephrology': {
+        name: 'Nephrology & Kidney Care',
+        title: 'Nephrology & Renal Medicine',
+        category: 'Renal Care Centre',
+        image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, electrolyte imbalances, and hypertension-related renal care.',
+        overview: 'Sulakshaa Hospital’s Nephrology department emphasizes early identification and prevention of kidney function decline. Supported by advanced automated laboratory profiling, color Doppler ultrasound, and intensive care beds.',
+        conditions: [
+          'Chronic Kidney Disease (CKD) Stages 1 to 5',
+          'Diabetic Nephropathy & Microalbuminuria',
+          'Acute Kidney Injury (AKI) & Oliguria',
+          'Hypertensive Renal Disease & Protein Loss',
+          'Electrolyte Imbalances (Sodium, Potassium, Calcium)',
+          'Recurrent Urinary Tract Infections & Nephritis'
+        ],
+        services: [
+          { title: 'Renal Function & eGFR Profiling', desc: 'Automated serum creatinine, BUN, and urine protein-to-creatinine assays.' },
+          { title: 'Renal Doppler Ultrasonography', desc: 'Non-invasive acoustic imaging for kidney size, cortex thickness, and blood perfusion.' },
+          { title: 'Diabetic Kidney Protection Protocol', desc: 'Targeted blood pressure and metabolic therapy to arrest renal decline.' },
+          { title: 'Inpatient Critical Care Nephrology', desc: 'Fluid and electrolyte regulation for acute medical ICU admissions.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Harish Kumar N.',
+            qual: 'MD (Gen Med), DM (Nephrology)',
+            role: 'Consultant Nephrologist & Renal Specialist',
+            image: 'assets/dr-manjunath-swamy.png'
+          }
+        ],
+        faqs: [
+          { q: 'What are common early signs of kidney issues?', a: 'Puffiness around the eyes, swelling in feet or ankles, frothy urine, fatigue, and uncontrolled hypertension often warrant renal evaluation.' },
+          { q: 'Can diabetic kidney disease be prevented?', a: 'Tight glycemic control, optimal blood pressure management, and annual urine microalbumin tests significantly protect renal health.' }
+        ]
+      },
+
+      'ent': {
+        name: 'ENT (Ear, Nose & Throat)',
+        title: 'Otorhinolaryngology & ENT Care',
+        category: 'Specialized Clinical Centre',
+        image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Specialized diagnosis and clinical treatment for ear infections, hearing loss, vertigo, chronic sinusitis, deviated nasal septum, and throat disorders.',
+        overview: 'The ENT department provides advanced diagnostic otoscopy, diagnostic nasal endoscopy, and specialized care for all pediatric and adult ear, nose, throat, and balance conditions.',
+        conditions: [
+          'Chronic Otitis Media, Ear Pain & Discharge',
+          'Conductive & Sensorineural Hearing Impairment',
+          'Chronic Sinusitis, Headache & Nasal Polyps',
+          'Deviated Nasal Septum (DNS) & Snoring',
+          'Tonsillitis, Pharyngitis & Adenoid Enlargement',
+          'Benign Paroxysmal Positional Vertigo (BPPV)'
+        ],
+        services: [
+          { title: 'Diagnostic Nasal Endoscopy (DNE)', desc: 'Magnified fiberoptic visual inspection of nasal pathways and sinus drainage.' },
+          { title: 'Video Otoscopy & Microsuction', desc: 'Safe precision ear examination and gentle clearing of debris and impacted wax.' },
+          { title: 'Pure Tone Audiometry Screening', desc: 'Accurate acoustic assessment to measure hearing sensitivity across frequencies.' },
+          { title: 'Emergency ENT Intervention', desc: 'Foreign body extraction, epistaxis (nosebleed) management, and acute infection triage.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Rekha Srinivas',
+            qual: 'MBBS, MS (ENT), DNB',
+            role: 'Consultant ENT Surgeon & Specialist',
+            image: 'assets/dr-rajeshwari.png'
+          }
+        ],
+        faqs: [
+          { q: 'What causes persistent ear discharge?', a: 'Ear discharge usually stems from middle ear infections or a perforated eardrum and requires examination under video otoscopy.' },
+          { q: 'How is positional vertigo (BPPV) treated?', a: 'BPPV is frequently treated effectively in the clinic using canalith repositioning maneuvers (such as the Epley maneuver).' }
+        ]
+      },
+
+      'urology': {
+        name: 'Urology & Urological Care',
+        title: 'Urology & Genitourinary Surgery',
+        category: 'Surgical Specialty Centre',
+        image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&h=500&q=80',
+        intro: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections, and bladder health.',
+        overview: 'Our Urology centre delivers specialized medical and surgical interventions for urinary tract and male reproductive system health. Equipped with advanced NCCT imaging, uroflowmetry, and dedicated sterile surgical suites.',
+        conditions: [
+          'Kidney, Ureter & Bladder Calculi (Stones)',
+          'Benign Prostatic Hyperplasia (BPH) & Hesitancy',
+          'Recurrent Urinary Tract Infections (UTI)',
+          'Hematuria (Blood in Urine) Investigation',
+          'Urinary Incontinence & Overactive Bladder',
+          'Male Genitourinary Conditions & Varicocele'
+        ],
+        services: [
+          { title: 'Urinary Stone Evaluation & NCCT', desc: 'Precision low-dose computed tomography to locate and size renal and ureteric calculi.' },
+          { title: 'Uroflowmetry & Residual Volume Scan', desc: 'Computerized evaluation of urinary stream velocity and bladder emptying efficacy.' },
+          { title: 'Prostate Health & Serum PSA Testing', desc: 'Comprehensive digital prostate assessment and biomarker monitoring.' },
+          { title: 'Emergency Urological Triage', desc: '24/7 relief for acute renal colic pain and emergency urinary retention.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Chandrashekar B.',
+            qual: 'MBBS, MS (Gen Surg), MCh (Urology)',
+            role: 'Senior Consultant Urologist',
+            image: 'assets/dr-anand-kulkarni.png'
+          }
+        ],
+        faqs: [
+          { q: 'What are the main symptoms of kidney stones?', a: 'Intense flank pain radiating to the groin, nausea, blood in urine, and painful urination are hallmark indicators requiring prompt scanning.' },
+          { q: 'When is medical treatment sufficient for kidney stones?', a: 'Small stones (under 5mm) without obstruction or severe infection can often pass spontaneously with hydration and targeted medical therapy.' }
+        ]
+      }
+    };
+
+    function loadDepartmentPage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let deptSlug = (urlParams.get('dept') || 'cardiac-care').toLowerCase().trim();
+
+      const aliasMap = {
+        'cardiology': 'cardiac-care',
+        'cardiothoracic-surgery': 'cardiac-care',
+        'cardiology-cardiothoracic-surgery': 'cardiac-care',
+        'orthopedics-joint-replacement': 'orthopedics',
+        'neurology-neurosurgery': 'neurology',
+        'obstetrics-gynecology': 'maternity-care',
+        'obgyn': 'maternity-care',
+        'pediatrics': 'paediatrics',
+        'pediatric': 'paediatrics',
+        'pulmonary': 'pulmonology',
+        'chest-medicine': 'pulmonology',
+        'kidney': 'nephrology',
+        'renal': 'nephrology'
+      };
+
+      if (aliasMap[deptSlug]) {
+        deptSlug = aliasMap[deptSlug];
+      }
+
+      if (!DEPARTMENTS_DATA[deptSlug]) {
+        deptSlug = 'cardiac-care';
+      }
+
+      const dept = DEPARTMENTS_DATA[deptSlug];
+
+      // Update Page Meta & Breadcrumbs
+      document.title = `${dept.name} | Sulakshaa Hospital Mysuru`;
+      document.getElementById('breadcrumbDeptName').textContent = dept.name;
+      document.getElementById('deptCategoryBadge').textContent = dept.category;
+      document.getElementById('deptTitle').textContent = dept.title;
+      document.getElementById('deptIntro').textContent = dept.intro;
+      document.getElementById('deptOverviewText').textContent = dept.overview;
+
+      const heroImg = document.getElementById('deptHeroImg');
+      heroImg.src = dept.image;
+      heroImg.alt = `${dept.name} at Sulakshaa Multi Speciality Hospital`;
+
+      // Update Appointment Link with department query
+      document.getElementById('deptBookApptBtn').href = `index.html#enquiry?dept=${encodeURIComponent(dept.name)}`;
+
+      // Update Modal Hidden / Readonly Inputs
+      document.getElementById('opinionDept').value = dept.name;
+      document.getElementById('callbackDept').value = dept.name;
+
+      // Populate Conditions
+      const condList = document.getElementById('deptConditionsList');
+      condList.innerHTML = '';
+      dept.conditions.forEach(cond => {
+        const li = document.createElement('li');
+        li.className = 'dept-condition-item';
+        li.innerHTML = `<i data-lucide="check-circle" class="icon-xs"></i> <span>${cond}</span>`;
+        condList.appendChild(li);
+      });
+
+      // Populate Services
+      const servGrid = document.getElementById('deptServicesGrid');
+      servGrid.innerHTML = '';
+      dept.services.forEach(serv => {
+        const div = document.createElement('div');
+        div.className = 'dept-service-item';
+        div.innerHTML = `
+          <h4 class="dept-service-title"><i data-lucide="check" class="icon-xs"></i> ${serv.title}</h4>
+          <p class="dept-service-desc">${serv.desc}</p>
+        `;
+        servGrid.appendChild(div);
+      });
+
+      // Populate Doctors
+      const docGrid = document.getElementById('deptDoctorsGrid');
+      docGrid.innerHTML = '';
+      if (dept.doctors && dept.doctors.length > 0) {
+        dept.doctors.forEach(doc => {
+          const docCard = document.createElement('div');
+          docCard.className = 'dept-doctor-card';
+          docCard.innerHTML = `
+            <img src="${doc.image}" alt="${doc.name}" class="dept-doctor-img" onerror="this.src='assets/dr-laxme-gowda.png'">
+            <div class="dept-doctor-info">
+              <h4 class="dept-doctor-name">${doc.name}</h4>
+              <p class="dept-doctor-qual">${doc.qual}</p>
+              <p class="dept-doctor-role">${doc.role}</p>
+              <div class="dept-doc-btn-group">
+                <a href="doctors.html" class="btn-doc-small btn-doc-outline">
+                  <i data-lucide="user" class="icon-xs"></i> View Profile
+                </a>
+                <a href="index.html#enquiry?doctor=${encodeURIComponent(doc.name)}" class="btn-doc-small btn-doc-primary">
+                  <i data-lucide="calendar" class="icon-xs"></i> Book Appointment
+                </a>
+              </div>
+            </div>
+          `;
+          docGrid.appendChild(docCard);
+        });
+      } else {
+        docGrid.innerHTML = '<p style="color: #4B617E; font-size: 0.95rem;">Please inquire at hospital reception for daily visiting consultants in this department.</p>';
+      }
+
+      // Populate FAQs
+      const faqContainer = document.getElementById('deptFaqsContainer');
+      faqContainer.innerHTML = '';
+      dept.faqs.forEach((faq, idx) => {
+        const item = document.createElement('div');
+        item.className = 'dept-faq-item';
+        if (idx === 0) item.classList.add('active');
+        item.innerHTML = `
+          <button type="button" class="dept-faq-question" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+            <span>${faq.q}</span>
+            <i data-lucide="chevron-down" class="icon-xs"></i>
+          </button>
+          <div class="dept-faq-answer">
+            <p style="margin: 0;">${faq.a}</p>
+          </div>
+        `;
+        const btn = item.querySelector('.dept-faq-question');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.dept-faq-item').forEach(i => i.classList.remove('active'));
+          if (!isOpen) {
+            item.classList.add('active');
+          }
+        });
+        faqContainer.appendChild(item);
+      });
+
+      // Populate Sidebar Switcher
+      const switcherList = document.getElementById('deptSwitcherList');
+      switcherList.innerHTML = '';
+      Object.keys(DEPARTMENTS_DATA).forEach(key => {
+        const d = DEPARTMENTS_DATA[key];
+        const li = document.createElement('li');
+        const isActive = key === deptSlug;
+        li.innerHTML = `
+          <a href="department-details.html?dept=${key}" class="dept-switcher-link ${isActive ? 'active' : ''}">
+            <i data-lucide="activity" class="icon-xs"></i>
+            <span>${d.name}</span>
+          </a>
+        `;
+        switcherList.appendChild(li);
+      });
+
+      // Lucide icon replacement
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    // Modal Handlers
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDepartmentPage();
+
+      // Second Opinion Modal
+      const opinionModal = document.getElementById('secondOpinionModal');
+      const openOpinionBtn = document.getElementById('openSecondOpinionBtn');
+      const closeOpinionBtn = document.getElementById('closeOpinionModalBtn');
+      const opinionForm = document.getElementById('opinionForm');
+      const opinionAlert = document.getElementById('opinionAlert');
+
+      if (openOpinionBtn && opinionModal) {
+        openOpinionBtn.addEventListener('click', () => {
+          opinionModal.classList.add('is-open');
+          opinionAlert.style.display = 'none';
+        });
+        closeOpinionBtn.addEventListener('click', () => opinionModal.classList.remove('is-open'));
+        opinionModal.addEventListener('click', (e) => {
+          if (e.target === opinionModal) opinionModal.classList.remove('is-open');
+        });
+      }
+
+      if (opinionForm) {
+        opinionForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          opinionAlert.textContent = "Thank you! Your second opinion request has been recorded. Our clinical coordination desk will contact you to review your reports.";
+          opinionAlert.className = "dept-modal-alert success";
+          opinionForm.reset();
+          setTimeout(() => {
+            opinionModal.classList.remove('is-open');
+          }, 3500);
+        });
+      }
+
+      // Callback Modal
+      const callbackModal = document.getElementById('callbackModal');
+      const openCallbackBtn = document.getElementById('openCallbackBtn');
+      const closeCallbackBtn = document.getElementById('closeCallbackModalBtn');
+      const callbackForm = document.getElementById('callbackForm');
+      const callbackAlert = document.getElementById('callbackAlert');
+
+      if (openCallbackBtn && callbackModal) {
+        openCallbackBtn.addEventListener('click', () => {
+          callbackModal.classList.add('is-open');
+          callbackAlert.style.display = 'none';
+        });
+        closeCallbackBtn.addEventListener('click', () => callbackModal.classList.remove('is-open'));
+        callbackModal.addEventListener('click', (e) => {
+          if (e.target === callbackModal) callbackModal.classList.remove('is-open');
+        });
+      }
+
+      if (callbackForm) {
+        callbackForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          callbackAlert.textContent = "Thank you! Your call-back request has been registered. Our reception team will call you back at your requested time.";
+          callbackAlert.className = "dept-modal-alert success";
+          callbackForm.reset();
+          setTimeout(() => {
+            callbackModal.classList.remove('is-open');
+          }, 3500);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
