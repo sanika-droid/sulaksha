@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Learn about Sulakshaa Multi Speciality Hospital in Mysuru — our history, vision, mission, senior clinical leadership by Dr. Laxme Gowda, infrastructure, values, and patient-first care.">
+  <meta name="keywords" content="About Sulakshaa Hospital, Dr Laxme Gowda, Hospital History Mysuru, Multi Speciality Care Mysore, Hospital Infrastructure, Patient Care Values">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  <link rel="canonical" href="https://www.sulakshaahospital.com/about-details.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Us | Sulakshaa Multi Speciality Hospital, Mysuru">
+  <meta property="og:description" content="Discover Sulakshaa Hospital's mission, values, clinical leadership, and modern infrastructure dedicated to compassionate healthcare in Mysuru.">
+  <meta property="og:image" content="assets/sulakshaa-building-exterior.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=32">
+
+  <style>
+    /* Dedicated About Us Details Page Styles */
+    .about-details-page {
+      background-color: var(--soft-background, #F8FAFC);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-details-main {
+      flex: 1;
+      padding-top: 1rem;
+      padding-bottom: 2.25rem;
+    }
+
+    .about-details-main .container {
+      max-width: min(96vw, 1440px) !important;
+      padding-left: clamp(0.75rem, 2vw, 1.5rem) !important;
+      padding-right: clamp(0.75rem, 2vw, 1.5rem) !important;
+    }
+
+    /* Breadcrumbs & Navigation Bar */
+    .about-breadcrumbs-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .about-breadcrumbs {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+    }
+
+    .about-breadcrumbs a {
+      color: #0088D1;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s ease;
+    }
+
+    .about-breadcrumbs a:hover {
+      color: #0B2568;
+      text-decoration: underline;
+    }
+
+    .about-breadcrumbs span.current {
+      color: #0B2568;
+      font-weight: 600;
+    }
+
+    .about-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Header Hero Banner for About Details */
+    .about-hero-card {
+      background: linear-gradient(135deg, #0B2568 0%, #061743 100%);
+      color: #FFFFFF;
+      border-radius: 16px;
+      padding: clamp(1.25rem, 2.2vw, 1.85rem) clamp(1.25rem, 2.5vw, 2rem);
+      box-shadow: 0 10px 30px rgba(11, 37, 104, 0.15);
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-card::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 136, 209, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .about-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #BAE6FD;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-hero-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+      font-weight: 800;
+      line-height: 1.22;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.015em;
+    }
+
+    .about-hero-subtitle {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      color: #E2E8F0;
+      max-width: 820px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Content Cards and Sections */
+    .about-detail-section {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: clamp(1.15rem, 2vw, 1.5rem);
+      box-shadow: 0 4px 18px rgba(11, 37, 104, 0.04);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-section-header {
+      margin-bottom: 1rem;
+      border-bottom: 1.5px solid #F1F5F9;
+      padding-bottom: 0.65rem;
+    }
+
+    .about-section-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0088D1;
+      background: #EBF8FF;
+      border: 1px solid #BAE6FD;
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+      margin-bottom: 0.35rem;
+    }
+
+    .about-section-heading {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+      font-weight: 700;
+      color: #0B2568;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* Two-Column Intro & History Layout */
+    .about-intro-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .about-intro-text p {
+      font-size: 0.92rem;
+      color: #4B617E;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-image-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 8px 24px rgba(11, 37, 104, 0.08);
+      background: #F8FAFC;
+    }
+
+    .about-image-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .about-image-frame:hover img {
+      transform: scale(1.02);
+    }
+
+    .about-image-caption {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.76rem;
+      color: #64748B;
+      background: #FFFFFF;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Vision & Mission Grid */
+    .vision-mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .vm-card {
+      background: #F8FAFD;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 1.25rem;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .vm-card:hover {
+      border-color: #0088D1;
+      box-shadow: 0 8px 24px rgba(0, 136, 209, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .vm-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #E0F2FE;
+      color: #0284C7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 136, 209, 0.12);
+    }
+
+    .vm-card-vision .vm-icon-box {
+      background: #E0F2FE;
+      color: #0284C7;
+    }
+
+    .vm-card-mission .vm-icon-box {
+      background: #DCFCE7;
+      color: #16A34A;
+    }
+
+    .vm-card-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.35rem;
+    }
+
+    .vm-card-desc {
+      font-size: 0.88rem;
+      color: #4B617E;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Core Values 3-Col Grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .value-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 1.1rem;
+      transition: all 0.22s ease;
+    }
+
+    .value-card:hover {
+      border-color: #0088D1;
+      box-shadow: 0 6px 18px rgba(11, 37, 104, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .value-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #F0F9FF;
+      color: #0088D1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.6rem;
+      border: 1px solid #BAE6FD;
+    }
+
+    .value-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.25rem;
+    }
+
+    .value-desc {
+      font-size: 0.82rem;
+      color: #556B88;
+      line-height: 1.48;
+      margin: 0;
+    }
+
+    /* Infrastructure & Medical Team Grids */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .infra-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 3px 12px rgba(11, 37, 104, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .infra-media {
+      height: 180px;
+      overflow: hidden;
+      background: #0B2568;
+    }
+
+    .infra-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .infra-card:hover .infra-media img {
+      transform: scale(1.05);
+    }
+
+    .infra-body {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .infra-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.45rem;
+    }
+
+    .infra-desc {
+      font-size: 0.825rem;
+      color: #556B88;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Why Choose Us Highlights */
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      background: #F8FAFD;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .why-icon-box {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: #DCFCE7;
+      color: #16A34A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+
+    .why-content h4 {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-content p {
+      font-size: 0.825rem;
+      color: #556B88;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Bottom CTA Card */
+    .about-cta-card {
+      background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: clamp(2rem, 3.5vw, 3rem);
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(11, 37, 104, 0.15);
+      margin-top: 1rem;
+    }
+
+    .about-cta-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+    }
+
+    .about-cta-desc {
+      font-size: 0.98rem;
+      color: #E2E8F0;
+      max-width: 650px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.6;
+    }
+
+    .about-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .about-cta-actions .btn {
+      padding: 0.85rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 991px) {
+      .about-intro-grid {
+        grid-template-columns: 1fr;
+      }
+      .vision-mission-grid {
+        grid-template-columns: 1fr;
+      }
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .infra-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .infra-grid {
+        grid-template-columns: 1fr;
+      }
+      .why-choose-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-breadcrumbs-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .about-top-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .about-cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .about-cta-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body class="about-details-page">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="reading-progress-bar" id="readingProgressBar" aria-hidden="true"></div>
+    <div class="container header-inner">
+      <!-- Hospital Brand Identity -->
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Official Logo" class="brand-logo" width="145" height="42">
+        <div class="brand-text-container">
+          <span class="brand-subtext">Mysuru, Karnataka</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about-details.html" class="nav-link active">About Us</a></li>
+          <li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNavMenu" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Navigation -->
+  <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <div class="mobile-nav-header">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
+        <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
+          <i data-lucide="x" class="icon-md"></i>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="about-details.html" class="mobile-nav-link active">About Us</a></li>
+        <li><a href="departments.html" class="mobile-nav-link">Departments</a></li>
+        <li><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
+        <li><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
+        <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+        <li><a href="index.html#blog" class="mobile-nav-link">Blog</a></li>
+        <li><a href="index.html#contact" class="mobile-nav-link">Contact Us</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="index.html#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
+          <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+        </a>
+        <a href="tel:+918212345678" class="btn btn-emergency btn-block mobile-drawer-btn">
+          <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+  <!-- Main Content Area -->
+  <main class="about-details-main" id="main-content">
+    <div class="container">
+      
+      <!-- Breadcrumb Navigation & Back Button -->
+      <div class="about-breadcrumbs-bar">
+        <nav class="about-breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+          <i data-lucide="chevron-right" class="icon-xs"></i>
+          <a href="index.html#overview">About Us</a>
+          <i data-lucide="chevron-right" class="icon-xs"></i>
+          <span class="current">About Sulakshaa Hospital</span>
+        </nav>
+        <div class="about-top-actions">
+          <a href="index.html#overview" class="btn btn-outline btn-sm">
+            <i data-lucide="arrow-left" class="icon-xs"></i>
+            <span>Back to About Us</span>
+          </a>
+          <a href="index.html#enquiry" class="btn btn-primary btn-sm">
+            <i data-lucide="calendar" class="icon-xs"></i>
+            <span>Book Appointment</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Header Card -->
+      <section class="about-hero-card" aria-label="About Sulakshaa Hospital Introduction">
+        <span class="about-hero-badge">
+          <i data-lucide="award" class="icon-xs"></i> Clinical Excellence &amp; Compassion
+        </span>
+        <h1 class="about-hero-title">Sulakshaa Multi Speciality Hospital</h1>
+        <p class="about-hero-subtitle">
+          Established to deliver patient-centered, advanced healthcare with ethical integrity, modern clinical infrastructure, and clinical guidance led by Dr. Laxme Gowda in Mysuru, Karnataka.
+        </p>
+      </section>
+
+      <!-- Section 1: Hospital Introduction & History -->
+      <section class="about-detail-section" id="introduction-history">
+        <div class="about-section-header">
+          <span class="about-section-pill">OUR JOURNEY &amp; FOUNDATION</span>
+          <h2 class="about-section-heading">Hospital Introduction &amp; History</h2>
+        </div>
+        <div class="about-intro-grid">
+          <div class="about-intro-text">
+            <p>
+              Sulakshaa Multi Speciality Hospital was founded with a clear, noble vision: to make comprehensive, high-quality multi-speciality medical care readily accessible, compassionate, and transparent for families across Mysuru and neighboring districts of Karnataka.
+            </p>
+            <p>
+              Guided by senior physician <strong>Dr. Laxme Gowda</strong>, our hospital combines seasoned clinical leadership with purpose-built clinical infrastructure. Over the years, we have grown from an ambitious healthcare vision into a trusted healthcare destination, delivering round-the-clock emergency medical response, specialized consultations, modern surgical care, and intensive patient monitoring.
+            </p>
+            <p>
+              Every department at Sulakshaa Hospital operates on the principle of empathy, dignity, and clinical excellence — ensuring patients receive uncompromised diagnostic accuracy and personalized treatment plans in a supportive, reassuring healing environment.
+            </p>
+          </div>
+          <div class="about-image-frame">
+            <img 
+              src="assets/sulakshaa-building-exterior.png" 
+              alt="Sulakshaa Multi Speciality Hospital Modern Building Facade in Mysuru"
+              loading="eager"
+            >
+            <div class="about-image-caption">
+              <i data-lucide="building-2" class="icon-xs"></i>
+              <span>Modern Hospital Campus &amp; 24/7 Emergency Care Center, Mysuru</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Vision & Mission -->
+      <section class="about-detail-section" id="vision-mission">
+        <div class="about-section-header">
+          <span class="about-section-pill">OUR GUIDING PURPOSE</span>
+          <h2 class="about-section-heading">Vision &amp; Mission</h2>
+        </div>
+        <div class="vision-mission-grid">
+          <!-- Vision Card -->
+          <div class="vm-card vm-card-vision">
+            <div class="vm-icon-box">
+              <i data-lucide="compass" class="icon-md"></i>
+            </div>
+            <h3 class="vm-card-title">Our Vision</h3>
+            <p class="vm-card-desc">
+              To be recognized as the most trusted and reliable multi-speciality healthcare institution in Mysuru, celebrated for exemplary clinical outcomes, empathetic patient relationships, ethical medical practice, and advanced technological capabilities accessible to all segments of society.
+            </p>
+          </div>
+
+          <!-- Mission Card -->
+          <div class="vm-card vm-card-mission">
+            <div class="vm-icon-box">
+              <i data-lucide="target" class="icon-md"></i>
+            </div>
+            <h3 class="vm-card-title">Our Mission</h3>
+            <p class="vm-card-desc">
+              To deliver compassionate, comprehensive, and evidence-based clinical services 24 hours a day, 365 days a year. We aim to continually upgrade medical infrastructure, foster patient-first clinical protocols, minimize waiting times, and empower families with health education and preventive wellness.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Hospital Values and Commitment to Patient Care -->
+      <section class="about-detail-section" id="values-commitment">
+        <div class="about-section-header">
+          <span class="about-section-pill">ETHICS &amp; PRINCIPLES</span>
+          <h2 class="about-section-heading">Hospital Values &amp; Commitment to Patient Care</h2>
+        </div>
+        <div class="values-grid">
+          <!-- Value 1 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="heart-handshake" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">Empathy &amp; Dignity</h4>
+            <p class="value-desc">Every patient is treated with deep respect, genuine warmth, and personal consideration throughout their medical journey.</p>
+          </div>
+
+          <!-- Value 2 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="shield-check" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">Clinical Excellence</h4>
+            <p class="value-desc">Adhering strictly to validated medical guidelines, safety checklists, and sterile protocols for superior clinical outcomes.</p>
+          </div>
+
+          <!-- Value 3 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="file-check-2" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">Ethics &amp; Transparency</h4>
+            <p class="value-desc">Clear treatment explanations, transparent billing, and zero unnecessary interventions for complete peace of mind.</p>
+          </div>
+
+          <!-- Value 4 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="clock" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">24/7 Rapid Readiness</h4>
+            <p class="value-desc">Round-the-clock emergency casualty, triage, ICU response, and in-house pharmacy ready for immediate intervention.</p>
+          </div>
+
+          <!-- Value 5 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="users" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">Patient-First Culture</h4>
+            <p class="value-desc">Minimal wait times, attentive nursing staff, comfortable recovery rooms, and dedicated counseling for attendants.</p>
+          </div>
+
+          <!-- Value 6 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="sparkles" class="icon-sm"></i>
+            </div>
+            <h4 class="value-title">Hygiene &amp; Safety</h4>
+            <p class="value-desc">Meticulously sanitized facilities, sterile operation theaters, and barrier-free access for wheelchair-bound patients.</p>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <!-- Section 6: Why Choose Sulakshaa Multi Speciality Hospital -->
+      <section class="about-detail-section" id="why-choose-us">
+        <div class="about-section-header">
+          <span class="about-section-pill">PATIENT ASSURANCE</span>
+          <h2 class="about-section-heading">Why Choose Sulakshaa Multi Speciality Hospital?</h2>
+        </div>
+        <div class="why-choose-grid">
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>Comprehensive Care Under One Roof</h4>
+              <p>Consultations, diagnostics, pharmacy, surgery, and emergency care all unified within a single modern campus.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>Senior Physician Leadership</h4>
+              <p>Clinical governance guided by Dr. Laxme Gowda and verified specialists with a proven track record of clinical excellence.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>24/7 Casualty &amp; Emergency Readiness</h4>
+              <p>Zero-wait emergency admission protocol with round-the-clock doctors, ICU staff, and life-saving medications.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>Transparent &amp; Ethical Healthcare</h4>
+              <p>Honest clinical opinions, transparent billing, and evidence-based medicine that puts patient welfare above all else.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>Patient-Centered Support</h4>
+              <p>Attentive nursing, hygienic inpatient rooms, empathetic counseling, and comforting environments for quick recovery.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon-box">
+              <i data-lucide="check" class="icon-sm"></i>
+            </div>
+            <div class="why-content">
+              <h4>Prime Mysuru Location</h4>
+              <p>Easily accessible by public and private transport with dedicated ambulance bays and barrier-free wheelchair access.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Call to Action Banner -->
+      <div class="about-cta-card">
+        <h3 class="about-cta-title">Need Medical Advice or Wish to Consult Our Specialists?</h3>
+        <p class="about-cta-desc">
+          Schedule an appointment with our consultant doctors or reach our round-the-clock emergency casualty desk for prompt, professional medical care.
+        </p>
+        <div class="about-cta-actions">
+          <a href="index.html#enquiry" class="btn btn-primary btn-lg shadow-lift" id="aboutCtaBookBtn">
+            <i data-lucide="calendar-check" class="icon-sm"></i>
+            <span>Book an Appointment</span>
+          </a>
+          <a href="tel:+918212345678" class="btn btn-emergency btn-lg shadow-lift">
+            <i data-lucide="phone-call" class="icon-sm"></i>
+            <span>Call 24/7 Emergency</span>
+          </a>
+          <a href="index.html#overview" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.45);">
+            <i data-lucide="arrow-left" class="icon-sm"></i>
+            <span>Back to About Us</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer (Standard Across Website) -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-logo">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="footer-logo-img" width="160" height="46">
+          </div>
+          <p class="footer-tagline">“Advanced Care. Compassionate Hearts.”</p>
+          <p class="footer-desc">
+            Sulakshaa Multi Speciality Hospital in Mysuru provides comprehensive, high-quality, patient-centered healthcare with dedicated medical departments and 24/7 emergency response.
+          </p>
+          <div class="footer-emergency-badge">
+            <i data-lucide="shield-alert" class="icon-sm"></i>
+            <div>
+              <strong>24/7 Emergency Care</strong>
+              <span>Rapid casualty, ambulance &amp; trauma desk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about-details.html" class="footer-link">About Us</a></li>
+            <li><a href="departments.html" class="footer-link">Departments</a></li>
+            <li><a href="doctors.html" class="footer-link">Our Doctors</a></li>
+            <li><a href="facilities.html" class="footer-link">Facilities &amp; Services</a></li>
+            <li><a href="gallery.html" class="footer-link">Hospital Gallery</a></li>
+            <li><a href="index.html#blog" class="footer-link">Health Blog</a></li>
+            <li><a href="index.html#contact" class="footer-link">Contact &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Key Departments -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Key Specialities</h4>
+          <ul class="footer-links-list">
+            <li><a href="department-details.html?dept=general-medicine" class="footer-link">General Medicine</a></li>
+            <li><a href="department-details.html?dept=cardiology" class="footer-link">Cardiology Care</a></li>
+            <li><a href="department-details.html?dept=orthopedics" class="footer-link">Orthopedics &amp; Trauma</a></li>
+            <li><a href="department-details.html?dept=general-surgery" class="footer-link">General &amp; Laparoscopic Surgery</a></li>
+            <li><a href="department-details.html?dept=pediatrics" class="footer-link">Pediatrics &amp; Child Health</a></li>
+            <li><a href="department-details.html?dept=emergency" class="footer-link">24/7 Emergency &amp; Casualty</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Location Info -->
+        <div class="footer-col footer-col-contact">
+          <h4 class="footer-heading">Contact Information</h4>
+          <address class="footer-contact-info">
+            <p>
+              <i data-lucide="map-pin" class="icon-xs"></i>
+              <span>Sulakshaa Multi Speciality Hospital, Mysuru, Karnataka, India</span>
+            </p>
+            <p>
+              <i data-lucide="phone" class="icon-xs"></i>
+              <span>Emergency: <a href="tel:+918212345678" class="footer-link">+91 821 234 5678*</a></span>
+            </p>
+            <p>
+              <i data-lucide="phone-call" class="icon-xs"></i>
+              <span>Reception: <a href="tel:+918212345679" class="footer-link">+91 821 234 5679*</a></span>
+            </p>
+            <p>
+              <i data-lucide="mail" class="icon-xs"></i>
+              <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com*</a></span>
+            </p>
+          </address>
+          <div class="footer-badge-item">
+            <i data-lucide="clock" class="icon-xs"></i>
+            <span>Emergency 24x7 | OPD Mon-Sat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+        </div>
+        <div class="footer-legal-links">
+          <a href="index.html#disclaimer" class="legal-link-btn">Medical Disclaimer</a>
+          <span class="legal-sep">&bull;</span>
+          <a href="index.html#privacy" class="legal-link-btn">Privacy Policy</a>
+          <span class="legal-sep">&bull;</span>
+          <a href="index.html#terms" class="legal-link-btn">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dynamic Footer Year
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // Initialize Lucide Icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Mobile Menu Drawer Controls
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileNavMenu');
+      const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+      const mobileClose = document.getElementById('mobileCloseBtn');
+
+      function openDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.add('is-open');
+        if (mobileBackdrop) mobileBackdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.remove('is-open');
+        if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', openDrawer);
+      if (mobileClose) mobileClose.addEventListener('click', closeDrawer);
+      if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeDrawer);
+
+      // Reading progress bar
+      const prog = document.getElementById('readingProgressBar');
+      if (prog) {
+        window.addEventListener('scroll', () => {
+          const total = document.documentElement.scrollHeight - window.innerHeight;
+          if (total > 0) {
+            prog.style.width = (window.scrollY / total) * 100 + '%';
+          }
+        }, { passive: true });
+      }
+    });
+  </script>
+</body>
+</html>

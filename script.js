@@ -541,17 +541,19 @@ function initInteractiveEnquiries() {
       const doctor = btn.getAttribute('data-doctor') || 'Dr. Laxme Gowda';
       const dept = btn.getAttribute('data-dept') || 'General Medicine';
       selectSpeciality(dept);
+
+      const doctorSelect = document.getElementById('preferredDoctor');
+      if (doctorSelect) {
+        doctorSelect.value = doctor;
+      }
       
       if (patientMessageInput && !patientMessageInput.value) {
         patientMessageInput.value = `Enquiring for consultation with ${doctor} (${dept}).`;
       }
 
-      if (window.SulakshaaForm && window.SulakshaaForm.goToStep) {
-        window.SulakshaaForm.goToStep(1);
-      }
-
-      if (enquirySection) {
-        enquirySection.scrollIntoView({ behavior: 'smooth' });
+      const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+      if (enquiryTarget) {
+        enquiryTarget.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
@@ -566,12 +568,9 @@ function initInteractiveEnquiries() {
         patientMessageInput.value = 'Enquiry regarding upcoming Senior Sunday Health Check-up Camp.';
       }
 
-      if (window.SulakshaaForm && window.SulakshaaForm.goToStep) {
-        window.SulakshaaForm.goToStep(1);
-      }
-
-      if (enquirySection) {
-        enquirySection.scrollIntoView({ behavior: 'smooth' });
+      const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+      if (enquiryTarget) {
+        enquiryTarget.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
@@ -585,8 +584,20 @@ function initInteractiveEnquiries() {
     if (urlDept) {
       selectSpeciality(urlDept);
     }
+    const doctorSelect = document.getElementById('preferredDoctor');
+    if (urlDoctor && doctorSelect) {
+      doctorSelect.value = urlDoctor;
+    }
     if (urlDoctor && patientMessageInput && !patientMessageInput.value) {
       patientMessageInput.value = `Consultation appointment requested with ${urlDoctor}${urlDept ? ' (' + urlDept + ')' : ''}.`;
+    }
+    if ((urlDept || urlDoctor) && window.location.hash === '#enquiry') {
+      setTimeout(() => {
+        const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+        if (enquiryTarget) {
+          enquiryTarget.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 350);
     }
   } catch (err) {
     // URL parsing fallback
@@ -594,43 +605,28 @@ function initInteractiveEnquiries() {
 }
 
 /**
- * Multi-Step Appointment Booking Form with Smooth Step Transitions & Animated Success
+ * Unified Appointment Booking Form with Validation & Animated Success Screen
  */
 function initMultiStepBookingForm() {
   const form = document.getElementById('appointmentEnquiryForm');
+  if (!form) return;
+
   const nameInput = document.getElementById('patientName');
   const phoneInput = document.getElementById('patientPhone');
+  const emailInput = document.getElementById('patientEmail');
   const specialitySelect = document.getElementById('preferredSpeciality');
+  const doctorSelect = document.getElementById('preferredDoctor');
   const dateInput = document.getElementById('preferredDate');
   const messageInput = document.getElementById('patientMessage');
   const consentCheckbox = document.getElementById('patientConsent');
 
-  const step1 = document.getElementById('formStep1');
-  const step2 = document.getElementById('formStep2');
-  const step3 = document.getElementById('formStep3');
   const successView = document.getElementById('formSuccessView');
-  const progressFill = document.getElementById('stepsProgressFill');
-  const stepIndicators = document.querySelectorAll('.step-indicator');
-
-  const step1NextBtn = document.getElementById('step1NextBtn');
-  const step2PrevBtn = document.getElementById('step2PrevBtn');
-  const step2NextBtn = document.getElementById('step2NextBtn');
-  const step3PrevBtn = document.getElementById('step3PrevBtn');
   const submitBtn = document.getElementById('submitEnquiryBtn');
   const bookAnotherBtn = document.getElementById('bookAnotherBtn');
-
-  const summarySpeciality = document.getElementById('summarySpeciality');
-  const summaryDate = document.getElementById('summaryDate');
-  const summaryName = document.getElementById('summaryName');
-  const summaryPhone = document.getElementById('summaryPhone');
 
   const deptChips = document.querySelectorAll('.dept-chip');
   const datePillToday = document.getElementById('datePillToday');
   const datePillTomorrow = document.getElementById('datePillTomorrow');
-
-  let currentStep = 1;
-
-  if (!form) return;
 
   // Set minimum date to today
   const getFormattedDate = (dateObj) => {
@@ -666,14 +662,13 @@ function initMultiStepBookingForm() {
     });
   }
 
-  // Quick Department Chips
+  // Quick Department Chips (if present)
   deptChips.forEach(chip => {
     chip.addEventListener('click', () => {
       const dept = chip.getAttribute('data-dept');
       if (specialitySelect && dept) {
         specialitySelect.value = dept;
         clearFieldError('preferredSpeciality');
-        
         deptChips.forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
       }
@@ -694,6 +689,12 @@ function initMultiStepBookingForm() {
     });
   }
 
+  if (doctorSelect) {
+    doctorSelect.addEventListener('change', () => {
+      clearFieldError('preferredDoctor');
+    });
+  }
+
   // Phone input formatting (numbers only, max 10 digits)
   if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
@@ -704,78 +705,32 @@ function initMultiStepBookingForm() {
 
   // Clear errors on input
   nameInput?.addEventListener('input', () => clearFieldError('patientName'));
+  emailInput?.addEventListener('input', () => clearFieldError('patientEmail'));
   dateInput?.addEventListener('change', () => clearFieldError('preferredDate'));
   consentCheckbox?.addEventListener('change', () => clearFieldError('patientConsent'));
 
-  // Multi-step navigation logic
-  const goToStep = (stepNumber) => {
-    currentStep = stepNumber;
-
-    // Toggle container classes
-    if (step1) step1.classList.toggle('active', stepNumber === 1);
-    if (step2) step2.classList.toggle('active', stepNumber === 2);
-    if (step3) step3.classList.toggle('active', stepNumber === 3);
-
-    // Update progress fill
-    if (progressFill) {
-      if (stepNumber === 1) progressFill.style.width = '33.33%';
-      else if (stepNumber === 2) progressFill.style.width = '66.66%';
-      else if (stepNumber === 3) progressFill.style.width = '100%';
+  // Backward compatibility object
+  window.SulakshaaForm = {
+    goToStep: () => {
+      const el = document.getElementById('enquiry') || document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
-
-    // Update step indicator states
-    stepIndicators.forEach(ind => {
-      const stepIdx = parseInt(ind.getAttribute('data-step-indicator'), 10);
-      if (stepIdx === stepNumber) {
-        ind.classList.add('active');
-        ind.classList.remove('completed');
-      } else if (stepIdx < stepNumber) {
-        ind.classList.remove('active');
-        ind.classList.add('completed');
-      } else {
-        ind.classList.remove('active');
-        ind.classList.remove('completed');
-      }
-    });
-
-    initLucideIcons();
   };
 
-  // Expose to global window for external buttons
-  window.SulakshaaForm = { goToStep };
-
-  // Validation helpers
-  const validateStep1 = () => {
+  // Comprehensive Form Validation
+  const validateForm = () => {
     let valid = true;
-    const specVal = specialitySelect ? specialitySelect.value : '';
-    if (!specVal) {
-      showFieldError('preferredSpeciality', 'Please select a preferred medical speciality.');
-      valid = false;
-    } else {
-      clearFieldError('preferredSpeciality');
-    }
 
-    const dateVal = dateInput ? dateInput.value : '';
-    if (!dateVal) {
-      showFieldError('preferredDate', 'Please select your preferred consultation date.');
-      valid = false;
-    } else {
-      clearFieldError('preferredDate');
-    }
-
-    return valid;
-  };
-
-  const validateStep2 = () => {
-    let valid = true;
+    // 1. Patient Name (minimum 2 characters)
     const nameVal = nameInput ? nameInput.value.trim() : '';
     if (!nameVal || nameVal.length < 2) {
-      showFieldError('patientName', 'Please enter your full name (minimum 2 characters).');
+      showFieldError('patientName', 'Please enter patient full name (minimum 2 characters).');
       valid = false;
     } else {
       clearFieldError('patientName');
     }
 
+    // 2. Phone Number (10-digit Indian mobile starting with 6-9)
     const phoneVal = phoneInput ? phoneInput.value.trim() : '';
     const phoneRegex = /^[6-9]\d{9}$/;
     if (!phoneVal) {
@@ -788,92 +743,63 @@ function initMultiStepBookingForm() {
       clearFieldError('patientPhone');
     }
 
+    // 3. Email Address
+    const emailVal = emailInput ? emailInput.value.trim() : '';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailVal) {
+      showFieldError('patientEmail', 'Please enter your email address for appointment confirmation.');
+      valid = false;
+    } else if (!emailRegex.test(emailVal)) {
+      showFieldError('patientEmail', 'Please enter a valid email address (e.g. name@domain.com).');
+      valid = false;
+    } else {
+      clearFieldError('patientEmail');
+    }
+
+    // 4. Medical Department / Speciality
+    const specVal = specialitySelect ? specialitySelect.value : '';
+    if (!specVal) {
+      showFieldError('preferredSpeciality', 'Please select a preferred medical department.');
+      valid = false;
+    } else {
+      clearFieldError('preferredSpeciality');
+    }
+
+    // 5. Preferred Date
+    const dateVal = dateInput ? dateInput.value : '';
+    if (!dateVal) {
+      showFieldError('preferredDate', 'Please select your preferred consultation date.');
+      valid = false;
+    } else {
+      clearFieldError('preferredDate');
+    }
+
+    // 6. Consent Checkbox
+    if (consentCheckbox && !consentCheckbox.checked) {
+      showFieldError('patientConsent', 'Please consent to allow our hospital reception to contact you.');
+      valid = false;
+    } else {
+      clearFieldError('patientConsent');
+    }
+
     return valid;
   };
-
-  const updateSummaryCard = () => {
-    if (summarySpeciality && specialitySelect) {
-      summarySpeciality.textContent = specialitySelect.value || 'General Medicine';
-    }
-    if (summaryDate && dateInput) {
-      summaryDate.textContent = dateInput.value || todayStr;
-    }
-    if (summaryName && nameInput) {
-      summaryName.textContent = nameInput.value.trim() || '-';
-    }
-    if (summaryPhone && phoneInput) {
-      summaryPhone.textContent = `+91 ${phoneInput.value.trim()}` || '-';
-    }
-  };
-
-  // Step 1 -> Step 2
-  step1NextBtn?.addEventListener('click', () => {
-    if (validateStep1()) {
-      goToStep(2);
-      if (nameInput) nameInput.focus();
-    }
-  });
-
-  // Step 2 -> Step 1
-  step2PrevBtn?.addEventListener('click', () => {
-    goToStep(1);
-  });
-
-  // Step 2 -> Step 3
-  step2NextBtn?.addEventListener('click', () => {
-    if (validateStep2()) {
-      updateSummaryCard();
-      goToStep(3);
-    }
-  });
-
-  // Step 3 -> Step 2
-  step3PrevBtn?.addEventListener('click', () => {
-    goToStep(2);
-  });
-
-  // Direct Step Indicator Clicks
-  stepIndicators.forEach(ind => {
-    ind.addEventListener('click', () => {
-      const targetStep = parseInt(ind.getAttribute('data-step-indicator'), 10);
-      if (targetStep === 1) {
-        goToStep(1);
-      } else if (targetStep === 2) {
-        if (validateStep1()) goToStep(2);
-      } else if (targetStep === 3) {
-        if (validateStep1() && validateStep2()) {
-          updateSummaryCard();
-          goToStep(3);
-        }
-      }
-    });
-  });
 
   // Form Submission
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Verify all steps
-    if (!validateStep1()) {
-      goToStep(1);
+    if (!validateForm()) {
+      const firstInvalid = form.querySelector('.is-invalid');
+      if (firstInvalid) firstInvalid.focus();
       return;
-    }
-    if (!validateStep2()) {
-      goToStep(2);
-      return;
-    }
-
-    // Verify Step 3 consent
-    if (consentCheckbox && !consentCheckbox.checked) {
-      showFieldError('patientConsent', 'Please consent to allow our hospital reception to contact you.');
-      return;
-    } else {
-      clearFieldError('patientConsent');
     }
 
     const nameVal = nameInput ? nameInput.value.trim() : '';
     const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+    const emailVal = emailInput ? emailInput.value.trim() : '';
     const specVal = specialitySelect ? specialitySelect.value : '';
+    const doctorVal = doctorSelect && doctorSelect.value ? doctorSelect.value : 'Any Available Specialist';
     const dateVal = dateInput ? dateInput.value : '';
 
     const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit';
@@ -889,20 +815,16 @@ function initMultiStepBookingForm() {
       `;
     }
 
-    // Simulated receipt with animated transitions
+    // Simulated submission with animated response
     setTimeout(() => {
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
       }
 
-      // Hide steps and tracker, display animated success card
-      if (step1) step1.style.display = 'none';
-      if (step2) step2.style.display = 'none';
-      if (step3) step3.style.display = 'none';
-
-      const tracker = document.querySelector('.form-steps-tracker');
-      if (tracker) tracker.style.display = 'none';
+      // Hide form input rows and show success view
+      const formRows = form.querySelectorAll('.form-row-2col, .interactive-group, .consent-group, .form-submit-row');
+      formRows.forEach(row => { row.style.display = 'none'; });
 
       if (successView) {
         successView.style.display = 'flex';
@@ -915,44 +837,41 @@ function initMultiStepBookingForm() {
               <strong>${escapeHtml(nameVal)}</strong>
             </div>
             <div class="success-summary-row">
+              <span class="text-muted">Contact Phone:</span>
+              <strong>+91 ${escapeHtml(phoneVal)}</strong>
+            </div>
+            <div class="success-summary-row">
+              <span class="text-muted">Email Address:</span>
+              <strong>${escapeHtml(emailVal)}</strong>
+            </div>
+            <div class="success-summary-row">
               <span class="text-muted">Department:</span>
               <strong>${escapeHtml(specVal)}</strong>
+            </div>
+            <div class="success-summary-row">
+              <span class="text-muted">Preferred Doctor:</span>
+              <strong>${escapeHtml(doctorVal)}</strong>
             </div>
             <div class="success-summary-row">
               <span class="text-muted">Preferred Date:</span>
               <strong>${escapeHtml(dateVal)}</strong>
             </div>
             <div class="success-summary-row">
-              <span class="text-muted">Contact Phone:</span>
-              <strong>+91 ${escapeHtml(phoneVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Facility:</span>
+              <span class="text-muted">Hospital Campus:</span>
               <span>Sulakshaa Multi Speciality Hospital, Mysuru</span>
             </div>
           `;
         }
       }
 
-      // Backward compatibility with #formSuccessAlert
-      const successAlert = document.getElementById('formSuccessAlert');
-      const alertMsg = document.getElementById('alertMessageContent');
-      if (successAlert) {
-        if (alertMsg) {
-          alertMsg.textContent = `Thank you, ${nameVal}. Your enquiry for ${specVal} on ${dateVal} has been recorded. Our reception coordinator will call ${phoneVal} to verify doctor availability and confirm your token.`;
-        }
-        successAlert.style.display = 'flex';
-      }
-
-      // Show toast
       showToast(
         'Enquiry Submitted Successfully',
-        `Thank you, ${nameVal}. Your enquiry for ${specVal} has been received. Our reception team will call ${phoneVal} to confirm your slot.`,
+        `Thank you, ${nameVal}. Your consultation enquiry has been recorded. Our reception coordinator will call +91 ${phoneVal} to confirm your appointment slot.`,
         'success'
       );
 
       initLucideIcons();
-    }, 850);
+    }, 650);
   });
 
   // Book Another Appointment button
@@ -964,14 +883,10 @@ function initMultiStepBookingForm() {
       deptChips.forEach(c => c.classList.remove('active'));
 
       if (successView) successView.style.display = 'none';
-      const tracker = document.querySelector('.form-steps-tracker');
-      if (tracker) tracker.style.display = 'block';
+      const formRows = form.querySelectorAll('.form-row-2col, .interactive-group, .consent-group, .form-submit-row');
+      formRows.forEach(row => { row.style.display = ''; });
 
-      if (step1) step1.style.display = '';
-      if (step2) step2.style.display = '';
-      if (step3) step3.style.display = '';
-
-      goToStep(1);
+      if (nameInput) nameInput.focus();
     });
   }
 }
@@ -1383,7 +1298,7 @@ function initInfoModals() {
     'Orthopedics': {
       title: 'Orthopedics, Joint Care & Trauma Surgery',
       badge: 'Bone, Joint &amp; Spine Care',
-      img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&h=380&q=80',
+      img: 'assets/orthopedics-joint-replacement.png',
       scope: 'Specialized management of musculoskeletal conditions, accidental trauma, fractures, arthritis, and back/spinal ailments.',
       conditions: 'Complex Fractures, Osteoarthritis, Degenerative Disc Disease, Joint Dislocations, Tendon Injuries &amp; Osteoporosis.',
       diagnostics: 'Digital High-Resolution X-Ray, Musculoskeletal Ultrasound, Multi-Slice CT Scanning, Joint Aspiration &amp; Fluid Analysis.',
@@ -1419,7 +1334,7 @@ function initInfoModals() {
     'Maternity Care': {
       title: 'Maternity Care & Obstetrics / Gynaecology',
       badge: 'Mother &amp; Child Health',
-      img: 'assets/dr-meera-iyer.jpg',
+      img: 'assets/maternity-obstetrics-gynaecology.png',
       scope: 'Evidence-based obstetric care, high-risk pregnancy monitoring, labour suites, and comprehensive women\'s health.',
       conditions: 'Antenatal Consultations, High-Risk Pregnancies, Gestational Diabetes, Pre-Eclampsia, PCOS/PCOD, Menstrual Health.',
       diagnostics: '4D Obstetric Sonography, Fetal Heart Doppler, Complete Maternal Antenatal Profiling, Pap Smear &amp; Pelvic Ultrasound.',
@@ -1428,7 +1343,7 @@ function initInfoModals() {
     'Gastroenterology': {
       title: 'Gastroenterology & Digestive Health',
       badge: 'GI &amp; Hepatology',
-      img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&h=380&q=80',
+      img: 'assets/gastroenterology-digestive-health.png',
       scope: 'Comprehensive clinical diagnosis of digestive tract, gastric, liver, gallbladder, and pancreatic disorders.',
       conditions: 'Acid Reflux (GERD), Peptic Ulcers, Irritable Bowel Syndrome (IBS), Fatty Liver Disease, Acute Pancreatitis, Jaundice.',
       diagnostics: 'High-Resolution Abdominal Ultrasound, Liver Function Assays, Viral Hepatitis Screening, Stool Occult Blood.',
@@ -1464,7 +1379,7 @@ function initInfoModals() {
     'General Surgery': {
       title: 'General & Minimally Invasive Surgery',
       badge: 'Modular Surgical OT',
-      img: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=380&q=80',
+      img: 'assets/general-laparoscopic-surgery.png',
       scope: 'Elective and emergency surgical consultations for abdominal, soft-tissue, hernia, and acute operative conditions.',
       conditions: 'Inguinal &amp; Umbilical Hernias, Acute Appendicitis, Gallstone Disease, Wound Care &amp; Diabetic Ulcers, Hydrocele, Minor Surgeries.',
       diagnostics: 'Pre-Operative CT Imaging, Doppler Ultrasound, Pre-Anesthetic Fitness Workup, Sterile Modular OT Readiness.',
@@ -1473,11 +1388,47 @@ function initInfoModals() {
     'Anaesthesiology': {
       title: 'Anaesthesiology & Critical Care Support',
       badge: 'Perioperative Safety',
-      img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&h=380&q=80',
+      img: 'assets/anaesthesiology-critical-care.png',
       scope: 'Comprehensive perioperative monitoring, safe general &amp; regional anaesthesia administration, and acute post-op analgesia.',
       conditions: 'Surgical Pain Management, Acute Perioperative Monitoring, Difficult Airway Management, Critical Resuscitation.',
       diagnostics: 'Pre-Anesthetic Risk Evaluation, Invasive Arterial Monitoring, Capnography, Blood Gas Assays.',
       doctors: 'Dr. Sandeep Shenoy (Consultant Anaesthesiologist)'
+    },
+    'ENT': {
+      title: 'Otorhinolaryngology & ENT Care',
+      badge: 'Ear, Nose &amp; Throat Centre',
+      img: 'assets/ent-care-otorhinolaryngology.png',
+      scope: 'Specialized diagnosis and clinical treatment for ear infections, hearing loss, vertigo, chronic sinusitis, deviated nasal septum, and throat disorders.',
+      conditions: 'Chronic Otitis Media, Ear Pain &amp; Discharge, Conductive &amp; Sensorineural Hearing Loss, Chronic Sinusitis, Deviated Nasal Septum (DNS), Tonsillitis, BPPV Vertigo.',
+      diagnostics: 'Diagnostic Nasal Endoscopy (DNE), Video Otoscopy &amp; Microsuction, Pure Tone Audiometry Screening, Emergency ENT Triage.',
+      doctors: 'Dr. Rekha Srinivas (Consultant ENT Surgeon &bull; MBBS, MS ENT, DNB)'
+    },
+    'Urology': {
+      title: 'Urology & Genitourinary Surgery',
+      badge: 'Surgical Specialty Centre',
+      img: 'assets/urology-genitourinary-surgery.jpg',
+      scope: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections, and bladder health.',
+      conditions: 'Kidney &amp; Ureteric Stones, Benign Prostatic Hyperplasia (BPH), Recurrent UTIs, Hematuria, Overactive Bladder, Male Genitourinary Disorders.',
+      diagnostics: 'Urinary Stone Evaluation &amp; NCCT, Computerized Uroflowmetry, Serum PSA Testing, Emergency Renal Colic Intervention.',
+      doctors: 'Dr. Chandrashekar B. (Senior Consultant Urologist &bull; MBBS, MS, MCh)'
+    },
+    'Nephrology': {
+      title: 'Nephrology & Renal Medicine',
+      badge: 'Renal Care Centre',
+      img: 'assets/nephrology-renal-medicine.png',
+      scope: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, electrolyte imbalances, and hypertension-related renal care.',
+      conditions: 'Chronic Kidney Disease (CKD), Diabetic Nephropathy, Acute Kidney Injury (AKI), Hypertensive Renal Disease, Electrolyte Imbalances, Nephritis.',
+      diagnostics: 'Renal Function &amp; eGFR Profiling, Renal Doppler Ultrasonography, Diabetic Kidney Protection Protocol, Medical ICU Renal Support.',
+      doctors: 'Dr. Harish Kumar N. (Consultant Nephrologist &bull; MD, DM Nephrology)'
+    },
+    'Pulmonology': {
+      title: 'Pulmonology & Chest Medicine',
+      badge: 'Respiratory Care Centre',
+      img: 'assets/pulmonology-chest-medicine.png',
+      scope: 'Advanced diagnosis and clinical treatment for chronic bronchial asthma, COPD, pneumonia, sleep apnea, and persistent cough disorders.',
+      conditions: 'Bronchial Asthma, COPD &amp; Chronic Bronchitis, Pneumonia &amp; Lung Infections, Allergic Rhinitis, Sleep Apnea, Post-Infection Fibrosis.',
+      diagnostics: 'Spirometry &amp; Pulmonary Function Tests (PFT), Emergency Nebulization Suites, Low-Dose Chest HRCT, Non-Invasive ICU Ventilation.',
+      doctors: 'Dr. Ramesh Narayan (Consultant Pulmonologist &bull; MBBS, MD Pulmonary Medicine)'
     }
   };
 
@@ -2471,30 +2422,107 @@ function initFacilitiesViewAllToggle() {
 }
 
 /**
- * 23. Featured Leading Specialists Horizontal Swipe Controller
+ * 23. Featured Leading Specialists Continuous Right-to-Left Moving Cards Controller
  */
 function initFeaturedDoctorsSwipe() {
   const viewport = document.getElementById('doctorsMarqueeViewport');
+  const group1 = document.getElementById('doctorsMarqueeGroup1');
+  const group2 = document.getElementById('doctorsMarqueeGroup2');
+  const container = document.getElementById('doctorsMarqueeContainer');
   const prevBtn = document.getElementById('docSwipePrevBtn');
   const nextBtn = document.getElementById('docSwipeNextBtn');
-  if (!viewport || !prevBtn || !nextBtn) return;
+  if (!viewport || !group1) return;
 
-  function getScrollAmount() {
-    const item = viewport.querySelector('.featured-doctor-card');
-    if (item) {
-      return item.getBoundingClientRect().width + 24;
-    }
-    return 320;
+  if (group2) {
+    group2.style.display = 'flex';
   }
 
-  prevBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-  });
+  let currentScroll = viewport.scrollLeft || 0;
+  let isPaused = false;
+  let resumeTimer = null;
+  const speed = 0.85; // smooth subpixel movement right-to-left (~50px/sec)
 
-  nextBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+  function getCardWidth() {
+    const card = viewport.querySelector('.featured-doctor-card');
+    return card ? (card.getBoundingClientRect().width + 20) : 320;
+  }
+
+  function tick() {
+    if (!isPaused) {
+      currentScroll += speed;
+      const groupWidth = group1.scrollWidth + 20; // width + gap
+      if (groupWidth > 0 && currentScroll >= groupWidth) {
+        currentScroll -= groupWidth;
+      }
+      viewport.scrollLeft = currentScroll;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // Pause on hover
+  if (container) {
+    container.addEventListener('mouseenter', () => {
+      isPaused = true;
+      clearTimeout(resumeTimer);
+    });
+    container.addEventListener('mouseleave', () => {
+      currentScroll = viewport.scrollLeft;
+      isPaused = false;
+    });
+
+    // Pause on touch for mobile interaction
+    container.addEventListener('touchstart', () => {
+      isPaused = true;
+      clearTimeout(resumeTimer);
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      resumeTimer = setTimeout(() => {
+        currentScroll = viewport.scrollLeft;
+        isPaused = false;
+      }, 1500);
+    }, { passive: true });
+  }
+
+  // Smooth button navigation
+  function manualScroll(direction) {
+    isPaused = true;
+    clearTimeout(resumeTimer);
+    const step = getCardWidth();
+    currentScroll += direction * step;
+    viewport.scrollTo({
+      left: currentScroll,
+      behavior: 'smooth'
+    });
+    resumeTimer = setTimeout(() => {
+      currentScroll = viewport.scrollLeft;
+      isPaused = false;
+    }, 2500);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      manualScroll(-1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      manualScroll(1);
+    });
+  }
+
+  // Reset scroll position on page visibility change to avoid large jumps
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isPaused = true;
+    } else {
+      currentScroll = viewport.scrollLeft;
+      isPaused = false;
+    }
   });
 }
 
@@ -2595,112 +2623,171 @@ function initDepartmentCardClicks() {
 
 /**
  * 26. Patient Testimonials Horizontal Carousel Controller
- * Provides manual left/right scrolling, touch swipe, keyboard navigation, and responsive arrow states.
- * No automatic movement.
+ * Continuous right-to-left auto-scrolling with pause on hover/touch,
+ * seamless infinite loop, manual controls, and single-card mobile layout.
  */
 function initTestimonialsCarousel() {
+  const container = document.querySelector('.testimonials-carousel-container');
   const viewport = document.getElementById('testimonialsCarouselViewport');
+  const track = document.getElementById('testimonialsCarouselTrack');
   const prevBtn = document.getElementById('testimonialScrollPrevBtn');
   const nextBtn = document.getElementById('testimonialScrollNextBtn');
-  if (!viewport || !prevBtn || !nextBtn) return;
+  if (!viewport || !track) return;
+
+  // Clone existing cards once to create an infinite seamless loop
+  const originalCards = Array.from(track.children);
+  if (!originalCards.length) return;
+
+  originalCards.forEach((card, idx) => {
+    card.setAttribute('data-original-index', idx);
+  });
+
+  // Duplicate cards for seamless infinite scroll
+  originalCards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.classList.add('is-clone');
+    const focusable = clone.querySelectorAll('button, a, [tabindex]');
+    focusable.forEach(el => el.setAttribute('tabindex', '-1'));
+    track.appendChild(clone);
+  });
+
+  let singleSetWidth = 0;
+  function calculateSetWidth() {
+    singleSetWidth = track.scrollWidth / 2;
+  }
+  calculateSetWidth();
+  window.addEventListener('resize', calculateSetWidth);
+
+  let isPaused = false;
+  let resumeTimeout = null;
+  const speed = 0.65; // pixels per frame for a smooth, readable continuous flow
+
+  function step() {
+    if (!isPaused && singleSetWidth > 0) {
+      viewport.scrollLeft += speed;
+      // Seamless reset: when first set completes, loop back by subtracting singleSetWidth
+      if (viewport.scrollLeft >= singleSetWidth) {
+        viewport.scrollLeft -= singleSetWidth;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Start continuous right-to-left movement
+  requestAnimationFrame(step);
+
+  function pauseAutoScroll(tempDuration = 0) {
+    isPaused = true;
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    if (tempDuration > 0) {
+      resumeTimeout = setTimeout(() => {
+        isPaused = false;
+      }, tempDuration);
+    }
+  }
+
+  function resumeAutoScroll() {
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    isPaused = false;
+  }
+
+  // Pause on hover over container or viewport
+  const hoverTarget = container || viewport;
+  hoverTarget.addEventListener('mouseenter', () => pauseAutoScroll(0));
+  hoverTarget.addEventListener('mouseleave', () => resumeAutoScroll());
+
+  // Pause on touch interactions and focus
+  viewport.addEventListener('touchstart', () => pauseAutoScroll(0), { passive: true });
+  viewport.addEventListener('touchend', () => pauseAutoScroll(2500), { passive: true });
+  viewport.addEventListener('focusin', () => pauseAutoScroll(0));
+  viewport.addEventListener('focusout', () => resumeAutoScroll());
 
   function getScrollAmount() {
     const card = viewport.querySelector('.testimonial-card');
     if (card) {
-      return card.getBoundingClientRect().width + 24;
+      const cardWidth = card.getBoundingClientRect().width;
+      const computedGap = parseFloat(window.getComputedStyle(track).gap) || 24;
+      return cardWidth + computedGap;
     }
-    return 384;
+    return 374;
   }
 
-  function updateActiveCard() {
-    const cards = viewport.querySelectorAll('.testimonial-card');
-    if (!cards.length) return;
-
-    const viewportRect = viewport.getBoundingClientRect();
-    const viewportCenter = viewportRect.left + viewportRect.width / 2;
-
-    let closestCard = null;
-    let closestDist = Infinity;
-
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const dist = Math.abs(viewportCenter - cardCenter);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestCard = card;
-      }
-    });
-
-    cards.forEach(card => {
-      card.classList.toggle('is-active-card', card === closestCard);
-    });
-  }
-
-  prevBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (viewport.scrollLeft <= 10) {
-      viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
-    } else {
-      viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-    }
-    setTimeout(updateActiveCard, 320);
-  });
-
-  nextBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
-    if (viewport.scrollLeft >= maxScroll - 10) {
-      viewport.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-    }
-    setTimeout(updateActiveCard, 320);
-  });
-
-  viewport.addEventListener('scroll', updateActiveCard, { passive: true });
-  window.addEventListener('resize', updateActiveCard);
-
-  // Read More / Read Less toggles on long review cards
-  const readMoreButtons = document.querySelectorAll('.testimonial-read-more-btn');
-  readMoreButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Manual Previous Button
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const wrap = btn.closest('.testimonial-quote-wrap');
-      if (!wrap) return;
-      const quote = wrap.querySelector('.testimonial-quote');
-      if (!quote) return;
-
-      const isCurrentlyClamped = quote.classList.contains('is-clamped');
-      if (isCurrentlyClamped) {
-        quote.classList.remove('is-clamped');
-        quote.classList.add('is-expanded');
-        btn.textContent = 'Read Less';
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        quote.classList.remove('is-expanded');
-        quote.classList.add('is-clamped');
-        btn.textContent = 'Read More';
-        btn.setAttribute('aria-expanded', 'false');
+      pauseAutoScroll(3500);
+      const amount = getScrollAmount();
+      if (viewport.scrollLeft < amount) {
+        viewport.scrollLeft += singleSetWidth;
       }
+      viewport.scrollBy({ left: -amount, behavior: 'smooth' });
     });
-  });
+  }
+
+  // Manual Next Button
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      pauseAutoScroll(3500);
+      const amount = getScrollAmount();
+      if (viewport.scrollLeft + amount >= singleSetWidth * 2 - viewport.clientWidth) {
+        viewport.scrollLeft -= singleSetWidth;
+      }
+      viewport.scrollBy({ left: amount, behavior: 'smooth' });
+    });
+  }
 
   // Keyboard navigation when focused
   viewport.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      prevBtn.click();
+      if (prevBtn) prevBtn.click();
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      nextBtn.click();
+      if (nextBtn) nextBtn.click();
     }
   });
 
-  // Re-run icons initialization for testimonial cards
+  // Delegated Read More / Read Less toggles on review cards
+  track.addEventListener('click', (e) => {
+    const btn = e.target.closest('.testimonial-read-more-btn');
+    if (!btn) return;
+    e.preventDefault();
+    const wrap = btn.closest('.testimonial-quote-wrap');
+    if (!wrap) return;
+    const quote = wrap.querySelector('.testimonial-quote');
+    if (!quote) return;
+
+    const isCurrentlyClamped = quote.classList.contains('is-clamped');
+    if (isCurrentlyClamped) {
+      quote.classList.remove('is-clamped');
+      quote.classList.add('is-expanded');
+      btn.textContent = 'Read Less';
+      btn.setAttribute('aria-expanded', 'true');
+    } else {
+      quote.classList.remove('is-expanded');
+      quote.classList.add('is-clamped');
+      btn.textContent = 'Read More';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    setTimeout(calculateSetWidth, 120);
+  });
+
+  // Re-run icons for cloned elements if needed
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
     lucide.createIcons();
   }
 
-  setTimeout(updateActiveCard, 150);
+  // Pause when tab is inactive to prevent scroll drift
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isPaused = true;
+    } else {
+      isPaused = false;
+      calculateSetWidth();
+    }
+  });
 }
+

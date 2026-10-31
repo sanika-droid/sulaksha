@@ -30,7 +30,102 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=27">
+  <link rel="stylesheet" href="styles.css?v=35">
+
+  <style>
+    /* 4 Cards Per Row Layout & Compact Gap Removal */
+    .doctors-page .container {
+      max-width: min(96vw, 1480px) !important;
+      padding-left: clamp(0.75rem, 2vw, 1.5rem) !important;
+      padding-right: clamp(0.75rem, 2vw, 1.5rem) !important;
+    }
+
+    .doctors-page-header-section {
+      padding: clamp(1.5rem, 2.5vw, 2.25rem) 0 1rem !important;
+    }
+
+    .doctors-breadcrumbs {
+      margin-bottom: 0.75rem !important;
+    }
+
+    .doctors-header-pill {
+      margin-bottom: 0.65rem !important;
+      padding: 0.35rem 0.95rem !important;
+    }
+
+    .doctors-heading-primary {
+      font-size: clamp(1.85rem, 3.2vw, 2.5rem) !important;
+      margin-bottom: 0.4rem !important;
+    }
+
+    .doctors-heading-subtitle {
+      font-size: 0.95rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .doctors-directory-section {
+      padding-top: 0.85rem !important;
+      padding-bottom: 2.25rem !important;
+    }
+
+    .doctors-filter-card {
+      margin-bottom: 0.85rem !important;
+      padding: 0.95rem clamp(0.85rem, 2vw, 1.4rem) !important;
+      border-radius: 14px !important;
+    }
+
+    .doctors-results-bar {
+      margin: 0.65rem 0 0.85rem 0 !important;
+    }
+
+    /* 4 Cards Per Row Grid */
+    .doctor-dir-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 1.15rem !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      margin: 0.85rem 0 2.5rem 0 !important;
+    }
+
+    @media (max-width: 1200px) and (min-width: 860px) {
+      .doctor-dir-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+      }
+    }
+
+    @media (max-width: 859px) and (min-width: 580px) {
+      .doctor-dir-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.9rem !important;
+      }
+    }
+
+    @media (max-width: 579px) {
+      .doctor-dir-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.85rem !important;
+      }
+    }
+
+    .doctor-dir-img-wrap {
+      height: 205px !important;
+    }
+
+    .doctor-dir-body {
+      padding: 0.95rem 1rem 1.1rem !important;
+    }
+
+    .doctor-dir-name {
+      font-size: 1.05rem !important;
+      line-height: 1.25 !important;
+    }
+
+    .doctor-dir-card {
+      border-radius: 12px !important;
+    }
+  </style>
 </head>
 <body class="doctors-page">
   <!-- Accessibility Skip Link -->

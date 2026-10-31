@@ -35,8 +35,14 @@
 
     .dept-detail-main {
       flex: 1;
-      padding-top: clamp(1.75rem, 3vw, 2.5rem);
-      padding-bottom: clamp(3rem, 5vw, 5rem);
+      padding-top: 1rem;
+      padding-bottom: 2.25rem;
+    }
+
+    .dept-detail-main .container {
+      max-width: min(96vw, 1440px) !important;
+      padding-left: clamp(0.75rem, 2vw, 1.5rem) !important;
+      padding-right: clamp(0.75rem, 2vw, 1.5rem) !important;
     }
 
     /* Breadcrumbs */
@@ -46,7 +52,7 @@
       gap: 0.5rem;
       font-size: 0.88rem;
       color: #4B617E;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
       flex-wrap: wrap;
     }
 
@@ -75,9 +81,9 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(11, 37, 104, 0.06);
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
       display: grid;
-      grid-template-columns: 1.15fr 1fr;
+      grid-template-columns: minmax(0, 1.25fr) minmax(340px, 460px);
       align-items: stretch;
     }
 
@@ -88,7 +94,7 @@
     }
 
     .dept-hero-content {
-      padding: clamp(1.75rem, 3.5vw, 2.75rem);
+      padding: clamp(1.25rem, 2.2vw, 2rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -98,40 +104,40 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: #0088D1;
       background: #EBF4FB;
       border: 1px solid rgba(0, 136, 209, 0.25);
-      padding: 0.35rem 0.95rem;
+      padding: 0.3rem 0.85rem;
       border-radius: 9999px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       width: fit-content;
     }
 
     .dept-hero-title {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-size: clamp(1.85rem, 2.7vw, 2.45rem);
       font-weight: 800;
       color: #0B2568;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .dept-hero-intro {
-      font-size: clamp(0.98rem, 1.15vw, 1.08rem);
-      line-height: 1.68;
+      font-size: clamp(0.92rem, 1.05vw, 1.02rem);
+      line-height: 1.6;
       color: #4B617E;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.25rem;
     }
 
     /* Three Action Buttons */
     .dept-action-buttons {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
       flex-wrap: wrap;
     }
 
@@ -139,10 +145,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.45rem;
+      gap: 0.45rem;
+      padding: 0.72rem 1.35rem;
       border-radius: 8px;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 600;
       line-height: 1;
       text-decoration: none;
@@ -189,15 +195,33 @@
 
     .dept-hero-media {
       position: relative;
-      min-height: 320px;
+      min-height: 340px;
       overflow: hidden;
-      background: #0B2568;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 992px) {
+      .dept-hero-media::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        background: linear-gradient(to right, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        z-index: 2;
+        pointer-events: none;
+      }
     }
 
     .dept-hero-img {
       width: 100%;
       height: 100%;
-      min-height: 320px;
+      min-height: 340px;
+      max-height: 440px;
       object-fit: cover;
       object-position: center;
       display: block;
@@ -206,10 +230,10 @@
     /* Grid Layout for Department Sections */
     .dept-content-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 1.25rem;
       align-items: start;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     @media (max-width: 991px) {
@@ -223,22 +247,22 @@
       background: #FFFFFF;
       border: 1px solid #D7E5F2;
       border-radius: 14px;
-      padding: clamp(1.5rem, 2.5vw, 2rem);
+      padding: clamp(1.15rem, 2vw, 1.5rem);
       box-shadow: 0 3px 14px rgba(11, 37, 104, 0.04);
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
     }
 
     .panel-heading {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       border-bottom: 1px solid #E5EEF7;
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
     }
 
     .panel-heading i {
@@ -248,16 +272,16 @@
     /* Overview Text Blocks */
     .dept-overview-text {
       color: #4B617E;
-      line-height: 1.7;
-      font-size: 0.98rem;
-      margin-bottom: 1.25rem;
+      line-height: 1.62;
+      font-size: 0.94rem;
+      margin-bottom: 0.85rem;
     }
 
     .dept-conditions-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem 1rem;
-      margin: 1.25rem 0;
+      gap: 0.5rem 1rem;
+      margin: 0.85rem 0;
       padding: 0;
       list-style: none;
     }
@@ -271,8 +295,8 @@
     .dept-condition-item {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.92rem;
+      gap: 0.45rem;
+      font-size: 0.88rem;
       color: #0B2568;
       font-weight: 500;
     }
@@ -286,7 +310,7 @@
     .dept-services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+      gap: 0.85rem;
     }
 
     @media (max-width: 640px) {
@@ -299,7 +323,7 @@
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-radius: 10px;
-      padding: 1.15rem;
+      padding: 0.9rem 1.1rem;
       transition: transform 180ms ease, border-color 180ms ease;
     }
 
@@ -312,13 +336,13 @@
 
     .dept-service-title {
       font-family: var(--font-heading);
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
     }
 
     .dept-service-title i {
@@ -326,9 +350,9 @@
     }
 
     .dept-service-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: #4B617E;
-      line-height: 1.55;
+      line-height: 1.5;
       margin: 0;
     }
 
@@ -336,17 +360,17 @@
     .dept-doctors-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 0.85rem;
     }
 
     .dept-doctor-card {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1.15rem;
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-radius: 12px;
-      padding: 1.25rem;
+      padding: 1rem 1.25rem;
       transition: all 180ms ease;
     }
 
@@ -358,10 +382,11 @@
     }
 
     .dept-doctor-img {
-      width: 96px;
-      height: 96px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center top;
       border: 2px solid #0088D1;
       flex-shrink: 0;
       background: #EBF4FB;
@@ -373,24 +398,24 @@
 
     .dept-doctor-name {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #0B2568;
-      margin: 0 0 0.25rem 0;
+      margin: 0 0 0.2rem 0;
     }
 
     .dept-doctor-qual {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #0088D1;
       font-weight: 600;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .dept-doctor-role {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #4B617E;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
     }
 
     .dept-doc-btn-group {
@@ -490,30 +515,30 @@
       background: #FFFFFF;
       border: 1px solid #D7E5F2;
       border-radius: 14px;
-      padding: 1.5rem;
+      padding: 1.15rem;
       box-shadow: 0 3px 14px rgba(11, 37, 104, 0.04);
       position: sticky;
-      top: 95px;
+      top: 90px;
     }
 
     .dept-switcher-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.5rem 0;
+      margin: 0 0 1rem 0;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.25rem;
     }
 
     .dept-switcher-link {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.65rem 0.9rem;
+      gap: 0.55rem;
+      padding: 0.5rem 0.75rem;
       border-radius: 8px;
       color: #4B617E;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       text-decoration: none;
       transition: all 160ms ease;
     }
@@ -734,7 +759,7 @@
         </div>
 
         <div class="dept-hero-media">
-          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&h=500&q=80" alt="Cardiac Care Department" class="dept-hero-img" id="deptHeroImg">
+          <img src="assets/cardiac-care-doctor-heart.png" alt="Cardiac Care Department" class="dept-hero-img" id="deptHeroImg">
         </div>
       </section>
 
@@ -937,7 +962,8 @@
         name: 'Cardiac Care (Cardiology)',
         title: 'Cardiac Care & Cardiovascular Health',
         category: 'Centre of Excellence',
-        image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/cardiac-care-doctor-heart.png',
+        objectPosition: 'center 15%',
         intro: 'Comprehensive cardiovascular assessment, preventive heart evaluations, acute cardiac stabilization, and long-term coronary care in Mysuru.',
         overview: 'The Cardiac Care department at Sulakshaa Hospital focuses on early identification of heart disease, hypertension management, post-cardiac event recovery, and diagnostic screening. Supported by round-the-clock intensive care telemetry, our team ensures rapid response to cardiac discomfort.',
         conditions: [
@@ -959,7 +985,7 @@
             name: 'Dr. Priya S. Sharma',
             qual: 'MD, DM (Cardiology)',
             role: 'Consultant Cardiologist & Heart Specialist',
-            image: 'assets/dr-priya-sharma.png'
+            image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -973,7 +999,9 @@
         name: 'Orthopedics & Joint Care',
         title: 'Orthopedics, Bone & Joint Surgery',
         category: 'Surgical & Trauma Centre',
-        image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/orthopedics-joint-replacement.png',
+        objectPosition: 'center 35%',
+        objectFit: 'cover',
         intro: 'Advanced management of bone fractures, degenerative arthritis, sports injuries, spine discomfort, and joint reconstruction.',
         overview: 'Sulakshaa Hospital’s Orthopedics Centre provides compassionate, precision-driven musculoskeletal care. From emergency fracture fixation and accident trauma triage to conservative joint pain management and post-surgical physiotherapy.',
         conditions: [
@@ -995,7 +1023,7 @@
             name: 'Dr. Anand R. Kulkarni',
             qual: 'MS Ortho, DNB (Orthopedic Surgery)',
             role: 'Senior Orthopedic & Joint Surgeon',
-            image: 'assets/dr-anand-kulkarni.png'
+            image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -1030,7 +1058,7 @@
             name: 'Dr. Vikram M. Rao',
             qual: 'MBBS, DM (Neurology)',
             role: 'Consultant Neurologist',
-            image: 'assets/dr-vikram-rao.png'
+            image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -1043,7 +1071,7 @@
         name: 'Gastroenterology',
         title: 'Gastroenterology & Digestive Health',
         category: 'Internal Medicine & Hepatic Care',
-        image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/gastroenterology-digestive-health.png',
         intro: 'Specialized diagnosis and clinical management of acid peptic disease, hepatic conditions, bowel disorders, and acute pancreatitis.',
         overview: 'Our Gastroenterology division focuses on restoring digestive harmony and gastrointestinal wellness. Our physicians provide targeted therapy for chronic acid reflux, fatty liver, abdominal pain, and intestinal infections.',
         conditions: [
@@ -1062,10 +1090,10 @@
         ],
         doctors: [
           {
-            name: 'Dr. Manjunath Swamy',
-            qual: 'MBBS, MD, DM (Gastroenterology)',
+            name: 'Dr. Rajesh K. Varma',
+            qual: 'MBBS, MD, DNB (Gastroenterology)',
             role: 'Consultant Gastroenterologist',
-            image: 'assets/dr-manjunath-swamy.png'
+            image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -1099,7 +1127,7 @@
             name: 'Dr. Suresh Babu K.',
             qual: 'MS (General Surgery), Surgical Oncology Fellow',
             role: 'Senior Surgical Consultant & Oncology Coordinator',
-            image: 'assets/dr-suresh-babu.png'
+            image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -1133,7 +1161,7 @@
             name: 'Dr. Sneha Hegde',
             qual: 'MD Paediatrics, DCH',
             role: 'Consultant Paediatrician & Neonatologist',
-            image: 'assets/dr-sneha-hegde.png'
+            image: 'assets/dr-sneha-hegde.jpg'
           }
         ],
         faqs: [
@@ -1179,7 +1207,7 @@
         name: 'Maternity Care (OBG)',
         title: 'Obstetrics & Gynaecological Care',
         category: 'Women & Child Centre',
-        image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/maternity-obstetrics-gynaecology.png',
         intro: 'Compassionate maternal health, antenatal monitoring, safe deliveries, and comprehensive gynecological wellness in Mysuru.',
         overview: 'Sulakshaa Hospital provides personalized, respectful care through every phase of womanhood. From family planning and prenatal care to high-risk pregnancy monitoring and gynecological disorder management.',
         conditions: [
@@ -1198,10 +1226,10 @@
         ],
         doctors: [
           {
-            name: 'Dr. Rajeshwari V.',
-            qual: 'MBBS, DGO, DNB (OBG)',
+            name: 'Dr. Meera N. Iyer',
+            qual: 'MBBS, MS (OBG), DGO',
             role: 'Senior Consultant Obstetrician & Gynaecologist',
-            image: 'assets/dr-rajeshwari.png'
+            image: 'assets/dr-meera-iyer.jpg'
           }
         ],
         faqs: [
@@ -1232,10 +1260,10 @@
         ],
         doctors: [
           {
-            name: 'Dr. Kavitha Ramesh',
+            name: 'Dr. Rashmi Desai',
             qual: 'MBBS, MD (Dermatology, Venereology & Leprosy)',
             role: 'Consultant Dermatologist',
-            image: 'assets/dr-kavitha-ramesh.png'
+            image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&h=600&q=80'
           }
         ],
         faqs: [
@@ -1281,7 +1309,9 @@
         name: 'General Surgery',
         title: 'General & Laparoscopic Surgery',
         category: 'Surgical Operations Centre',
-        image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/general-laparoscopic-surgery.png',
+        objectPosition: 'center',
+        objectFit: 'contain',
         intro: 'Surgical consultations, minimally invasive laparoscopic care, emergency trauma repairs, hernia, and gallbladder surgeries.',
         overview: 'Sulakshaa Hospital’s Surgical Centre features state-of-the-art modular operating theatres equipped with laminar airflow HEPA filtration. Our surgical team prioritizes minimally invasive techniques for faster recovery.',
         conditions: [
@@ -1315,7 +1345,9 @@
         name: 'Anaesthesiology',
         title: 'Anaesthesiology & Critical Care',
         category: 'Perioperative Care Centre',
-        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/anaesthesiology-critical-care.png',
+        objectPosition: 'center 30%',
+        objectFit: 'cover',
         intro: 'Precision perioperative anesthesia, continuous surgical hemodynamic monitoring, post-operative pain medicine, and ICU airway care.',
         overview: 'Our Anaesthesiology team ensures patient safety and comfort throughout the surgical process. Through comprehensive pre-anesthetic assessments and vigilant intraoperative monitoring, we ensure smooth anesthesia recovery.',
         conditions: [
@@ -1349,7 +1381,9 @@
         name: 'Pulmonology & Respiratory Care',
         title: 'Pulmonology & Chest Medicine',
         category: 'Respiratory Care Centre',
-        image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/pulmonology-chest-medicine.png',
+        objectPosition: 'center',
+        objectFit: 'cover',
         intro: 'Advanced diagnosis and clinical treatment for chronic bronchial asthma, COPD, pneumonia, sleep apnea, and persistent cough disorders in Mysuru.',
         overview: 'The Department of Pulmonology at Sulakshaa Multi Speciality Hospital delivers expert pulmonary evaluations, spirometry, and intensive respiratory support. Supported by continuous non-invasive ventilation, nebulization suites, and 24/7 ICU facilities.',
         conditions: [
@@ -1384,7 +1418,9 @@
         name: 'Nephrology & Kidney Care',
         title: 'Nephrology & Renal Medicine',
         category: 'Renal Care Centre',
-        image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/nephrology-renal-medicine.png',
+        objectPosition: 'center',
+        objectFit: 'cover',
         intro: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, electrolyte imbalances, and hypertension-related renal care.',
         overview: 'Sulakshaa Hospital’s Nephrology department emphasizes early identification and prevention of kidney function decline. Supported by advanced automated laboratory profiling, color Doppler ultrasound, and intensive care beds.',
         conditions: [
@@ -1419,7 +1455,9 @@
         name: 'ENT (Ear, Nose & Throat)',
         title: 'Otorhinolaryngology & ENT Care',
         category: 'Specialized Clinical Centre',
-        image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/ent-care-otorhinolaryngology.png',
+        objectFit: 'contain',
+        objectPosition: 'center',
         intro: 'Specialized diagnosis and clinical treatment for ear infections, hearing loss, vertigo, chronic sinusitis, deviated nasal septum, and throat disorders.',
         overview: 'The ENT department provides advanced diagnostic otoscopy, diagnostic nasal endoscopy, and specialized care for all pediatric and adult ear, nose, throat, and balance conditions.',
         conditions: [
@@ -1454,7 +1492,9 @@
         name: 'Urology & Urological Care',
         title: 'Urology & Genitourinary Surgery',
         category: 'Surgical Specialty Centre',
-        image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&h=500&q=80',
+        image: 'assets/urology-genitourinary-surgery.jpg',
+        objectPosition: 'center',
+        objectFit: 'cover',
         intro: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections, and bladder health.',
         overview: 'Our Urology centre delivers specialized medical and surgical interventions for urinary tract and male reproductive system health. Equipped with advanced NCCT imaging, uroflowmetry, and dedicated sterile surgical suites.',
         conditions: [
@@ -1502,8 +1542,17 @@
         'pediatric': 'paediatrics',
         'pulmonary': 'pulmonology',
         'chest-medicine': 'pulmonology',
+        'pulmonology-chest-medicine': 'pulmonology',
+        'respiratory-care': 'pulmonology',
         'kidney': 'nephrology',
-        'renal': 'nephrology'
+        'renal': 'nephrology',
+        'renal-medicine': 'nephrology',
+        'kidney-care': 'nephrology',
+        'otorhinolaryngology': 'ent',
+        'ear-nose-throat': 'ent',
+        'genitourinary': 'urology',
+        'genitourinary-surgery': 'urology',
+        'urological-care': 'urology'
       };
 
       if (aliasMap[deptSlug]) {
@@ -1527,6 +1576,8 @@
       const heroImg = document.getElementById('deptHeroImg');
       heroImg.src = dept.image;
       heroImg.alt = `${dept.name} at Sulakshaa Multi Speciality Hospital`;
+      heroImg.style.objectPosition = dept.objectPosition || 'center';
+      heroImg.style.objectFit = dept.objectFit || 'cover';
 
       // Update Appointment Link with department query
       document.getElementById('deptBookApptBtn').href = `index.html#enquiry?dept=${encodeURIComponent(dept.name)}`;
