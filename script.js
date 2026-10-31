@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 26. Patient Testimonials Horizontal Carousel Controller
   initTestimonialsCarousel();
+
+  // 27. Health Insights & Hospital Updates View All Toggle Controller
+  initBlogViewAll();
 });
 
 /**
@@ -2790,4 +2793,36 @@ function initTestimonialsCarousel() {
     }
   });
 }
+
+/**
+ * 25. Health Insights & Hospital Updates View All Toggle Controller
+ */
+function initBlogViewAll() {
+  const btn = document.getElementById('blogViewAllBtn');
+  const grid = document.getElementById('blogGrid');
+  const textSpan = document.getElementById('blogViewAllText');
+  if (!btn || !grid) return;
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isExpanded = grid.classList.toggle('show-all');
+    btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+
+    if (textSpan) {
+      textSpan.textContent = isExpanded ? 'Show Less Insights' : 'View All Insights & Articles';
+    }
+
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      lucide.createIcons();
+    }
+
+    if (!isExpanded) {
+      const blogSection = document.getElementById('blog');
+      if (blogSection) {
+        blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+}
+
 

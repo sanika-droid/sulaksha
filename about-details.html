@@ -537,6 +537,253 @@
         width: 100%;
         justify-content: center;
       }
+    /* --------------------------------------------------------------------------
+       Comprehensive Site Footer Styles
+       -------------------------------------------------------------------------- */
+    .site-footer {
+      background-color: #061743;
+      color: #FFFFFF;
+      padding-top: clamp(2.5rem, 4.5vw, 3.5rem);
+      padding-bottom: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: min(96vw, 1440px);
+      margin: 0 auto;
+      padding-left: clamp(0.75rem, 2vw, 1.5rem);
+      padding-right: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .footer-top-grid,
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: clamp(1.75rem, 3.5vw, 2.5rem);
+      margin-bottom: 2.25rem;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 0.75rem;
+      background-color: #FFFFFF;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .footer-kannada-name {
+      font-size: 0.875rem;
+      color: #A3D2FA;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-mission {
+      font-size: 0.875rem;
+      color: #DCE7F0;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-emergency-callout {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+
+    .footer-emergency-callout i {
+      color: #48E59B;
+    }
+
+    .footer-emergency-callout div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-emergency-callout span {
+      font-size: 0.75rem;
+      color: #DCE7F0;
+    }
+
+    .footer-emergency-callout strong {
+      font-size: 0.875rem;
+      color: #FFFFFF;
+    }
+
+    .footer-heading {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-heading::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 28px;
+      height: 2px;
+      background-color: #0088D1;
+      border-radius: 9999px;
+    }
+
+    .footer-nav,
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-nav li,
+    .footer-links-list li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-nav a,
+    .footer-links-list a {
+      color: #DCE7F0;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .footer-nav a:hover,
+    .footer-links-list a:hover {
+      color: #38BDF8;
+      transform: translateX(3px);
+    }
+
+    .footer-address,
+    .footer-contact-info {
+      font-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      font-size: 0.875rem;
+      color: #DCE7F0;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-address p,
+    .footer-contact-info p {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin: 0;
+    }
+
+    .footer-address i,
+    .footer-contact-info i {
+      margin-top: 3px;
+      color: #38BDF8;
+      flex-shrink: 0;
+    }
+
+    .footer-link {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #38BDF8;
+    }
+
+    .footer-badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: #A3D2FA;
+    }
+
+    .footer-bottom-bar {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8125rem;
+      color: #DCE7F0;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .legal-link-btn {
+      background: none;
+      border: none;
+      color: #DCE7F0;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.8125rem;
+      transition: color 0.2s ease;
+    }
+
+    .legal-link-btn:hover {
+      color: #38BDF8;
+      text-decoration: underline;
+    }
+
+    .legal-sep {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 991px) {
+      .footer-top-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-top-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      .footer-bottom-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -884,58 +1131,58 @@
 
   <!-- Site Footer (Standard Across Website) -->
   <footer class="site-footer" id="siteFooter">
-    <div class="container">
-      <div class="footer-grid">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
         <!-- Col 1: Brand Info -->
         <div class="footer-col footer-col-brand">
-          <div class="footer-brand-logo">
-            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="footer-logo-img" width="160" height="46">
-          </div>
-          <p class="footer-tagline">“Advanced Care. Compassionate Hearts.”</p>
-          <p class="footer-desc">
-            Sulakshaa Multi Speciality Hospital in Mysuru provides comprehensive, high-quality, patient-centered healthcare with dedicated medical departments and 24/7 emergency response.
+          <a href="index.html" class="footer-brand" aria-label="Sulakshaa Multi Speciality Hospital">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="footer-logo" width="200" height="52">
+          </a>
+          <p class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್, ಮೈಸೂರು</p>
+          <p class="footer-mission">
+            Providing compassionate care, advanced medical specialities, precision diagnostics, and dedicated patient support for Mysuru and surrounding regions.
           </p>
-          <div class="footer-emergency-badge">
-            <i data-lucide="shield-alert" class="icon-sm"></i>
+          <div class="footer-emergency-callout">
+            <i data-lucide="ambulance" class="icon-sm"></i>
             <div>
-              <strong>24/7 Emergency Care</strong>
-              <span>Rapid casualty, ambulance &amp; trauma desk</span>
+              <span>24/7 Casualty &amp; Emergency</span>
+              <strong>Open All 365 Days</strong>
             </div>
           </div>
         </div>
 
         <!-- Col 2: Quick Links -->
         <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="about-details.html" class="footer-link">About Us</a></li>
-            <li><a href="departments.html" class="footer-link">Departments</a></li>
-            <li><a href="doctors.html" class="footer-link">Our Doctors</a></li>
-            <li><a href="facilities.html" class="footer-link">Facilities &amp; Services</a></li>
-            <li><a href="gallery.html" class="footer-link">Hospital Gallery</a></li>
-            <li><a href="index.html#blog" class="footer-link">Health Blog</a></li>
-            <li><a href="index.html#contact" class="footer-link">Contact &amp; Location</a></li>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-nav">
+            <li><a href="index.html"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+            <li><a href="about-details.html"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
+            <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialities</a></li>
+            <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialists</a></li>
+            <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Facilities</a></li>
+            <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+            <li><a href="index.html#blog"><i data-lucide="chevron-right" class="icon-xs"></i> Health Insights</a></li>
+            <li><a href="index.html#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Directions</a></li>
           </ul>
         </div>
 
         <!-- Col 3: Key Departments -->
         <div class="footer-col">
-          <h4 class="footer-heading">Key Specialities</h4>
-          <ul class="footer-links-list">
-            <li><a href="department-details.html?dept=general-medicine" class="footer-link">General Medicine</a></li>
-            <li><a href="department-details.html?dept=cardiology" class="footer-link">Cardiology Care</a></li>
-            <li><a href="department-details.html?dept=orthopedics" class="footer-link">Orthopedics &amp; Trauma</a></li>
-            <li><a href="department-details.html?dept=general-surgery" class="footer-link">General &amp; Laparoscopic Surgery</a></li>
-            <li><a href="department-details.html?dept=pediatrics" class="footer-link">Pediatrics &amp; Child Health</a></li>
-            <li><a href="department-details.html?dept=emergency" class="footer-link">24/7 Emergency &amp; Casualty</a></li>
+          <h3 class="footer-heading">Specialities</h3>
+          <ul class="footer-nav">
+            <li><a href="department-details.html?dept=cardiology"><i data-lucide="chevron-right" class="icon-xs"></i> Cardiology Care</a></li>
+            <li><a href="department-details.html?dept=orthopedics"><i data-lucide="chevron-right" class="icon-xs"></i> Orthopedics</a></li>
+            <li><a href="department-details.html?dept=general-medicine"><i data-lucide="chevron-right" class="icon-xs"></i> General Medicine</a></li>
+            <li><a href="department-details.html?dept=general-surgery"><i data-lucide="chevron-right" class="icon-xs"></i> General Surgery</a></li>
+            <li><a href="department-details.html?dept=pediatrics"><i data-lucide="chevron-right" class="icon-xs"></i> Paediatrics &amp; Child Health</a></li>
+            <li><a href="department-details.html?dept=emergency"><i data-lucide="chevron-right" class="icon-xs"></i> 24/7 Casualty &amp; Trauma</a></li>
           </ul>
         </div>
 
         <!-- Col 4: Contact & Location Info -->
         <div class="footer-col footer-col-contact">
-          <h4 class="footer-heading">Contact Information</h4>
-          <address class="footer-contact-info">
+          <h3 class="footer-heading">Hospital Desk</h3>
+          <address class="footer-address">
             <p>
               <i data-lucide="map-pin" class="icon-xs"></i>
               <span>Sulakshaa Multi Speciality Hospital, Mysuru, Karnataka, India</span>

@@ -1209,6 +1209,69 @@
       gap: 0.5rem !important;
     }
 
+    /* Health Insights & Blog View All Toggle */
+    .blog-card.blog-extra-card {
+      display: none !important;
+    }
+
+    .blog-grid.show-all .blog-card.blog-extra-card {
+      display: flex !important;
+      animation: blogCardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    @keyframes blogCardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .blog-view-all-wrap {
+      margin-top: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .blog-view-all-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.55rem !important;
+      padding: 0.75rem 2rem !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      border-radius: 9999px !important;
+      background-color: #FFFFFF !important;
+      color: #0B2568 !important;
+      border: 1.5px solid #CBD5E1 !important;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.06) !important;
+      cursor: pointer !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .blog-view-all-btn:hover {
+      background-color: #0088D1 !important;
+      color: #FFFFFF !important;
+      border-color: #0088D1 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(0, 136, 209, 0.3) !important;
+    }
+
+    .blog-view-all-btn svg,
+    .blog-view-all-btn i {
+      transition: transform 0.25s ease !important;
+    }
+
+    .blog-grid.show-all + .blog-view-all-wrap .blog-view-all-btn svg,
+    .blog-grid.show-all + .blog-view-all-wrap .blog-view-all-btn i {
+      transform: rotate(180deg) !important;
+    }
+
     /* ==========================================================================
        5. COMPACT CONTACT SECTION CARDS (Reduced Vertically)
        ========================================================================== */
@@ -2986,7 +3049,7 @@
           </p>
         </div>
 
-        <div class="blog-grid">
+        <div class="blog-grid" id="blogGrid">
           <!-- Article 1: Preventive Health -->
           <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=preventive-health'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=preventive-health'" aria-label="Read full article on Value of Annual Preventive Health Screenings">
             <div class="blog-media">
@@ -3063,7 +3126,7 @@
           </article>
 
           <!-- Article 4: Diabetes & Internal Medicine -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=diabetes-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=diabetes-care'" aria-label="Read full article on Managing Blood Sugar & Renal Protection">
+          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=diabetes-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=diabetes-care'" aria-label="Read full article on Managing Blood Sugar & Renal Protection">
             <div class="blog-media">
               <img src="assets/general-medicine.png" alt="Diabetes Management and Internal Medicine" class="blog-img" loading="lazy">
             </div>
@@ -3088,7 +3151,7 @@
           </article>
 
           <!-- Article 5: Orthopedics & Joint Care -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=orthopedics'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=orthopedics'" aria-label="Read full article on Recognizing Knee Arthritis & Joint Health">
+          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=orthopedics'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=orthopedics'" aria-label="Read full article on Recognizing Knee Arthritis & Joint Health">
             <div class="blog-media">
               <img src="assets/blog-orthopedics.jpg" alt="Orthopedic Care and Precision Joint Health" class="blog-img" loading="lazy">
             </div>
@@ -3113,7 +3176,7 @@
           </article>
 
           <!-- Article 6: Emergency Care -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=emergency-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=emergency-care'" aria-label="Read full article on The Golden Hour in Acute Medical Care">
+          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=emergency-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=emergency-care'" aria-label="Read full article on The Golden Hour in Acute Medical Care">
             <div class="blog-media">
               <img src="assets/gallery-isolated-icu.jpg" alt="Emergency and Critical Care ICU" class="blog-img" loading="lazy">
             </div>
@@ -3136,6 +3199,14 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <!-- View All Insights & Articles Button -->
+        <div class="blog-view-all-wrap text-center">
+          <button type="button" class="blog-view-all-btn" id="blogViewAllBtn" aria-expanded="false" aria-controls="blogGrid">
+            <span id="blogViewAllText">View All Insights &amp; Articles</span>
+            <i data-lucide="chevron-down" id="blogViewAllIcon" class="icon-sm"></i>
+          </button>
         </div>
       </div>
     </section>
