@@ -277,42 +277,39 @@
 </head>
 <body class="facility-detail-page">
 
-  <!-- Top Announcement Bar -->
-  <header class="top-bar" aria-label="Hospital Emergency Contact Bar">
-    <div class="container top-bar-inner">
-      <div class="top-bar-left">
-        <span class="top-bar-item emergency-item">
-          <i data-lucide="phone-call" class="icon-xs" aria-hidden="true"></i>
-          <strong>24/7 Casualty &amp; Triage:</strong> 
-          <a href="tel:+918212345678" class="top-bar-link">+91 821 234 5678*</a>
-        </span>
-        <span class="top-bar-divider" aria-hidden="true">|</span>
-        <span class="top-bar-item">
-          <i data-lucide="map-pin" class="icon-xs" aria-hidden="true"></i>
-          <span>Mysuru, Karnataka</span>
-        </span>
+  <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
+  <div class="site-top-bar" id="siteTopBar">
+    <div class="container">
+      <div class="top-bar-location">
+        <i data-lucide="map-pin" class="icon-xs"></i>
+        <span>Mysuru, Karnataka</span>
       </div>
       <div class="top-bar-right">
-        <a href="index.html#enquiry" class="top-bar-action-link">
-          <i data-lucide="calendar" class="icon-xs"></i>
-          <span>Doctor Consultation</span>
+        <a href="tel:08212520000" class="top-bar-link">
+          <i data-lucide="phone" class="icon-xs"></i>
+          <span>0821-2520000</span>
+        </a>
+        <a href="tel:+919535747478" class="top-bar-link">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <span>+91 95357 47478</span>
         </a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- Main Navigation Header -->
-  <nav class="main-nav" id="mainNavigation" aria-label="Main Navigation">
-    <div class="container nav-container">
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
       <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
-        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="brand-logo" width="48" height="48">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+        <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
-          <span class="brand-title">SULAKSHAA</span>
-          <span class="brand-subtext">Multi Speciality Hospital</span>
+          <span class="brand-hospital-title">Sulakshaa</span>
+          <span class="brand-hospital-type">hospitals</span>
         </div>
       </a>
       
-      <div class="nav-actions">
+      <div class="header-actions">
         <a href="facilities.html" class="btn btn-outline btn-sm">
           <i data-lucide="arrow-left" class="icon-xs"></i> Back to Facilities
         </a>
@@ -321,7 +318,7 @@
         </a>
       </div>
     </div>
-  </nav>
+  </header>
 
   <!-- Main Content Container -->
   <main class="facility-detail-main" id="mainContent">

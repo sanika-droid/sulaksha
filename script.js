@@ -5,9 +5,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Initialize Official Splash Screen
-  initSplashScreen();
-
   // 1. Initialize Lucide Icons
   initLucideIcons();
 
@@ -46,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 12. Doctors Directory Page Live Search & Filter System
   initDoctorsPageFilters();
+
+  // 13. Comprehensive Healthcare Solutions Interactive Watermark on Click
+  initSolutionWatermarks();
 
   // 13. Doctors Editorial Showcase Carousel
   initDoctorsCarousel();
@@ -86,77 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 26. Patient Testimonials Horizontal Carousel Controller
   initTestimonialsCarousel();
 
-  // 27. Health Insights & Hospital Updates View All Toggle Controller
+  // 27. Articles & Insights View All Toggle Controller
   initBlogViewAll();
+
+  // 28. Hospital Video Carousel Controller
+  initVideosCarousel();
 });
-
-/**
- * 0. Sulakshaa Multi Speciality Hospital Splash Screen Controller
- * Handles initial visit check via sessionStorage, smooth entrance, loading bar, and cleanup
- */
-function initSplashScreen() {
-  const splash = document.getElementById('splashScreen');
-  if (!splash) {
-    try {
-      sessionStorage.setItem('sulakshaa_splash_shown', 'true');
-    } catch (e) {}
-    return;
-  }
-
-  // Check accessibility preference
-  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Check if already shown during this browser session
-  let alreadyShown = false;
-  try {
-    alreadyShown = Boolean(sessionStorage.getItem('sulakshaa_splash_shown'));
-  } catch (err) {
-    // Storage access fallback
-  }
-
-  if (alreadyShown || isReducedMotion) {
-    if (splash.parentNode) {
-      splash.parentNode.removeChild(splash);
-    }
-    return;
-  }
-
-  // Record that splash was shown for this session
-  try {
-    sessionStorage.setItem('sulakshaa_splash_shown', 'true');
-  } catch (err) {
-    // Ignore storage errors
-  }
-
-  // Lock background scroll during splash
-  document.body.classList.add('splash-active');
-
-  const dismissSplash = () => {
-    if (splash.classList.contains('splash-fade-out')) return;
-    splash.classList.add('splash-fade-out');
-    document.body.classList.remove('splash-active');
-
-    setTimeout(() => {
-      if (splash.parentNode) {
-        splash.parentNode.removeChild(splash);
-      }
-    }, 650);
-  };
-
-  // Skip Intro Button Event Listener
-  const skipBtn = document.getElementById('splashSkipBtn');
-  if (skipBtn) {
-    skipBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      dismissSplash();
-    });
-  }
-
-  const SPLASH_DURATION = 2300; // 2.3 seconds
-  const fadeTimer = setTimeout(dismissSplash, SPLASH_DURATION);
-
-  window.addEventListener('pagehide', () => clearTimeout(fadeTimer), { once: true });
-}
 
 /**
  * Initialize Lucide icons with error-handling fallback
@@ -203,7 +138,7 @@ function initHeaderScroll() {
 
     // Header sticky shadow & shrink
     if (header) {
-      if (scrollY > 20) {
+      if (scrollY > 10) {
         header.classList.add('is-scrolled');
       } else {
         header.classList.remove('is-scrolled');
@@ -1294,7 +1229,7 @@ function initInfoModals() {
       badge: 'Flagship Department &bull; 24/7 Triage',
       img: 'assets/cardiac-care.jpg',
       scope: 'Comprehensive preventive, diagnostic, and emergency cardiology for adult heart diseases, hypertension, and coronary conditions.',
-      conditions: 'Hypertension, Coronary Artery Disease, Angina / Chest Pain, Heart Failure, Arrhythmias, Dyslipidemia &amp; Post-Infarction Rehabilitation.',
+      conditions: 'Hypertension, Heart Failure, Arrhythmias, Dyslipidemia &amp; Post-Infarction Rehabilitation.',
       diagnostics: 'Digital 12-Lead ECG, 2D Echocardiography with Color Doppler, Cardiac Biomarkers (Troponin I), Ambulatory BP Monitoring, Treadmill Stress Testing.',
       doctors: 'Dr. Priya S. Sharma (MD, DM Cardiology &bull; 16+ Years Experience)'
     },
@@ -2263,7 +2198,7 @@ function initSpecialitiesToggle() {
 
 /**
  * 21. Hero Facilities Image Crossfade Slideshow
- * Smoothly transitions between authentic Sulakshaa Hospital images (Exterior, Reception, OPD Lounge)
+ * Smoothly transitions between authentic Sulakshaa Hospital images (Exterior, OPD Lounge)
  * Features auto-advance, interactive dot navigation, and hover pause.
  */
 function initHeroSlideshow() {
@@ -2425,108 +2360,76 @@ function initFacilitiesViewAllToggle() {
 }
 
 /**
- * 23. Featured Leading Specialists Continuous Right-to-Left Moving Cards Controller
+ * 23. Featured Leading Specialists Horizontal Slider Controller (Single Row)
+ * Smooth horizontal navigation for the single-row doctor card showcase with responsive stepping,
+ * keyboard accessibility, touch swiping, and reactive left/right arrow states.
  */
 function initFeaturedDoctorsSwipe() {
-  const viewport = document.getElementById('doctorsMarqueeViewport');
-  const group1 = document.getElementById('doctorsMarqueeGroup1');
-  const group2 = document.getElementById('doctorsMarqueeGroup2');
-  const container = document.getElementById('doctorsMarqueeContainer');
-  const prevBtn = document.getElementById('docSwipePrevBtn');
-  const nextBtn = document.getElementById('docSwipeNextBtn');
-  if (!viewport || !group1) return;
+  const viewport = document.getElementById('doctorsSliderViewport') || document.getElementById('doctorsMarqueeViewport');
+  const prevBtn = document.getElementById('docSliderPrevBtn') || document.getElementById('docSwipePrevBtn');
+  const nextBtn = document.getElementById('docSliderNextBtn') || document.getElementById('docSwipeNextBtn');
+  if (!viewport) return;
 
-  if (group2) {
-    group2.style.display = 'flex';
-  }
-
-  let currentScroll = viewport.scrollLeft || 0;
-  let isPaused = false;
-  let resumeTimer = null;
-  const speed = 0.85; // smooth subpixel movement right-to-left (~50px/sec)
-
-  function getCardWidth() {
-    const card = viewport.querySelector('.featured-doctor-card');
-    return card ? (card.getBoundingClientRect().width + 20) : 320;
-  }
-
-  function tick() {
-    if (!isPaused) {
-      currentScroll += speed;
-      const groupWidth = group1.scrollWidth + 20; // width + gap
-      if (groupWidth > 0 && currentScroll >= groupWidth) {
-        currentScroll -= groupWidth;
-      }
-      viewport.scrollLeft = currentScroll;
+  function getScrollStep() {
+    const card = viewport.querySelector('.doctor-slider-card, .featured-doctor-card');
+    if (card) {
+      const cardRect = card.getBoundingClientRect();
+      const gap = 20;
+      const cardWidth = cardRect.width + gap;
+      return window.innerWidth < 768 ? cardWidth : cardWidth * 2;
     }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  // Pause on hover
-  if (container) {
-    container.addEventListener('mouseenter', () => {
-      isPaused = true;
-      clearTimeout(resumeTimer);
-    });
-    container.addEventListener('mouseleave', () => {
-      currentScroll = viewport.scrollLeft;
-      isPaused = false;
-    });
-
-    // Pause on touch for mobile interaction
-    container.addEventListener('touchstart', () => {
-      isPaused = true;
-      clearTimeout(resumeTimer);
-    }, { passive: true });
-
-    container.addEventListener('touchend', () => {
-      resumeTimer = setTimeout(() => {
-        currentScroll = viewport.scrollLeft;
-        isPaused = false;
-      }, 1500);
-    }, { passive: true });
+    return Math.max(260, viewport.clientWidth * 0.75);
   }
 
-  // Smooth button navigation
-  function manualScroll(direction) {
-    isPaused = true;
-    clearTimeout(resumeTimer);
-    const step = getCardWidth();
-    currentScroll += direction * step;
-    viewport.scrollTo({
-      left: currentScroll,
-      behavior: 'smooth'
-    });
-    resumeTimer = setTimeout(() => {
-      currentScroll = viewport.scrollLeft;
-      isPaused = false;
-    }, 2500);
+  function updateArrowState() {
+    const tolerance = 8;
+    const currentScroll = viewport.scrollLeft;
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth - tolerance;
+
+    if (prevBtn) {
+      const isStart = currentScroll <= tolerance;
+      prevBtn.classList.toggle('is-disabled', isStart);
+      prevBtn.setAttribute('aria-disabled', isStart ? 'true' : 'false');
+    }
+    if (nextBtn) {
+      const isEnd = currentScroll >= maxScroll;
+      nextBtn.classList.toggle('is-disabled', isEnd);
+      nextBtn.setAttribute('aria-disabled', isEnd ? 'true' : 'false');
+    }
   }
 
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      manualScroll(-1);
+      viewport.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+      setTimeout(updateArrowState, 350);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      manualScroll(1);
+      viewport.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+      setTimeout(updateArrowState, 350);
     });
   }
 
-  // Reset scroll position on page visibility change to avoid large jumps
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      isPaused = true;
-    } else {
-      currentScroll = viewport.scrollLeft;
-      isPaused = false;
+  viewport.addEventListener('scroll', updateArrowState, { passive: true });
+  window.addEventListener('resize', updateArrowState, { passive: true });
+
+  // Keyboard navigation when focused on viewport
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      viewport.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      viewport.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
     }
   });
+
+  // Initial check
+  updateArrowState();
 }
 
 /**
@@ -2795,7 +2698,7 @@ function initTestimonialsCarousel() {
 }
 
 /**
- * 25. Health Insights & Hospital Updates View All Toggle Controller
+ * 25. Articles & Insights View All Toggle Controller
  */
 function initBlogViewAll() {
   const btn = document.getElementById('blogViewAllBtn');
@@ -2825,4 +2728,86 @@ function initBlogViewAll() {
   });
 }
 
+/**
+ * 28. Our Videos Carousel Controller (Reference Image 5)
+ */
+function initVideosCarousel() {
+  const viewport = document.getElementById('videosCarouselViewport');
+  const prevBtn = document.getElementById('videoScrollPrevBtn');
+  const nextBtn = document.getElementById('videoScrollNextBtn');
+  if (!viewport || !prevBtn || !nextBtn) return;
 
+  function getScrollAmount() {
+    const item = viewport.querySelector('.hospital-video-card');
+    return item ? item.getBoundingClientRect().width + 24 : 360;
+  }
+
+  function updateArrowState() {
+    const tolerance = 6;
+    const isAtStart = viewport.scrollLeft <= tolerance;
+    const isAtEnd = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - tolerance;
+    prevBtn.disabled = isAtStart;
+    prevBtn.classList.toggle('is-disabled', isAtStart);
+    nextBtn.disabled = isAtEnd;
+    nextBtn.classList.toggle('is-disabled', isAtEnd);
+  }
+
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    setTimeout(updateArrowState, 350);
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    viewport.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    setTimeout(updateArrowState, 350);
+  });
+
+  viewport.addEventListener('scroll', updateArrowState, { passive: true });
+  window.addEventListener('resize', updateArrowState);
+  setTimeout(updateArrowState, 150);
+}
+
+
+
+
+/**
+ * 13. Comprehensive Healthcare Solutions Interactive Watermark on Click
+ * Displays a subtle watermark background image for the selected healthcare solution card,
+ * fading smoothly (8-15% opacity) and updating when another card is selected.
+ */
+function initSolutionWatermarks() {
+  const cards = document.querySelectorAll('.solutions-grid .solution-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+
+    card.addEventListener('click', (e) => {
+      const isAlreadySelected = card.classList.contains('is-selected');
+
+      if (!isAlreadySelected) {
+        // First click: select the card and show subtle watermark
+        e.preventDefault();
+        cards.forEach(c => {
+          c.classList.remove('is-selected');
+          c.setAttribute('aria-selected', 'false');
+        });
+        card.classList.add('is-selected');
+        card.setAttribute('aria-selected', 'true');
+      }
+      // If already selected, subsequent click naturally navigates to department details
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (!card.classList.contains('is-selected')) {
+          e.preventDefault();
+          card.click();
+        }
+      }
+    });
+  });
+}

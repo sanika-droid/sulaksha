@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us &amp; Hospital Location | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Contact Sulakshaa Multi Speciality Hospital in Mysuru. Find hospital address, 24/7 emergency helpline numbers, reception phone, email, Google Maps directions, and send clinical enquiries.">
+  <meta name="keywords" content="Sulakshaa Hospital Contact, Hospital Location Mysore, Emergency Phone Mysore, Doctor Appointment Mysore, Hospital Address Vijayanagar 3rd Stage, Hutagalli">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=36">
+
+  <style>
+    /* -------------------------------------------------------------
+       Contact & Location Page Styles (Strictly Sulakshaa Logo Theme)
+       Primary Navy: #0B2568 | Medical Blue: #0088D1 | Cyan: #00A3E0
+       ------------------------------------------------------------- */
+    :root {
+      --sul-navy: #0B2568;
+      --sul-navy-dark: #061743;
+      --sul-blue: #0088D1;
+      --sul-cyan: #00A3E0;
+      --sul-slate: #4B617E;
+      --sul-bg-light: #F8FAFD;
+      --sul-border: #E2EDF8;
+      --sul-card-shadow: 0 6px 24px rgba(11, 37, 104, 0.07);
+    }
+
+    body {
+      background-color: var(--sul-bg-light);
+      font-family: 'Inter', sans-serif;
+      color: #2D3748;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Emergency / Contacts Bar */
+    .contact-top-bar {
+      background: var(--sul-navy);
+      color: #FFFFFF;
+      padding: 7px 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .contact-top-bar-inner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .contact-top-link {
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .contact-top-link:hover {
+      color: var(--sul-cyan);
+    }
+    .contact-top-socials {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: 1rem;
+      padding-left: 1rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .contact-top-socials a {
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      transition: color 0.2s;
+    }
+    .contact-top-socials a:hover {
+      color: var(--sul-cyan);
+    }
+
+    /* Hero Banner Section (Ref Image 1) */
+    .contact-hero-banner {
+      background: linear-gradient(135deg, #F0F7FC 0%, #E8F3FA 100%);
+      padding: clamp(2.5rem, 4.5vw, 4rem) 0 2rem;
+      position: relative;
+      border-bottom: 1px solid var(--sul-border);
+      overflow: hidden;
+    }
+
+    .contact-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 480px);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .contact-hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: var(--sul-navy);
+      letter-spacing: 0.5px;
+      margin: 0 0 1rem 0;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .contact-hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--sul-slate);
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      max-width: 540px;
+    }
+
+    .contact-hero-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-hero-image-wrap img {
+      width: 100%;
+      max-height: 330px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(11, 37, 104, 0.1);
+    }
+
+    /* 3 Contact Info Cards Section (Ref Image 1) */
+    .contact-cards-section {
+      padding: 2rem 0;
+      margin-top: -1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info-card {
+      background: #FFFFFF;
+      border: 1px solid var(--sul-border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--sul-card-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(11, 37, 104, 0.12);
+      border-color: var(--sul-blue);
+    }
+
+    .contact-icon-bubble {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #EBF4FB;
+      color: var(--sul-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .contact-info-card:hover .contact-icon-bubble {
+      background: var(--sul-blue);
+      color: #FFFFFF;
+    }
+
+    .contact-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--sul-navy);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .contact-card-text {
+      font-size: 0.95rem;
+      color: var(--sul-slate);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .contact-card-text a {
+      color: var(--sul-navy);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .contact-card-text a:hover {
+      color: var(--sul-blue);
+    }
+
+    /* -------------------------------------------------------------
+       Main 2-Column Section: Google Map (Left) + Contact Form (Right)
+       (Ref Images 2 & 3)
+       ------------------------------------------------------------- */
+    .contact-main-section {
+      padding: 2.5rem 0 5rem;
+      background: var(--sul-bg-light);
+    }
+
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 2.25rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 960px) {
+      .contact-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Google Map Wrapper (Left Column) */
+    .contact-map-card {
+      background: #FFFFFF;
+      border: 1px solid var(--sul-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--sul-card-shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 520px;
+    }
+
+    .contact-map-header {
+      padding: 1.25rem 1.5rem;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--sul-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .contact-map-info h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--sul-navy);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .contact-map-info p {
+      font-size: 0.85rem;
+      color: var(--sul-slate);
+      margin: 0;
+    }
+
+    .btn-open-maps {
+      background: #EBF4FB;
+      color: var(--sul-blue) !important;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--sul-border);
+      transition: all 0.2s ease;
+    }
+
+    .btn-open-maps:hover {
+      background: var(--sul-blue);
+      color: #FFFFFF !important;
+    }
+
+    .contact-map-frame {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: none;
+      display: block;
+    }
+
+    /* Contact Enquiry Form (Right Column) */
+    .contact-form-card {
+      background: #FFFFFF;
+      border: 1px solid var(--sul-border);
+      border-radius: 14px;
+      padding: 2.25rem 2.25rem 2.5rem;
+      box-shadow: var(--sul-card-shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--sul-navy);
+      margin: 0 0 0.4rem 0;
+    }
+
+    .contact-form-subtitle {
+      font-size: 0.95rem;
+      color: var(--sul-slate);
+      margin: 0 0 1.75rem 0;
+      line-height: 1.5;
+    }
+
+    /* 2x2 Form Fields Grid */
+    .form-2x2-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      margin-bottom: 1.15rem;
+    }
+
+    @media (max-width: 580px) {
+      .form-2x2-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-control-custom {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #1E293B;
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    .form-control-custom:focus {
+      border-color: var(--sul-blue);
+      box-shadow: 0 0 0 3px rgba(0, 136, 209, 0.15);
+    }
+
+    .form-textarea-custom {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #1E293B;
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 120px;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-textarea-custom:focus {
+      border-color: var(--sul-blue);
+      box-shadow: 0 0 0 3px rgba(0, 136, 209, 0.15);
+    }
+
+    /* ReCAPTCHA / Friendly Verification Box (Ref Image 2 & 3) */
+    .recaptcha-fake-box {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #374151;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .recaptcha-fake-box:hover {
+      background: #F3F4F6;
+    }
+    .recaptcha-checkbox {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #9CA3AF;
+      border-radius: 4px;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .recaptcha-checkbox.checked {
+      background: var(--sul-blue);
+      border-color: var(--sul-blue);
+      color: #FFFFFF;
+    }
+
+    /* Submit Button (Strictly Sulakshaa Logo Gradient) */
+    .btn-send-message {
+      background: linear-gradient(135deg, var(--sul-navy) 0%, var(--sul-blue) 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 6px;
+      padding: 0.9rem 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-send-message:hover {
+      background: linear-gradient(135deg, var(--sul-blue) 0%, var(--sul-navy) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 136, 209, 0.4);
+    }
+
+    /* WhatsApp floating button */
+    .contact-whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .contact-whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body class="contact-page">
+
+  
+  </div>
+
+    <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
+  <div class="site-top-bar" id="siteTopBar">
+    <div class="container">
+      <div class="top-bar-location">
+        <i data-lucide="map-pin" class="icon-xs"></i>
+        <span>Mysuru, Karnataka</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:08212520000" class="top-bar-link">
+          <i data-lucide="phone" class="icon-xs"></i>
+          <span>0821-2520000</span>
+        </a>
+        <a href="tel:+919535747478" class="top-bar-link">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <span>+91 95357 47478</span>
+        </a>
+        <div class="top-bar-socials">
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon-xs"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube" class="icon-xs"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-text-container">
+          <span class="brand-hospital-title">Sulakshaa</span>
+          <span class="brand-hospital-type">hospitals</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link active">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:+918212345678" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-sm"></i>
+          <span>Book Appointment</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contact-main">
+
+    <!-- 1. Contact Us Hero Banner (Matching Reference Image 1) -->
+    <section class="contact-hero-banner" aria-labelledby="contact-hero-title">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.25rem;">
+          <a href="index.html" style="color: #64748B; text-decoration: none;">Home</a>
+          <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8; margin: 0 4px;"></i>
+          <span style="color: var(--sul-blue); font-weight: 600;">Contact Us</span>
+        </nav>
+
+        <div class="contact-hero-grid">
+          <!-- Left Text Column -->
+          <div class="contact-hero-info">
+            <h1 id="contact-hero-title" class="contact-hero-title">
+              Contact Us
+            </h1>
+            <p class="contact-hero-subtitle">
+              We are here to help 24/7. Reach out to Sulakshaa Multi Speciality Hospital for routine OPD appointments, diagnostic tests, emergency casualty admissions, or general hospital enquiries.
+            </p>
+          </div>
+
+          <!-- Right Doctor Consultation Photo -->
+          <div class="contact-hero-image-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" 
+              alt="Sulakshaa Multi Speciality Hospital medical staff and physician consulting with patient" 
+              loading="eager"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Three Contact Info Cards (Matching Reference Image 1) -->
+    <section class="contact-cards-section" aria-label="Hospital Direct Contact Info">
+      <div class="container">
+        <div class="contact-info-grid">
+          
+          <!-- Card 1: Phone -->
+          <div class="contact-info-card">
+            <div class="contact-icon-bubble">
+              <i data-lucide="phone-call" class="icon-md"></i>
+            </div>
+            <h3 class="contact-card-title">Call Us</h3>
+            <p class="contact-card-text">
+              <a href="tel:+919535747478">+91 95357 47478</a> | <a href="tel:09535747478">095357 47478</a><br>
+              <a href="tel:+919535747478">Open 24 Hours &bull; Casualty &amp; Emergency</a>
+            </p>
+          </div>
+
+          <!-- Card 2: Email -->
+          <div class="contact-info-card">
+            <div class="contact-icon-bubble">
+              <i data-lucide="mail" class="icon-md"></i>
+            </div>
+            <h3 class="contact-card-title">Email Us</h3>
+            <p class="contact-card-text">
+              <a href="mailto:info@sulakshaahospital.com">info@sulakshaahospital.com</a><br>
+              <a href="mailto:appointments@sulakshaahospital.com">appointments@sulakshaahospital.com</a>
+            </p>
+          </div>
+
+          <!-- Card 3: Location -->
+          <div class="contact-info-card">
+            <div class="contact-icon-bubble">
+              <i data-lucide="map-pin" class="icon-md"></i>
+            </div>
+            <h3 class="contact-card-title">Visit Hospital</h3>
+            <p class="contact-card-text">
+              Sulakshaa Multi Speciality Hospital,<br>
+              D &amp; E block, 278, 1st Main Rd, D Block,<br>
+              Vijay Nagar 3rd Stage, Vijayanagar, Mysuru &ndash; 570017
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Main 2-Column Section: Google Map Embed (Left) & Contact Us Form (Right) -->
+    <section class="contact-main-section" aria-label="Hospital Location Map and Contact Form">
+      <div class="container">
+        <div class="contact-main-grid">
+
+          <!-- Left Column: Google Map Embed (Ref Image 2) -->
+          <div class="contact-map-card">
+            <div class="contact-map-header">
+              <div class="contact-map-info">
+                <h4>Sulakshaa Multi Speciality Hospital</h4>
+                <p>D &amp; E block, 278, 1st Main Rd, Vijayanagar 3rd Stage, Mysuru &bull; 4.9 &starf; (375 Google reviews)</p>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Sulakshaa+Multi+Speciality+Hospital+Vijayanagar+3rd+Stage+Mysuru+570017" target="_blank" rel="noopener noreferrer" class="btn-open-maps">
+                <i data-lucide="external-link" class="icon-xs"></i> Open in Maps
+              </a>
+            </div>
+
+            <!-- Embedded Interactive Map -->
+            <iframe 
+              src="https://maps.google.com/maps?q=Sulakshaa+Multi+Speciality+Hospital,+1st+Main+Rd,+Vijay+Nagar+3rd+Stage,+Mysuru,+Karnataka+570017&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              class="contact-map-frame" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Sulakshaa Multi Speciality Hospital Google Map Location"
+            ></iframe>
+          </div>
+
+          <!-- Right Column: Request an Appointment Enquiry Form (Matching Reference Pic) -->
+          <div class="form-card-wrapper" id="appointmentEnquiryContainer">
+            <div class="form-header">
+              <span class="form-kicker-tag"><i data-lucide="calendar" class="icon-xs"></i> RECEPTION DESK ENQUIRY</span>
+              <h3 class="form-title">Request an Appointment Enquiry</h3>
+              <p class="form-subtext">Submit your contact details and preferred doctor or department. Our hospital reception desk will call back to confirm your appointment slot.</p>
+            </div>
+
+            <form id="appointmentEnquiryForm" class="enquiry-form unified-enquiry-form" novalidate>
+              <!-- Row 1: Patient Name & Mobile Number -->
+              <div class="form-row-2col">
+                <!-- Patient Name -->
+                <div class="form-group interactive-group">
+                  <label for="patientName" class="form-label">
+                    Patient Full Name <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="user" class="input-icon"></i>
+                    <input 
+                      type="text" 
+                      id="patientName" 
+                      name="patientName" 
+                      class="form-control" 
+                      placeholder="e.g. Ramesh Kumar" 
+                      required 
+                      autocomplete="name"
+                      aria-describedby="patientNameError"
+                    >
+                  </div>
+                  <span class="field-error" id="patientNameError" role="alert"></span>
+                </div>
+
+                <!-- Patient Phone Number -->
+                <div class="form-group interactive-group">
+                  <label for="patientPhone" class="form-label">
+                    Phone Number <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <div class="input-with-icon input-phone-wrapper">
+                    <span class="phone-prefix-badge">+91</span>
+                    <input 
+                      type="tel" 
+                      id="patientPhone" 
+                      name="patientPhone" 
+                      class="form-control phone-input-padded" 
+                      placeholder="98765 43210" 
+                      maxlength="10" 
+                      required 
+                      autocomplete="tel"
+                      aria-describedby="patientPhoneError"
+                    >
+                  </div>
+                  <span class="field-error" id="patientPhoneError" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Row 2: Email & Preferred Date -->
+              <div class="form-row-2col">
+                <!-- Patient Email Address -->
+                <div class="form-group interactive-group">
+                  <label for="patientEmail" class="form-label">
+                    Email Address <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="mail" class="input-icon"></i>
+                    <input 
+                      type="email" 
+                      id="patientEmail" 
+                      name="patientEmail" 
+                      class="form-control" 
+                      placeholder="e.g. ramesh.kumar@example.com" 
+                      required 
+                      autocomplete="email"
+                      aria-describedby="patientEmailError"
+                    >
+                  </div>
+                  <span class="field-error" id="patientEmailError" role="alert"></span>
+                </div>
+
+                <!-- Preferred Date Picker -->
+                <div class="form-group interactive-group">
+                  <div class="label-with-quick-actions">
+                    <label for="preferredDate" class="form-label">
+                      Preferred Date <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <div class="quick-date-pills">
+                      <button type="button" class="date-pill-btn" id="datePillToday">Today</button>
+                      <button type="button" class="date-pill-btn" id="datePillTomorrow">Tomorrow</button>
+                    </div>
+                  </div>
+                  <div class="input-with-icon">
+                    <i data-lucide="calendar" class="input-icon"></i>
+                    <input 
+                      type="date" 
+                      id="preferredDate" 
+                      name="preferredDate" 
+                      class="form-control" 
+                      required
+                      aria-describedby="preferredDateError"
+                    >
+                  </div>
+                  <span class="field-error" id="preferredDateError" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Row 3: Medical Department & Preferred Doctor -->
+              <div class="form-row-2col">
+                <!-- Department Dropdown -->
+                <div class="form-group interactive-group">
+                  <label for="preferredSpeciality" class="form-label">
+                    Medical Department <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="stethoscope" class="input-icon"></i>
+                    <select 
+                      id="preferredSpeciality" 
+                      name="preferredSpeciality" 
+                      class="form-control select-control" 
+                      required
+                      aria-describedby="preferredSpecialityError"
+                    >
+                      <option value="">-- Select Medical Department --</option>
+                      <option value="Accident & Emergency">Accident &amp; Emergency Care</option>
+                      <option value="Cardiology">Cardiology &amp; Cardiac Care (Dr. Priya S. Sharma)</option>
+                      <option value="Critical Care & ICU">Critical Care &amp; Multi-disciplinary ICU</option>
+                      <option value="Dermatology">Dermatology &amp; Cosmetology (Dr. Rashmi Desai)</option>
+                      <option value="ENT">ENT &amp; Head-Neck Surgery</option>
+                      <option value="Gastroenterology">Medical &amp; Surgical Gastroenterology (Dr. Rajesh K. Varma)</option>
+                      <option value="General Medicine">General Medicine &amp; Diabetology (Dr. Laxme Gowda)</option>
+                      <option value="General Surgery">General &amp; Laparoscopic Surgery (Dr. Suresh Babu)</option>
+                      <option value="Nephrology">Nephrology &amp; Dialysis Unit (Dr. Jayanth Murthy)</option>
+                      <option value="Neurology">Neurology &amp; Stroke Care (Dr. Vikram M. Rao)</option>
+                      <option value="Obstetrics & Gynaecology">Obstetrics, Gynaecology &amp; Maternity (Dr. Meera N. Iyer)</option>
+                      <option value="Oncology">Comprehensive Medical &amp; Surgical Oncology</option>
+                      <option value="Orthopaedics">Orthopaedics &amp; Joint Replacement (Dr. Anand R. Kulkarni)</option>
+                      <option value="Paediatrics">Paediatrics &amp; Neonatology (Dr. Sneha Hegde)</option>
+                      <option value="Pulmonology">Pulmonology &amp; Respiratory Medicine (Dr. Arun Kumar S.)</option>
+                      <option value="Urology">Urology, Andrology &amp; Kidney Stone Laser Clinic</option>
+                      <option value="Diagnostics">Diagnostic Imaging (CT / MRI / Ultrasound / X-Ray)</option>
+                      <option value="Other Consultation">Other Medical Enquiry</option>
+                    </select>
+                  </div>
+                  <span class="field-error" id="preferredSpecialityError" role="alert"></span>
+                </div>
+
+                <!-- Preferred Doctor (if available) -->
+                <div class="form-group interactive-group">
+                  <label for="preferredDoctor" class="form-label">
+                    Preferred Doctor <span class="optional-tag">(if available)</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="user-check" class="input-icon"></i>
+                    <select 
+                      id="preferredDoctor" 
+                      name="preferredDoctor" 
+                      class="form-control select-control"
+                      aria-describedby="preferredDoctorError"
+                    >
+                      <option value="">Any Available Specialist / No Preference</option>
+                      <option value="Dr. Laxme Gowda">Dr. Laxme Gowda (Senior General Physician)</option>
+                      <option value="Dr. Priya S. Sharma">Dr. Priya S. Sharma (Cardiologist)</option>
+                      <option value="Dr. Anand R. Kulkarni">Dr. Anand R. Kulkarni (Orthopedic Surgeon)</option>
+                      <option value="Dr. Sneha Hegde">Dr. Sneha Hegde (Paediatrician)</option>
+                      <option value="Dr. Vikram M. Rao">Dr. Vikram M. Rao (Neurologist)</option>
+                      <option value="Dr. Meera N. Iyer">Dr. Meera N. Iyer (Obstetrician &amp; Gynaecologist)</option>
+                      <option value="Dr. Rajesh K. Varma">Dr. Rajesh K. Varma (Gastroenterologist)</option>
+                      <option value="Dr. Rashmi Desai">Dr. Rashmi Desai (Dermatologist)</option>
+                      <option value="Dr. Suresh Babu">Dr. Suresh Babu (General &amp; Laparoscopic Surgeon)</option>
+                      <option value="Dr. Kavitha Sundaram">Dr. Kavitha Sundaram (Consultant Psychiatrist)</option>
+                      <option value="Dr. Arun Kumar S.">Dr. Arun Kumar S. (Pulmonologist)</option>
+                      <option value="Dr. Jayanth Murthy">Dr. Jayanth Murthy (Nephrologist)</option>
+                    </select>
+                  </div>
+                  <span class="field-error" id="preferredDoctorError" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Row 4: Message or Medical Concern -->
+              <div class="form-group interactive-group">
+                <label for="patientMessage" class="form-label">
+                  Message or Medical Concern <span class="optional-tag">(optional)</span>
+                </label>
+                <div class="input-with-icon textarea-icon-wrapper">
+                  <i data-lucide="message-square" class="input-icon textarea-icon"></i>
+                  <textarea 
+                    id="patientMessage" 
+                    name="patientMessage" 
+                    class="form-control" 
+                    rows="2" 
+                    placeholder="e.g. Morning OPD preferred, symptoms, or prior medical reports"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Row 5: Consent Checkbox -->
+              <div class="form-group consent-group">
+                <label class="checkbox-label" for="patientConsent">
+                  <input type="checkbox" id="patientConsent" name="patientConsent" required aria-describedby="patientConsentError">
+                  <span class="checkbox-custom"></span>
+                  <span class="checkbox-text">
+                    I authorize Sulakshaa Multi Speciality Hospital reception to contact me regarding this appointment enquiry.
+                  </span>
+                </label>
+                <span class="field-error" id="patientConsentError" role="alert"></span>
+              </div>
+
+              <!-- Row 6: Submit Button & Reassurance Note -->
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-primary btn-lg submit-btn" id="submitEnquiryBtn">
+                  <i data-lucide="send" class="icon-sm"></i>
+                  <span>Submit Appointment Enquiry</span>
+                </button>
+                <p class="form-reassurance-note">
+                  <i data-lucide="shield-check" class="icon-xs"></i> 
+                  No payment required online. Our reception team will call back to confirm your consultation slot.
+                </p>
+              </div>
+
+              <!-- ANIMATED SUCCESS SCREEN -->
+              <div class="form-success-card" id="formSuccessView" style="display: none;" role="status">
+                <div class="success-animation-wrap">
+                  <svg class="success-checkmark-svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none" />
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                  </svg>
+                </div>
+                <div class="success-badge-pill">
+                  <i data-lucide="shield-check" class="icon-xs"></i> Official Desk Enquiry Registered
+                </div>
+                <h4 class="success-title">Enquiry Successfully Submitted!</h4>
+                <p class="success-desc" id="successCardDescription">
+                  Thank you! Your consultation request has been recorded. Our reception coordinator will call you shortly to confirm your appointment slot.
+                </p>
+
+                <div class="success-summary-box" id="successSummaryBox">
+                  <!-- Populated dynamically via JS -->
+                </div>
+
+                <div class="success-action-buttons">
+                  <button type="button" class="btn btn-outline" id="bookAnotherBtn">
+                    <i data-lucide="rotate-ccw" class="icon-sm"></i>
+                    <span>Book Another Appointment</span>
+                  </button>
+                  <a href="tel:+919535747478" class="btn btn-emergency">
+                    <i data-lucide="phone-call" class="icon-sm"></i>
+                    <span>Call Hospital Desk</span>
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Comprehensive Footer (Ref Image 3) strictly in Sulakshaa Theme -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
+        
+        <!-- Column 1: Hospital Brand Identity -->
+        <div class="footer-col footer-col-brand">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital" class="footer-logo">
+          <div class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</div>
+          <p class="footer-mission">
+            Reach out to us for all your healthcare needs. Committed to accessible, ethical, and multi-disciplinary healthcare excellence for Mysuru and surrounding regions.
+          </p>
+          <address class="footer-contact-address" style="margin-top: 1rem; font-style: normal; font-size: 0.9rem; color: #CBD5E1;">
+            <p style="margin: 0.35rem 0;"><i data-lucide="map-pin" class="icon-xs"></i> Sulakshaa Hospital, 278, 1st Main Rd, D Block, Vijayanagar 3rd Stage, Mysuru &ndash; 570017</p>
+            <p style="margin: 0.35rem 0;"><i data-lucide="mail" class="icon-xs"></i> info@sulakshaahospital.com</p>
+            <p style="margin: 0.35rem 0;"><i data-lucide="phone" class="icon-xs"></i> +91 95357 47478 / 095357 47478 (24x7)</p>
+          </address>
+        </div>
+
+        <!-- Column 2: Centers of Excellence -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Centers of Excellence</h4>
+          <ul class="footer-links-list">
+            <li><a href="departments.html">Orthopaedics &amp; Joint Replacement</a></li>
+            <li><a href="departments.html">Cardiology &amp; Cardiac Care</a></li>
+            <li><a href="departments.html">Medical Gastroenterology</a></li>
+            <li><a href="departments.html">Surgical Gastroenterology</a></li>
+            <li><a href="departments.html">Institute of Neurosciences</a></li>
+            <li><a href="departments.html">Maternity &amp; Women's Health</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Specialities -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Specialities</h4>
+          <ul class="footer-links-list">
+            <li><a href="departments.html">Accident &amp; Emergency</a></li>
+            <li><a href="departments.html">Critical Care &amp; ICU</a></li>
+            <li><a href="departments.html">General Medicine</a></li>
+            <li><a href="departments.html">Paediatrics &amp; Child Health</a></li>
+            <li><a href="departments.html">Pulmonology &amp; Chest</a></li>
+            <li><a href="departments.html">Nephrology &amp; Dialysis</a></li>
+            <li><a href="departments.html">Urology &amp; Andrology</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#overview">About Us</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="doctors.html">Meet Doctors</a></li>
+            <li><a href="facilities.html">Facilities &amp; Services</a></li>
+            <li><a href="gallery.html">Hospital Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Icon -->
+  <a href="https://wa.me/919008417272" class="contact-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </a>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Core Interactive Script -->
+  <script src="script.js?v=37"></script>
+</body>
+</html>

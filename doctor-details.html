@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Doctor Profile | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="View full doctor profile, medical qualifications, experience, clinical specialities, and OPD timings at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=35">
+
+  <style>
+    /* -------------------------------------------------------------
+       Doctor Profile Layout (Matching Reference Images 3 & 4)
+       ------------------------------------------------------------- */
+    :root {
+      --primary-navy: #0B2568;
+      --primary-navy-dark: #061743;
+      --primary-blue: #0088D1;
+      --accent-cyan: #00A3E0;
+      --text-slate: #4B617E;
+    }
+
+    body {
+      background-color: #F8FAFD;
+      color: #2D3748;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Top Emergency Header Bar matching Reference */
+    .doc-top-bar {
+      background: #0B2568;
+      color: #FFFFFF;
+      padding: 6px 0;
+      font-size: 0.85rem;
+    }
+    .doc-top-bar-inner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .doc-top-link {
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+
+    /* Doctor Profile Hero Section (Reference Image 3) */
+    .doc-profile-hero {
+      position: relative;
+      background: #EBF3F9 url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
+      padding: clamp(2rem, 4vw, 3.5rem) 0;
+      overflow: hidden;
+      border-bottom: 1px solid #E2EBF5;
+    }
+    .doc-profile-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(235, 243, 249, 0.96) 0%, rgba(235, 243, 249, 0.92) 55%, rgba(235, 243, 249, 0.75) 100%);
+      z-index: 1;
+    }
+
+    .doc-hero-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .doc-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 380px);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .doc-hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .doc-hero-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-weight: 700;
+      color: #0B2568;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.2;
+    }
+
+    .doc-hero-qual {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1A202C;
+      margin: 0 0 0.35rem 0;
+    }
+
+    .doc-hero-desig {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #556B88;
+      margin: 0 0 1.25rem 0;
+      line-height: 1.4;
+    }
+
+    .doc-hero-meta-list {
+      margin: 0 0 1.75rem 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .doc-hero-meta-list li {
+      font-size: 0.96rem;
+      color: #4A5568;
+    }
+
+    .doc-hero-meta-list strong {
+      color: #1A202C;
+      font-weight: 600;
+    }
+
+    .btn-hero-book-apt {
+      display: inline-block;
+      background: #0088D1;
+      color: #FFFFFF !important;
+      padding: 0.85rem 1.85rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 136, 209, 0.25);
+    }
+    .btn-hero-book-apt:hover {
+      background: #006CA6;
+      transform: translateY(-2px);
+    }
+
+    .doc-hero-img-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .doc-hero-img-card {
+      background: #FFFFFF;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 340px;
+      width: 100%;
+    }
+
+    .doc-hero-img-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #FFFFFF;
+      display: block;
+    }
+
+    /* Main Content Section (Reference Image 4) */
+    .doc-main-content {
+      padding: 3rem 0 4rem;
+      background: #FFFFFF;
+    }
+
+    .doc-headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+      font-weight: 700;
+      color: #0B2568;
+      margin: 0 0 2rem 0;
+      line-height: 1.35;
+    }
+
+    .doc-section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0B2568;
+      margin: 2.25rem 0 1rem 0;
+    }
+
+    .doc-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .doc-bullet-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #4A5568;
+    }
+
+    .doc-bullet-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0.25rem;
+      color: #0088D1;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+
+    /* WhatsApp floating pill */
+    .doc-whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .doc-whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <!-- Main Navigation Header -->
+    <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
+  <div class="site-top-bar" id="siteTopBar">
+    <div class="container">
+      <div class="top-bar-location">
+        <i data-lucide="map-pin" class="icon-xs"></i>
+        <span>Mysuru, Karnataka</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:08212520000" class="top-bar-link">
+          <i data-lucide="phone" class="icon-xs"></i>
+          <span>0821-2520000</span>
+        </a>
+        <a href="tel:+919535747478" class="top-bar-link">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <span>+91 95357 47478</span>
+        </a>
+        <div class="top-bar-socials">
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon-xs"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube" class="icon-xs"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-text-container">
+          <span class="brand-hospital-title">Sulakshaa</span>
+          <span class="brand-hospital-type">hospitals</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="index.html#specialities" class="nav-link">Departments</a></li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link active">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="doctors.html" class="btn btn-outline" style="border-radius: 6px; border-color: #0B2568; color: #0B2568; padding: 0.5rem 1rem;">
+          <i data-lucide="arrow-left" class="icon-xs"></i> All Doctors
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" style="border-radius: 6px; background: #0088D1; border-color: #0088D1;">
+          <i data-lucide="calendar-check" class="icon-sm"></i> Book Appointment
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Doctor Hero Section (Image 3) -->
+    <section class="doc-profile-hero" aria-label="Doctor Profile Header">
+      <div class="container doc-hero-container">
+        <div class="doc-hero-grid">
+          <!-- Left Details Column -->
+          <div class="doc-hero-info">
+            <h1 class="doc-hero-name" id="docHeroName">Dr. Laxme Gowda</h1>
+            <p class="doc-hero-qual" id="docHeroQual">MBBS, MD (General Medicine)</p>
+            <p class="doc-hero-desig" id="docHeroDesig">Senior Consultant Physician &amp; Diabetologist</p>
+            
+            <ul class="doc-hero-meta-list">
+              <li>Experience: <strong id="docHeroExp">45+ Years</strong></li>
+              <li>Language Spoken: <strong id="docHeroLang">English, Kannada, Hindi</strong></li>
+              <li>OPD Timings: <strong id="docHeroOpd">Mon - Sat: 9:00 AM - 1:00 PM &amp; 5:00 PM - 8:00 PM</strong></li>
+            </ul>
+
+            <a href="index.html#enquiry" id="docHeroAptBtn" class="btn-hero-book-apt">BOOK AN APPOINTMENT</a>
+          </div>
+
+          <!-- Right Doctor Portrait Column -->
+          <div class="doc-hero-img-stage">
+            <div class="doc-hero-img-card">
+              <img id="docHeroImg" src="assets/dr-laxme-gowda.png" alt="Doctor Portrait">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctor Details Body (Image 4) -->
+    <section class="doc-main-content">
+      <div class="container" style="max-width: 1050px;">
+        <h2 class="doc-headline" id="docHeadline">
+          Dr. Laxme Gowda – Best Senior General Physician &amp; Diabetologist in Mysuru
+        </h2>
+
+        <h3 class="doc-section-title">About</h3>
+        <ul class="doc-bullet-list" id="docAboutList">
+          <!-- Populated dynamically -->
+        </ul>
+
+        <h3 class="doc-section-title">Experience</h3>
+        <ul class="doc-bullet-list" id="docExpList">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- WhatsApp Floating Icon -->
+  <a href="https://wa.me/919008417272" class="doc-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container text-center" style="padding: 2rem 0; font-size: 0.9rem; color: #64748B;">
+      &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const doctorsDB = [
+  {
+    "name": "Dr. Laxme Gowda",
+    "qual": "MBBS, MD (General Medicine)",
+    "designation": "Senior Consultant Physician & Diabetologist",
+    "headline": "Dr. Laxme Gowda – Best Senior General Physician & Diabetologist in Mysuru",
+    "experience": "45+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 9:00 AM - 1:00 PM & 5:00 PM - 8:00 PM",
+    "speciality": "General Medicine",
+    "image": "assets/dr-laxme-gowda.png",
+    "about": [
+      "Dr. Laxme Gowda is a revered and trusted senior diagnostic physician in Mysuru with over 45 years of clinical practice.",
+      "He serves as Senior Clinical Faculty and Chief Consulting Physician at Sulakshaa Multi Speciality Hospital.",
+      "Renowned for precise physical diagnostics, evidence-based internal medicine, and patient-centered elder healthcare.",
+      "Specializes in complex adult multi-morbidity, diabetes mellitus, severe hypertension, and geriatric wellness.",
+      "Committed to accessible, compassionate, and ethical healthcare for patients across Mysuru, Mandya, Chamrajnagar, and Kodagu districts."
+    ],
+    "expBullets": [
+      "Over 45 years of continuous inpatient and outpatient hospital clinical practice.",
+      "Comprehensive clinical management of complicated type 1 and type 2 diabetes and diabetic foot care.",
+      "Senior management of hypertensive emergencies, adult infectious diseases, and respiratory illnesses.",
+      "Preventative health counseling, geriatric risk stratification, and polypharmacy optimization.",
+      "Mentored and guided generations of general practitioners and medical residents across Southern Karnataka."
+    ]
+  },
+  {
+    "name": "Dr. Priya S. Sharma",
+    "qual": "MD, DM (Cardiology)",
+    "designation": "Consultant Cardiologist & Preventative Heart Specialist",
+    "headline": "Dr. Priya S. Sharma – Best Clinical Cardiologist & Heart Specialist in Mysuru",
+    "experience": "16+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Fri: 10:00 AM - 2:00 PM",
+    "speciality": "Cardiac Care",
+    "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Priya S. Sharma is an esteemed non-invasive and clinical cardiologist with more than 16 years of expertise in cardiovascular medicine.",
+      "Specializes in early detection of coronary artery disease, valvular heart conditions, and preventative heart wellness.",
+      "Leads the Cardiac Diagnostic Lab at Sulakshaa Hospital, overseeing state-of-the-art 2D Echocardiography and TMT protocols.",
+      "Passionate about women's cardiac health, lifestyle-driven risk mitigation, and post-angioplasty rehabilitative care."
+    ],
+    "expBullets": [
+      "Conducted over 12,000 2D Echocardiograms, Color Doppler studies, and Stress Echocardiography tests.",
+      "Expertise in coronary artery disease management, heart failure clinics, and arrhythmia diagnosis.",
+      "Specialist in pregnancy-induced hypertension and cardiovascular risk during chemotherapy.",
+      "Routine supervision of acute cardiac ICU admissions and acute coronary syndrome stabilization."
+    ]
+  },
+  {
+    "name": "Dr. Anand R. Kulkarni",
+    "qual": "MS Ortho, DNB (Orthopedic Surgery)",
+    "designation": "Senior Consultant Orthopedic & Joint Replacement Surgeon",
+    "headline": "Dr. Anand R. Kulkarni – Best Joint Replacement & Arthroscopic Surgeon in Mysuru",
+    "experience": "14+ Years",
+    "languages": "English, Kannada, Marathi, Hindi",
+    "opd": "Tue, Thu, Sat: 3:00 PM - 7:00 PM",
+    "speciality": "Orthopedics",
+    "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Anand R. Kulkarni is an accomplished orthopedic surgeon specializing in robotic joint replacement and arthroscopic sports surgery.",
+      "Has performed over 3,500 successful knee and hip replacements and complex fracture reconstructions.",
+      "Trained at leading orthopedic trauma centers with advanced fellowships in joint arthroplasty.",
+      "Focused on rapid-recovery surgical techniques, minimal tissue trauma, and pain-managed post-operative rehabilitation."
+    ],
+    "expBullets": [
+      "Total Knee Replacement (TKR), Partial Knee Arthroplasty, and Total Hip Replacement (THR).",
+      "Arthroscopic ACL/PCL reconstruction, meniscal repair, and shoulder rotator cuff repairs.",
+      "Polytrauma fracture fixation, pelvic trauma management, and geriatric fragility hip fracture repair.",
+      "Degenerative spine management, lumbar disc disease decompression, and cervical spondylosis care."
+    ]
+  },
+  {
+    "name": "Dr. Sneha Hegde",
+    "qual": "MD Paediatrics, DCH",
+    "designation": "Consultant Paediatrician & Neonatologist",
+    "headline": "Dr. Sneha Hegde – Best Paediatrician & Child Health Specialist in Mysuru",
+    "experience": "12+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 9:00 AM - 1:00 PM",
+    "speciality": "Paediatrics",
+    "image": "assets/dr-sneha-hegde.jpg",
+    "about": [
+      "Dr. Sneha Hegde is a caring and dedicated paediatric specialist with over 12 years of experience in newborn and child healthcare.",
+      "Specializes in neonatal care, childhood growth and development assessments, and childhood infectious disease management.",
+      "Leads the Level-2 Special Care Baby Unit (SCBU) and Well-Baby Clinic at Sulakshaa Multi Speciality Hospital.",
+      "Renowned for her empathetic approach, comforting clinical demeanor, and reassuring guidance for young parents."
+    ],
+    "expBullets": [
+      "Neonatal resuscitation, low-birth-weight infant care, and phototherapy for neonatal jaundice.",
+      "Childhood vaccination programs following IAP guidelines, pediatric allergy and asthma management.",
+      "Growth milestone evaluation, pediatric nutrition, and childhood obesity screening.",
+      "24/7 pediatric emergency stabilization for acute febrile seizures, dehydration, and respiratory croup."
+    ]
+  },
+  {
+    "name": "Dr. Vikram M. Rao",
+    "qual": "MBBS, MD, DM (Neurology)",
+    "designation": "Consultant Neurologist & Stroke Care Specialist",
+    "headline": "Dr. Vikram M. Rao – Best Neurologist & Stroke Specialist in Mysuru",
+    "experience": "15+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon, Wed, Fri: 2:00 PM - 6:00 PM",
+    "speciality": "Neurology",
+    "image": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Vikram M. Rao is a consultant neurologist specializing in hyperacute stroke care, seizure disorders, and neurodegenerative illnesses.",
+      "Trained at premier national institutes with over 15 years of dedicated neurological clinical practice.",
+      "Heads the Acute Stroke Emergency Protocol at Sulakshaa Hospital ensuring rapid thrombolytic decision-making.",
+      "Committed to holistic neuro-rehabilitation, Parkinson's disease support, and modern headache management."
+    ],
+    "expBullets": [
+      "Management of acute ischemic and hemorrhagic strokes, thrombolysis triage, and secondary stroke prevention.",
+      "Refractory epilepsy evaluation, EEG interpretation, and anti-epileptic drug optimization.",
+      "Parkinson's disease, tremor disorders, and movement dysfunction therapeutics.",
+      "Peripheral neuropathy, Guillain-Barré syndrome, Myasthenia Gravis, and intractable chronic migraine care."
+    ]
+  },
+  {
+    "name": "Dr. Meera N. Iyer",
+    "qual": "MBBS, MS (OBG), DGO",
+    "designation": "Consultant Obstetrician & Gynaecologist",
+    "headline": "Dr. Meera N. Iyer – Best Obstetrician & Gynaecologist in Mysuru",
+    "experience": "18+ Years",
+    "languages": "English, Kannada, Tamil, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 3:00 PM",
+    "speciality": "Maternity Care",
+    "image": "assets/dr-meera-iyer.jpg",
+    "about": [
+      "Dr. Meera N. Iyer brings 18+ years of compassionate obstetric and gynaecological care to Sulakshaa Multi Speciality Hospital.",
+      "Specializes in high-risk pregnancies, gestational diabetes, painless labor protocols, and laparoscopic gynaecological surgeries.",
+      "Devoted to woman-centric healthcare from adolescence through reproductive years to post-menopausal wellness.",
+      "Has guided over 6,000 safe deliveries with a strong focus on encouraging natural physiological childbirth."
+    ],
+    "expBullets": [
+      "Comprehensive antenatal care, non-stress testing, fetal growth scans, and high-risk obstetric monitoring.",
+      "Emergency and elective Caesarean sections, forceps-assisted deliveries, and post-partum hemorrhage control.",
+      "Laparoscopic hysterectomy, ovarian cystectomy, myomectomy, and ectopic pregnancy management.",
+      "Infertility workup, PCOD/PCOS clinical care, cervical cancer Pap screening, and menopausal health counseling."
+    ]
+  },
+  {
+    "name": "Dr. Rajesh K. Varma",
+    "qual": "MBBS, MD, DNB (Gastroenterology)",
+    "designation": "Consultant Gastroenterologist & Hepatologist",
+    "headline": "Dr. Rajesh K. Varma – Best Gastroenterologist & Liver Specialist in Mysuru",
+    "experience": "13+ Years",
+    "languages": "English, Kannada, Hindi, Telugu",
+    "opd": "Tue, Thu, Sat: 11:00 AM - 3:00 PM",
+    "speciality": "Gastroenterology",
+    "image": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Rajesh K. Varma is an expert gastroenterologist and therapeutic endoscopist with over 13 years of clinical practice.",
+      "Specializes in diagnostic and therapeutic upper GI endoscopy, colonoscopy, chronic liver disease, and inflammatory bowel disease.",
+      "Leads the GI Endoscopy Suite at Sulakshaa Hospital featuring high-definition narrow-band imaging.",
+      "Focused on early gastrointestinal cancer detection, fatty liver disease reversal, and chronic acid-peptic disorders."
+    ],
+    "expBullets": [
+      "Performed over 8,000 upper gastrointestinal endoscopies, colonoscopies, and polypectomies.",
+      "Therapeutic endoscopic banding for esophageal varices, peptic ulcer hemoclip placement, and foreign body extractions.",
+      "Comprehensive management of Cirrhosis of the liver, Hepatitis B & C, and non-alcoholic fatty liver disease (NAFLD).",
+      "Long-term clinical protocols for Crohn's disease, Ulcerative Colitis, irritable bowel syndrome, and chronic pancreatitis."
+    ]
+  },
+  {
+    "name": "Dr. Rashmi Desai",
+    "qual": "MBBS, MD (DVL)",
+    "designation": "Consultant Dermatologist, Venereologist & Leprologist",
+    "headline": "Dr. Rashmi Desai – Best Dermatologist & Skin Specialist in Mysuru",
+    "experience": "10+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon, Wed, Fri: 4:00 PM - 7:30 PM",
+    "speciality": "Dermatology",
+    "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Rashmi Desai is a board-certified dermatologist dedicated to clinical dermatology, trichology, and dermatological surgery.",
+      "Has treated over 15,000 patients with severe chronic eczema, psoriasis, autoimmune skin conditions, and resistant acne.",
+      "Integrates modern evidence-based dermato-pharmacology with gentle cosmetic rejuvenation therapies.",
+      "Offers specialized clinics for pediatric skin disorders, vitiligo repigmentation, and hair loss therapies."
+    ],
+    "expBullets": [
+      "Diagnosis and biological therapy for moderate-to-severe plaque psoriasis and atopic dermatitis.",
+      "Radiofrequency ablation of warts, skin tags, moles, and benign cutaneous lesions.",
+      "Patch testing for contact allergic dermatitis, chemical peels for post-inflammatory hyperpigmentation and melasma.",
+      "Platelet-rich plasma (PRP) therapy for androgenetic alopecia and chronic telogen effluvium."
+    ]
+  },
+  {
+    "name": "Dr. Suresh Babu",
+    "qual": "MBBS, MS (General Surgery), FMAS",
+    "designation": "Senior General & Laparoscopic Surgeon",
+    "headline": "Dr. Suresh Babu – Best General & Laparoscopic Surgeon in Mysuru",
+    "experience": "20+ Years",
+    "languages": "English, Kannada, Telugu, Hindi",
+    "opd": "Mon - Sat: 12:00 PM - 4:00 PM",
+    "speciality": "General Surgery",
+    "image": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Suresh Babu is a senior general and minimal access laparoscopic surgeon with 20+ years of operating theatre experience.",
+      "Has performed over 7,000 elective and emergency abdominal, hernia, and soft tissue surgeries.",
+      "Known for meticulous surgical precision, zero-compromise asepsis standards, and prompt post-op recovery.",
+      "Supervises surgical emergency triage and complex diabetic foot salvage procedures at Sulakshaa Multi Speciality Hospital."
+    ],
+    "expBullets": [
+      "Laparoscopic cholecystectomy (gallbladder removal), appendectomy, and laparoscopic inguinal/ventral hernia repairs.",
+      "Advanced gastrointestinal emergency surgeries for intestinal perforation, bowel obstruction, and peritonitis.",
+      "Thyroidectomy, parotid gland surgery, hydrocele, and vascular varicose vein stripping/ablation.",
+      "Diabetic foot ulcer debridement, vacuum-assisted closure (VAC) dressings, and reconstructive flap surgeries."
+    ]
+  },
+  {
+    "name": "Dr. Kavitha Sundaram",
+    "qual": "MBBS, MD (Psychiatry)",
+    "designation": "Consultant Psychiatrist & Behavioral Health Specialist",
+    "headline": "Dr. Kavitha Sundaram – Best Psychiatrist & Behavioral Specialist in Mysuru",
+    "experience": "11+ Years",
+    "languages": "English, Kannada, Tamil, Hindi",
+    "opd": "Tue, Thu, Sat: 2:00 PM - 5:00 PM",
+    "speciality": "Psychiatry",
+    "image": "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Kavitha Sundaram is a compassionate psychiatrist providing comprehensive clinical psychiatric evaluations and psychotherapy.",
+      "Specializes in adult depression, generalized anxiety disorders, panic syndromes, sleep disturbances, and OCD management.",
+      "Advocates strongly for destigmatizing mental health issues through patient-first, confidential, and empathetic care.",
+      "Offers specialized geriatric cognitive assessments, dementia behavioral support, and stress resilience counseling."
+    ],
+    "expBullets": [
+      "Pharmacotherapy and psychotherapeutic integration for clinical depression, bipolar disorder, and generalized anxiety.",
+      "Cognitive behavioral counseling for acute work stress, burnout, panic attacks, and phobic conditions.",
+      "Geriatric psychiatry focusing on memory loss, post-stroke depression, and Alzheimer's behavioral management.",
+      "De-addiction protocols for alcohol dependence, nicotine cessation, and lifestyle sleep architecture improvement."
+    ]
+  },
+  {
+    "name": "Dr. Arun Kumar S.",
+    "qual": "MBBS, MD, DTCD (Pulmonology)",
+    "designation": "Consultant Pulmonologist & Chest Physician",
+    "headline": "Dr. Arun Kumar S. – Best Pulmonologist & Chest Specialist in Mysuru",
+    "experience": "14+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
+    "speciality": "Pulmonology",
+    "image": "https://plus.unsplash.com/premium_photo-1658506671316-0b293df7c72b?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Arun Kumar S. is a dedicated chest physician and respiratory medicine consultant with 14 years of clinical experience.",
+      "Specializes in bronchial asthma, chronic obstructive pulmonary disease (COPD), interstitial lung diseases, and sleep apnea.",
+      "Directs the Pulmonary Function Testing (PFT) lab and Respiratory ICU support services at Sulakshaa Hospital.",
+      "Committed to smoke cessation guidance, pulmonary rehabilitation, and post-viral respiratory health restoration."
+    ],
+    "expBullets": [
+      "Spirometry, diffusion capacity testing (DLCO), and fractional exhaled nitric oxide (FeNO) interpretation.",
+      "Diagnostic flexible fiberoptic bronchoscopy and bronchoalveolar lavage for unresolved lung shadows.",
+      "Management of acute severe asthma, COPD exacerbations, and non-invasive ventilation (BiPAP/CPAP) initiation.",
+      "Diagnosis and management of obstructive sleep apnea (OSA) via overnight polysomnography sleep studies."
+    ]
+  },
+  {
+    "name": "Dr. Jayanth Murthy",
+    "qual": "MBBS, MD, DM (Nephrology)",
+    "designation": "Consultant Nephrologist & Renal Care Specialist",
+    "headline": "Dr. Jayanth Murthy – Best Nephrologist & Kidney Specialist in Mysuru",
+    "experience": "16+ Years",
+    "languages": "English, Kannada, Hindi, Telugu",
+    "opd": "Tue, Thu, Sat: 3:00 PM - 7:00 PM",
+    "speciality": "Nephrology",
+    "image": "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?auto=format&fit=crop&w=600&h=600&q=80",
+    "about": [
+      "Dr. Jayanth Murthy is an eminent clinical nephrologist with 16 years of experience in kidney diseases and dialysis supervision.",
+      "Specializes in chronic kidney disease progression arrest, resistant hypertension, glomerulonephritis, and dialysis care.",
+      "Oversees the Hemodialysis Unit at Sulakshaa Multi Speciality Hospital offering round-the-clock emergency dialysis.",
+      "Committed to proactive dietary education, diabetic kidney screening, and kidney stone recurrence prevention."
+    ],
+    "expBullets": [
+      "Pre-dialysis chronic kidney disease (CKD) conservative management and slowing GFR decline.",
+      "Supervision of acute and maintenance hemodialysis, CRRT in intensive care units, and peritoneal dialysis.",
+      "Percutaneous ultrasound-guided native and transplant kidney biopsies.",
+      "Workup and medical management of recurrent nephrolithiasis (kidney stones) and secondary renal hypertension."
+    ]
+  }
+];
+
+    function initDoctorDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const queryName = params.get('doctor') || params.get('doc');
+
+      let currentDoc = doctorsDB[0];
+      if (queryName) {
+        const found = doctorsDB.find(d => d.name.toLowerCase().includes(queryName.toLowerCase()) || queryName.toLowerCase().includes(d.name.toLowerCase()));
+        if (found) currentDoc = found;
+      }
+
+      document.getElementById('pageTitle').textContent = currentDoc.name + ' | Sulakshaa Multi Speciality Hospital, Mysuru';
+      document.getElementById('docHeroName').textContent = currentDoc.name;
+      document.getElementById('docHeroQual').textContent = currentDoc.qual;
+      document.getElementById('docHeroDesig').textContent = currentDoc.designation;
+      document.getElementById('docHeroExp').textContent = currentDoc.experience;
+      document.getElementById('docHeroLang').textContent = currentDoc.languages;
+      document.getElementById('docHeroOpd').textContent = currentDoc.opd;
+      document.getElementById('docHeroImg').src = currentDoc.image;
+      document.getElementById('docHeroImg').alt = currentDoc.name;
+      document.getElementById('docHeadline').textContent = currentDoc.headline;
+      document.getElementById('docHeroAptBtn').href = 'index.html?doctor=' + encodeURIComponent(currentDoc.name) + '&dept=' + encodeURIComponent(currentDoc.speciality) + '#enquiry';
+
+      const aboutList = document.getElementById('docAboutList');
+      aboutList.innerHTML = '';
+      currentDoc.about.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        aboutList.appendChild(li);
+      });
+
+      const expList = document.getElementById('docExpList');
+      expList.innerHTML = '';
+      currentDoc.expBullets.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        expList.appendChild(li);
+      });
+
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initDoctorDetails);
+  </script>
+</body>
+</html>
