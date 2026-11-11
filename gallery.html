@@ -154,35 +154,101 @@
       box-shadow: 0 4px 12px rgba(11, 37, 104, 0.2);
     }
 
-    /* High Quality Gallery Grid */
-    .gallery-page-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
+    /* High Quality Responsive Gallery Grid (Mobile, Tablet, Laptop) */
+    .gallery-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      justify-content: center;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+      padding: 0.25rem 0.5rem;
     }
 
-    @media (max-width: 991px) {
-      .gallery-page-grid {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 640px) {
+      .gallery-filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        padding-bottom: 0.5rem;
+      }
+      .gallery-filter-bar::-webkit-scrollbar {
+        display: none;
       }
     }
 
-    @media (max-width: 600px) {
+    .gallery-filter-btn {
+      padding: clamp(0.45rem, 1.2vw, 0.6rem) clamp(0.95rem, 2vw, 1.35rem);
+      border-radius: 50px;
+      font-size: clamp(0.8rem, 1.1vw, 0.875rem);
+      font-weight: 600;
+      border: 1px solid #D7E5F2;
+      background: #FFFFFF;
+      color: #0B2568;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gallery-filter-btn:hover {
+      background: #EBF3FC;
+      border-color: #0088D1;
+      color: #0088D1;
+    }
+
+    .gallery-filter-btn.active {
+      background: #0B2568;
+      border-color: #0B2568;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.25);
+    }
+
+    /* Laptop Grid (3 Columns) */
+    .gallery-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 1.85rem);
+      width: 100%;
+    }
+
+    /* Tablet Grid (2 Columns: 641px - 1024px) */
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .gallery-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    /* Mobile Grid (1 Column: <= 640px) */
+    @media (max-width: 640px) {
       .gallery-page-grid {
         grid-template-columns: 1fr;
+        gap: 1.15rem;
       }
     }
 
     .gallery-card {
       position: relative;
-      border-radius: 16px;
+      border-radius: clamp(12px, 2vw, 16px);
       overflow: hidden;
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       box-shadow: 0 4px 14px rgba(11, 37, 104, 0.06);
       cursor: pointer;
-      aspect-ratio: 4/3;
+      aspect-ratio: 4 / 3;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-card {
+        aspect-ratio: 16 / 10;
+      }
     }
 
     .gallery-card:hover {
@@ -199,56 +265,7 @@
     }
 
     .gallery-card:hover img {
-      transform: scale(1.08);
-    }
-
-    .gallery-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(7, 25, 72, 0.1) 0%, rgba(7, 25, 72, 0.85) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-      color: #FFFFFF;
-      opacity: 0.92;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-card:hover .gallery-card-overlay {
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(7, 25, 72, 0.2) 0%, rgba(7, 25, 72, 0.95) 100%);
-    }
-
-    .gallery-category-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 0.25rem 0.65rem;
-      border-radius: 50px;
-      font-size: 0.725rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      width: fit-content;
-      margin-bottom: 0.5rem;
-    }
-
-    .gallery-card-title {
-      font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 0.25rem;
-      color: #FFFFFF;
-    }
-
-    .gallery-card-sub {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.8);
+      transform: scale(1.06);
     }
 
     /* Lightbox Modal */
@@ -393,7 +410,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -402,7 +419,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="index.html#specialities" class="nav-link">Departments</a></li>
+                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link active">Gallery</a></li>
@@ -444,7 +550,50 @@
       <ul class="mobile-nav-list">
         <li style="--nav-idx: 0;"><a href="index.html" class="mobile-nav-link">Home</a></li>
         <li style="--nav-idx: 1;"><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
-        <li style="--nav-idx: 2;"><a href="index.html#specialities" class="mobile-nav-link">Departments</a></li>
+                <li class="mobile-nav-item-dropdown" style="--nav-idx: 2;">
+          <div class="mobile-dropdown-header-wrap">
+            <a href="departments.html" class="mobile-nav-link">Departments</a>
+            <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
+              <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
+            </button>
+          </div>
+          <div class="mobile-dept-dropdown-panel" id="mobileDeptPanel" aria-hidden="true">
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Centres of Excellence</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics &amp; Joint Care</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology &amp; Hepatology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology &amp; Brain Health</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology &amp; Renal Care</a></li>
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency (24/7)</a></li>
+              </ul>
+            </div>
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Specialities</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency</a></li>
+                <li><a href="department-details.html?dept=anaesthesiology" class="mobile-dept-link">Anaesthesiology &amp; Critical Care</a></li>
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=dermatology" class="mobile-dept-link">Dermatology</a></li>
+                <li><a href="department-details.html?dept=ent" class="mobile-dept-link">ENT (Ear, Nose &amp; Throat)</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology</a></li>
+                <li><a href="department-details.html?dept=general-medicine" class="mobile-dept-link">General Medicine</a></li>
+                <li><a href="department-details.html?dept=general-surgery" class="mobile-dept-link">General Surgery</a></li>
+                <li><a href="department-details.html?dept=maternity-care" class="mobile-dept-link">Obstetrics &amp; Gynaecology</a></li>
+                <li><a href="department-details.html?dept=oncology" class="mobile-dept-link">Oncology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics</a></li>
+                <li><a href="department-details.html?dept=paediatrics" class="mobile-dept-link">Paediatrics</a></li>
+                <li><a href="department-details.html?dept=psychiatry" class="mobile-dept-link">Psychiatry</a></li>
+                <li><a href="department-details.html?dept=pulmonology" class="mobile-dept-link">Pulmonology</a></li>
+                <li><a href="department-details.html?dept=urology" class="mobile-dept-link">Urology</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology</a></li>
+              </ul>
+              <a href="departments.html" class="mobile-dept-view-all">View All Departments &rarr;</a>
+            </div>
+          </div>
+        </li>
         <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
         <li style="--nav-idx: 4;"><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
         <li style="--nav-idx: 5;"><a href="gallery.html" class="mobile-nav-link active">Gallery</a></li>
@@ -510,124 +659,34 @@
 
       <div class="gallery-page-grid" id="galleryGrid">
 
-        <!-- User Upload 1: Inpatient General Ward & Monitored Beds (Infrastructure) -->
-        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Inpatient Ward & Monitored Patient Beds" data-full="assets/gallery-ward-beds.jpg" data-title="Inpatient Ward & Monitored Patient Beds" data-sub="Spacious, hygienic inpatient clinical ward with continuous nursing care">
-          <img src="assets/gallery-ward-beds.jpg" alt="Sulakshaa Hospital Inpatient Ward and Monitored Beds" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building" class="icon-xs"></i> Infrastructure</span>
-            <h3 class="gallery-card-title">Inpatient Ward &amp; Patient Beds</h3>
-            <p class="gallery-card-sub">Airy Inpatient Care with Continuous Vital Telemetry</p>
-          </div>
+        <!-- 1. Hospital Campus & Building Exterior Facade -->
+        <div class="gallery-card" data-category="hospital infrastructure" tabindex="0" role="button" aria-label="Sulakshaa Multi Speciality Hospital Campus &amp; Building Facade" data-full="assets/sulakshaa-building-exterior.jpg" data-title="Sulakshaa Multi Speciality Hospital — Main Campus" data-sub="Modern multispeciality healthcare facility with 24/7 casualty emergency and advanced diagnostics in Mysuru">
+          <img src="assets/sulakshaa-building-exterior.jpg" alt="Sulakshaa Multi Speciality Hospital Building Facade in Mysuru" loading="lazy">
         </div>
 
-        <!-- User Upload 2: Operation Theatre & ICU Complex Medical Faculty (Hospital / Events) -->
-        <div class="gallery-card" data-category="hospital events" tabindex="0" role="button" aria-label="OT & ICU Complex Medical & Surgical Team" data-full="assets/gallery-ot-icu-staff.jpg" data-title="OT &amp; ICU Complex Surgical Team" data-sub="Dedicated surgeons, intensivists, and scrub nurses outside the OT wing">
-          <img src="assets/gallery-ot-icu-staff.jpg" alt="Sulakshaa Hospital OT and ICU Complex Medical Faculty" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building-2" class="icon-xs"></i> Hospital</span>
-            <h3 class="gallery-card-title">OT &amp; ICU Complex Clinical Team</h3>
-            <p class="gallery-card-sub">Dedicated Surgeons, Intensivists &amp; Nursing Staff</p>
-          </div>
+        <!-- 2. Hospital Main Reception & Help Desk -->
+        <div class="gallery-card" data-category="hospital infrastructure" tabindex="0" role="button" aria-label="Hospital Main Reception &amp; Help Desk" data-full="assets/gallery-reception-lobby.jpg" data-title="Hospital Main Reception &amp; Help Desk" data-sub="Welcoming patient admission counter, billing lobby &amp; 24/7 care coordination desk">
+          <img src="assets/gallery-reception-lobby.jpg" alt="Sulakshaa Multi Speciality Hospital Main Reception &amp; Help Desk" loading="lazy">
         </div>
 
-        <!-- User Upload 3: Isolated ICU Automated Suites (Infrastructure) -->
-        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Specialized Isolated ICU Wing" data-full="assets/gallery-isolated-icu.jpg" data-title="Specialized Isolated ICU Suites" data-sub="Infection-controlled isolated high-dependency intensive care environment">
-          <img src="assets/gallery-isolated-icu.jpg" alt="Sulakshaa Hospital Isolated ICU Wing and Sterile Doors" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building" class="icon-xs"></i> Infrastructure</span>
-            <h3 class="gallery-card-title">Specialized Isolated ICU Wing</h3>
-            <p class="gallery-card-sub">Strict Infection Control &amp; Barrier-Separated Rooms</p>
-          </div>
+        <!-- 3. Sulakshaa Pharma 24/7 In-House Pharmacy -->
+        <div class="gallery-card" data-category="hospital infrastructure" tabindex="0" role="button" aria-label="Sulakshaa Pharma 24/7 In-House Chemist" data-full="assets/gallery-sulakshaa-pharma.jpg" data-title="Sulakshaa Pharma — 24/7 In-House Pharmacy" data-sub="Fully stocked round-the-clock hospital pharmacy with critical medications &amp; surgical supplies">
+          <img src="assets/gallery-sulakshaa-pharma.jpg" alt="Sulakshaa Pharma 24/7 In-House Pharmacy Storefront" loading="lazy">
         </div>
 
-        <!-- User Upload 4: Hospital Passenger Elevator & Accessibility (Infrastructure) -->
-        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Modern Stretcher & Passenger Elevator" data-full="assets/gallery-elevator.jpg" data-title="Barrier-Free Passenger & Bed Elevator" data-sub="Wheelchair and stretcher-compatible elevators connecting all clinical floors">
-          <img src="assets/gallery-elevator.jpg" alt="Sulakshaa Hospital Barrier-Free Passenger Elevator" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building" class="icon-xs"></i> Infrastructure</span>
-            <h3 class="gallery-card-title">Passenger &amp; Stretcher Elevator</h3>
-            <p class="gallery-card-sub">Barrier-Free Access for Patients and Families</p>
-          </div>
+        <!-- 4. Daycare & Clinical Recovery Ward -->
+        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Daycare &amp; Clinical Recovery Ward" data-full="assets/gallery-daycare-recovery-ward.jpg" data-title="Daycare &amp; Clinical Recovery Ward" data-sub="Hygienic, naturally lit observation bays with mobile recovery beds &amp; continuous vital monitoring">
+          <img src="assets/gallery-daycare-recovery-ward.jpg" alt="Sulakshaa Hospital Daycare &amp; Clinical Recovery Ward" loading="lazy">
         </div>
 
-        <!-- User Upload 5: Pharmacy & Billing Counter (Hospital) -->
-        <div class="gallery-card" data-category="hospital" tabindex="0" role="button" aria-label="24/7 In-House Pharmacy & Billing" data-full="assets/gallery-pharmacy-counter.jpg" data-title="24/7 Pharmacy &amp; OPD Dispensary" data-sub="Fully stocked hospital pharmacy providing genuine generic and branded medications">
-          <img src="assets/gallery-pharmacy-counter.jpg" alt="Sulakshaa Hospital Pharmacy Counter and Dispensary" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building-2" class="icon-xs"></i> Hospital</span>
-            <h3 class="gallery-card-title">24/7 Hospital Pharmacy Counter</h3>
-            <p class="gallery-card-sub">Prescription Dispensing &amp; Patient Guidance</p>
-          </div>
+        <!-- 5. Endoscopy & Advanced Procedure Suite -->
+        <div class="gallery-card" data-category="equipment infrastructure" tabindex="0" role="button" aria-label="Endoscopy &amp; Advanced Procedure Suite" data-full="assets/gallery-endoscopy-procedure-suite.jpg" data-title="Endoscopy &amp; Advanced Procedure Suite" data-sub="High-definition endoscopic tower, precision surgical display &amp; dedicated procedure recovery bed">
+          <img src="assets/gallery-endoscopy-procedure-suite.jpg" alt="Sulakshaa Hospital Endoscopy and Advanced Procedure Suite" loading="lazy">
         </div>
 
-        <!-- Hospital Building Exterior (Hospital) -->
-        <div class="gallery-card" data-category="hospital" tabindex="0" role="button" aria-label="Main Hospital Complex & Entrance Portico" data-full="assets/sulakshaa-building-exterior.png" data-title="Main Hospital Complex & Entrance Portico" data-sub="Vijayanagar 3rd Stage, Mysuru, Karnataka 570017">
-          <img src="assets/sulakshaa-building-exterior.png" alt="Sulakshaa Multi Speciality Hospital Building Exterior & Main Entrance" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building-2" class="icon-xs"></i> Hospital</span>
-            <h3 class="gallery-card-title">Main Hospital Complex &amp; Portico</h3>
-            <p class="gallery-card-sub">Vijayanagar 3rd Stage, Mysuru, Karnataka 570017</p>
-          </div>
-        </div>
-
-        <!-- Central Reception & Triage (Hospital) -->
-        <div class="gallery-card" data-category="hospital" tabindex="0" role="button" aria-label="Central Reception and Helpdesk" data-full="assets/sulakshaa-reception.jpg" data-title="Central Reception & Patient Helpdesk" data-sub="Patient Registration & Information Counter">
-          <img src="assets/sulakshaa-reception.jpg" alt="Sulakshaa Multi Speciality Hospital Central Reception and Triage Desk" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building-2" class="icon-xs"></i> Hospital</span>
-            <h3 class="gallery-card-title">Central Reception &amp; Triage</h3>
-            <p class="gallery-card-sub">Patient Helpdesk &amp; Fast-Track Registration</p>
-          </div>
-        </div>
-
-        <!-- OPD Patient Waiting Lounge (Infrastructure) -->
-        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Spacious OPD Patient Waiting Lounge" data-full="assets/sulakshaa-opd-lounge.png" data-title="Modern OPD Patient Waiting Lounge" data-sub="Spacious and Comfortable Air-Conditioned Seating">
-          <img src="assets/sulakshaa-opd-lounge.png" alt="Sulakshaa Multi Speciality Hospital Modern OPD Waiting Lounge" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="building" class="icon-xs"></i> Infrastructure</span>
-            <h3 class="gallery-card-title">Spacious OPD Waiting Lounge</h3>
-            <p class="gallery-card-sub">Air-Conditioned Patient &amp; Attendant Amenities</p>
-          </div>
-        </div>
-
-        <!-- Advanced Diagnostic Imaging Suite (Equipment) -->
-        <div class="gallery-card" data-category="equipment" tabindex="0" role="button" aria-label="Advanced Diagnostic CT & Imaging Suite" data-full="assets/advanced-diagnostics.png" data-title="Advanced Diagnostic Imaging Suite" data-sub="High-slice CT gantry, low-dose digital radiography, and ultrasonography">
-          <img src="assets/advanced-diagnostics.png" alt="Advanced CT and Diagnostic Imaging Gantry at Sulakshaa Hospital" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="cpu" class="icon-xs"></i> Equipment</span>
-            <h3 class="gallery-card-title">Multi-Slice CT &amp; Imaging Suite</h3>
-            <p class="gallery-card-sub">Low-Dose Cross-Sectional Diagnostic Scanners</p>
-          </div>
-        </div>
-
-        <!-- Modern Robotic & Laparoscopic OT Workstations (Equipment) -->
-        <div class="gallery-card" data-category="equipment" tabindex="0" role="button" aria-label="Minimally Invasive Laparoscopic Surgical Workstation" data-full="assets/journey-robotic-surgery.jpg" data-title="Minimally Invasive Surgical Workstations" data-sub="Precision endoscopic towers and high-definition laparoscopy monitors">
-          <img src="assets/journey-robotic-surgery.jpg" alt="Minimally Invasive Laparoscopic Surgery Towers at Sulakshaa Hospital" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="cpu" class="icon-xs"></i> Equipment</span>
-            <h3 class="gallery-card-title">Minimally Invasive OT Towers</h3>
-            <p class="gallery-card-sub">High-Definition Surgical Endoscopy &amp; Monitors</p>
-          </div>
-        </div>
-
-        <!-- User Upload 11: Free Community Health & Medical Checkup Camp (Camp & Events) -->
-        <div class="gallery-card" data-category="camp events" tabindex="0" role="button" aria-label="Free Community Health & Medical Checkup Camp with Dr. Laxme Gowda" data-full="assets/gallery-camp-community.jpg" data-title="Free Community Health &amp; Medical Checkup Camp" data-sub="Dr. Laxme Gowda and hospital clinical team conducting community health screening and preventive consultations">
-          <img src="assets/gallery-camp-community.jpg" alt="Free Community Medical Health Camp conducted by Dr. Laxme Gowda and Sulakshaa Hospital Team" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="heart-handshake" class="icon-xs"></i> Camp</span>
-            <h3 class="gallery-card-title">Free Community Health Camp</h3>
-            <p class="gallery-card-sub">Dr. Laxme Gowda &amp; Medical Outreach Team</p>
-          </div>
-        </div>
-
-        <!-- User Upload 12: Hospital Clinical Screening & Patient Outreach (Camp & Events) -->
-        <div class="gallery-card" data-category="camp events" tabindex="0" role="button" aria-label="Hospital Clinical Screening and Patient Outreach Camp" data-full="assets/gallery-camp-consultation.jpg" data-title="Hospital Clinical Screening &amp; Patient Outreach" data-sub="Dr. Laxme Gowda and healthcare coordinators welcoming patients and coordinating clinical evaluations at Emergency Wing">
-          <img src="assets/gallery-camp-consultation.jpg" alt="Hospital Clinical Screening and Patient Outreach Camp with Dr. Laxme Gowda" loading="lazy">
-          <div class="gallery-card-overlay">
-            <span class="gallery-category-pill"><i data-lucide="heart-handshake" class="icon-xs"></i> Camp</span>
-            <h3 class="gallery-card-title">Hospital Clinical Outreach</h3>
-            <p class="gallery-card-sub">Dr. Laxme Gowda &amp; Patient Care Faculty</p>
-          </div>
+        <!-- 6. Inpatient Recovery & Semi-Private Room -->
+        <div class="gallery-card" data-category="infrastructure" tabindex="0" role="button" aria-label="Inpatient Recovery &amp; Semi-Private Room" data-full="assets/gallery-inpatient-semi-private-room.jpg" data-title="Inpatient Recovery &amp; Semi-Private Room" data-sub="Spacious, peaceful twin-sharing recovery suite with bedside oxygen, suction &amp; nurse call system">
+          <img src="assets/gallery-inpatient-semi-private-room.jpg" alt="Sulakshaa Hospital Inpatient Recovery and Semi-Private Room" loading="lazy">
         </div>
 
       </div>
@@ -795,5 +854,6 @@
       }
     });
   </script>
+  <script src="navigation.js"></script>
 </body>
 </html>

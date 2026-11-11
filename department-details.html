@@ -79,7 +79,14 @@
       overflow: hidden;
     }
 
+    .dept-hero-watermark,
+    .dept-card-watermark {
+      display: none !important;
+    }
+
     .dept-hero-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(320px, 440px);
       gap: clamp(1.5rem, 3vw, 3rem);
@@ -141,6 +148,8 @@
     }
 
     .dept-hero-action-card {
+      position: relative;
+      overflow: hidden;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(12px);
@@ -305,14 +314,26 @@
 
     .dept-overview-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 460px);
-      gap: clamp(2rem, 4vw, 3.5rem);
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: clamp(1.5rem, 3.5vw, 3rem);
       align-items: center;
+      width: 100%;
     }
 
-    @media (max-width: 991px) {
+    .dept-overview-left {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .dept-overview-right {
+      min-width: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
       .dept-overview-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
     }
 
@@ -332,39 +353,80 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Conditions Evaluated & Treated - Clean 2-Column Professional Healthcare Layout */
     .dept-conditions-box {
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2.25rem;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
     }
 
     .dept-conditions-title {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.05rem;
+      font-size: 1.125rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      display: block;
+      letter-spacing: -0.01em;
     }
 
-    .dept-conditions-pills {
+    .dept-conditions-pills,
+    .dept-conditions-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+      row-gap: 0.95rem;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .dept-conditions-pills,
+      .dept-conditions-list {
+        grid-template-columns: 1fr;
+        row-gap: 0.85rem;
+      }
+    }
+
+    .dept-condition-pill,
+    .dept-condition-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 0.65rem;
+      background: none !important;
+      background-color: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      text-align: left;
     }
 
-    .dept-condition-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #F0F8FE;
-      border: 1px solid rgba(0, 136, 209, 0.25);
+    .dept-condition-pill i,
+    .dept-condition-item i,
+    .dept-condition-pill svg,
+    .dept-condition-item svg {
+      color: #0088D1 !important;
+      stroke: #0088D1 !important;
+      width: 18px !important;
+      height: 18px !important;
+      min-width: 18px !important;
+      min-height: 18px !important;
+      flex-shrink: 0 !important;
+      margin-top: 3px !important;
+    }
+
+    .dept-condition-pill span,
+    .dept-condition-item span {
+      flex: 1;
       color: #0B2568;
-      padding: 0.4rem 0.85rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 500;
-    }
-
-    .dept-condition-pill i {
-      color: #0088D1;
+      line-height: 1.45;
+      word-break: normal;
     }
 
     .dept-overview-image-stage {
@@ -377,9 +439,10 @@
 
     .dept-overview-img {
       width: 100%;
-      height: 380px;
+      height: clamp(280px, 32vw, 380px);
       object-fit: cover;
       display: block;
+      border-radius: 20px;
       transition: transform 0.4s ease;
     }
 
@@ -1067,7 +1130,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -1075,7 +1138,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="departments.html" class="nav-link active">Departments</a></li>
+                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -1166,7 +1318,7 @@
         <!-- Right Visual (Circular / Oval Doctor & Anatomy Model) -->
         <div class="dept-hero-visual-wrap">
           <div class="dept-hero-circle-stage">
-            <img src="assets/cardiac-care-doctor-heart.png" alt="Cardiology at Sulakshaa Hospital" class="dept-hero-img" id="deptHeroImg">
+            <img src="assets/cardiology-heart-ecg.jpg" alt="Cardiology at Sulakshaa Hospital" class="dept-hero-img" id="deptHeroImg">
           </div>
         </div>
       </div>
@@ -1214,7 +1366,30 @@
           <div class="dept-conditions-box">
             <h3 class="dept-conditions-title">Conditions Evaluated &amp; Treated:</h3>
             <div class="dept-conditions-pills" id="deptConditionsList">
-              <!-- Dynamically populated -->
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Acute Chest Pain &amp; Cardiac Emergencies</span>
+              </div>
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Severe Road Accidents &amp; Multiple Trauma</span>
+              </div>
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Acute Stroke &amp; Sudden Neurological Deficits</span>
+              </div>
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Acute Respiratory Distress &amp; Oxygen Drop</span>
+              </div>
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Severe Infections, Sepsis &amp; High Fevers</span>
+              </div>
+              <div class="dept-condition-pill">
+                <i data-lucide="check-circle" class="icon-xs"></i>
+                <span>Fractures, Dislocations &amp; Deep Lacerations</span>
+              </div>
             </div>
           </div>
 
@@ -1226,7 +1401,7 @@
 
         <div class="dept-overview-right">
           <div class="dept-overview-image-stage">
-            <img src="assets/journey-cardiology.jpg" alt="Clinical Consultation" class="dept-overview-img" id="deptOverviewImg">
+            <img src="assets/emergency-trauma-stretcher.jpg" alt="Emergency and Clinical Consultation" class="dept-overview-img" id="deptOverviewImg">
           </div>
         </div>
       </div>
@@ -1548,7 +1723,7 @@
         name: 'Cardiology',
         heroTitle: 'Best Cardiology Hospital in Mysore',
         category: 'Centre of Clinical Excellence',
-        image: 'assets/cardiac-care-doctor-heart.png',
+        image: 'assets/cardiology-heart-ecg.jpg',
         overviewImg: 'assets/journey-cardiology.jpg',
         intro: 'Comprehensive cardiovascular assessment, preventive heart evaluations, and acute cardiac stabilization in Mysuru.',
         overview: 'The Cardiology Department at Sulakshaa Hospital is dedicated to the prevention, diagnosis, and treatment of heart diseases. Equipped with advanced technology and led by experienced cardiologists, we offer comprehensive cardiac care, including non-invasive diagnostics, emergency coronary stabilization, and cardiac rehabilitation.',
@@ -1600,8 +1775,8 @@
         name: 'Orthopaedics',
         heroTitle: 'Best Orthopaedics Hospital in Mysore',
         category: 'Surgical & Trauma Centre of Excellence',
-        image: 'assets/orthopedics-joint-replacement.png',
-        overviewImg: 'assets/blog-orthopedics.jpg',
+        image: 'assets/specialty-orthopaedics-rehab.jpg',
+        overviewImg: 'assets/orthopaedics-knee-joint.jpg',
         intro: 'Advanced management of bone fractures, degenerative arthritis, sports injuries, spine discomfort, and joint reconstruction.',
         overview: 'Sulakshaa Hospital’s Orthopaedics Centre provides compassionate, precision-driven musculoskeletal care. From emergency fracture fixation and accidental trauma triage to conservative joint pain management, arthroscopy, and post-surgical rehabilitation.',
         conditions: [
@@ -1652,7 +1827,7 @@
         heroTitle: 'Best Gastroenterology Hospital in Mysore',
         category: 'Digestive & Hepatic Centre of Excellence',
         image: 'assets/gastroenterology-digestive-health.png',
-        overviewImg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&h=400&q=80',
+        overviewImg: 'assets/gastroenterology-laparoscopy-model.jpg',
         intro: 'Specialized diagnosis and clinical management of acid peptic disease, hepatic conditions, bowel disorders, and acute pancreatitis.',
         overview: 'Our Gastroenterology division focuses on restoring digestive harmony and gastrointestinal wellness. Our physicians provide targeted therapy for chronic acid reflux, fatty liver, abdominal pain, inflammatory bowel disease, and intestinal disorders with modern clinical protocols.',
         conditions: [
@@ -1702,7 +1877,7 @@
         heroTitle: 'Best General Medicine Hospital in Mysore',
         category: 'Primary & Internal Medicine Centre',
         image: 'assets/general-medicine.png',
-        overviewImg: 'assets/journey-robotic-surgery.jpg',
+        overviewImg: 'assets/general-medicine-consultation.png',
         intro: 'Mysuru’s trusted clinical destination for adult health, diabetes control, viral fever triage, and multisystem medical conditions.',
         overview: 'Led by seasoned medical directors with over four decades of diagnostic acumen, our General Medicine department provides accurate diagnosis of complex symptoms, lifestyle disease therapy, adult immunization, and emergency medical stabilization.',
         conditions: [
@@ -1751,23 +1926,23 @@
         name: 'Nephrology',
         heroTitle: 'Best Nephrology Hospital in Mysore',
         category: 'Renal Care Centre of Excellence',
-        image: 'assets/nephrology-renal-medicine.png',
-        overviewImg: 'assets/gallery-isolated-icu.jpg',
-        intro: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, electrolyte imbalances, and hypertension-related renal care.',
+        image: 'assets/nephrology-renal-care-hologram.jpg',
+        overviewImg: 'assets/nephrology-doctor-kidney-model.png',
+        intro: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, and hypertension-related renal care.',
         overview: 'Sulakshaa Hospital’s Nephrology department emphasizes early identification and prevention of kidney function decline. Supported by advanced automated laboratory profiling, color Doppler ultrasound, and intensive care beds.',
         conditions: [
           'Chronic Kidney Disease (CKD) Stages 1 to 5',
           'Diabetic Nephropathy & Microalbuminuria',
           'Acute Kidney Injury (AKI) & Oliguria',
           'Hypertensive Renal Disease & Protein Loss',
-          'Electrolyte Imbalances (Sodium, Potassium, Calcium)',
+          'Glomerular Disorders & Nephrotic Syndrome',
           'Recurrent Urinary Tract Infections & Nephritis'
         ],
         services: [
           { title: 'Renal Function & eGFR Profiling', desc: 'Automated serum creatinine, BUN, and urine protein-to-creatinine assays.' },
           { title: 'Renal Doppler Ultrasonography', desc: 'Non-invasive acoustic imaging for kidney size, cortex thickness, and blood perfusion.' },
           { title: 'Diabetic Kidney Protection Protocol', desc: 'Targeted blood pressure and metabolic therapy to arrest renal decline.' },
-          { title: 'Inpatient Critical Care Nephrology', desc: 'Fluid and electrolyte regulation for acute medical ICU admissions.' }
+          { title: 'Inpatient Critical Care Nephrology', desc: 'Fluid and renal metabolic regulation for acute medical ICU admissions.' }
         ],
         doctors: [
           {
@@ -1802,7 +1977,7 @@
         heroTitle: 'Best Urology Hospital in Mysore',
         category: 'Genitourinary Specialty Centre',
         image: 'assets/urology-genitourinary-surgery.jpg',
-        overviewImg: 'assets/gallery-ot-icu-staff.jpg',
+        overviewImg: 'assets/urology-urinary-anatomy-model.jpg',
         intro: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections, and bladder health.',
         overview: 'Our Urology centre delivers specialized medical and surgical interventions for urinary tract and male reproductive system health. Equipped with advanced NCCT imaging, uroflowmetry, and dedicated sterile surgical suites.',
         conditions: [
@@ -1851,8 +2026,8 @@
         name: 'Accident & Emergency',
         heroTitle: 'Best Accident & Emergency Hospital in Mysore',
         category: '24/7 Life-Saving Critical Care',
-        image: 'assets/gallery-isolated-icu.jpg',
-        overviewImg: 'assets/hospital-building.png',
+        image: 'assets/emergency-critical-care.jpg',
+        overviewImg: 'assets/emergency-trauma-stretcher.jpg',
         intro: 'Immediate emergency response with 24x7 life-saving critical care, trauma surgery, resuscitation bays, and ICU support.',
         overview: 'Sulakshaa Hospital’s Casualty and Emergency Medicine department operates 24/7 with resident trauma specialists, anesthesiologists, and cardiac monitors ready for immediate life-saving care on Vijayanagar 3rd Stage, Mysuru.',
         conditions: [
@@ -1901,8 +2076,8 @@
         name: 'Neurology',
         heroTitle: 'Best Neurology Hospital in Mysore',
         category: 'Neurological & Brain Health Centre',
-        image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=800&h=500&q=80',
-        overviewImg: 'assets/journey-neurosurgery.jpg',
+        image: 'assets/specialty-neurology-brain.jpg',
+        overviewImg: 'assets/neurology-scan-analysis.jpg',
         intro: 'Specialist care for stroke rehabilitation, migraine, seizures, cognitive health, and nerve disorders.',
         overview: 'Our Neurology department delivers prompt evaluation of central and peripheral nervous system disorders. Supported by multi-slice CT scanning and emergency resuscitation bays, we prioritize early neurological triage.',
         conditions: [
@@ -2002,7 +2177,7 @@
         heroTitle: 'Best Obstetrics & Gynaecology Hospital in Mysore',
         category: 'Maternal & Women Health Centre',
         image: 'assets/maternity-obstetrics-gynaecology.png',
-        overviewImg: 'assets/dr-meera-iyer.jpg',
+        overviewImg: 'assets/gynecology-pregnant-consultation.jpg',
         intro: 'Comprehensive maternal health, antenatal monitoring, safe deliveries, and women\'s wellness throughout life.',
         overview: 'Sulakshaa Hospital provides personalized, respectful care through every phase of womanhood. From family planning and prenatal care to high-risk pregnancy monitoring and gynecological disorder management.',
         conditions: [
@@ -2152,7 +2327,7 @@
         heroTitle: 'Best General Surgery Hospital in Mysore',
         category: 'Minimally Invasive Operations Centre',
         image: 'assets/general-laparoscopic-surgery.png',
-        overviewImg: 'assets/journey-robotic-surgery.jpg',
+        overviewImg: 'assets/general-surgery-operation-theatre.jpg',
         intro: 'Advanced minimally invasive laparoscopy, hernia repair, appendectomy, and acute surgical operations.',
         overview: 'Sulakshaa Hospital’s Surgical Centre features state-of-the-art modular operating theatres equipped with laminar airflow HEPA filtration. Our surgical team prioritizes minimally invasive techniques for faster recovery and reduced pain.',
         conditions: [
@@ -2202,7 +2377,7 @@
         heroTitle: 'Best ENT Hospital in Mysore',
         category: 'Otorhinolaryngology Specialty Centre',
         image: 'assets/ent-care-otorhinolaryngology.png',
-        overviewImg: 'assets/gallery-ward-beds.jpg',
+        overviewImg: 'assets/ent-anatomy-cross-section.jpg',
         intro: 'Precision endoscopic diagnosis and care for sinusitis, hearing loss, vertigo, tonsils, and nasal disorders.',
         overview: 'The ENT department provides advanced diagnostic otoscopy, diagnostic nasal endoscopy, and specialized care for all pediatric and adult ear, nose, throat, and balance conditions in Mysuru.',
         conditions: [
@@ -2252,7 +2427,7 @@
         heroTitle: 'Best Anaesthesiology & Critical Care Hospital in Mysore',
         category: 'Perioperative & ICU Centre',
         image: 'assets/anaesthesiology-critical-care.png',
-        overviewImg: 'assets/gallery-isolated-icu.jpg',
+        overviewImg: 'assets/anaesthesiology-ot-surgery.jpg',
         intro: 'Vigilant perioperative anesthesia, continuous surgical telemetry, pain management, and ICU ventilator care.',
         overview: 'Our Anaesthesiology team ensures patient safety and comfort throughout the surgical process. Through comprehensive pre-anesthetic assessments and vigilant intraoperative monitoring, we ensure smooth anesthesia recovery and acute critical care.',
         conditions: [
@@ -2301,8 +2476,8 @@
         name: 'Oncology',
         heroTitle: 'Best Oncology & Cancer Screening Hospital in Mysore',
         category: 'Screening & Supportive Care Centre',
-        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&h=500&q=80',
-        overviewImg: 'assets/journey-oncology.jpg',
+        image: 'assets/specialty-oncology-ribbon.jpg',
+        overviewImg: 'assets/oncology-cancer-cell-microscopy.jpg',
         intro: 'Compassionate cancer screening, early symptom triage, histological coordination, and multidisciplinary guidance.',
         overview: 'The Oncology service at Sulakshaa Hospital emphasizes early cancer detection, preventive health checkups, histological diagnostic coordination, and holistic patient guidance during challenging clinical journeys.',
         conditions: [
@@ -2395,6 +2570,101 @@
         faqs: [
           { q: 'Are psychiatric consultations kept strictly confidential?', a: 'Yes, all clinical discussions, records, and prescriptions are strictly protected by medical confidentiality ethics.' }
         ]
+      },
+
+      'radiology': {
+        name: 'Interventional Radiology',
+        heroTitle: 'Best Interventional Radiology & Diagnostic Imaging in Mysore',
+        category: 'Diagnostic & Interventional Imaging Centre',
+        image: 'assets/specialty-radiology-scan.jpg',
+        overviewImg: 'assets/specialty-radiology-scan.jpg',
+        intro: 'Precision diagnostic imaging, multi-slice spiral CT scanning, high-definition digital X-Ray, 4D Doppler sonography, and minimally invasive image-guided radiological procedures in Mysuru.',
+        overview: 'The Department of Interventional Radiology & Imaging at Sulakshaa Hospital is equipped with cutting-edge medical imaging modalities, providing rapid, high-resolution diagnostic assessments and image-guided interventional therapies. Our board-certified radiologists deliver 24/7 emergency diagnostic support for trauma, stroke, cardiac, and surgical emergencies with immediate digital PACS reporting.',
+        conditions: [
+          'Emergency Trauma & Acute Head Injury CT Scans',
+          'Acute Stroke Multi-Slice Brain CT Protocol',
+          'Cross-Sectional Abdominal & Thoracic Diagnostics',
+          'Digital Skeletal Radiography & Fluoroscopy',
+          '4D Color Doppler Peripheral Vascular Evaluations',
+          'Bedside Inpatient & ICU Digital X-Rays'
+        ],
+        services: [
+          { title: 'Multi-Slice Spiral CT Scan', desc: 'Rapid, ultra-thin cross-sectional tomography for emergency trauma, neuro, and chest diagnosis with 24/7 reporting.' },
+          { title: 'High-Definition Digital X-Ray', desc: 'Low-dose digital radiography with instant radiologist verification and seamless digital PACS archiving.' },
+          { title: '4D Color Doppler Sonography', desc: 'Real-time blood flow analysis, deep vein thrombosis evaluations, obstetric 4D imaging, and abdominal mapping.' },
+          { title: 'Image-Guided Interventions', desc: 'Minimally invasive diagnostic punctures, core biopsies, and therapeutic fluid drainages under precise radiological guidance.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Laxme Gowda & Diagnostic Team',
+            qual: 'MBBS, MD (General Medicine)',
+            role: 'Senior Medical Director & Clinical Imaging Lead',
+            image: 'assets/dr-laxme-gowda.png',
+            bio: 'Directing emergency trauma clinical triage, diagnostic imaging interpretation, and multidisciplinary critical care coordination.'
+          },
+          {
+            name: 'Dr. Vikram M. Rao',
+            qual: 'MBBS, DM (Neurology)',
+            role: 'Consultant Neurologist & Neuro-Imaging Lead',
+            image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80',
+            bio: 'Collaborating on acute stroke CT protocols, cerebrovascular Doppler evaluations, and neuro-interventional planning.'
+          },
+          {
+            name: 'Dr. Kavitha Sundaram',
+            qual: 'MBBS, MD',
+            role: 'Consultant Clinical Radiologist',
+            image: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&h=600&q=80',
+            bio: 'Specialist in 4D Doppler sonography, musculoskeletal imaging, and emergency cross-sectional radiological diagnostics.'
+          }
+        ],
+        faqs: [
+          { q: 'Is CT scanning and digital X-ray available 24/7 at Sulakshaa Hospital?', a: 'Yes, our multi-slice CT scan facility and digital X-ray operate 24 hours a day, 7 days a week for immediate emergency trauma and clinical diagnosis.' },
+          { q: 'How quickly are emergency diagnostic reports delivered?', a: 'Emergency scans are interpreted immediately by resident clinicians with digital PACS reports generated within minutes to initiate critical treatment without delay.' }
+        ]
+      },
+
+      'spine-surgery': {
+        name: 'Spine Surgery',
+        heroTitle: 'Best Spine Surgery & Neuro-Spine Care in Mysore',
+        category: 'Spinal Disorders & Robotic Minimally Invasive Centre',
+        image: 'assets/specialty-spine-surgery.jpg',
+        overviewImg: 'assets/specialty-spine-surgery.jpg',
+        intro: 'Advanced management of spinal disc herniations, degenerative spondylosis, scoliosis, robotic minimally invasive spine surgery, and neuropathic spine care in Mysuru.',
+        overview: 'Sulakshaa Hospital’s Institute of Spine Surgery provides precision-driven neuro-spinal and orthopaedic spine care. Equipped with robotic surgical guidance, micro-endoscopic spine systems, and dedicated post-operative neuro-rehabilitation, our surgeons offer advanced solutions for complex spinal conditions with minimal recovery time.',
+        conditions: [
+          'Lumbar & Cervical Disc Herniations (Slip Disc)',
+          'Sciatica & Radiating Nerve Compression',
+          'Spinal Stenosis & Degenerative Spondylolisthesis',
+          'Spine Fractures & Accidental Spinal Trauma',
+          'Scoliosis, Kyphosis & Spinal Deformity Correction',
+          'Chronic Lower Back & Neck Pain Syndromes'
+        ],
+        services: [
+          { title: 'Minimally Invasive Spine Surgery (MISS)', desc: 'Micro-endoscopic decompression and discectomy with tiny incisions, preserving muscle tissue for rapid recovery.' },
+          { title: 'Spinal Fusion & Stabilization', desc: 'Precision titanium pedicle screw fixation and cage reconstruction for spinal instability and spondylolisthesis.' },
+          { title: 'Spinal Trauma & Fracture Care', desc: 'Emergency stabilization of traumatic vertebral fractures and spinal cord decompression.' },
+          { title: 'Conservative Spine & Pain Management', desc: 'Targeted epidural injections, nerve blocks, and customized spinal physiotherapy.' }
+        ],
+        doctors: [
+          {
+            name: 'Dr. Vikram M. Rao & Spine Surgery Team',
+            qual: 'MBBS, MS, MCh (Neuro / Spine)',
+            role: 'Consultant Neuro-Spine Surgeon',
+            image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80',
+            bio: 'Expert in micro-endoscopic discectomy, spinal cord decompression, and complex reconstructive spine surgeries.'
+          },
+          {
+            name: 'Dr. Laxme Gowda',
+            qual: 'MBBS, MD (General Medicine)',
+            role: 'Senior Medical Director',
+            image: 'assets/dr-laxme-gowda.png',
+            bio: 'Directing holistic clinical evaluation, pain medicine integration, and post-operative rehabilitative wellness.'
+          }
+        ],
+        faqs: [
+          { q: 'Is spine surgery always required for back pain or disc bulge?', a: 'No, over 85% of spine and disc conditions improve with structured conservative therapy, physical rehabilitation, and targeted pain management.' },
+          { q: 'How soon can patients walk after minimally invasive spine surgery?', a: 'Most patients undergoing minimally invasive endoscopic spine surgery are able to stand and walk within 24 to 48 hours.' }
+        ]
       }
     };
 
@@ -2428,7 +2698,17 @@
         'trauma': 'emergency',
         'ent-ear-nose-throat': 'ent',
         'genitourinary': 'urology',
-        'skin': 'dermatology'
+        'skin': 'dermatology',
+        'radiology': 'radiology',
+        'interventional-radiology': 'radiology',
+        'radiology-imaging': 'radiology',
+        'radiology-diagnostics': 'radiology',
+        'imaging': 'radiology',
+        'spine-surgery': 'spine-surgery',
+        'spine': 'spine-surgery',
+        'neuro-spine': 'spine-surgery',
+        'spinal-surgery': 'spine-surgery',
+        'sports-medicine': 'orthopedics'
       };
 
       if (aliasMap[deptSlug]) {
@@ -2456,6 +2736,7 @@
         heroImg.alt = `${dept.name} at Sulakshaa Multi Speciality Hospital`;
       }
 
+
       const overviewImg = document.getElementById('deptOverviewImg');
       if (overviewImg && dept.overviewImg) {
         overviewImg.src = dept.overviewImg;
@@ -2473,15 +2754,17 @@
       const callbackDept = document.getElementById('callbackDept');
       if (callbackDept) callbackDept.value = dept.name;
 
-      // Render Conditions Treated Pills
+      // Render Conditions Treated
       const conditionsList = document.getElementById('deptConditionsList');
-      conditionsList.innerHTML = '';
-      dept.conditions.forEach(c => {
-        const pill = document.createElement('span');
-        pill.className = 'dept-condition-pill';
-        pill.innerHTML = `<i data-lucide="check-circle-2" class="icon-xs"></i> <span>${c}</span>`;
-        conditionsList.appendChild(pill);
-      });
+      if (conditionsList && dept.conditions) {
+        conditionsList.innerHTML = '';
+        dept.conditions.forEach(c => {
+          const pill = document.createElement('div');
+          pill.className = 'dept-condition-pill';
+          pill.innerHTML = `<i data-lucide="check-circle" class="icon-xs"></i> <span>${c}</span>`;
+          conditionsList.appendChild(pill);
+        });
+      }
 
       // Render Facilities / Services
       const servicesGrid = document.getElementById('deptServicesGrid');
@@ -2657,5 +2940,6 @@
       });
     });
   </script>
+  <script src="navigation.js"></script>
 </body>
 </html>

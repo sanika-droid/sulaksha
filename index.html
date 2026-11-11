@@ -97,36 +97,47 @@
       background-color: #061743 !important;
     }
     .hero-backdrop {
-      display: none !important;
+      display: block !important;
+      position: absolute !important;
+      inset: -25px !important;
+      z-index: 1 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
     }
     .hero-backdrop-img {
-      display: none !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      filter: blur(32px) saturate(1.3) brightness(0.65) !important;
+      transform: scale(1.15) !important;
+      opacity: 0.95 !important;
+      display: block !important;
     }
     .hero-bg-img {
-      position: absolute !important;
-      inset: 0 !important;
+      position: relative !important;
       z-index: 2 !important;
       width: 100% !important;
       height: 100% !important;
       max-width: 100% !important;
       max-height: 100% !important;
-      object-fit: cover !important;
-      object-position: center 30% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
       display: block !important;
       border-radius: 0 !important;
       filter: none !important;
-      margin: 0 !important;
+      margin: 0 auto !important;
     }
     .hero-bg-img.hero-bg-exterior {
-      object-fit: cover !important;
-      object-position: center bottom !important;
+      object-fit: contain !important;
+      object-position: center center !important;
     }
     .hero-bg-img.hero-bg-reception {
-      object-fit: cover !important;
+      object-fit: contain !important;
       object-position: center center !important;
     }
     .hero-bg-img.hero-bg-lounge {
-      object-fit: cover !important;
+      object-fit: contain !important;
       object-position: center center !important;
     }
 
@@ -1687,7 +1698,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -1696,7 +1707,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
           <li class="nav-item"><a href="#overview" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="#departments" class="nav-link">Departments</a></li>
+          <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -1738,7 +1838,50 @@
       <ul class="mobile-nav-list">
         <li style="--nav-idx: 0;"><a href="#hero" class="mobile-nav-link">Home</a></li>
         <li style="--nav-idx: 1;"><a href="#overview" class="mobile-nav-link">About Us</a></li>
-        <li style="--nav-idx: 2;"><a href="#departments" class="mobile-nav-link">Departments</a></li>
+        <li class="mobile-nav-item-dropdown" style="--nav-idx: 2;">
+          <div class="mobile-dropdown-header-wrap">
+            <a href="departments.html" class="mobile-nav-link">Departments</a>
+            <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
+              <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
+            </button>
+          </div>
+          <div class="mobile-dept-dropdown-panel" id="mobileDeptPanel" aria-hidden="true">
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Centres of Excellence</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics &amp; Joint Care</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology &amp; Hepatology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology &amp; Brain Health</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology &amp; Renal Care</a></li>
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency (24/7)</a></li>
+              </ul>
+            </div>
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Specialities</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency</a></li>
+                <li><a href="department-details.html?dept=anaesthesiology" class="mobile-dept-link">Anaesthesiology &amp; Critical Care</a></li>
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=dermatology" class="mobile-dept-link">Dermatology</a></li>
+                <li><a href="department-details.html?dept=ent" class="mobile-dept-link">ENT (Ear, Nose &amp; Throat)</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology</a></li>
+                <li><a href="department-details.html?dept=general-medicine" class="mobile-dept-link">General Medicine</a></li>
+                <li><a href="department-details.html?dept=general-surgery" class="mobile-dept-link">General Surgery</a></li>
+                <li><a href="department-details.html?dept=maternity-care" class="mobile-dept-link">Obstetrics &amp; Gynaecology</a></li>
+                <li><a href="department-details.html?dept=oncology" class="mobile-dept-link">Oncology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics</a></li>
+                <li><a href="department-details.html?dept=paediatrics" class="mobile-dept-link">Paediatrics</a></li>
+                <li><a href="department-details.html?dept=psychiatry" class="mobile-dept-link">Psychiatry</a></li>
+                <li><a href="department-details.html?dept=pulmonology" class="mobile-dept-link">Pulmonology</a></li>
+                <li><a href="department-details.html?dept=urology" class="mobile-dept-link">Urology</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology</a></li>
+              </ul>
+              <a href="departments.html" class="mobile-dept-view-all">View All Departments &rarr;</a>
+            </div>
+          </div>
+        </li>
         <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
         <li style="--nav-idx: 4;"><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
         <li style="--nav-idx: 5;"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
@@ -1767,10 +1910,10 @@
         <!-- Slide 1: Sulakshaa Hospital Building Exterior -->
         <div class="hero-slide active" data-slide-index="0" aria-hidden="false">
           <div class="hero-backdrop" aria-hidden="true">
-            <img src="assets/sulakshaa-building-exterior.png" alt="" class="hero-backdrop-img">
+            <img src="assets/sulakshaa-building-exterior.jpg" alt="" class="hero-backdrop-img">
           </div>
           <img 
-            src="assets/sulakshaa-building-exterior.png" 
+            src="assets/sulakshaa-building-exterior.jpg" 
             alt="Sulakshaa Multi Speciality Hospital Building Facade in Mysuru" 
             class="hero-bg-img hero-bg-exterior"
             loading="eager"
@@ -1805,6 +1948,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 4b. Verified Hospital Highlights Section (Accurate Project Data Only) -->
     <section class="stats-section" id="hospital-stats" aria-label="Key Hospital Information and Facilities">
@@ -1871,6 +2015,7 @@
       </div>
     </section>
 
+
     <!-- 5. About Us Section — Modern Two-Column Layout -->
     <section class="section about-section" id="overview" aria-labelledby="about-heading">
       <div class="container">
@@ -1930,7 +2075,7 @@
           <div class="about-image-column">
             <div class="about-image-wrapper">
               <img 
-                src="assets/sulakshaa-building-exterior.png" 
+                src="assets/sulakshaa-building-exterior.jpg" 
                 alt="Sulakshaa Multi Speciality Hospital Building in Mysuru" 
                 class="about-hospital-img"
                 loading="eager"
@@ -1941,6 +2086,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 6. Comprehensive Healthcare Solutions Section (Reference Image 1: 4 Cards Per Row Grid) -->
     <section class="section solutions-section" id="comprehensive-solutions" aria-labelledby="solutions-heading">
@@ -2016,7 +2162,7 @@
             </div>
             <h3 class="solution-card-heading">Nephrology</h3>
             <p class="solution-card-description">
-              Specialized kidney care, dialysis coordination, electrolyte balance, and renal disorder management.
+              Specialized kidney care, dialysis coordination, and comprehensive renal disorder management.
             </p>
           </a>
 
@@ -2044,6 +2190,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 7b. Why Choose Sulakshaa Hospital Section -->
     <section class="section why-choose-section" id="why-choose" aria-labelledby="why-choose-heading">
@@ -2115,6 +2262,7 @@
 
 
 
+
     <!-- 8. Our Specialties / Departments Section (Reference Image 2: Horizontal Photo Carousel) -->
     <section class="section specialities-section" id="departments" aria-labelledby="departments-heading">
       <div class="container">
@@ -2139,7 +2287,7 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="anaesthesiology" tabindex="0" role="link" aria-label="Institute of Anaesthesiology &amp; Critical Care">
               <div class="dept-photo-img-wrap">
-                <img src="assets/anaesthesiology-critical-care.png" alt="Institute of Anaesthesiology" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-anaesthesiology-care.jpg" alt="Institute of Anaesthesiology &amp; Critical Care" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Anaesthesiology &amp; Critical Care</h3>
@@ -2148,52 +2296,52 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="emergency" tabindex="0" role="link" aria-label="Institute of Emergency &amp; Trauma Care">
               <div class="dept-photo-img-wrap">
-                <img src="assets/gallery-isolated-icu.jpg" alt="Institute of Emergency &amp; Trauma Care" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-emergency-care.jpg" alt="Emergency &amp; Critical Care" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Emergency &amp; Critical Care</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="general-surgery" tabindex="0" role="link" aria-label="Institute of Laparoscopic Surgery">
+            <article class="speciality-card dept-photo-card" data-dept-slug="general-surgery" tabindex="0" role="link" aria-label="General &amp; Laparoscopic Surgery">
               <div class="dept-photo-img-wrap">
-                <img src="assets/general-laparoscopic-surgery.png" alt="Institute of Laparoscopic Surgery" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-general-surgery.jpg" alt="General &amp; Laparoscopic Surgery" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">General &amp; Laparoscopic Surgery</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="gastroenterology" tabindex="0" role="link" aria-label="Institute of Bariatric Surgery">
+            <article class="speciality-card dept-photo-card" data-dept-slug="gastroenterology" tabindex="0" role="link" aria-label="Gastroenterology">
               <div class="dept-photo-img-wrap">
-                <img src="assets/gastroenterology-digestive-health.png" alt="Institute of Bariatric Surgery" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-gastroenterology.png" alt="Gastroenterology" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
-                <h3 class="dept-photo-title">Institute of Bariatric Surgery</h3>
+                <h3 class="dept-photo-title">Gastroenterology</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="cardiac-care" tabindex="0" role="link" aria-label="Institute of Cardiac Sciences">
+            <article class="speciality-card dept-photo-card" data-dept-slug="cardiac-care" tabindex="0" role="link" aria-label="Cardiology &amp; Cardiac Sciences">
               <div class="dept-photo-img-wrap">
-                <img src="assets/cardiac-care.jpg" alt="Institute of Cardiac Sciences" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-cardiology-heart.jpg" alt="Cardiology &amp; Cardiac Sciences" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
-                <h3 class="dept-photo-title">Institute of Cardiac Sciences</h3>
+                <h3 class="dept-photo-title">Cardiology</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="ent" tabindex="0" role="link" aria-label="Institute of ENT &amp; Head-Neck Surgery">
+            <article class="speciality-card dept-photo-card" data-dept-slug="ent" tabindex="0" role="link" aria-label="ENT (Ear, Nose &amp; Throat)">
               <div class="dept-photo-img-wrap">
-                <img src="assets/ent-care-otorhinolaryngology.png" alt="Institute of ENT" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-ent-sciences.jpg" alt="ENT (Ear, Nose &amp; Throat)" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
-                <h3 class="dept-photo-title">Institute of ENT Sciences</h3>
+                <h3 class="dept-photo-title">ENT</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="cardiac-care" tabindex="0" role="link" aria-label="Institute of Interventional Radiology">
+            <article class="speciality-card dept-photo-card" data-dept-slug="radiology" tabindex="0" role="link" aria-label="Institute of Interventional Radiology">
               <div class="dept-photo-img-wrap">
-                <img src="assets/advanced-diagnostics.png" alt="Institute of Interventional Radiology" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-radiology-scan.jpg" alt="Institute of Interventional Radiology" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Institute of Interventional Radiology</h3>
@@ -2202,7 +2350,7 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="neurology" tabindex="0" role="link" aria-label="Institute of Neuro Sciences">
               <div class="dept-photo-img-wrap">
-                <img src="assets/journey-neurosurgery.jpg" alt="Institute of Neuro Sciences" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-neurology-brain.jpg" alt="Institute of Neuro Sciences" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Institute of Neuro Sciences</h3>
@@ -2211,7 +2359,7 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="oncology" tabindex="0" role="link" aria-label="Institute of Oncology &amp; Cancer Care">
               <div class="dept-photo-img-wrap">
-                <img src="assets/journey-oncology.jpg" alt="Institute of Oncology" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-oncology-ribbon.jpg" alt="Institute of Oncology" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Institute of Oncology</h3>
@@ -2220,7 +2368,7 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="nephrology" tabindex="0" role="link" aria-label="Institute of Renal Sciences &amp; Nephrology">
               <div class="dept-photo-img-wrap">
-                <img src="assets/nephrology-renal-medicine.png" alt="Institute of Renal Sciences" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-nephrology-kidney.jpg" alt="Institute of Renal Sciences" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Institute of Renal Sciences</h3>
@@ -2229,19 +2377,19 @@
 
             <article class="speciality-card dept-photo-card" data-dept-slug="spine-surgery" tabindex="0" role="link" aria-label="Institute of Spine Surgery">
               <div class="dept-photo-img-wrap">
-                <img src="assets/journey-robotic-surgery.jpg" alt="Institute of Spine Surgery" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-spine-surgery.jpg" alt="Institute of Spine Surgery" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
                 <h3 class="dept-photo-title">Institute of Spine Surgery</h3>
               </div>
             </article>
 
-            <article class="speciality-card dept-photo-card" data-dept-slug="orthopedics" tabindex="0" role="link" aria-label="Institute of Sports Medicine">
+            <article class="speciality-card dept-photo-card" data-dept-slug="orthopedics" tabindex="0" role="link" aria-label="Orthopaedics &amp; Joint Care">
               <div class="dept-photo-img-wrap">
-                <img src="assets/orthopedics-joint-replacement.png" alt="Institute of Sports Medicine" class="dept-photo-img" loading="lazy">
+                <img src="assets/specialty-orthopaedics-rehab.jpg" alt="Orthopaedics &amp; Joint Care" class="dept-photo-img" loading="lazy">
               </div>
               <div class="dept-photo-badge">
-                <h3 class="dept-photo-title">Institute of Sports Medicine</h3>
+                <h3 class="dept-photo-title">Orthopaedics</h3>
               </div>
             </article>
 
@@ -2292,6 +2440,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- 7. Featured Medical Specialists Section -->
     <section class="section featured-doctors-section" id="featured-doctors" aria-labelledby="featured-doctors-heading">
@@ -2619,6 +2768,7 @@
       </div>
     </section>
 
+
     <!-- 9. Emergency Care Banner -->
     <section class="emergency-banner-section" aria-labelledby="emergency-banner-title">
       <div class="container">
@@ -2653,6 +2803,7 @@
         </div>
       </div>
     </section>
+
 
     
 
@@ -2959,6 +3110,7 @@
       </div>
     </section>
 
+
     <!-- 11a. Our Videos Section (Reference Image 5: 3-Video Carousel) -->
     <section class="section our-videos-section" id="hospital-video" aria-labelledby="video-spotlight-heading">
       <div class="container">
@@ -3015,7 +3167,7 @@
                 <h3 class="video-card-top-title">Let's rewind and cherish the... Mysuru's Finest Destination</h3>
               </div>
               <div class="video-card-thumb-wrap">
-                <img src="assets/sulakshaa-building-exterior.png" alt="Sulakshaa Hospital Campus Video Tour" loading="lazy">
+                <img src="assets/sulakshaa-building-exterior.jpg" alt="Sulakshaa Hospital Campus Video Tour" loading="lazy">
                 <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-youtube-play-btn" aria-label="Play Hospital Campus Tour">
                   <i data-lucide="play" class="icon-md"></i>
                 </a>
@@ -3086,172 +3238,148 @@
       </div>
     </section>
 
-    <!-- 11b. Hospital Blog Section -->
-    <section class="section blog-section" id="blog" aria-labelledby="blog-heading">
-      <div class="container">
-        <div class="section-header text-center reveal-on-scroll">
-          <h2 id="blog-heading" class="section-title">Our Blogs</h2>
+    <!-- 14. Clinical Insights & Healthcare Blog Section -->
+    <section class="blog-section" id="blog" aria-labelledby="blogHeading" style="padding: 3rem 0; background: #FFFFFF; position: relative;">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+        
+        <!-- Header: Only "Our Blogs" matching reference pic -->
+        <div class="text-center" style="margin-bottom: 2rem;">
+          <h2 id="blogHeading" style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: clamp(2rem, 3.5vw, 2.45rem); color: #0E8A78; font-weight: 700; margin: 0; text-align: center;">
+            Our Blogs
+          </h2>
         </div>
 
-        <div class="blog-grid" id="blogGrid">
-          <!-- Article 1: Preventive Health -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=preventive-health'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=preventive-health'" aria-label="Read full article on Value of Annual Preventive Health Screenings">
-            <div class="blog-media">
-              <img src="assets/blog-preventive-health.jpg" alt="Preventive Healthcare Checkups & Annual Screenings" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Preventive Health</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Oct 2026</span>
-              </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=preventive-health" class="blog-title-link">Value of Annual Preventive Health Screenings</a>
-              </h3>
-              <p class="blog-card-desc">
-                Periodic checks detect silent conditions like hypertension and prediabetes early, safeguarding your long-term vitality.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=preventive-health" class="blog-read-btn" aria-label="Read full article about Preventive Health">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
-              </div>
-            </div>
-          </article>
+        <!-- Single Row Carousel with Left & Right Navigation -->
+        <div class="blog-carousel-container" style="position: relative; padding: 0 10px;">
+          
+          <!-- Left Arrow Button -->
+          <button type="button" class="blog-nav-arrow blog-nav-prev" id="blogPrevBtn" aria-label="Previous Blogs" onclick="document.getElementById('blogViewport').scrollBy({ left: -360, behavior: 'smooth' })" style="position: absolute; left: -16px; top: 42%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; border: 1px solid #CBD5E1; box-shadow: 0 4px 14px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #334155; transition: all 0.25s ease;">
+            <i data-lucide="chevron-left" class="icon-sm"></i>
+          </button>
 
-          <!-- Article 2: Heart Health -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=cardiology'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=cardiology'" aria-label="Read full article on Daily Habits for Cardiovascular Wellness">
-            <div class="blog-media">
-              <img src="assets/blog-cardiology.jpg" alt="Heart Wellness and Cardiology Center" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Cardiology</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Oct 2026</span>
+          <!-- Single Row Viewport (No Wrap, Horizontal Smooth Scroll) -->
+          <div class="blog-row-viewport" id="blogViewport" style="display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0.25rem 1.25rem; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+            
+            <!-- Blog Card 1: Heart Disease Warning Signs -->
+            <article class="blog-carousel-card" style="flex: 0 0 calc(33.333% - 1rem); min-width: 290px; max-width: 380px; scroll-snap-align: start; background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05); display: flex; flex-direction: column;">
+              <div style="width: 100%; height: 210px; overflow: hidden; background: #F1F5F9;">
+                <img src="assets/blog-cardiology.jpg" alt="Heart Disease Warning Signs" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
               </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=cardiology" class="blog-title-link">Daily Habits for Cardiovascular Wellness</a>
-              </h3>
-              <p class="blog-card-desc">
-                Simple habits including 30 minutes of brisk walking and balanced sodium consumption significantly reduce coronary risk.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=cardiology" class="blog-read-btn" aria-label="Read full article about Cardiology">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
+              <div style="padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.05rem; font-weight: 700; color: #1E293B; line-height: 1.4; margin-bottom: 0.6rem;">
+                  Heart Disease Warning Signs: Early Symptoms &amp; Golden Hour Care
+                </h3>
+                <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin-bottom: 1.2rem; flex: 1;">
+                  Recognize subtle cardiac distress signs, radiating jaw/arm pain, atypical symptoms in women, and the vital importance of the Golden Hour.
+                </p>
+                <div style="margin-top: auto;">
+                  <a href="blog-details.html?id=cardiology" style="color: #475569; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s ease;">
+                    <span>Read More</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Article 3: Pediatric & Family Health -->
-          <article class="blog-card reveal-on-scroll" onclick="window.location.href='blog-details.html?id=paediatrics'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=paediatrics'" aria-label="Read full article on Safeguarding Children During Weather Shifts">
-            <div class="blog-media">
-              <img src="assets/paediatrics.png" alt="Pediatric and Family Wellness Clinic" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Family Care</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Sep 2026</span>
+            <!-- Blog Card 2: Knee Pain and Orthopaedic Care -->
+            <article class="blog-carousel-card" style="flex: 0 0 calc(33.333% - 1rem); min-width: 290px; max-width: 380px; scroll-snap-align: start; background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05); display: flex; flex-direction: column;">
+              <div style="width: 100%; height: 210px; overflow: hidden; background: #F1F5F9;">
+                <img src="assets/blog-orthopedics.jpg" alt="Knee Pain and Orthopaedic Care" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
               </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=paediatrics" class="blog-title-link">Safeguarding Children During Weather Shifts</a>
-              </h3>
-              <p class="blog-card-desc">
-                Key pediatric precautions to prevent seasonal wheezing, viral fevers, and hydration loss during weather shifts.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=paediatrics" class="blog-read-btn" aria-label="Read full article about Pediatric Care">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
+              <div style="padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.05rem; font-weight: 700; color: #1E293B; line-height: 1.4; margin-bottom: 0.6rem;">
+                  Knee Pain and Orthopaedic Care: Recognizing Arthritis &amp; Joint Health
+                </h3>
+                <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin-bottom: 1.2rem; flex: 1;">
+                  From chronic osteoarthritis to ligament sprains, understand early warning markers, cartilage protection, and modern robotic joint replacement therapies.
+                </p>
+                <div style="margin-top: auto;">
+                  <a href="blog-details.html?id=orthopedics" style="color: #475569; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s ease;">
+                    <span>Read More</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Article 4: Diabetes & Internal Medicine -->
-          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=diabetes-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=diabetes-care'" aria-label="Read full article on Managing Blood Sugar & Renal Protection">
-            <div class="blog-media">
-              <img src="assets/general-medicine.png" alt="Diabetes Management and Internal Medicine" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Diabetes Care</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Sep 2026</span>
+            <!-- Blog Card 3: Stroke Symptoms -->
+            <article class="blog-carousel-card" style="flex: 0 0 calc(33.333% - 1rem); min-width: 290px; max-width: 380px; scroll-snap-align: start; background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05); display: flex; flex-direction: column;">
+              <div style="width: 100%; height: 210px; overflow: hidden; background: #F1F5F9;">
+                <img src="assets/neurology-scan-analysis.jpg" alt="Stroke Symptoms" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
               </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=diabetes-care" class="blog-title-link">Managing Blood Sugar &amp; Renal Protection</a>
-              </h3>
-              <p class="blog-card-desc">
-                Practical tips on regular HbA1c monitoring, tailored nutritional plans, and protecting kidney health in type-2 diabetes.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=diabetes-care" class="blog-read-btn" aria-label="Read full article about Diabetes Care">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
+              <div style="padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.05rem; font-weight: 700; color: #1E293B; line-height: 1.4; margin-bottom: 0.6rem;">
+                  Stroke Symptoms: Recognizing B.E. F.A.S.T. Signs &amp; Rapid Triage
+                </h3>
+                <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin-bottom: 1.2rem; flex: 1;">
+                  Every second counts during an acute cerebrovascular event. Learn the clinical BE-FAST protocol and why 4.5 hours is critical for thrombolytic treatment.
+                </p>
+                <div style="margin-top: auto;">
+                  <a href="blog-details.html?id=emergency-care" style="color: #475569; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s ease;">
+                    <span>Read More</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Article 5: Orthopedics & Joint Care -->
-          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=orthopedics'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=orthopedics'" aria-label="Read full article on Recognizing Knee Arthritis & Joint Health">
-            <div class="blog-media">
-              <img src="assets/blog-orthopedics.jpg" alt="Orthopedic Care and Precision Joint Health" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Orthopedics</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Aug 2026</span>
+            <!-- Blog Card 4: Women's Health Checkups -->
+            <article class="blog-carousel-card" style="flex: 0 0 calc(33.333% - 1rem); min-width: 290px; max-width: 380px; scroll-snap-align: start; background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05); display: flex; flex-direction: column;">
+              <div style="width: 100%; height: 210px; overflow: hidden; background: #F1F5F9;">
+                <img src="assets/gynecology-pregnant-consultation.jpg" alt="Women's Health Checkups" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
               </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=orthopedics" class="blog-title-link">Recognizing Knee Arthritis &amp; Joint Health</a>
-              </h3>
-              <p class="blog-card-desc">
-                Early signs of knee cartilage strain, low-impact muscle strengthening exercises, and non-surgical pain therapies.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=orthopedics" class="blog-read-btn" aria-label="Read full article about Orthopedic Care">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
+              <div style="padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.05rem; font-weight: 700; color: #1E293B; line-height: 1.4; margin-bottom: 0.6rem;">
+                  Women's Health Checkups: Essential Screenings Across Every Life Stage
+                </h3>
+                <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin-bottom: 1.2rem; flex: 1;">
+                  From hormonal balance and PCOS management to Pap smears, breast mammography, and bone density scans for lifelong feminine well-being.
+                </p>
+                <div style="margin-top: auto;">
+                  <a href="blog-details.html?id=womens-health" style="color: #475569; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s ease;">
+                    <span>Read More</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Article 6: Emergency Care -->
-          <article class="blog-card blog-extra-card" onclick="window.location.href='blog-details.html?id=emergency-care'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='blog-details.html?id=emergency-care'" aria-label="Read full article on The Golden Hour in Acute Medical Care">
-            <div class="blog-media">
-              <img src="assets/gallery-isolated-icu.jpg" alt="Emergency and Critical Care ICU" class="blog-img" loading="lazy">
-            </div>
-            <div class="blog-body">
-              <div class="blog-category-row">
-                <span class="blog-category-tag">Emergency</span>
-                <span class="blog-date-text"><i data-lucide="calendar" class="icon-xs"></i> Aug 2026</span>
+            <!-- Blog Card 5: Full Body Health Checkups -->
+            <article class="blog-carousel-card" style="flex: 0 0 calc(33.333% - 1rem); min-width: 290px; max-width: 380px; scroll-snap-align: start; background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(11, 37, 104, 0.05); display: flex; flex-direction: column;">
+              <div style="width: 100%; height: 210px; overflow: hidden; background: #F1F5F9;">
+                <img src="assets/blog-preventive-health.jpg" alt="Full Body Health Checkups" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
               </div>
-              <h3 class="blog-card-title">
-                <a href="blog-details.html?id=emergency-care" class="blog-title-link">The Golden Hour in Acute Medical Care</a>
-              </h3>
-              <p class="blog-card-desc">
-                Why timely hospital arrival within the first 60 minutes of chest tightness or stroke symptoms drastically improves recovery.
-              </p>
-              <div class="blog-card-footer">
-                <a href="blog-details.html?id=emergency-care" class="blog-read-btn" aria-label="Read full article about Emergency Care">
-                  <span>Read Full Article</span>
-                  <i data-lucide="arrow-right" class="icon-xs"></i>
-                </a>
+              <div style="padding: 1.25rem 1.15rem 1.35rem; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.05rem; font-weight: 700; color: #1E293B; line-height: 1.4; margin-bottom: 0.6rem;">
+                  Full Body Health Checkups: Value of Annual Preventive Screenings
+                </h3>
+                <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin-bottom: 1.2rem; flex: 1;">
+                  Why feeling fine isn't always enough: how routine lipid profiles, HbA1c, renal/liver panels, and ECGs uncover silent physiological strain before symptoms appear.
+                </p>
+                <div style="margin-top: auto;">
+                  <a href="blog-details.html?id=preventive-health" style="color: #475569; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s ease;">
+                    <span>Read More</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
+            </article>
 
-        <!-- View All Insights & Articles Button -->
-        <div class="blog-view-all-wrap text-center">
-          <button type="button" class="blog-view-all-btn" id="blogViewAllBtn" aria-expanded="false" aria-controls="blogGrid">
-            <span id="blogViewAllText">View All Insights &amp; Articles</span>
-            <i data-lucide="chevron-down" id="blogViewAllIcon" class="icon-sm"></i>
+          </div>
+
+          <!-- Right Arrow Button -->
+          <button type="button" class="blog-nav-arrow blog-nav-next" id="blogNextBtn" aria-label="Next Blogs" onclick="document.getElementById('blogViewport').scrollBy({ left: 360, behavior: 'smooth' })" style="position: absolute; right: -16px; top: 42%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; border: 1px solid #CBD5E1; box-shadow: 0 4px 14px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: #334155; transition: all 0.25s ease;">
+            <i data-lucide="chevron-right" class="icon-sm"></i>
           </button>
         </div>
+
+        <!-- Centered "VIEW ALL" Button matching reference pic -->
+        <div class="text-center" style="margin-top: 2.25rem;">
+          <a href="blog-details.html?id=cardiology" class="btn" style="background: #8B263E; color: #FFFFFF; font-weight: 700; text-transform: uppercase; font-size: 0.825rem; letter-spacing: 0.06em; padding: 0.7rem 2.2rem; border-radius: 4px; display: inline-block; text-decoration: none; box-shadow: 0 3px 10px rgba(139, 38, 62, 0.25); transition: background-color 0.2s ease;">
+            VIEW ALL
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -3386,15 +3514,15 @@
       </div>
       <div class="modal-body tour-modal-body">
         <div class="tour-modal-media">
-          <img src="assets/sulakshaa-building-exterior.png" alt="Sulakshaa Hospital Campus in Mysuru" class="tour-modal-img" id="tourModalImg">
+          <img src="assets/sulakshaa-building-exterior.jpg" alt="Sulakshaa Hospital Campus in Mysuru" class="tour-modal-img" id="tourModalImg">
           <div class="tour-modal-media-caption">
             <h4 id="tourModalCaptionTitle">Modern Multispeciality Hospital Building</h4>
             <p id="tourModalCaptionDesc">Central location in Mysuru featuring 24/7 casualty emergency, inpatient wards, advanced diagnostics, and barrier-free patient access.</p>
           </div>
         </div>
         <div class="tour-modal-thumbs">
-          <button type="button" class="tour-thumb-btn active" data-src="assets/sulakshaa-building-exterior.png" data-title="Modern Hospital Building Facade" data-desc="Central location in Mysuru with 24/7 emergency casualty reception and ambulance bay.">
-            <img src="assets/sulakshaa-building-exterior.png" alt="Hospital Building">
+          <button type="button" class="tour-thumb-btn active" data-src="assets/sulakshaa-building-exterior.jpg" data-title="Modern Hospital Building Facade" data-desc="Central location in Mysuru with 24/7 emergency casualty reception and ambulance bay.">
+            <img src="assets/sulakshaa-building-exterior.jpg" alt="Hospital Building">
             <span>Exterior</span>
           </button>
           <button type="button" class="tour-thumb-btn" data-src="assets/cardiac-care.jpg" data-title="Intensive Coronary Care &amp; ICU" data-desc="Fully equipped multi-parameter patient telemetry, sterile ICU environment, and 24/7 emergency monitoring.">
@@ -3435,5 +3563,6 @@
 
   <!-- Core JavaScript -->
   <script src="script.js?v=34"></script>
+  <script src="navigation.js"></script>
 </body>
 </html>

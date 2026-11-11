@@ -100,6 +100,21 @@
       overflow: hidden;
     }
 
+    .contact-hero-watermark {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/contact-reception-watermark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 1;
+      filter: saturate(1.15);
+    }
+
     .contact-hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(320px, 480px);
@@ -524,7 +539,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -532,7 +547,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li>
+                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -558,7 +662,8 @@
 
     <!-- 1. Contact Us Hero Banner (Matching Reference Image 1) -->
     <section class="contact-hero-banner" aria-labelledby="contact-hero-title">
-      <div class="container">
+      <div class="contact-hero-watermark" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 2;">
         <!-- Breadcrumbs -->
         <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.25rem;">
           <a href="index.html" style="color: #64748B; text-decoration: none;">Home</a>
@@ -577,11 +682,11 @@
             </p>
           </div>
 
-          <!-- Right Doctor Consultation Photo -->
+          <!-- Right Patient Consultation Photo -->
           <div class="contact-hero-image-wrap">
             <img 
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" 
-              alt="Sulakshaa Multi Speciality Hospital medical staff and physician consulting with patient" 
+              src="assets/contact-patient-consultation.jpg" 
+              alt="Sulakshaa Multi Speciality Hospital patient consultation and reception support" 
               loading="eager"
             >
           </div>
@@ -1001,5 +1106,6 @@
 
   <!-- Core Interactive Script -->
   <script src="script.js?v=37"></script>
+  <script src="navigation.js"></script>
 </body>
 </html>

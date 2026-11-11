@@ -76,19 +76,27 @@
       border-bottom: 1px solid #E2E8F0;
       padding: clamp(2rem, 4vw, 3.5rem) 0 2rem;
       position: relative;
+      overflow: hidden;
+    }
+
+    .doctors-hero-watermark {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/doctors-team-hero-watermark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 1;
+      filter: saturate(1.15);
     }
 
     .doctors-hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 460px);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    @media (max-width: 860px) {
-      .doctors-hero-grid {
-        grid-template-columns: 1fr;
-      }
+      max-width: 760px;
+      margin-bottom: 1.5rem;
     }
 
     .doctors-hero-title {
@@ -242,34 +250,41 @@
 
     .doctor-dir-grid {
       display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 2.25rem 2rem !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 1.35rem 1.25rem !important;
       align-items: stretch !important;
       width: 100% !important;
-      margin: 1.5rem 0 2rem 0 !important;
+      margin: 1.25rem 0 2rem 0 !important;
     }
 
-    @media (max-width: 980px) and (min-width: 620px) {
+    @media (max-width: 1100px) and (min-width: 780px) {
+      .doctor-dir-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.25rem 1rem !important;
+      }
+    }
+
+    @media (max-width: 779px) and (min-width: 520px) {
       .doctor-dir-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.75rem 1.5rem !important;
+        gap: 1rem !important;
       }
     }
 
-    @media (max-width: 619px) {
+    @media (max-width: 519px) {
       .doctor-dir-grid {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+        gap: 1rem !important;
       }
     }
 
-    /* Doctor Card Styling (Exact Reference Image 2) */
+    /* Doctor Card Styling - Compact & Modern */
     .doctor-dir-card {
       background: #FFFFFF !important;
       border: 1px solid #E8EEF5 !important;
-      border-radius: 12px !important;
-      box-shadow: 0 4px 18px rgba(11, 37, 104, 0.05) !important;
-      padding: 1.25rem !important;
+      border-radius: 10px !important;
+      box-shadow: 0 3px 12px rgba(11, 37, 104, 0.05) !important;
+      padding: 0.85rem !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
@@ -279,26 +294,25 @@
     }
 
     .doctor-dir-card:hover {
-      transform: translateY(-5px) !important;
-      box-shadow: 0 12px 30px rgba(11, 37, 104, 0.12) !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 10px 24px rgba(11, 37, 104, 0.1) !important;
       border-color: #0088D1 !important;
-      border-color: #D3E0EA !important;
     }
 
     .doctor-dir-img-wrap {
-      background: #FFFFFF !important;
-      height: 290px !important;
+      background: #F8FAFC !important;
+      height: 180px !important;
       width: 100% !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      margin-bottom: 0.75rem !important;
-      border-radius: 8px !important;
+      margin-bottom: 0.65rem !important;
+      border-radius: 6px !important;
       overflow: hidden !important;
     }
 
     .doctor-dir-img {
-      max-height: 285px !important;
+      max-height: 175px !important;
       width: auto !important;
       max-width: 100% !important;
       object-fit: contain !important;
@@ -310,7 +324,7 @@
     }
 
     .doctor-dir-body {
-      padding: 0.5rem 0 0 !important;
+      padding: 0.25rem 0 0 !important;
       display: flex !important;
       flex-direction: column !important;
       flex-grow: 1 !important;
@@ -319,32 +333,32 @@
 
     .doctor-dir-name {
       font-family: 'Poppins', sans-serif !important;
-      font-size: 1.2rem !important;
+      font-size: 1.05rem !important;
       font-weight: 700 !important;
       color: #0B2568 !important;
-      margin: 0 0 0.35rem 0 !important;
-      line-height: 1.3 !important;
+      margin: 0 0 0.2rem 0 !important;
+      line-height: 1.25 !important;
       text-align: center !important;
     }
 
     .doctor-dir-designation {
-      font-size: 0.92rem !important;
+      font-size: 0.825rem !important;
       color: #4B617E !important;
       font-weight: 500 !important;
-      line-height: 1.4 !important;
-      margin: 0 0 1.25rem 0 !important;
+      line-height: 1.35 !important;
+      margin: 0 0 0.75rem 0 !important;
       text-align: center !important;
-      min-height: 48px !important;
+      min-height: 38px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
     }
 
-    /* Stacked Full-Width Action Buttons (Ref Image 2) */
+    /* Stacked Full-Width Action Buttons */
     .doctor-dir-actions {
       display: flex !important;
       flex-direction: column !important;
-      gap: 0.55rem !important;
+      gap: 0.45rem !important;
       width: 100% !important;
       margin-top: auto !important;
     }
@@ -352,10 +366,10 @@
     .btn-doctor-view-profile {
       background: #0B2568 !important;
       color: #FFFFFF !important;
-      padding: 0.7rem 1rem !important;
+      padding: 0.52rem 0.75rem !important;
       border-radius: 6px !important;
       font-weight: 600 !important;
-      font-size: 0.95rem !important;
+      font-size: 0.85rem !important;
       text-align: center !important;
       text-decoration: none !important;
       display: block !important;
@@ -372,10 +386,10 @@
     .btn-doctor-book-appointment {
       background: #0088D1 !important;
       color: #FFFFFF !important;
-      padding: 0.7rem 1rem !important;
+      padding: 0.52rem 0.75rem !important;
       border-radius: 6px !important;
       font-weight: 600 !important;
-      font-size: 0.95rem !important;
+      font-size: 0.85rem !important;
       text-align: center !important;
       text-decoration: none !important;
       display: block !important;
@@ -448,7 +462,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -457,7 +471,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="index.html#specialities" class="nav-link">Departments</a></li>
+                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link active">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -499,7 +602,50 @@
       <ul class="mobile-nav-list">
         <li style="--nav-idx: 0;"><a href="index.html#hero" class="mobile-nav-link">Home</a></li>
         <li style="--nav-idx: 1;"><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
-        <li style="--nav-idx: 2;"><a href="index.html#specialities" class="mobile-nav-link">Departments</a></li>
+                <li class="mobile-nav-item-dropdown" style="--nav-idx: 2;">
+          <div class="mobile-dropdown-header-wrap">
+            <a href="departments.html" class="mobile-nav-link">Departments</a>
+            <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
+              <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
+            </button>
+          </div>
+          <div class="mobile-dept-dropdown-panel" id="mobileDeptPanel" aria-hidden="true">
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Centres of Excellence</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics &amp; Joint Care</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology &amp; Hepatology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology &amp; Brain Health</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology &amp; Renal Care</a></li>
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency (24/7)</a></li>
+              </ul>
+            </div>
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Specialities</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency</a></li>
+                <li><a href="department-details.html?dept=anaesthesiology" class="mobile-dept-link">Anaesthesiology &amp; Critical Care</a></li>
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=dermatology" class="mobile-dept-link">Dermatology</a></li>
+                <li><a href="department-details.html?dept=ent" class="mobile-dept-link">ENT (Ear, Nose &amp; Throat)</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology</a></li>
+                <li><a href="department-details.html?dept=general-medicine" class="mobile-dept-link">General Medicine</a></li>
+                <li><a href="department-details.html?dept=general-surgery" class="mobile-dept-link">General Surgery</a></li>
+                <li><a href="department-details.html?dept=maternity-care" class="mobile-dept-link">Obstetrics &amp; Gynaecology</a></li>
+                <li><a href="department-details.html?dept=oncology" class="mobile-dept-link">Oncology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics</a></li>
+                <li><a href="department-details.html?dept=paediatrics" class="mobile-dept-link">Paediatrics</a></li>
+                <li><a href="department-details.html?dept=psychiatry" class="mobile-dept-link">Psychiatry</a></li>
+                <li><a href="department-details.html?dept=pulmonology" class="mobile-dept-link">Pulmonology</a></li>
+                <li><a href="department-details.html?dept=urology" class="mobile-dept-link">Urology</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology</a></li>
+              </ul>
+              <a href="departments.html" class="mobile-dept-view-all">View All Departments &rarr;</a>
+            </div>
+          </div>
+        </li>
         <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link active">Doctors</a></li>
         <li style="--nav-idx: 4;"><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
         <li style="--nav-idx: 5;"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
@@ -523,7 +669,8 @@
 
     <!-- 1. Doctors Hero Section (Matching Reference Image 1) -->
     <section class="doctors-hero-banner" aria-labelledby="doctors-hero-heading">
-      <div class="container">
+      <div class="doctors-hero-watermark" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 2;">
         <!-- Breadcrumb Navigation -->
         <nav class="doctors-breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 1.25rem;">
           <a href="index.html" style="color: #64748B; text-decoration: none;">Home</a>
@@ -540,15 +687,6 @@
             <a href="index.html#enquiry" class="btn-hero-apt">
               Make an Appointment
             </a>
-          </div>
-
-          <!-- Right Column -->
-          <div class="doctors-hero-image-wrap">
-            <img 
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" 
-              alt="Experienced medical doctors consulting with patients at Sulakshaa Hospital" 
-              loading="eager"
-            >
           </div>
         </div>
 
@@ -1054,5 +1192,6 @@
 
   <!-- Core JavaScript -->
   <script src="script.js?v=27"></script>
+  <script src="navigation.js"></script>
 </body>
 </html>

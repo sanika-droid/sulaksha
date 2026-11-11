@@ -243,6 +243,19 @@ function initMobileNavigation() {
     });
   }
 
+  // Mobile Departments Mega Dropdown Accordion Toggle
+  const mobileDeptToggle = document.getElementById('mobileDeptToggle');
+  const mobileDeptParent = mobileDeptToggle ? mobileDeptToggle.closest('.mobile-nav-item-dropdown') : null;
+  if (mobileDeptToggle && mobileDeptParent) {
+    mobileDeptToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = mobileDeptParent.classList.toggle('is-open');
+      mobileDeptToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      const panel = document.getElementById('mobileDeptPanel');
+      if (panel) panel.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+    });
+  }
+
   // Close when clicking mobile links
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -264,15 +277,44 @@ function initMobileNavigation() {
 function initNavDropdowns() {
   const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
 
+  function alignMegaDropdowns() {
+    const megaDropdowns = document.querySelectorAll('.dept-mega-dropdown');
+    megaDropdowns.forEach(dropdown => {
+      const parent = dropdown.closest('.dept-mega-nav-item');
+      if (!parent) return;
+      const parentRect = parent.getBoundingClientRect();
+      const dropdownWidth = dropdown.offsetWidth || 740;
+      const screenWidth = window.innerWidth;
+      
+      let targetLeft = -90;
+      const rightEdge = parentRect.left + targetLeft + dropdownWidth;
+      if (rightEdge > screenWidth - 20) {
+        targetLeft -= (rightEdge - (screenWidth - 20));
+      }
+      if (parentRect.left + targetLeft < 16) {
+        targetLeft = -(parentRect.left - 16);
+      }
+      dropdown.style.left = `${targetLeft}px`;
+    });
+  }
+
+  window.addEventListener('resize', alignMegaDropdowns);
+
   dropdownItems.forEach(dropdown => {
     const toggle = dropdown.querySelector('.nav-dropdown-toggle');
-    const menu = dropdown.querySelector('.nav-dropdown-menu');
+    const menu = dropdown.querySelector('.nav-dropdown-menu, .dept-mega-dropdown');
     if (!toggle || !menu) return;
 
+    dropdown.addEventListener('mouseenter', alignMegaDropdowns);
+
     toggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = dropdown.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (window.innerWidth > 1120) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        if (isOpen) alignMegaDropdowns();
+      }
     });
 
     dropdown.addEventListener('keydown', (e) => {
@@ -1354,8 +1396,8 @@ function initInfoModals() {
       title: 'Nephrology & Renal Medicine',
       badge: 'Renal Care Centre',
       img: 'assets/nephrology-renal-medicine.png',
-      scope: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, electrolyte imbalances, and hypertension-related renal care.',
-      conditions: 'Chronic Kidney Disease (CKD), Diabetic Nephropathy, Acute Kidney Injury (AKI), Hypertensive Renal Disease, Electrolyte Imbalances, Nephritis.',
+      scope: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy, and hypertension-related renal care.',
+      conditions: 'Chronic Kidney Disease (CKD), Diabetic Nephropathy, Acute Kidney Injury (AKI), Hypertensive Renal Disease, Glomerulonephritis, Nephritis.',
       diagnostics: 'Renal Function &amp; eGFR Profiling, Renal Doppler Ultrasonography, Diabetic Kidney Protection Protocol, Medical ICU Renal Support.',
       doctors: 'Dr. Harish Kumar N. (Consultant Nephrologist &bull; MD, DM Nephrology)'
     },

@@ -109,6 +109,28 @@
       align-items: start;
     }
 
+    .facility-detail-grid.no-image {
+      grid-template-columns: 1fr;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .facility-detail-grid.no-image .facility-detail-info {
+      width: 100%;
+    }
+
+    .facility-detail-grid.no-image .facility-features-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .facility-detail-grid.no-image .facility-features-checklist {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .facility-detail-media-wrap {
       width: 100%;
       height: clamp(260px, 32vw, 400px);
@@ -305,7 +327,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
       
@@ -343,12 +365,12 @@
           <h1 class="facility-detail-title" id="facilityTitle">24/7 Casualty &amp; Emergency Trauma Unit</h1>
         </header>
 
-        <div class="facility-detail-grid">
+        <div class="facility-detail-grid" id="facilityGrid">
           <!-- Facility Image on the Left / Top -->
-          <div class="facility-detail-media-wrap">
+          <div class="facility-detail-media-wrap" id="facilityMediaWrap">
             <img 
               id="facilityImage" 
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&h=450&q=80" 
+              src="" 
               alt="Sulakshaa Hospital Facility Photograph"
               loading="eager"
             >
@@ -456,7 +478,7 @@
         title: '24/7 Casualty & Emergency Trauma Unit',
         category: 'Emergency and Critical Care',
         icon: 'shield-alert',
-        image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&h=450&q=80',
+        image: 'assets/facility-emergency-trauma.jpg',
         description: 'Sulakshaa Multi Speciality Hospital delivers rapid casualty and trauma care with direct ambulance portico access, dedicated resuscitation bays, point-of-care vital telemetry, and resident emergency medical officers on duty 24 hours a day to stabilize acute emergencies.',
         features: [
           'Zero-Wait Emergency Triage Protocol',
@@ -470,7 +492,7 @@
         title: 'Advanced Diagnostic Imaging & CT Scanning',
         category: 'Radiology and Imaging',
         icon: 'scan',
-        image: 'assets/advanced-diagnostics.png',
+        image: 'assets/facility-ct-scan.jpg',
         description: 'Equipped with precision multi-slice CT scanning, digital X-Ray, and 4D color Doppler ultrasound. Our radiology infrastructure provides high-definition cross-sectional imaging for accurate clinical diagnosis and emergency trauma assessments.',
         features: [
           'Multi-Slice Spiral CT Scanning',
@@ -484,7 +506,7 @@
         title: 'Automated Clinical Pathology & Biochemistry Lab',
         category: 'Laboratory and Diagnostics',
         icon: 'flask-conical',
-        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=700&h=450&q=80',
+        image: 'assets/facility-pathology-lab.jpg',
         description: 'Our fully automated hospital pathology laboratory delivers rapid diagnostic turnaround for complete blood counts, cardiac biomarkers (Troponin I), arterial blood gas (ABG), and comprehensive metabolic profiles under stringent quality standards.',
         features: [
           'Same-Day Emergency Diagnostic Assays',
@@ -498,7 +520,7 @@
         title: 'Monitored Intensive Care & Coronary Units (ICU)',
         category: 'Intensive Care Unit (ICU)',
         icon: 'heart-pulse',
-        image: 'assets/cardiac-care.jpg',
+        image: 'assets/facility-intensive-care.jpg',
         description: 'Purpose-engineered intensive care unit featuring continuous multi-parameter telemetry, invasive mechanical ventilators, and dedicated 1:1 bedside nursing for acute medical, post-surgical, and coronary patients requiring continuous vital monitoring.',
         features: [
           '24/7 Central Nursing Telemetry Monitoring',
@@ -512,7 +534,7 @@
         title: 'Inpatient Recovery Suites & Private Rooms',
         category: 'Inpatient Rooms and Recovery',
         icon: 'bed',
-        image: 'assets/sulakshaa-opd-lounge.png',
+        image: 'assets/facility-inpatient-recovery.jpg',
         description: 'Thoughtfully designed patient accommodations providing a hygienic and tranquil healing environment. Accommodations include private air-conditioned suites, semi-private rooms, and general recovery wards with barrier-free wheelchair access.',
         features: [
           'Air-Conditioned Private & Deluxe Rooms',
@@ -526,7 +548,7 @@
         title: '24/7 In-House Chemist & Emergency Pharmacy',
         category: 'In-House Pharmacy',
         icon: 'store',
-        image: 'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&w=700&h=450&q=80',
+        image: 'assets/facility-pharmacy.jpg',
         description: 'Fully licensed on-campus hospital chemist providing round-the-clock availability of verified medications, critical care injectables, cardiology drugs, surgical disposables, and outpatient prescription services.',
         features: [
           '24/7 Dispensing Counter on Ground Floor',
@@ -540,7 +562,7 @@
         title: 'Sterile Surgical Operation Theatres (OT)',
         category: 'Surgical Facilities',
         icon: 'activity',
-        image: 'assets/journey-robotic-surgery.jpg',
+        image: 'assets/facility-operation-theatre.jpg',
         description: 'Modern modular surgical suites equipped with laminar airflow HEPA filtration, advanced anesthesia workstations, and an adjacent post-anesthesia care unit (PACU) supporting general, orthopedic, and emergency procedures.',
         features: [
           'Laminar Airflow HEPA Sterilization',
@@ -554,7 +576,7 @@
         title: 'OPD Consultation Clinics & Patient Waiting Lounge',
         category: 'Consultation and Outpatient Services',
         icon: 'armchair',
-        image: 'assets/sulakshaa-reception.jpg',
+        image: 'assets/facility-opd-lounge.jpg',
         description: 'Spacious and welcoming outpatient reception wing featuring digital queue token systems, comfortable air-conditioned seating, private consulting chambers, and prompt patient coordination desks.',
         features: [
           'Air-Conditioned Patient Waiting Lounge',
@@ -582,9 +604,25 @@
       document.getElementById('facilityCategoryText').textContent = facility.category;
       document.getElementById('facilityDescription').textContent = facility.description;
 
+      const gridEl = document.getElementById('facilityGrid');
+      const mediaWrapEl = document.getElementById('facilityMediaWrap');
       const imgEl = document.getElementById('facilityImage');
-      imgEl.src = facility.image;
-      imgEl.alt = `${facility.title} at Sulakshaa Multi Speciality Hospital`;
+
+      if (facility.image && facility.image.trim() !== '') {
+        if (mediaWrapEl) mediaWrapEl.style.display = 'block';
+        if (gridEl) gridEl.classList.remove('no-image');
+        if (imgEl) {
+          imgEl.src = facility.image;
+          imgEl.alt = `${facility.title} at Sulakshaa Multi Speciality Hospital`;
+        }
+      } else {
+        if (mediaWrapEl) mediaWrapEl.style.display = 'none';
+        if (gridEl) gridEl.classList.add('no-image');
+        if (imgEl) {
+          imgEl.src = '';
+          imgEl.alt = '';
+        }
+      }
 
       const listEl = document.getElementById('facilityFeaturesList');
       listEl.innerHTML = '';
@@ -610,7 +648,9 @@
       }
     }
 
+    loadFacilityDetails();
     window.addEventListener('DOMContentLoaded', loadFacilityDetails);
   </script>
+  <script src="navigation.js"></script>
 </body>
 </html>

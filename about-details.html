@@ -495,13 +495,243 @@
       font-weight: 700;
     }
 
+    /* Suyog-style Clean Typography & Components (Reference Images 1-4) */
+    .suyog-kicker {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #334155;
+      display: block;
+      margin-bottom: 0.35rem;
+      text-transform: none;
+    }
+
+    .suyog-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.6rem, 2.4vw, 2.15rem);
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .suyog-p {
+      font-size: 0.93rem;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 1.15rem;
+    }
+
+    .suyog-p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Reference 2: Overlapping Images Collage */
+    .about-collage-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .collage-top-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 68%;
+      height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(11, 37, 104, 0.12);
+      border: 3px solid #FFFFFF;
+      background: #0B2568;
+      z-index: 1;
+    }
+
+    .collage-top-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .collage-bottom-img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 68%;
+      height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(11, 37, 104, 0.16);
+      border: 3px solid #FFFFFF;
+      background: #F8FAFC;
+      z-index: 2;
+    }
+
+    .collage-bottom-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Reference 3: Accreditation & Vision/Mission Box Styles */
+    .accreditation-block {
+      max-width: 960px;
+      margin: 0 auto 2.25rem auto;
+      text-align: center;
+    }
+
+    .accreditation-sub {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 0.35rem;
+    }
+
+    .accreditation-main {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 0.85rem;
+    }
+
+    .accreditation-lead {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 0.65rem;
+      line-height: 1.55;
+    }
+
+    .accreditation-desc {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 0.65rem;
+    }
+
+    .accreditation-quote {
+      font-size: 0.92rem;
+      color: #1E293B;
+      line-height: 1.6;
+    }
+
+    .vm-suyog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .vm-box {
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      background: #FFFFFF;
+    }
+
+    .vm-box-vision {
+      border: 2px solid #FBCFE8;
+      background: #FFFDFE;
+    }
+
+    .vm-box-mission {
+      border: 2px solid #0B2568;
+      background: #FAFCFF;
+    }
+
+    .vm-box-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      color: #0F172A;
+    }
+
+    .vm-suyog-list {
+      padding-left: 1.4rem;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .vision-list {
+      list-style-type: disc;
+    }
+
+    .mission-list {
+      list-style-type: square;
+    }
+
+    /* Reference 4: Founder's Message */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 2.25rem;
+      align-items: center;
+    }
+
+    .founder-media-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(11, 37, 104, 0.08);
+      text-align: center;
+    }
+
+    .founder-img-wrap {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(180deg, #EBF4FC 0%, #FFFFFF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .founder-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      transition: transform 0.3s ease;
+    }
+
+    .founder-media-card:hover .founder-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .founder-caption {
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0B2568;
+      border-top: 1px solid #EEF2F6;
+      background: #FFFFFF;
+    }
+
     /* Responsive Breakpoints */
     @media (max-width: 991px) {
       .about-intro-grid {
         grid-template-columns: 1fr;
       }
-      .vision-mission-grid {
+      .vision-mission-grid,
+      .vm-suyog-grid {
         grid-template-columns: 1fr;
+      }
+      .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       .values-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -512,6 +742,16 @@
     }
 
     @media (max-width: 640px) {
+      .about-collage-wrap {
+        min-height: 280px;
+        max-width: 320px;
+      }
+      .collage-top-img, .collage-bottom-img {
+        height: 180px;
+      }
+      .founder-img-wrap {
+        height: 300px;
+      }
       .values-grid {
         grid-template-columns: 1fr;
       }
@@ -827,7 +1067,7 @@
         <div class="brand-divider" aria-hidden="true"></div>
         <div class="brand-text-container">
           <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">hospitals</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
         </div>
       </a>
 
@@ -836,7 +1076,96 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="about-details.html" class="nav-link active">About Us</a></li>
-          <li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li>
+                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -878,7 +1207,50 @@
       <ul class="mobile-nav-list">
         <li><a href="index.html" class="mobile-nav-link">Home</a></li>
         <li><a href="about-details.html" class="mobile-nav-link active">About Us</a></li>
-        <li><a href="departments.html" class="mobile-nav-link">Departments</a></li>
+                <li class="mobile-nav-item-dropdown" style="--nav-idx: 2;">
+          <div class="mobile-dropdown-header-wrap">
+            <a href="departments.html" class="mobile-nav-link">Departments</a>
+            <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
+              <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
+            </button>
+          </div>
+          <div class="mobile-dept-dropdown-panel" id="mobileDeptPanel" aria-hidden="true">
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Centres of Excellence</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics &amp; Joint Care</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology &amp; Hepatology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology &amp; Brain Health</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology &amp; Renal Care</a></li>
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency (24/7)</a></li>
+              </ul>
+            </div>
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Specialities</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency</a></li>
+                <li><a href="department-details.html?dept=anaesthesiology" class="mobile-dept-link">Anaesthesiology &amp; Critical Care</a></li>
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=dermatology" class="mobile-dept-link">Dermatology</a></li>
+                <li><a href="department-details.html?dept=ent" class="mobile-dept-link">ENT (Ear, Nose &amp; Throat)</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology</a></li>
+                <li><a href="department-details.html?dept=general-medicine" class="mobile-dept-link">General Medicine</a></li>
+                <li><a href="department-details.html?dept=general-surgery" class="mobile-dept-link">General Surgery</a></li>
+                <li><a href="department-details.html?dept=maternity-care" class="mobile-dept-link">Obstetrics &amp; Gynaecology</a></li>
+                <li><a href="department-details.html?dept=oncology" class="mobile-dept-link">Oncology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics</a></li>
+                <li><a href="department-details.html?dept=paediatrics" class="mobile-dept-link">Paediatrics</a></li>
+                <li><a href="department-details.html?dept=psychiatry" class="mobile-dept-link">Psychiatry</a></li>
+                <li><a href="department-details.html?dept=pulmonology" class="mobile-dept-link">Pulmonology</a></li>
+                <li><a href="department-details.html?dept=urology" class="mobile-dept-link">Urology</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology</a></li>
+              </ul>
+              <a href="departments.html" class="mobile-dept-view-all">View All Departments &rarr;</a>
+            </div>
+          </div>
+        </li>
         <li><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
         <li><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
         <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
@@ -933,64 +1305,112 @@
         </p>
       </section>
 
-      <!-- Section 1: Hospital Introduction & History -->
+      <!-- Section 1: About Us / A Sanctuary of Healing & Care (Reference Image 2) -->
       <section class="about-detail-section" id="introduction-history">
-        <div class="about-section-header">
-          <span class="about-section-pill">OUR JOURNEY &amp; FOUNDATION</span>
-          <h2 class="about-section-heading">Hospital Introduction &amp; History</h2>
-        </div>
-        <div class="about-intro-grid">
-          <div class="about-intro-text">
-            <p>
-              Sulakshaa Multi Speciality Hospital was founded with a clear, noble vision: to make comprehensive, high-quality multi-speciality medical care readily accessible, compassionate, and transparent for families across Mysuru and neighboring districts of Karnataka.
-            </p>
-            <p>
-              Guided by senior physician <strong>Dr. Laxme Gowda</strong>, our hospital combines seasoned clinical leadership with purpose-built clinical infrastructure. Over the years, we have grown from an ambitious healthcare vision into a trusted healthcare destination, delivering round-the-clock emergency medical response, specialized consultations, modern surgical care, and intensive patient monitoring.
-            </p>
-            <p>
-              Every department at Sulakshaa Hospital operates on the principle of empathy, dignity, and clinical excellence — ensuring patients receive uncompromised diagnostic accuracy and personalized treatment plans in a supportive, reassuring healing environment.
-            </p>
-          </div>
-          <div class="about-image-frame">
-            <img 
-              src="assets/sulakshaa-building-exterior.png" 
-              alt="Sulakshaa Multi Speciality Hospital Modern Building Facade in Mysuru"
-              loading="eager"
-            >
-            <div class="about-image-caption">
-              <i data-lucide="building-2" class="icon-xs"></i>
-              <span>Modern Hospital Campus &amp; 24/7 Emergency Care Center, Mysuru</span>
+        <div class="about-intro-grid" style="align-items: center;">
+          <!-- Left: Signature Overlapping Image Collage -->
+          <div class="about-collage-wrap">
+            <div class="collage-top-img">
+              <img 
+                src="assets/advanced-diagnostics.png" 
+                alt="Advanced Diagnostic Imaging and CT Suite at Sulakshaa Hospital"
+                loading="eager"
+              >
             </div>
+            <div class="collage-bottom-img">
+              <img 
+                src="assets/general-medicine-consultation.png" 
+                alt="Physician Consultation and Compassionate Patient Care at Sulakshaa Hospital"
+                loading="eager"
+              >
+            </div>
+          </div>
+
+          <!-- Right: Introduction Content -->
+          <div class="about-intro-text">
+            <span class="suyog-kicker">About Us</span>
+            <h2 class="suyog-title">A Sanctuary of Healing &amp; Clinical Care</h2>
+            <p class="suyog-p">
+              <strong>SULAKSHAA HOSPITAL</strong> — A Sanctuary of Healing &amp; Clinical Care, is a premier multi-speciality hospital located in Mysuru city in the southern state of Karnataka, India. The hospital is envisioned with the aim of bringing the highest standards of holistic medical care at an affordable cost.
+            </p>
+            <p class="suyog-p">
+              Healthcare at <strong>SULAKSHAA HOSPITAL</strong> is not just about treating ailments, but caring for patients with <strong>Compassion</strong> and <strong>Empathy</strong>, along with an indomitable team of Specialists and Experts, whose proficiency is backed by cutting edge equipment and modern clinical amenities to provide unmatched service to patients.
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- Section 2: Vision & Mission -->
+      <!-- Section 2: Quality Standards, Vision & Mission (Reference Image 3) -->
       <section class="about-detail-section" id="vision-mission">
-        <div class="about-section-header">
-          <span class="about-section-pill">OUR GUIDING PURPOSE</span>
-          <h2 class="about-section-heading">Vision &amp; Mission</h2>
+        <div class="accreditation-block">
+          <div class="accreditation-sub">Quality Council of India (QCI) Standards</div>
+          <h2 class="accreditation-main">National Accreditation Board for Hospitals &amp; Healthcare Providers (NABH) Guidelines</h2>
+          <p class="accreditation-lead">
+            <strong>Sulakshaa Multi Speciality Hospital</strong> adheres to stringent quality benchmarks — a mark of excellence in healthcare quality and patient safety.
+          </p>
+          <p class="accreditation-desc">
+            Adherence to rigorous clinical benchmarks reflects our commitment to delivering the highest standards of medical care, ensuring that every patient receives safe, ethical, and evidence-based treatment. Our hospital meets stringent quality benchmarks across all areas, including patient rights, infection control, modern infrastructure, clinical staff training, and continuous quality improvement.
+          </p>
+          <p class="accreditation-quote">
+            This recognition reinforces our mission to provide compassionate, affordable, and trusted healthcare services, guided by transparency and trust. <strong>At Sulakshaa Hospital, quality is not just a protocol — it's a promise.</strong>
+          </p>
         </div>
-        <div class="vision-mission-grid">
-          <!-- Vision Card -->
-          <div class="vm-card vm-card-vision">
-            <div class="vm-icon-box">
-              <i data-lucide="compass" class="icon-md"></i>
-            </div>
-            <h3 class="vm-card-title">Our Vision</h3>
-            <p class="vm-card-desc">
-              To be recognized as the most trusted and reliable multi-speciality healthcare institution in Mysuru, celebrated for exemplary clinical outcomes, empathetic patient relationships, ethical medical practice, and advanced technological capabilities accessible to all segments of society.
-            </p>
+
+        <!-- Vision and Mission Side-by-Side Bordered Boxes -->
+        <div class="vm-suyog-grid">
+          <!-- Left: Our Vision (Pink/Rose Border) -->
+          <div class="vm-box vm-box-vision">
+            <h3 class="vm-box-title">Our Vision</h3>
+            <ul class="vm-suyog-list vision-list">
+              <li>To provide access to superior quality integrated health care at an affordable cost with empathy &amp; compassion.</li>
+              <li>Complete care with concern.</li>
+              <li>To evolve as a trusted <strong>"Sanctuary of Healing"</strong> for Mysuru and surrounding regions.</li>
+            </ul>
           </div>
 
-          <!-- Mission Card -->
-          <div class="vm-card vm-card-mission">
-            <div class="vm-icon-box">
-              <i data-lucide="target" class="icon-md"></i>
+          <!-- Right: Our Mission (Navy Border) -->
+          <div class="vm-box vm-box-mission">
+            <h3 class="vm-box-title">Our Mission</h3>
+            <ul class="vm-suyog-list mission-list">
+              <li>Best clinical outcomes in the most effective, efficient and caring environment.</li>
+              <li>Continuous upgradation of advanced clinical equipment and diagnostic facilities.</li>
+              <li>To produce &amp; train highly skilled health science &amp; allied healthcare professionals.</li>
+              <li>Continuous community health education, preventive wellness, and ethical care.</li>
+              <li>To deliver accessible, affordable multi-speciality care with 24/7 emergency response.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2b: Founder's Message (Reference Image 4) -->
+      <section class="about-detail-section" id="founder-message">
+        <div class="founder-grid">
+          <!-- Left Column: Founder Photo & Caption -->
+          <div class="founder-media-card">
+            <div class="founder-img-wrap">
+              <img 
+                src="assets/dr-laxme-gowda.png" 
+                alt="Dr. Laxme Gowda, Founder and Senior Consultant Physician of Sulakshaa Multi Speciality Hospital"
+                loading="lazy"
+              >
             </div>
-            <h3 class="vm-card-title">Our Mission</h3>
-            <p class="vm-card-desc">
-              To deliver compassionate, comprehensive, and evidence-based clinical services 24 hours a day, 365 days a year. We aim to continually upgrade medical infrastructure, foster patient-first clinical protocols, minimize waiting times, and empower families with health education and preventive wellness.
+            <div class="founder-caption">
+              Dr. Laxme Gowda, Founder and Senior Consultant Physician of Sulakshaa Hospital
+            </div>
+          </div>
+
+          <!-- Right Column: Founder's Message Content -->
+          <div class="founder-content">
+            <span class="suyog-kicker">About Us</span>
+            <h2 class="suyog-title">Founder's Message</h2>
+            <p class="suyog-p">
+              <strong>SULAKSHAA HOSPITAL</strong> was established with a dream of making it a <em>"Sanctuary of Healing"</em> serving the community with compassion along with complete care &amp; concern.
+            </p>
+            <p class="suyog-p">
+              <strong>SULAKSHAA HOSPITAL</strong> is equipped with highly qualified doctors &amp; technocrats facilitated by state of the art equipment. We are committed to deliver healthcare education to produce highly skilled health personnel &amp; to create health awareness among common man.
+            </p>
+            <p class="suyog-p">
+              <strong>SULAKSHAA HOSPITAL</strong> delivers both ancient &amp; modern systems of integrated medicine with Holistic Approach.
             </p>
           </div>
         </div>
@@ -1298,5 +1718,6 @@
       }
     });
   </script>
+  <script src="navigation.js"></script>
 </body>
 </html>
