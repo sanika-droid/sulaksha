@@ -462,18 +462,18 @@
 
     .dept-stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
 
     @media (max-width: 991px) {
       .dept-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
       .dept-stats-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
@@ -630,46 +630,64 @@
 
     .dept-team-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.15rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 1200px) {
+      .dept-team-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
     }
 
     @media (max-width: 991px) {
       .dept-team-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
       }
     }
 
     @media (max-width: 640px) {
       .dept-team-grid {
         grid-template-columns: 1fr;
+        gap: 0.95rem;
+      }
+      .dept-doctor-card {
+        max-width: 340px;
+        margin: 0 auto;
       }
     }
 
-    /* Doctor Card Styled Exactly like Reference Image 4 */
+    /* Compact Department Doctor Profile Card */
     .dept-doctor-card {
+      width: 100%;
+      height: 100%;
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(11, 37, 104, 0.06);
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.06);
       display: flex;
       flex-direction: column;
       text-align: center;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .dept-doctor-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(11, 37, 104, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(11, 37, 104, 0.11);
       border-color: #0088D1;
     }
 
     .dept-doc-photo-stage {
-      height: 270px;
+      width: 100%;
+      height: 185px;
       background: linear-gradient(180deg, #EBF4FB 0%, #FFFFFF 100%);
       overflow: hidden;
       position: relative;
+      flex-shrink: 0;
     }
 
     .dept-doc-img {
@@ -677,7 +695,8 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      transition: transform 0.4s ease;
+      display: block;
+      transition: transform 0.35s ease;
     }
 
     .dept-doctor-card:hover .dept-doc-img {
@@ -685,7 +704,7 @@
     }
 
     .dept-doc-card-body {
-      padding: 1.5rem 1.25rem;
+      padding: 0.9rem 0.9rem 0.85rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -693,61 +712,64 @@
 
     .dept-doc-name {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.2rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
       line-height: 1.25;
     }
 
     .dept-doc-designation {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: #0088D1;
-      margin-bottom: 0.85rem;
-      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
 
     .dept-doc-qual-heading {
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #94A3B8;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.15rem;
     }
 
     .dept-doc-qual-text {
-      font-size: 0.825rem;
+      font-size: 0.76rem;
       color: #4B617E;
-      margin-bottom: 1.25rem;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
     }
 
     .dept-doc-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       margin-top: auto;
-      padding-top: 1rem;
+      padding-top: 0.65rem;
       border-top: 1px solid #F1F5F9;
     }
 
     .dept-doc-btn {
       flex: 1;
-      padding: 0.55rem 0.75rem;
-      font-size: 0.82rem;
+      padding: 0.44rem 0.45rem;
+      font-size: 0.73rem;
       font-weight: 600;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
+      gap: 0.28rem;
+      white-space: nowrap;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .btn-view-profile {
+      flex: 0.88;
       background: #F0F8FE;
       color: #0088D1;
       border: 1px solid rgba(0, 136, 209, 0.3);
@@ -759,6 +781,7 @@
     }
 
     .btn-book-doc {
+      flex: 1.12;
       background: #0B2568;
       color: #FFFFFF;
       border: 1px solid #0B2568;
@@ -888,15 +911,15 @@
       position: relative;
       height: 220px;
       overflow: hidden;
-      background: #071948;
+      background: #F8FAFC;
     }
 
     .dept-video-thumb {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.88;
-      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 1;
+      transition: transform 0.4s ease;
     }
 
     .dept-video-card:hover .dept-video-thumb {
@@ -1430,16 +1453,6 @@
           <div>
             <div class="dept-stat-number" data-count="20">20+</div>
             <div class="dept-stat-label">Specialities</div>
-          </div>
-        </div>
-
-        <div class="dept-stat-item">
-          <div class="dept-stat-icon-wrap">
-            <i data-lucide="scissors" class="icon-md"></i>
-          </div>
-          <div>
-            <div class="dept-stat-number" data-count="2000">2,000+</div>
-            <div class="dept-stat-label">Surgeries</div>
           </div>
         </div>
 

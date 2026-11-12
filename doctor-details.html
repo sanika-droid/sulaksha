@@ -171,6 +171,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       max-width: 340px;
       width: 100%;
+      overflow: hidden;
     }
 
     .doc-hero-img-card img {
@@ -180,6 +181,11 @@
       border-radius: 8px;
       background: #FFFFFF;
       display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .doc-hero-img-card:hover img {
+      transform: scale(1.03);
     }
 
     /* Main Content Section (Reference Image 4) */

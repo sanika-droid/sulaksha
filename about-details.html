@@ -547,7 +547,7 @@
       overflow: hidden;
       box-shadow: 0 10px 25px rgba(11, 37, 104, 0.12);
       border: 3px solid #FFFFFF;
-      background: #0B2568;
+      background: #F8FAFC;
       z-index: 1;
     }
 
@@ -556,6 +556,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .collage-top-img:hover img,
+    .collage-bottom-img:hover img {
+      transform: scale(1.04);
     }
 
     .collage-bottom-img {
@@ -577,6 +583,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.35s ease;
     }
 
     /* Reference 3: Accreditation & Vision/Mission Box Styles */
