@@ -609,10 +609,10 @@ button, input, select, textarea {
 }
 
 .brand-logo {
-  height: 48px;
-  width: 48px;
-  max-height: 50px;
-  max-width: 50px;
+  height: 58px;
+  width: 58px;
+  max-height: 60px;
+  max-width: 60px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -7470,10 +7470,10 @@ button, input, select, textarea {
   }
 
   .brand-logo {
-    height: 38px !important;
-    width: 38px !important;
-    max-height: 38px !important;
-    max-width: 38px !important;
+    height: 44px !important;
+    width: 44px !important;
+    max-height: 44px !important;
+    max-width: 44px !important;
     flex-shrink: 0;
   }
 
@@ -7514,10 +7514,10 @@ button, input, select, textarea {
   }
 
   .brand-logo {
-    height: 34px !important;
-    width: 34px !important;
-    max-height: 34px !important;
-    max-width: 34px !important;
+    height: 40px !important;
+    width: 40px !important;
+    max-height: 40px !important;
+    max-width: 40px !important;
   }
 
   .brand-divider {
@@ -11160,8 +11160,10 @@ section[id], [id] {
 
 @media (max-width: 768px) {
   .brand-logo {
-    height: 40px !important;
-    width: 40px !important;
+    height: 44px !important;
+    width: 44px !important;
+    max-height: 44px !important;
+    max-width: 44px !important;
   }
   .brand-divider {
     height: 32px !important;
@@ -11181,8 +11183,10 @@ section[id], [id] {
 
 @media (max-width: 480px) {
   .brand-logo {
-    height: 34px !important;
-    width: 34px !important;
+    height: 38px !important;
+    width: 38px !important;
+    max-height: 38px !important;
+    max-width: 38px !important;
   }
   .brand-divider {
     height: 28px !important;

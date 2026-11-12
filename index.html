@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=39">
 
   <!-- Core Facilities Layout Styles (Ensures Instant Correct Rendering & Cache-Immunity) -->
   
@@ -3080,108 +3080,6 @@
       <div class="container">
         <div class="section-header text-center reveal-on-scroll">
           <h2 id="video-spotlight-heading" class="section-title">Our Videos</h2>
-        </div>
-      </div>
-
-      <!-- Videos Carousel Container with Left/Right Buttons -->
-      <div class="videos-carousel-container" id="videosCarouselContainer">
-        <!-- Manual Navigation Buttons -->
-        <button type="button" class="video-scroll-btn video-scroll-prev" id="videoScrollPrevBtn" aria-label="Previous videos">
-          <i data-lucide="chevron-left" class="icon-md"></i>
-        </button>
-        <button type="button" class="video-scroll-btn video-scroll-next" id="videoScrollNextBtn" aria-label="Next videos">
-          <i data-lucide="chevron-right" class="icon-md"></i>
-        </button>
-
-        <!-- Viewport -->
-        <div class="videos-carousel-viewport" id="videosCarouselViewport" role="region" aria-label="Our Videos Gallery" tabindex="0">
-          <div class="videos-carousel-track" id="videosCarouselTrack">
-
-            <!-- Video Card 1 -->
-            <article class="hospital-video-card">
-              <div class="video-card-thumb-wrap">
-                <img src="assets/orthopedics-joint-replacement.png" alt="Build Healthy Bones of your Body" loading="lazy">
-                <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-youtube-play-btn" aria-label="Play Video: Build Healthy Bones">
-                  <i data-lucide="play" class="icon-md"></i>
-                </a>
-              </div>
-              <div class="video-card-bottom-bar">
-                <h3 class="video-card-bottom-title">Build Healthy Bones of your Body</h3>
-                <div class="video-card-bottom-actions">
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-yt-link">
-                    <i data-lucide="youtube" class="icon-xs"></i> Watch on YouTube
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-link-icon" aria-label="Copy Video Link">
-                    <i data-lucide="link-2" class="icon-sm"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Video Card 2 -->
-            <article class="hospital-video-card">
-              <div class="video-card-thumb-wrap">
-                <img src="assets/sulakshaa-building-exterior.jpg" alt="Sulakshaa Hospital Campus Video Tour" loading="lazy">
-                <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-youtube-play-btn" aria-label="Play Hospital Campus Tour">
-                  <i data-lucide="play" class="icon-md"></i>
-                </a>
-              </div>
-              <div class="video-card-bottom-bar">
-                <h3 class="video-card-bottom-title">Let's rewind and cherish the... Mysuru's Finest Destination</h3>
-                <div class="video-card-bottom-actions">
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-yt-link">
-                    <i data-lucide="youtube" class="icon-xs"></i> Watch on YouTube
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-link-icon" aria-label="Copy Video Link">
-                    <i data-lucide="link-2" class="icon-sm"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Video Card 3 -->
-            <article class="hospital-video-card">
-              <div class="video-card-thumb-wrap">
-                <img src="assets/general-laparoscopic-surgery.png" alt="Enhanced Recovery After Surgery" loading="lazy">
-                <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-youtube-play-btn" aria-label="Play Enhanced Recovery Video">
-                  <i data-lucide="play" class="icon-md"></i>
-                </a>
-              </div>
-              <div class="video-card-bottom-bar">
-                <h3 class="video-card-bottom-title">Enhanced recovery after surgery</h3>
-                <div class="video-card-bottom-actions">
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-yt-link">
-                    <i data-lucide="youtube" class="icon-xs"></i> Watch on YouTube
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-link-icon" aria-label="Copy Video Link">
-                    <i data-lucide="link-2" class="icon-sm"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Video Card 4 -->
-            <article class="hospital-video-card">
-              <div class="video-card-thumb-wrap">
-                <img src="assets/cardiac-care.jpg" alt="Cardiac Care Video" loading="lazy">
-                <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-youtube-play-btn" aria-label="Play Cardiac Care Video">
-                  <i data-lucide="play" class="icon-md"></i>
-                </a>
-              </div>
-              <div class="video-card-bottom-bar">
-                <h3 class="video-card-bottom-title">Advanced Cardiac Care &amp; Emergency Triage</h3>
-                <div class="video-card-bottom-actions">
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-yt-link">
-                    <i data-lucide="youtube" class="icon-xs"></i> Watch on YouTube
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="video-card-link-icon" aria-label="Copy Video Link">
-                    <i data-lucide="link-2" class="icon-sm"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-          </div>
         </div>
       </div>
     </section>
