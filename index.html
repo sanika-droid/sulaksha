@@ -30,15 +30,51 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=42">
 
   <!-- Core Facilities Layout Styles (Ensures Instant Correct Rendering & Cache-Immunity) -->
   
   <style id="departments-modern-css">
-    /* Hero Section - Full Hospital Showcase without Cropping or Gaps (Expanded Horizontal Width) */
+    /* Homepage Header & Solid Action Buttons Visibility */
+    .site-header {
+      background-color: #FFFFFF !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      z-index: 1000 !important;
+    }
+    #headerEmergencyBtn,
+    .header-actions .btn-outline-emergency {
+      background-color: #FFFFFF !important;
+      color: #D92D20 !important;
+      border: 1.5px solid #D92D20 !important;
+      opacity: 1 !important;
+    }
+    #headerEmergencyBtn:hover,
+    .header-actions .btn-outline-emergency:hover {
+      background-color: #FEF3F2 !important;
+      color: #B42318 !important;
+      border-color: #B42318 !important;
+    }
+    #headerAppointmentBtn,
+    .header-actions .btn-primary {
+      background-color: #087DC1 !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid #087DC1 !important;
+      opacity: 1 !important;
+    }
+    #headerAppointmentBtn:hover,
+    .header-actions .btn-primary:hover {
+      background-color: #0B2568 !important;
+      color: #FFFFFF !important;
+      border-color: #0B2568 !important;
+    }
+
+    /* Hero Section - Full-Width Edge-to-Edge Responsive Hospital Showcase (Complete 3:2 Proportions, No Cropping) */
     .hero-section,
     .hero-section.hero-full-coverage,
     .hero-section.hero-pure-slideshow {
+      position: relative !important;
+      z-index: 1 !important;
       width: 100% !important;
       max-width: 100% !important;
       height: auto !important;
@@ -46,9 +82,7 @@
       max-height: unset !important;
       background-color: #FFFFFF !important;
       overflow: hidden !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
+      display: block !important;
       margin: 0 !important;
       padding: 0 !important;
     }
@@ -62,17 +96,16 @@
     .hero-slideshow-container {
       width: 100% !important;
       max-width: 100% !important;
-      width: 100% !important;
-      height: clamp(340px, 56.25vw, 720px) !important;
-      max-height: 720px !important;
-      aspect-ratio: unset !important;
+      height: auto !important;
+      max-height: none !important;
+      aspect-ratio: 3 / 2 !important;
       min-height: unset !important;
       position: relative !important;
       overflow: hidden !important;
-      background-color: #061743 !important;
+      background-color: #FFFFFF !important;
       border-radius: 0 !important;
       box-shadow: 0 10px 32px rgba(11, 37, 104, 0.08) !important;
-      margin: 0 auto !important;
+      margin: 0 !important;
       padding: 0 !important;
     }
     @media (max-width: 640px) {
@@ -81,6 +114,9 @@
         box-shadow: none !important;
         width: 100% !important;
         max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        aspect-ratio: 3 / 2 !important;
       }
     }
     .hero-slide {
@@ -91,54 +127,34 @@
       margin: 0 !important;
       padding: 0 !important;
       overflow: hidden !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background-color: #061743 !important;
+      display: block !important;
+      background-color: #FFFFFF !important;
+      transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 600ms !important;
+    }
+    .hero-slide.active {
+      transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s !important;
     }
     .hero-backdrop {
-      display: block !important;
-      position: absolute !important;
-      inset: -25px !important;
-      z-index: 1 !important;
-      overflow: hidden !important;
-      pointer-events: none !important;
+      display: none !important;
     }
-    .hero-backdrop-img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
-      object-position: center center !important;
-      filter: blur(32px) saturate(1.3) brightness(0.65) !important;
-      transform: scale(1.15) !important;
-      opacity: 0.95 !important;
-      display: block !important;
-    }
-    .hero-bg-img {
+    .hero-bg-img,
+    .hero-bg-img.hero-bg-exterior,
+    .hero-bg-img.hero-bg-reception,
+    .hero-bg-img.hero-bg-lounge {
       position: relative !important;
       z-index: 2 !important;
       width: 100% !important;
       height: 100% !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
-      object-fit: contain !important;
+      max-width: none !important;
+      max-height: none !important;
+      object-fit: cover !important;
       object-position: center center !important;
       display: block !important;
       border-radius: 0 !important;
-      filter: none !important;
-      margin: 0 auto !important;
-    }
-    .hero-bg-img.hero-bg-exterior {
-      object-fit: contain !important;
-      object-position: center center !important;
-    }
-    .hero-bg-img.hero-bg-reception {
-      object-fit: contain !important;
-      object-position: center center !important;
-    }
-    .hero-bg-img.hero-bg-lounge {
-      object-fit: contain !important;
-      object-position: center center !important;
+      filter: contrast(1.03) saturate(1.03) !important;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      margin: 0 !important;
     }
 
     /* Remove unwanted excessive spacing between sections across the website */
@@ -1620,7 +1636,7 @@
     "image": "assets/hospital-building.png",
     "logo": "assets/sulakshaa-logo.png",
     "url": "https://www.sulakshaahospital.com/",
-    "telephone": "+91-95357-47478",
+    "telephone": ["+91-95357-47478", "0821-3525555", "0821-3525544"],
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
@@ -1671,13 +1687,13 @@
         <span>Mysuru, Karnataka</span>
       </div>
       <div class="top-bar-right">
-        <a href="tel:08212520000" class="top-bar-link">
+        <span class="top-bar-link">
           <i data-lucide="phone" class="icon-xs"></i>
-          <span>0821-2520000</span>
-        </a>
+          <span><a href="tel:08213525555" style="color:inherit;text-decoration:none;">0821-3525555</a> / <a href="tel:08213525544" style="color:inherit;text-decoration:none;">0821-3525544</a></span>
+        </span>
         <a href="tel:+919535747478" class="top-bar-link">
           <i data-lucide="phone-call" class="icon-xs"></i>
-          <span>+91 95357 47478</span>
+          <span>9535747478</span>
         </a>
         <div class="top-bar-socials">
           <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
@@ -1807,7 +1823,7 @@
 
       <!-- Header Action Buttons -->
       <div class="header-actions">
-        <a href="tel:+919535747478" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency: +91 95357 47478">
+        <a href="tel:+919535747478" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency: 9535747478">
           <i data-lucide="phone" class="icon-sm"></i>
           <span class="btn-text">24/7 Emergency</span>
         </a>
@@ -1830,7 +1846,14 @@
   <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
     <div class="mobile-nav-inner">
       <div class="mobile-nav-header">
-        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
+        <a href="#hero" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
+          </div>
+        </a>
         <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
           <i data-lucide="x" class="icon-md"></i>
         </button>
@@ -1892,7 +1915,7 @@
         <a href="contact.html#appointmentEnquiryContainer" class="btn btn-primary btn-block mobile-drawer-btn">
           <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
         </a>
-        <a href="tel:+918212345678" class="btn btn-emergency btn-block mobile-drawer-btn">
+        <a href="tel:+919535747478" class="btn btn-emergency btn-block mobile-drawer-btn">
           <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
         </a>
       </div>
@@ -1909,9 +1932,6 @@
       <div class="hero-slideshow-container" id="heroSlideshow" aria-label="Sulakshaa Hospital Tour" tabindex="0" role="region">
         <!-- Slide 1: Sulakshaa Hospital Building Exterior -->
         <div class="hero-slide active" data-slide-index="0" aria-hidden="false">
-          <div class="hero-backdrop" aria-hidden="true">
-            <img src="assets/sulakshaa-building-exterior.jpg" alt="" class="hero-backdrop-img">
-          </div>
           <img 
             src="assets/sulakshaa-building-exterior.jpg" 
             alt="Sulakshaa Multi Speciality Hospital Building Facade in Mysuru" 
@@ -1922,14 +1942,11 @@
 
         <!-- Slide 2: Hospital Waiting Area -->
         <div class="hero-slide" data-slide-index="1" aria-hidden="true">
-          <div class="hero-backdrop" aria-hidden="true">
-            <img src="assets/sulakshaa-opd-lounge.png" alt="" class="hero-backdrop-img">
-          </div>
           <img 
             src="assets/sulakshaa-opd-lounge.png" 
             alt="Sulakshaa Multi Speciality Hospital Modern Patient Waiting Lounge" 
             class="hero-bg-img hero-bg-lounge"
-            loading="lazy"
+            loading="eager"
           >
         </div>
 
@@ -2750,9 +2767,9 @@
             </p>
 
             <div class="emergency-actions">
-              <a href="tel:+918212345678" class="btn btn-emergency-call" id="bannerCallEmergency" aria-label="Call Sulakshaa Emergency Line">
+              <a href="tel:+919535747478" class="btn btn-emergency-call" id="bannerCallEmergency" aria-label="Call Sulakshaa Emergency Line">
                 <i data-lucide="phone-call" class="icon-md"></i>
-                <span>Call Hospital (+91 821 234 5678*)</span>
+                <span>Call Hospital (9535747478)</span>
               </a>
               <a href="https://www.google.com/maps/search/?api=1&query=Sulakshaa+Multi+Speciality+Hospital+Vijayanagar+3rd+Stage+Mysuru+570017" target="_blank" rel="noopener noreferrer" class="btn btn-emergency-directions" aria-label="Get Directions to Sulakshaa Hospital on Google Maps">
                 <i data-lucide="navigation" class="icon-md"></i>
@@ -2761,7 +2778,7 @@
             </div>
 
             <p class="emergency-footnote">
-              * Note: Please confirm official telephone numbers with hospital front desk. Dial <strong>112</strong> for pan-India emergency services.
+              For urgent assistance call <strong>9535747478</strong> or <strong>0821-3525555 / 0821-3525544</strong>, or dial <strong>112</strong> for pan-India emergency services.
             </p>
           </div>
         </div>
@@ -3237,8 +3254,13 @@
       <div class="footer-top-grid">
         <!-- Footer Column 1: Hospital Brand Identity -->
         <div class="footer-col footer-col-brand">
-          <a href="#hero" class="footer-brand" aria-label="Sulakshaa Hospital">
-            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital Logo" class="footer-logo" width="220" height="58">
+          <a href="#hero" class="footer-brand brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+            <div class="brand-divider" aria-hidden="true"></div>
+            <div class="brand-text-container">
+              <span class="brand-hospital-title">Sulakshaa</span>
+              <span class="brand-hospital-type">Multi Speciality Hospital</span>
+            </div>
           </a>
           <p class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್, ಮೈಸೂರು</p>
           <p class="footer-mission">
@@ -3293,11 +3315,11 @@
             </p>
             <p>
               <i data-lucide="phone" class="icon-xs"></i>
-              <span>Emergency: <a href="tel:+918212345678" class="footer-link">+91 821 234 5678*</a></span>
+              <span>Emergency: <a href="tel:+919535747478" class="footer-link">9535747478</a></span>
             </p>
             <p>
               <i data-lucide="phone-call" class="icon-xs"></i>
-              <span>Reception: <a href="tel:+918212345679" class="footer-link">+91 821 234 5679*</a></span>
+              <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
             </p>
             <p>
               <i data-lucide="mail" class="icon-xs"></i>

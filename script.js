@@ -1447,7 +1447,7 @@ function initInfoModals() {
           <a href="#enquiry" class="btn btn-primary btn-sm speciality-modal-book-btn" data-dept="${specKey}">
             <i data-lucide="calendar" class="icon-xs"></i> Book Appointment in this Department
           </a>
-          <a href="tel:+918212345678" class="btn btn-outline btn-sm">
+          <a href="tel:08213525555" class="btn btn-outline btn-sm">
             <i data-lucide="phone" class="icon-xs"></i> Call Reception
           </a>
         </div>

@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=42">
 
   
   <style>
@@ -446,13 +446,13 @@
         <span>Mysuru, Karnataka</span>
       </div>
       <div class="top-bar-right">
-        <a href="tel:08212520000" class="top-bar-link">
+        <span class="top-bar-link">
           <i data-lucide="phone" class="icon-xs"></i>
-          <span>0821-2520000</span>
-        </a>
+          <span><a href="tel:08213525555" style="color:inherit;text-decoration:none;">0821-3525555</a> / <a href="tel:08213525544" style="color:inherit;text-decoration:none;">0821-3525544</a></span>
+        </span>
         <a href="tel:+919535747478" class="top-bar-link">
           <i data-lucide="phone-call" class="icon-xs"></i>
-          <span>+91 95357 47478</span>
+          <span>9535747478</span>
         </a>
         <div class="top-bar-socials">
           <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
@@ -605,7 +605,14 @@
   <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
     <div class="mobile-nav-inner">
       <div class="mobile-nav-header">
-        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital" class="mobile-logo">
+        <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
+          </div>
+        </a>
         <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
           <i data-lucide="x" class="icon-md"></i>
         </button>
@@ -1105,7 +1112,14 @@
       <div class="footer-top-grid">
         <!-- Col 1: Identity -->
         <div class="footer-col footer-col-brand">
-          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Multi Speciality Hospital" class="footer-logo">
+          <a href="index.html" class="brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+            <div class="brand-divider" aria-hidden="true"></div>
+            <div class="brand-text-container">
+              <span class="brand-hospital-title">Sulakshaa</span>
+              <span class="brand-hospital-type">Multi Speciality Hospital</span>
+            </div>
+          </a>
           <div class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</div>
           <p class="footer-mission">
             Committed to accessible, ethical, and multi-disciplinary healthcare excellence for Mysuru and surrounding districts.
@@ -1114,7 +1128,7 @@
             <i data-lucide="ambulance" class="icon-md"></i>
             <div>
               <span>24/7 Casualty Desk</span>
-              <strong>+91 95357 47478</strong>
+              <strong>9535747478</strong>
             </div>
           </div>
         </div>
@@ -1156,7 +1170,7 @@
             </p>
             <p>
               <i data-lucide="phone" class="icon-xs"></i>
-              <span>Reception: <a href="tel:+919535747478" class="footer-link">+91 95357 47478</a></span>
+              <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
             </p>
             <p>
               <i data-lucide="mail" class="icon-xs"></i>
