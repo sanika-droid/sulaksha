@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=32">
+  <link rel="stylesheet" href="styles.css?v=38">
 
   <style>
     /* ==========================================================================
@@ -516,13 +516,16 @@
     }
 
     .specialist-avatar {
-      width: 44px;
-      height: 44px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: top center;
       flex-shrink: 0;
-      border: 2px solid #0088D1;
-      background: #EBF8FF;
+      border: 2.5px solid #E0F2FE;
+      box-shadow: 0 3px 10px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.25);
+      background: #FFFFFF;
+      filter: contrast(1.03) saturate(1.04);
     }
 
     .specialist-info {
@@ -1263,11 +1266,6 @@
             </li>
           </ul>
 
-          <div class="article-secondary-media">
-            <img src="assets/advanced-diagnostics.png" alt="Advanced Clinical Diagnostic Laboratory" class="article-secondary-img">
-            <div class="article-secondary-caption">Sulakshaa Hospital Diagnostic Suite: Automated biochemical pathology &amp; high-precision reporting.</div>
-          </div>
-
           <h2 class="article-section-title"><i data-lucide="heart-pulse" class="icon-sm"></i> Personalized Preventive Schedules by Age</h2>
           <p class="article-paragraph">
             Young adults aged 20–35 with a sedentary lifestyle benefit from baseline screening every two years. For individuals above 35 years or those with a familial history of heart disease, annual comprehensive health panels are clinically advised.
@@ -1336,11 +1334,6 @@
           <p class="article-paragraph">
             The first 60 minutes following the onset of acute myocardial infarction is known in emergency medicine as the <strong>Golden Hour</strong>. Prompt emergency medical triage, baseline 12-lead ECG recording, and initiation of reperfusion therapy (primary angioplasty or thrombolysis) within this window prevents irreversible muscle necrosis, halts malignant ventricular arrhythmias, and drastically improves survival rates.
           </p>
-
-          <div class="article-secondary-media">
-            <img src="assets/cardiac-care.jpg" alt="Sulakshaa Hospital Cardiac Care and Emergency ICU" class="article-secondary-img">
-            <div class="article-secondary-caption">Sulakshaa Multi Speciality Hospital 24/7 Casualty &amp; ICU: Advanced multi-parameter bedside cardiac telemetry in Mysuru.</div>
-          </div>
 
           <h2 class="article-section-title"><i data-lucide="shield-check" class="icon-sm"></i> Diagnostic Evaluation &amp; Preventive Measures</h2>
           <p class="article-paragraph">
@@ -1528,8 +1521,8 @@
         readTime: '4 min read',
         author: 'Emergency Response Directorate',
         authorInitials: 'ER',
-        image: 'assets/gallery-isolated-icu.jpg',
-        imageCaption: 'Sulakshaa Hospital 24/7 Casualty Emergency & Multi-Bed Resuscitation Bay.',
+        image: '',
+        imageCaption: '',
         metaDesc: 'Learn the critical importance of the Golden Hour in stroke, cardiac emergencies, and trauma from the casualty team at Sulakshaa Hospital.',
         lead: 'In emergency medicine, the first 60 minutes following acute cardiovascular events, stroke symptoms, or severe trauma are known as the "Golden Hour". Timely hospital arrival during this window drastically maximizes functional recovery.',
         content: `
@@ -1614,7 +1607,7 @@
         readTime: '5 min read',
         author: 'Obstetrics & Gynaecology Faculty',
         authorInitials: 'OG',
-        image: 'assets/paediatrics.png',
+        image: 'assets/blog-womens-health.jpg',
         imageCaption: 'Compassionate, evidence-based healthcare across all life stages of womanhood.',
         metaDesc: 'Essential screening milestones, bone density checks, and reproductive wellness advice for women at Sulakshaa Hospital.',
         lead: 'Women’s healthcare needs evolve distinctively across adolescence, reproductive years, and menopausal transitions. Structured periodic evaluations ensure hormonal balance, bone density protection, and early cervical/breast screening.',
@@ -1669,10 +1662,22 @@
       document.getElementById('articleReadTime').textContent = article.readTime;
 
       // Update Featured Media
+      const featMedia = document.querySelector('.blog-featured-media');
       const featImg = document.getElementById('featuredImg');
-      featImg.src = article.image;
-      featImg.alt = article.title;
-      document.getElementById('featuredImgCaption').textContent = article.imageCaption;
+      const featCaption = document.getElementById('featuredImgCaption');
+      if (article.image) {
+        if (featMedia) featMedia.style.display = '';
+        featImg.src = article.image;
+        featImg.alt = article.title;
+        if (featCaption) {
+          featCaption.style.display = article.imageCaption ? '' : 'none';
+          featCaption.textContent = article.imageCaption || '';
+        }
+      } else {
+        if (featMedia) featMedia.style.display = 'none';
+        featImg.removeAttribute('src');
+        if (featCaption) featCaption.style.display = 'none';
+      }
 
       // Render Body Content
       const bodyEl = document.getElementById('articleBody');

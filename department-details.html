@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=38">
 
   <style>
     /* -------------------------------------------------------------------------
@@ -682,9 +682,13 @@
     }
 
     .dept-doc-photo-stage {
-      width: 100%;
-      height: 185px;
-      background: linear-gradient(180deg, #EBF4FB 0%, #FFFFFF 100%);
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      margin: 1rem auto 0.25rem;
+      border: 3px solid #E0F2FE;
+      box-shadow: 0 6px 18px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.18);
+      background: #FFFFFF;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
@@ -693,18 +697,20 @@
     .dept-doc-img {
       width: 100%;
       height: 100%;
+      border-radius: 50%;
       object-fit: cover;
       object-position: top center;
       display: block;
+      filter: contrast(1.03) saturate(1.04);
       transition: transform 0.35s ease;
     }
 
     .dept-doctor-card:hover .dept-doc-img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .dept-doc-card-body {
-      padding: 0.9rem 0.9rem 0.85rem;
+      padding: 0.65rem 0.9rem 0.85rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -1098,26 +1104,6 @@
   </style>
 </head>
 <body class="dept-detail-page">
-
-  <!-- Top Emergency Bar -->
-  <aside class="top-announcement-bar" aria-label="Hospital Emergency Quick Contact">
-    <div class="container announcement-inner">
-      <div class="announcement-left">
-        <span class="emergency-badge-pulse" aria-hidden="true"></span>
-        <span class="announcement-title">24/7 Emergency &amp; Trauma Care:</span>
-        <a href="tel:+919535747478" class="emergency-call-link">
-          <i data-lucide="phone-call" class="icon-xs"></i>
-          <strong>+91 95357 47478</strong>
-        </a>
-      </div>
-      <div class="announcement-right">
-        <span class="announcement-item">
-          <i data-lucide="map-pin" class="icon-xs"></i>
-          <span>Vijayanagar 3rd Stage, Mysuru, Karnataka 570017</span>
-        </span>
-      </div>
-    </div>
-  </aside>
 
   <!-- Sticky Main Header -->
     <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
@@ -1530,58 +1516,6 @@
         <p class="dept-section-subtitle">
           Watch healthcare guidance, clinical insights, and patient awareness videos from Sulakshaa Hospital specialists.
         </p>
-      </div>
-
-      <div class="dept-videos-grid">
-        
-        <!-- Video 1 -->
-        <article class="dept-video-card">
-          <div class="dept-video-thumb-stage">
-            <img src="assets/hospital-building.png" alt="Sulakshaa Hospital Tour" class="dept-video-thumb" loading="lazy">
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-play-btn" aria-label="Play Hospital Tour Video">
-              <i data-lucide="play" class="icon-sm"></i>
-            </a>
-          </div>
-          <div class="dept-video-info-bar">
-            <h3 class="dept-video-title">Experience Sulakshaa Multi Speciality Hospital</h3>
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-watch-link">
-              <i data-lucide="youtube" class="icon-xs"></i> <span>Watch on YouTube</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Video 2 -->
-        <article class="dept-video-card">
-          <div class="dept-video-thumb-stage">
-            <img src="assets/journey-cardiology.jpg" alt="Heart Health Guidance" class="dept-video-thumb" loading="lazy">
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-play-btn" aria-label="Play Cardiology Video">
-              <i data-lucide="play" class="icon-sm"></i>
-            </a>
-          </div>
-          <div class="dept-video-info-bar">
-            <h3 class="dept-video-title">Preventive Cardiology &amp; Heart Care Guidance</h3>
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-watch-link">
-              <i data-lucide="youtube" class="icon-xs"></i> <span>Watch on YouTube</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Video 3 -->
-        <article class="dept-video-card">
-          <div class="dept-video-thumb-stage">
-            <img src="assets/orthopedics-joint-replacement.png" alt="Joint Care & Recovery" class="dept-video-thumb" loading="lazy">
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-play-btn" aria-label="Play Orthopedics Video">
-              <i data-lucide="play" class="icon-sm"></i>
-            </a>
-          </div>
-          <div class="dept-video-info-bar">
-            <h3 class="dept-video-title">Advanced Joint Replacement &amp; Orthopedic Mobility</h3>
-            <a href="https://www.youtube.com/watch?v=9sMPHBVWpkI" target="_blank" rel="noopener" class="dept-video-watch-link">
-              <i data-lucide="youtube" class="icon-xs"></i> <span>Watch on YouTube</span>
-            </a>
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
@@ -2866,7 +2800,7 @@
           const modalBody = document.getElementById('docProfileModalBody');
           modalBody.innerHTML = `
             <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 1.25rem; background: #F8FAFD; padding: 1rem; border-radius: 12px; border: 1px solid #E2E8F0;">
-              <img src="${img}" alt="${name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #0088D1;">
+              <img src="${img}" alt="${name}" style="width: 92px; height: 92px; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid #E0F2FE; box-shadow: 0 6px 16px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.2); flex-shrink: 0;">
               <div>
                 <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #0B2568; margin-bottom: 0.25rem;">${name}</h4>
                 <p style="font-size: 0.85rem; color: #0088D1; font-weight: 600; margin-bottom: 0.2rem;">${role}</p>

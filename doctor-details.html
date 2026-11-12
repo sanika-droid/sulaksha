@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=37">
 
   <style>
     /* -------------------------------------------------------------
@@ -166,26 +166,37 @@
 
     .doc-hero-img-card {
       background: #FFFFFF;
-      padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      max-width: 340px;
-      width: 100%;
+      padding: 0;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 4px solid #E0F2FE;
+      box-shadow: 0 10px 28px rgba(11, 37, 104, 0.14), 0 0 0 1px rgba(0, 136, 209, 0.2);
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .doc-hero-img-card img {
       width: 100%;
-      height: 380px;
-      object-fit: contain;
-      border-radius: 8px;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
       background: #FFFFFF;
       display: block;
+      filter: contrast(1.03) saturate(1.04);
       transition: transform 0.35s ease;
     }
 
+    @media (max-width: 640px) {
+      .doc-hero-img-card {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
     .doc-hero-img-card:hover img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     /* Main Content Section (Reference Image 4) */

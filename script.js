@@ -1546,8 +1546,11 @@ function initDoctorsPageFilters() {
   const searchInput = document.getElementById('doctorSearchInput');
   const searchClearBtn = document.getElementById('doctorSearchClear');
   const specialitySelect = document.getElementById('doctorSpecialitySelect');
+  const findDoctorBtn = document.getElementById('findDoctorSubmitBtn');
   const filterChips = document.querySelectorAll('.doctor-chip[data-filter]');
   const countBadge = document.getElementById('doctorsCountBadge');
+  const countText = document.getElementById('doctorsCountText');
+  const resultsBar = document.querySelector('.doctors-results-bar') || document.getElementById('doctorDirGrid');
   const clearFiltersBtn = document.getElementById('clearDoctorFiltersBtn');
   const emptyState = document.getElementById('noDoctorsFound');
   const resetFiltersBtn = document.getElementById('resetDoctorFiltersBtn');
@@ -1555,35 +1558,46 @@ function initDoctorsPageFilters() {
 
   if (!doctorCards.length) return; // Not on the doctors directory page
 
-  let activeSpeciality = 'all';
-  let searchQuery = '';
+  let activeSpeciality = specialitySelect ? (specialitySelect.value || 'all') : 'all';
+  let searchQuery = searchInput ? (searchInput.value || '') : '';
 
   const applyFilters = () => {
     let visibleCount = 0;
-    const q = searchQuery.toLowerCase().trim();
+    const q = searchQuery.toLowerCase().trim().replace(/\s+/g, ' ');
 
     doctorCards.forEach(card => {
       const cardName = (card.getAttribute('data-doctor-name') || '').toLowerCase();
       const cardSpec = (card.getAttribute('data-speciality') || '').toLowerCase();
-      const cardBio = (card.textContent || '').toLowerCase();
+      const cardBio = (card.textContent || '').toLowerCase().replace(/\s+/g, ' ');
+      const cardImgAlt = (card.querySelector('img')?.getAttribute('alt') || '').toLowerCase();
 
-      const matchesSpeciality = (activeSpeciality === 'all') || 
+      const matchesSpeciality = (activeSpeciality === 'all') ||
         cardSpec === activeSpeciality.toLowerCase() ||
         cardSpec.includes(activeSpeciality.toLowerCase());
 
-      const matchesSearch = !q || cardName.includes(q) || cardSpec.includes(q) || cardBio.includes(q);
+      const matchesSearch = !q ||
+        cardName.includes(q) ||
+        cardSpec.includes(q) ||
+        cardBio.includes(q) ||
+        cardImgAlt.includes(q);
 
-      if (matchesSpeciality && matchesSearch) {
+      const isMatch = matchesSpeciality && matchesSearch;
+      if (isMatch) {
+        card.classList.remove('is-hidden-card');
         card.style.display = 'flex';
         visibleCount++;
       } else {
+        card.classList.add('is-hidden-card');
         card.style.display = 'none';
       }
     });
 
-    // Update count badge
-    if (countBadge) {
-      countBadge.textContent = `Showing ${visibleCount} of ${doctorCards.length} Specialists`;
+    // Update count badge without wiping its Lucide icon
+    const badgeLabel = `Showing ${visibleCount} of ${doctorCards.length} Doctors`;
+    if (countText) {
+      countText.textContent = badgeLabel;
+    } else if (countBadge) {
+      countBadge.textContent = badgeLabel;
     }
 
     // Toggle empty state
@@ -1592,7 +1606,14 @@ function initDoctorsPageFilters() {
         emptyState.classList.add('is-visible');
         const emptyQueryText = document.getElementById('emptySearchQueryText');
         if (emptyQueryText) {
-          emptyQueryText.textContent = searchQuery ? `"${searchQuery}"` : activeSpeciality;
+          const selectedLabel = specialitySelect && specialitySelect.selectedIndex >= 0
+            ? specialitySelect.options[specialitySelect.selectedIndex].text
+            : activeSpeciality;
+          if (q && activeSpeciality !== 'all') {
+            emptyQueryText.textContent = `"${searchQuery.trim()}" in ${selectedLabel}`;
+          } else {
+            emptyQueryText.textContent = q ? `"${searchQuery.trim()}"` : selectedLabel;
+          }
         }
       } else {
         emptyState.classList.remove('is-visible');
@@ -1601,7 +1622,7 @@ function initDoctorsPageFilters() {
 
     // Toggle clear filters button visibility
     if (clearFiltersBtn) {
-      if (activeSpeciality !== 'all' || searchQuery.length > 0) {
+      if (activeSpeciality !== 'all' || q.length > 0) {
         clearFiltersBtn.style.display = 'inline-flex';
       } else {
         clearFiltersBtn.style.display = 'none';
@@ -1618,10 +1639,32 @@ function initDoctorsPageFilters() {
     }
   };
 
-  // Search input event
+  const triggerSearchSubmit = () => {
+    if (searchInput) searchQuery = searchInput.value;
+    if (specialitySelect) activeSpeciality = specialitySelect.value || 'all';
+    applyFilters();
+    if (resultsBar && typeof resultsBar.scrollIntoView === 'function') {
+      resultsBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Search input live filter & Enter key
   searchInput?.addEventListener('input', (e) => {
     searchQuery = e.target.value;
     applyFilters();
+  });
+
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      triggerSearchSubmit();
+    }
+  });
+
+  // Search submit button
+  findDoctorBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    triggerSearchSubmit();
   });
 
   // Search clear button
@@ -1636,7 +1679,7 @@ function initDoctorsPageFilters() {
 
   // Select dropdown event
   specialitySelect?.addEventListener('change', (e) => {
-    activeSpeciality = e.target.value;
+    activeSpeciality = e.target.value || 'all';
     // Sync chips
     filterChips.forEach(chip => {
       if (chip.getAttribute('data-filter') === activeSpeciality) {
@@ -1646,6 +1689,13 @@ function initDoctorsPageFilters() {
       }
     });
     applyFilters();
+  });
+
+  specialitySelect?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      triggerSearchSubmit();
+    }
   });
 
   // Filter chips click
@@ -1683,6 +1733,9 @@ function initDoctorsPageFilters() {
 
   clearFiltersBtn?.addEventListener('click', resetAll);
   resetFiltersBtn?.addEventListener('click', resetAll);
+
+  // Apply initial state (handles browser bfcache/autocomplete prefilled controls)
+  applyFilters();
 }
 
 /**

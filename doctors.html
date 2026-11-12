@@ -30,7 +30,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=38">
 
   
   <style>
@@ -284,13 +284,17 @@
       border: 1px solid #E8EEF5 !important;
       border-radius: 10px !important;
       box-shadow: 0 3px 12px rgba(11, 37, 104, 0.05) !important;
-      padding: 0.85rem !important;
-      display: flex !important;
+      padding: 0.95rem 0.85rem 0.85rem !important;
+      display: flex;
       flex-direction: column !important;
       justify-content: space-between !important;
       transition: transform 0.25s ease, box-shadow 0.25s ease !important;
       position: relative !important;
       overflow: hidden !important;
+    }
+
+    .doctor-dir-card.is-hidden-card {
+      display: none !important;
     }
 
     .doctor-dir-card:hover {
@@ -300,27 +304,34 @@
     }
 
     .doctor-dir-img-wrap {
-      background: #F8FAFC !important;
-      height: 180px !important;
-      width: 100% !important;
+      background: #FFFFFF !important;
+      width: 136px !important;
+      height: 136px !important;
+      border-radius: 50% !important;
+      border: 3px solid #E0F2FE !important;
+      box-shadow: 0 6px 18px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.18) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      margin-bottom: 0.65rem !important;
-      border-radius: 6px !important;
+      margin: 0.2rem auto 0.85rem !important;
       overflow: hidden !important;
+      flex-shrink: 0 !important;
     }
 
     .doctor-dir-img {
-      max-height: 175px !important;
-      width: auto !important;
-      max-width: 100% !important;
-      object-fit: contain !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      max-width: none !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      object-position: top center !important;
       display: block !important;
-      transition: transform 0.3s ease !important;
+      filter: contrast(1.03) saturate(1.04);
+      transition: transform 0.35s ease !important;
     }
     .doctor-dir-card:hover .doctor-dir-img {
-      transform: scale(1.03) !important;
+      transform: scale(1.06) !important;
     }
 
     .doctor-dir-body {
@@ -747,7 +758,7 @@
         <!-- Results Counter Bar -->
         <div class="doctors-results-bar">
           <span class="doctors-count-badge" id="doctorsCountBadge">
-            <i data-lucide="users" class="icon-xs"></i> Showing 12 of 12 Doctors
+            <i data-lucide="users" class="icon-xs"></i> <span id="doctorsCountText">Showing 12 of 12 Doctors</span>
           </span>
           <button type="button" class="doctors-clear-btn" id="clearDoctorFiltersBtn" style="display: none; background: none; border: 1px solid #CBD5E1; padding: 4px 10px; border-radius: 6px; cursor: pointer; color: #0088D1; font-size: 0.85rem;">
             <i data-lucide="rotate-ccw" class="icon-xs"></i> Reset Filters
@@ -1067,6 +1078,21 @@
               </div>
             </div>
           </article>
+
+          <!-- Empty State (Shown when search/filter matches 0 doctors) -->
+          <div class="no-doctors-card" id="noDoctorsFound" role="status" aria-live="polite">
+            <div class="no-doctors-icon">
+              <i data-lucide="search-x" class="icon-lg"></i>
+            </div>
+            <h3>No Matching Doctors Found</h3>
+            <p>
+              We couldn't find a specialist matching <strong id="emptySearchQueryText">your selected filter</strong>.
+              Try clearing the filters or searching by another doctor name or clinical department.
+            </p>
+            <button type="button" id="resetDoctorFiltersBtn" class="find-doctor-btn">
+              Show All Doctors
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -1191,7 +1217,7 @@
   </button>
 
   <!-- Core JavaScript -->
-  <script src="script.js?v=27"></script>
+  <script src="script.js?v=37"></script>
   <script src="navigation.js"></script>
 </body>
 </html>
