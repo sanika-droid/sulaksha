@@ -35,12 +35,60 @@
   <!-- Core Facilities Layout Styles (Ensures Instant Correct Rendering & Cache-Immunity) -->
   
   <style id="departments-modern-css">
-    /* Homepage Header & Solid Action Buttons Visibility */
+    /* Homepage Transparent Overlay Header Over Hero & Solid Action Buttons */
     .site-header {
-      background-color: #FFFFFF !important;
+      position: sticky !important;
+      top: 0 !important;
+      margin-bottom: calc(-1 * var(--header-height, 80px)) !important;
+      background-color: transparent !important;
+      background: linear-gradient(180deg, rgba(6, 20, 56, 0.48) 0%, rgba(6, 20, 56, 0.14) 100%) !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+      box-shadow: none !important;
       z-index: 1000 !important;
+      transition: background-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    }
+    .site-header:not(.is-scrolled) .brand-logo {
+      background-color: #FFFFFF;
+      padding: 3px;
+      border-radius: 8px;
+    }
+    .site-header:not(.is-scrolled) .brand-divider {
+      background-color: rgba(255, 255, 255, 0.45) !important;
+    }
+    .site-header:not(.is-scrolled) .brand-hospital-title {
+      color: #FFFFFF !important;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    }
+    .site-header:not(.is-scrolled) .brand-hospital-type {
+      color: rgba(255, 255, 255, 0.92) !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .site-header:not(.is-scrolled) .nav-link {
+      color: #FFFFFF !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+    .site-header:not(.is-scrolled) .nav-link:hover {
+      color: #FFFFFF !important;
+      background-color: rgba(255, 255, 255, 0.16) !important;
+    }
+    .site-header:not(.is-scrolled) .nav-link.active {
+      color: #FFFFFF !important;
+      background-color: rgba(255, 255, 255, 0.22) !important;
+      font-weight: 600 !important;
+    }
+    .site-header:not(.is-scrolled) .nav-link::after {
+      background: #FFFFFF !important;
+    }
+    .site-header:not(.is-scrolled) .hamburger-bar {
+      background-color: #FFFFFF !important;
+    }
+    .site-header.is-scrolled {
+      background: #FFFFFF !important;
+      background-color: #FFFFFF !important;
+      border-bottom: 1px solid var(--borders, #E2EDF8) !important;
+      box-shadow: 0 6px 24px -2px rgba(11, 37, 104, 0.12), 0 2px 8px -1px rgba(11, 37, 104, 0.06) !important;
     }
     #headerEmergencyBtn,
     .header-actions .btn-outline-emergency {
@@ -69,7 +117,7 @@
       border-color: #0B2568 !important;
     }
 
-    /* Hero Section - Full-Width Edge-to-Edge Responsive Hospital Showcase (Complete 3:2 Proportions, No Cropping) */
+    /* Hero Section - Full-Width Edge-to-Edge Responsive Hospital Showcase Behind Transparent Header */
     .hero-section,
     .hero-section.hero-full-coverage,
     .hero-section.hero-pure-slideshow {
@@ -80,7 +128,7 @@
       height: auto !important;
       min-height: unset !important;
       max-height: unset !important;
-      background-color: #FFFFFF !important;
+      background-color: #061743 !important;
       overflow: hidden !important;
       display: block !important;
       margin: 0 !important;
@@ -102,11 +150,25 @@
       min-height: unset !important;
       position: relative !important;
       overflow: hidden !important;
-      background-color: #FFFFFF !important;
+      background-color: #061743 !important;
       border-radius: 0 !important;
       box-shadow: 0 10px 32px rgba(11, 37, 104, 0.08) !important;
       margin: 0 !important;
       padding: 0 !important;
+    }
+    .hero-slideshow-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(6, 20, 56, 0.62) 0%,
+        rgba(6, 20, 56, 0.34) 26%,
+        rgba(6, 20, 56, 0.16) 62%,
+        rgba(6, 20, 56, 0.32) 100%
+      );
     }
     @media (max-width: 640px) {
       .hero-slideshow-container {
@@ -1695,6 +1757,10 @@
           <i data-lucide="phone-call" class="icon-xs"></i>
           <span>9535747478</span>
         </a>
+        <span class="top-bar-link top-bar-hours">
+          <i data-lucide="clock" class="icon-xs"></i>
+          <span>Mon &ndash; Sun: 24/7 Support</span>
+        </span>
         <div class="top-bar-socials">
           <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
           <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon-xs"></i></a>
