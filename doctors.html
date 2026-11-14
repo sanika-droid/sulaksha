@@ -35,46 +35,39 @@
   
   <style>
     /* -------------------------------------------------------------
-       Sulakshaa Doctors Directory - Avant BKG Clean 3-Column Layout
-       (Matching Reference Images 1 & 2)
+       Sulakshaa Doctors Directory - Compact 3-Column Layout
+       (Slightly reduced card width and height, consistent alignment)
        ------------------------------------------------------------- */
     :root {
       --primary-navy: #0B2568;
       --primary-navy-dark: #061743;
       --primary-blue: #0088D1;
+      --primary-blue-dark: #006CA6;
       --accent-cyan: #00A3E0;
-      --text-slate: #4B617E;
-      --bg-light: #F5F9FD;
-      --border-color: #D7E5F2;
+      --text-dark: #1E293B;
+      --text-slate: #475569;
+      --border-color: #E2E8F0;
     }
 
-    /* Top Emergency / Contacts Bar (Ref Image 1) */
-    .doc-top-bar {
+    body {
+      background-color: #F8FAFD;
+      color: #2D3748;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Top Emergency / Contacts Bar */
+    .site-top-bar {
       background: #0B2568;
       color: #FFFFFF;
-      padding: 6px 0;
+      padding: 7px 0;
       font-size: 0.85rem;
     }
-    .doc-top-bar-inner {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .doc-top-link {
-      color: #FFFFFF;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-weight: 500;
-    }
 
-    /* Hero Banner Section (Ref Image 1) */
+    /* Hero Banner Section */
     .doctors-hero-banner {
       background: #F7FAFC;
       border-bottom: 1px solid #E2E8F0;
-      padding: clamp(2rem, 4vw, 3.5rem) 0 2rem;
+      padding: clamp(2rem, 3.8vw, 3.2rem) 0 2rem;
       position: relative;
       overflow: hidden;
     }
@@ -101,7 +94,7 @@
 
     .doctors-hero-title {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-size: clamp(1.9rem, 3.2vw, 2.5rem);
       font-weight: 700;
       color: #0B2568;
       line-height: 1.25;
@@ -117,38 +110,25 @@
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 136, 209, 0.25);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 136, 209, 0.28);
     }
     .btn-hero-apt:hover {
       background: #006CA6;
       transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 108, 166, 0.35);
     }
 
-    .doctors-hero-image-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .doctors-hero-image-wrap img {
-      width: 100%;
-      max-height: 320px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Floating Search Bar (Ref Image 1) */
+    /* Floating Search Bar */
     .find-doctor-box-container {
       margin-top: 1.5rem;
     }
 
     .find-doctor-bar {
       background: #FFFFFF;
-      padding: 1.25rem 1.75rem;
+      padding: 1.15rem 1.65rem;
       border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.06);
       border: 1px solid #E2E8F0;
       display: flex;
       align-items: center;
@@ -157,7 +137,7 @@
     }
 
     .find-doctor-heading {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       color: #0B2568;
       letter-spacing: 0.5px;
@@ -179,10 +159,10 @@
 
     .find-doctor-input {
       width: 100%;
-      padding: 0.75rem 1rem 0.75rem 2.4rem;
+      padding: 0.72rem 1rem 0.72rem 2.4rem;
       border: 1px solid #CBD5E1;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #1E293B;
       background: #F8FAFC;
       outline: none;
@@ -208,10 +188,10 @@
 
     .find-doctor-select {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.72rem 1rem;
       border: 1px solid #CBD5E1;
       border-radius: 6px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #1E293B;
       background: #F8FAFC;
       outline: none;
@@ -226,11 +206,11 @@
     .find-doctor-btn {
       background: #0B2568;
       color: #FFFFFF;
-      padding: 0.75rem 1.85rem;
+      padding: 0.72rem 1.75rem;
       border: none;
       border-radius: 6px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       cursor: pointer;
       transition: background 0.2s ease, transform 0.2s ease;
       white-space: nowrap;
@@ -241,56 +221,54 @@
     }
 
     /* -------------------------------------------------------------
-       3 Cards Per Row Grid Layout (Matching Reference Image 2)
+       Reduced-Size 3 Doctors Per Row Grid Layout
+       (Compact card dimensions: 860px max grid, 180px photo height)
        ------------------------------------------------------------- */
     .doctors-directory-section {
-      padding: 3rem 0 5rem;
+      padding: 2rem 0 4rem;
       background: #F8FAFD;
     }
 
     .doctor-dir-grid {
       display: grid !important;
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 1.35rem 1.25rem !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1.15rem 1rem !important;
       align-items: stretch !important;
       width: 100% !important;
-      margin: 1.25rem 0 2rem 0 !important;
+      max-width: 860px !important;
+      margin: 1.15rem auto 2.25rem !important;
     }
 
-    @media (max-width: 1100px) and (min-width: 780px) {
-      .doctor-dir-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 1.25rem 1rem !important;
-      }
-    }
-
-    @media (max-width: 779px) and (min-width: 520px) {
+    @media (max-width: 991px) and (min-width: 650px) {
       .doctor-dir-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1rem !important;
+        max-width: 580px !important;
       }
     }
 
-    @media (max-width: 519px) {
+    @media (max-width: 649px) {
       .doctor-dir-grid {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
+        max-width: 300px !important;
       }
     }
 
-    /* Doctor Card Styling - Compact & Modern */
+    /* Doctor Card - Compact & Refined Dimensions */
     .doctor-dir-card {
       background: #FFFFFF !important;
-      border: 1px solid #E8EEF5 !important;
-      border-radius: 10px !important;
-      box-shadow: 0 3px 12px rgba(11, 37, 104, 0.05) !important;
-      padding: 0.95rem 0.85rem 0.85rem !important;
-      display: flex;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 8px !important;
+      box-shadow: 0 2px 10px rgba(11, 37, 104, 0.05) !important;
+      padding: 0 !important;
+      display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
       position: relative !important;
       overflow: hidden !important;
+      height: 100% !important;
     }
 
     .doctor-dir-card.is-hidden-card {
@@ -299,88 +277,136 @@
 
     .doctor-dir-card:hover {
       transform: translateY(-4px) !important;
-      box-shadow: 0 10px 24px rgba(11, 37, 104, 0.1) !important;
+      box-shadow: 0 8px 22px rgba(11, 37, 104, 0.10) !important;
       border-color: #0088D1 !important;
     }
 
-    .doctor-dir-img-wrap {
+    /* Doctor Portrait Stage - Compact Height (180px) */
+    .doctor-dir-img-stage {
+      width: 100% !important;
+      height: 180px !important;
       background: #FFFFFF !important;
-      width: 136px !important;
-      height: 136px !important;
-      border-radius: 50% !important;
-      border: 3px solid #E0F2FE !important;
-      box-shadow: 0 6px 18px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.18) !important;
+      position: relative !important;
+      overflow: hidden !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      margin: 0.2rem auto 0.85rem !important;
-      overflow: hidden !important;
-      flex-shrink: 0 !important;
+      border-bottom: 1px solid #EDF2F7 !important;
     }
 
-    .doctor-dir-img {
+    .doctor-dir-portrait-img {
       width: 100% !important;
       height: 100% !important;
-      max-height: none !important;
-      max-width: none !important;
-      border-radius: 50% !important;
       object-fit: cover !important;
       object-position: top center !important;
       display: block !important;
-      filter: contrast(1.03) saturate(1.04);
       transition: transform 0.35s ease !important;
     }
-    .doctor-dir-card:hover .doctor-dir-img {
-      transform: scale(1.06) !important;
+    .doctor-dir-card:hover .doctor-dir-portrait-img {
+      transform: scale(1.03) !important;
     }
 
-    .doctor-dir-body {
-      padding: 0.25rem 0 0 !important;
+    /* Fallback portrait avatar */
+    .doctor-dir-img-placeholder {
+      width: 100% !important;
+      height: 100% !important;
+      background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #FFFFFF !important;
+      padding: 1rem !important;
+      text-align: center !important;
+    }
+
+    .doctor-dir-placeholder-initials {
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.18) !important;
+      border: 2px solid rgba(255, 255, 255, 0.4) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 1.45rem !important;
+      font-weight: 700 !important;
+      color: #FFFFFF !important;
+      margin-bottom: 0.35rem !important;
+    }
+
+    .doctor-dir-placeholder-dept {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      opacity: 0.95 !important;
+      line-height: 1.25 !important;
+    }
+
+    /* Doctor Card Info Body - Compact */
+    .doctor-dir-content {
+      padding: 0.7rem 0.75rem 0.25rem !important;
       display: flex !important;
       flex-direction: column !important;
       flex-grow: 1 !important;
       text-align: center !important;
+      align-items: center !important;
     }
 
     .doctor-dir-name {
       font-family: 'Poppins', sans-serif !important;
-      font-size: 1.05rem !important;
+      font-size: 1.02rem !important;
       font-weight: 700 !important;
       color: #0B2568 !important;
-      margin: 0 0 0.2rem 0 !important;
+      margin: 0 0 0.15rem 0 !important;
       line-height: 1.25 !important;
-      text-align: center !important;
     }
 
-    .doctor-dir-designation {
-      font-size: 0.825rem !important;
-      color: #4B617E !important;
+    .doctor-dir-dept-tag {
+      font-size: 0.8rem !important;
+      font-weight: 600 !important;
+      color: #0088D1 !important;
+      margin: 0 0 0.2rem 0 !important;
+      line-height: 1.3 !important;
+    }
+
+    .doctor-dir-desig {
+      font-size: 0.74rem !important;
+      color: #475569 !important;
       font-weight: 500 !important;
-      line-height: 1.35 !important;
-      margin: 0 0 0.75rem 0 !important;
-      text-align: center !important;
-      min-height: 38px !important;
+      line-height: 1.3 !important;
+      margin: 0 0 0.2rem 0 !important;
+      min-height: 25px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
     }
 
-    /* Stacked Full-Width Action Buttons */
+    .doctor-dir-qual-text {
+      font-size: 0.76rem !important;
+      font-weight: 600 !important;
+      color: #1E293B !important;
+      line-height: 1.3 !important;
+      margin: 0 0 0.25rem 0 !important;
+    }
+
+    /* Stacked Action Buttons */
     .doctor-dir-actions {
+      padding: 0.2rem 0.75rem 0.75rem !important;
       display: flex !important;
       flex-direction: column !important;
-      gap: 0.45rem !important;
+      gap: 0.32rem !important;
       width: 100% !important;
       margin-top: auto !important;
     }
 
-    .btn-doctor-view-profile {
+    .btn-doc-view-profile {
       background: #0B2568 !important;
       color: #FFFFFF !important;
-      padding: 0.52rem 0.75rem !important;
-      border-radius: 6px !important;
+      padding: 0.46rem 0.65rem !important;
+      border-radius: 5px !important;
       font-weight: 600 !important;
-      font-size: 0.85rem !important;
+      font-size: 0.8rem !important;
       text-align: center !important;
       text-decoration: none !important;
       display: block !important;
@@ -388,41 +414,45 @@
       border: none !important;
       transition: background 0.2s ease, transform 0.2s ease !important;
     }
-    .btn-doctor-view-profile:hover {
+    .btn-doc-view-profile:hover {
       background: #061743 !important;
       color: #FFFFFF !important;
       transform: translateY(-1px) !important;
     }
 
-    .btn-doctor-book-appointment {
+    .btn-doc-book-apt {
       background: #0088D1 !important;
       color: #FFFFFF !important;
-      padding: 0.52rem 0.75rem !important;
-      border-radius: 6px !important;
+      padding: 0.46rem 0.65rem !important;
+      border-radius: 5px !important;
       font-weight: 600 !important;
-      font-size: 0.85rem !important;
+      font-size: 0.8rem !important;
       text-align: center !important;
       text-decoration: none !important;
       display: block !important;
       width: 100% !important;
       border: none !important;
-      transition: background 0.2s ease, transform 0.2s ease !important;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+      box-shadow: 0 2px 8px rgba(0, 136, 209, 0.25) !important;
     }
-    .btn-doctor-book-appointment:hover {
+    .btn-doc-book-apt:hover {
       background: #006CA6 !important;
       color: #FFFFFF !important;
       transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(0, 108, 166, 0.35) !important;
     }
-
 
     /* Results Counter Badge */
     .doctors-results-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 1.5rem 0 0.5rem 0;
+      margin: 1.25rem 0 0.5rem 0;
       color: #64748B;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
+      max-width: 860px !important;
+      margin-left: auto;
+      margin-right: auto;
     }
     .doctors-count-badge {
       display: inline-flex;
@@ -430,6 +460,96 @@
       gap: 6px;
       font-weight: 600;
       color: #0B2568;
+    }
+
+    /* -------------------------------------------------------------
+       Pagination Controls (6 Doctors Per Page)
+       ------------------------------------------------------------- */
+    .doctor-pagination-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 2rem auto 1rem;
+      flex-wrap: wrap;
+      user-select: none;
+      max-width: 860px !important;
+    }
+
+    .page-numbers-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .page-btn {
+      min-width: 42px;
+      height: 42px;
+      padding: 0 0.85rem;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #0B2568;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .page-btn:hover:not(:disabled):not(.active) {
+      background: #F0F7FF;
+      border-color: #0088D1;
+      color: #0088D1;
+      transform: translateY(-1px);
+    }
+
+    .page-btn.active {
+      background: #0B2568;
+      border-color: #0B2568;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(11, 37, 104, 0.25);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .page-btn-nav {
+      padding: 0 1.15rem;
+      gap: 6px;
+      font-size: 0.92rem;
+    }
+
+    .page-btn:disabled,
+    .page-btn.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      background: #F8FAFC;
+      border-color: #E2E8F0;
+      color: #94A3B8;
+      box-shadow: none;
+      transform: none;
+    }
+
+    @media (max-width: 540px) {
+      .doctor-pagination-wrap {
+        gap: 0.35rem;
+        margin-top: 1.75rem;
+      }
+      .page-btn {
+        min-width: 36px;
+        height: 38px;
+        padding: 0 0.6rem;
+        font-size: 0.88rem;
+        border-radius: 6px;
+      }
+      .page-btn-nav {
+        padding: 0 0.75rem;
+        font-size: 0.84rem;
+      }
     }
   </style>
 
@@ -732,19 +852,23 @@
             <!-- Speciality Select Dropdown -->
             <div class="find-doctor-select-group">
               <select id="doctorSpecialitySelect" class="find-doctor-select" aria-label="Select Clinical Category">
-                <option value="all">All Categories</option>
-                <option value="General Medicine">General Medicine</option>
-                <option value="Cardiac Care">Cardiac Care (Cardiology)</option>
-                <option value="Orthopedics">Orthopedics &amp; Joint Care</option>
-                <option value="Paediatrics">Paediatrics &amp; Child Health</option>
-                <option value="Neurology">Neurology &amp; Brain Health</option>
-                <option value="Maternity Care">Maternity Care (OBG)</option>
-                <option value="Gastroenterology">Gastroenterology</option>
-                <option value="Dermatology">Dermatology &amp; Skin Care</option>
-                <option value="General Surgery">General &amp; Laparoscopic Surgery</option>
-                <option value="Psychiatry">Psychiatry &amp; Mental Health</option>
-                <option value="Pulmonology">Pulmonology &amp; Chest Medicine</option>
-                <option value="Nephrology">Nephrology &amp; Renal Care</option>
+                <option value="all">All Departments (24 Doctors)</option>
+                <option value="General Medicine">General Medicine (2)</option>
+                <option value="OBG">OBG (Obstetrics &amp; Gynaecology) (1)</option>
+                <option value="IVF">IVF &amp; Fertility (1)</option>
+                <option value="Orthopaedic">Orthopaedics (1)</option>
+                <option value="General Surgery">General Surgery (4)</option>
+                <option value="Surgical Gastroeneterology">Surgical Gastroenterology (3)</option>
+                <option value="Paediatrician">Paediatrics (2)</option>
+                <option value="Neurology">Neurology (1)</option>
+                <option value="Neurosurgery">Neurosurgery (1)</option>
+                <option value="Urology">Urology (1)</option>
+                <option value="Medical Oncology">Medical Oncology (1)</option>
+                <option value="Psychiarty">Psychiatry (1)</option>
+                <option value="OTO-RHINO-Laryngology">OTO-Rhino-Laryngology (ENT) (1)</option>
+                <option value="Radiologist">Radiology (1)</option>
+                <option value="Anaethesiology">Anaesthesiology &amp; Critical Care (2)</option>
+                <option value="Pathology">Pathology (1)</option>
               </select>
             </div>
 
@@ -765,7 +889,7 @@
         <!-- Results Counter Bar -->
         <div class="doctors-results-bar">
           <span class="doctors-count-badge" id="doctorsCountBadge">
-            <i data-lucide="users" class="icon-xs"></i> <span id="doctorsCountText">Showing 12 of 12 Doctors</span>
+            <i data-lucide="users" class="icon-xs"></i> <span id="doctorsCountText">Showing 1–6 of 24 Doctors</span>
           </span>
           <button type="button" class="doctors-clear-btn" id="clearDoctorFiltersBtn" style="display: none; background: none; border: 1px solid #CBD5E1; padding: 4px 10px; border-radius: 6px; cursor: pointer; color: #0088D1; font-size: 0.85rem;">
             <i data-lucide="rotate-ccw" class="icon-xs"></i> Reset Filters
@@ -774,317 +898,573 @@
 
         <!-- 3-Column Doctor Cards Grid -->
         <div class="doctor-dir-grid" id="doctorDirGrid">
-          <!-- Dr. Laxme Gowda -->
+          <!-- Doctor 1: Dr. Laxme Gowda -->
           <article class="doctor-dir-card" data-doctor-name="Dr. Laxme Gowda" data-speciality="General Medicine">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="assets/dr-laxme-gowda.png" 
-                alt="Dr. Laxme Gowda, MBBS, MD (General Medicine)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-laxme-gowda.png" alt="Dr. Laxme Gowda" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
+            <div class="doctor-dir-content">
               <h3 class="doctor-dir-name">Dr. Laxme Gowda</h3>
-              <p class="doctor-dir-designation">Senior Consultant Physician & Diabetologist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Laxme%20Gowda" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Laxme Gowda">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Laxme%20Gowda&dept=General%20Medicine#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+              <p class="doctor-dir-dept-tag">General Medicine</p>
+              <p class="doctor-dir-desig">Director &amp; Chairman, Senior General Physician, Diabetologist, Clinical Cardiologist, Former Professor of Medicine - MMCRI</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (General Medicine)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Laxme%20Gowda" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Laxme%20Gowda&dept=General%20Medicine#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Laxme Gowda" data-dept="General Medicine">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Priya S. Sharma -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Priya S. Sharma" data-speciality="Cardiac Care">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Priya S. Sharma, MD, DM (Cardiology)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 2: Dr. Ananya C L -->
+          <article class="doctor-dir-card" data-doctor-name="Dr. Ananya C L" data-speciality="General Medicine">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-ananya-c-l.jpg" alt="Dr. Ananya C L" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Priya S. Sharma</h3>
-              <p class="doctor-dir-designation">Consultant Cardiologist & Preventative Heart Specialist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Priya%20S.%20Sharma" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Priya S. Sharma">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Priya%20S.%20Sharma&dept=Cardiac%20Care#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Ananya C L</h3>
+              <p class="doctor-dir-dept-tag">General Medicine</p>
+              <p class="doctor-dir-desig">Consultant General Physician</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (General Medicine)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Ananya%20C%20L" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Ananya%20C%20L&dept=General%20Medicine#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Ananya C L" data-dept="General Medicine">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Anand R. Kulkarni -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Anand R. Kulkarni" data-speciality="Orthopedics">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Anand R. Kulkarni, MS Ortho, DNB (Orthopedic Surgery)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Anand R. Kulkarni</h3>
-              <p class="doctor-dir-designation">Senior Consultant Orthopedic & Joint Replacement Surgeon</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Anand%20R.%20Kulkarni" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Anand R. Kulkarni">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Anand%20R.%20Kulkarni&dept=Orthopedics#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
+          <!-- Doctor 3: Dr. Sumangala G N -->
+          <article class="doctor-dir-card" data-doctor-name="Dr. Sumangala G N" data-speciality="OBG">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">SG</div>
+                <div class="doctor-dir-placeholder-dept">OBG (Obstetrics &amp; Gynaecology)</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
               </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Sumangala G N</h3>
+              <p class="doctor-dir-dept-tag">OBG (Obstetrics &amp; Gynaecology)</p>
+              <p class="doctor-dir-desig">Chief Consultant Obstetrician &amp; Gynecologist</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (Obstetrics &amp; Gynecology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Sumangala%20G%20N" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Sumangala%20G%20N&dept=OBG%20(Obstetrics%20%26%20Gynaecology)#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Sumangala G N" data-dept="OBG (Obstetrics &amp; Gynaecology)">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Sneha Hegde -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Sneha Hegde" data-speciality="Paediatrics">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="assets/dr-sneha-hegde.jpg" 
-                alt="Dr. Sneha Hegde, MD Paediatrics, DCH" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 4: Surg Lt Cdr (Dr) Prajwal S, Retd -->
+          <article class="doctor-dir-card" data-doctor-name="Surg Lt Cdr (Dr) Prajwal S, Retd" data-speciality="IVF">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/surg-lt-cdr-dr-prajwal-s.jpg" alt="Surg Lt Cdr (Dr) Prajwal S, Retd" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Sneha Hegde</h3>
-              <p class="doctor-dir-designation">Consultant Paediatrician & Neonatologist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Sneha%20Hegde" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Sneha Hegde">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Sneha%20Hegde&dept=Paediatrics#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Surg Lt Cdr (Dr) Prajwal S, Retd</h3>
+              <p class="doctor-dir-dept-tag">IVF &amp; Fertility</p>
+              <p class="doctor-dir-desig">Fertility Specialist &amp; Laparoscopic Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (OBG), FMAS, DMAS, Fellowship in ART</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Surg%20Lt%20Cdr%20(Dr)%20Prajwal%20S%2C%20Retd" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Surg%20Lt%20Cdr%20(Dr)%20Prajwal%20S%2C%20Retd&dept=IVF%20%26%20Fertility#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Surg Lt Cdr (Dr) Prajwal S, Retd" data-dept="IVF &amp; Fertility">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Vikram M. Rao -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Vikram M. Rao" data-speciality="Neurology">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Vikram M. Rao, MBBS, MD, DM (Neurology)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Vikram M. Rao</h3>
-              <p class="doctor-dir-designation">Consultant Neurologist & Stroke Care Specialist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Vikram%20M.%20Rao" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Vikram M. Rao">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Vikram%20M.%20Rao&dept=Neurology#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
+          <!-- Doctor 5: Dr. Hoysala Kantharaju -->
+          <article class="doctor-dir-card" data-doctor-name="Dr. Hoysala Kantharaju" data-speciality="Orthopaedic">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">HK</div>
+                <div class="doctor-dir-placeholder-dept">Orthopaedics</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
               </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Hoysala Kantharaju</h3>
+              <p class="doctor-dir-dept-tag">Orthopaedics</p>
+              <p class="doctor-dir-desig">Consultant Orthopaedic &amp; Sports Medicine Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (Orthopaedics) (SMS, Jaipur), FIFA Dip in Football Medicine</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Hoysala%20Kantharaju" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Hoysala%20Kantharaju&dept=Orthopaedics#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Hoysala Kantharaju" data-dept="Orthopaedics">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Meera N. Iyer -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Meera N. Iyer" data-speciality="Maternity Care">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="assets/dr-meera-iyer.jpg" 
-                alt="Dr. Meera N. Iyer, MBBS, MS (OBG), DGO" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Meera N. Iyer</h3>
-              <p class="doctor-dir-designation">Consultant Obstetrician & Gynaecologist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Meera%20N.%20Iyer" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Meera N. Iyer">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Meera%20N.%20Iyer&dept=Maternity%20Care#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
+          <!-- Doctor 6: Dr. Madhu B S -->
+          <article class="doctor-dir-card" data-doctor-name="Dr. Madhu B S" data-speciality="General Surgery">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">MB</div>
+                <div class="doctor-dir-placeholder-dept">General Surgery</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
               </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Madhu B S</h3>
+              <p class="doctor-dir-dept-tag">General Surgery</p>
+              <p class="doctor-dir-desig">Senior Consultant General Surgeon, Endoscopic &amp; Laparoscopic Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Madhu%20B%20S" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Madhu%20B%20S&dept=General%20Surgery#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Madhu B S" data-dept="General Surgery">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Rajesh K. Varma -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Rajesh K. Varma" data-speciality="Gastroenterology">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Rajesh K. Varma, MBBS, MD, DNB (Gastroenterology)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 7: Dr. Sachin V -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Sachin V" data-speciality="General Surgery">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-sachin-v.jpg" alt="Dr. Sachin V" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Rajesh K. Varma</h3>
-              <p class="doctor-dir-designation">Consultant Gastroenterologist & Hepatologist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Rajesh%20K.%20Varma" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Rajesh K. Varma">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Rajesh%20K.%20Varma&dept=Gastroenterology#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Sachin V</h3>
+              <p class="doctor-dir-dept-tag">General Surgery</p>
+              <p class="doctor-dir-desig">Consultant General Surgeon, Endoscopic &amp; Laparoscopic Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Sachin%20V" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Sachin%20V&dept=General%20Surgery#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Sachin V" data-dept="General Surgery">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Rashmi Desai -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Rashmi Desai" data-speciality="Dermatology">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Rashmi Desai, MBBS, MD (DVL)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 8: Dr Nisha N -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr Nisha N" data-speciality="General Surgery">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-nisha-n.jpg" alt="Dr Nisha N" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Rashmi Desai</h3>
-              <p class="doctor-dir-designation">Consultant Dermatologist, Venereologist & Leprologist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Rashmi%20Desai" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Rashmi Desai">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Rashmi%20Desai&dept=Dermatology#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr Nisha N</h3>
+              <p class="doctor-dir-dept-tag">General Surgery</p>
+              <p class="doctor-dir-desig">Consultant General Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr%20Nisha%20N" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr%20Nisha%20N&dept=General%20Surgery#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr Nisha N" data-dept="General Surgery">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Suresh Babu -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Suresh Babu" data-speciality="General Surgery">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Suresh Babu, MBBS, MS (General Surgery), FMAS" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Suresh Babu</h3>
-              <p class="doctor-dir-designation">Senior General & Laparoscopic Surgeon</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Suresh%20Babu" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Suresh Babu">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Suresh%20Babu&dept=General%20Surgery#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
+          <!-- Doctor 9: Dr Lokesh MG -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr Lokesh MG" data-speciality="General Surgery">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">LM</div>
+                <div class="doctor-dir-placeholder-dept">General Surgery</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
               </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr Lokesh MG</h3>
+              <p class="doctor-dir-dept-tag">General Surgery</p>
+              <p class="doctor-dir-desig">Consultant General Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr%20Lokesh%20MG" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr%20Lokesh%20MG&dept=General%20Surgery#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr Lokesh MG" data-dept="General Surgery">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Kavitha Sundaram -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Kavitha Sundaram" data-speciality="Psychiatry">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Kavitha Sundaram, MBBS, MD (Psychiatry)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 10: Dr. H N Dinesh -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. H N Dinesh" data-speciality="Surgical Gastroeneterology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-h-n-dinesh.jpg" alt="Dr. H N Dinesh" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Kavitha Sundaram</h3>
-              <p class="doctor-dir-designation">Consultant Psychiatrist & Behavioral Health Specialist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Kavitha%20Sundaram" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Kavitha Sundaram">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Kavitha%20Sundaram&dept=Psychiatry#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. H N Dinesh</h3>
+              <p class="doctor-dir-dept-tag">Surgical Gastroenterology</p>
+              <p class="doctor-dir-desig">Senior Consultant General Surgeon, Endoscopic &amp; Laparoscopic Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery), FSGE (Surgical Gastroenterology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20H%20N%20Dinesh" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20H%20N%20Dinesh&dept=Surgical%20Gastroenterology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. H N Dinesh" data-dept="Surgical Gastroenterology">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Arun Kumar S. -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Arun Kumar S." data-speciality="Pulmonology">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://plus.unsplash.com/premium_photo-1658506671316-0b293df7c72b?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Arun Kumar S., MBBS, MD, DTCD (Pulmonology)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Arun Kumar S.</h3>
-              <p class="doctor-dir-designation">Consultant Pulmonologist & Chest Physician</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Arun%20Kumar%20S." class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Arun Kumar S.">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Arun%20Kumar%20S.&dept=Pulmonology#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
+          <!-- Doctor 11: Dr. Deepak B Gowda -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Deepak B Gowda" data-speciality="Surgical Gastroeneterology">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">DG</div>
+                <div class="doctor-dir-placeholder-dept">Surgical Gastroenterology</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
               </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Deepak B Gowda</h3>
+              <p class="doctor-dir-dept-tag">Surgical Gastroenterology</p>
+              <p class="doctor-dir-desig">Consultant Surgical Gastroenterologist, GI Oncologist &amp; Advanced Laparoscopy Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery) (JIPMER), MCh Surgical Gastroenterology (GB Pant, New Delhi), DNB (General Surgery), FMAS, MNAMS</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Deepak%20B%20Gowda" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Deepak%20B%20Gowda&dept=Surgical%20Gastroenterology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Deepak B Gowda" data-dept="Surgical Gastroenterology">
+                Book Appointment
+              </a>
             </div>
           </article>
 
-          <!-- Dr. Jayanth Murthy -->
-          <article class="doctor-dir-card" data-doctor-name="Dr. Jayanth Murthy" data-speciality="Nephrology">
-            <div class="doctor-dir-img-wrap">
-              <img 
-                src="https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?auto=format&fit=crop&w=600&h=600&q=80" 
-                alt="Dr. Jayanth Murthy, MBBS, MD, DM (Nephrology)" 
-                class="doctor-dir-img"
-                loading="lazy"
-              >
+          <!-- Doctor 12: Dr Lokesh H M -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr Lokesh H M" data-speciality="Surgical Gastroeneterology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-lokesh-h-m.jpg" alt="Dr Lokesh H M" class="doctor-dir-portrait-img" loading="lazy">
             </div>
-            <div class="doctor-dir-body">
-              <h3 class="doctor-dir-name">Dr. Jayanth Murthy</h3>
-              <p class="doctor-dir-designation">Consultant Nephrologist & Renal Care Specialist</p>
-              
-              <!-- Stacked Dual Action Buttons (Reference Image 2) -->
-              <div class="doctor-dir-actions">
-                <a href="doctor-details.html?doctor=Dr.%20Jayanth%20Murthy" class="btn-doctor-view-profile view-profile-btn" data-doctor="Dr. Jayanth Murthy">
-                  View Profile
-                </a>
-                <a href="index.html?doctor=Dr.%20Jayanth%20Murthy&dept=Nephrology#enquiry" class="btn-doctor-book-appointment">
-                  Book Appointment
-                </a>
-              </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr Lokesh H M</h3>
+              <p class="doctor-dir-dept-tag">Surgical Gastroenterology</p>
+              <p class="doctor-dir-desig">Consultant Surgical Gastroenterologist</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery), MCh (Surgical Gastroenterology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr%20Lokesh%20H%20M" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr%20Lokesh%20H%20M&dept=Surgical%20Gastroenterology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr Lokesh H M" data-dept="Surgical Gastroenterology">
+                Book Appointment
+              </a>
             </div>
           </article>
+
+          <!-- Doctor 13: Dr. Thibbe Gowda C D -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Thibbe Gowda C D" data-speciality="Paediatrician">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-thibbe-gowda-c-d.jpg" alt="Dr. Thibbe Gowda C D" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Thibbe Gowda C D</h3>
+              <p class="doctor-dir-dept-tag">Paediatrics</p>
+              <p class="doctor-dir-desig">Chief Consultant Paediatrician</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (Paediatrics)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Thibbe%20Gowda%20C%20D" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Thibbe%20Gowda%20C%20D&dept=Paediatrics#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Thibbe Gowda C D" data-dept="Paediatrics">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 14: Dr. Akshatha P Deshpande -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Akshatha P Deshpande" data-speciality="Paediatrician">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-akshatha-p-deshpande.jpg" alt="Dr. Akshatha P Deshpande" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Akshatha P Deshpande</h3>
+              <p class="doctor-dir-dept-tag">Paediatrics</p>
+              <p class="doctor-dir-desig">Consultant Paediatrician</p>
+              <p class="doctor-dir-qual-text">MBBS, DNB (Pediatrics)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Akshatha%20P%20Deshpande" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Akshatha%20P%20Deshpande&dept=Paediatrics#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Akshatha P Deshpande" data-dept="Paediatrics">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 15: Dr Keethiraj D B -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr Keethiraj D B" data-speciality="Neurology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-keethiraj-d-b.jpg" alt="Dr Keethiraj D B" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr Keethiraj D B</h3>
+              <p class="doctor-dir-dept-tag">Neurology</p>
+              <p class="doctor-dir-desig">Consultant Neurologist</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (General Medicine), DNB (General Medicine), DM (Neurology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr%20Keethiraj%20D%20B" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr%20Keethiraj%20D%20B&dept=Neurology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr Keethiraj D B" data-dept="Neurology">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 16: Dr. Rajesh T S -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Rajesh T S" data-speciality="Neurosurgery">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">RT</div>
+                <div class="doctor-dir-placeholder-dept">Neurosurgery</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
+              </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Rajesh T S</h3>
+              <p class="doctor-dir-dept-tag">Neurosurgery</p>
+              <p class="doctor-dir-desig">Consultant Neurosurgeon &amp; Spine Surgeon</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery), MCh (Neurosurgery)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Rajesh%20T%20S" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Rajesh%20T%20S&dept=Neurosurgery#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Rajesh T S" data-dept="Neurosurgery">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 17: Dr. Girish T D -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Girish T D" data-speciality="Urology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-girish-t-d.jpg" alt="Dr. Girish T D" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Girish T D</h3>
+              <p class="doctor-dir-dept-tag">Urology</p>
+              <p class="doctor-dir-desig">Consultant Urologist</p>
+              <p class="doctor-dir-qual-text">MBBS, MS (General Surgery), DNB (Urology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Girish%20T%20D" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Girish%20T%20D&dept=Urology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Girish T D" data-dept="Urology">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 18: Dr. Kiran P K -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Kiran P K" data-speciality="Medical Oncology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-kiran-p-k.jpg" alt="Dr. Kiran P K" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Kiran P K</h3>
+              <p class="doctor-dir-dept-tag">Medical Oncology</p>
+              <p class="doctor-dir-desig">Consultant Medical Oncologist</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (General Medicine), DNB (Medical Oncology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Kiran%20P%20K" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Kiran%20P%20K&dept=Medical%20Oncology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Kiran P K" data-dept="Medical Oncology">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 19: Dr. Narendra Kumar M S -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Narendra Kumar M S" data-speciality="Psychiarty">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-narendra-kumar-m-s.jpg" alt="Dr. Narendra Kumar M S" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Narendra Kumar M S</h3>
+              <p class="doctor-dir-dept-tag">Psychiatry</p>
+              <p class="doctor-dir-desig">Consultant Psychiatrist</p>
+              <p class="doctor-dir-qual-text">MBBS, DPM (NIMHANS), DNB (Psychiatry), PGDMLE</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Narendra%20Kumar%20M%20S" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Narendra%20Kumar%20M%20S&dept=Psychiatry#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Narendra Kumar M S" data-dept="Psychiatry">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 20: Dr Madhav D -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr Madhav D" data-speciality="OTO-RHINO-Laryngology">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">MD</div>
+                <div class="doctor-dir-placeholder-dept">OTO-Rhino-Laryngology (ENT)</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
+              </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr Madhav D</h3>
+              <p class="doctor-dir-dept-tag">OTO-Rhino-Laryngology (ENT)</p>
+              <p class="doctor-dir-desig">Consultant OTO-Rhino-Laryngologist (ENT Specialist)</p>
+              <p class="doctor-dir-qual-text">MBBS, DLO (OTO-Rhino-Laryngology), MS (OTO-Rhino-Laryngology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr%20Madhav%20D" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr%20Madhav%20D&dept=OTO-Rhino-Laryngology%20(ENT)#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr Madhav D" data-dept="OTO-Rhino-Laryngology (ENT)">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 21: Dr. Nishanth R K -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Nishanth R K" data-speciality="Radiologist">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-nishanth-r-k.jpg" alt="Dr. Nishanth R K" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Nishanth R K</h3>
+              <p class="doctor-dir-dept-tag">Radiology</p>
+              <p class="doctor-dir-desig">Consultant Radiologist</p>
+              <p class="doctor-dir-qual-text">MBBS, DMRD (Radiologist)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Nishanth%20R%20K" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Nishanth%20R%20K&dept=Radiology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Nishanth R K" data-dept="Radiology">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 22: Dr. Rajath V Gowrav -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Rajath V Gowrav" data-speciality="Anaethesiology">
+            
+            <div class="doctor-dir-img-stage">
+              <img src="assets/dr-rajath-v-gowrav.jpg" alt="Dr. Rajath V Gowrav" class="doctor-dir-portrait-img" loading="lazy">
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Rajath V Gowrav</h3>
+              <p class="doctor-dir-dept-tag">Anaesthesiology &amp; Critical Care</p>
+              <p class="doctor-dir-desig">Consultant Anaesthetist &amp; Intensivist</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (Anaesthesiology)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Rajath%20V%20Gowrav" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Rajath%20V%20Gowrav&dept=Anaesthesiology%20%26%20Critical%20Care#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Rajath V Gowrav" data-dept="Anaesthesiology &amp; Critical Care">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 23: Dr. Komala H K -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Komala H K" data-speciality="Anaethesiology">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">KH</div>
+                <div class="doctor-dir-placeholder-dept">Anaesthesiology &amp; Critical Care</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
+              </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Komala H K</h3>
+              <p class="doctor-dir-dept-tag">Anaesthesiology &amp; Critical Care</p>
+              <p class="doctor-dir-desig">Chief Intensivist &amp; Consultant Anaesthetist</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (Anaesthesiology), DrNB (Critical Care Medicine)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Komala%20H%20K" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Komala%20H%20K&dept=Anaesthesiology%20%26%20Critical%20Care#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Komala H K" data-dept="Anaesthesiology &amp; Critical Care">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          <!-- Doctor 24: Dr. Shashidhar -->
+          <article class="doctor-dir-card is-hidden-card" style="display: none;" data-doctor-name="Dr. Shashidhar" data-speciality="Pathology">
+            
+            <div class="doctor-dir-img-stage">
+              <div class="doctor-dir-img-placeholder">
+                <div class="doctor-dir-placeholder-initials">DS</div>
+                <div class="doctor-dir-placeholder-dept">Pathology</div>
+                <div style="font-size: 0.75rem; opacity: 0.85; margin-top: 3px;">Sulakshaa Hospital</div>
+              </div>
+            </div>
+            <div class="doctor-dir-content">
+              <h3 class="doctor-dir-name">Dr. Shashidhar</h3>
+              <p class="doctor-dir-dept-tag">Pathology</p>
+              <p class="doctor-dir-desig">Senior Consultant Pathologist &amp; Lab Director</p>
+              <p class="doctor-dir-qual-text">MBBS, MD (Pathology), MBA (HCM)</p>
+            </div>
+            <div class="doctor-dir-actions">
+              <a href="doctor-details.html?doctor=Dr.%20Shashidhar" class="btn-doc-view-profile">
+                View Profile
+              </a>
+              <a href="contact.html?doctor=Dr.%20Shashidhar&dept=Pathology#appointmentEnquiryContainer" class="btn-doc-book-apt" data-doctor="Dr. Shashidhar" data-dept="Pathology">
+                Book Appointment
+              </a>
+            </div>
+          </article>
+
+          
+
+          
 
           <!-- Empty State (Shown when search/filter matches 0 doctors) -->
           <div class="no-doctors-card" id="noDoctorsFound" role="status" aria-live="polite">
@@ -1100,7 +1480,26 @@
               Show All Doctors
             </button>
           </div>
+        
         </div>
+
+        <!-- Pagination Controls (6 Doctors Per Page) -->
+        <nav class="doctor-pagination-wrap" id="doctorPagination" aria-label="Doctors Directory Pagination">
+          <button type="button" class="page-btn page-btn-nav" id="docPrevPageBtn" aria-label="Previous Page" disabled>
+            <i data-lucide="chevron-left" class="icon-xs"></i>
+            <span>Previous</span>
+          </button>
+          <div class="page-numbers-group" id="docPageNumbersGroup">
+            <button type="button" class="page-btn active" data-page="1" aria-current="page">1</button>
+            <button type="button" class="page-btn" data-page="2">2</button>
+            <button type="button" class="page-btn" data-page="3">3</button>
+            <button type="button" class="page-btn" data-page="4">4</button>
+          </div>
+          <button type="button" class="page-btn page-btn-nav" id="docNextPageBtn" aria-label="Next Page">
+            <span>Next</span>
+            <i data-lucide="chevron-right" class="icon-xs"></i>
+          </button>
+        </nav>
       </div>
     </section>
 

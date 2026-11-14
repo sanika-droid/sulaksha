@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle">Doctor Profile | Sulakshaa Multi Speciality Hospital, Mysuru</title>
   
-  <meta name="description" content="View full doctor profile, medical qualifications, experience, clinical specialities, and OPD timings at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="description" content="View full doctor profile, medical qualifications, clinical specialities, and care services at Sulakshaa Multi Speciality Hospital, Mysuru.">
   <meta name="author" content="Sulakshaa Multi Speciality Hospital">
   
   <!-- Favicon -->
@@ -20,18 +20,21 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=44">
 
   <style>
     /* -------------------------------------------------------------
-       Doctor Profile Layout (Matching Reference Images 3 & 4)
+       Sulakshaa Doctor Profile Page
        ------------------------------------------------------------- */
     :root {
       --primary-navy: #0B2568;
       --primary-navy-dark: #061743;
       --primary-blue: #0088D1;
+      --primary-blue-dark: #006CA6;
       --accent-cyan: #00A3E0;
-      --text-slate: #4B617E;
+      --text-dark: #1E293B;
+      --text-slate: #475569;
+      --border-subtle: #E2E8F0;
     }
 
     body {
@@ -40,41 +43,62 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Top Emergency Header Bar matching Reference */
-    .doc-top-bar {
+    /* Top Emergency Header Bar */
+    .site-top-bar {
       background: #0B2568;
       color: #FFFFFF;
-      padding: 6px 0;
+      padding: 7px 0;
       font-size: 0.85rem;
     }
-    .doc-top-bar-inner {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 1.5rem;
+
+    /* Breadcrumbs Navigation */
+    .profile-breadcrumbs {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.75rem 0;
+      font-size: 0.88rem;
     }
-    .doc-top-link {
-      color: #FFFFFF;
-      text-decoration: none;
-      display: inline-flex;
+    .profile-breadcrumbs-list {
+      display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    .profile-breadcrumbs-list a {
+      color: var(--primary-blue);
+      text-decoration: none;
       font-weight: 500;
     }
+    .profile-breadcrumbs-list a:hover {
+      text-decoration: underline;
+    }
+    .profile-breadcrumbs-separator {
+      color: #94A3B8;
+      font-size: 0.8rem;
+    }
+    .profile-breadcrumbs-current {
+      color: var(--text-slate);
+      font-weight: 600;
+    }
 
-    /* Doctor Profile Hero Section (Reference Image 3) */
+    /* -------------------------------------------------------------
+       Doctor Profile Hero Section
+       ------------------------------------------------------------- */
     .doc-profile-hero {
       position: relative;
-      background: #EBF3F9 url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
-      padding: clamp(2rem, 4vw, 3.5rem) 0;
+      background: #EDF4FA url('assets/facility-inpatient-recovery.jpg') center center / cover no-repeat;
+      padding: clamp(2.5rem, 4.5vw, 3.8rem) 0 2.5rem;
       overflow: hidden;
-      border-bottom: 1px solid #E2EBF5;
+      border-bottom: 1px solid #DCE6F1;
     }
     .doc-profile-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(235, 243, 249, 0.96) 0%, rgba(235, 243, 249, 0.92) 55%, rgba(235, 243, 249, 0.75) 100%);
+      background: linear-gradient(90deg, rgba(244, 248, 252, 0.97) 0%, rgba(244, 248, 252, 0.93) 55%, rgba(244, 248, 252, 0.82) 100%);
       z-index: 1;
     }
 
@@ -85,168 +109,303 @@
 
     .doc-hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 380px);
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 380px);
       gap: 2.5rem;
       align-items: center;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       .doc-hero-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
+    }
+
+    .doc-hero-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .doc-hero-dept-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E0F2FE;
+      color: #0369A1;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(0, 136, 209, 0.2);
     }
 
     .doc-hero-name {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-size: clamp(2rem, 3.6vw, 2.75rem);
       font-weight: 700;
-      color: #0B2568;
-      margin: 0 0 0.5rem 0;
+      color: var(--primary-navy);
+      margin: 0 0 0.45rem 0;
       line-height: 1.2;
     }
 
     .doc-hero-qual {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: #1A202C;
-      margin: 0 0 0.35rem 0;
+      color: var(--text-dark);
+      margin: 0 0 0.45rem 0;
+      line-height: 1.4;
     }
 
     .doc-hero-desig {
       font-size: 1rem;
-      font-weight: 500;
-      color: #556B88;
-      margin: 0 0 1.25rem 0;
-      line-height: 1.4;
-    }
-
-    .doc-hero-meta-list {
-      margin: 0 0 1.75rem 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .doc-hero-meta-list li {
-      font-size: 0.96rem;
-      color: #4A5568;
-    }
-
-    .doc-hero-meta-list strong {
-      color: #1A202C;
       font-weight: 600;
+      color: var(--primary-blue);
+      margin: 0 0 1.75rem 0;
+      line-height: 1.45;
+      max-width: 640px;
     }
 
+    /* "BOOK AN APPOINTMENT" Button */
     .btn-hero-book-apt {
-      display: inline-block;
-      background: #0088D1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary-blue);
       color: #FFFFFF !important;
-      padding: 0.85rem 1.85rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 6px;
       font-weight: 700;
       font-size: 0.95rem;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       text-decoration: none;
-      transition: background 0.2s ease, transform 0.2s ease;
-      box-shadow: 0 4px 14px rgba(0, 136, 209, 0.25);
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0, 136, 209, 0.35);
     }
     .btn-hero-book-apt:hover {
-      background: #006CA6;
+      background: var(--primary-blue-dark);
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 108, 166, 0.45);
     }
 
+    /* Right Doctor Portrait Frame */
     .doc-hero-img-stage {
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .doc-hero-img-card {
-      background: #FFFFFF;
-      padding: 0;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      border: 4px solid #E0F2FE;
-      box-shadow: 0 10px 28px rgba(11, 37, 104, 0.14), 0 0 0 1px rgba(0, 136, 209, 0.2);
+    .doc-hero-portrait-frame {
+      width: 100%;
+      max-width: 340px;
+      height: 380px;
+      border-radius: 12px;
       overflow: hidden;
-      flex-shrink: 0;
+      box-shadow: 0 12px 34px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.15);
+      background: #FFFFFF;
+      border: 4px solid #FFFFFF;
+      position: relative;
     }
 
-    .doc-hero-img-card img {
+    .doc-hero-portrait-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 50%;
-      background: #FFFFFF;
       display: block;
-      filter: contrast(1.03) saturate(1.04);
       transition: transform 0.35s ease;
+    }
+    .doc-hero-portrait-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Fallback portrait avatar */
+    .doc-hero-avatar-fallback {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0B2568 0%, #0088D1 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      gap: 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .doc-hero-avatar-fallback .initials-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+    }
+    .doc-hero-avatar-fallback .spec-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      opacity: 0.95;
     }
 
     @media (max-width: 640px) {
-      .doc-hero-img-card {
-        width: 240px;
-        height: 240px;
+      .doc-hero-portrait-frame {
+        max-width: 280px;
+        height: 320px;
       }
     }
 
-    .doc-hero-img-card:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Main Content Section (Reference Image 4) */
+    /* -------------------------------------------------------------
+       Main Content Section
+       ------------------------------------------------------------- */
     .doc-main-content {
-      padding: 3rem 0 4rem;
+      padding: 3.5rem 0 5rem;
       background: #FFFFFF;
     }
 
     .doc-headline {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+      font-size: clamp(1.35rem, 2.3vw, 1.8rem);
       font-weight: 700;
-      color: #0B2568;
+      color: var(--primary-navy);
       margin: 0 0 2rem 0;
       line-height: 1.35;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #F1F5F9;
+    }
+
+    .doc-content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.85fr) minmax(280px, 1fr);
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .doc-content-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .doc-section-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      color: #0B2568;
-      margin: 2.25rem 0 1rem 0;
+      color: var(--primary-navy);
+      margin: 2rem 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .doc-section-title:first-of-type {
+      margin-top: 0;
     }
 
     .doc-bullet-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.5rem 0;
+      margin: 0 0 1.75rem 0;
     }
 
     .doc-bullet-list li {
       position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
+      padding-left: 1.6rem;
+      margin-bottom: 0.85rem;
       font-size: 0.98rem;
       line-height: 1.65;
-      color: #4A5568;
+      color: #334155;
     }
 
     .doc-bullet-list li::before {
       content: '•';
       position: absolute;
-      left: 0.25rem;
-      color: #0088D1;
-      font-size: 1.25rem;
-      line-height: 1.4;
+      left: 0.35rem;
+      color: var(--primary-blue);
+      font-size: 1.35rem;
+      line-height: 1.3;
     }
 
-    /* WhatsApp floating pill */
+    /* Sidebar Consultation Card */
+    .doc-sidebar-card {
+      background: #F8FAFD;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 1.75rem;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 4px 16px rgba(11, 37, 104, 0.04);
+    }
+
+    .doc-sidebar-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin: 0 0 1.25rem 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-sidebar-item {
+      margin-bottom: 1.15rem;
+      font-size: 0.92rem;
+      color: var(--text-slate);
+    }
+    .doc-sidebar-item strong {
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-sidebar-book {
+      display: block;
+      width: 100%;
+      background: var(--primary-blue);
+      color: #FFFFFF !important;
+      text-align: center;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0, 136, 209, 0.25);
+    }
+    .btn-sidebar-book:hover {
+      background: var(--primary-blue-dark);
+    }
+
+    .btn-sidebar-all-docs {
+      display: block;
+      width: 100%;
+      background: #FFFFFF;
+      color: var(--primary-navy) !important;
+      border: 1px solid var(--primary-navy);
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      margin-top: 0.75rem;
+      transition: all 0.2s;
+    }
+    .btn-sidebar-all-docs:hover {
+      background: #EFF6FF;
+    }
+
+    /* WhatsApp floating button */
     .doc-whatsapp-float {
       position: fixed;
       bottom: 25px;
@@ -271,10 +430,7 @@
 </head>
 <body>
 
-  
-
-  <!-- Main Navigation Header -->
-    <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
+  <!-- Top Bar Above Header in Sulakshaa Brand (#0B2568) -->
   <div class="site-top-bar" id="siteTopBar">
     <div class="container">
       <div class="top-bar-location">
@@ -315,95 +471,11 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+          <li class="nav-item nav-item-dropdown dept-mega-nav-item">
             <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
               <span>Departments</span>
               <i data-lucide="chevron-down" class="dropdown-chevron"></i>
             </a>
-            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
-              <div class="dept-mega-container">
-                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
-                <div class="dept-mega-col dept-mega-col-excellence">
-                  <div class="dept-col-header">
-                    <span class="dept-col-title">Centres of Excellence</span>
-                  </div>
-                  <ul class="dept-mega-list excellence-list">
-                    <li>
-                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
-                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Cardiology</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
-                        <i data-lucide="bone" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
-                        <i data-lucide="activity" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
-                        <i data-lucide="brain" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
-                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
-                        <i data-lucide="ambulance" class="dept-link-icon"></i>
-                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- COLUMN 2: SPECIALITIES -->
-                <div class="dept-mega-col dept-mega-col-specialities">
-                  <div class="dept-col-header">
-                    <span class="dept-col-title">Specialities</span>
-                  </div>
-                  <div class="dept-specialities-grid">
-                    <ul class="dept-mega-list">
-                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
-                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
-                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
-                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
-                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
-                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
-                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
-                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
-                    </ul>
-                    <ul class="dept-mega-list">
-                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
-                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
-                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
-                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
-                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
-                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
-                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
-                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
-                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
-                    </ul>
-                  </div>
-                  <div class="dept-mega-footer">
-                    <a href="departments.html" class="dept-view-all-btn">
-                      <span>View All Departments</span>
-                      <i data-lucide="arrow-right" class="icon-xs"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </li>
           <li class="nav-item"><a href="doctors.html" class="nav-link active">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
@@ -417,36 +489,51 @@
         <a href="doctors.html" class="btn btn-outline" style="border-radius: 6px; border-color: #0B2568; color: #0B2568; padding: 0.5rem 1rem;">
           <i data-lucide="arrow-left" class="icon-xs"></i> All Doctors
         </a>
-        <a href="index.html#enquiry" class="btn btn-primary" style="border-radius: 6px; background: #0088D1; border-color: #0088D1;">
+        <a href="contact.html#appointmentEnquiryContainer" class="btn btn-primary" style="border-radius: 6px; background: #0088D1; border-color: #0088D1;">
           <i data-lucide="calendar-check" class="icon-sm"></i> Book Appointment
         </a>
       </div>
     </div>
   </header>
 
+  <!-- Breadcrumbs -->
+  <nav class="profile-breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="profile-breadcrumbs-list">
+        <li><a href="index.html">Home</a></li>
+        <li class="profile-breadcrumbs-separator">/</li>
+        <li><a href="doctors.html">Doctors</a></li>
+        <li class="profile-breadcrumbs-separator">/</li>
+        <li class="profile-breadcrumbs-current" id="breadcrumbDocName">Doctor Profile</li>
+      </ol>
+    </div>
+  </nav>
+
   <main id="main-content">
-    <!-- Doctor Hero Section (Image 3) -->
+    <!-- Doctor Profile Hero Section -->
     <section class="doc-profile-hero" aria-label="Doctor Profile Header">
       <div class="container doc-hero-container">
         <div class="doc-hero-grid">
           <!-- Left Details Column -->
           <div class="doc-hero-info">
+            <div class="doc-hero-dept-badge" id="docHeroDeptBadge">
+              <i data-lucide="shield-check" class="icon-xxs"></i>
+              <span id="docHeroDept">General Medicine</span>
+            </div>
+            
             <h1 class="doc-hero-name" id="docHeroName">Dr. Laxme Gowda</h1>
             <p class="doc-hero-qual" id="docHeroQual">MBBS, MD (General Medicine)</p>
-            <p class="doc-hero-desig" id="docHeroDesig">Senior Consultant Physician &amp; Diabetologist</p>
-            
-            <ul class="doc-hero-meta-list">
-              <li>Experience: <strong id="docHeroExp">45+ Years</strong></li>
-              <li>Language Spoken: <strong id="docHeroLang">English, Kannada, Hindi</strong></li>
-              <li>OPD Timings: <strong id="docHeroOpd">Mon - Sat: 9:00 AM - 1:00 PM &amp; 5:00 PM - 8:00 PM</strong></li>
-            </ul>
+            <p class="doc-hero-desig" id="docHeroDesig">Director &amp; Chairman, Senior General Physician, Diabetologist</p>
 
-            <a href="index.html#enquiry" id="docHeroAptBtn" class="btn-hero-book-apt">BOOK AN APPOINTMENT</a>
+            <a href="contact.html#appointmentEnquiryContainer" id="docHeroAptBtn" class="btn-hero-book-apt">
+              <i data-lucide="calendar" class="icon-xs"></i>
+              <span>BOOK AN APPOINTMENT</span>
+            </a>
           </div>
 
           <!-- Right Doctor Portrait Column -->
           <div class="doc-hero-img-stage">
-            <div class="doc-hero-img-card">
+            <div class="doc-hero-portrait-frame" id="docHeroImgContainer">
               <img id="docHeroImg" src="assets/dr-laxme-gowda.png" alt="Doctor Portrait">
             </div>
           </div>
@@ -454,357 +541,843 @@
       </div>
     </section>
 
-    <!-- Doctor Details Body (Image 4) -->
+    <!-- Doctor Details Body -->
     <section class="doc-main-content">
-      <div class="container" style="max-width: 1050px;">
+      <div class="container" style="max-width: 1140px;">
         <h2 class="doc-headline" id="docHeadline">
-          Dr. Laxme Gowda – Best Senior General Physician &amp; Diabetologist in Mysuru
+          Dr. Laxme Gowda – Director &amp; Senior General Physician in Mysuru
         </h2>
 
-        <h3 class="doc-section-title">About</h3>
-        <ul class="doc-bullet-list" id="docAboutList">
-          <!-- Populated dynamically -->
-        </ul>
+        <div class="doc-content-grid">
+          <div class="doc-content-left">
+            <h3 class="doc-section-title">
+              <i data-lucide="user-check" class="icon-sm" style="color: #0088D1;"></i>
+              <span>About the Doctor</span>
+            </h3>
+            <ul class="doc-bullet-list" id="docAboutList">
+              <!-- Populated dynamically -->
+            </ul>
 
-        <h3 class="doc-section-title">Experience</h3>
-        <ul class="doc-bullet-list" id="docExpList">
-          <!-- Populated dynamically -->
-        </ul>
+            <h3 class="doc-section-title">
+              <i data-lucide="briefcase-medical" class="icon-sm" style="color: #0088D1;"></i>
+              <span>Clinical Focus &amp; Specializations</span>
+            </h3>
+            <ul class="doc-bullet-list" id="docExpList">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+
+          <aside class="doc-content-sidebar">
+            <div class="doc-sidebar-card">
+              <h4 class="doc-sidebar-title">
+                <i data-lucide="info" class="icon-sm" style="color: #0088D1;"></i>
+                <span>Doctor Information</span>
+              </h4>
+              
+              <div class="doc-sidebar-item">
+                <strong>Department</strong>
+                <span id="docSidebarDept">General Medicine</span>
+              </div>
+              
+              <div class="doc-sidebar-item">
+                <strong>Hospital Location</strong>
+                <span>Sulakshaa Hospital, Vijayanagar 3rd Stage, Mysuru</span>
+              </div>
+
+              <div class="doc-sidebar-item">
+                <strong>Contact Desk</strong>
+                <span>0821-3525555 / 9535747478</span>
+              </div>
+
+              <a href="contact.html#appointmentEnquiryContainer" id="docSidebarBookBtn" class="btn-sidebar-book">
+                Book Consultation Now
+              </a>
+
+              <a href="doctors.html" class="btn-sidebar-all-docs">
+                <i data-lucide="arrow-left" class="icon-xs"></i> View All Doctors
+              </a>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- WhatsApp Floating Icon -->
-  <a href="https://wa.me/919008417272" class="doc-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+  <a href="https://wa.me/919535747478" class="doc-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
     <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
   </a>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container text-center" style="padding: 2rem 0; font-size: 0.9rem; color: #64748B;">
-      &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+  <!-- Comprehensive Existing Website Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Identity -->
+        <div class="footer-col footer-col-brand">
+          <a href="index.html" class="brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+            <div class="brand-divider" aria-hidden="true"></div>
+            <div class="brand-text-container">
+              <span class="brand-hospital-title">Sulakshaa</span>
+              <span class="brand-hospital-type">Multi Speciality Hospital</span>
+            </div>
+          </a>
+          <div class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</div>
+          <p class="footer-mission">
+            Committed to accessible, ethical, and multi-disciplinary healthcare excellence for Mysuru and surrounding districts.
+          </p>
+          <div class="footer-emergency-callout">
+            <i data-lucide="ambulance" class="icon-md"></i>
+            <div>
+              <span>24/7 Casualty Desk</span>
+              <strong>9535747478</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#overview">About Hospital</a></li>
+            <li><a href="index.html#specialities">Departments</a></li>
+            <li><a href="doctors.html">Find a Doctor</a></li>
+            <li><a href="facilities.html">Hospital Infrastructure</a></li>
+            <li><a href="gallery.html">Hospital Gallery</a></li>
+            <li><a href="index.html#enquiry">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Specialities -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Specialities</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#specialities">General Medicine</a></li>
+            <li><a href="index.html#specialities">Cardiac Care</a></li>
+            <li><a href="index.html#specialities">Orthopedics &amp; Joint Care</a></li>
+            <li><a href="index.html#specialities">Paediatrics &amp; Neonatology</a></li>
+            <li><a href="index.html#specialities">Neurology &amp; Stroke Care</a></li>
+            <li><a href="index.html#specialities">Maternity &amp; Gynaecology</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Location -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Hospital Location</h4>
+          <address class="footer-contact-address">
+            <p>
+              <i data-lucide="map-pin" class="icon-xs"></i>
+              <span>278, 1st Main Rd, Vijay Nagar 3rd Stage, Mysuru, Karnataka &ndash; 570017</span>
+            </p>
+            <p>
+              <i data-lucide="phone" class="icon-xs"></i>
+              <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
+            </p>
+            <p>
+              <i data-lucide="mail" class="icon-xs"></i>
+              <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com*</a></span>
+            </p>
+          </address>
+          <div class="footer-badge-item">
+            <i data-lucide="clock" class="icon-xs"></i>
+            <span>Emergency 24x7 | OPD Mon-Sat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+        </div>
+        <div class="footer-legal-links">
+          <button type="button" class="legal-link-btn" id="openDisclaimerBtn">Medical Disclaimer</button>
+          <span class="legal-sep">&bull;</span>
+          <button type="button" class="legal-link-btn" id="openPrivacyBtn">Privacy Policy</button>
+          <span class="legal-sep">&bull;</span>
+          <button type="button" class="legal-link-btn" id="openTermsBtn">Terms of Use</button>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <!-- Reusable Modal Dialog for Medical Disclaimer & Policies -->
+  <div class="modal-backdrop" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Sulakshaa Hospital Information</h3>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x" class="icon-sm"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected dynamically via script.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container for Feedback -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Animated Back To Top Button with Scroll Progress -->
+  <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Scroll back to top of page">
+    <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46">
+      <circle class="progress-ring-circle-bg" stroke="rgba(11, 37, 104, 0.12)" stroke-width="3" fill="transparent" r="20" cx="23" cy="23" />
+      <circle class="progress-ring-circle" id="progressRingCircle" stroke="var(--primary-blue)" stroke-width="3" stroke-dasharray="125.66" stroke-dashoffset="125.66" fill="transparent" r="20" cx="23" cy="23" stroke-linecap="round" />
+    </svg>
+    <i data-lucide="arrow-up" class="back-to-top-icon"></i>
+  </button>
 
   <script>
     const doctorsDB = [
   {
     "name": "Dr. Laxme Gowda",
     "qual": "MBBS, MD (General Medicine)",
-    "designation": "Senior Consultant Physician & Diabetologist",
-    "headline": "Dr. Laxme Gowda – Best Senior General Physician & Diabetologist in Mysuru",
+    "designation": "Director & Chairman, Senior General Physician, Diabetologist, Clinical Cardiologist, Former Professor of Medicine - MMCRI",
+    "department": "General Medicine",
+    "speciality": "General Medicine",
+    "headline": "Dr. Laxme Gowda – Director & Senior General Physician, Diabetologist & Cardiologist in Mysuru",
     "experience": "45+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Mon - Sat: 9:00 AM - 1:00 PM & 5:00 PM - 8:00 PM",
-    "speciality": "General Medicine",
     "image": "assets/dr-laxme-gowda.png",
+    "initials": "LG",
     "about": [
-      "Dr. Laxme Gowda is a revered and trusted senior diagnostic physician in Mysuru with over 45 years of clinical practice.",
-      "He serves as Senior Clinical Faculty and Chief Consulting Physician at Sulakshaa Multi Speciality Hospital.",
-      "Renowned for precise physical diagnostics, evidence-based internal medicine, and patient-centered elder healthcare.",
-      "Specializes in complex adult multi-morbidity, diabetes mellitus, severe hypertension, and geriatric wellness.",
-      "Committed to accessible, compassionate, and ethical healthcare for patients across Mysuru, Mandya, Chamrajnagar, and Kodagu districts."
+      "Dr. Laxme Gowda is the Director and Chairman of Sulakshaa Multi Speciality Hospital, with extensive clinical and academic expertise in Internal Medicine.",
+      "Former Professor of Medicine at Mysore Medical College & Research Institute (MMCRI), having trained multiple generations of physicians across Karnataka.",
+      "Distinguished authority in adult internal medicine, multi-system disorders, diabetes mellitus, cardiovascular risk management, and geriatric care.",
+      "Passionate about ethical, evidence-based medicine and providing personalized patient care across Mysuru, Mandya, Chamrajnagar, and Kodagu."
     ],
     "expBullets": [
-      "Over 45 years of continuous inpatient and outpatient hospital clinical practice.",
-      "Comprehensive clinical management of complicated type 1 and type 2 diabetes and diabetic foot care.",
-      "Senior management of hypertensive emergencies, adult infectious diseases, and respiratory illnesses.",
-      "Preventative health counseling, geriatric risk stratification, and polypharmacy optimization.",
-      "Mentored and guided generations of general practitioners and medical residents across Southern Karnataka."
+      "Over four decades of inpatient hospital clinical leadership, intensive care supervision, and outpatient diagnostics.",
+      "Comprehensive management of severe diabetes, diabetic neuropathy, nephropathy, and diabetic foot complications.",
+      "Advanced clinical management of hypertension, ischemic heart disease, heart failure, and cardiometabolic syndrome.",
+      "Former Professor and Head of Medical Units at Mysore Medical College and KR Hospital, Mysuru."
     ]
   },
   {
-    "name": "Dr. Priya S. Sharma",
-    "qual": "MD, DM (Cardiology)",
-    "designation": "Consultant Cardiologist & Preventative Heart Specialist",
-    "headline": "Dr. Priya S. Sharma – Best Clinical Cardiologist & Heart Specialist in Mysuru",
-    "experience": "16+ Years",
-    "languages": "English, Kannada, Hindi",
-    "opd": "Mon - Fri: 10:00 AM - 2:00 PM",
-    "speciality": "Cardiac Care",
-    "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Priya S. Sharma is an esteemed non-invasive and clinical cardiologist with more than 16 years of expertise in cardiovascular medicine.",
-      "Specializes in early detection of coronary artery disease, valvular heart conditions, and preventative heart wellness.",
-      "Leads the Cardiac Diagnostic Lab at Sulakshaa Hospital, overseeing state-of-the-art 2D Echocardiography and TMT protocols.",
-      "Passionate about women's cardiac health, lifestyle-driven risk mitigation, and post-angioplasty rehabilitative care."
-    ],
-    "expBullets": [
-      "Conducted over 12,000 2D Echocardiograms, Color Doppler studies, and Stress Echocardiography tests.",
-      "Expertise in coronary artery disease management, heart failure clinics, and arrhythmia diagnosis.",
-      "Specialist in pregnancy-induced hypertension and cardiovascular risk during chemotherapy.",
-      "Routine supervision of acute cardiac ICU admissions and acute coronary syndrome stabilization."
-    ]
-  },
-  {
-    "name": "Dr. Anand R. Kulkarni",
-    "qual": "MS Ortho, DNB (Orthopedic Surgery)",
-    "designation": "Senior Consultant Orthopedic & Joint Replacement Surgeon",
-    "headline": "Dr. Anand R. Kulkarni – Best Joint Replacement & Arthroscopic Surgeon in Mysuru",
-    "experience": "14+ Years",
-    "languages": "English, Kannada, Marathi, Hindi",
-    "opd": "Tue, Thu, Sat: 3:00 PM - 7:00 PM",
-    "speciality": "Orthopedics",
-    "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Anand R. Kulkarni is an accomplished orthopedic surgeon specializing in robotic joint replacement and arthroscopic sports surgery.",
-      "Has performed over 3,500 successful knee and hip replacements and complex fracture reconstructions.",
-      "Trained at leading orthopedic trauma centers with advanced fellowships in joint arthroplasty.",
-      "Focused on rapid-recovery surgical techniques, minimal tissue trauma, and pain-managed post-operative rehabilitation."
-    ],
-    "expBullets": [
-      "Total Knee Replacement (TKR), Partial Knee Arthroplasty, and Total Hip Replacement (THR).",
-      "Arthroscopic ACL/PCL reconstruction, meniscal repair, and shoulder rotator cuff repairs.",
-      "Polytrauma fracture fixation, pelvic trauma management, and geriatric fragility hip fracture repair.",
-      "Degenerative spine management, lumbar disc disease decompression, and cervical spondylosis care."
-    ]
-  },
-  {
-    "name": "Dr. Sneha Hegde",
-    "qual": "MD Paediatrics, DCH",
-    "designation": "Consultant Paediatrician & Neonatologist",
-    "headline": "Dr. Sneha Hegde – Best Paediatrician & Child Health Specialist in Mysuru",
-    "experience": "12+ Years",
-    "languages": "English, Kannada, Hindi",
-    "opd": "Mon - Sat: 9:00 AM - 1:00 PM",
-    "speciality": "Paediatrics",
-    "image": "assets/dr-sneha-hegde.jpg",
-    "about": [
-      "Dr. Sneha Hegde is a caring and dedicated paediatric specialist with over 12 years of experience in newborn and child healthcare.",
-      "Specializes in neonatal care, childhood growth and development assessments, and childhood infectious disease management.",
-      "Leads the Level-2 Special Care Baby Unit (SCBU) and Well-Baby Clinic at Sulakshaa Multi Speciality Hospital.",
-      "Renowned for her empathetic approach, comforting clinical demeanor, and reassuring guidance for young parents."
-    ],
-    "expBullets": [
-      "Neonatal resuscitation, low-birth-weight infant care, and phototherapy for neonatal jaundice.",
-      "Childhood vaccination programs following IAP guidelines, pediatric allergy and asthma management.",
-      "Growth milestone evaluation, pediatric nutrition, and childhood obesity screening.",
-      "24/7 pediatric emergency stabilization for acute febrile seizures, dehydration, and respiratory croup."
-    ]
-  },
-  {
-    "name": "Dr. Vikram M. Rao",
-    "qual": "MBBS, MD, DM (Neurology)",
-    "designation": "Consultant Neurologist & Stroke Care Specialist",
-    "headline": "Dr. Vikram M. Rao – Best Neurologist & Stroke Specialist in Mysuru",
-    "experience": "15+ Years",
-    "languages": "English, Kannada, Hindi",
-    "opd": "Mon, Wed, Fri: 2:00 PM - 6:00 PM",
-    "speciality": "Neurology",
-    "image": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Vikram M. Rao is a consultant neurologist specializing in hyperacute stroke care, seizure disorders, and neurodegenerative illnesses.",
-      "Trained at premier national institutes with over 15 years of dedicated neurological clinical practice.",
-      "Heads the Acute Stroke Emergency Protocol at Sulakshaa Hospital ensuring rapid thrombolytic decision-making.",
-      "Committed to holistic neuro-rehabilitation, Parkinson's disease support, and modern headache management."
-    ],
-    "expBullets": [
-      "Management of acute ischemic and hemorrhagic strokes, thrombolysis triage, and secondary stroke prevention.",
-      "Refractory epilepsy evaluation, EEG interpretation, and anti-epileptic drug optimization.",
-      "Parkinson's disease, tremor disorders, and movement dysfunction therapeutics.",
-      "Peripheral neuropathy, Guillain-Barré syndrome, Myasthenia Gravis, and intractable chronic migraine care."
-    ]
-  },
-  {
-    "name": "Dr. Meera N. Iyer",
-    "qual": "MBBS, MS (OBG), DGO",
-    "designation": "Consultant Obstetrician & Gynaecologist",
-    "headline": "Dr. Meera N. Iyer – Best Obstetrician & Gynaecologist in Mysuru",
-    "experience": "18+ Years",
-    "languages": "English, Kannada, Tamil, Hindi",
-    "opd": "Mon - Sat: 10:00 AM - 3:00 PM",
-    "speciality": "Maternity Care",
-    "image": "assets/dr-meera-iyer.jpg",
-    "about": [
-      "Dr. Meera N. Iyer brings 18+ years of compassionate obstetric and gynaecological care to Sulakshaa Multi Speciality Hospital.",
-      "Specializes in high-risk pregnancies, gestational diabetes, painless labor protocols, and laparoscopic gynaecological surgeries.",
-      "Devoted to woman-centric healthcare from adolescence through reproductive years to post-menopausal wellness.",
-      "Has guided over 6,000 safe deliveries with a strong focus on encouraging natural physiological childbirth."
-    ],
-    "expBullets": [
-      "Comprehensive antenatal care, non-stress testing, fetal growth scans, and high-risk obstetric monitoring.",
-      "Emergency and elective Caesarean sections, forceps-assisted deliveries, and post-partum hemorrhage control.",
-      "Laparoscopic hysterectomy, ovarian cystectomy, myomectomy, and ectopic pregnancy management.",
-      "Infertility workup, PCOD/PCOS clinical care, cervical cancer Pap screening, and menopausal health counseling."
-    ]
-  },
-  {
-    "name": "Dr. Rajesh K. Varma",
-    "qual": "MBBS, MD, DNB (Gastroenterology)",
-    "designation": "Consultant Gastroenterologist & Hepatologist",
-    "headline": "Dr. Rajesh K. Varma – Best Gastroenterologist & Liver Specialist in Mysuru",
-    "experience": "13+ Years",
-    "languages": "English, Kannada, Hindi, Telugu",
-    "opd": "Tue, Thu, Sat: 11:00 AM - 3:00 PM",
-    "speciality": "Gastroenterology",
-    "image": "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Rajesh K. Varma is an expert gastroenterologist and therapeutic endoscopist with over 13 years of clinical practice.",
-      "Specializes in diagnostic and therapeutic upper GI endoscopy, colonoscopy, chronic liver disease, and inflammatory bowel disease.",
-      "Leads the GI Endoscopy Suite at Sulakshaa Hospital featuring high-definition narrow-band imaging.",
-      "Focused on early gastrointestinal cancer detection, fatty liver disease reversal, and chronic acid-peptic disorders."
-    ],
-    "expBullets": [
-      "Performed over 8,000 upper gastrointestinal endoscopies, colonoscopies, and polypectomies.",
-      "Therapeutic endoscopic banding for esophageal varices, peptic ulcer hemoclip placement, and foreign body extractions.",
-      "Comprehensive management of Cirrhosis of the liver, Hepatitis B & C, and non-alcoholic fatty liver disease (NAFLD).",
-      "Long-term clinical protocols for Crohn's disease, Ulcerative Colitis, irritable bowel syndrome, and chronic pancreatitis."
-    ]
-  },
-  {
-    "name": "Dr. Rashmi Desai",
-    "qual": "MBBS, MD (DVL)",
-    "designation": "Consultant Dermatologist, Venereologist & Leprologist",
-    "headline": "Dr. Rashmi Desai – Best Dermatologist & Skin Specialist in Mysuru",
-    "experience": "10+ Years",
-    "languages": "English, Kannada, Hindi",
-    "opd": "Mon, Wed, Fri: 4:00 PM - 7:30 PM",
-    "speciality": "Dermatology",
-    "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Rashmi Desai is a board-certified dermatologist dedicated to clinical dermatology, trichology, and dermatological surgery.",
-      "Has treated over 15,000 patients with severe chronic eczema, psoriasis, autoimmune skin conditions, and resistant acne.",
-      "Integrates modern evidence-based dermato-pharmacology with gentle cosmetic rejuvenation therapies.",
-      "Offers specialized clinics for pediatric skin disorders, vitiligo repigmentation, and hair loss therapies."
-    ],
-    "expBullets": [
-      "Diagnosis and biological therapy for moderate-to-severe plaque psoriasis and atopic dermatitis.",
-      "Radiofrequency ablation of warts, skin tags, moles, and benign cutaneous lesions.",
-      "Patch testing for contact allergic dermatitis, chemical peels for post-inflammatory hyperpigmentation and melasma.",
-      "Platelet-rich plasma (PRP) therapy for androgenetic alopecia and chronic telogen effluvium."
-    ]
-  },
-  {
-    "name": "Dr. Suresh Babu",
-    "qual": "MBBS, MS (General Surgery), FMAS",
-    "designation": "Senior General & Laparoscopic Surgeon",
-    "headline": "Dr. Suresh Babu – Best General & Laparoscopic Surgeon in Mysuru",
-    "experience": "20+ Years",
-    "languages": "English, Kannada, Telugu, Hindi",
-    "opd": "Mon - Sat: 12:00 PM - 4:00 PM",
-    "speciality": "General Surgery",
-    "image": "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Suresh Babu is a senior general and minimal access laparoscopic surgeon with 20+ years of operating theatre experience.",
-      "Has performed over 7,000 elective and emergency abdominal, hernia, and soft tissue surgeries.",
-      "Known for meticulous surgical precision, zero-compromise asepsis standards, and prompt post-op recovery.",
-      "Supervises surgical emergency triage and complex diabetic foot salvage procedures at Sulakshaa Multi Speciality Hospital."
-    ],
-    "expBullets": [
-      "Laparoscopic cholecystectomy (gallbladder removal), appendectomy, and laparoscopic inguinal/ventral hernia repairs.",
-      "Advanced gastrointestinal emergency surgeries for intestinal perforation, bowel obstruction, and peritonitis.",
-      "Thyroidectomy, parotid gland surgery, hydrocele, and vascular varicose vein stripping/ablation.",
-      "Diabetic foot ulcer debridement, vacuum-assisted closure (VAC) dressings, and reconstructive flap surgeries."
-    ]
-  },
-  {
-    "name": "Dr. Kavitha Sundaram",
-    "qual": "MBBS, MD (Psychiatry)",
-    "designation": "Consultant Psychiatrist & Behavioral Health Specialist",
-    "headline": "Dr. Kavitha Sundaram – Best Psychiatrist & Behavioral Specialist in Mysuru",
-    "experience": "11+ Years",
-    "languages": "English, Kannada, Tamil, Hindi",
-    "opd": "Tue, Thu, Sat: 2:00 PM - 5:00 PM",
-    "speciality": "Psychiatry",
-    "image": "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&h=600&q=80",
-    "about": [
-      "Dr. Kavitha Sundaram is a compassionate psychiatrist providing comprehensive clinical psychiatric evaluations and psychotherapy.",
-      "Specializes in adult depression, generalized anxiety disorders, panic syndromes, sleep disturbances, and OCD management.",
-      "Advocates strongly for destigmatizing mental health issues through patient-first, confidential, and empathetic care.",
-      "Offers specialized geriatric cognitive assessments, dementia behavioral support, and stress resilience counseling."
-    ],
-    "expBullets": [
-      "Pharmacotherapy and psychotherapeutic integration for clinical depression, bipolar disorder, and generalized anxiety.",
-      "Cognitive behavioral counseling for acute work stress, burnout, panic attacks, and phobic conditions.",
-      "Geriatric psychiatry focusing on memory loss, post-stroke depression, and Alzheimer's behavioral management.",
-      "De-addiction protocols for alcohol dependence, nicotine cessation, and lifestyle sleep architecture improvement."
-    ]
-  },
-  {
-    "name": "Dr. Arun Kumar S.",
-    "qual": "MBBS, MD, DTCD (Pulmonology)",
-    "designation": "Consultant Pulmonologist & Chest Physician",
-    "headline": "Dr. Arun Kumar S. – Best Pulmonologist & Chest Specialist in Mysuru",
-    "experience": "14+ Years",
+    "name": "Dr. Ananya C L",
+    "qual": "MBBS, MD (General Medicine)",
+    "designation": "Consultant General Physician",
+    "department": "General Medicine",
+    "speciality": "General Medicine",
+    "headline": "Dr. Ananya C L – Consultant Physician & Internal Medicine Specialist in Mysuru",
+    "experience": "8+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
-    "speciality": "Pulmonology",
-    "image": "https://plus.unsplash.com/premium_photo-1658506671316-0b293df7c72b?auto=format&fit=crop&w=600&h=600&q=80",
+    "image": "assets/dr-ananya-c-l.jpg",
+    "initials": "AC",
     "about": [
-      "Dr. Arun Kumar S. is a dedicated chest physician and respiratory medicine consultant with 14 years of clinical experience.",
-      "Specializes in bronchial asthma, chronic obstructive pulmonary disease (COPD), interstitial lung diseases, and sleep apnea.",
-      "Directs the Pulmonary Function Testing (PFT) lab and Respiratory ICU support services at Sulakshaa Hospital.",
-      "Committed to smoke cessation guidance, pulmonary rehabilitation, and post-viral respiratory health restoration."
+      "Dr. Ananya C L is a compassionate and skilled consultant general physician specializing in adult disease diagnosis, lifestyle medicine, and preventative care.",
+      "Expertise in acute adult infections, metabolic syndrome, thyroid disorders, and systemic autoimmune conditions.",
+      "Dedicated to patient counseling, continuous health monitoring, and personalized therapeutic regimens."
     ],
     "expBullets": [
-      "Spirometry, diffusion capacity testing (DLCO), and fractional exhaled nitric oxide (FeNO) interpretation.",
-      "Diagnostic flexible fiberoptic bronchoscopy and bronchoalveolar lavage for unresolved lung shadows.",
-      "Management of acute severe asthma, COPD exacerbations, and non-invasive ventilation (BiPAP/CPAP) initiation.",
-      "Diagnosis and management of obstructive sleep apnea (OSA) via overnight polysomnography sleep studies."
+      "Clinical diagnosis and management of infectious diseases, dengue, typhoid, viral fevers, and respiratory tract infections.",
+      "Long-term management of hypertension, dyslipidemia, adult diabetes, and metabolic health.",
+      "Inpatient adult critical care stabilization and multi-disciplinary medical consultations."
     ]
   },
   {
-    "name": "Dr. Jayanth Murthy",
-    "qual": "MBBS, MD, DM (Nephrology)",
-    "designation": "Consultant Nephrologist & Renal Care Specialist",
-    "headline": "Dr. Jayanth Murthy – Best Nephrologist & Kidney Specialist in Mysuru",
-    "experience": "16+ Years",
-    "languages": "English, Kannada, Hindi, Telugu",
-    "opd": "Tue, Thu, Sat: 3:00 PM - 7:00 PM",
-    "speciality": "Nephrology",
-    "image": "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?auto=format&fit=crop&w=600&h=600&q=80",
+    "name": "Dr. Sumangala G N",
+    "qual": "MBBS, MS (Obstetrics & Gynecology)",
+    "designation": "Chief Consultant Obstetrician & Gynecologist",
+    "department": "OBG (Obstetrics & Gynaecology)",
+    "speciality": "OBG",
+    "headline": "Dr. Sumangala G N – Chief Consultant Obstetrician & Gynecologist in Mysuru",
+    "experience": "18+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
+    "image": null,
+    "initials": "SG",
     "about": [
-      "Dr. Jayanth Murthy is an eminent clinical nephrologist with 16 years of experience in kidney diseases and dialysis supervision.",
-      "Specializes in chronic kidney disease progression arrest, resistant hypertension, glomerulonephritis, and dialysis care.",
-      "Oversees the Hemodialysis Unit at Sulakshaa Multi Speciality Hospital offering round-the-clock emergency dialysis.",
-      "Committed to proactive dietary education, diabetic kidney screening, and kidney stone recurrence prevention."
+      "Dr. Sumangala G N is a senior obstetrician and gynecologist with extensive clinical and academic expertise in Internal Medicine.",
+      "Specializes in comprehensive antenatal care, natural deliveries, painless labor, emergency Caesarean sections, and gynecological surgeries.",
+      "Strong advocate of compassionate, woman-centric clinical care from adolescence through menopause."
     ],
     "expBullets": [
-      "Pre-dialysis chronic kidney disease (CKD) conservative management and slowing GFR decline.",
-      "Supervision of acute and maintenance hemodialysis, CRRT in intensive care units, and peritoneal dialysis.",
-      "Percutaneous ultrasound-guided native and transplant kidney biopsies.",
-      "Workup and medical management of recurrent nephrolithiasis (kidney stones) and secondary renal hypertension."
+      "Expert management of high-risk pregnancies, pre-eclampsia, gestational diabetes, and multiple gestations.",
+      "Extensive surgical experience in abdominal and vaginal hysterectomy, ovarian cystectomy, and fibroid myomectomy.",
+      "Adolescent gynecology, menstrual irregularities, PCOS/PCOD management, and menopause health clinics."
+    ]
+  },
+  {
+    "name": "Surg Lt Cdr (Dr) Prajwal S, Retd",
+    "qual": "MBBS, MS (OBG), FMAS, DMAS, Fellowship in ART",
+    "designation": "Fertility Specialist & Laparoscopic Surgeon",
+    "department": "IVF & Fertility",
+    "speciality": "IVF",
+    "headline": "Surg Lt Cdr (Dr) Prajwal S, Retd – Fertility Specialist & Advanced Laparoscopic Surgeon in Mysuru",
+    "experience": "14+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 11:00 AM - 4:00 PM",
+    "image": "assets/surg-lt-cdr-dr-prajwal-s.jpg",
+    "initials": "PS",
+    "about": [
+      "Surg Lt Cdr (Dr) Prajwal S, Retd, is an esteemed reproductive medicine specialist, fertility consultant, and minimal access surgeon.",
+      "Former Surgeon Lieutenant Commander in the Indian Navy, bringing military-grade discipline, precision, and surgical excellence to reproductive healthcare.",
+      "Holds advanced fellowships in Minimal Access Surgery (FMAS, DMAS) and Assisted Reproductive Technology (ART / IVF).",
+      "Specializes in reproductive endocrinology, advanced IVF protocols, fertility preservation, and 3D laparoscopic fertility enhancement surgery."
+    ],
+    "expBullets": [
+      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
+      "Advanced laparoscopic and hysteroscopic surgeries for severe endometriosis, uterine septums, and tubal recanalization.",
+      "Male infertility evaluation, surgical sperm retrieval (TESA/PESA/Micro-TESE), and hormonal optimization.",
+      "Distinguished military medical service recipient with exemplary clinical protocols and high IVF success rates."
+    ]
+  },
+  {
+    "name": "Dr. Hoysala Kantharaju",
+    "qual": "MBBS, MS (Orthopaedics) (SMS, Jaipur), FIFA Dip in Football Medicine",
+    "designation": "Consultant Orthopaedic & Sports Medicine Surgeon",
+    "department": "Orthopaedics",
+    "speciality": "Orthopaedic",
+    "headline": "Dr. Hoysala Kantharaju – Orthopaedic Surgeon & Sports Medicine Specialist in Mysuru",
+    "experience": "12+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 7:30 PM",
+    "image": null,
+    "initials": "HK",
+    "about": [
+      "Dr. Hoysala Kantharaju is an accomplished orthopaedic surgeon trained at the prestigious SMS Hospital, Jaipur, with a specialized FIFA Diploma in Football Medicine.",
+      "Specializes in arthroscopic joint reconstruction, complex trauma management, ligament reconstructions, and sports injury rehabilitation.",
+      "Dedicated to restoring mobility and athletic performance through minimally invasive surgical techniques and structured physiotherapy."
+    ],
+    "expBullets": [
+      "Arthroscopic ACL/PCL reconstruction, meniscal repair, shoulder rotator cuff repairs, and labral stabilization.",
+      "Complex articular fractures, polytrauma fixation, and geriatric fragility fractures.",
+      "Sports injury prevention, athlete screening, cartilage restoration, and musculoskeletal joint injections."
+    ]
+  },
+  {
+    "name": "Dr. Madhu B S",
+    "qual": "MBBS, MS (General Surgery)",
+    "designation": "Senior Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon",
+    "department": "General Surgery",
+    "speciality": "General Surgery",
+    "headline": "Dr. Madhu B S – Senior Consultant General & Laparoscopic Surgeon in Mysuru",
+    "experience": "20+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 3:00 PM",
+    "image": null,
+    "initials": "MB",
+    "about": [
+      "Dr. Madhu B S is a veteran general and minimal access laparoscopic surgeon with dedicated clinical expertise.",
+      "Specializes in advanced gastrointestinal laparoscopy, hernia repairs, thyroid surgery, and emergency abdominal surgery.",
+      "Known for surgical precision, low complication rates, and rapid post-operative patient recovery."
+    ],
+    "expBullets": [
+      "Over 6,000 successful laparoscopic cholecystectomies, appendectomies, and hernia repairs performed.",
+      "Advanced management of acute surgical emergencies including intestinal perforation, bowel obstruction, and peritonitis.",
+      "Thyroidectomy, parotid surgery, breast lump excision, and complex diabetic wound salvage."
+    ]
+  },
+  {
+    "name": "Dr. Sachin V",
+    "qual": "MBBS, MS (General Surgery)",
+    "designation": "Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon",
+    "department": "General Surgery",
+    "speciality": "General Surgery",
+    "headline": "Dr. Sachin V – Consultant General, Laparoscopic & Endoscopic Surgeon in Mysuru",
+    "experience": "10+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 11:00 AM - 3:00 PM & 6:00 PM - 8:00 PM",
+    "image": "assets/dr-sachin-v.jpg",
+    "initials": "SV",
+    "about": [
+      "Dr. Sachin V is a dynamic general and minimal access surgeon known for his clinical excellence in laparoscopic procedures and therapeutic endoscopy.",
+      "Specializes in laparoscopic abdominal surgeries, inguinal hernia mesh repairs, gallbladder removal, and surgical gastroenterology support.",
+      "Committed to minimally invasive techniques that minimize pain, shorten hospital stay, and optimize healing."
+    ],
+    "expBullets": [
+      "High-volume laparoscopic cholecystectomy, appendectomy, and laparoscopic inguinal and ventral hernia repairs.",
+      "Diagnostic upper GI endoscopy, endoscopic mucosal interventions, and gastrointestinal bleeding control.",
+      "Emergency trauma laparotomy, acute appendicitis, and surgical ICU management."
+    ]
+  },
+  {
+    "name": "Dr Nisha N",
+    "qual": "MBBS, MS (General Surgery)",
+    "designation": "Consultant General Surgeon",
+    "department": "General Surgery",
+    "speciality": "General Surgery",
+    "headline": "Dr Nisha N – Consultant General & Laparoscopic Surgeon in Mysuru",
+    "experience": "8+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
+    "image": "assets/dr-nisha-n.jpg",
+    "initials": "NN",
+    "about": [
+      "Dr Nisha N is a skilled consultant general surgeon providing expert surgical care in abdominal, soft tissue, and trauma surgery.",
+      "Focused on empathetic patient care, precision operative techniques, and evidence-based pre- and post-operative surgical pathways.",
+      "Special interests include breast benign and malignant conditions, thyroid diseases, and minimally invasive hernia repairs."
+    ],
+    "expBullets": [
+      "Elective and emergency abdominal surgeries, laparoscopic appendectomy, and open/laparoscopic hernia repairs.",
+      "Comprehensive breast lump evaluation, fibroadenoma excision, and oncoplastic surgical techniques.",
+      "Soft tissue tumor excision, cystectomy, wound management, and diabetic foot ulcer care."
+    ]
+  },
+  {
+    "name": "Dr Lokesh MG",
+    "qual": "MBBS, MS (General Surgery)",
+    "designation": "Consultant General Surgeon",
+    "department": "General Surgery",
+    "speciality": "General Surgery",
+    "headline": "Dr Lokesh MG – Consultant General Surgeon in Mysuru",
+    "experience": "12+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 2:00 PM - 6:00 PM",
+    "image": null,
+    "initials": "LM",
+    "about": [
+      "Dr Lokesh MG is an experienced general surgeon with extensive expertise in open and minimally invasive abdominal surgeries, trauma care, and elective procedures.",
+      "Committed to rigorous surgical safety protocols, modern infection control, and prompt post-op recovery.",
+      "Provides expert consultations for gastrointestinal symptoms, abdominal wall defects, and surgical wound healing."
+    ],
+    "expBullets": [
+      "Extensive experience in open and laparoscopic abdominal surgery, hernia repair, and appendectomy.",
+      "Management of acute surgical trauma, burn wound care, and diabetic foot salvage.",
+      "Daycare minor surgical procedures including sebaceous cyst excision, lipoma removal, and abscess drainage."
+    ]
+  },
+  {
+    "name": "Dr. H N Dinesh",
+    "qual": "MBBS, MS (General Surgery), FSGE (Surgical Gastroenterology)",
+    "designation": "Senior Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon",
+    "department": "Surgical Gastroenterology",
+    "speciality": "Surgical Gastroeneterology",
+    "headline": "Dr. H N Dinesh – Senior Consultant Surgical Gastroenterologist & Laparoscopic Surgeon in Mysuru",
+    "experience": "22+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 7:30 PM",
+    "image": "assets/dr-h-n-dinesh.jpg",
+    "initials": "HD",
+    "about": [
+      "Dr. H N Dinesh is a premier surgical gastroenterologist and senior laparoscopic surgeon with extensive clinical and academic expertise in Internal Medicine.",
+      "Fellow of Surgical Gastroenterology (FSGE), specializing in complex hepato-pancreato-biliary (HPB) surgery, GI tract tumors, and advanced laparoscopic procedures.",
+      "Renowned across the region for managing complex surgical cases with outstanding clinical outcomes."
+    ],
+    "expBullets": [
+      "Advanced laparoscopic GI surgery, laparoscopic fundoplication, colorectal resections, and splenectomy.",
+      "Complex biliary tract reconstruction, hepatic surgery, and pancreatic resection for benign and malignant conditions.",
+      "Surgical management of gastrointestinal malignancies, stomach cancer, and colorectal cancer.",
+      "Therapeutic endoscopy, ERCP support, and complicated intra-abdominal sepsis management."
+    ]
+  },
+  {
+    "name": "Dr. Deepak B Gowda",
+    "qual": "MBBS, MS (General Surgery) (JIPMER), MCh Surgical Gastroenterology (GB Pant, New Delhi), DNB (General Surgery), FMAS, MNAMS",
+    "designation": "Consultant Surgical Gastroenterologist, GI Oncologist & Advanced Laparoscopy Surgeon",
+    "department": "Surgical Gastroenterology",
+    "speciality": "Surgical Gastroeneterology",
+    "headline": "Dr. Deepak B Gowda – Surgical Gastroenterologist & GI Onco Surgeon in Mysuru",
+    "experience": "14+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Tue, Thu, Sat: 11:00 AM - 3:00 PM",
+    "image": null,
+    "initials": "DG",
+    "about": [
+      "Dr. Deepak B Gowda is a super-specialist surgical gastroenterologist and GI onco-surgeon trained at premier national institutes including JIPMER and GB Pant Hospital, New Delhi.",
+      "Holds MCh in Surgical Gastroenterology, DNB in General Surgery, and advanced fellowships in Minimal Access Surgery.",
+      "Specializes in gastrointestinal oncology, liver resections, pancreatic surgery, advanced laparoscopy, and multi-visceral resections."
+    ],
+    "expBullets": [
+      "Whipple's pancreaticoduodenectomy, distal pancreatectomy, and complex hepatic resections.",
+      "Minimally invasive laparoscopic colorectal cancer surgery and radical gastrectomy.",
+      "Management of chronic pancreatitis, bile duct injuries, and portal hypertension surgeries.",
+      "Extensive academic research and clinical publications in national and international surgical journals."
+    ]
+  },
+  {
+    "name": "Dr Lokesh H M",
+    "qual": "MBBS, MS (General Surgery), MCh (Surgical Gastroenterology)",
+    "designation": "Consultant Surgical Gastroenterologist",
+    "department": "Surgical Gastroenterology",
+    "speciality": "Surgical Gastroeneterology",
+    "headline": "Dr Lokesh H M – Consultant Surgical Gastroenterologist & HPB Surgeon in Mysuru",
+    "experience": "10+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon, Wed, Fri: 12:00 PM - 4:00 PM",
+    "image": "assets/dr-lokesh-h-m.jpg",
+    "initials": "LH",
+    "about": [
+      "Dr Lokesh H M is a dedicated super-specialist surgical gastroenterologist holding an MCh in Surgical Gastroenterology.",
+      "Expert in surgical management of diseases of the esophagus, stomach, liver, gallbladder, bile ducts, pancreas, and intestines.",
+      "Committed to precision minimal access surgical interventions and optimal oncological clearance."
+    ],
+    "expBullets": [
+      "Surgical management of gallstone disease, choledochal cyst excision, and biliary stricture repair.",
+      "Colorectal surgery for diverticular disease, ulcerative colitis, and GI malignancies.",
+      "Laparoscopic GI oncology resections and complex emergency abdominal explorations."
+    ]
+  },
+  {
+    "name": "Dr. Thibbe Gowda C D",
+    "qual": "MBBS, MD (Paediatrics)",
+    "designation": "Chief Consultant Paediatrician",
+    "department": "Paediatrics",
+    "speciality": "Paediatrician",
+    "headline": "Dr. Thibbe Gowda C D – Chief Consultant Paediatrician & Child Health Specialist in Mysuru",
+    "experience": "25+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 9:30 AM - 1:30 PM & 5:30 PM - 8:30 PM",
+    "image": "assets/dr-thibbe-gowda-c-d.jpg",
+    "initials": "TG",
+    "about": [
+      "Dr. Thibbe Gowda C D is a beloved senior paediatrician with extensive clinical and academic expertise in Internal Medicine.",
+      "Leads the Paediatric and Neonatal Care department at Sulakshaa Hospital with profound expertise and reassuring clinical empathy.",
+      "Specializes in childhood infectious diseases, growth and developmental monitoring, pediatric asthma, and newborn wellness.",
+      "Trusted by thousands of families across Southern Karnataka for clinical accuracy and compassionate care."
+    ],
+    "expBullets": [
+      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
+      "Expertise in neonatal stabilization, neonatal jaundice, and childhood infectious illnesses.",
+      "Comprehensive vaccination schedule implementation according to Indian Academy of Pediatrics (IAP) guidelines.",
+      "Pediatric asthma management, allergic disorders, and adolescent nutritional counseling."
+    ]
+  },
+  {
+    "name": "Dr. Akshatha P Deshpande",
+    "qual": "MBBS, DNB (Pediatrics)",
+    "designation": "Consultant Paediatrician",
+    "department": "Paediatrics",
+    "speciality": "Paediatrician",
+    "headline": "Dr. Akshatha P Deshpande – Consultant Paediatrician & Neonatal Specialist in Mysuru",
+    "experience": "9+ Years",
+    "languages": "English, Kannada, Hindi, Marathi",
+    "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
+    "image": "assets/dr-akshatha-p-deshpande.jpg",
+    "initials": "AD",
+    "about": [
+      "Dr. Akshatha P Deshpande is a gentle, knowledgeable consultant paediatrician specializing in newborn care, child development, and pediatric intensive care.",
+      "Trained at leading pediatric centers, with strong emphasis on proactive child health screening, pediatric allergy, and nutritional guidance.",
+      "Passionate about early childhood milestone monitoring and comforting parents through clear communication."
+    ],
+    "expBullets": [
+      "Newborn care, well-baby clinics, and premature infant developmental follow-up.",
+      "Management of pediatric respiratory infections, bronchiolitis, viral fevers, and gastroenteritis.",
+      "Immunization counseling, pediatric allergy testing, and childhood eczema management."
+    ]
+  },
+  {
+    "name": "Dr Keethiraj D B",
+    "qual": "MBBS, MD (General Medicine), DNB (General Medicine), DM (Neurology)",
+    "designation": "Consultant Neurologist",
+    "department": "Neurology",
+    "speciality": "Neurology",
+    "headline": "Dr Keethiraj D B – Consultant Neurologist & Stroke Specialist in Mysuru",
+    "experience": "11+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 11:00 AM - 3:00 PM",
+    "image": "assets/dr-keethiraj-d-b.jpg",
+    "initials": "KD",
+    "about": [
+      "Dr Keethiraj D B is a prominent super-specialist neurologist holding DM in Neurology, MD, and DNB qualifications.",
+      "Specializes in acute stroke diagnosis and thrombolysis, epilepsy, movement disorders, neuro-infections, and neurodegenerative illnesses.",
+      "Dedicated to cutting-edge clinical neurology, EEG/ENMG neuro-diagnostics, and long-term neuro-rehabilitation.",
+      "Known for thorough clinical assessments, accurate localized diagnostics, and compassionate patient care."
+    ],
+    "expBullets": [
+      "Emergency stroke care, thrombolytic therapy decision-making, and stroke prevention protocols.",
+      "Diagnosis and management of intractable epilepsy, seizure disorders, and status epilepticus.",
+      "Parkinson's disease, dystonia, tremor clinics, and movement disorder therapeutics.",
+      "Neuropathy, Guillain-Barré syndrome, Myasthenia Gravis, and chronic migraine therapies."
+    ]
+  },
+  {
+    "name": "Dr. Rajesh T S",
+    "qual": "MBBS, MS (General Surgery), MCh (Neurosurgery)",
+    "designation": "Consultant Neurosurgeon & Spine Surgeon",
+    "department": "Neurosurgery",
+    "speciality": "Neurosurgery",
+    "headline": "Dr. Rajesh T S – Consultant Neurosurgeon & Spine Surgeon in Mysuru",
+    "experience": "15+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Tue, Thu, Sat: 2:00 PM - 6:00 PM",
+    "image": null,
+    "initials": "RT",
+    "about": [
+      "Dr. Rajesh T S is an experienced neurosurgeon and spine specialist holding an MCh in Neurosurgery with dedicated clinical expertise.",
+      "Specializes in microscopic brain tumor surgery, head trauma, spinal cord decompression, disc herniations, and minimally invasive spine surgery.",
+      "Leads advanced neuro-trauma stabilization and emergency cranial decompressive procedures at Sulakshaa Hospital."
+    ],
+    "expBullets": [
+      "Emergency craniotomy for traumatic brain injuries, extradural hematoma, and subdural hemorrhage.",
+      "Microsurgical excision of brain and spinal cord tumors, meningiomas, and schwannomas.",
+      "Lumbar and cervical microdiscectomy, spinal fusion, and spondylolisthesis fixation.",
+      "Ventricular shunting for hydrocephalus and peripheral nerve surgical decompressions."
+    ]
+  },
+  {
+    "name": "Dr. Girish T D",
+    "qual": "MBBS, MS (General Surgery), DNB (Urology)",
+    "designation": "Consultant Urologist",
+    "department": "Urology",
+    "speciality": "Urology",
+    "headline": "Dr. Girish T D – Consultant Urologist, Andrologist & Endourologist in Mysuru",
+    "experience": "13+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon, Wed, Fri: 3:00 PM - 7:00 PM",
+    "image": "assets/dr-girish-t-d.jpg",
+    "initials": "GD",
+    "about": [
+      "Dr. Girish T D is an expert consultant urologist and endourologist with extensive clinical and academic expertise in Internal Medicine.",
+      "Specializes in endourology for kidney stones, laser prostate surgery (TURP/HoLEP), reconstructive urology, and male infertility.",
+      "Dedicated to minimally invasive urological procedures that offer rapid recovery, reduced hospital stay, and low recurrence rates."
+    ],
+    "expBullets": [
+      "Laser lithotripsy for complex kidney and ureteral stones (PCNL, Mini-PCNL, URS, RIRS).",
+      "Transurethral resection of the prostate (TURP) and medical management of benign prostatic hyperplasia (BPH).",
+      "Uro-oncological surgeries for bladder and kidney tumors.",
+      "Evaluation and treatment of male sexual dysfunction, stricture urethra, and recurrent urinary infections."
+    ]
+  },
+  {
+    "name": "Dr. Kiran P K",
+    "qual": "MBBS, MD (General Medicine), DNB (Medical Oncology)",
+    "designation": "Consultant Medical Oncologist",
+    "department": "Medical Oncology",
+    "speciality": "Medical Oncology",
+    "headline": "Dr. Kiran P K – Consultant Medical Oncologist & Cancer Care Specialist in Mysuru",
+    "experience": "10+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 2:00 PM",
+    "image": "assets/dr-kiran-p-k.jpg",
+    "initials": "KP",
+    "about": [
+      "Dr. Kiran P K is a skilled medical oncologist specializing in comprehensive systemic cancer therapy, immunotherapy, and targeted molecular oncology.",
+      "Holds DNB in Medical Oncology with intensive clinical training in solid tumors and hematological malignancies.",
+      "Passionate about personalized cancer care protocols, evidence-based chemotherapy, and holistic supportive palliative support."
+    ],
+    "expBullets": [
+      "Administration and supervision of intravenous chemotherapy, immunotherapy, and targeted therapy regimens.",
+      "Specialist in breast cancer, lung cancer, gastrointestinal malignancies, and gynecological cancers.",
+      "Hematological malignancy management including lymphoma and multiple myeloma.",
+      "Cancer symptom management, pain control, and patient and family counseling."
+    ]
+  },
+  {
+    "name": "Dr. Narendra Kumar M S",
+    "qual": "MBBS, DPM (NIMHANS), DNB (Psychiatry), PGDMLE",
+    "designation": "Consultant Psychiatrist",
+    "department": "Psychiatry",
+    "speciality": "Psychiarty",
+    "headline": "Dr. Narendra Kumar M S – Consultant Psychiatrist & Behavioral Medicine Specialist in Mysuru",
+    "experience": "14+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 3:00 PM - 6:30 PM",
+    "image": "assets/dr-narendra-kumar-m-s.jpg",
+    "initials": "NK",
+    "about": [
+      "Dr. Narendra Kumar M S is a distinguished psychiatrist trained at the prestigious National Institute of Mental Health and Neurosciences (NIMHANS), Bengaluru.",
+      "Holds DPM (NIMHANS), DNB in Psychiatry, and a Postgraduate Diploma in Medical Law & Ethics (PGDMLE).",
+      "Specializes in mood disorders, clinical depression, anxiety neurosis, obsessive-compulsive disorder, and adult de-addiction.",
+      "Advocates strongly for empathetic, destigmatized psychiatric care and integrative biopsychosocial wellness."
+    ],
+    "expBullets": [
+      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
+      "Treatment of major depressive disorder, bipolar affective disorder, panic attacks, and severe OCD.",
+      "De-addiction programs for alcohol, nicotine, and substance dependence with relapse prevention counseling.",
+      "Geriatric psychiatric care, dementia-related behavioral support, and stress resilience mentoring."
+    ]
+  },
+  {
+    "name": "Dr Madhav D",
+    "qual": "MBBS, DLO (OTO-Rhino-Laryngology), MS (OTO-Rhino-Laryngology)",
+    "designation": "Consultant OTO-Rhino-Laryngologist (ENT Specialist)",
+    "department": "OTO-Rhino-Laryngology (ENT)",
+    "speciality": "OTO-RHINO-Laryngology",
+    "headline": "Dr Madhav D – Consultant ENT Specialist & Head & Neck Surgeon in Mysuru",
+    "experience": "16+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 7:30 PM",
+    "image": null,
+    "initials": "MD",
+    "about": [
+      "Dr Madhav D is a senior consultant ENT surgeon with extensive clinical and academic expertise in Internal Medicine.",
+      "Holds MS and DLO in OTO-Rhino-Laryngology, specializing in endoscopic sinus surgery, tympanoplasty, vertigo management, and micro-laryngeal surgery.",
+      "Committed to preserving auditory, nasal, and vocal health through advanced diagnostic and microscopic surgical interventions."
+    ],
+    "expBullets": [
+      "Functional Endoscopic Sinus Surgery (FESS) for chronic sinusitis and nasal polyposis.",
+      "Microscopic ear surgery: tympanoplasty, mastoidectomy, and stapedotomy for hearing restoration.",
+      "Micro-laryngeal surgery for vocal cord polyps, nodules, and hoarseness of voice.",
+      "Comprehensive evaluation of vertigo, tinnitus, snoring, and obstructive sleep apnea (OSA)."
+    ]
+  },
+  {
+    "name": "Dr. Nishanth R K",
+    "qual": "MBBS, DMRD (Radiologist)",
+    "designation": "Consultant Radiologist",
+    "department": "Radiology",
+    "speciality": "Radiologist",
+    "headline": "Dr. Nishanth R K – Consultant Radiologist & Diagnostic Imaging Specialist in Mysuru",
+    "experience": "9+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 9:00 AM - 5:00 PM",
+    "image": "assets/dr-nishanth-r-k.jpg",
+    "initials": "NR",
+    "about": [
+      "Dr. Nishanth R K is a consultant radiologist providing diagnostic precision across ultrasound, computed tomography (CT), X-ray, and Doppler imaging.",
+      "Specializes in abdominal imaging, emergency trauma radiology, obstetrical Doppler scans, and musculoskeletal ultrasonography.",
+      "Ensures rapid, highly accurate reporting to support immediate medical and surgical clinical decision-making."
+    ],
+    "expBullets": [
+      "High-resolution Ultrasonography (USG), Whole Abdomen, Pelvis, and Superficial small parts scans.",
+      "Obstetric anomaly scans, 3D/4D ultrasound, and feto-maternal Doppler assessments.",
+      "Multi-detector Computed Tomography (CT) scan interpretation for acute trauma, stroke, and abdominal emergencies.",
+      "USG-guided diagnostic fine-needle aspirations and therapeutic fluid collections."
+    ]
+  },
+  {
+    "name": "Dr. Rajath V Gowrav",
+    "qual": "MBBS, MD (Anaesthesiology)",
+    "designation": "Consultant Anaesthetist & Intensivist",
+    "department": "Anaesthesiology & Critical Care",
+    "speciality": "Anaethesiology",
+    "headline": "Dr. Rajath V Gowrav – Consultant Anaesthetist & Critical Care Intensivist in Mysuru",
+    "experience": "8+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "24/7 Critical Care & OT On-Call",
+    "image": "assets/dr-rajath-v-gowrav.jpg",
+    "initials": "RG",
+    "about": [
+      "Dr. Rajath V Gowrav is an adept consultant anaesthesiologist and critical care specialist dedicated to peri-operative patient safety and intensive care resuscitation.",
+      "Specializes in general and regional anaesthesia, ultrasound-guided nerve blocks, acute surgical resuscitation, and post-operative pain management.",
+      "Plays a pivotal role in the high-dependency critical care unit and surgical operating theatres at Sulakshaa Hospital."
+    ],
+    "expBullets": [
+      "Administration of safe anaesthesia for major abdominal, orthopedic, laparoscopic, and obstetric surgical cases.",
+      "Ultrasound-guided central venous line placement, arterial line monitoring, and regional peripheral nerve blocks.",
+      "Mechanical ventilation management, septic shock protocols, and acute cardiopulmonary resuscitation (ACLS).",
+      "Painless labor epidural analgesia and multimodal acute post-operative pain relief."
+    ]
+  },
+  {
+    "name": "Dr. Komala H K",
+    "qual": "MBBS, MD (Anaesthesiology), DrNB (Critical Care Medicine)",
+    "designation": "Chief Intensivist & Consultant Anaesthetist",
+    "department": "Anaesthesiology & Critical Care",
+    "speciality": "Anaethesiology",
+    "headline": "Dr. Komala H K – Chief Intensivist & Consultant Anaesthetist in Mysuru",
+    "experience": "12+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "24/7 ICU & Critical Care Coverage",
+    "image": null,
+    "initials": "KH",
+    "about": [
+      "Dr. Komala H K is a specialist intensivist holding DrNB in Critical Care Medicine and MD in Anaesthesiology.",
+      "Leads the Intensive Care Unit (ICU) and High Dependency Unit (HDU) at Sulakshaa Hospital with round-the-clock clinical oversight.",
+      "Specializes in hemodynamic monitoring, sepsis protocols, acute respiratory distress syndrome (ARDS), and multi-organ failure management."
+    ],
+    "expBullets": [
+      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
+      "Advanced invasive hemodynamic monitoring (PICCO, Echocardiography in ICU, lung ultrasound).",
+      "Management of severe polytrauma, ARDS, septic shock, and neuro-critical care emergencies.",
+      "Leadership in hospital infection control, antibiotic stewardship, and critical care quality standards."
+    ]
+  },
+  {
+    "name": "Dr. Shashidhar",
+    "qual": "MBBS, MD (Pathology), MBA (HCM)",
+    "designation": "Senior Consultant Pathologist & Lab Director",
+    "department": "Pathology",
+    "speciality": "Pathology",
+    "headline": "Dr. Shashidhar – Senior Consultant Pathologist & Laboratory Director in Mysuru",
+    "experience": "18+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 9:00 AM - 4:00 PM",
+    "image": null,
+    "initials": "DS",
+    "about": [
+      "Dr. Shashidhar is a senior consultant pathologist and healthcare management specialist with extensive clinical and academic expertise in Internal Medicine.",
+      "Heads the central diagnostic pathology laboratory at Sulakshaa Hospital, overseeing histopathology, cytopathology, hematology, and clinical biochemistry.",
+      "Committed to rigorous external quality assurance, automated diagnostic accuracy, and rapid critical value reporting."
+    ],
+    "expBullets": [
+      "Expert histopathological evaluation of surgical biopsy specimens, cancer resections, and frozen sections.",
+      "Fine Needle Aspiration Cytology (FNAC) and exfoliative cytology for early malignancy screening.",
+      "Supervision of fully automated hematology, clinical pathology, and blood bank transfusion cross-matching.",
+      "Quality assurance certifications, ISO lab management, and continuous clinical audit protocols."
     ]
   }
 ];
 
     function initDoctorDetails() {
       const params = new URLSearchParams(window.location.search);
-      const queryName = params.get('doctor') || params.get('doc');
+      const queryName = params.get('doctor') || params.get('doc') || params.get('name');
 
-      let currentDoc = doctorsDB[0];
+      let currentDoc = doctorsDB[0]; // Default: Dr. Laxme Gowda
       if (queryName) {
-        const found = doctorsDB.find(d => d.name.toLowerCase().includes(queryName.toLowerCase()) || queryName.toLowerCase().includes(d.name.toLowerCase()));
+        const cleanQuery = queryName.toLowerCase().replace(/^(dr.?|surg lt cdr (dr))s*/i, '').trim();
+        const found = doctorsDB.find(d => {
+          const cleanName = d.name.toLowerCase().replace(/^(dr.?|surg lt cdr (dr))s*/i, '').trim();
+          return cleanName.includes(cleanQuery) || cleanQuery.includes(cleanName) || d.name.toLowerCase().includes(queryName.toLowerCase());
+        });
         if (found) currentDoc = found;
       }
 
-      document.getElementById('pageTitle').textContent = currentDoc.name + ' | Sulakshaa Multi Speciality Hospital, Mysuru';
+      // Update page title & breadcrumbs
+      document.getElementById('pageTitle').textContent = currentDoc.name + ' - Profile | Sulakshaa Multi Speciality Hospital';
+      const breadcrumb = document.getElementById('breadcrumbDocName');
+      if (breadcrumb) breadcrumb.textContent = currentDoc.name;
+
+      // Hero Elements
       document.getElementById('docHeroName').textContent = currentDoc.name;
       document.getElementById('docHeroQual').textContent = currentDoc.qual;
       document.getElementById('docHeroDesig').textContent = currentDoc.designation;
-      document.getElementById('docHeroExp').textContent = currentDoc.experience;
-      document.getElementById('docHeroLang').textContent = currentDoc.languages;
-      document.getElementById('docHeroOpd').textContent = currentDoc.opd;
-      document.getElementById('docHeroImg').src = currentDoc.image;
-      document.getElementById('docHeroImg').alt = currentDoc.name;
+      document.getElementById('docHeroDept').textContent = currentDoc.department;
+
+      // Doctor Image / Portrait Frame
+      const imgContainer = document.getElementById('docHeroImgContainer');
+      if (currentDoc.image) {
+        imgContainer.innerHTML = '<img id="docHeroImg" src="' + currentDoc.image + '" alt="' + currentDoc.name + '">';
+      } else {
+        imgContainer.innerHTML = 
+          '<div class="doc-hero-avatar-fallback">' +
+            '<div class="initials-circle">' + (currentDoc.initials || 'SH') + '</div>' +
+            '<div class="spec-title">' + currentDoc.department + '</div>' +
+            '<p style="font-size: 0.88rem; opacity: 0.85; margin: 0;">Sulakshaa Multi Speciality Hospital</p>' +
+          '</div>';
+      }
+
+      // Action links
+      const bookUrl = 'contact.html?doctor=' + encodeURIComponent(currentDoc.name) + '&dept=' + encodeURIComponent(currentDoc.department) + '#appointmentEnquiryContainer';
+      document.getElementById('docHeroAptBtn').href = bookUrl;
+      const sidebarBookBtn = document.getElementById('docSidebarBookBtn');
+      if (sidebarBookBtn) sidebarBookBtn.href = bookUrl;
+
+      // Sidebar info
+      const sidebarDept = document.getElementById('docSidebarDept');
+      if (sidebarDept) sidebarDept.textContent = currentDoc.department;
+
+      // Body Elements
       document.getElementById('docHeadline').textContent = currentDoc.headline;
-      document.getElementById('docHeroAptBtn').href = 'index.html?doctor=' + encodeURIComponent(currentDoc.name) + '&dept=' + encodeURIComponent(currentDoc.speciality) + '#enquiry';
 
       const aboutList = document.getElementById('docAboutList');
       aboutList.innerHTML = '';
-      currentDoc.about.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        aboutList.appendChild(li);
-      });
+      if (currentDoc.about && currentDoc.about.length > 0) {
+        currentDoc.about.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          aboutList.appendChild(li);
+        });
+      }
 
       const expList = document.getElementById('docExpList');
       expList.innerHTML = '';
-      currentDoc.expBullets.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        expList.appendChild(li);
-      });
+      if (currentDoc.expBullets && currentDoc.expBullets.length > 0) {
+        currentDoc.expBullets.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          expList.appendChild(li);
+        });
+      }
 
       const yearSpan = document.getElementById('currentYear');
       if (yearSpan) yearSpan.textContent = new Date().getFullYear();
@@ -816,6 +1389,7 @@
 
     document.addEventListener('DOMContentLoaded', initDoctorDetails);
   </script>
+  <script src="script.js?v=37"></script>
   <script src="navigation.js"></script>
 </body>
 </html>

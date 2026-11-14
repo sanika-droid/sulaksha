@@ -1555,14 +1555,96 @@ function initDoctorsPageFilters() {
   const emptyState = document.getElementById('noDoctorsFound');
   const resetFiltersBtn = document.getElementById('resetDoctorFiltersBtn');
   const doctorCards = document.querySelectorAll('.doctor-dir-card');
+  const paginationWrap = document.getElementById('doctorPagination');
 
   if (!doctorCards.length) return; // Not on the doctors directory page
 
   let activeSpeciality = specialitySelect ? (specialitySelect.value || 'all') : 'all';
   let searchQuery = searchInput ? (searchInput.value || '') : '';
+  let currentPage = 1;
+  const pageSize = 6;
 
-  const applyFilters = () => {
-    let visibleCount = 0;
+  const scrollToGrid = () => {
+    const grid = document.getElementById('doctorDirGrid') || resultsBar;
+    if (grid) {
+      const topPos = grid.getBoundingClientRect().top + window.pageYOffset - 110;
+      window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });
+    }
+  };
+
+  const renderPagination = (totalPages) => {
+    if (!paginationWrap) return;
+
+    if (totalPages <= 1) {
+      paginationWrap.style.display = 'none';
+      return;
+    }
+    paginationWrap.style.display = 'flex';
+
+    let pageBtnsHtml = '';
+    for (let p = 1; p <= totalPages; p++) {
+      const isActive = p === currentPage;
+      pageBtnsHtml += `<button type="button" class="page-btn ${isActive ? 'active' : ''}" data-page="${p}" ${isActive ? 'aria-current="page"' : ''}>${p}</button>`;
+    }
+
+    paginationWrap.innerHTML = `
+      <button type="button" class="page-btn page-btn-nav" id="docPrevPageBtn" aria-label="Previous Page" ${currentPage === 1 ? 'disabled' : ''}>
+        <i data-lucide="chevron-left" class="icon-xs"></i>
+        <span>Previous</span>
+      </button>
+      <div class="page-numbers-group" id="docPageNumbersGroup">
+        ${pageBtnsHtml}
+      </div>
+      <button type="button" class="page-btn page-btn-nav" id="docNextPageBtn" aria-label="Next Page" ${currentPage === totalPages ? 'disabled' : ''}>
+        <span>Next</span>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+      </button>
+    `;
+
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+      lucide.createIcons({ root: paginationWrap });
+    }
+
+    // Bind event handlers to pagination buttons
+    const prevBtn = paginationWrap.querySelector('#docPrevPageBtn');
+    const nextBtn = paginationWrap.querySelector('#docNextPageBtn');
+    const numBtns = paginationWrap.querySelectorAll('.page-btn[data-page]');
+
+    prevBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        applyFilters(false);
+        scrollToGrid();
+      }
+    });
+
+    nextBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (currentPage < totalPages) {
+        currentPage++;
+        applyFilters(false);
+        scrollToGrid();
+      }
+    });
+
+    numBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const p = parseInt(btn.getAttribute('data-page'), 10);
+        if (p && p !== currentPage) {
+          currentPage = p;
+          applyFilters(false);
+          scrollToGrid();
+        }
+      });
+    });
+  };
+
+  const applyFilters = (resetPage = false) => {
+    if (resetPage) currentPage = 1;
+
+    let matchingCards = [];
     const q = searchQuery.toLowerCase().trim().replace(/\s+/g, ' ');
 
     doctorCards.forEach(card => {
@@ -1581,28 +1663,50 @@ function initDoctorsPageFilters() {
         cardBio.includes(q) ||
         cardImgAlt.includes(q);
 
-      const isMatch = matchesSpeciality && matchesSearch;
-      if (isMatch) {
-        card.classList.remove('is-hidden-card');
-        card.style.display = 'flex';
-        visibleCount++;
+      if (matchesSpeciality && matchesSearch) {
+        matchingCards.push(card);
       } else {
         card.classList.add('is-hidden-card');
         card.style.display = 'none';
       }
     });
 
-    // Update count badge without wiping its Lucide icon
-    const badgeLabel = `Showing ${visibleCount} of ${doctorCards.length} Doctors`;
-    if (countText) {
-      countText.textContent = badgeLabel;
-    } else if (countBadge) {
-      countBadge.textContent = badgeLabel;
+    const totalMatching = matchingCards.length;
+    const totalPages = Math.ceil(totalMatching / pageSize) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const startIdx = (currentPage - 1) * pageSize;
+    const endIdx = startIdx + pageSize;
+
+    matchingCards.forEach((card, idx) => {
+      if (idx >= startIdx && idx < endIdx) {
+        card.classList.remove('is-hidden-card');
+        card.style.display = 'flex';
+      } else {
+        card.classList.add('is-hidden-card');
+        card.style.display = 'none';
+      }
+    });
+
+    // Update count badge
+    if (totalMatching === 0) {
+      const badgeLabel = `Showing 0 of ${doctorCards.length} Doctors`;
+      if (countText) countText.textContent = badgeLabel;
+      else if (countBadge) countBadge.textContent = badgeLabel;
+    } else {
+      const startDisplay = startIdx + 1;
+      const endDisplay = Math.min(endIdx, totalMatching);
+      const badgeLabel = totalMatching === doctorCards.length
+        ? `Showing ${startDisplay}–${endDisplay} of ${totalMatching} Doctors`
+        : `Showing ${startDisplay}–${endDisplay} of ${totalMatching} Filtered Doctors`;
+      if (countText) countText.textContent = badgeLabel;
+      else if (countBadge) countBadge.textContent = badgeLabel;
     }
 
     // Toggle empty state
     if (emptyState) {
-      if (visibleCount === 0) {
+      if (totalMatching === 0) {
         emptyState.classList.add('is-visible');
         const emptyQueryText = document.getElementById('emptySearchQueryText');
         if (emptyQueryText) {
@@ -1637,12 +1741,15 @@ function initDoctorsPageFilters() {
         searchClearBtn.classList.remove('is-visible');
       }
     }
+
+    // Render pagination controls (1, 2, 3, 4, Previous, Next)
+    renderPagination(totalPages);
   };
 
   const triggerSearchSubmit = () => {
     if (searchInput) searchQuery = searchInput.value;
     if (specialitySelect) activeSpeciality = specialitySelect.value || 'all';
-    applyFilters();
+    applyFilters(true);
     if (resultsBar && typeof resultsBar.scrollIntoView === 'function') {
       resultsBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -1651,7 +1758,7 @@ function initDoctorsPageFilters() {
   // Search input live filter & Enter key
   searchInput?.addEventListener('input', (e) => {
     searchQuery = e.target.value;
-    applyFilters();
+    applyFilters(true);
   });
 
   searchInput?.addEventListener('keydown', (e) => {
@@ -1673,7 +1780,7 @@ function initDoctorsPageFilters() {
       searchInput.value = '';
       searchQuery = '';
       searchInput.focus();
-      applyFilters();
+      applyFilters(true);
     }
   });
 
@@ -1688,7 +1795,7 @@ function initDoctorsPageFilters() {
         chip.classList.remove('active');
       }
     });
-    applyFilters();
+    applyFilters(true);
   });
 
   specialitySelect?.addEventListener('keydown', (e) => {
@@ -1711,7 +1818,7 @@ function initDoctorsPageFilters() {
         specialitySelect.value = filter;
       }
 
-      applyFilters();
+      applyFilters(true);
     });
   });
 
@@ -1728,14 +1835,14 @@ function initDoctorsPageFilters() {
         chip.classList.remove('active');
       }
     });
-    applyFilters();
+    applyFilters(true);
   };
 
   clearFiltersBtn?.addEventListener('click', resetAll);
   resetFiltersBtn?.addEventListener('click', resetAll);
 
   // Apply initial state (handles browser bfcache/autocomplete prefilled controls)
-  applyFilters();
+  applyFilters(false);
 }
 
 /**
