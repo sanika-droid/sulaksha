@@ -1562,7 +1562,7 @@ function initDoctorsPageFilters() {
   let activeSpeciality = specialitySelect ? (specialitySelect.value || 'all') : 'all';
   let searchQuery = searchInput ? (searchInput.value || '') : '';
   let currentPage = 1;
-  const pageSize = 6;
+  const pageSize = 8;
 
   const scrollToGrid = () => {
     const grid = document.getElementById('doctorDirGrid') || resultsBar;
