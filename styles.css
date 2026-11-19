@@ -11264,3 +11264,50 @@ section[id], [id] {
     font-size: 0.6rem !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Global Laptop, Tablet & Mobile Responsiveness
+   Preserves 100% of existing components, layout structure, colors & content
+   -------------------------------------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .header-inner {
+    padding-left: clamp(12px, 1.6vw, 24px) !important;
+    padding-right: clamp(12px, 1.6vw, 24px) !important;
+    gap: clamp(0.4rem, 0.9vw, 0.75rem) !important;
+  }
+  .nav-list {
+    gap: clamp(0.08rem, 0.2vw, 0.22rem) !important;
+  }
+  .nav-link {
+    font-size: 0.81rem !important;
+    padding: 0.4rem clamp(0.35rem, 0.5vw, 0.55rem) !important;
+  }
+  #headerAppointmentBtn {
+    padding: 0.42rem 0.8rem !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+  .site-top-bar {
+    padding: 5px 0 !important;
+  }
+  .top-bar-location,
+  .top-bar-hours,
+  .top-bar-socials {
+    display: none !important;
+  }
+  .top-bar-right {
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 1.15rem !important;
+    margin: 0 !important;
+  }
+  .top-bar-link {
+    font-size: 0.78rem !important;
+  }
+}
