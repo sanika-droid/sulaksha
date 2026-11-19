@@ -494,63 +494,6 @@
       justify-content: space-between;
     }
 
-    /* Senior Specialists List */
-    .specialist-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .specialist-item {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.65rem 0.5rem;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color 0.18s ease;
-    }
-
-    .specialist-item:hover {
-      background-color: #F8FAFC;
-    }
-
-    .specialist-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      flex-shrink: 0;
-      border: 2.5px solid #E0F2FE;
-      box-shadow: 0 3px 10px rgba(11, 37, 104, 0.12), 0 0 0 1px rgba(0, 136, 209, 0.25);
-      background: #FFFFFF;
-      filter: contrast(1.03) saturate(1.04);
-    }
-
-    .specialist-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .specialist-name {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #0B2568;
-      margin-bottom: 2px;
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .specialist-dept {
-      font-size: 0.75rem;
-      color: #0088D1;
-      font-weight: 600;
-      display: block;
-    }
-
     /* Related Articles List */
     .related-articles-list {
       display: flex;
@@ -1091,40 +1034,6 @@
         <!-- Right: Sidebar -->
         <aside class="blog-sidebar" aria-label="Sidebar Resources">
           
-          <!-- Senior Specialists Widget -->
-          <div class="sidebar-widget">
-            <h3 class="widget-title">
-              <span>Senior Specialists</span>
-              <i data-lucide="stethoscope" class="icon-xs" style="color: #0088D1;"></i>
-            </h3>
-            <div class="specialist-list">
-              <a href="doctors.html" class="specialist-item">
-                <img src="assets/dr-laxme-gowda.png" alt="Dr. Laxme Gowda" class="specialist-avatar" onerror="this.src='assets/general-medicine.png'">
-                <div class="specialist-info">
-                  <strong class="specialist-name">Dr. Laxme Gowda</strong>
-                  <span class="specialist-dept">General Medicine &bull; 45+ Yrs</span>
-                </div>
-                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
-              </a>
-              <a href="doctors.html" class="specialist-item">
-                <div class="specialist-avatar" style="display:flex;align-items:center;justify-content:center;background:#0B2568;color:#FFF;font-weight:700;font-size:0.8rem;">PS</div>
-                <div class="specialist-info">
-                  <strong class="specialist-name">Dr. Priya S. Sharma</strong>
-                  <span class="specialist-dept">Consultant Cardiologist &bull; 16+ Yrs</span>
-                </div>
-                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
-              </a>
-              <a href="doctors.html" class="specialist-item">
-                <div class="specialist-avatar" style="display:flex;align-items:center;justify-content:center;background:#0088D1;color:#FFF;font-weight:700;font-size:0.8rem;">AK</div>
-                <div class="specialist-info">
-                  <strong class="specialist-name">Dr. Anand R. Kulkarni</strong>
-                  <span class="specialist-dept">Orthopedic Surgeon &bull; Joint Care</span>
-                </div>
-                <i data-lucide="chevron-right" class="icon-xs" style="color: #94A3B8;"></i>
-              </a>
-            </div>
-          </div>
-
           <!-- Related Health Articles Widget -->
           <div class="sidebar-widget">
             <h3 class="widget-title">
@@ -1291,8 +1200,8 @@
         category: 'Cardiology & Emergency',
         date: 'Oct 2026',
         readTime: '6 min read',
-        author: 'Dr. Priya S. Sharma, Consultant Cardiologist',
-        authorInitials: 'PS',
+        author: 'Dr. Laxme Gowda, Clinical Cardiologist & Senior Consultant',
+        authorInitials: 'LG',
         image: 'assets/blog-cardiology.jpg',
         imageCaption: 'Recognizing early heart disease warning signs and acting during the Golden Hour saves cardiac muscle and lives.',
         metaDesc: 'Learn the critical warning signs of heart disease, subtle heart attack symptoms, and Golden Hour emergency protocols at Sulakshaa Hospital, Mysuru.',
@@ -1307,7 +1216,7 @@
             <i data-lucide="heart" class="doctor-callout-icon"></i>
             <div class="doctor-callout-text">
               <h4>Senior Cardiologist Clinical Note</h4>
-              <p>“Heart attacks do not always present with sudden chest-clutching drama as portrayed in movies. In clinical practice, many patients experience insidious warning signs—such as unusual jaw discomfort, heavy fatigue, or indigestion-like burning—hours or days prior to acute infarction.” — Dr. Priya S. Sharma</p>
+              <p>“Heart attacks do not always present with sudden chest-clutching drama as portrayed in movies. In clinical practice, many patients experience insidious warning signs—such as unusual jaw discomfort, heavy fatigue, or indigestion-like burning—hours or days prior to acute infarction.” — Dr. Laxme Gowda</p>
             </div>
           </div>
 
@@ -1479,8 +1388,8 @@
         category: 'Orthopedic Care',
         date: 'Aug 2026',
         readTime: '5 min read',
-        author: 'Dr. Anand R. Kulkarni, Orthopedic Surgeon',
-        authorInitials: 'AK',
+        author: 'Dr. Hoysala Kantharaju, Consultant Orthopaedic Surgeon',
+        authorInitials: 'HK',
         image: 'assets/blog-orthopedics.jpg',
         imageCaption: 'Preserving joint cartilage through non-surgical therapies, strengthening, and early orthopaedic care.',
         metaDesc: 'Practical orthopaedic guidance on managing knee osteoarthritis, quadriceps strengthening, and joint longevity.',
@@ -1495,7 +1404,7 @@
             <i data-lucide="activity" class="doctor-callout-icon"></i>
             <div class="doctor-callout-text">
               <h4>Orthopedic Surgeon Advice</h4>
-              <p>“Strengthening the quadriceps and hamstring muscles acts like an internal shock absorber for the knee joint, reducing mechanical load on cartilage by up to 40%.” — Dr. Anand R. Kulkarni</p>
+              <p>“Strengthening the quadriceps and hamstring muscles acts like an internal shock absorber for the knee joint, reducing mechanical load on cartilage by up to 40%.” — Dr. Hoysala Kantharaju</p>
             </div>
           </div>
 

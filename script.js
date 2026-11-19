@@ -1094,23 +1094,14 @@ function initInfoModals() {
       philosophy: 'Dr. Laxme Gowda is a revered medical practitioner in Mysuru with over four and a half decades of trusted clinical practice. He brings profound diagnostic wisdom and a compassionate bedside manner to patient care at Sulakshaa Multi Speciality Hospital, focusing on accurate physical diagnosis, prudent investigation, and personalized treatment.',
       timings: 'Monday to Saturday (Daily token-based OPD consultations). Please enquire via front desk or online enquiry form.'
     },
-    'Dr. Priya S. Sharma': {
-      name: 'Dr. Priya S. Sharma',
-      role: 'Consultant Cardiologist (MD, DM Cardiology) &bull; 16+ Years Experience',
-      badge: 'Cardiology Consultant',
-      img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=350&h=380&q=80',
-      speciality: 'Clinical Cardiology, 2D Echocardiography, Preventative Heart Health, Coronary Artery Care, Arrhythmia &amp; Hypertension Management.',
-      philosophy: 'Committed to evidence-based preventive cardiology and advanced non-invasive cardiac diagnosis, empowering patients with lifestyle awareness and timely therapeutic care.',
-      timings: 'Monday to Friday (10:00 AM - 2:00 PM). Prior appointment enquiry recommended.'
-    },
-    'Dr. Anand R. Kulkarni': {
-      name: 'Dr. Anand R. Kulkarni',
-      role: 'Senior Orthopedic Surgeon (MS Ortho, DNB) &bull; 14+ Years Experience',
-      badge: 'Orthopedic Consultant',
-      img: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=350&h=380&q=80',
-      speciality: 'Joint Reconstruction &amp; Replacement, Arthroscopic Sports Medicine, Complex Trauma &amp; Fracture Fixation, Degenerative Spine Management.',
-      philosophy: 'Focuses on surgical precision, minimally invasive techniques, and rapid post-operative rehabilitation for joint mobility and pain-free living.',
-      timings: 'Tuesday, Thursday, Saturday (3:00 PM - 7:00 PM). Token consultations upon confirmation.'
+    'Dr. Hoysala Kantharaju': {
+      name: 'Dr. Hoysala Kantharaju',
+      role: 'Consultant Orthopaedic Surgeon (MBBS, MS Ortho)',
+      badge: 'Verified Senior Faculty',
+      img: 'assets/dr-hoysala-kantharaju.png',
+      speciality: 'Orthopaedics, Joint Replacement, Fracture Care, Complex Trauma &amp; Musculoskeletal Health.',
+      philosophy: 'Dedicated to precision orthopaedic diagnosis, minimally invasive trauma surgery, and comprehensive joint rehabilitation for active mobility.',
+      timings: 'Monday to Saturday. Token consultations upon confirmation.'
     },
     'Dr. Sneha Hegde': {
       name: 'Dr. Sneha Hegde',
@@ -1273,7 +1264,7 @@ function initInfoModals() {
       scope: 'Comprehensive preventive, diagnostic, and emergency cardiology for adult heart diseases, hypertension, and coronary conditions.',
       conditions: 'Hypertension, Heart Failure, Arrhythmias, Dyslipidemia &amp; Post-Infarction Rehabilitation.',
       diagnostics: 'Digital 12-Lead ECG, 2D Echocardiography with Color Doppler, Cardiac Biomarkers (Troponin I), Ambulatory BP Monitoring, Treadmill Stress Testing.',
-      doctors: 'Dr. Priya S. Sharma (MD, DM Cardiology &bull; 16+ Years Experience)'
+      doctors: 'Dr. Laxme Gowda (MBBS, MD &bull; Senior Consultant Physician &amp; Diabetologist)'
     },
     'Orthopedics': {
       title: 'Orthopedics, Joint Care & Trauma Surgery',
@@ -1282,7 +1273,7 @@ function initInfoModals() {
       scope: 'Specialized management of musculoskeletal conditions, accidental trauma, fractures, arthritis, and back/spinal ailments.',
       conditions: 'Complex Fractures, Osteoarthritis, Degenerative Disc Disease, Joint Dislocations, Tendon Injuries &amp; Osteoporosis.',
       diagnostics: 'Digital High-Resolution X-Ray, Musculoskeletal Ultrasound, Multi-Slice CT Scanning, Joint Aspiration &amp; Fluid Analysis.',
-      doctors: 'Dr. Anand R. Kulkarni (MS Orthopedics &bull; 15+ Years Experience)'
+      doctors: 'Dr. Hoysala Kantharaju (MBBS, MS Ortho &bull; Consultant Orthopaedic Surgeon)'
     },
     'Neurology': {
       title: 'Neurology & Brain Health Sciences',
@@ -1291,7 +1282,7 @@ function initInfoModals() {
       scope: 'Clinical diagnosis and therapeutic management of neurological, neuromuscular, cerebrovascular, and cognitive disorders.',
       conditions: 'Acute Ischemic Stroke, Chronic Migraine &amp; Cluster Headaches, Epilepsy &amp; Seizures, Peripheral Neuropathy, Parkinsonian Tremors.',
       diagnostics: 'High-Slice CT Neuroimaging, High-Field MRI, Digital Reflex Testing, Neurological Metabolic Panels.',
-      doctors: 'Dr. Vikram M. Rao (MD, DM Neurology &bull; 14+ Years Experience)'
+      doctors: 'Dr Keethiraj D B (MBBS, MD, DM &bull; Consultant Neurologist)'
     },
     'General Medicine': {
       title: 'General Medicine & Internal Medicine',
