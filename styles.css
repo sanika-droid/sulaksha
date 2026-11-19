@@ -1247,6 +1247,31 @@ button, input, select, textarea {
   white-space: nowrap;
 }
 
+/* Header Back Button (for details pages: facility, doctor, etc.) */
+.header-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  border-radius: 6px;
+  border: 1.5px solid #0B2568;
+  color: #0B2568;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.header-back-btn:hover {
+  background-color: #0B2568;
+  border-color: #0B2568;
+  color: #FFFFFF;
+}
+
+.header-back-btn i {
+  flex-shrink: 0;
+}
+
 /* Mobile Toggle & Hamburger Morphing */
 .mobile-toggle {
   display: none;
@@ -7527,7 +7552,7 @@ button, input, select, textarea {
     align-items: center;
     gap: 0;
     min-width: 0;
-    flex-shrink: 1;
+    flex-shrink: 0;
   }
 
   .brand-logo {
@@ -7568,10 +7593,31 @@ button, input, select, textarea {
   }
 }
 
+@media (max-width: 768px) {
+  .header-back-btn {
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .header-back-btn .header-back-text {
+    display: none !important;
+  }
+
+  .header-back-btn::after {
+    content: "Back" !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+  }
+}
+
 @media (max-width: 640px) {
   .header-inner {
     height: 58px;
     gap: 0.35rem;
+  }
+
+  .brand-identity {
+    flex-shrink: 0;
   }
 
   .brand-logo {
@@ -7598,6 +7644,18 @@ button, input, select, textarea {
   .header-actions {
     gap: 0.35rem;
     flex-shrink: 0;
+  }
+
+  .header-back-btn {
+    padding: 0.38rem 0.55rem !important;
+    font-size: 0.78rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .header-back-btn::after {
+    content: "Back" !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
   }
 
   /* Compact Book Appointment button on mobile to prevent ANY overlap with brand text */
@@ -7638,9 +7696,19 @@ button, input, select, textarea {
 }
 
 @media (max-width: 380px) {
-  /* On very narrow phones (iPhone SE, Galaxy A, etc.), show calendar icon button to guarantee zero overlap */
+  /* On very narrow phones (iPhone SE, Galaxy A, etc.), show icon buttons to guarantee zero overlap */
+  .brand-logo {
+    height: 36px !important;
+    width: 36px !important;
+  }
+
+  .brand-divider {
+    height: 20px !important;
+    margin: 0 5px !important;
+  }
+
   .brand-hospital-title {
-    font-size: 0.96rem !important;
+    font-size: 0.98rem !important;
   }
 
   .brand-hospital-type {
@@ -7648,11 +7716,23 @@ button, input, select, textarea {
     white-space: nowrap !important;
   }
 
-  .header-actions #headerAppointmentBtn {
-    padding: 0.42rem !important;
+  .header-back-btn {
     width: 34px !important;
     height: 34px !important;
-    border-radius: 50% !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 6px !important;
+  }
+
+  .header-back-btn::after {
+    display: none !important;
+  }
+
+  .header-actions #headerAppointmentBtn {
+    padding: 0 !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 6px !important;
     justify-content: center !important;
   }
 

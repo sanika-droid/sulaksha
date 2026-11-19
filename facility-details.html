@@ -300,6 +300,128 @@
         justify-content: center;
       }
     }
+
+    /* Responsive Header & Action Buttons (Zero-overlap guarantee on all screens) */
+    .header-inner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: clamp(0.5rem, 1.5vw, 1rem) !important;
+      width: 100% !important;
+    }
+
+    .brand-identity {
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      min-width: 0 !important;
+    }
+
+    .header-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      flex-shrink: 0 !important;
+    }
+
+    .header-back-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.35rem !important;
+      white-space: nowrap !important;
+      border-radius: 6px !important;
+      border: 1.5px solid #0B2568 !important;
+      color: #0B2568 !important;
+      background: transparent !important;
+      font-weight: 600 !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+    }
+
+    .header-back-btn:hover {
+      background-color: #0B2568 !important;
+      color: #FFFFFF !important;
+    }
+
+    @media (max-width: 768px) {
+      .header-back-btn {
+        padding: 0.4rem 0.65rem !important;
+        font-size: 0.8rem !important;
+      }
+      .header-back-text {
+        display: none !important;
+      }
+      .header-back-btn::after {
+        content: "Back" !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .header-actions {
+        gap: 0.35rem !important;
+      }
+      .header-back-btn {
+        padding: 0.38rem 0.55rem !important;
+        font-size: 0.78rem !important;
+        gap: 0.25rem !important;
+      }
+      .header-back-btn::after {
+        content: "Back" !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+      }
+      .header-actions #headerAppointmentBtn {
+        padding: 0.38rem 0.65rem !important;
+        font-size: 0.78rem !important;
+        gap: 0.25rem !important;
+        border-radius: 6px !important;
+      }
+      .header-actions #headerAppointmentBtn span {
+        font-size: 0 !important;
+      }
+      .header-actions #headerAppointmentBtn span::before {
+        content: "Book" !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .brand-logo {
+        height: 36px !important;
+        width: 36px !important;
+      }
+      .brand-divider {
+        height: 20px !important;
+        margin: 0 5px !important;
+      }
+      .brand-hospital-title {
+        font-size: 0.98rem !important;
+      }
+      .brand-hospital-type {
+        font-size: 0.48rem !important;
+      }
+      .header-back-btn {
+        width: 34px !important;
+        height: 34px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+      }
+      .header-back-btn::after {
+        display: none !important;
+      }
+      .header-actions #headerAppointmentBtn {
+        width: 34px !important;
+        height: 34px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+      }
+      .header-actions #headerAppointmentBtn span {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body class="facility-detail-page">
@@ -337,11 +459,11 @@
       </a>
       
       <div class="header-actions">
-        <a href="facilities.html" class="btn btn-outline btn-sm">
-          <i data-lucide="arrow-left" class="icon-xs"></i> Back to Facilities
+        <a href="facilities.html" class="btn btn-outline btn-sm header-back-btn" aria-label="Back to Facilities">
+          <i data-lucide="arrow-left" class="icon-xs"></i> <span class="header-back-text">Back to Facilities</span>
         </a>
-        <a href="index.html#enquiry" class="btn btn-primary btn-sm">
-          <i data-lucide="calendar-check" class="icon-xs"></i> Book Appointment
+        <a href="index.html#enquiry" class="btn btn-primary btn-sm" id="headerAppointmentBtn">
+          <i data-lucide="calendar-check" class="icon-xs"></i> <span>Book Appointment</span>
         </a>
       </div>
     </div>
