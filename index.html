@@ -3460,210 +3460,198 @@
     </section>
 
 
-    <!-- 11a. Our Videos Section -->
-    <section class="section our-videos-section" id="hospital-video" aria-labelledby="video-spotlight-heading" style="padding-top: clamp(1.75rem, 3vw, 2.5rem); padding-bottom: clamp(1.75rem, 3vw, 2.5rem);">
-      <div class="container">
+    <!-- 11a. Our Videos Section (Only Videos Carousel) -->
+    <section class="section our-videos-section" id="hospital-video" aria-labelledby="video-spotlight-heading" style="padding: 3rem 0; background: #FFFFFF; position: relative;">
+      <div class="container" style="max-width: 1260px; margin: 0 auto; padding: 0 1rem;">
+        
         <div class="section-header text-center reveal-on-scroll">
-          <h2 id="video-spotlight-heading" class="section-title" style="margin-bottom: 0.65rem;">Our Videos</h2>
-          <p class="section-subtitle" style="max-width: 620px; margin: 0 auto 1.25rem; color: #475569; font-size: 0.95rem; line-height: 1.5;">
+          <h2 id="video-spotlight-heading" class="section-title" style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: clamp(2rem, 3.5vw, 2.5rem); color: #0B2568; font-weight: 700; margin: 0 0 0.5rem; text-align: center;">
+            Our Videos
+          </h2>
+          <p class="section-subtitle" style="max-width: 650px; margin: 0 auto 2rem; color: #475569; font-size: 1rem; line-height: 1.5; text-align: center;">
             Take a virtual tour and experience the advanced clinical infrastructure, modern OT facilities, and dedicated patient care at Sulakshaa Multi Speciality Hospital.
           </p>
         </div>
 
-        <div class="hospital-video-spotlight-container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.5rem; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+        <!-- Horizontal Carousel Layout with Left/Right Navigation Buttons -->
+        <div class="videos-carousel-container" style="position: relative; width: 100%; max-width: 1260px; margin: 0 auto; padding: 0 clamp(1.5rem, 3.5vw, 3rem);">
           
-          <!-- Video Card 1: Sulakshaa Hospital Tour Reel -->
-          <div class="hospital-reel-card" style="width: 100%; max-width: 260px; background: #0B2568; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px -4px rgba(11, 37, 104, 0.22), 0 0 0 1px rgba(11, 37, 104, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            <!-- Video Top Header Strip -->
-            <div style="padding: 0.5rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
-                  <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          <!-- Manual Navigation Buttons -->
+          <button type="button" class="videos-scroll-btn videos-scroll-prev" id="videoCarouselPrevBtn" aria-label="Previous videos" onclick="document.getElementById('videoCarouselViewport').scrollBy({ left: -370, behavior: 'smooth' })" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; border: 1.5px solid #D7E5F2; color: #0B2568; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 14px rgba(11, 37, 104, 0.1); transition: all 0.22s ease;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <button type="button" class="videos-scroll-btn videos-scroll-next" id="videoCarouselNextBtn" aria-label="Next videos" onclick="document.getElementById('videoCarouselViewport').scrollBy({ left: 370, behavior: 'smooth' })" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; border: 1.5px solid #D7E5F2; color: #0B2568; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 14px rgba(11, 37, 104, 0.1); transition: all 0.22s ease;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Carousel Viewport -->
+          <div class="videos-carousel-viewport" id="videoCarouselViewport" style="width: 100%; overflow-x: auto; overflow-y: hidden; position: relative; padding: 0.75rem 0.25rem 1.25rem; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+            <div class="videos-carousel-track" style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1.5rem; width: max-content; align-items: stretch; margin: 0; padding: 0;">
+
+              <!-- Video 1: Sulakshaa Hospital Tour Reel -->
+              <article class="pure-video-card" style="width: 350px; min-width: 350px; max-width: 350px; height: 260px; border-radius: 14px; overflow: hidden; background: #081B4B; box-shadow: 0 4px 18px rgba(11, 37, 104, 0.12); border: 1.5px solid #E2E8F0; position: relative; flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;">
+                <!-- Video Top Header Strip -->
+                <div class="video-card-header" style="padding: 0.55rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0;">
+                  <div style="display: flex; align-items: center; gap: 0.55rem;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
+                      <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                      <span style="color: #FFFFFF; font-weight: 700; font-size: 0.82rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Sulakshaa</span>
+                      <span style="color: #7CD4FD; font-size: 0.68rem; line-height: 1.15;">Hospital Reel</span>
+                    </div>
+                  </div>
+                  <span style="background: rgba(0, 136, 209, 0.22); color: #7CD4FD; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.55rem; border-radius: 12px; border: 1px solid rgba(124, 212, 253, 0.35);">
+                    TOUR
+                  </span>
                 </div>
-                <div style="display: flex; flex-direction: column;">
-                  <span style="color: #FFFFFF; font-weight: 600; font-size: 0.78rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Sulakshaa</span>
-                  <span style="color: #7CD4FD; font-size: 0.65rem; line-height: 1.15;">Hospital Reel</span>
+                <!-- Video Player Container -->
+                <div style="flex: 1; width: 100%; background: #000000; position: relative; overflow: hidden;">
+                  <video controls muted playsinline preload="metadata" poster="assets/sulakshaa-hospital-building.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
+                    <source src="assets/Sulakshaa_Reel_v4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-              </div>
-              <span style="background: rgba(0, 136, 209, 0.25); color: #7CD4FD; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.45rem; border-radius: 12px; border: 1px solid rgba(124, 212, 253, 0.35);">
-                Tour
-              </span>
-            </div>
+              </article>
 
-            <!-- Video Player Wrap (5:6 Balanced Aspect Ratio) -->
-            <div class="reel-player-wrap" style="position: relative; width: 100%; aspect-ratio: 5 / 6; max-height: 315px; background: #000000; overflow: hidden;">
-              <video id="hospitalReelVideo1" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
-                <source src="assets/Sulakshaa_Reel_v4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <!-- Video 2: Advance Endoscopy Video -->
+              <article class="pure-video-card" style="width: 350px; min-width: 350px; max-width: 350px; height: 260px; border-radius: 14px; overflow: hidden; background: #081B4B; box-shadow: 0 4px 18px rgba(11, 37, 104, 0.12); border: 1.5px solid #E2E8F0; position: relative; flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;">
+                <!-- Video Top Header Strip -->
+                <div class="video-card-header" style="padding: 0.55rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0;">
+                  <div style="display: flex; align-items: center; gap: 0.55rem;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
+                      <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                      <span style="color: #FFFFFF; font-weight: 700; font-size: 0.82rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Endoscopy</span>
+                      <span style="color: #7CD4FD; font-size: 0.68rem; line-height: 1.15;">Advanced Care</span>
+                    </div>
+                  </div>
+                  <span style="background: rgba(0, 136, 209, 0.22); color: #7CD4FD; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.55rem; border-radius: 12px; border: 1px solid rgba(124, 212, 253, 0.35);">
+                    PROCEDURE
+                  </span>
+                </div>
+                <!-- Video Player Container -->
+                <div style="flex: 1; width: 100%; background: #000000; position: relative; overflow: hidden;">
+                  <video controls muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
+                    <source src="assets/Advance_endoscopy.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </article>
 
-              <!-- Central Play Button Overlay -->
-              <button type="button" class="reel-play-overlay-btn" aria-label="Play Video" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(0, 136, 209, 0.92); border: 2px solid #FFFFFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4); transition: transform 0.2s ease, background 0.2s ease, opacity 0.25s ease; z-index: 4;">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-left: 2px;">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </button>
-            </div>
+              <!-- Video 3: YouTube Video Spotlight Player -->
+              <article class="pure-video-card" style="width: 350px; min-width: 350px; max-width: 350px; height: 260px; border-radius: 14px; overflow: hidden; background: #081B4B; box-shadow: 0 4px 18px rgba(11, 37, 104, 0.12); border: 1.5px solid #E2E8F0; position: relative; flex-shrink: 0; scroll-snap-align: start; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;">
+                <!-- Video Top Header Strip -->
+                <div class="video-card-header" style="padding: 0.55rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0;">
+                  <div style="display: flex; align-items: center; gap: 0.55rem;">
+                    <div style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
+                      <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                      <span style="color: #FFFFFF; font-weight: 700; font-size: 0.82rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Sulakshaa</span>
+                      <span style="color: #7CD4FD; font-size: 0.68rem; line-height: 1.15;">Featured Video</span>
+                    </div>
+                  </div>
+                  <span style="background: rgba(239, 68, 68, 0.18); color: #FCA5A5; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.18rem 0.55rem; border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.35);">
+                    YOUTUBE
+                  </span>
+                </div>
+                <!-- Video Player Container -->
+                <div style="flex: 1; width: 100%; background: #000000 url('assets/sulakshaa-hospital-building.jpg') center/cover no-repeat; position: relative; overflow: hidden;">
+                  <iframe id="sulakshaaYoutubePlayer"
+                    src="https://www.youtube-nocookie.com/embed/ZyDaNSJrF2s?enablejsapi=1&autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+                    title="Sulakshaa Hospital Video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    style="width: 100%; height: 100%; border: none; display: block; background: #000;">
+                  </iframe>
+                </div>
+              </article>
 
-            <!-- Video Bottom Information -->
-            <div style="padding: 0.55rem 0.85rem; background: #0B2568; color: #FFFFFF; text-align: center;">
-              <h3 style="margin: 0; font-size: 0.82rem; font-weight: 600; color: #FFFFFF; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.25;">
-                Hospital Tour &amp; Care
-              </h3>
-              <p style="margin: 0.2rem 0 0; font-size: 0.7rem; color: #CBD5E1; line-height: 1.25;">
-                Virtual Walkthrough &amp; OT Suites
-              </p>
             </div>
           </div>
-
-          <!-- Video Card 2: Advance Endoscopy Video -->
-          <div class="hospital-reel-card" style="width: 100%; max-width: 260px; background: #0B2568; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px -4px rgba(11, 37, 104, 0.22), 0 0 0 1px rgba(11, 37, 104, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            <!-- Video Top Header Strip -->
-            <div style="padding: 0.5rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
-                  <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                  <span style="color: #FFFFFF; font-weight: 600; font-size: 0.78rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Endoscopy</span>
-                  <span style="color: #7CD4FD; font-size: 0.65rem; line-height: 1.15;">Advanced Care</span>
-                </div>
-              </div>
-              <span style="background: rgba(0, 136, 209, 0.25); color: #7CD4FD; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.45rem; border-radius: 12px; border: 1px solid rgba(124, 212, 253, 0.35);">
-                Procedure
-              </span>
-            </div>
-
-            <!-- Video Player Wrap (5:6 Balanced Aspect Ratio) -->
-            <div class="reel-player-wrap" style="position: relative; width: 100%; aspect-ratio: 5 / 6; max-height: 315px; background: #000000; overflow: hidden;">
-              <video id="hospitalReelVideo2" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #000;">
-                <source src="assets/Advance_endoscopy.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-
-              <!-- Central Play Button Overlay -->
-              <button type="button" class="reel-play-overlay-btn" aria-label="Play Video" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(0, 136, 209, 0.92); border: 2px solid #FFFFFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4); transition: transform 0.2s ease, background 0.2s ease, opacity 0.25s ease; z-index: 4;">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-left: 2px;">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Video Bottom Information -->
-            <div style="padding: 0.55rem 0.85rem; background: #0B2568; color: #FFFFFF; text-align: center;">
-              <h3 style="margin: 0; font-size: 0.82rem; font-weight: 600; color: #FFFFFF; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.25;">
-                Advanced Endoscopy
-              </h3>
-              <p style="margin: 0.2rem 0 0; font-size: 0.7rem; color: #CBD5E1; line-height: 1.25;">
-                Minimally Invasive Diagnostics
-              </p>
-            </div>
-          </div>
-
-          <!-- Video Card 3: YouTube Video Spotlight -->
-          <div class="hospital-reel-card" style="width: 100%; max-width: 260px; background: #0B2568; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px -4px rgba(11, 37, 104, 0.22), 0 0 0 1px rgba(11, 37, 104, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            <!-- Video Top Header Strip -->
-            <div style="padding: 0.5rem 0.85rem; background: #081B4B; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; flex-shrink: 0;">
-                  <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Hospital Logo" style="width: 100%; height: 100%; object-fit: contain;">
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                  <span style="color: #FFFFFF; font-weight: 600; font-size: 0.78rem; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.15;">Sulakshaa</span>
-                  <span style="color: #7CD4FD; font-size: 0.65rem; line-height: 1.15;">Featured Video</span>
-                </div>
-              </div>
-              <span style="background: rgba(255, 0, 0, 0.2); color: #FF6B6B; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.45rem; border-radius: 12px; border: 1px solid rgba(255, 107, 107, 0.4);">
-                YouTube
-              </span>
-            </div>
-
-            <!-- Video Player Wrap (5:6 Balanced Aspect Ratio) -->
-            <div class="reel-player-wrap youtube-embed-wrap" id="youtubePlayerWrap" style="position: relative; width: 100%; aspect-ratio: 5 / 6; max-height: 315px; background: #000000; overflow: hidden; cursor: pointer;">
-              <img src="assets/youtube-video-thumb.jpg" alt="Sulakshaa Hospital Video" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-              
-              <!-- Central YouTube Red Play Button Overlay -->
-              <button type="button" id="youtubePlayBtn" aria-label="Play YouTube Video" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 40px; border-radius: 12px; background: #FF0000; border: none; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); transition: transform 0.2s ease, background 0.2s ease; z-index: 4;">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="#FFFFFF">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Video Bottom Information -->
-            <div style="padding: 0.55rem 0.85rem; background: #0B2568; color: #FFFFFF; text-align: center;">
-              <h3 style="margin: 0; font-size: 0.82rem; font-weight: 600; color: #FFFFFF; font-family: var(--font-heading, 'Poppins', sans-serif); line-height: 1.25;">
-                Healthcare Highlights
-              </h3>
-              <p style="margin: 0.2rem 0 0; font-size: 0.7rem; color: #CBD5E1; line-height: 1.25;">
-                <a href="https://youtu.be/ZyDaNSJrF2s" target="_blank" rel="noopener" style="color: #7CD4FD; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                  Watch on YouTube &rarr;
-                </a>
-              </p>
-            </div>
-          </div>
-
         </div>
+
+        <style>
+          @media (max-width: 480px) {
+            #hospital-video .pure-video-card {
+              width: calc(100vw - 3.25rem) !important;
+              min-width: calc(100vw - 3.25rem) !important;
+              max-width: calc(100vw - 3.25rem) !important;
+              height: 255px !important;
+            }
+            #hospital-video .videos-carousel-container {
+              padding: 0 2.25rem !important;
+            }
+          }
+        </style>
 
         <script>
           (function() {
-            var cards = document.querySelectorAll('.hospital-reel-card');
-            cards.forEach(function(card) {
-              var v = card.querySelector('video');
-              var btn = card.querySelector('.reel-play-overlay-btn');
-              if (v && btn) {
-                btn.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  document.querySelectorAll('.our-videos-section video').forEach(function(other) {
-                    if (other !== v) other.pause();
-                  });
-                  v.play();
+            var section = document.getElementById('hospital-video');
+            var vids = document.querySelectorAll('#hospital-video video');
+            var ytIframe = document.getElementById('sulakshaaYoutubePlayer');
+
+            // Ensure muted for browser autoplay policy
+            vids.forEach(function(v) {
+              v.muted = true;
+            });
+
+            // Coordinated playback: when any HTML5 video plays, pause others and pause YouTube
+            vids.forEach(function(v) {
+              v.addEventListener('play', function() {
+                vids.forEach(function(other) {
+                  if (other !== v) other.pause();
                 });
-                btn.addEventListener('mouseenter', function() {
-                  btn.style.transform = 'translate(-50%, -50%) scale(1.08)';
-                  btn.style.background = '#0077B6';
-                });
-                btn.addEventListener('mouseleave', function() {
-                  btn.style.transform = 'translate(-50%, -50%) scale(1)';
-                  btn.style.background = 'rgba(0, 136, 209, 0.92)';
-                });
-                v.addEventListener('play', function() {
-                  document.querySelectorAll('.our-videos-section video').forEach(function(other) {
-                    if (other !== v) other.pause();
-                  });
-                  btn.style.opacity = '0';
-                  btn.style.pointerEvents = 'none';
-                });
-                v.addEventListener('pause', function() {
-                  btn.style.opacity = '1';
-                  btn.style.pointerEvents = 'auto';
-                });
-                v.addEventListener('ended', function() {
-                  btn.style.opacity = '1';
-                  btn.style.pointerEvents = 'auto';
-                });
+                if (ytIframe && ytIframe.contentWindow) {
+                  ytIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+              });
+            });
+
+            // When user focuses or clicks inside YouTube iframe, pause HTML5 videos
+            window.addEventListener('blur', function() {
+              if (document.activeElement === ytIframe) {
+                vids.forEach(function(v) { v.pause(); });
               }
             });
 
-            // YouTube interactive player loader
-            var ytWrap = document.getElementById('youtubePlayerWrap');
-            var ytBtn = document.getElementById('youtubePlayBtn');
-            function playYouTube(e) {
-              if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-              // Pause any playing local videos
-              document.querySelectorAll('.our-videos-section video').forEach(function(v) {
-                v.pause();
-              });
-              if (ytWrap) {
-                ytWrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/ZyDaNSJrF2s?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; border: none; display: block;"></iframe>';
-              }
+            // Autoplay muted when section enters viewport
+            if ('IntersectionObserver' in window && section) {
+              var hasAutoplayed = false;
+              var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                  if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+                    if (!hasAutoplayed) {
+                      if (vids.length > 0 && vids[0].paused) {
+                        var p = vids[0].play();
+                        if (p !== undefined) p.catch(function() {});
+                      }
+                      if (ytIframe && ytIframe.contentWindow) {
+                        ytIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                      }
+                      hasAutoplayed = true;
+                    }
+                  } else if (!entry.isIntersecting) {
+                    vids.forEach(function(v) {
+                      if (!v.paused) v.pause();
+                    });
+                    if (ytIframe && ytIframe.contentWindow) {
+                      ytIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    }
+                  }
+                });
+              }, { threshold: [0, 0.25] });
+
+              observer.observe(section);
             }
-            if (ytBtn) ytBtn.addEventListener('click', playYouTube);
-            if (ytWrap) ytWrap.addEventListener('click', playYouTube);
           })();
         </script>
       </div>
