@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Insights &amp; Hospital Updates | Sulakshaa Multi Speciality Hospital, Mysuru</title>
+  
+  <meta name="description" content="Read expert medical articles, health advice, and hospital updates from senior specialists at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="author" content="Sulakshaa Multi Speciality Hospital">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/sulakshaa-logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=42">
+
+  <style>
+    /* ==========================================================================
+       Sulakshaa Hospital - Dedicated Blog Page Styles
+       ========================================================================== */
+    :root {
+      --hospital-navy: #0B2568;
+      --hospital-navy-dark: #071948;
+      --hospital-blue: #0088D1;
+      --hospital-blue-light: #E0F2FE;
+      --hospital-blue-soft: #F0F7FF;
+      --hospital-text: #1E293B;
+      --hospital-muted: #556B88;
+      --hospital-border: #E2E8F0;
+      --hospital-bg-soft: #F8FAFC;
+      --hospital-white: #FFFFFF;
+      --hospital-radius: 14px;
+      --hospital-radius-sm: 8px;
+    }
+
+    body {
+      background-color: var(--hospital-bg-soft);
+      color: var(--hospital-text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* --------------------------------------------------------------------------
+       Hero Section
+       -------------------------------------------------------------------------- */
+    .blog-page-hero {
+      position: relative;
+      color: var(--hospital-white);
+      padding: clamp(3.5rem, 6vw, 4.8rem) 0 clamp(2.8rem, 5vw, 4rem);
+      overflow: hidden;
+      background-color: var(--hospital-navy-dark);
+    }
+
+    .blog-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/facilities-hero-banner.jpg') center center / cover no-repeat;
+      filter: brightness(0.35) saturate(1.1);
+      z-index: 1;
+    }
+
+    .blog-page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(7, 25, 72, 0.92) 0%, rgba(11, 37, 104, 0.78) 60%, rgba(0, 136, 209, 0.6) 100%);
+      z-index: 1;
+    }
+
+    .blog-page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-breadcrumbs a {
+      color: #7CD4FD;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .blog-breadcrumbs a:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    .blog-breadcrumbs .current {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .blog-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #8DEBBA;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .blog-hero-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(2rem, 4.2vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+    }
+
+    .blog-hero-subtitle {
+      font-size: clamp(0.95rem, 1.8vw, 1.12rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* --------------------------------------------------------------------------
+       Main Blog Container & Layout
+       -------------------------------------------------------------------------- */
+    .blog-main-section {
+      padding: clamp(2.5rem, 4vw, 3.8rem) 0 clamp(3.5rem, 5vw, 5rem);
+      background-color: var(--hospital-bg-soft);
+    }
+
+    /* --------------------------------------------------------------------------
+       Featured Blog Section
+       -------------------------------------------------------------------------- */
+    .featured-blog-section {
+      margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    .featured-blog-card {
+      background: var(--hospital-white);
+      border: 1px solid var(--hospital-border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(11, 37, 104, 0.08);
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .featured-blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(11, 37, 104, 0.12);
+      border-color: var(--hospital-blue);
+    }
+
+    .featured-blog-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+      background: #E2E8F0;
+    }
+
+    .featured-blog-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .featured-blog-card:hover .featured-blog-media img {
+      transform: scale(1.04);
+    }
+
+    .featured-tag-pill {
+      background: var(--hospital-navy);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .featured-blog-body {
+      padding: clamp(1.75rem, 3.5vw, 2.75rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-meta-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-pill-category {
+      background: var(--hospital-blue-soft);
+      color: var(--hospital-blue);
+      border: 1px solid #BAE6FD;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+
+    .blog-meta-time {
+      font-size: 0.78rem;
+      color: var(--hospital-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .featured-blog-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      font-weight: 700;
+      color: var(--hospital-navy);
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .featured-blog-card:hover .featured-blog-title {
+      color: var(--hospital-blue);
+    }
+
+    .featured-blog-excerpt {
+      font-size: 0.95rem;
+      color: var(--hospital-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-blog-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--hospital-border);
+      flex-wrap: wrap;
+    }
+
+    .blog-author-block {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .blog-author-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--hospital-navy);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .blog-author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-author-name {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--hospital-navy);
+    }
+
+    .blog-author-date {
+      font-size: 0.75rem;
+      color: var(--hospital-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .featured-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--hospital-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: var(--hospital-radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .featured-blog-card:hover .featured-cta-link {
+      background: var(--hospital-navy);
+      gap: 0.65rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       Search, Filter & Category Bar
+       -------------------------------------------------------------------------- */
+    .blog-controls-wrapper {
+      background: var(--hospital-white);
+      border: 1px solid var(--hospital-border);
+      border-radius: 16px;
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 18px rgba(11, 37, 104, 0.04);
+    }
+
+    .blog-controls-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-search-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      max-width: 520px;
+    }
+
+    .blog-search-box i.search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--hospital-muted);
+      pointer-events: none;
+    }
+
+    .blog-search-input {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 2.65rem;
+      border: 1px solid var(--hospital-border);
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--hospital-text);
+      background-color: #F8FAFC;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .blog-search-input:focus {
+      background-color: #FFFFFF;
+      border-color: var(--hospital-blue);
+      box-shadow: 0 0 0 3px rgba(0, 136, 209, 0.15);
+    }
+
+    .blog-search-clear {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--hospital-muted);
+      cursor: pointer;
+      display: none;
+      padding: 0.2rem;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .blog-results-counter {
+      font-size: 0.88rem;
+      color: var(--hospital-muted);
+      font-weight: 500;
+    }
+
+    .blog-results-counter strong {
+      color: var(--hospital-navy);
+      font-weight: 700;
+    }
+
+    /* Category Filter Pills */
+    .blog-categories-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.35rem;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .blog-categories-bar::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .blog-categories-bar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #E2E8F0;
+      border-radius: 50px;
+      padding: 0.48rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .filter-btn:hover {
+      background: #E2E8F0;
+      color: var(--hospital-navy);
+      border-color: #CBD5E1;
+    }
+
+    .filter-btn.active {
+      background: var(--hospital-navy);
+      color: #FFFFFF;
+      border-color: var(--hospital-navy);
+      box-shadow: 0 4px 12px rgba(11, 37, 104, 0.2);
+    }
+
+    .filter-btn .filter-count {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 50px;
+      background: rgba(0, 0, 0, 0.08);
+      margin-left: 0.2rem;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+    }
+
+    /* --------------------------------------------------------------------------
+       Blog Articles Grid
+       -------------------------------------------------------------------------- */
+    .blog-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .blog-card {
+      background: var(--hospital-white);
+      border: 1px solid var(--hospital-border);
+      border-radius: var(--hospital-radius);
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(11, 37, 104, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(11, 37, 104, 0.12);
+      border-color: var(--hospital-blue);
+    }
+
+    .blog-card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #E2E8F0;
+      overflow: hidden;
+    }
+
+    .blog-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .blog-card:hover .blog-card-media img {
+      transform: scale(1.06);
+    }
+
+    .blog-card-meta-top {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-card-meta-item {
+      font-size: 0.76rem;
+      color: var(--hospital-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .blog-card-body {
+      padding: 1.35rem 1.25rem 1.45rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-card-date {
+      font-size: 0.76rem;
+      color: var(--hospital-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .blog-card-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--hospital-navy);
+      line-height: 1.35;
+      margin-bottom: 0.65rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.2s ease;
+    }
+
+    .blog-card:hover .blog-card-title {
+      color: var(--hospital-blue);
+    }
+
+    .blog-card-excerpt {
+      font-size: 0.86rem;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 1.15rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid #EDF2F7;
+      margin-top: auto;
+    }
+
+    .blog-card-author {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--hospital-navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 140px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .blog-card-author-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--hospital-blue);
+      flex-shrink: 0;
+    }
+
+    .blog-read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--hospital-blue);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      background: var(--hospital-blue-soft);
+      border: 1px solid #D0E4FA;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .blog-card:hover .blog-read-more-btn {
+      background: var(--hospital-blue);
+      color: #FFFFFF;
+      border-color: var(--hospital-blue);
+      gap: 0.55rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       Empty Search / Filter State
+       -------------------------------------------------------------------------- */
+    .blog-empty-state {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: var(--hospital-white);
+      border: 1px dashed #CBD5E1;
+      border-radius: 16px;
+      grid-column: 1 / -1;
+      display: none;
+    }
+
+    .blog-empty-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--hospital-blue-soft);
+      color: var(--hospital-blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .blog-empty-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--hospital-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .blog-empty-text {
+      color: var(--hospital-muted);
+      font-size: 0.92rem;
+      max-width: 480px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5;
+    }
+
+    .btn-reset-filters {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--hospital-navy);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--hospital-radius-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-reset-filters:hover {
+      background: var(--hospital-blue);
+    }
+
+    /* --------------------------------------------------------------------------
+       Clinical Helpdesk / Consultation CTA Banner
+       -------------------------------------------------------------------------- */
+    .blog-cta-banner {
+      background: linear-gradient(135deg, #0B2568 0%, #071948 100%);
+      border-radius: 18px;
+      padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(11, 37, 104, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .blog-cta-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .blog-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.15);
+      color: #8DEBBA;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.65rem;
+    }
+
+    .blog-cta-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-cta-text {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      max-width: 620px;
+      margin-bottom: 0;
+    }
+
+    .blog-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-appointment {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--hospital-blue);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: var(--hospital-radius-sm);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 136, 209, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-appointment:hover {
+      background: #0077B6;
+      transform: translateY(-2px);
+    }
+
+    .btn-cta-emergency {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      color: #FFFFFF;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--hospital-radius-sm);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-emergency:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+    }
+
+    /* --------------------------------------------------------------------------
+       Responsive Media Queries
+       -------------------------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .blog-articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .featured-blog-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-blog-media {
+        min-height: 260px;
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .blog-page-hero {
+        padding: clamp(2.25rem, 5vw, 3rem) 0 clamp(2rem, 4vw, 2.5rem);
+      }
+
+      .blog-hero-title {
+        font-size: clamp(1.65rem, 5.5vw, 2.2rem);
+      }
+
+      .blog-hero-subtitle {
+        font-size: 0.92rem;
+      }
+
+      .blog-controls-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .blog-search-box {
+        max-width: 100%;
+      }
+
+      .featured-blog-body {
+        padding: 1.25rem 1.15rem 1.5rem;
+      }
+
+      .featured-blog-title {
+        font-size: 1.25rem;
+      }
+
+      .featured-blog-excerpt {
+        font-size: 0.88rem;
+      }
+
+      .blog-card-body {
+        padding: 1.15rem 1.1rem 1.25rem;
+      }
+
+      .blog-card-title {
+        font-size: 1.05rem;
+      }
+
+      .blog-cta-banner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.6rem 1.25rem;
+      }
+
+      .blog-cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-cta-appointment,
+      .btn-cta-emergency {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .featured-blog-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .featured-cta-link {
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .blog-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+
+      .blog-read-more-btn {
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .blog-card-author {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar Above Header (Sulakshaa Navy #0B2568) -->
+  <div class="site-top-bar" id="siteTopBar">
+    <div class="container">
+      <div class="top-bar-location">
+        <i data-lucide="map-pin" class="icon-xs"></i>
+        <span>Mysuru, Karnataka</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-link">
+          <i data-lucide="phone" class="icon-xs"></i>
+          <span><a href="tel:08213525555" style="color:inherit;text-decoration:none;">0821-3525555</a> / <a href="tel:08213525544" style="color:inherit;text-decoration:none;">0821-3525544</a></span>
+        </span>
+        <a href="tel:+919535747478" class="top-bar-link">
+          <i data-lucide="phone-call" class="icon-xs"></i>
+          <span>9535747478</span>
+        </a>
+        <div class="top-bar-socials">
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-xs"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon-xs"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube" class="icon-xs"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Main Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Hospital Brand Identity -->
+      <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-text-container">
+          <span class="brand-hospital-title">Sulakshaa</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
+          <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+            <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
+              <span>Departments</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dept-mega-dropdown" id="deptMegaMenu" role="menu" aria-label="Departments Dropdown">
+              <div class="dept-mega-container">
+                <!-- COLUMN 1: CENTRES OF EXCELLENCE -->
+                <div class="dept-mega-col dept-mega-col-excellence">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Centres of Excellence</span>
+                  </div>
+                  <ul class="dept-mega-list excellence-list">
+                    <li>
+                      <a href="department-details.html?dept=cardiac-care" class="dept-mega-link">
+                        <i data-lucide="heart-pulse" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Cardiology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=orthopedics" class="dept-mega-link">
+                        <i data-lucide="bone" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Orthopaedics &amp; Joint Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=gastroenterology" class="dept-mega-link">
+                        <i data-lucide="activity" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Gastroenterology &amp; Hepatology</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=neurology" class="dept-mega-link">
+                        <i data-lucide="brain" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Neurology &amp; Brain Health</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=nephrology" class="dept-mega-link">
+                        <i data-lucide="shield-plus" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Nephrology &amp; Renal Care</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="department-details.html?dept=emergency" class="dept-mega-link">
+                        <i data-lucide="ambulance" class="dept-link-icon"></i>
+                        <span class="dept-link-text">Accident &amp; Emergency (24/7)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: SPECIALITIES -->
+                <div class="dept-mega-col dept-mega-col-specialities">
+                  <div class="dept-col-header">
+                    <span class="dept-col-title">Specialities</span>
+                  </div>
+                  <div class="dept-specialities-grid">
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
+                      <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
+                      <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
+                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
+                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
+                      <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
+                      <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
+                      <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
+                    </ul>
+                    <ul class="dept-mega-list">
+                      <li><a href="department-details.html?dept=maternity-care" class="dept-mega-link"><span class="dept-link-text">Obstetrics &amp; Gynaecology</span></a></li>
+                      <li><a href="department-details.html?dept=oncology" class="dept-mega-link"><span class="dept-link-text">Oncology</span></a></li>
+                      <li><a href="department-details.html?dept=orthopedics" class="dept-mega-link"><span class="dept-link-text">Orthopaedics</span></a></li>
+                      <li><a href="department-details.html?dept=paediatrics" class="dept-mega-link"><span class="dept-link-text">Paediatrics</span></a></li>
+                      <li><a href="department-details.html?dept=psychiatry" class="dept-mega-link"><span class="dept-link-text">Psychiatry</span></a></li>
+                      <li><a href="department-details.html?dept=pulmonology" class="dept-mega-link"><span class="dept-link-text">Pulmonology</span></a></li>
+                      <li><a href="department-details.html?dept=urology" class="dept-mega-link"><span class="dept-link-text">Urology</span></a></li>
+                      <li><a href="department-details.html?dept=nephrology" class="dept-mega-link"><span class="dept-link-text">Nephrology</span></a></li>
+                      <li><a href="department-details.html?dept=neurology" class="dept-mega-link"><span class="dept-link-text">Neurology</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="dept-mega-footer">
+                    <a href="departments.html" class="dept-view-all-btn">
+                      <span>View All Departments</span>
+                      <i data-lucide="arrow-right" class="icon-xs"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
+          <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <a href="tel:+919535747478" class="btn btn-outline-emergency" id="headerEmergencyBtn" aria-label="Call Hospital Emergency">
+          <i data-lucide="phone" class="icon-sm"></i>
+          <span class="btn-text">24/7 Emergency</span>
+        </a>
+        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+          <i data-lucide="calendar" class="icon-sm"></i>
+          <span class="btn-text">Book Appointment</span>
+        </a>
+        <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobileNavMenu">
+          <i data-lucide="menu" class="icon-md"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-identity">
+        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="40" height="40">
+        <div class="brand-divider" aria-hidden="true"></div>
+        <div class="brand-text-container">
+          <span class="brand-hospital-title">Sulakshaa</span>
+          <span class="brand-hospital-type">Multi Speciality Hospital</span>
+        </div>
+      </div>
+      <button type="button" class="mobile-drawer-close" id="mobileCloseBtn" aria-label="Close navigation menu">
+        <i data-lucide="x" class="icon-md"></i>
+      </button>
+    </div>
+
+    <div class="mobile-drawer-body">
+      <ul class="mobile-nav-list">
+        <li style="--nav-idx: 0;"><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li style="--nav-idx: 1;"><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
+        <li class="mobile-dropdown" style="--nav-idx: 2;">
+          <div class="mobile-dropdown-header">
+            <a href="departments.html" class="mobile-nav-link">Departments</a>
+            <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
+              <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
+            </button>
+          </div>
+          <div class="mobile-dept-dropdown-panel" id="mobileDeptPanel" aria-hidden="true">
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Centres of Excellence</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics &amp; Joint Care</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology &amp; Hepatology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology &amp; Brain Health</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology &amp; Renal Care</a></li>
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency (24/7)</a></li>
+              </ul>
+            </div>
+            <div class="mobile-dept-section">
+              <div class="mobile-dept-heading">Specialities</div>
+              <ul class="mobile-dept-list">
+                <li><a href="department-details.html?dept=emergency" class="mobile-dept-link">Accident &amp; Emergency</a></li>
+                <li><a href="department-details.html?dept=anaesthesiology" class="mobile-dept-link">Anaesthesiology &amp; Critical Care</a></li>
+                <li><a href="department-details.html?dept=cardiac-care" class="mobile-dept-link">Cardiology</a></li>
+                <li><a href="department-details.html?dept=dermatology" class="mobile-dept-link">Dermatology</a></li>
+                <li><a href="department-details.html?dept=ent" class="mobile-dept-link">ENT (Ear, Nose &amp; Throat)</a></li>
+                <li><a href="department-details.html?dept=gastroenterology" class="mobile-dept-link">Gastroenterology</a></li>
+                <li><a href="department-details.html?dept=general-medicine" class="mobile-dept-link">General Medicine</a></li>
+                <li><a href="department-details.html?dept=general-surgery" class="mobile-dept-link">General Surgery</a></li>
+                <li><a href="department-details.html?dept=maternity-care" class="mobile-dept-link">Obstetrics &amp; Gynaecology</a></li>
+                <li><a href="department-details.html?dept=oncology" class="mobile-dept-link">Oncology</a></li>
+                <li><a href="department-details.html?dept=orthopedics" class="mobile-dept-link">Orthopaedics</a></li>
+                <li><a href="department-details.html?dept=paediatrics" class="mobile-dept-link">Paediatrics</a></li>
+                <li><a href="department-details.html?dept=psychiatry" class="mobile-dept-link">Psychiatry</a></li>
+                <li><a href="department-details.html?dept=pulmonology" class="mobile-dept-link">Pulmonology</a></li>
+                <li><a href="department-details.html?dept=urology" class="mobile-dept-link">Urology</a></li>
+                <li><a href="department-details.html?dept=nephrology" class="mobile-dept-link">Nephrology</a></li>
+                <li><a href="department-details.html?dept=neurology" class="mobile-dept-link">Neurology</a></li>
+              </ul>
+              <a href="departments.html" class="mobile-dept-view-all">View All Departments &rarr;</a>
+            </div>
+          </div>
+        </li>
+        <li style="--nav-idx: 3;"><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
+        <li style="--nav-idx: 4;"><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
+        <li style="--nav-idx: 5;"><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+        <li style="--nav-idx: 6;"><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
+        <li style="--nav-idx: 7;"><a href="index.html#contact" class="mobile-nav-link">Contact Us</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="index.html#enquiry" class="btn btn-primary btn-block mobile-drawer-btn">
+          <i data-lucide="calendar" class="icon-sm"></i> Book an Appointment
+        </a>
+        <a href="tel:+919535747478" class="btn btn-emergency btn-block mobile-drawer-btn">
+          <i data-lucide="phone-call" class="icon-sm"></i> Call Emergency (24/7)
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+  <!-- Hero Section -->
+  <section class="blog-page-hero">
+    <div class="container">
+      <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
+        <i data-lucide="chevron-right" class="icon-xs"></i>
+        <span class="current">Health Insights &amp; Hospital Updates</span>
+      </nav>
+      
+      <div class="blog-hero-badge">
+        <i data-lucide="book-open" class="icon-xs"></i> Clinical Knowledge &amp; Wellness Journal
+      </div>
+      <h1 class="blog-hero-title">Health Insights &amp; Hospital Updates</h1>
+      <p class="blog-hero-subtitle">
+        Stay informed with trusted medical guidance, preventive health strategies, clinical breakthroughs, and wellness advice authored by senior consultants and specialists at Sulakshaa Multi Speciality Hospital, Mysuru.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Blog Content Section -->
+  <main class="blog-main-section" id="mainContent">
+    <div class="container">
+
+      <!-- Featured Blog Section -->
+      <section class="featured-blog-section" aria-label="Featured Health Insight">
+        <a href="blog-details.html?id=healthy-heart" class="featured-blog-card" id="featuredArticleCard">
+          <div class="featured-blog-media">
+            <img src="assets/blog-cardiology.jpg" alt="Tips to Maintain a Healthy Heart" loading="lazy">
+          </div>
+          <div class="featured-blog-body">
+            <div class="featured-meta-top">
+              <span class="featured-tag-pill"><i data-lucide="sparkles" class="icon-xs"></i> Featured Article</span>
+              <span class="blog-pill-category">Cardiology &amp; Heart Health</span>
+              <span class="blog-meta-time"><i data-lucide="clock" class="icon-xs"></i> 5 min read</span>
+              <span class="blog-meta-time"><i data-lucide="shield-check" class="icon-xs"></i> Medically Verified</span>
+            </div>
+            <h2 class="featured-blog-title">Tips to Maintain a Healthy Heart</h2>
+            <p class="featured-blog-excerpt">
+              Practical, cardiologist-backed strategies to safeguard your cardiovascular system: learn essential dietary adjustments, ideal aerobic exercise intensity, blood pressure targets, and early subtle warning signs of heart distress.
+            </p>
+            <div class="featured-blog-footer">
+              <div class="blog-author-block">
+                <div class="blog-author-avatar">SH</div>
+                <div class="blog-author-info">
+                  <span class="blog-author-name">Cardiology Clinical Faculty</span>
+                </div>
+              </div>
+              <span class="featured-cta-link">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="icon-xs"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </section>
+
+      <!-- Search & Category Filters Bar -->
+      <div class="blog-controls-wrapper">
+        <div class="blog-controls-top">
+          <div class="blog-search-box">
+            <i data-lucide="search" class="icon-sm search-icon"></i>
+            <input 
+              type="text" 
+              id="blogSearchInput" 
+              class="blog-search-input" 
+              placeholder="Search health articles, topics, symptoms..." 
+              aria-label="Search articles by title or keyword"
+              autocomplete="off"
+            >
+            <button type="button" id="blogSearchClear" class="blog-search-clear" aria-label="Clear search input">&times;</button>
+          </div>
+          <div class="blog-results-counter" id="blogResultsCount">
+            Showing <strong>8</strong> health articles
+          </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="blog-categories-bar" id="blogCategoryPills" role="tablist" aria-label="Filter articles by category">
+          <button type="button" class="filter-btn active" data-category="all" role="tab" aria-selected="true">
+            <span>All Articles</span>
+            <span class="filter-count" id="countAll">8</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Cardiology" role="tab" aria-selected="false">
+            <span>Heart Health</span>
+            <span class="filter-count" id="countCardiology">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Internal Medicine" role="tab" aria-selected="false">
+            <span>Diabetes &amp; Medicine</span>
+            <span class="filter-count" id="countMedicine">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Preventive Healthcare" role="tab" aria-selected="false">
+            <span>Preventive Care</span>
+            <span class="filter-count" id="countPreventive">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Pediatric Care" role="tab" aria-selected="false">
+            <span>Child Health</span>
+            <span class="filter-count" id="countPediatric">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Orthopedics" role="tab" aria-selected="false">
+            <span>Orthopedics &amp; Spine</span>
+            <span class="filter-count" id="countOrthopedics">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Women's Healthcare" role="tab" aria-selected="false">
+            <span>Women's Health</span>
+            <span class="filter-count" id="countWomens">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Fitness &amp; Lifestyle" role="tab" aria-selected="false">
+            <span>Fitness &amp; Exercise</span>
+            <span class="filter-count" id="countFitness">1</span>
+          </button>
+          <button type="button" class="filter-btn" data-category="Emergency &amp; Critical Care" role="tab" aria-selected="false">
+            <span>Clinical Guidance</span>
+            <span class="filter-count" id="countEmergency">1</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="blog-articles-grid" id="blogArticlesGrid">
+        <!-- Injected via JavaScript from centralized dataset -->
+      </div>
+
+      <!-- Empty Results State -->
+      <div class="blog-empty-state" id="blogEmptyState">
+        <div class="blog-empty-icon">
+          <i data-lucide="search-x" class="icon-md"></i>
+        </div>
+        <h3 class="blog-empty-title">No Matching Articles Found</h3>
+        <p class="blog-empty-text">
+          We couldn't find any health articles matching your criteria. Try adjusting your search keywords or clearing active category filters.
+        </p>
+        <button type="button" class="btn-reset-filters" id="btnResetFilters">
+          <i data-lucide="rotate-ccw" class="icon-xs"></i>
+          <span>Reset Search &amp; Filters</span>
+        </button>
+      </div>
+
+      <!-- Hospital Consultation CTA Banner -->
+      <div class="blog-cta-banner">
+        <div class="blog-cta-content">
+          <span class="blog-cta-badge"><i data-lucide="shield-check" class="icon-xs"></i> Clinical Support</span>
+          <h3 class="blog-cta-title">Need Personalized Medical Advice or a Health Checkup?</h3>
+          <p class="blog-cta-text">
+            Our experienced multi-speciality consultants and diagnostic departments are available 24/7 at Sulakshaa Hospital, Mysuru to provide comprehensive clinical evaluations.
+          </p>
+        </div>
+        <div class="blog-cta-actions">
+          <a href="index.html#enquiry" class="btn-cta-appointment">
+            <i data-lucide="calendar" class="icon-sm"></i>
+            <span>Book Consultation</span>
+          </a>
+          <a href="tel:+919535747478" class="btn-cta-emergency">
+            <i data-lucide="phone-call" class="icon-sm"></i>
+            <span>24/7 Emergency: 9535747478</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Standard Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-col brand-col">
+        <div class="footer-logo-row">
+          <a href="index.html" class="brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital">
+            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+            <div class="brand-divider" aria-hidden="true"></div>
+            <div class="brand-text-container">
+              <span class="brand-hospital-title">Sulakshaa</span>
+              <span class="brand-hospital-type">Multi Speciality Hospital</span>
+            </div>
+          </a>
+        </div>
+        <p class="footer-desc">
+          Sulakshaa Multi Speciality Hospital provides advanced clinical care, 24/7 emergency services, and compassionate patient healing in Mysuru, Karnataka.
+        </p>
+      </div>
+
+      <div class="footer-col links-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="index.html#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Us</a></li>
+          <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Departments</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Our Doctors</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Facilities &amp; Services</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="blog.html"><i data-lucide="chevron-right" class="icon-xs"></i> Health Insights</a></li>
+          <li><a href="index.html#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h4 class="footer-heading">Contact &amp; Emergency</h4>
+        <p class="footer-contact-item"><i data-lucide="map-pin" class="icon-xs"></i> 278, 1st Main Rd, Vijay Nagar 3rd Stage, Mysuru, Karnataka 570017</p>
+        <p class="footer-contact-item"><i data-lucide="phone-call" class="icon-xs"></i> Emergency: 9535747478</p>
+        <p class="footer-contact-item"><i data-lucide="phone" class="icon-xs"></i> Reception: 0821-3525555 / 0821-3525544</p>
+        <p class="footer-contact-item"><i data-lucide="mail" class="icon-xs"></i> info@sulakshaahospital.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p>&copy; 2026 Sulakshaa Multi Speciality Hospital. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Centralized Blog Script -->
+  <script>
+    // Blog Articles Dataset (Central Source of Truth)
+    const BLOG_POSTS = [
+      {
+        id: 'healthy-heart',
+        title: 'Tips to Maintain a Healthy Heart',
+        category: 'Cardiology',
+        categoryLabel: 'Cardiology & Heart Health',
+        date: 'Oct 24, 2026',
+        readTime: '5 min read',
+        author: 'Cardiology Clinical Faculty',
+        authorRole: 'Cardiology Specialist',
+        authorInitials: 'SH',
+        image: 'assets/blog-cardiology.jpg',
+        imageAlt: 'Cardiology specialist and ECG heart health screening at Sulakshaa Hospital',
+        description: 'Discover evidence-based cardiologist advice on blood pressure management, aerobic conditioning, low-sodium nutrition, and early warning signs of cardiovascular strain.',
+        keywords: ['heart', 'cardiology', 'blood pressure', 'ecg', 'cholesterol', 'cardiovascular', 'exercise', 'diet']
+      },
+      {
+        id: 'diabetes-symptoms',
+        title: 'Early Symptoms of Diabetes',
+        category: 'Internal Medicine',
+        categoryLabel: 'Diabetes & Internal Medicine',
+        date: 'Oct 18, 2026',
+        readTime: '5 min read',
+        author: 'Internal Medicine Faculty',
+        authorRole: 'Diabetology Specialist',
+        authorInitials: 'SH',
+        image: 'assets/general-medicine-consultation.png',
+        imageAlt: 'Physician consulting a patient regarding diabetes and blood sugar control',
+        description: 'Learn to recognize subtle early signs of type-2 diabetes—such as unquenchable thirst, frequent urination, fatigue, and blurry vision—plus the value of early HbA1c tests.',
+        keywords: ['diabetes', 'sugar', 'glucose', 'hba1c', 'thirst', 'urination', 'fatigue', 'prediabetes', 'kidney']
+      },
+      {
+        id: 'regular-checkups',
+        title: 'Importance of Regular Health Checkups',
+        category: 'Preventive Healthcare',
+        categoryLabel: 'Preventive Healthcare',
+        date: 'Oct 12, 2026',
+        readTime: '4 min read',
+        author: 'Preventive Healthcare Team',
+        authorRole: 'Preventive Medicine Specialist',
+        authorInitials: 'SH',
+        image: 'assets/blog-preventive-health.jpg',
+        imageAlt: 'Annual preventive health screening and diagnostic panel consultation',
+        description: 'Why feeling fine isn\'t always enough. Annual preventive screenings detect silent conditions like hypertension, high cholesterol, and renal strain early before symptoms develop.',
+        keywords: ['checkup', 'preventive', 'screening', 'health', 'annual', 'blood test', 'lab', 'hypertension']
+      },
+      {
+        id: 'child-nutrition',
+        title: 'Healthy Food Habits for Children',
+        category: 'Pediatric Care',
+        categoryLabel: 'Pediatric Care',
+        date: 'Sep 29, 2026',
+        readTime: '4 min read',
+        author: 'Pediatric Faculty',
+        authorRole: 'Pediatric Specialist',
+        authorInitials: 'PF',
+        image: 'assets/paediatrics.png',
+        imageAlt: 'Pediatric care and nutritious healthy food habits for growing children',
+        description: 'Essential dietary guidelines for growing children—from micronutrient-dense balanced meals and smart hydration to limiting processed sugars and cultivating positive mealtime habits.',
+        keywords: ['children', 'kids', 'food', 'nutrition', 'pediatric', 'diet', 'growth', 'immunity', 'vitamins']
+      },
+      {
+        id: 'back-pain-causes',
+        title: 'Common Causes of Back Pain',
+        category: 'Orthopedics',
+        categoryLabel: 'Orthopedics & Spine',
+        date: 'Sep 22, 2026',
+        readTime: '6 min read',
+        author: 'Dr. Anand R. Kulkarni',
+        authorRole: 'Senior Orthopedic Surgeon',
+        authorInitials: 'AK',
+        image: 'assets/orthopaedics-spine-model.jpg',
+        imageAlt: 'Orthopedic specialist examining lumbar spine model for back pain causes',
+        description: 'Understand the physiological causes of acute and chronic back discomfort—from posture fatigue and muscular spasm to lumbar disc herniation and non-surgical sciatica relief.',
+        keywords: ['back pain', 'spine', 'orthopedic', 'posture', 'disc', 'lumbar', 'ergonomics', 'joint', 'sciatica']
+      },
+      {
+        id: 'womens-health-checkups',
+        title: 'Importance of Women\'s Health Checkups',
+        category: 'Women\'s Healthcare',
+        categoryLabel: 'Women\'s Healthcare',
+        date: 'Sep 15, 2026',
+        readTime: '5 min read',
+        author: 'Obstetrics & Gynaecology Faculty',
+        authorRole: 'Gynaecology Consultant',
+        authorInitials: 'OG',
+        image: 'assets/blog-womens-health.jpg',
+        imageAlt: 'Women\'s healthcare consultation and preventive health screening',
+        description: 'A clinical roadmap for women\'s wellness covering annual pelvic assessments, Pap smear schedules, breast screenings, thyroid evaluation, and bone density preservation.',
+        keywords: ['women', 'womens health', 'gynecology', 'pap smear', 'breast health', 'thyroid', 'bone density', 'anemia']
+      },
+      {
+        id: 'exercise-benefits',
+        title: 'Benefits of Regular Exercise',
+        category: 'Fitness & Lifestyle',
+        categoryLabel: 'Fitness & Lifestyle',
+        date: 'Sep 08, 2026',
+        readTime: '4 min read',
+        author: 'Clinical Physiotherapy Team',
+        authorRole: 'Rehabilitation Specialist',
+        authorInitials: 'PR',
+        image: 'assets/specialty-orthopaedics-rehab.jpg',
+        imageAlt: 'Physical rehabilitation and benefits of regular daily exercise',
+        description: 'How just 30 minutes of daily physical exercise enhances cardiac output, balances insulin sensitivity, strengthens musculoskeletal stability, and lowers daily stress hormones.',
+        keywords: ['exercise', 'fitness', 'workout', 'walking', 'health', 'mental health', 'physiotherapy', 'joints']
+      },
+      {
+        id: 'consult-doctor',
+        title: 'When Should You Consult a Doctor?',
+        category: 'Emergency & Critical Care',
+        categoryLabel: 'Emergency & Clinical Guidance',
+        date: 'Aug 30, 2026',
+        readTime: '5 min read',
+        author: 'Emergency Medicine Directorate',
+        authorRole: 'Emergency Medicine Consultant',
+        authorInitials: 'ER',
+        image: 'assets/facility-emergency-trauma.jpg',
+        imageAlt: '24/7 Emergency and acute medical triage consultation at Sulakshaa Hospital',
+        description: 'Clear guidance on differentiating between mild symptoms and urgent red flags requiring emergency attention—such as persistent chest pain, sudden weakness, and acute distress.',
+        keywords: ['consult doctor', 'emergency', 'symptoms', 'warning signs', 'chest pain', 'fever', 'golden hour', 'trauma']
+      }
+    ];
+
+    // State Variables
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // DOM Elements
+    const articlesGrid = document.getElementById('blogArticlesGrid');
+    const emptyState = document.getElementById('blogEmptyState');
+    const searchInput = document.getElementById('blogSearchInput');
+    const searchClear = document.getElementById('blogSearchClear');
+    const resultsCount = document.getElementById('blogResultsCount');
+    const categoryButtons = document.querySelectorAll('.filter-btn');
+    const resetFiltersBtn = document.getElementById('btnResetFilters');
+
+    // Render Article Cards
+    function renderArticles() {
+      const filtered = BLOG_POSTS.filter(post => {
+        // Category Filter
+        const matchesCategory = (currentCategory === 'all') || 
+          post.category.toLowerCase().includes(currentCategory.toLowerCase()) ||
+          post.categoryLabel.toLowerCase().includes(currentCategory.toLowerCase());
+
+        // Search Filter
+        const query = searchQuery.trim().toLowerCase();
+        const matchesSearch = !query || 
+          post.title.toLowerCase().includes(query) ||
+          post.description.toLowerCase().includes(query) ||
+          post.categoryLabel.toLowerCase().includes(query) ||
+          post.author.toLowerCase().includes(query) ||
+          (post.keywords && post.keywords.some(k => k.toLowerCase().includes(query)));
+
+        return matchesCategory && matchesSearch;
+      });
+
+      // Update Results Counter
+      if (resultsCount) {
+        if (searchQuery.trim()) {
+          resultsCount.innerHTML = `Showing <strong>${filtered.length}</strong> of ${BLOG_POSTS.length} articles for "<em>${escapeHtml(searchQuery)}</em>"`;
+        } else if (currentCategory !== 'all') {
+          resultsCount.innerHTML = `Showing <strong>${filtered.length}</strong> articles in <strong>${escapeHtml(currentCategory)}</strong>`;
+        } else {
+          resultsCount.innerHTML = `Showing <strong>${filtered.length}</strong> health articles`;
+        }
+      }
+
+      // Handle Empty State
+      if (filtered.length === 0) {
+        articlesGrid.innerHTML = '';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      // Build Cards HTML
+      articlesGrid.innerHTML = filtered.map(post => `
+        <article class="blog-card" data-id="${post.id}">
+          <div class="blog-card-media">
+            <img src="${post.image}" alt="${post.imageAlt}" loading="lazy">
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta-top">
+              <span class="blog-pill-category">${post.category}</span>
+              <span class="blog-card-meta-item"><i data-lucide="clock" class="icon-xs"></i> ${post.readTime}</span>
+            </div>
+            <h3 class="blog-card-title">
+              <a href="blog-details.html?id=${post.id}" style="color:inherit;text-decoration:none;">${post.title}</a>
+            </h3>
+            <p class="blog-card-excerpt">${post.description}</p>
+            <div class="blog-card-footer">
+              <span class="blog-card-author" title="${post.author} (${post.authorRole})">
+                <span class="blog-card-author-dot"></span>
+                <span>${post.author}</span>
+              </span>
+              <a href="blog-details.html?id=${post.id}" class="blog-read-more-btn" aria-label="Read full article on ${post.title}">
+                <span>Read More</span>
+                <i data-lucide="arrow-right" class="icon-xs"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      // Refresh Lucide Icons in injected markup
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    // Helper to escape HTML in search terms
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Update Category Counts
+    function updateCategoryCounts() {
+      const counts = {
+        all: BLOG_POSTS.length,
+        Cardiology: BLOG_POSTS.filter(p => p.category === 'Cardiology').length,
+        'Internal Medicine': BLOG_POSTS.filter(p => p.category === 'Internal Medicine').length,
+        'Preventive Healthcare': BLOG_POSTS.filter(p => p.category === 'Preventive Healthcare').length,
+        'Pediatric Care': BLOG_POSTS.filter(p => p.category === 'Pediatric Care').length,
+        Orthopedics: BLOG_POSTS.filter(p => p.category === 'Orthopedics').length,
+        'Women\'s Healthcare': BLOG_POSTS.filter(p => p.category === 'Women\'s Healthcare').length,
+        'Fitness & Lifestyle': BLOG_POSTS.filter(p => p.category === 'Fitness & Lifestyle').length,
+        'Emergency & Critical Care': BLOG_POSTS.filter(p => p.category === 'Emergency & Critical Care').length,
+      };
+
+      const countAll = document.getElementById('countAll');
+      if (countAll) countAll.textContent = counts.all;
+      const countCardiology = document.getElementById('countCardiology');
+      if (countCardiology) countCardiology.textContent = counts.Cardiology;
+      const countMedicine = document.getElementById('countMedicine');
+      if (countMedicine) countMedicine.textContent = counts['Internal Medicine'];
+      const countPreventive = document.getElementById('countPreventive');
+      if (countPreventive) countPreventive.textContent = counts['Preventive Healthcare'];
+      const countPediatric = document.getElementById('countPediatric');
+      if (countPediatric) countPediatric.textContent = counts['Pediatric Care'];
+      const countOrthopedics = document.getElementById('countOrthopedics');
+      if (countOrthopedics) countOrthopedics.textContent = counts.Orthopedics;
+      const countWomens = document.getElementById('countWomens');
+      if (countWomens) countWomens.textContent = counts['Women\'s Healthcare'];
+      const countFitness = document.getElementById('countFitness');
+      if (countFitness) countFitness.textContent = counts['Fitness & Lifestyle'];
+      const countEmergency = document.getElementById('countEmergency');
+      if (countEmergency) countEmergency.textContent = counts['Emergency & Critical Care'];
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check for URL query params (e.g. ?category=Cardiology or ?search=...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+      const searchParam = urlParams.get('search');
+
+      if (categoryParam) {
+        currentCategory = categoryParam;
+      }
+      if (searchParam) {
+        searchQuery = searchParam;
+        if (searchInput) searchInput.value = searchParam;
+        if (searchClear) searchClear.style.display = 'block';
+      }
+
+      // Update active category pill
+      categoryButtons.forEach(btn => {
+        if (btn.getAttribute('data-category').toLowerCase() === currentCategory.toLowerCase()) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      updateCategoryCounts();
+      renderArticles();
+
+      // Search Input Handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (searchClear) {
+            searchClear.style.display = searchQuery ? 'block' : 'none';
+          }
+          renderArticles();
+        });
+      }
+
+      // Search Clear Button
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchQuery = '';
+          searchClear.style.display = 'none';
+          searchInput.focus();
+          renderArticles();
+        });
+      }
+
+      // Category Pill Click
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryButtons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          currentCategory = btn.getAttribute('data-category');
+          renderArticles();
+        });
+      });
+
+      // Reset Filters Button
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+          currentCategory = 'all';
+          searchQuery = '';
+          if (searchInput) searchInput.value = '';
+          if (searchClear) searchClear.style.display = 'none';
+          categoryButtons.forEach(b => {
+            if (b.getAttribute('data-category') === 'all') {
+              b.classList.add('active');
+              b.setAttribute('aria-selected', 'true');
+            } else {
+              b.classList.remove('active');
+              b.setAttribute('aria-selected', 'false');
+            }
+          });
+          renderArticles();
+        });
+      }
+
+      // Initialize Lucide Icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Mobile Drawer Handler
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileClose = document.getElementById('mobileCloseBtn');
+      const mobileDrawer = document.getElementById('mobileNavMenu');
+      const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+
+      function toggleMobileMenu(open) {
+        if (!mobileDrawer) return;
+        if (open) {
+          mobileDrawer.classList.add('is-open');
+          mobileDrawer.setAttribute('aria-hidden', 'false');
+          if (mobileBackdrop) mobileBackdrop.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileDrawer.classList.remove('is-open');
+          mobileDrawer.setAttribute('aria-hidden', 'true');
+          if (mobileBackdrop) mobileBackdrop.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', () => toggleMobileMenu(true));
+      if (mobileClose) mobileClose.addEventListener('click', () => toggleMobileMenu(false));
+      if (mobileBackdrop) mobileBackdrop.addEventListener('click', () => toggleMobileMenu(false));
+    });
+  </script>
+  <script src="navigation.js"></script>
+</body>
+</html>

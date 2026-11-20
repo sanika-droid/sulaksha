@@ -24,7 +24,7 @@
 
   <style>
     /* ==========================================================================
-       Sulakshaa Hospital – Dedicated Blog Detail Page Styles
+       Sulakshaa Hospital - Dedicated Blog Detail Page Styles
        ========================================================================== */
     .blog-detail-page {
       background-color: var(--soft-background, #F5F9FD);
@@ -168,7 +168,7 @@
       align-items: start;
     }
 
-    /* Left Column – Article Content Container */
+    /* Left Column - Article Content Container */
     .blog-article-wrapper {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
@@ -198,32 +198,34 @@
     }
 
     .blog-media-caption {
-      background: #F8FAFC;
+      font-size: 0.8rem;
       color: #64748B;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.82rem;
+      padding: 0.65rem 1.25rem;
+      background: #F8FAFC;
       border-bottom: 1px solid #EDF2F7;
-      text-align: center;
+      font-style: italic;
     }
 
     .blog-article-content {
       padding: clamp(1.75rem, 4vw, 3rem);
+      line-height: 1.8;
+      font-size: 1.02rem;
+      color: #334155;
     }
 
-    /* Lead Introduction */
     .article-lead {
-      font-size: clamp(1.05rem, 1.3vw, 1.18rem);
-      line-height: 1.7;
-      color: #1E293B;
+      font-size: 1.15rem;
       font-weight: 500;
-      margin-bottom: 1.85rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid #EDF2F7;
+      color: #0B2568;
+      line-height: 1.65;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid #E2E8F0;
     }
 
     .article-section-title {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.35rem;
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem);
       font-weight: 700;
       color: #0B2568;
       margin-top: 2rem;
@@ -234,109 +236,64 @@
     }
 
     .article-paragraph {
-      font-size: 0.96rem;
-      line-height: 1.75;
-      color: #334155;
       margin-bottom: 1.25rem;
     }
 
-    /* Bullet List with Icons */
     .article-bullet-list {
       list-style: none;
-      padding: 0;
+      padding-left: 0;
       margin: 1.25rem 0 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
     }
 
     .article-bullet-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.94rem;
-      color: #334155;
+      gap: 0.65rem;
+      margin-bottom: 0.75rem;
       line-height: 1.6;
     }
 
     .article-bullet-icon {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #EBF8FF;
       color: #0088D1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
+      flex-shrink: 0;
+      margin-top: 3px;
     }
 
-    /* Clinical Tip / Doctor Callout Box */
+    /* Doctor Insight Callout Box */
     .doctor-callout-box {
-      background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+      background: #F0F7FF;
       border-left: 4px solid #0088D1;
       border-radius: 0 12px 12px 0;
-      padding: 1.35rem 1.6rem;
-      margin: 2rem 0;
+      padding: 1.35rem 1.5rem;
+      margin: 1.75rem 0;
       display: flex;
       gap: 1rem;
       align-items: flex-start;
     }
 
     .doctor-callout-icon {
-      flex-shrink: 0;
       color: #0088D1;
-      width: 28px;
-      height: 28px;
+      flex-shrink: 0;
       margin-top: 2px;
     }
 
     .doctor-callout-text h4 {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: #0B2568;
       margin-bottom: 0.35rem;
     }
 
     .doctor-callout-text p {
-      font-size: 0.9rem;
-      color: #0369A1;
+      font-size: 0.92rem;
+      color: #1E293B;
       line-height: 1.55;
-      margin: 0;
+      margin-bottom: 0;
+      font-style: italic;
     }
 
-    /* Supporting Content Image */
-    .article-secondary-media {
-      margin: 2rem 0;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #E2E8F0;
-    }
-
-    .article-secondary-img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .article-secondary-media:hover .article-secondary-img {
-      transform: scale(1.03);
-    }
-
-    .article-secondary-caption {
-      background: #F8FAFC;
-      padding: 0.75rem 1rem;
-      font-size: 0.8rem;
-      color: #64748B;
-      border-top: 1px solid #EDF2F7;
-      text-align: center;
-    }
-
-    /* Conclusion Box */
+    /* Article Conclusion */
     .article-conclusion {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
@@ -354,49 +311,49 @@
     }
 
     .article-conclusion p {
-      font-size: 0.93rem;
+      font-size: 0.95rem;
       color: #475569;
-      line-height: 1.65;
-      margin: 0;
+      line-height: 1.6;
+      margin-bottom: 0;
     }
 
-    /* Article Sharing & Utilities Bar */
+    /* Article Utilities */
     .article-utilities-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-top: 2.25rem;
       padding-top: 1.5rem;
       border-top: 1px solid #EDF2F7;
+      margin-top: 1rem;
       flex-wrap: wrap;
     }
 
     .share-group {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .share-label {
       font-size: 0.82rem;
       font-weight: 600;
       color: #64748B;
+      margin-right: 0.35rem;
     }
 
     .share-btn {
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      border: 1px solid #E2E8F0;
-      background: #FFFFFF;
-      color: #475569;
+      background: #F1F5F9;
+      color: #0B2568;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
       text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid #E2E8F0;
     }
 
     .share-btn:hover {
@@ -406,7 +363,7 @@
       transform: translateY(-2px);
     }
 
-    /* Prev / Next Article Navigation */
+    /* Adjacent Articles Navigation */
     .article-adjacent-nav {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -417,21 +374,22 @@
     }
 
     .adjacent-card {
-      padding: 1.15rem;
-      border-radius: 12px;
+      background: #F8FAFC;
       border: 1px solid #E2E8F0;
-      background: #FAFAFA;
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
       text-decoration: none;
+      color: inherit;
       display: flex;
       flex-direction: column;
       transition: all 0.2s ease;
     }
 
     .adjacent-card:hover {
-      background: #F0F9FF;
+      background: #FFFFFF;
       border-color: #0088D1;
+      box-shadow: 0 4px 14px rgba(11, 37, 104, 0.08);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 136, 209, 0.08);
     }
 
     .adjacent-card.next {
@@ -440,23 +398,27 @@
     }
 
     .adjacent-label {
-      font-size: 0.75rem;
-      color: #64748B;
-      font-weight: 600;
+      font-size: 0.74rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      margin-bottom: 0.35rem;
+      color: #0088D1;
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
+      margin-bottom: 0.35rem;
     }
 
     .adjacent-title {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-size: 0.92rem;
+      font-weight: 600;
       color: #0B2568;
       line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .back-to-blogs-row {
@@ -464,21 +426,21 @@
       text-align: center;
     }
 
-    /* Right Column – Sidebar Styling */
+    /* Right: Sidebar */
     .blog-sidebar {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
       position: sticky;
-      top: 90px;
+      top: 100px;
     }
 
     .sidebar-widget {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 1.35rem 1.25rem;
-      box-shadow: 0 2px 10px rgba(11, 37, 104, 0.03);
+      border-radius: 16px;
+      padding: 1.5rem 1.35rem;
+      box-shadow: 0 4px 20px rgba(11, 37, 104, 0.04);
     }
 
     .widget-title {
@@ -486,15 +448,14 @@
       font-size: 1.05rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 1rem;
-      padding-bottom: 0.65rem;
-      border-bottom: 2px solid #EBF4FC;
+      margin-bottom: 1.15rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid #EDF2F7;
     }
 
-    /* Related Articles List */
     .related-articles-list {
       display: flex;
       flex-direction: column;
@@ -652,6 +613,156 @@
       transform: translateY(-2px);
     }
 
+    /* --------------------------------------------------------------------------
+       Bottom Related Articles Grid (Requirement 10)
+       -------------------------------------------------------------------------- */
+    .blog-bottom-related-section {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .bottom-related-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .bottom-related-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #F0F7FF;
+      color: #0088D1;
+      border: 1px solid #D0E4FA;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    .bottom-related-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 700;
+      color: #0B2568;
+      margin-bottom: 0.35rem;
+    }
+
+    .bottom-related-subtitle {
+      font-size: 0.92rem;
+      color: #64748B;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .bottom-related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bottom-related-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(11, 37, 104, 0.04);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+    }
+
+    .bottom-related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(11, 37, 104, 0.1);
+      border-color: #0088D1;
+    }
+
+    .bottom-related-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #E2E8F0;
+      overflow: hidden;
+    }
+
+    .bottom-related-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .bottom-related-card:hover .bottom-related-media img {
+      transform: scale(1.05);
+    }
+
+    .bottom-related-body {
+      padding: 1.15rem 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .bottom-related-meta {
+      font-size: 0.75rem;
+      color: #64748B;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .bottom-related-card-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0B2568;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .bottom-related-card:hover .bottom-related-card-title {
+      color: #0088D1;
+    }
+
+    .bottom-related-card-excerpt {
+      font-size: 0.82rem;
+      color: #556B88;
+      line-height: 1.45;
+      margin-bottom: 0.95rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .bottom-related-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #0088D1;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: auto;
+      transition: gap 0.2s ease;
+    }
+
+    .bottom-related-card:hover .bottom-related-card-link {
+      gap: 0.55rem;
+    }
+
     /* Responsive Adjustments */
     @media (max-width: 1024px) {
       .blog-layout-grid {
@@ -681,6 +792,9 @@
         text-align: left;
         align-items: flex-start;
       }
+      .bottom-related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 600px) {
@@ -693,12 +807,18 @@
       .blog-hero-card {
         padding: 1.25rem 1rem;
       }
+      .bottom-related-grid {
+        grid-template-columns: 1fr;
+      }
+      .bottom-related-header {
+        text-align: left;
+      }
     }
   </style>
 </head>
 <body class="blog-detail-page">
 
-  <!-- Top Bar Above Header (Ref Image 2) in Sulakshaa Logo Color (#0B2568) -->
+  <!-- Top Bar Above Header (Sulakshaa Navy #0B2568) -->
   <div class="site-top-bar" id="siteTopBar">
     <div class="container">
       <div class="top-bar-location">
@@ -740,7 +860,7 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="index.html#overview" class="nav-link">About Us</a></li>
-                    <li class="nav-item nav-item-dropdown dept-mega-nav-item">
+          <li class="nav-item nav-item-dropdown dept-mega-nav-item">
             <a href="departments.html" class="nav-link nav-dropdown-toggle dept-dropdown-link" id="deptDropdownToggle" role="button" aria-expanded="false" aria-haspopup="true">
               <span>Departments</span>
               <i data-lucide="chevron-down" class="dropdown-chevron"></i>
@@ -833,7 +953,7 @@
           <li class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></li>
           <li class="nav-item"><a href="facilities.html" class="nav-link">Facilities &amp; Services</a></li>
           <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-          <li class="nav-item"><a href="index.html#blog" class="nav-link active">Blog</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
           <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact Us</a></li>
         </ul>
       </nav>
@@ -851,9 +971,7 @@
 
         <!-- Mobile Menu Toggle Button -->
         <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="mobileNavMenu" aria-label="Toggle navigation menu">
-          <span class="hamburger-bar bar-1"></span>
-          <span class="hamburger-bar bar-2"></span>
-          <span class="hamburger-bar bar-3"></span>
+          <i data-lucide="menu" class="icon-md"></i>
         </button>
       </div>
     </div>
@@ -863,14 +981,14 @@
   <div class="mobile-nav-drawer" id="mobileNavMenu" aria-hidden="true">
     <div class="mobile-drawer-inner">
       <div class="mobile-drawer-header">
-        <a href="index.html" class="brand-identity" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
-        <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
-        <div class="brand-divider" aria-hidden="true"></div>
-        <div class="brand-text-container">
-          <span class="brand-hospital-title">Sulakshaa</span>
-          <span class="brand-hospital-type">Multi Speciality Hospital</span>
+        <div class="brand-identity">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="40" height="40">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
+          </div>
         </div>
-      </a>
         <button type="button" class="mobile-drawer-close" id="mobileDrawerCloseBtn" aria-label="Close navigation menu">
           <i data-lucide="x" class="icon-md"></i>
         </button>
@@ -878,8 +996,8 @@
       <ul class="mobile-nav-list">
         <li><a href="index.html" class="mobile-nav-link">Home</a></li>
         <li><a href="index.html#overview" class="mobile-nav-link">About Us</a></li>
-                <li class="mobile-nav-item-dropdown" style="--nav-idx: 2;">
-          <div class="mobile-dropdown-header-wrap">
+        <li class="mobile-dropdown">
+          <div class="mobile-dropdown-header">
             <a href="departments.html" class="mobile-nav-link">Departments</a>
             <button type="button" class="mobile-dropdown-trigger" id="mobileDeptToggle" aria-expanded="false" aria-label="Toggle Departments">
               <i data-lucide="chevron-down" class="mobile-dropdown-chevron"></i>
@@ -925,7 +1043,7 @@
         <li><a href="doctors.html" class="mobile-nav-link">Doctors</a></li>
         <li><a href="facilities.html" class="mobile-nav-link">Facilities &amp; Services</a></li>
         <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
-        <li><a href="index.html#blog" class="mobile-nav-link active">Blog</a></li>
+        <li><a href="blog.html" class="mobile-nav-link active">Blog</a></li>
         <li><a href="index.html#contact" class="mobile-nav-link">Contact Us</a></li>
       </ul>
       <div class="mobile-drawer-cta">
@@ -949,7 +1067,7 @@
         <div class="blog-breadcrumbs">
           <a href="index.html"><i data-lucide="home" class="icon-xs"></i> Home</a>
           <i data-lucide="chevron-right" class="icon-xs"></i>
-          <a href="index.html#blog">Health Insights &amp; Blog</a>
+          <a href="blog.html">Health Insights &amp; Hospital Updates</a>
           <i data-lucide="chevron-right" class="icon-xs"></i>
           <span class="current-crumb" id="breadcrumbTitle">Article Details</span>
         </div>
@@ -972,10 +1090,6 @@
             </div>
           </div>
           <div class="blog-meta-item">
-            <i data-lucide="calendar" class="icon-xs"></i>
-            <span id="articleDate">Oct 2026</span>
-          </div>
-          <div class="blog-meta-item">
             <i data-lucide="clock" class="icon-xs"></i>
             <span id="articleReadTime">5 min read</span>
           </div>
@@ -988,7 +1102,7 @@
         <!-- Left: Main Article -->
         <article class="blog-article-wrapper">
           <div class="blog-featured-media">
-            <img src="assets/blog-preventive-health.jpg" alt="Article Featured Image" class="blog-featured-img" id="featuredImg">
+            <img src="assets/blog-cardiology.jpg" alt="Article Featured Image" class="blog-featured-img" id="featuredImg">
           </div>
           <div class="blog-media-caption" id="featuredImgCaption">Sulakshaa Multi Speciality Hospital Clinical Guidance</div>
 
@@ -1024,7 +1138,7 @@
             </div>
 
             <div class="back-to-blogs-row">
-              <a href="index.html#blog" class="btn btn-outline btn-sm">
+              <a href="blog.html" class="btn btn-outline btn-sm">
                 <i data-lucide="arrow-left" class="icon-xs"></i> Back to All Health Insights
               </a>
             </div>
@@ -1082,6 +1196,19 @@
         </aside>
 
       </div>
+
+      <!-- Bottom Related Articles Section (Requirement 10) -->
+      <section class="blog-bottom-related-section" id="bottomRelatedSection" aria-label="Related Health Insights">
+        <div class="bottom-related-header">
+          <div class="bottom-related-tag"><i data-lucide="book-open" class="icon-xs"></i> Further Reading</div>
+          <h2 class="bottom-related-title">Related Health Insights</h2>
+          <p class="bottom-related-subtitle">Explore more evidence-based medical articles and clinical updates from Sulakshaa Hospital specialists.</p>
+        </div>
+        <div class="bottom-related-grid" id="bottomRelatedGrid">
+          <!-- Dynamically populated with 3 related cards -->
+        </div>
+      </section>
+
     </div>
   </main>
 
@@ -1099,52 +1226,235 @@
                 <span class="brand-hospital-type">Multi Speciality Hospital</span>
               </div>
             </a>
-            <p class="footer-tagline">Providing ethical, advanced, and patient-centered multi-speciality clinical healthcare in Mysuru.</p>
+          </div>
+          <p class="footer-about-text">
+            Sulakshaa Multi Speciality Hospital is a state-of-the-art healthcare institution in Mysuru, dedicated to clinical excellence, patient-centric healing, and round-the-clock emergency medical response.
+          </p>
+          <div class="footer-nabh-note">
+            <i data-lucide="award" class="icon-sm"></i>
+            <span>Committed to Clinical Protocols &amp; Patient Safety</span>
           </div>
         </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links">
+
+        <div class="footer-col footer-col-links">
+          <h4 class="footer-heading">Quick Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
             <li><a href="index.html#overview"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
-            <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Departments</a></li>
-            <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Specialist Doctors</a></li>
-            <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Facilities</a></li>
-            <li><a href="index.html#blog"><i data-lucide="chevron-right" class="icon-xs"></i> Health Insights &amp; Blog</a></li>
+            <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Centres of Excellence</a></li>
+            <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Senior Specialists</a></li>
+            <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Facilities &amp; Services</a></li>
+            <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Photo Gallery</a></li>
+            <li><a href="blog.html"><i data-lucide="chevron-right" class="icon-xs"></i> Health Insights</a></li>
+            <li><a href="index.html#contact"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Location</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">24/7 Helpline</h4>
-          <p style="font-size:0.86rem; color:#A0AEC0; margin-bottom:0.75rem;">Casualty Emergency &amp; Triage:</p>
-          <a href="tel:+919535747478" style="color:#FFF; font-weight:700; font-size:1.05rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:1rem;">
-            <i data-lucide="phone-call" class="icon-sm" style="color:#0088D1;"></i> 9535747478
-          </a>
-          <p style="font-size:0.86rem; color:#CBD5E1; margin-bottom:0.5rem;">Reception: <a href="tel:08213525555" style="color:#FFF;text-decoration:none;">0821-3525555</a> / <a href="tel:08213525544" style="color:#FFF;text-decoration:none;">0821-3525544</a></p>
-          <p style="font-size:0.78rem; color:#718096; line-height:1.4;">Dial 112 for pan-India emergency services.</p>
+
+        <div class="footer-col footer-col-specialties">
+          <h4 class="footer-heading">Clinical Specialities</h4>
+          <ul class="footer-links-list">
+            <li><a href="department-details.html?dept=cardiac-care"><i data-lucide="chevron-right" class="icon-xs"></i> Cardiology</a></li>
+            <li><a href="department-details.html?dept=orthopedics"><i data-lucide="chevron-right" class="icon-xs"></i> Orthopaedics &amp; Joint Care</a></li>
+            <li><a href="department-details.html?dept=emergency"><i data-lucide="chevron-right" class="icon-xs"></i> 24/7 Accident &amp; Emergency</a></li>
+            <li><a href="department-details.html?dept=gastroenterology"><i data-lucide="chevron-right" class="icon-xs"></i> Gastroenterology &amp; Hepatology</a></li>
+            <li><a href="department-details.html?dept=nephrology"><i data-lucide="chevron-right" class="icon-xs"></i> Nephrology &amp; Renal Care</a></li>
+            <li><a href="department-details.html?dept=neurology"><i data-lucide="chevron-right" class="icon-xs"></i> Neurology &amp; Brain Health</a></li>
+            <li><a href="department-details.html?dept=paediatrics"><i data-lucide="chevron-right" class="icon-xs"></i> Paediatrics &amp; Child Care</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col-contact">
+          <h4 class="footer-heading">Emergency &amp; Helpdesk</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin" class="icon-xs"></i>
+            <div>
+              <strong>Sulakshaa Multi Speciality Hospital</strong><br>
+              278, 1st Main Rd, Vijayanagar 3rd Stage, Vijayanagar, Mysuru, Karnataka 570017
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone-call" class="icon-xs"></i>
+            <div>
+              <strong>24/7 Emergency Casualty:</strong><br>
+              <a href="tel:+919535747478" style="color: inherit; text-decoration: none; font-weight: 700;">+91 95357 47478</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone" class="icon-xs"></i>
+            <div>
+              <strong>OPD Appointments &amp; Reception:</strong><br>
+              <a href="tel:08213525555" style="color: inherit; text-decoration: none;">0821-3525555</a> / 
+              <a href="tel:08213525544" style="color: inherit; text-decoration: none;">0821-3525544</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail" class="icon-xs"></i>
+            <div>
+              <strong>Email Inquiries:</strong><br>
+              <a href="mailto:info@sulakshaahospital.com" style="color: inherit; text-decoration: none;">info@sulakshaahospital.com</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom text-center">
-        <p>&copy; 2026 Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved. Ethical Healthcare.</p>
+
+      <div class="footer-bottom-bar">
+        <p class="copyright-text">
+          &copy; 2026 Sulakshaa Multi Speciality Hospital, Mysuru. All rights reserved.
+        </p>
+        <p class="disclaimer-text">
+          Disclaimer: Medical articles on this website provide educational information only and do not replace personalized professional diagnosis or medical treatment.
+        </p>
       </div>
     </div>
   </footer>
 
   <!-- Toast Notification Container -->
-  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+  <div id="toastContainer" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;"></div>
 
-  <!-- Articles Database & Interactive Loader Script -->
+  <!-- Blog Details Dynamic Routing Script -->
   <script>
     const BLOG_ARTICLES = {
-      'preventive-health': {
-        id: 'preventive-health',
-        title: 'Value of Annual Preventive Health Screenings',
-        category: 'Preventive Health',
-        date: 'Oct 2026',
+      'healthy-heart': {
+        id: 'healthy-heart',
+        title: 'Tips to Maintain a Healthy Heart: Clinical Insights for Cardiovascular Longevity',
+        category: 'Cardiology & Heart Health',
+        date: 'Oct 24, 2026',
+        readTime: '5 min read',
+        author: 'Cardiology Clinical Faculty, Sulakshaa Hospital',
+        authorInitials: 'SH',
+        image: 'assets/blog-cardiology.jpg',
+        imageCaption: 'Recognizing early heart disease warning signs and adopting heart-healthy habits saves cardiac muscle and lives.',
+        metaDesc: 'Cardiologist-approved tips to maintain a healthy heart, manage blood pressure, and recognize early warning signs of heart distress at Sulakshaa Hospital, Mysuru.',
+        lead: 'Cardiovascular diseases remain the leading cause of preventable mortality worldwide and across India. However, over 80% of premature cardiac events are preventable when healthy habits are adopted early, blood pressure is managed, and warning signs are treated within the critical Golden Hour.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="heart" class="icon-sm"></i> Understanding Cardiovascular Longevity</h2>
+          <p class="article-paragraph">
+            The human heart beats approximately 100,000 times each day, pumping nutrient-rich blood through thousands of miles of vascular networks. In Coronary Artery Disease (CAD), progressive cholesterol deposition narrows arterial lumens, impeding myocardial oxygen delivery. Maintaining arterial elasticity through daily dietary vigilance and aerobic activity prevents plaque rupture and acute coronary syndrome.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Senior Cardiologist Clinical Note</h4>
+              <p>“Heart attacks do not begin on the day of acute chest pain—they build silently across years through endothelial inflammation, high LDL cholesterol, and undetected hypertension. Consistent daily lifestyle habits are your strongest medical prescription.” — Cardiology Clinical Faculty</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="activity" class="icon-sm"></i> Essential Daily Habits for a Strong Heart</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Adopt a Low-Sodium, Mediterranean-Style Diet:</strong> Prioritize green leafy vegetables, soluble fiber, whole pulses, and healthy unsaturated fats while keeping daily salt intake under 5 grams (1 teaspoon) to prevent endothelial stiffening.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>150 Minutes of Moderate Aerobic Movement:</strong> Engage in 30 minutes of brisk walking, cycling, or swimming 5 days weekly to increase high-density lipoprotein (HDL) and regulate resting heart rate.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Know Your Vital Biomarkers:</strong> Maintain target blood pressure under 120/80 mmHg, fasting blood sugar under 100 mg/dL, and LDL cholesterol below 100 mg/dL (or below 70 mg/dL for high-risk individuals).</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Uncompromising Tobacco Cessation:</strong> Tobacco smoke instantly constricts coronary arteries, accelerates platelet aggregation, and quadruples heart attack risks.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Quality Sleep and Cortisol Management:</strong> Chronic sleep deprivation below 6 hours elevates cortisol and autonomic nervous system overdrive, fueling nocturnal hypertension.</span>
+            </li>
+          </ul>
+
+          <h2 class="article-section-title"><i data-lucide="clock" class="icon-sm"></i> The Critical "Golden Hour" Protocol in Mysuru</h2>
+          <p class="article-paragraph">
+            The first 60 minutes following the onset of acute retrosternal chest pain or heaviness is known as the <strong>Golden Hour</strong>. Immediate arrival at a fully equipped emergency casualty ensures rapid 12-lead ECG acquisition and initiation of reperfusion therapies before permanent myocardial necrosis occurs.
+          </p>
+
+          <div class="article-conclusion">
+            <h3>When to Seek Immediate Cardiac Assessment</h3>
+            <p>If you experience sudden chest heaviness, pain radiating to the left arm or jaw, cold sweating, or unexplained breathlessness, do not wait or self-medicate with antacids. Proceed directly to the round-the-clock Emergency Trauma &amp; Cardiac Care Unit at Sulakshaa Multi Speciality Hospital, Mysuru.</p>
+          </div>
+        `
+      },
+      'diabetes-symptoms': {
+        id: 'diabetes-symptoms',
+        title: 'Early Symptoms of Diabetes: Recognizing the Warning Signs Before Complications',
+        category: 'Diabetes & Internal Medicine',
+        date: 'Oct 18, 2026',
+        readTime: '5 min read',
+        author: 'Internal Medicine & Diabetology Faculty',
+        authorInitials: 'SH',
+        image: 'assets/general-medicine-consultation.png',
+        imageCaption: 'Comprehensive glycaemic assessment and diabetic education at Sulakshaa Hospital.',
+        metaDesc: 'Learn the subtle early warning signs of type-2 diabetes, diagnostic HbA1c screening tests, and microvascular organ protection at Sulakshaa Hospital.',
+        lead: 'Type-2 diabetes frequently develops insidiously over months or years with subtle symptoms that are easily brushed aside as fatigue or aging. Recognizing these early warning signs and screening HbA1c allows for timely lifestyle reversal and microvascular organ protection.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="droplet" class="icon-sm"></i> The Classic "3 P's" of Diabetes</h2>
+          <p class="article-paragraph">
+            When blood glucose exceeds renal absorptive thresholds, the kidneys excrete excess sugar into the urine, pulling vital fluids along with it. This physiological cascade triggers the classic early manifestations:
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Polyuria (Excessive Urination):</strong> Waking up multiple times at night to urinate as the kidneys filter surplus circulatory sugar.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Polydipsia (Unquenchable Thirst):</strong> Persistent dry mouth and feeling dehydrated despite drinking plentiful water.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Polyphagia (Constant Hunger):</strong> Cells are unable to absorb glucose efficiently due to insulin resistance, triggering persistent physiological hunger signals.</span>
+            </li>
+          </ul>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="alert-circle" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Diabetology Clinical Note</h4>
+              <p>“Prediabetes is your golden opportunity. When blood sugar abnormalities are detected early at the stage of impaired fasting glucose, dietary carb regulation and 30 minutes of daily walking can fully prevent progression to overt diabetes.” — Internal Medicine Faculty</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="sparkles" class="icon-sm"></i> Frequently Overlooked Early Indicators</h2>
+          <p class="article-paragraph">
+            Beyond fluid balance, high circulating glucose affects nerve endings, vision, and microvascular capillaries:
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Chronic, Unexplained Fatigue:</strong> Feeling drained even after a full night's rest because glucose cannot enter cells to generate ATP.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Blurry Vision:</strong> Fluid shifts within the lens of the eye alter light refraction, causing transient visual blurring.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Slow Healing of Minor Cuts:</strong> High blood sugar inhibits white blood cell phagocytosis, prolonging wound recovery and encouraging fungal infections.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Peripheral Tingling or Numbness:</strong> Early diabetic peripheral neuropathy manifesting as "pins-and-needles" in the feet or fingertips.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>Diagnostic Confirmation at Sulakshaa Hospital</h3>
+            <p>If you experience any of these symptoms, visit our internal medicine clinic for a simple Fasting Blood Sugar and HbA1c test. Our diagnostic laboratory delivers accurate, same-day reports with physician consultation.</p>
+          </div>
+        `
+      },
+      'regular-checkups': {
+        id: 'regular-checkups',
+        title: 'Importance of Regular Health Checkups: Why Preventive Screening Saves Lives',
+        category: 'Preventive Healthcare',
+        date: 'Oct 12, 2026',
         readTime: '4 min read',
-        author: 'Dr. Laxme Gowda, Senior Physician',
-        authorInitials: 'LG',
+        author: 'Preventive Healthcare Team, Sulakshaa Hospital',
+        authorInitials: 'SH',
         image: 'assets/blog-preventive-health.jpg',
-        imageCaption: 'Early diagnostics and preventative screenings safeguard long-term wellness.',
-        metaDesc: 'Discover why annual preventive checkups detect silent conditions like hypertension and prediabetes early at Sulakshaa Multi Speciality Hospital.',
+        imageCaption: 'Annual health screenings provide an evidence-based roadmap for lasting longevity.',
+        metaDesc: 'Discover why annual health checkups detect silent diseases like hypertension, dyslipidemia, and renal strain early before symptoms develop.',
         lead: 'In modern preventative medicine, proactive screening represents the single most effective barrier against lifestyle disorders. Periodic clinical checks detect silent physiological changes long before overt symptoms manifest.',
         content: `
           <h2 class="article-section-title"><i data-lucide="stethoscope" class="icon-sm"></i> Why "Feeling Fine" Isn’t Always Enough</h2>
@@ -1156,7 +1466,7 @@
             <i data-lucide="alert-circle" class="doctor-callout-icon"></i>
             <div class="doctor-callout-text">
               <h4>Senior Clinician Insight</h4>
-              <p>“Detecting high blood sugar or elevated blood pressure early gives patients the golden opportunity to correct values through guided nutrition, moderate activity, and minimal medication before target organs are impacted.” — Dr. Laxme Gowda</p>
+              <p>“Detecting high blood sugar or elevated blood pressure early gives patients the golden opportunity to correct values through guided nutrition, moderate activity, and minimal medication before target organs are impacted.” — Preventive Medicine Faculty</p>
             </div>
           </div>
 
@@ -1183,383 +1493,356 @@
             </li>
           </ul>
 
-          <h2 class="article-section-title"><i data-lucide="heart-pulse" class="icon-sm"></i> Personalized Preventive Schedules by Age</h2>
+          <h2 class="article-section-title"><i data-lucide="heart-pulse" class="icon-sm"></i> Recommended Screening Schedules by Age</h2>
           <p class="article-paragraph">
             Young adults aged 20–35 with a sedentary lifestyle benefit from baseline screening every two years. For individuals above 35 years or those with a familial history of heart disease, annual comprehensive health panels are clinically advised.
           </p>
 
           <div class="article-conclusion">
             <h3>Summary &amp; Clinical Recommendation</h3>
-            <p>Annual health evaluations are not about discovering illness—they are about establishing peace of mind and creating an evidence-based roadmap for lasting vitality. Our diagnostic laboratory and internal medicine physicians at Sulakshaa Multi Speciality Hospital provide same-day report consultations to discuss tailored lifestyle interventions.</p>
+            <p>Annual health evaluations are not about discovering illness—they are about establishing peace of mind and creating an evidence-based roadmap for lasting vitality. Our diagnostic laboratory and internal medicine physicians at Sulakshaa Hospital provide same-day report consultations.</p>
           </div>
         `
       },
-      'cardiology': {
-        id: 'cardiology',
-        title: 'Heart Disease Warning Signs: Early Symptoms & Golden Hour Care',
-        category: 'Cardiology & Emergency',
-        date: 'Oct 2026',
-        readTime: '6 min read',
-        author: 'Dr. Laxme Gowda, Clinical Cardiologist & Senior Consultant',
-        authorInitials: 'LG',
-        image: 'assets/blog-cardiology.jpg',
-        imageCaption: 'Recognizing early heart disease warning signs and acting during the Golden Hour saves cardiac muscle and lives.',
-        metaDesc: 'Learn the critical warning signs of heart disease, subtle heart attack symptoms, and Golden Hour emergency protocols at Sulakshaa Hospital, Mysuru.',
-        lead: 'Cardiovascular diseases remain the leading cause of mortality worldwide and across India. However, over 80% of premature cardiac events are preventable when early warning signs are identified promptly and treated within the critical Golden Hour.',
-        content: `
-          <h2 class="article-section-title"><i data-lucide="alert-triangle" class="icon-sm"></i> Understanding Heart Disease &amp; Coronary Artery Disease</h2>
-          <p class="article-paragraph">
-            Heart disease encompasses a spectrum of conditions affecting heart structure and function, with Coronary Artery Disease (CAD) being the most prevalent. In CAD, fatty cholesterol plaques progressively narrow the coronary arteries, restricting oxygenated blood flow to the myocardium (heart muscle). While some blockages develop gradually causing exertional angina, unstable plaques can suddenly rupture, triggering acute coronary thrombosis—a heart attack.
-          </p>
-
-          <div class="doctor-callout-box">
-            <i data-lucide="heart" class="doctor-callout-icon"></i>
-            <div class="doctor-callout-text">
-              <h4>Senior Cardiologist Clinical Note</h4>
-              <p>“Heart attacks do not always present with sudden chest-clutching drama as portrayed in movies. In clinical practice, many patients experience insidious warning signs—such as unusual jaw discomfort, heavy fatigue, or indigestion-like burning—hours or days prior to acute infarction.” — Dr. Laxme Gowda</p>
-            </div>
-          </div>
-
-          <h2 class="article-section-title"><i data-lucide="activity" class="icon-sm"></i> Primary Signs and Symptoms of Heart Disease</h2>
-          <p class="article-paragraph">
-            Recognizing early indicators is vital for timely medical intervention. Consult a doctor immediately if you or a family member experience any of the following:
-          </p>
-          <ul class="article-bullet-list">
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Retrosternal Chest Discomfort (Angina):</strong> A sensation of tightness, squeezing, fullness, or central crushing pressure lasting more than a few minutes or resolving and recurring.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Radiating Upper Body Pain:</strong> Discomfort radiating across the left shoulder, down one or both arms, or into the back, neck, jaw, or epigastrium (upper abdomen).</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Dyspnea (Shortness of Breath):</strong> Difficulty catching breath with minimal exertion or even at rest, often accompanied by cold sweating and dizziness.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Atypical Symptoms in Women &amp; Diabetics:</strong> Severe unexplained exhaustion, nausea, vomiting, dizziness, nocturnal awakening with throat burning, or palpitations without classic retrosternal pressure.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Peripheral Edema:</strong> Persistent swelling in feet, ankles, or legs indicating reduced cardiac pumping efficiency.</span>
-            </li>
-          </ul>
-
-          <h2 class="article-section-title"><i data-lucide="clock" class="icon-sm"></i> The Critical "Golden Hour" Protocol in Mysuru</h2>
-          <p class="article-paragraph">
-            The first 60 minutes following the onset of acute myocardial infarction is known in emergency medicine as the <strong>Golden Hour</strong>. Prompt emergency medical triage, baseline 12-lead ECG recording, and initiation of reperfusion therapy (primary angioplasty or thrombolysis) within this window prevents irreversible muscle necrosis, halts malignant ventricular arrhythmias, and drastically improves survival rates.
-          </p>
-
-          <h2 class="article-section-title"><i data-lucide="shield-check" class="icon-sm"></i> Diagnostic Evaluation &amp; Preventive Measures</h2>
-          <p class="article-paragraph">
-            Modern diagnostic cardiology provides clear risk stratification before symptoms become fatal:
-          </p>
-          <ul class="article-bullet-list">
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>12-Lead Electrocardiogram (ECG):</strong> Rapid detection of acute ST-segment changes, ischemia, and arrhythmia.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>2D Echocardiography &amp; Color Doppler:</strong> Real-time assessment of ventricular ejection fraction, valve dynamics, and regional wall motion abnormalities.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Treadmill Stress Testing (TMT) &amp; Cardiac Biomarkers:</strong> High-sensitivity Troponin I and CK-MB for rapid confirmation of myocardial injury.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Heart-Healthy Lifestyle:</strong> 30 minutes of daily aerobic exercise, low-sodium dietary habits, tobacco cessation, and annual lipid/blood glucose screening.</span>
-            </li>
-          </ul>
-
-          <div class="article-conclusion">
-            <h3>When to Seek Immediate Cardiac Assessment</h3>
-            <p>If you or someone nearby experiences sudden chest heaviness, unexplained breathlessness, cold sweats, or radiating pain, do not wait or self-medicate with antacids. Proceed immediately to our round-the-clock Emergency Trauma &amp; ICU facility at Sulakshaa Multi Speciality Hospital, Mysuru.</p>
-            <p style="margin-top: 1rem; font-weight: 600; color: #0B2568;">Looking for reliable healthcare guidance? Explore the medical services at Sulakshaa Multi Speciality Hospital, Mysuru. Contact our hospital to enquire about an appointment.</p>
-          </div>
-        `
-      },
-      'paediatrics': {
-        id: 'paediatrics',
-        title: 'Safeguarding Children During Weather Shifts',
+      'child-nutrition': {
+        id: 'child-nutrition',
+        title: 'Healthy Food Habits for Children: Building Strong Immunity & Growth',
         category: 'Pediatric Care',
-        date: 'Sep 2026',
+        date: 'Sep 29, 2026',
         readTime: '4 min read',
         author: 'Pediatric Faculty, Sulakshaa Hospital',
         authorInitials: 'PF',
         image: 'assets/paediatrics.png',
-        imageCaption: 'Gentle clinical care and practical guidance for infants and growing children.',
-        metaDesc: 'Pediatric guidelines on preventing seasonal wheezing, fevers, and viral illnesses in children during weather transitions.',
-        lead: 'Seasonal weather shifts in Mysuru often trigger sudden spikes in pediatric viral fevers, seasonal bronchiolitis, and allergen sensitivity. Equipping parents with early preventive protocols prevents unnecessary emergency visits.',
+        imageCaption: 'Gentle clinical guidance and practical nutritional advice for growing children.',
+        metaDesc: 'Pediatrician guidelines on building healthy food habits in children, preventing micronutrient deficiencies, and promoting robust immune development.',
+        lead: 'Childhood nutrition establishes the physiological foundation for lifelong immunity, bone density, cognitive development, and metabolic health. Guiding children toward wholesome eating habits early prevents nutritional deficiencies, recurring seasonal illnesses, and childhood obesity.',
         content: `
-          <h2 class="article-section-title"><i data-lucide="baby" class="icon-sm"></i> Understanding Pediatric Respiratory Vulnerability</h2>
+          <h2 class="article-section-title"><i data-lucide="baby" class="icon-sm"></i> The Building Blocks of Childhood Growth</h2>
           <p class="article-paragraph">
-            Children have narrower airways and developing immune systems. When ambient humidity drops or morning temperatures fluctuate, respiratory mucosa dry out, facilitating viral entry. Common culprits include Rhinovirus and RSV (Respiratory Syncytial Virus).
+            Growing bodies undergo rapid cellular replication, skeletal elongation, and neural branching. Diets dense in refined carbohydrates and ultra-processed snacks fail to provide the micronutrients essential for robust development.
           </p>
 
           <div class="doctor-callout-box">
             <i data-lucide="smile" class="doctor-callout-icon"></i>
             <div class="doctor-callout-text">
               <h4>Pediatrician Clinical Note</h4>
-              <p>“Never administer over-the-counter cough syrups or adult antipyretics to infants without pediatric dosing. Most viral fevers resolve safely with adequate hydration, saline nasal drops, and temperature regulation.”</p>
+              <p>“Never make the dinner table an emotional battleground. Children learn primarily by observing their parents. When colorful vegetables, fresh fruits, and whole pulses are normal family staples, children adopt positive eating habits organically.”</p>
             </div>
           </div>
 
-          <h2 class="article-section-title"><i data-lucide="thermometer" class="icon-sm"></i> Core Home Care Steps During Seasonal Shifts</h2>
+          <h2 class="article-section-title"><i data-lucide="check-circle" class="icon-sm"></i> Core Principles for Childhood Nutrition</h2>
           <ul class="article-bullet-list">
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Frequent Small Sips of Warm Fluids:</strong> Warm water, tender coconut, and clear soups prevent dehydration and thin mucus secretions.</span>
+              <span><strong>The "Rainbow Plate" Rule:</strong> Incorporate natural colors—greens (spinach, beans), reds (tomatoes, carrots), and oranges (papaya, pumpkin)—to supply varied antioxidants and bioflavonoids.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Saline Nasal Drops for Congestion:</strong> Gentle isotonic saline drops before feeds and sleep clear blocked nasal passages safely.</span>
+              <span><strong>Adequate Bioavailable Iron:</strong> Growing red blood cells require iron from lentils, green leafy vegetables, jaggery, and dates to prevent juvenile microcytic anemia.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Layering Clothes Appropriately:</strong> Keep chest and feet protected during cool early mornings and late evenings without overheating.</span>
+              <span><strong>Calcium and Vitamin D3 for Bones:</strong> Milk, curd, fortified paneer, and daily morning sunlight exposure support peak bone mass accrual.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Timely Immunization:</strong> Ensure seasonal flu shots and routine childhood vaccines are fully up to date as per the national immunization chart.</span>
+              <span><strong>Limit Hidden Liquid Sugars:</strong> Replace packaged juices, carbonated sodas, and sweet drinks with tender coconut water, buttermilk (chaas), and fresh water.</span>
             </li>
           </ul>
 
           <div class="article-conclusion">
-            <h3>Red Flag Signs Requiring Prompt Consultation</h3>
-            <p>Consult our pediatric OPD or emergency desk immediately if your child displays rapid breathing with chest retractions, refusal to feed or nurse, lethargy, or high-grade fever persisting beyond 48 hours.</p>
+            <h3>Pediatric OPD Support at Sulakshaa</h3>
+            <p>If your child experiences poor appetite, recurring abdominal discomfort, sluggish growth milestones, or food allergies, schedule a consultation with our experienced pediatric consultants at Sulakshaa Hospital, Mysuru.</p>
           </div>
         `
       },
-      'diabetes-care': {
-        id: 'diabetes-care',
-        title: 'Managing Blood Sugar & Renal Protection',
-        category: 'Diabetes & Nephrology',
-        date: 'Sep 2026',
-        readTime: '5 min read',
-        author: 'Dr. Laxme Gowda, Internal Medicine & Diabetology',
-        authorInitials: 'LG',
-        image: 'assets/general-medicine.png',
-        imageCaption: 'Integrated diabetes management protects microvascular circulation and renal function.',
-        metaDesc: 'Clinical approaches to long-term glycaemic stability and diabetic kidney protection by Dr. Laxme Gowda at Sulakshaa Hospital.',
-        lead: 'Effective type-2 diabetes management goes far beyond taking a morning pill. Long-term microvascular protection—especially of delicate glomeruli in the kidneys—relies on steady HbA1c control and early urinary albumin detection.',
+      'back-pain-causes': {
+        id: 'back-pain-causes',
+        title: 'Common Causes of Back Pain: Ergonomics, Spine Health & Clinical Treatment',
+        category: 'Orthopedics & Spine',
+        date: 'Sep 22, 2026',
+        readTime: '6 min read',
+        author: 'Dr. Anand R. Kulkarni, Senior Orthopedic & Joint Surgeon',
+        authorInitials: 'AK',
+        image: 'assets/orthopaedics-spine-model.jpg',
+        imageCaption: 'Preserving spinal curvature, lumbar disc health, and posture alignment at Sulakshaa Hospital.',
+        metaDesc: 'Orthopedic insights into the most common causes of back pain, workplace posture ergonomics, core exercises, and when to seek urgent specialist care.',
+        lead: 'Back pain is among the most frequent reasons patients visit an orthopedic clinic. While the majority of episodes originate from muscular strain, ligament sprains, and poor ergonomics, chronic or radiating discomfort can signal disc herniation, spinal stenosis, or facet joint arthritis.',
         content: `
-          <h2 class="article-section-title"><i data-lucide="droplet" class="icon-sm"></i> The Vital Link Between Blood Sugar and Kidneys</h2>
+          <h2 class="article-section-title"><i data-lucide="bone" class="icon-sm"></i> Understanding Spinal Biomechanics</h2>
           <p class="article-paragraph">
-            The kidneys filter over 180 liters of blood daily through millions of tiny capillary clusters called nephrons. Chronic hyperglycemia damages these delicate filters, leading to diabetic nephropathy. Because early renal strain has zero symptoms, regular laboratory screening is indispensable.
-          </p>
-
-          <div class="doctor-callout-box">
-            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
-            <div class="doctor-callout-text">
-              <h4>Senior Physician Guidance</h4>
-              <p>“An annual Urine Albumin-to-Creatinine Ratio (uACR) test detects microalbuminuria years before serum creatinine rises. Early intervention with kidney-protective medications can halt or reverse diabetic renal decline.” — Dr. Laxme Gowda</p>
-            </div>
-          </div>
-
-          <h2 class="article-section-title"><i data-lucide="check-circle" class="icon-sm"></i> Three Pillars of Diabetic Renal Protection</h2>
-          <ul class="article-bullet-list">
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Maintain Target Blood Pressure (&lt; 130/80 mmHg):</strong> High blood pressure accelerates kidney damage twice as fast as elevated sugar alone.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Avoid Indiscriminate Painkiller (NSAID) Use:</strong> Over-the-counter painkillers like ibuprofen can trigger acute kidney injury in diabetic patients.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Individualized Carbohydrate Timing:</strong> Distribute complex whole grains evenly across meals to prevent postprandial glucose surges.</span>
-            </li>
-          </ul>
-
-          <div class="article-conclusion">
-            <h3>Comprehensive Diabetic Care at Sulakshaa</h3>
-            <p>Our internal medicine wing provides structured diabetic reviews including HbA1c testing, diabetic foot sensation exams, lipid monitoring, and individualized nutritional advice.</p>
-          </div>
-        `
-      },
-      'orthopedics': {
-        id: 'orthopedics',
-        title: 'Recognizing Knee Arthritis & Joint Health',
-        category: 'Orthopedic Care',
-        date: 'Aug 2026',
-        readTime: '5 min read',
-        author: 'Dr. Hoysala Kantharaju, Consultant Orthopaedic Surgeon',
-        authorInitials: 'HK',
-        image: 'assets/blog-orthopedics.jpg',
-        imageCaption: 'Preserving joint cartilage through non-surgical therapies, strengthening, and early orthopaedic care.',
-        metaDesc: 'Practical orthopaedic guidance on managing knee osteoarthritis, quadriceps strengthening, and joint longevity.',
-        lead: 'Knee osteoarthritis is one of the most common degenerative joint conditions affecting adults above 45. Recognizing early cartilage strain allows for conservative, non-surgical management that keeps you walking comfortably for years.',
-        content: `
-          <h2 class="article-section-title"><i data-lucide="bone" class="icon-sm"></i> Early Signs of Knee Cartilage Wear</h2>
-          <p class="article-paragraph">
-            Osteoarthritis doesn’t happen overnight. It begins with micro-wear in articular cartilage. Common early warning indicators include stiffness after getting out of bed that eases after 10 minutes, clicking or grinding sounds (crepitus) on stairs, and localized aching after prolonged standing.
+            The spine comprises 33 vertebrae buffered by gelatinous intervertebral discs and supported by an intricate lattice of muscles and ligaments. Prolonged slumping over digital screens or lifting heavy objects with a bent waist exerts tremendous shearing stress on the lower lumbar discs (L4-L5 and L5-S1).
           </p>
 
           <div class="doctor-callout-box">
             <i data-lucide="activity" class="doctor-callout-icon"></i>
             <div class="doctor-callout-text">
-              <h4>Orthopedic Surgeon Advice</h4>
-              <p>“Strengthening the quadriceps and hamstring muscles acts like an internal shock absorber for the knee joint, reducing mechanical load on cartilage by up to 40%.” — Dr. Hoysala Kantharaju</p>
+              <h4>Senior Orthopedic Surgeon Guidance</h4>
+              <p>“Your core musculature acts as an internal corset supporting the lumbar vertebrae. When abdominal and gluteal muscles are weak, daily mechanical load shifts directly onto spinal ligaments and discs, precipitating chronic pain.” — Dr. Anand R. Kulkarni</p>
             </div>
           </div>
 
-          <h2 class="article-section-title"><i data-lucide="list-checks" class="icon-sm"></i> Joint-Friendly Daily Practices</h2>
+          <h2 class="article-section-title"><i data-lucide="list-checks" class="icon-sm"></i> Top 5 Causes of Lower Back Discomfort</h2>
           <ul class="article-bullet-list">
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Low-Impact Aerobic Conditioning:</strong> Stationary cycling, swimming, and level walking nourish joint cartilage without compressive shock.</span>
+              <span><strong>Postural Ergonomic Fatigue:</strong> Sitting on unsupported chairs with rounded shoulders causes continuous tension in lumbar paraspinal muscles.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Weight Optimization:</strong> Every kilogram of body weight shed relieves four kilograms of cumulative pressure across the knee during walking.</span>
+              <span><strong>Lumbar Muscle Spasm &amp; Strain:</strong> Sudden twisting or improper weight-lifting tearing microscopic muscle fibers, triggering sharp reflex spasms.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Supportive Footwear:</strong> Cushioned, well-fitted footwear with good arch support prevents knee and ankle misalignment.</span>
+              <span><strong>Herniated or Slipped Disc:</strong> The soft nucleus pulposus bulges outwards, irritating adjacent spinal nerve roots and producing sciatic pain down the leg.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Spinal Osteoarthritis &amp; Facet Arthropathy:</strong> Age-related cartilage degeneration in the facet joints causing morning stiffness that worsens with movement.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Vitamin D3 and Calcium Deficiencies:</strong> Micro-trabecular bone softening (osteopenia) amplifying skeletal aches and vulnerability to micro-fractures.</span>
             </li>
           </ul>
 
+          <h2 class="article-section-title"><i data-lucide="shield-alert" class="icon-sm"></i> Red Flag Signs Requiring Urgent Evaluation</h2>
+          <p class="article-paragraph">
+            Seek immediate orthopedic assessment if your back pain is accompanied by shooting pain down the back of the leg, numbness in the groin, weakness when lifting the foot ("foot drop"), or changes in bowel or bladder control.
+          </p>
+
           <div class="article-conclusion">
-            <h3>When Is Orthopedic Evaluation Needed?</h3>
-            <p>If knee pain restricts normal walking, produces night pain, or causes visible joint swelling, visit our Orthopedics OPD for digital radiographic assessment, physiotherapy guidance, and targeted clinical solutions.</p>
+            <h3>Comprehensive Spine Care at Sulakshaa</h3>
+            <p>Our Department of Orthopedics &amp; Joint Care provides digital X-ray diagnostics, advanced physiotherapy rehabilitation, ultrasound-guided therapeutic injections, and minimally invasive spine interventions.</p>
           </div>
         `
       },
-      'emergency-care': {
-        id: 'emergency-care',
-        title: 'The Golden Hour in Acute Medical Care',
-        category: 'Emergency & Critical Care',
-        date: 'Aug 2026',
-        readTime: '4 min read',
-        author: 'Emergency Response Directorate',
-        authorInitials: 'ER',
-        image: '',
-        imageCaption: '',
-        metaDesc: 'Learn the critical importance of the Golden Hour in stroke, cardiac emergencies, and trauma from the casualty team at Sulakshaa Hospital.',
-        lead: 'In emergency medicine, the first 60 minutes following acute cardiovascular events, stroke symptoms, or severe trauma are known as the "Golden Hour". Timely hospital arrival during this window drastically maximizes functional recovery.',
-        content: `
-          <h2 class="article-section-title"><i data-lucide="clock-alert" class="icon-sm"></i> Why Every Minute Matters</h2>
-          <p class="article-paragraph">
-            During acute coronary occlusion or ischemic stroke, millions of oxygen-deprived cells perish with every passing minute. Rapid hospital arrival enables clinicians to initiate vital diagnostic protocols—such as immediate ECG, point-of-care cardiac enzymes, and neuroimaging—before irreversible tissue necrosis occurs.
-          </p>
-
-          <div class="doctor-callout-box">
-            <i data-lucide="alert-triangle" class="doctor-callout-icon"></i>
-            <div class="doctor-callout-text">
-              <h4>24/7 Casualty Protocol</h4>
-              <p>“Do not wait to see if chest tightness or sudden facial numbness goes away. Immediate hospital triage with multi-parameter telemetry saves lives.”</p>
-            </div>
-          </div>
-
-          <h2 class="article-section-title"><i data-lucide="shield-alert" class="icon-sm"></i> Recognizing F.A.S.T. Stroke Signs</h2>
-          <ul class="article-bullet-list">
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Face Drooping:</strong> One side of the face droops or is numb when the person tries to smile.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Arm Weakness:</strong> One arm feels weak or numb when raised forward.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Speech Difficulty:</strong> Slurred speech or difficulty repeating a simple sentence.</span>
-            </li>
-            <li class="article-bullet-item">
-              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Time to Call Casualty:</strong> If any of these signs appear, transfer directly to our emergency casualty department immediately.</span>
-            </li>
-          </ul>
-
-          <div class="article-conclusion">
-            <h3>Sulakshaa 24/7 Casualty Preparedness</h3>
-            <p>Our emergency entrance is equipped with zero-barrier stretcher access, crash carts, continuous defibrillator monitoring, and immediate on-call medical specialists.</p>
-          </div>
-        `
-      },
-      'dermatology': {
-        id: 'dermatology',
-        title: 'Clinical Care for Skin Barrier & Hair Wellness',
-        category: 'Dermatology',
-        date: 'Aug 2026',
-        readTime: '4 min read',
-        author: 'Dermatology Faculty, Sulakshaa Hospital',
-        authorInitials: 'DF',
-        image: 'assets/blog-preventive-health.jpg',
-        imageCaption: 'Evidence-based dermatological guidance for skin barrier health and scalp vitality.',
-        metaDesc: 'Medical dermatologist advice on preserving skin barrier integrity, managing scalp conditions, and avoiding harsh cosmetic products.',
-        lead: 'The skin is our body’s largest barrier organ. Protecting its natural lipid mantel prevents chronic eczematous flares, contact dermatitis, and premature photoaging.',
-        content: `
-          <h2 class="article-section-title"><i data-lucide="sparkles" class="icon-sm"></i> Preserving the Stratum Corneum</h2>
-          <p class="article-paragraph">
-            The outermost layer of our skin relies on a delicate balance of ceramides, cholesterol, and fatty acids. Over-cleansing with harsh foaming soaps and aggressive physical scrubs strips this protective lipid layer, creating microscopic fissures where environmental irritants and allergens penetrate.
-          </p>
-          <div class="doctor-callout-box">
-            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
-            <div class="doctor-callout-text">
-              <h4>Dermatology Clinical Guideline</h4>
-              <p>“Apply a fragrance-free, ceramide-rich moisturizer within three minutes of bathing while the skin is still slightly damp. This traps hydration and seals the epidermal barrier.”</p>
-            </div>
-          </div>
-          <h2 class="article-section-title"><i data-lucide="sun" class="icon-sm"></i> Daily Broad-Spectrum Sun Protection</h2>
-          <p class="article-paragraph">
-            Ultraviolet A (UVA) and Ultraviolet B (UVB) rays penetrate year-round regardless of cloud cover. A broad-spectrum SPF 30+ mineral or hybrid sunscreen applied to exposed facial and neck skin protects collagen fibers from photo-breakdown and reduces post-inflammatory hyperpigmentation.
-          </p>
-          <div class="article-conclusion">
-            <h3>Dermatology OPD at Sulakshaa Hospital</h3>
-            <p>For recurrent rashes, persistent acne, hair thinning, or suspicious mole evaluations, consult our certified clinical dermatology specialists.</p>
-          </div>
-        `
-      },
-      'womens-health': {
-        id: 'womens-health',
-        title: 'Key Preventive Milestones in Women’s Health',
-        category: 'Women’s Healthcare',
-        date: 'Jul 2026',
+      'womens-health-checkups': {
+        id: 'womens-health-checkups',
+        title: 'Importance of Women\'s Health Checkups: Vital Milestones Across Life Stages',
+        category: 'Women\'s Healthcare',
+        date: 'Sep 15, 2026',
         readTime: '5 min read',
-        author: 'Obstetrics & Gynaecology Faculty',
+        author: 'Obstetrics & Gynaecology Faculty, Sulakshaa Hospital',
         authorInitials: 'OG',
         image: 'assets/blog-womens-health.jpg',
         imageCaption: 'Compassionate, evidence-based healthcare across all life stages of womanhood.',
-        metaDesc: 'Essential screening milestones, bone density checks, and reproductive wellness advice for women at Sulakshaa Hospital.',
-        lead: 'Women’s healthcare needs evolve distinctively across adolescence, reproductive years, and menopausal transitions. Structured periodic evaluations ensure hormonal balance, bone density protection, and early cervical/breast screening.',
+        metaDesc: 'A clinical guide to vital women\'s health checkups, including Pap smears, mammography, thyroid screening, and bone density preservation.',
+        lead: 'Women navigate distinct biological and hormonal transitions across adolescence, reproductive years, pregnancy, and post-menopause. Establishing a regular cadence of clinical assessments safeguards reproductive health, ensures hormonal balance, and catches cervical and breast changes at treatable stages.',
         content: `
           <h2 class="article-section-title"><i data-lucide="heart" class="icon-sm"></i> Proactive Screening by Life Stage</h2>
           <p class="article-paragraph">
             Regular clinical exams, pelvic ultrasonography, and periodic Pap smears identify benign cysts, fibroids, or cellular shifts long before they produce distressing symptoms. In later reproductive years, bone mineral density (DEXA) scans detect early osteopenia.
           </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="shield-check" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Gynaecology Clinical Note</h4>
+              <p>“Cervical cancer is one of the most preventable malignancies when detected early through routine Pap smears and HPV screenings. Prioritizing your health is never selfish—it protects your whole family.”</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="check-circle" class="icon-sm"></i> Essential Health Checks Every Woman Needs</h2>
           <ul class="article-bullet-list">
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Anemia &amp; Iron Stores:</strong> Checking Serum Ferritin alongside hemoglobin prevents chronic fatigue and hair loss common in childbearing years.</span>
+              <span><strong>Anemia &amp; Serum Ferritin Screening:</strong> Checking iron stores alongside hemoglobin prevents chronic fatigue, brain fog, and hair loss common in childbearing years.</span>
             </li>
             <li class="article-bullet-item">
               <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
-              <span><strong>Thyroid Function (TSH):</strong> Subclinical hypothyroidism frequently impacts menstrual regularity, metabolic rate, and emotional vitality.</span>
+              <span><strong>Thyroid Hormone (TSH) Profile:</strong> Subclinical hypothyroidism frequently impacts menstrual regularity, metabolic rate, weight management, and emotional vitality.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Pap Smear &amp; Pelvic Ultrasound:</strong> Recommended starting at age 21 to screen for precancerous cervical dysplasias, polyps, or ovarian cysts.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Clinical Breast Examination &amp; Mammography:</strong> Monthly breast self-exams and screening mammograms for women above 40 for early detection of breast lumps.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>DEXA Bone Mineral Density Scan:</strong> Identifies post-menopausal osteoporosis early so calcium, vitamin D, and bone-preserving therapies can halt fractures.</span>
             </li>
           </ul>
+
           <div class="article-conclusion">
-            <h3>Dedicated Maternity &amp; Gynaecology Suite</h3>
-            <p>Sulakshaa Hospital provides warm, dignified gynaecological care and family planning guidance in an empathetic and private environment.</p>
+            <h3>Dedicated Women’s Health Suite at Sulakshaa</h3>
+            <p>Sulakshaa Hospital provides warm, dignified gynaecological care, prenatal packages, and family wellness consultations in an empathetic and private environment.</p>
+          </div>
+        `
+      },
+      'exercise-benefits': {
+        id: 'exercise-benefits',
+        title: 'Benefits of Regular Exercise: Transforming Physical & Mental Health',
+        category: 'Fitness & Lifestyle',
+        date: 'Sep 08, 2026',
+        readTime: '4 min read',
+        author: 'Clinical Physiotherapy Team, Sulakshaa Hospital',
+        authorInitials: 'PR',
+        image: 'assets/specialty-orthopaedics-rehab.jpg',
+        imageCaption: 'Structured exercise and physical rehabilitation enhance cardiovascular and musculoskeletal vitality.',
+        metaDesc: 'Discover the evidence-based benefits of 30 minutes of daily exercise on heart health, metabolic control, mental well-being, and musculoskeletal longevity.',
+        lead: 'Regular physical activity is comparable to a master medicine with no harmful side effects when performed correctly. Engaging in just 30 minutes of moderate physical activity daily improves cardiovascular efficiency, stabilizes blood glucose, enhances bone mineral density, and elevates cognitive vitality.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="activity" class="icon-sm"></i> What Happens During 30 Minutes of Daily Exercise</h2>
+          <p class="article-paragraph">
+            When you exercise at a moderate pace, cardiac output rises, flooding muscles and brain tissue with oxygenated blood. Endothelial nitric oxide release dilates peripheral vessels, immediately reducing systemic vascular resistance and lowering blood pressure.
+          </p>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="heart" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>Physiotherapist Clinical Insight</h4>
+              <p>“Exercise does not require expensive gym memberships or extreme workouts. Brisk walking for 30 minutes a day, combined with light bodyweight resistance, reduces all-cause cardiovascular mortality by up to 30%.”</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="check-circle" class="icon-sm"></i> 5 Major Health Returns from Daily Activity</h2>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Reverses Insulin Resistance:</strong> Muscle contraction translocates GLUT-4 glucose transporters to cell membranes independently of insulin, clearing circulating blood sugar effectively.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Boosts Cardiovascular Efficiency:</strong> Strengthens left ventricular pumping capacity, lowers resting heart rate, and elevates protective HDL cholesterol.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Joint Lubrication &amp; Cartilage Nourishment:</strong> Non-weight bearing movement (such as cycling or swimming) circulates synovial fluid, soothing arthritic stiffness.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Natural Stress &amp; Anxiety Relief:</strong> Exercise triggers the release of endorphins, dopamine, and Brain-Derived Neurotrophic Factor (BDNF), curbing depression and improving sleep architecture.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span><strong>Immune Surveillance Enhancement:</strong> Daily movement circulates natural killer cells and lymphocytes, reducing seasonal viral upper respiratory infections.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>Start Safely with Sulakshaa Physiotherapy</h3>
+            <p>If you have existing joint pain, hypertension, or have been sedentary for years, consult our physiotherapy and rehabilitation consultants at Sulakshaa Hospital for a personalized, safe movement regimen.</p>
+          </div>
+        `
+      },
+      'consult-doctor': {
+        id: 'consult-doctor',
+        title: 'When Should You Consult a Doctor? Critical Warning Signs You Shouldn\'t Ignore',
+        category: 'Emergency & Critical Care',
+        date: 'Aug 30, 2026',
+        readTime: '5 min read',
+        author: 'Emergency Medicine Directorate, Sulakshaa Hospital',
+        authorInitials: 'ER',
+        image: 'assets/facility-emergency-trauma.jpg',
+        imageCaption: 'Round-the-clock emergency casualty and trauma triage at Sulakshaa Hospital.',
+        metaDesc: 'Learn to differentiate mild illness from urgent clinical red flags, stroke signs, cardiac symptoms, and when to report to 24/7 hospital emergency triage.',
+        lead: 'Recognizing when a symptom represents a benign, transient discomfort versus an urgent warning sign of an acute medical crisis is critical. Delaying hospital evaluation or self-medicating with over-the-counter painkillers can cause irreparable harm during acute cardiac, neurological, or abdominal emergencies.',
+        content: `
+          <h2 class="article-section-title"><i data-lucide="clock-alert" class="icon-sm"></i> Immediate Red-Flag Symptoms Requiring Emergency Care</h2>
+          <p class="article-paragraph">
+            The following symptoms warrant immediate transport to our 24/7 Casualty &amp; Emergency Department:
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="alert-triangle" class="icon-xs" style="color:#DC2626;"></i></span>
+              <span><strong>Acute Chest Pain or Crushing Pressure:</strong> Lasting more than 5 minutes, radiating into the jaw, shoulder, or left arm, often accompanied by cold sweating and nausea.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="alert-triangle" class="icon-xs" style="color:#DC2626;"></i></span>
+              <span><strong>F.A.S.T. Signs of Stroke:</strong> Sudden facial droop, arm weakness, slurred speech, or acute loss of balance. Time is brain.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="alert-triangle" class="icon-xs" style="color:#DC2626;"></i></span>
+              <span><strong>Severe Dyspnea (Shortness of Breath):</strong> Inability to speak in full sentences, blue tint on lips (cyanosis), or acute asthma exacerbation unresponsive to inhalers.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="alert-triangle" class="icon-xs" style="color:#DC2626;"></i></span>
+              <span><strong>Sudden, Severe "Thunderclap" Headache:</strong> A headache reaching maximum agonizing intensity in seconds, which can signal subarachnoid hemorrhage.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="alert-triangle" class="icon-xs" style="color:#DC2626;"></i></span>
+              <span><strong>Uncontrolled Bleeding or Major Trauma:</strong> Road traffic accidents, deep lacerations, or head injury accompanied by vomiting or confusion.</span>
+            </li>
+          </ul>
+
+          <div class="doctor-callout-box">
+            <i data-lucide="shield-alert" class="doctor-callout-icon"></i>
+            <div class="doctor-callout-text">
+              <h4>24/7 Casualty Protocol</h4>
+              <p>“Do not drive yourself to the hospital if experiencing acute chest tightness, severe dizziness, or stroke symptoms. Call our 24/7 Emergency Line at 9535747478 for immediate ambulance triage.”</p>
+            </div>
+          </div>
+
+          <h2 class="article-section-title"><i data-lucide="stethoscope" class="icon-sm"></i> Symptoms Requiring an OPD Doctor Visit</h2>
+          <p class="article-paragraph">
+            While not immediate emergencies, the following signs should never be ignored and deserve clinical OPD evaluation:
+          </p>
+          <ul class="article-bullet-list">
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span>High fever exceeding 101&deg;F persisting for more than 48 hours without relief.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span>Unexplained rapid weight loss without changes in diet or activity levels.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span>Persistent digestive alterations, chronic constipation, blood in stools, or recurring acid reflux.</span>
+            </li>
+            <li class="article-bullet-item">
+              <span class="article-bullet-icon"><i data-lucide="check" class="icon-xs"></i></span>
+              <span>New, changing, or irregular skin moles, non-healing ulcers, or localized swellings.</span>
+            </li>
+          </ul>
+
+          <div class="article-conclusion">
+            <h3>24/7 Clinical Preparedness at Sulakshaa Hospital</h3>
+            <p>Our emergency casualty unit provides zero-barrier entry, rapid triage, cardiac telemetry, point-of-care diagnostics, and multi-specialist coverage round the clock in Mysuru.</p>
           </div>
         `
       }
     };
 
-    // Article IDs in sequential order for Prev/Next navigation
-    const ARTICLE_ORDER = ['preventive-health', 'cardiology', 'paediatrics', 'diabetes-care', 'orthopedics', 'emergency-care', 'dermatology', 'womens-health'];
+    // Sequential Article Order
+    const ARTICLE_ORDER = [
+      'healthy-heart',
+      'diabetes-symptoms',
+      'regular-checkups',
+      'child-nutrition',
+      'back-pain-causes',
+      'womens-health-checkups',
+      'exercise-benefits',
+      'consult-doctor'
+    ];
+
+    // Aliases for Backwards Compatibility
+    const ARTICLE_ALIASES = {
+      'cardiology': 'healthy-heart',
+      'diabetes-care': 'diabetes-symptoms',
+      'preventive-health': 'regular-checkups',
+      'paediatrics': 'child-nutrition',
+      'orthopedics': 'back-pain-causes',
+      'womens-health': 'womens-health-checkups',
+      'emergency-care': 'consult-doctor',
+      'dermatology': 'regular-checkups'
+    };
 
     function renderBlogDetail() {
       const urlParams = new URLSearchParams(window.location.search);
       let articleId = urlParams.get('id');
 
+      // Resolve alias if provided
+      if (articleId && ARTICLE_ALIASES[articleId]) {
+        articleId = ARTICLE_ALIASES[articleId];
+      }
+
       if (!articleId || !BLOG_ARTICLES[articleId]) {
-        articleId = 'preventive-health';
+        articleId = 'healthy-heart';
       }
 
       const article = BLOG_ARTICLES[articleId];
@@ -1575,7 +1858,8 @@
       document.getElementById('articleTitle').textContent = article.title;
       document.getElementById('articleAuthor').textContent = article.author;
       document.getElementById('authorAvatar').textContent = article.authorInitials || 'SH';
-      document.getElementById('articleDate').textContent = article.date;
+      const dateEl = document.getElementById('articleDate');
+      if (dateEl) dateEl.textContent = article.date;
       document.getElementById('articleReadTime').textContent = article.readTime;
 
       // Update Featured Media
@@ -1619,32 +1903,67 @@
       nextCard.href = `blog-details.html?id=${nextArticle.id}`;
       document.getElementById('nextArticleTitle').textContent = nextArticle.title;
 
-      // Render Related Articles in Sidebar (Exclude Current)
+      // Render Related Articles in Sidebar (Exclude Current, Take 4)
       const relatedContainer = document.getElementById('relatedArticlesList');
-      relatedContainer.innerHTML = '';
+      if (relatedContainer) {
+        relatedContainer.innerHTML = '';
+        const relatedIds = ARTICLE_ORDER.filter(id => id !== articleId).slice(0, 4);
+        relatedIds.forEach(id => {
+          const item = BLOG_ARTICLES[id];
+          const a = document.createElement('a');
+          a.href = `blog-details.html?id=${item.id}`;
+          a.className = 'related-article-item';
+          a.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="related-thumb" loading="lazy">
+            <div class="related-body">
+              <span class="related-cat">${item.category}</span>
+              <strong class="related-title">${item.title}</strong>
+              <span class="related-date"><i data-lucide="clock" class="icon-xs"></i> ${item.readTime}</span>
+            </div>
+          `;
+          relatedContainer.appendChild(a);
+        });
+      }
 
-      const relatedIds = ARTICLE_ORDER.filter(id => id !== articleId).slice(0, 4);
-      relatedIds.forEach(id => {
-        const item = BLOG_ARTICLES[id];
-        const a = document.createElement('a');
-        a.href = `blog-details.html?id=${item.id}`;
-        a.className = 'related-article-item';
-        a.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" class="related-thumb" loading="lazy">
-          <div class="related-body">
-            <span class="related-cat">${item.category}</span>
-            <strong class="related-title">${item.title}</strong>
-            <span class="related-date"><i data-lucide="calendar" class="icon-xs"></i> ${item.date}</span>
-          </div>
-        `;
-        relatedContainer.appendChild(a);
-      });
+      // Render Bottom Related Articles Grid (Requirement 10, Take 3)
+      const bottomRelatedContainer = document.getElementById('bottomRelatedGrid');
+      if (bottomRelatedContainer) {
+        bottomRelatedContainer.innerHTML = '';
+        const bottomIds = ARTICLE_ORDER.filter(id => id !== articleId).slice(0, 3);
+        bottomIds.forEach(id => {
+          const item = BLOG_ARTICLES[id];
+          const card = document.createElement('a');
+          card.href = `blog-details.html?id=${item.id}`;
+          card.className = 'bottom-related-card';
+          card.setAttribute('aria-label', `Read full article: ${item.title}`);
+          card.innerHTML = `
+            <div class="bottom-related-media">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="bottom-related-body">
+              <div class="bottom-related-meta">
+                <span class="blog-pill-category" style="font-size:0.68rem;padding:0.18rem 0.6rem;background:#F0F7FF;color:#0088D1;border:1px solid #BAE6FD;border-radius:50px;font-weight:700;text-transform:uppercase;">${item.category}</span>
+                <span style="display:inline-flex;align-items:center;gap:0.25rem;"><i data-lucide="clock" class="icon-xs"></i> ${item.readTime}</span>
+              </div>
+              <h3 class="bottom-related-card-title">${item.title}</h3>
+              <p class="bottom-related-card-excerpt">${item.lead || ''}</p>
+              <span class="bottom-related-card-link">
+                <span>Read Full Article</span>
+                <i data-lucide="arrow-right" class="icon-xs"></i>
+              </span>
+            </div>
+          `;
+          bottomRelatedContainer.appendChild(card);
+        });
+      }
 
       // Update Social Share links
       const currentUrl = encodeURIComponent(window.location.href);
       const shareTitle = encodeURIComponent(`${article.title} - Sulakshaa Hospital`);
-      document.getElementById('shareWhatsApp').href = `https://api.whatsapp.com/send?text=${shareTitle}%20${currentUrl}`;
-      document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${currentUrl}`;
+      const whatsAppBtn = document.getElementById('shareWhatsApp');
+      if (whatsAppBtn) whatsAppBtn.href = `https://api.whatsapp.com/send?text=${shareTitle}%20${currentUrl}`;
+      const twitterBtn = document.getElementById('shareTwitter');
+      if (twitterBtn) twitterBtn.href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${currentUrl}`;
 
       // Initialize Lucide Icons
       if (window.lucide) {
