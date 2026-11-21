@@ -465,6 +465,285 @@ function initActiveNavHighlight() {
 }
 
 /**
+ * Department-Based Doctor Roster for Sulakshaa Multi Speciality Hospital
+ * Strictly verified against Hospital Doctors Directory (doctorsDB)
+ */
+const SULAKSHAA_DOCTORS_ROSTER = [
+  {
+    name: "Dr. Laxme Gowda",
+    label: "Dr. Laxme Gowda (General Medicine & Cardiology)",
+    departments: ["General Medicine", "Cardiology"],
+    role: "Director & Chairman, Senior General Physician, Diabetologist, Clinical Cardiologist"
+  },
+  {
+    name: "Dr. Ananya C L",
+    label: "Dr. Ananya C L (General Medicine)",
+    departments: ["General Medicine"],
+    role: "Consultant General Physician"
+  },
+  {
+    name: "Dr. Sumangala G N",
+    label: "Dr. Sumangala G N (Obstetrics & Gynaecology)",
+    departments: ["Obstetrics & Gynaecology"],
+    role: "Chief Consultant Obstetrician & Gynecologist"
+  },
+  {
+    name: "Surg Lt Cdr (Dr) Prajwal S, Retd",
+    label: "Surg Lt Cdr (Dr) Prajwal S, Retd (IVF & Fertility / OBG)",
+    departments: ["Obstetrics & Gynaecology"],
+    role: "Fertility Specialist & Laparoscopic Surgeon"
+  },
+  {
+    name: "Dr. Hoysala Kantharaju",
+    label: "Dr. Hoysala Kantharaju (Orthopaedics)",
+    departments: ["Orthopaedics"],
+    role: "Consultant Orthopaedic & Sports Medicine Surgeon"
+  },
+  {
+    name: "Dr. Madhu B S",
+    label: "Dr. Madhu B S (General Surgery)",
+    departments: ["General Surgery"],
+    role: "Senior Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon"
+  },
+  {
+    name: "Dr. Sachin V",
+    label: "Dr. Sachin V (General Surgery)",
+    departments: ["General Surgery"],
+    role: "Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon"
+  },
+  {
+    name: "Dr Nisha N",
+    label: "Dr Nisha N (General Surgery)",
+    departments: ["General Surgery"],
+    role: "Consultant General Surgeon"
+  },
+  {
+    name: "Dr Lokesh MG",
+    label: "Dr Lokesh MG (General Surgery)",
+    departments: ["General Surgery"],
+    role: "Consultant General Surgeon"
+  },
+  {
+    name: "Dr. H N Dinesh",
+    label: "Dr. H N Dinesh (Surgical Gastroenterology)",
+    departments: ["Gastroenterology"],
+    role: "Senior Consultant General Surgeon, Endoscopic & Laparoscopic Surgeon"
+  },
+  {
+    name: "Dr. Deepak B Gowda",
+    label: "Dr. Deepak B Gowda (Surgical Gastroenterology & GI Oncology)",
+    departments: ["Gastroenterology", "Oncology"],
+    role: "Consultant Surgical Gastroenterologist & GI Oncologist"
+  },
+  {
+    name: "Dr Lokesh H M",
+    label: "Dr Lokesh H M (Medical & Surgical Gastroenterology)",
+    departments: ["Gastroenterology"],
+    role: "Consultant Surgical Gastroenterologist"
+  },
+  {
+    name: "Dr. Thibbe Gowda C D",
+    label: "Dr. Thibbe Gowda C D (Paediatrics)",
+    departments: ["Paediatrics"],
+    role: "Chief Consultant Paediatrician"
+  },
+  {
+    name: "Dr. Akshatha P Deshpande",
+    label: "Dr. Akshatha P Deshpande (Paediatrics)",
+    departments: ["Paediatrics"],
+    role: "Consultant Paediatrician"
+  },
+  {
+    name: "Dr. Pallavi K",
+    label: "Dr. Pallavi K (Paediatrics)",
+    departments: ["Paediatrics"],
+    role: "Consultant Paediatrician"
+  },
+  {
+    name: "Dr Keethiraj D B",
+    label: "Dr Keethiraj D B (Neurology)",
+    departments: ["Neuroscience"],
+    role: "Consultant Neurologist"
+  },
+  {
+    name: "Dr. Rajesh T S",
+    label: "Dr. Rajesh T S (Neurosurgery & Spine)",
+    departments: ["Neuroscience"],
+    role: "Consultant Neurosurgeon & Spine Surgeon"
+  },
+  {
+    name: "Dr. Girish T D",
+    label: "Dr. Girish T D (Urology)",
+    departments: ["Urology"],
+    role: "Consultant Urologist"
+  },
+  {
+    name: "Dr. Kiran P K",
+    label: "Dr. Kiran P K (Medical Oncology)",
+    departments: ["Oncology"],
+    role: "Consultant Medical Oncologist"
+  },
+  {
+    name: "Dr. Narendra Kumar M S",
+    label: "Dr. Narendra Kumar M S (Psychiatry)",
+    departments: ["Psychiatry"],
+    role: "Consultant Psychiatrist"
+  },
+  {
+    name: "Dr Madhav D",
+    label: "Dr Madhav D (ENT / OTO-Rhino-Laryngology)",
+    departments: ["ENT"],
+    role: "Consultant OTO-Rhino-Laryngologist (ENT Specialist)"
+  },
+  {
+    name: "Dr. Nishanth R K",
+    label: "Dr. Nishanth R K (Radiology)",
+    departments: ["Diagnostics"],
+    role: "Consultant Radiologist"
+  },
+  {
+    name: "Dr. Shashidhar",
+    label: "Dr. Shashidhar (Pathology)",
+    departments: ["Diagnostics"],
+    role: "Senior Consultant Pathologist & Lab Director"
+  }
+];
+
+/**
+ * Normalizes input department text/slug to standard dropdown value
+ */
+function normalizeDepartmentName(deptInput) {
+  if (!deptInput) return '';
+  const d = deptInput.toString().toLowerCase().trim();
+
+  if (/paediat|pediat|child/i.test(d)) return 'Paediatrics';
+  if (/cardio|heart|cardiac/i.test(d)) return 'Cardiology';
+  if (/orthop/i.test(d)) return 'Orthopaedics';
+  if (/gastro/i.test(d)) return 'Gastroenterology';
+  if (/general\s*surg/i.test(d)) return 'General Surgery';
+  if (/general\s*med|diabet/i.test(d)) return 'General Medicine';
+  if (/obg|obstet|gynaec|gynec|ivf|fertility|maternity/i.test(d)) return 'Obstetrics & Gynaecology';
+  if (/neuro|brain|spine/i.test(d)) return 'Neuroscience';
+  if (/urolog/i.test(d)) return 'Urology';
+  if (/oncol|cancer/i.test(d)) return 'Oncology';
+  if (/psychiat/i.test(d)) return 'Psychiatry';
+  if (/oto-rhino|rhino|laryng|ent|ear|nose|throat/i.test(d)) return 'ENT';
+  if (/radiolog|patholog|diagnos|lab/i.test(d)) return 'Diagnostics';
+  if (/nephrol|kidney\s*dialysis/i.test(d)) return 'Nephrology';
+  if (/pulmon|respirat|chest/i.test(d)) return 'Pulmonology';
+  if (/emergenc|trauma|casualty/i.test(d)) return 'Accident & Emergency';
+  if (/critical|icu/i.test(d)) return 'Critical Care & ICU';
+  if (/other/i.test(d)) return 'Other Consultation';
+
+  const specialitySelect = document.getElementById('preferredSpeciality');
+  if (specialitySelect) {
+    for (let i = 0; i < specialitySelect.options.length; i++) {
+      const optVal = specialitySelect.options[i].value;
+      if (optVal && (optVal.toLowerCase() === d || optVal.toLowerCase().includes(d) || d.includes(optVal.toLowerCase()))) {
+        return optVal;
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Finds the primary department for a given doctor name
+ */
+function getDoctorPrimaryDepartment(doctorName) {
+  if (!doctorName) return '';
+  const clean = doctorName.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+  const match = SULAKSHAA_DOCTORS_ROSTER.find(doc => {
+    const docClean = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+    return docClean === clean || doc.name.toLowerCase().includes(clean) || clean.includes(docClean);
+  });
+  return match && match.departments && match.departments.length ? match.departments[0] : '';
+}
+
+/**
+ * Dynamically filters and populates the Preferred Doctor dropdown
+ * based on selected Department / Speciality
+ *
+ * Rules:
+ * 1. Shows only doctors belonging to selected department.
+ * 2. Displays default option "Any Available Specialist" when doctors are available.
+ * 3. If patient changes department, automatically clears previously selected doctor.
+ * 4. If no doctors are available for selected department, displays "No doctors available for this department".
+ * 5. If no department is selected, prompts patient to select department first.
+ */
+function updateDoctorDropdown(deptValue, doctorToSelect = '') {
+  const doctorSelect = document.getElementById('preferredDoctor');
+  if (!doctorSelect) return;
+
+  // Clear previous options
+  doctorSelect.innerHTML = '';
+
+  // 1. If no department selected
+  if (!deptValue) {
+    const promptOption = document.createElement('option');
+    promptOption.value = '';
+    promptOption.textContent = '-- Select Department First --';
+    doctorSelect.appendChild(promptOption);
+    doctorSelect.value = '';
+    return;
+  }
+
+  // 2. Filter doctors for this department
+  const matchingDoctors = SULAKSHAA_DOCTORS_ROSTER.filter(doc =>
+    doc.departments.includes(deptValue)
+  );
+
+  // 3. If no doctors available for selected department
+  if (matchingDoctors.length === 0) {
+    const noDocOption = document.createElement('option');
+    noDocOption.value = '';
+    noDocOption.textContent = 'No doctors available for this department';
+    doctorSelect.appendChild(noDocOption);
+    doctorSelect.value = '';
+  } else {
+    // 4. Default option: Any Available Specialist
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Any Available Specialist';
+    doctorSelect.appendChild(defaultOption);
+
+    let matchedDocOption = null;
+
+    matchingDoctors.forEach(doc => {
+      const option = document.createElement('option');
+      option.value = doc.name;
+      option.textContent = doc.label || doc.name;
+      doctorSelect.appendChild(option);
+
+      if (doctorToSelect) {
+        const cleanTarget = doctorToSelect.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+        const cleanDoc = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+        if (cleanDoc === cleanTarget || doc.name.toLowerCase() === doctorToSelect.toLowerCase()) {
+          matchedDocOption = option;
+        }
+      }
+    });
+
+    if (matchedDocOption) {
+      matchedDocOption.selected = true;
+      doctorSelect.value = matchedDocOption.value;
+    } else {
+      defaultOption.selected = true;
+      doctorSelect.value = '';
+    }
+  }
+
+  clearFieldError('preferredDoctor');
+}
+
+// Expose on window for cross-script and modal access
+if (typeof window !== 'undefined') {
+  window.SULAKSHAA_DOCTORS_ROSTER = SULAKSHAA_DOCTORS_ROSTER;
+  window.updateDoctorDropdown = updateDoctorDropdown;
+  window.normalizeDepartmentName = normalizeDepartmentName;
+}
+
+/**
  * Connect Specialities and Doctor Cards to the Appointment Form
  */
 function initInteractiveEnquiries() {
@@ -473,15 +752,22 @@ function initInteractiveEnquiries() {
   const patientMessageInput = document.getElementById('patientMessage');
   const enquirySection = document.getElementById('enquiry');
 
-  const selectSpeciality = (dept) => {
+  const selectSpeciality = (dept, targetDoctor = '') => {
     if (!specialitySelect || !dept) return;
 
-    for (let i = 0; i < specialitySelect.options.length; i++) {
-      if (specialitySelect.options[i].value === dept || specialitySelect.options[i].text.includes(dept)) {
-        specialitySelect.selectedIndex = i;
-        break;
+    const matchedDept = normalizeDepartmentName(dept);
+    if (matchedDept) {
+      specialitySelect.value = matchedDept;
+    } else {
+      for (let i = 0; i < specialitySelect.options.length; i++) {
+        if (specialitySelect.options[i].value === dept || specialitySelect.options[i].text.includes(dept)) {
+          specialitySelect.selectedIndex = i;
+          break;
+        }
       }
     }
+
+    clearFieldError('preferredSpeciality');
 
     // Sync quick chip highlight
     const chips = document.querySelectorAll('.dept-chip');
@@ -492,6 +778,9 @@ function initInteractiveEnquiries() {
         chip.classList.remove('active');
       }
     });
+
+    // Dynamically filter doctor dropdown for this department
+    updateDoctorDropdown(specialitySelect.value, targetDoctor);
   };
 
   // Speciality Card Enquiry click
@@ -499,7 +788,7 @@ function initInteractiveEnquiries() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const dept = btn.getAttribute('data-dept');
-      selectSpeciality(dept);
+      selectSpeciality(dept, '');
 
       if (window.SulakshaaForm && window.SulakshaaForm.goToStep) {
         window.SulakshaaForm.goToStep(1);
@@ -520,13 +809,15 @@ function initInteractiveEnquiries() {
     btn.addEventListener('click', () => {
       const doctor = btn.getAttribute('data-doctor') || 'Dr. Laxme Gowda';
       const dept = btn.getAttribute('data-dept') || 'General Medicine';
-      selectSpeciality(dept);
 
-      const doctorSelect = document.getElementById('preferredDoctor');
-      if (doctorSelect) {
-        doctorSelect.value = doctor;
+      // If linking to contact.html from another page, ensure href carries params
+      const href = btn.getAttribute('href');
+      if (href && href.startsWith('contact.html') && !href.includes('?')) {
+        btn.setAttribute('href', `contact.html?doctor=${encodeURIComponent(doctor)}&dept=${encodeURIComponent(dept)}#appointmentEnquiryContainer`);
       }
-      
+
+      selectSpeciality(dept, doctor);
+
       if (patientMessageInput && !patientMessageInput.value) {
         patientMessageInput.value = `Enquiring for consultation with ${doctor} (${dept}).`;
       }
@@ -542,7 +833,7 @@ function initInteractiveEnquiries() {
   const campButtons = document.querySelectorAll('.campaign-enquire-btn');
   campButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      selectSpeciality('Senior Sunday');
+      selectSpeciality('General Medicine', '');
       
       if (patientMessageInput && !patientMessageInput.value) {
         patientMessageInput.value = 'Enquiry regarding upcoming Senior Sunday Health Check-up Camp.';
@@ -562,16 +853,22 @@ function initInteractiveEnquiries() {
     const urlDoctor = urlParams.get('doctor');
 
     if (urlDept) {
-      selectSpeciality(urlDept);
+      selectSpeciality(urlDept, urlDoctor || '');
+    } else if (urlDoctor) {
+      const autoDept = getDoctorPrimaryDepartment(urlDoctor);
+      if (autoDept) {
+        selectSpeciality(autoDept, urlDoctor);
+      } else {
+        updateDoctorDropdown(specialitySelect ? specialitySelect.value : '', urlDoctor);
+      }
+    } else if (specialitySelect) {
+      updateDoctorDropdown(specialitySelect.value, '');
     }
-    const doctorSelect = document.getElementById('preferredDoctor');
-    if (urlDoctor && doctorSelect) {
-      doctorSelect.value = urlDoctor;
-    }
+
     if (urlDoctor && patientMessageInput && !patientMessageInput.value) {
       patientMessageInput.value = `Consultation appointment requested with ${urlDoctor}${urlDept ? ' (' + urlDept + ')' : ''}.`;
     }
-    if ((urlDept || urlDoctor) && window.location.hash === '#enquiry') {
+    if ((urlDept || urlDoctor) && (window.location.hash === '#enquiry' || window.location.hash === '#appointmentEnquiryContainer')) {
       setTimeout(() => {
         const enquiryTarget = document.getElementById('appointmentEnquiryContainer') || document.getElementById('appointment') || document.getElementById('enquiry') || document.getElementById('contact');
         if (enquiryTarget) {
@@ -668,6 +965,8 @@ function initMultiStepBookingForm() {
           chip.classList.remove('active');
         }
       });
+      // Requirement 5: Automatically clear previously selected doctor and load new department's doctors
+      updateDoctorDropdown(val, '');
     });
   }
 
@@ -675,6 +974,15 @@ function initMultiStepBookingForm() {
     doctorSelect.addEventListener('change', () => {
       clearFieldError('preferredDoctor');
     });
+  }
+
+  // Initial Sync on form load
+  if (specialitySelect && doctorSelect) {
+    if (specialitySelect.value) {
+      updateDoctorDropdown(specialitySelect.value, doctorSelect.value);
+    } else {
+      updateDoctorDropdown('', '');
+    }
   }
 
   if (timeSelect) {

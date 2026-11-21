@@ -1594,7 +1594,7 @@ button, input, select, textarea {
 }
 
 .hero-bg-img.hero-bg-reception {
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center center !important;
 }
 
