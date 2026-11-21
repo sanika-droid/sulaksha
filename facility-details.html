@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=45">
 
   <style>
     /* Facility Details Dedicated Page Styles */
@@ -462,7 +462,7 @@
         <a href="facilities.html" class="btn btn-outline btn-sm header-back-btn" aria-label="Back to Facilities">
           <i data-lucide="arrow-left" class="icon-xs"></i> <span class="header-back-text">Back to Facilities</span>
         </a>
-        <a href="index.html#enquiry" class="btn btn-primary btn-sm" id="headerAppointmentBtn">
+        <a href="contact.html#appointmentEnquiryContainer" class="btn btn-primary btn-sm" id="headerAppointmentBtn">
           <i data-lucide="calendar-check" class="icon-xs"></i> <span>Book Appointment</span>
         </a>
       </div>
@@ -507,7 +507,7 @@
           <div class="facility-detail-info">
             <h2 class="facility-detail-overview-title">Clinical Scope &amp; Infrastructure Overview</h2>
             <p class="facility-detail-desc" id="facilityDescription">
-              Immediate triage, resuscitation bays, point-of-care vital telemetry, and on-duty emergency medical officers prepared 24 hours a day to manage acute emergencies. Direct corridor connection ensures rapid admission to intensive care and surgical suites.
+              Immediate triage, resuscitation bays, point-of-care vital telemetry and on-duty emergency medical officers prepared 24 hours a day to manage acute emergencies. Direct corridor connection ensures rapid admission to intensive care and surgical suites.
             </p>
 
             <h3 class="facility-detail-features-title">
@@ -522,7 +522,7 @@
             </ul>
 
             <div class="facility-detail-actions">
-              <a href="index.html#enquiry" class="btn btn-primary btn-lg shadow-lift">
+              <a href="contact.html#appointmentEnquiryContainer" class="btn btn-primary btn-lg shadow-lift">
                 <i data-lucide="calendar" class="icon-sm"></i>
                 <span>Book Appointment</span>
               </a>
@@ -586,16 +586,134 @@
   </main>
 
   <!-- Hospital Footer -->
-  <footer class="site-footer" style="margin-top: auto; padding: 2.5rem 0 1.5rem; background: #061743; color: #FFFFFF; text-align: center;">
-    <div class="container">
-      <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 0.5rem;">
-        <strong>Sulakshaa Multi Speciality Hospital</strong> — Mysuru, Karnataka, India
-      </p>
-      <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.65);">
-        &copy; 2026 Sulakshaa Multi Speciality Hospital. All rights reserved.
-      </p>
+  <!-- ==========================================================================
+     Sulakshaa Multi Speciality Hospital - Shared Reusable Footer Component
+     Consistent across all website pages with responsive layout, 4 columns,
+     verified contact information, active social media links, and legal modal triggers.
+     ========================================================================== -->
+<footer class="site-footer" id="siteFooter">
+  <div class="container footer-container">
+    <div class="footer-top-grid">
+
+      <!-- Column 1: Hospital Brand Identity & About -->
+      <div class="footer-col footer-col-brand">
+        <a href="index.html#hero" class="footer-brand brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
+          </div>
+        </a>
+        <p class="footer-kannada-name">Sulakshaa Multi Speciality Hospital, Mysuru</p>
+        <p class="footer-mission">
+          Providing compassionate care, advanced medical specialities, precision diagnostics and dedicated patient support for Mysuru and surrounding regions.
+        </p>
+        <div class="footer-emergency-callout">
+          <i data-lucide="ambulance" class="icon-sm"></i>
+          <div>
+            <span>24/7 Casualty &amp; Chemist</span>
+            <strong>Open All 365 Days</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-nav">
+          <li><a href="index.html#hero"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="about-details.html"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
+          <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialities</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team &amp; Specialists</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Infrastructure &amp; Facilities</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="blog.html"><i data-lucide="chevron-right" class="icon-xs"></i> Health Articles &amp; Blog</a></li>
+          <li><a href="contact.html"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Directions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Medical Specialities / Departments -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Specialities</h3>
+        <ul class="footer-nav">
+          <li><a href="department-details.html?dept=emergency"><i data-lucide="chevron-right" class="icon-xs"></i> Accident &amp; Emergency</a></li>
+          <li><a href="department-details.html?dept=cardiac-care"><i data-lucide="chevron-right" class="icon-xs"></i> Cardiology</a></li>
+          <li><a href="department-details.html?dept=neurology"><i data-lucide="chevron-right" class="icon-xs"></i> Neuroscience</a></li>
+          <li><a href="department-details.html?dept=orthopedics"><i data-lucide="chevron-right" class="icon-xs"></i> Orthopaedics</a></li>
+          <li><a href="department-details.html?dept=paediatrics"><i data-lucide="chevron-right" class="icon-xs"></i> Paediatrics</a></li>
+          <li><a href="department-details.html?dept=maternity-care"><i data-lucide="chevron-right" class="icon-xs"></i> Obstetrics &amp; Gynaecology</a></li>
+          <li><a href="department-details.html?dept=gastroenterology"><i data-lucide="chevron-right" class="icon-xs"></i> Gastroenterology</a></li>
+          <li><a href="department-details.html?dept=nephrology"><i data-lucide="chevron-right" class="icon-xs"></i> Nephrology &amp; Urology</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Information & Social Media -->
+      <div class="footer-col footer-col-contact">
+        <h3 class="footer-heading">Hospital Desk</h3>
+        <address class="footer-address">
+          <p>
+            <i data-lucide="map-pin" class="icon-xs"></i>
+            <span>Sulakshaa Multi Speciality Hospital, Mysuru, Karnataka, India</span>
+          </p>
+          <p>
+            <i data-lucide="phone" class="icon-xs"></i>
+            <span>Emergency: <a href="tel:+919535747478" class="footer-link">9535747478</a></span>
+          </p>
+          <p>
+            <i data-lucide="phone-call" class="icon-xs"></i>
+            <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
+          </p>
+          <p>
+            <i data-lucide="mail" class="icon-xs"></i>
+            <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com</a></span>
+          </p>
+        </address>
+        <div class="footer-badge-item">
+          <i data-lucide="clock" class="icon-xs"></i>
+          <span>Emergency 24x7 | OPD Mon-Sat</span>
+        </div>
+      </div>
+
     </div>
-  </footer>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="footer-copyright">
+        <span>&copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.</span>
+        <span class="footer-credit">
+          <span class="footer-credit-sep">&bull;</span>
+          <a href="https://www.navabharathtechnologies.com/" target="_blank" rel="noopener noreferrer" class="footer-credit-link">Powered by Navabharath Technologies</a>
+        </span>
+      </div>
+      <div class="footer-legal-links">
+        <button type="button" class="legal-link-btn" id="openDisclaimerBtn">Medical Disclaimer</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openPrivacyBtn">Privacy Policy</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openTermsBtn">Terms of Use</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Reusable Modal Dialog for Medical Disclaimer & Policies -->
+  <div class="modal-backdrop" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Medical Disclaimer</h3>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x" class="icon-sm"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected dynamically via script.js or navigation.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Facility Details Controller Script -->
   <script>
@@ -606,7 +724,7 @@
         category: 'Emergency and Critical Care',
         icon: 'shield-alert',
         image: 'assets/facility-emergency-trauma.jpg',
-        description: 'Sulakshaa Multi Speciality Hospital delivers rapid casualty and trauma care with direct ambulance portico access, dedicated resuscitation bays, point-of-care vital telemetry, and resident emergency medical officers on duty 24 hours a day to stabilize acute emergencies.',
+        description: 'Sulakshaa Multi Speciality Hospital delivers rapid casualty and trauma care with direct ambulance portico access, dedicated resuscitation bays, point-of-care vital telemetry and resident emergency medical officers on duty 24 hours a day to stabilize acute emergencies.',
         features: [
           'Zero-Wait Emergency Triage Protocol',
           'Shock & Acute Resuscitation Bays',
@@ -620,7 +738,7 @@
         category: 'Radiology and Imaging',
         icon: 'scan',
         image: 'assets/facility-ct-scan.jpg',
-        description: 'Equipped with precision multi-slice CT scanning, digital X-Ray, and 4D color Doppler ultrasound. Our radiology infrastructure provides high-definition cross-sectional imaging for accurate clinical diagnosis and emergency trauma assessments.',
+        description: 'Equipped with precision multi-slice CT scanning, digital X-Ray and 4D color Doppler ultrasound. Our radiology infrastructure provides high-definition cross-sectional imaging for accurate clinical diagnosis and emergency trauma assessments.',
         features: [
           'Multi-Slice Spiral CT Scanning',
           'Low-Dose High-Definition Digital X-Ray',
@@ -634,7 +752,7 @@
         category: 'Laboratory and Diagnostics',
         icon: 'flask-conical',
         image: 'assets/facility-pathology-lab.jpg',
-        description: 'Our fully automated hospital pathology laboratory delivers rapid diagnostic turnaround for complete blood counts, cardiac biomarkers (Troponin I), arterial blood gas (ABG), and comprehensive metabolic profiles under stringent quality standards.',
+        description: 'Our fully automated hospital pathology laboratory delivers rapid diagnostic turnaround for complete blood counts, cardiac biomarkers (Troponin I), arterial blood gas (ABG) and comprehensive metabolic profiles under stringent quality standards.',
         features: [
           'Same-Day Emergency Diagnostic Assays',
           'Stat Cardiac Biomarkers & Enzymes',
@@ -648,7 +766,7 @@
         category: 'Intensive Care Unit (ICU)',
         icon: 'heart-pulse',
         image: 'assets/facility-intensive-care.jpg',
-        description: 'Purpose-engineered intensive care unit featuring continuous multi-parameter telemetry, invasive mechanical ventilators, and dedicated 1:1 bedside nursing for acute medical, post-surgical, and coronary patients requiring continuous vital monitoring.',
+        description: 'Purpose-engineered intensive care unit featuring continuous multi-parameter telemetry, invasive mechanical ventilators and dedicated 1:1 bedside nursing for acute medical, post-surgical and coronary patients requiring continuous vital monitoring.',
         features: [
           '24/7 Central Nursing Telemetry Monitoring',
           'Advanced Mechanical Ventilators & Resuscitation',
@@ -662,7 +780,7 @@
         category: 'Inpatient Rooms and Recovery',
         icon: 'bed',
         image: 'assets/facility-inpatient-recovery.jpg',
-        description: 'Thoughtfully designed patient accommodations providing a hygienic and tranquil healing environment. Accommodations include private air-conditioned suites, semi-private rooms, and general recovery wards with barrier-free wheelchair access.',
+        description: 'Thoughtfully designed patient accommodations providing a hygienic and tranquil healing environment. Accommodations include private air-conditioned suites, semi-private rooms and general recovery wards with barrier-free wheelchair access.',
         features: [
           'Air-Conditioned Private & Deluxe Rooms',
           'Semi-Private & General Patient Wards',
@@ -676,7 +794,7 @@
         category: 'In-House Pharmacy',
         icon: 'store',
         image: 'assets/facility-pharmacy.jpg',
-        description: 'Fully licensed on-campus hospital chemist providing round-the-clock availability of verified medications, critical care injectables, cardiology drugs, surgical disposables, and outpatient prescription services.',
+        description: 'Fully licensed on-campus hospital chemist providing round-the-clock availability of verified medications, critical care injectables, cardiology drugs, surgical disposables and outpatient prescription services.',
         features: [
           '24/7 Dispensing Counter on Ground Floor',
           'Cold-Chain Biologics & Vaccine Storage',
@@ -690,7 +808,7 @@
         category: 'Surgical Facilities',
         icon: 'activity',
         image: 'assets/facility-operation-theatre.jpg',
-        description: 'Modern modular surgical suites equipped with laminar airflow HEPA filtration, advanced anesthesia workstations, and an adjacent post-anesthesia care unit (PACU) supporting general, orthopedic, and emergency procedures.',
+        description: 'Modern modular surgical suites equipped with laminar airflow HEPA filtration, advanced anesthesia workstations and an adjacent post-anesthesia care unit (PACU) supporting general, orthopedic and emergency procedures.',
         features: [
           'Laminar Airflow HEPA Sterilization',
           'Advanced Anesthesia Delivery Workstations',
@@ -704,7 +822,7 @@
         category: 'Consultation and Outpatient Services',
         icon: 'armchair',
         image: 'assets/facility-opd-lounge.jpg',
-        description: 'Spacious and welcoming outpatient reception wing featuring digital queue token systems, comfortable air-conditioned seating, private consulting chambers, and prompt patient coordination desks.',
+        description: 'Spacious and welcoming outpatient reception wing featuring digital queue token systems, comfortable air-conditioned seating, private consulting chambers and prompt patient coordination desks.',
         features: [
           'Air-Conditioned Patient Waiting Lounge',
           'Digital Token Queue Display System',

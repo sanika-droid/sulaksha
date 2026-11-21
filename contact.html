@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us &amp; Hospital Location | Sulakshaa Multi Speciality Hospital, Mysuru</title>
   
-  <meta name="description" content="Contact Sulakshaa Multi Speciality Hospital in Mysuru. Find hospital address, 24/7 emergency helpline numbers, reception phone, email, Google Maps directions, and send clinical enquiries.">
+  <meta name="description" content="Contact Sulakshaa Multi Speciality Hospital in Mysuru. Find hospital address, 24/7 emergency helpline numbers, reception phone, email, Google Maps directions and send clinical enquiries.">
   <meta name="keywords" content="Sulakshaa Hospital Contact, Hospital Location Mysore, Emergency Phone Mysore, Doctor Appointment Mysore, Hospital Address Vijayanagar 3rd Stage, Hutagalli">
   <meta name="author" content="Sulakshaa Multi Speciality Hospital">
   
@@ -21,7 +21,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=45">
 
   <style>
     /* -------------------------------------------------------------
@@ -616,8 +616,6 @@
                       <li><a href="department-details.html?dept=emergency" class="dept-mega-link"><span class="dept-link-text">Accident &amp; Emergency</span></a></li>
                       <li><a href="department-details.html?dept=anaesthesiology" class="dept-mega-link"><span class="dept-link-text">Anaesthesiology &amp; Critical Care</span></a></li>
                       <li><a href="department-details.html?dept=cardiac-care" class="dept-mega-link"><span class="dept-link-text">Cardiology</span></a></li>
-                      <li><a href="department-details.html?dept=dermatology" class="dept-mega-link"><span class="dept-link-text">Dermatology</span></a></li>
-                      <li><a href="department-details.html?dept=ent" class="dept-mega-link"><span class="dept-link-text">ENT (Ear, Nose &amp; Throat)</span></a></li>
                       <li><a href="department-details.html?dept=gastroenterology" class="dept-mega-link"><span class="dept-link-text">Gastroenterology</span></a></li>
                       <li><a href="department-details.html?dept=general-medicine" class="dept-mega-link"><span class="dept-link-text">General Medicine</span></a></li>
                       <li><a href="department-details.html?dept=general-surgery" class="dept-mega-link"><span class="dept-link-text">General Surgery</span></a></li>
@@ -657,7 +655,7 @@
           <i data-lucide="phone" class="icon-sm"></i>
           <span class="btn-text">24/7 Emergency</span>
         </a>
-        <a href="index.html#enquiry" class="btn btn-primary" id="headerAppointmentBtn">
+        <a href="#appointmentEnquiryContainer" class="btn btn-primary" id="headerAppointmentBtn">
           <i data-lucide="calendar-check" class="icon-sm"></i>
           <span>Book Appointment</span>
         </a>
@@ -748,7 +746,7 @@
     </section>
 
     <!-- 3. Main 2-Column Section: Google Map Embed (Left) & Contact Us Form (Right) -->
-    <section class="contact-main-section" aria-label="Hospital Location Map and Contact Form">
+    <section class="contact-main-section" id="appointment" aria-label="Hospital Location Map and Contact Form">
       <div class="container">
         <div class="contact-main-grid">
 
@@ -810,7 +808,7 @@
                 <!-- Patient Phone Number -->
                 <div class="form-group interactive-group">
                   <label for="patientPhone" class="form-label">
-                    Phone Number <span class="required-star" aria-hidden="true">*</span>
+                    Mobile Number <span class="required-star" aria-hidden="true">*</span>
                   </label>
                   <div class="input-with-icon input-phone-wrapper">
                     <span class="phone-prefix-badge">+91</span>
@@ -830,34 +828,94 @@
                 </div>
               </div>
 
-              <!-- Row 2: Email & Preferred Date -->
+              <!-- Row 2: Department & Preferred Doctor -->
               <div class="form-row-2col">
-                <!-- Patient Email Address -->
+                <!-- Department Dropdown -->
                 <div class="form-group interactive-group">
-                  <label for="patientEmail" class="form-label">
-                    Email Address <span class="required-star" aria-hidden="true">*</span>
+                  <label for="preferredSpeciality" class="form-label">
+                    Department / Speciality <span class="required-star" aria-hidden="true">*</span>
                   </label>
                   <div class="input-with-icon">
-                    <i data-lucide="mail" class="input-icon"></i>
-                    <input 
-                      type="email" 
-                      id="patientEmail" 
-                      name="patientEmail" 
-                      class="form-control" 
-                      placeholder="e.g. ramesh.kumar@example.com" 
-                      required 
-                      autocomplete="email"
-                      aria-describedby="patientEmailError"
+                    <i data-lucide="stethoscope" class="input-icon"></i>
+                    <select 
+                      id="preferredSpeciality" 
+                      name="preferredSpeciality" 
+                      class="form-control select-control" 
+                      required
+                      aria-describedby="preferredSpecialityError"
                     >
+                      <option value="">-- Select Medical Department --</option>
+                      <option value="Accident & Emergency">Accident &amp; Emergency (24/7)</option>
+                      <option value="Cardiology">Cardiology &amp; Cardiac Care</option>
+                      <option value="Neuroscience">Neuroscience &amp; Brain/Spine Care</option>
+                      <option value="Orthopaedics">Orthopaedics &amp; Joint Replacement</option>
+                      <option value="Paediatrics">Paediatrics &amp; Child Health</option>
+                      <option value="Obstetrics & Gynaecology">Obstetrics &amp; Gynaecology (OBG)</option>
+                      <option value="Gastroenterology">Medical &amp; Surgical Gastroenterology</option>
+                      <option value="General Medicine">General Medicine &amp; Diabetology</option>
+                      <option value="General Surgery">General &amp; Laparoscopic Surgery</option>
+                      <option value="Nephrology">Nephrology &amp; Dialysis Unit</option>
+                      <option value="Urology">Urology &amp; Kidney Stone Laser Clinic</option>
+                      <option value="Pulmonology">Pulmonology &amp; Respiratory Medicine</option>
+                      <option value="Oncology">Oncology &amp; Cancer Care</option>
+                      <option value="Psychiatry">Psychiatry &amp; Mental Health</option>
+                      <option value="Critical Care & ICU">Critical Care &amp; Multi-disciplinary ICU</option>
+                      <option value="Diagnostics">Diagnostic Imaging &amp; Laboratory</option>
+                      <option value="Other Consultation">Other Medical Enquiry</option>
+                    </select>
                   </div>
-                  <span class="field-error" id="patientEmailError" role="alert"></span>
+                  <span class="field-error" id="preferredSpecialityError" role="alert"></span>
                 </div>
 
+                <!-- Preferred Doctor (if selected) -->
+                <div class="form-group interactive-group">
+                  <label for="preferredDoctor" class="form-label">
+                    Preferred Doctor <span class="optional-tag">(if selected)</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="user-check" class="input-icon"></i>
+                    <select 
+                      id="preferredDoctor" 
+                      name="preferredDoctor" 
+                      class="form-control select-control"
+                      aria-describedby="preferredDoctorError"
+                    >
+                      <option value="">Any Available Specialist / No Preference</option>
+                      <option value="Dr. Laxme Gowda">Dr. Laxme Gowda (General Medicine &amp; Cardiology)</option>
+                      <option value="Dr. Deepak B Gowda">Dr. Deepak B Gowda (Surgical Gastroenterology)</option>
+                      <option value="Dr. Hoysala Kantharaju">Dr. Hoysala Kantharaju (Orthopaedics)</option>
+                      <option value="Surg Lt Cdr (Dr) Prajwal S, Retd">Surg Lt Cdr (Dr) Prajwal S, Retd (IVF &amp; Fertility / OBG)</option>
+                      <option value="Dr. Ananya C L">Dr. Ananya C L (General Medicine)</option>
+                      <option value="Dr. Madhu B S">Dr. Madhu B S (General Surgery)</option>
+                      <option value="Dr. Sachin V">Dr. Sachin V (General Surgery)</option>
+                      <option value="Dr Nisha N">Dr Nisha N (General Surgery)</option>
+                      <option value="Dr Lokesh MG">Dr Lokesh MG (General Surgery)</option>
+                      <option value="Dr. H N Dinesh">Dr. H N Dinesh (Surgical Gastroenterology)</option>
+                      <option value="Dr Lokesh H M">Dr Lokesh H M (Medical Gastroenterology)</option>
+                      <option value="Dr. Thibbe Gowda C D">Dr. Thibbe Gowda C D (Paediatrics)</option>
+                      <option value="Dr. Akshatha P Deshpande">Dr. Akshatha P Deshpande (Paediatrics)</option>
+                      <option value="Dr. Pallavi K">Dr. Pallavi K (Paediatrics)</option>
+                      <option value="Dr Keethiraj D B">Dr Keethiraj D B (Neurology)</option>
+                      <option value="Dr. Rajesh T S">Dr. Rajesh T S (Neurosurgery &amp; Spine)</option>
+                      <option value="Dr. Girish T D">Dr. Girish T D (Urology)</option>
+                      <option value="Dr. Sumangala G N">Dr. Sumangala G N (Obstetrics &amp; Gynaecology)</option>
+                      <option value="Dr. Kiran P K">Dr. Kiran P K (Oncology)</option>
+                      <option value="Dr. Narendra Kumar M S">Dr. Narendra Kumar M S (Psychiatry)</option>
+                      <option value="Dr. Nishanth R K">Dr. Nishanth R K (Radiology)</option>
+                      <option value="Dr. Shashidhar">Dr. Shashidhar (Pathology)</option>
+                    </select>
+                  </div>
+                  <span class="field-error" id="preferredDoctorError" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Row 3: Preferred Date & Preferred Time -->
+              <div class="form-row-2col">
                 <!-- Preferred Date Picker -->
                 <div class="form-group interactive-group">
                   <div class="label-with-quick-actions">
                     <label for="preferredDate" class="form-label">
-                      Preferred Date <span class="required-star" aria-hidden="true">*</span>
+                      Preferred Appointment Date <span class="required-star" aria-hidden="true">*</span>
                     </label>
                     <div class="quick-date-pills">
                       <button type="button" class="date-pill-btn" id="datePillToday">Today</button>
@@ -877,107 +935,69 @@
                   </div>
                   <span class="field-error" id="preferredDateError" role="alert"></span>
                 </div>
-              </div>
 
-              <!-- Row 3: Medical Department & Preferred Doctor -->
-              <div class="form-row-2col">
-                <!-- Department Dropdown -->
+                <!-- Preferred Appointment Time -->
                 <div class="form-group interactive-group">
-                  <label for="preferredSpeciality" class="form-label">
-                    Medical Department <span class="required-star" aria-hidden="true">*</span>
+                  <label for="preferredTime" class="form-label">
+                    Preferred Appointment Time <span class="required-star" aria-hidden="true">*</span>
                   </label>
                   <div class="input-with-icon">
-                    <i data-lucide="stethoscope" class="input-icon"></i>
+                    <i data-lucide="clock" class="input-icon"></i>
                     <select 
-                      id="preferredSpeciality" 
-                      name="preferredSpeciality" 
+                      id="preferredTime" 
+                      name="preferredTime" 
                       class="form-control select-control" 
                       required
-                      aria-describedby="preferredSpecialityError"
+                      aria-describedby="preferredTimeError"
                     >
-                      <option value="">-- Select Medical Department --</option>
-                      <option value="General Medicine">General Medicine &amp; Diabetology</option>
-                      <option value="Cardiology">Cardiology &amp; Cardiac Care</option>
-                      <option value="Orthopaedics">Orthopaedics &amp; Joint Replacement</option>
-                      <option value="General Surgery">General &amp; Laparoscopic Surgery</option>
-                      <option value="Gastroenterology">Medical &amp; Surgical Gastroenterology</option>
-                      <option value="Paediatrics">Paediatrics &amp; Neonatology</option>
-                      <option value="Neurology">Neurology &amp; Stroke Care</option>
-                      <option value="Neurosurgery">Neurosurgery &amp; Spine Care</option>
-                      <option value="Obstetrics & Gynaecology">Obstetrics, Gynaecology &amp; Maternity</option>
-                      <option value="Urology">Urology &amp; Kidney Stone Laser Clinic</option>
-                      <option value="Oncology">Comprehensive Medical &amp; Surgical Oncology</option>
-                      <option value="ENT">ENT &amp; Head-Neck Surgery</option>
-                      <option value="Psychiatry">Psychiatry &amp; Mental Health</option>
-                      <option value="Radiology">Radiology &amp; Imaging Sciences</option>
-                      <option value="Critical Care & ICU">Critical Care &amp; Multi-disciplinary ICU</option>
-                      <option value="Accident & Emergency">Accident &amp; Emergency Care</option>
-                      <option value="Nephrology">Nephrology &amp; Dialysis Unit</option>
-                      <option value="Pulmonology">Pulmonology &amp; Respiratory Medicine</option>
-                      <option value="Dermatology">Dermatology &amp; Cosmetology</option>
-                      <option value="Diagnostics">Diagnostic Imaging &amp; Laboratory</option>
-                      <option value="Other Consultation">Other Medical Enquiry</option>
+                      <option value="">-- Select Preferred Time --</option>
+                      <option value="Morning (09:00 AM - 01:00 PM)">Morning (09:00 AM - 01:00 PM)</option>
+                      <option value="Afternoon (01:00 PM - 05:00 PM)">Afternoon (01:00 PM - 05:00 PM)</option>
+                      <option value="Evening (05:00 PM - 08:30 PM)">Evening (05:00 PM - 08:30 PM)</option>
+                      <option value="Any Available Time Slot">Any Available Time Slot</option>
                     </select>
                   </div>
-                  <span class="field-error" id="preferredSpecialityError" role="alert"></span>
-                </div>
-
-                <!-- Preferred Doctor (if available) -->
-                <div class="form-group interactive-group">
-                  <label for="preferredDoctor" class="form-label">
-                    Preferred Doctor <span class="optional-tag">(if available)</span>
-                  </label>
-                  <div class="input-with-icon">
-                    <i data-lucide="user-check" class="input-icon"></i>
-                    <select 
-                      id="preferredDoctor" 
-                      name="preferredDoctor" 
-                      class="form-control select-control"
-                      aria-describedby="preferredDoctorError"
-                    >
-                      <option value="">Any Available Specialist / No Preference</option>
-                      <option value="Dr. Laxme Gowda">Dr. Laxme Gowda (General Medicine &amp; Cardiology)</option>
-                      <option value="Dr. Ananya C L">Dr. Ananya C L (General Medicine)</option>
-                      <option value="Dr. Hoysala Kantharaju">Dr. Hoysala Kantharaju (Orthopaedics)</option>
-                      <option value="Dr. Madhu B S">Dr. Madhu B S (General Surgery)</option>
-                      <option value="Dr. Sachin V">Dr. Sachin V (General Surgery)</option>
-                      <option value="Dr Nisha N">Dr Nisha N (General Surgery)</option>
-                      <option value="Dr Lokesh MG">Dr Lokesh MG (General Surgery)</option>
-                      <option value="Dr. H N Dinesh">Dr. H N Dinesh (Surgical Gastroenterology)</option>
-                      <option value="Dr. Deepak B Gowda">Dr. Deepak B Gowda (Surgical Gastroenterology)</option>
-                      <option value="Dr Lokesh H M">Dr Lokesh H M (Medical Gastroenterology)</option>
-                      <option value="Dr. Thibbe Gowda C D">Dr. Thibbe Gowda C D (Paediatrics)</option>
-                      <option value="Dr. Akshatha P Deshpande">Dr. Akshatha P Deshpande (Paediatrics)</option>
-                      <option value="Dr Keethiraj D B">Dr Keethiraj D B (Neurology)</option>
-                      <option value="Dr. Rajesh T S">Dr. Rajesh T S (Neurosurgery &amp; Spine)</option>
-                      <option value="Dr. Girish T D">Dr. Girish T D (Urology)</option>
-                      <option value="Dr. Sumangala G N">Dr. Sumangala G N (Obstetrics &amp; Gynaecology)</option>
-                      <option value="Surg Lt Cdr (Dr) Prajwal S, Retd">Surg Lt Cdr (Dr) Prajwal S, Retd (Obstetrics &amp; Gynaecology)</option>
-                      <option value="Dr. Kiran P K">Dr. Kiran P K (Oncology)</option>
-                      <option value="Dr. Narendra Kumar M S">Dr. Narendra Kumar M S (Psychiatry)</option>
-                      <option value="Dr Madhav D">Dr Madhav D (ENT)</option>
-                      <option value="Dr. Nishanth R K">Dr. Nishanth R K (Radiology)</option>
-                      <option value="Dr. Shashidhar">Dr. Shashidhar (Pathology)</option>
-                    </select>
-                  </div>
-                  <span class="field-error" id="preferredDoctorError" role="alert"></span>
+                  <span class="field-error" id="preferredTimeError" role="alert"></span>
                 </div>
               </div>
 
-              <!-- Row 4: Message or Medical Concern -->
-              <div class="form-group interactive-group">
-                <label for="patientMessage" class="form-label">
-                  Message or Medical Concern <span class="optional-tag">(optional)</span>
-                </label>
-                <div class="input-with-icon textarea-icon-wrapper">
-                  <i data-lucide="message-square" class="input-icon textarea-icon"></i>
-                  <textarea 
-                    id="patientMessage" 
-                    name="patientMessage" 
-                    class="form-control" 
-                    rows="2" 
-                    placeholder="e.g. Morning OPD preferred, symptoms, or prior medical reports"
-                  ></textarea>
+              <!-- Row 4: Email Address (if provided) & Reason for Visit -->
+              <div class="form-row-2col">
+                <!-- Patient Email Address -->
+                <div class="form-group interactive-group">
+                  <label for="patientEmail" class="form-label">
+                    Email Address <span class="optional-tag">(if provided)</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="mail" class="input-icon"></i>
+                    <input 
+                      type="email" 
+                      id="patientEmail" 
+                      name="patientEmail" 
+                      class="form-control" 
+                      placeholder="e.g. ramesh.kumar@example.com" 
+                      autocomplete="email"
+                      aria-describedby="patientEmailError"
+                    >
+                  </div>
+                  <span class="field-error" id="patientEmailError" role="alert"></span>
+                </div>
+
+                <!-- Reason for Visit -->
+                <div class="form-group interactive-group">
+                  <label for="patientMessage" class="form-label">
+                    Reason for Visit <span class="optional-tag">(optional)</span>
+                  </label>
+                  <div class="input-with-icon">
+                    <i data-lucide="file-text" class="input-icon"></i>
+                    <input 
+                      type="text" 
+                      id="patientMessage" 
+                      name="patientMessage" 
+                      class="form-control" 
+                      placeholder="e.g. Routine check-up, chest discomfort, fever"
+                    >
+                  </div>
                 </div>
               </div>
 
@@ -996,44 +1016,45 @@
               <!-- Row 6: Submit Button & Reassurance Note -->
               <div class="form-submit-row">
                 <button type="submit" class="btn btn-primary btn-lg submit-btn" id="submitEnquiryBtn">
-                  <i data-lucide="send" class="icon-sm"></i>
-                  <span>Submit Appointment Enquiry</span>
+                  <i data-lucide="message-circle" class="icon-sm"></i>
+                  <span>Book Appointment</span>
                 </button>
                 <p class="form-reassurance-note">
-                  <i data-lucide="shield-check" class="icon-xs"></i> 
-                  No payment required online. Our reception team will call back to confirm your consultation slot.
+                  <i data-lucide="message-circle" class="icon-xs" style="color: #25D366;"></i> 
+                  Submits via official WhatsApp to Hospital Desk (<strong>9535747478</strong>). No online payment required. Staff will confirm your slot.
                 </p>
               </div>
 
-              <!-- ANIMATED SUCCESS SCREEN -->
-              <div class="form-success-card" id="formSuccessView" style="display: none;" role="status">
-                <div class="success-animation-wrap">
-                  <svg class="success-checkmark-svg" viewBox="0 0 52 52">
-                    <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none" />
-                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                  </svg>
+              <!-- WHATSAPP STATUS CARD (Shown after clicking Book Appointment) -->
+              <div class="form-success-card whatsapp-status-card" id="formSuccessView" style="display: none;" role="status">
+                <div class="whatsapp-circle-icon">
+                  <i data-lucide="message-circle" class="icon-lg"></i>
                 </div>
-                <div class="success-badge-pill">
-                  <i data-lucide="shield-check" class="icon-xs"></i> Official Desk Enquiry Registered
+                <div class="whatsapp-badge-pill">
+                  <i data-lucide="clock" class="icon-xs"></i> WhatsApp Request Ready
                 </div>
-                <h4 class="success-title">Enquiry Successfully Submitted!</h4>
-                <p class="success-desc" id="successCardDescription">
-                  Thank you! Your consultation request has been recorded. Our reception coordinator will call you shortly to confirm your appointment slot.
+                <h4 class="success-title">Open WhatsApp to Complete Request</h4>
+                <p class="success-desc">
+                  Your appointment details have been prepared for <strong>Sulakshaa Hospital Reception (9535747478)</strong>. Please click <strong>Send</strong> in WhatsApp to deliver the message.
                 </p>
+                <div class="whatsapp-notice-subtext">
+                  <i data-lucide="info" class="icon-xs"></i>
+                  <strong>Please Note:</strong> Your appointment request is submitted through WhatsApp and will be reviewed and confirmed by our hospital staff.
+                </div>
 
                 <div class="success-summary-box" id="successSummaryBox">
                   <!-- Populated dynamically via JS -->
                 </div>
 
                 <div class="success-action-buttons">
-                  <button type="button" class="btn btn-outline" id="bookAnotherBtn">
-                    <i data-lucide="rotate-ccw" class="icon-sm"></i>
-                    <span>Book Another Appointment</span>
-                  </button>
-                  <a href="tel:+919535747478" class="btn btn-emergency">
-                    <i data-lucide="phone-call" class="icon-sm"></i>
-                    <span>Call Hospital Desk</span>
+                  <a href="#" id="whatsappDirectLink" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+                    <i data-lucide="message-circle" class="icon-sm"></i>
+                    <span>Open WhatsApp Now</span>
                   </a>
+                  <button type="button" class="btn btn-outline" id="bookAnotherBtn">
+                    <i data-lucide="edit-3" class="icon-sm"></i>
+                    <span>Modify Details</span>
+                  </button>
                 </div>
               </div>
             </form>
@@ -1046,85 +1067,137 @@
   </main>
 
   <!-- Comprehensive Footer (Ref Image 3) strictly in Sulakshaa Theme -->
-  <footer class="site-footer" id="siteFooter">
-    <div class="container footer-container">
-      <div class="footer-top-grid">
-        
-        <!-- Column 1: Hospital Brand Identity -->
-        <div class="footer-col footer-col-brand">
-          <a href="index.html" class="brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital">
-            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
-            <div class="brand-divider" aria-hidden="true"></div>
-            <div class="brand-text-container">
-              <span class="brand-hospital-title">Sulakshaa</span>
-              <span class="brand-hospital-type">Multi Speciality Hospital</span>
-            </div>
-          </a>
-          <div class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</div>
-          <p class="footer-mission">
-            Reach out to us for all your healthcare needs. Committed to accessible, ethical, and multi-disciplinary healthcare excellence for Mysuru and surrounding regions.
-          </p>
-          <address class="footer-contact-address" style="margin-top: 1rem; font-style: normal; font-size: 0.9rem; color: #CBD5E1;">
-            <p style="margin: 0.35rem 0;"><i data-lucide="map-pin" class="icon-xs"></i> Sulakshaa Hospital, 278, 1st Main Rd, D Block, Vijayanagar 3rd Stage, Mysuru &ndash; 570017</p>
-            <p style="margin: 0.35rem 0;"><i data-lucide="mail" class="icon-xs"></i> info@sulakshaahospital.com</p>
-            <p style="margin: 0.35rem 0;"><i data-lucide="phone" class="icon-xs"></i> 9535747478 | 0821-3525555 / 0821-3525544 (24x7)</p>
-          </address>
-        </div>
+  <!-- ==========================================================================
+     Sulakshaa Multi Speciality Hospital - Shared Reusable Footer Component
+     Consistent across all website pages with responsive layout, 4 columns,
+     verified contact information, active social media links, and legal modal triggers.
+     ========================================================================== -->
+<footer class="site-footer" id="siteFooter">
+  <div class="container footer-container">
+    <div class="footer-top-grid">
 
-        <!-- Column 2: Centers of Excellence -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Centers of Excellence</h4>
-          <ul class="footer-links-list">
-            <li><a href="departments.html">Orthopaedics &amp; Joint Replacement</a></li>
-            <li><a href="departments.html">Cardiology &amp; Cardiac Care</a></li>
-            <li><a href="departments.html">Medical Gastroenterology</a></li>
-            <li><a href="departments.html">Surgical Gastroenterology</a></li>
-            <li><a href="departments.html">Institute of Neurosciences</a></li>
-            <li><a href="departments.html">Maternity &amp; Women's Health</a></li>
-          </ul>
+      <!-- Column 1: Hospital Brand Identity & About -->
+      <div class="footer-col footer-col-brand">
+        <a href="index.html#hero" class="footer-brand brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
+          </div>
+        </a>
+        <p class="footer-kannada-name">Sulakshaa Multi Speciality Hospital, Mysuru</p>
+        <p class="footer-mission">
+          Providing compassionate care, advanced medical specialities, precision diagnostics and dedicated patient support for Mysuru and surrounding regions.
+        </p>
+        <div class="footer-emergency-callout">
+          <i data-lucide="ambulance" class="icon-sm"></i>
+          <div>
+            <span>24/7 Casualty &amp; Chemist</span>
+            <strong>Open All 365 Days</strong>
+          </div>
         </div>
-
-        <!-- Column 3: Specialities -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Specialities</h4>
-          <ul class="footer-links-list">
-            <li><a href="departments.html">Accident &amp; Emergency</a></li>
-            <li><a href="departments.html">Critical Care &amp; ICU</a></li>
-            <li><a href="departments.html">General Medicine</a></li>
-            <li><a href="departments.html">Paediatrics &amp; Child Health</a></li>
-            <li><a href="departments.html">Pulmonology &amp; Chest</a></li>
-            <li><a href="departments.html">Nephrology &amp; Dialysis</a></li>
-            <li><a href="departments.html">Urology &amp; Andrology</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 4: Quick Links -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html#hero">Home</a></li>
-            <li><a href="index.html#overview">About Us</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="doctors.html">Meet Doctors</a></li>
-            <li><a href="facilities.html">Facilities &amp; Services</a></li>
-            <li><a href="gallery.html">Hospital Gallery</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
       </div>
 
-      <!-- Footer Bottom Bar -->
-      <div class="footer-bottom-bar">
-        <div class="footer-copyright">
-          &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-nav">
+          <li><a href="index.html#hero"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="about-details.html"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
+          <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialities</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team &amp; Specialists</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Infrastructure &amp; Facilities</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="blog.html"><i data-lucide="chevron-right" class="icon-xs"></i> Health Articles &amp; Blog</a></li>
+          <li><a href="contact.html"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Directions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Medical Specialities / Departments -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Specialities</h3>
+        <ul class="footer-nav">
+          <li><a href="department-details.html?dept=emergency"><i data-lucide="chevron-right" class="icon-xs"></i> Accident &amp; Emergency</a></li>
+          <li><a href="department-details.html?dept=cardiac-care"><i data-lucide="chevron-right" class="icon-xs"></i> Cardiology</a></li>
+          <li><a href="department-details.html?dept=neurology"><i data-lucide="chevron-right" class="icon-xs"></i> Neuroscience</a></li>
+          <li><a href="department-details.html?dept=orthopedics"><i data-lucide="chevron-right" class="icon-xs"></i> Orthopaedics</a></li>
+          <li><a href="department-details.html?dept=paediatrics"><i data-lucide="chevron-right" class="icon-xs"></i> Paediatrics</a></li>
+          <li><a href="department-details.html?dept=maternity-care"><i data-lucide="chevron-right" class="icon-xs"></i> Obstetrics &amp; Gynaecology</a></li>
+          <li><a href="department-details.html?dept=gastroenterology"><i data-lucide="chevron-right" class="icon-xs"></i> Gastroenterology</a></li>
+          <li><a href="department-details.html?dept=nephrology"><i data-lucide="chevron-right" class="icon-xs"></i> Nephrology &amp; Urology</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Information & Social Media -->
+      <div class="footer-col footer-col-contact">
+        <h3 class="footer-heading">Hospital Desk</h3>
+        <address class="footer-address">
+          <p>
+            <i data-lucide="map-pin" class="icon-xs"></i>
+            <span>Sulakshaa Multi Speciality Hospital, Mysuru, Karnataka, India</span>
+          </p>
+          <p>
+            <i data-lucide="phone" class="icon-xs"></i>
+            <span>Emergency: <a href="tel:+919535747478" class="footer-link">9535747478</a></span>
+          </p>
+          <p>
+            <i data-lucide="phone-call" class="icon-xs"></i>
+            <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
+          </p>
+          <p>
+            <i data-lucide="mail" class="icon-xs"></i>
+            <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com</a></span>
+          </p>
+        </address>
+        <div class="footer-badge-item">
+          <i data-lucide="clock" class="icon-xs"></i>
+          <span>Emergency 24x7 | OPD Mon-Sat</span>
         </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="footer-copyright">
+        <span>&copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.</span>
+        <span class="footer-credit">
+          <span class="footer-credit-sep">&bull;</span>
+          <a href="https://www.navabharathtechnologies.com/" target="_blank" rel="noopener noreferrer" class="footer-credit-link">Powered by Navabharath Technologies</a>
+        </span>
+      </div>
+      <div class="footer-legal-links">
+        <button type="button" class="legal-link-btn" id="openDisclaimerBtn">Medical Disclaimer</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openPrivacyBtn">Privacy Policy</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openTermsBtn">Terms of Use</button>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
+  <!-- Reusable Modal Dialog for Medical Disclaimer & Policies -->
+  <div class="modal-backdrop" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Medical Disclaimer</h3>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+          <i data-lucide="x" class="icon-sm"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected dynamically via script.js or navigation.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- WhatsApp Floating Icon -->
-  <a href="https://wa.me/919008417272" class="contact-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+  <a href="https://wa.me/919535747478" class="contact-whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
     <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
   </a>
 

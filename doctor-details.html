@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle">Doctor Profile | Sulakshaa Multi Speciality Hospital, Mysuru</title>
   
-  <meta name="description" content="View full doctor profile, medical qualifications, clinical specialities, and care services at Sulakshaa Multi Speciality Hospital, Mysuru.">
+  <meta name="description" content="View full doctor profile, medical qualifications, clinical specialities and care services at Sulakshaa Multi Speciality Hospital, Mysuru.">
   <meta name="author" content="Sulakshaa Multi Speciality Hospital">
   
   <!-- Favicon -->
@@ -20,7 +20,7 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=44">
+  <link rel="stylesheet" href="styles.css?v=45">
 
   <style>
     /* -------------------------------------------------------------
@@ -731,98 +731,116 @@
   </a>
 
   <!-- Comprehensive Existing Website Footer -->
-  <footer class="site-footer" id="siteFooter">
-    <div class="container">
-      <div class="footer-top-grid">
-        <!-- Col 1: Identity -->
-        <div class="footer-col footer-col-brand">
-          <a href="index.html" class="brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital">
-            <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
-            <div class="brand-divider" aria-hidden="true"></div>
-            <div class="brand-text-container">
-              <span class="brand-hospital-title">Sulakshaa</span>
-              <span class="brand-hospital-type">Multi Speciality Hospital</span>
-            </div>
-          </a>
-          <div class="footer-kannada-name">ಸುಲಕ್ಷಾ ಮಲ್ಟಿ ಸ್ಪೆಷಾಲಿಟಿ ಹಾಸ್ಪಿಟಲ್</div>
-          <p class="footer-mission">
-            Committed to accessible, ethical, and multi-disciplinary healthcare excellence for Mysuru and surrounding districts.
-          </p>
-          <div class="footer-emergency-callout">
-            <i data-lucide="ambulance" class="icon-md"></i>
-            <div>
-              <span>24/7 Casualty Desk</span>
-              <strong>9535747478</strong>
-            </div>
+  <!-- ==========================================================================
+     Sulakshaa Multi Speciality Hospital - Shared Reusable Footer Component
+     Consistent across all website pages with responsive layout, 4 columns,
+     verified contact information, active social media links, and legal modal triggers.
+     ========================================================================== -->
+<footer class="site-footer" id="siteFooter">
+  <div class="container footer-container">
+    <div class="footer-top-grid">
+
+      <!-- Column 1: Hospital Brand Identity & About -->
+      <div class="footer-col footer-col-brand">
+        <a href="index.html#hero" class="footer-brand brand-identity footer-brand-badge" aria-label="Sulakshaa Multi Speciality Hospital Homepage">
+          <img src="assets/sulakshaa-logo.png" alt="Sulakshaa Logo Icon" class="brand-logo" width="48" height="48">
+          <div class="brand-divider" aria-hidden="true"></div>
+          <div class="brand-text-container">
+            <span class="brand-hospital-title">Sulakshaa</span>
+            <span class="brand-hospital-type">Multi Speciality Hospital</span>
           </div>
-        </div>
-
-        <!-- Col 2: Quick Links -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Navigation</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html#hero">Home</a></li>
-            <li><a href="index.html#overview">About Hospital</a></li>
-            <li><a href="index.html#specialities">Departments</a></li>
-            <li><a href="doctors.html">Find a Doctor</a></li>
-            <li><a href="facilities.html">Hospital Infrastructure</a></li>
-            <li><a href="gallery.html">Hospital Gallery</a></li>
-            <li><a href="index.html#enquiry">Book Appointment</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Specialities -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Specialities</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html#specialities">General Medicine</a></li>
-            <li><a href="index.html#specialities">Cardiac Care</a></li>
-            <li><a href="index.html#specialities">Orthopedics &amp; Joint Care</a></li>
-            <li><a href="index.html#specialities">Paediatrics &amp; Neonatology</a></li>
-            <li><a href="index.html#specialities">Neurology &amp; Stroke Care</a></li>
-            <li><a href="index.html#specialities">Maternity &amp; Gynaecology</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 4: Contact & Location -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Hospital Location</h4>
-          <address class="footer-contact-address">
-            <p>
-              <i data-lucide="map-pin" class="icon-xs"></i>
-              <span>278, 1st Main Rd, Vijay Nagar 3rd Stage, Mysuru, Karnataka &ndash; 570017</span>
-            </p>
-            <p>
-              <i data-lucide="phone" class="icon-xs"></i>
-              <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
-            </p>
-            <p>
-              <i data-lucide="mail" class="icon-xs"></i>
-              <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com*</a></span>
-            </p>
-          </address>
-          <div class="footer-badge-item">
-            <i data-lucide="clock" class="icon-xs"></i>
-            <span>Emergency 24x7 | OPD Mon-Sat</span>
+        </a>
+        <p class="footer-kannada-name">Sulakshaa Multi Speciality Hospital, Mysuru</p>
+        <p class="footer-mission">
+          Providing compassionate care, advanced medical specialities, precision diagnostics and dedicated patient support for Mysuru and surrounding regions.
+        </p>
+        <div class="footer-emergency-callout">
+          <i data-lucide="ambulance" class="icon-sm"></i>
+          <div>
+            <span>24/7 Casualty &amp; Chemist</span>
+            <strong>Open All 365 Days</strong>
           </div>
         </div>
       </div>
 
-      <!-- Footer Bottom Bar -->
-      <div class="footer-bottom-bar">
-        <div class="footer-copyright">
-          &copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-nav">
+          <li><a href="index.html#hero"><i data-lucide="chevron-right" class="icon-xs"></i> Home</a></li>
+          <li><a href="about-details.html"><i data-lucide="chevron-right" class="icon-xs"></i> About Hospital</a></li>
+          <li><a href="departments.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Specialities</a></li>
+          <li><a href="doctors.html"><i data-lucide="chevron-right" class="icon-xs"></i> Medical Team &amp; Specialists</a></li>
+          <li><a href="facilities.html"><i data-lucide="chevron-right" class="icon-xs"></i> Infrastructure &amp; Facilities</a></li>
+          <li><a href="gallery.html"><i data-lucide="chevron-right" class="icon-xs"></i> Hospital Gallery</a></li>
+          <li><a href="blog.html"><i data-lucide="chevron-right" class="icon-xs"></i> Health Articles &amp; Blog</a></li>
+          <li><a href="contact.html"><i data-lucide="chevron-right" class="icon-xs"></i> Contact &amp; Directions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Medical Specialities / Departments -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Specialities</h3>
+        <ul class="footer-nav">
+          <li><a href="department-details.html?dept=emergency"><i data-lucide="chevron-right" class="icon-xs"></i> Accident &amp; Emergency</a></li>
+          <li><a href="department-details.html?dept=cardiac-care"><i data-lucide="chevron-right" class="icon-xs"></i> Cardiology</a></li>
+          <li><a href="department-details.html?dept=neurology"><i data-lucide="chevron-right" class="icon-xs"></i> Neuroscience</a></li>
+          <li><a href="department-details.html?dept=orthopedics"><i data-lucide="chevron-right" class="icon-xs"></i> Orthopaedics</a></li>
+          <li><a href="department-details.html?dept=paediatrics"><i data-lucide="chevron-right" class="icon-xs"></i> Paediatrics</a></li>
+          <li><a href="department-details.html?dept=maternity-care"><i data-lucide="chevron-right" class="icon-xs"></i> Obstetrics &amp; Gynaecology</a></li>
+          <li><a href="department-details.html?dept=gastroenterology"><i data-lucide="chevron-right" class="icon-xs"></i> Gastroenterology</a></li>
+          <li><a href="department-details.html?dept=nephrology"><i data-lucide="chevron-right" class="icon-xs"></i> Nephrology &amp; Urology</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Information & Social Media -->
+      <div class="footer-col footer-col-contact">
+        <h3 class="footer-heading">Hospital Desk</h3>
+        <address class="footer-address">
+          <p>
+            <i data-lucide="map-pin" class="icon-xs"></i>
+            <span>Sulakshaa Multi Speciality Hospital, Mysuru, Karnataka, India</span>
+          </p>
+          <p>
+            <i data-lucide="phone" class="icon-xs"></i>
+            <span>Emergency: <a href="tel:+919535747478" class="footer-link">9535747478</a></span>
+          </p>
+          <p>
+            <i data-lucide="phone-call" class="icon-xs"></i>
+            <span>Reception: <a href="tel:08213525555" class="footer-link">0821-3525555</a> / <a href="tel:08213525544" class="footer-link">0821-3525544</a></span>
+          </p>
+          <p>
+            <i data-lucide="mail" class="icon-xs"></i>
+            <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com</a></span>
+          </p>
+        </address>
+        <div class="footer-badge-item">
+          <i data-lucide="clock" class="icon-xs"></i>
+          <span>Emergency 24x7 | OPD Mon-Sat</span>
         </div>
-        <div class="footer-legal-links">
-          <button type="button" class="legal-link-btn" id="openDisclaimerBtn">Medical Disclaimer</button>
-          <span class="legal-sep">&bull;</span>
-          <button type="button" class="legal-link-btn" id="openPrivacyBtn">Privacy Policy</button>
-          <span class="legal-sep">&bull;</span>
-          <button type="button" class="legal-link-btn" id="openTermsBtn">Terms of Use</button>
-        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="footer-copyright">
+        <span>&copy; <span id="currentYear"></span> Sulakshaa Multi Speciality Hospital, Mysuru. All Rights Reserved.</span>
+        <span class="footer-credit">
+          <span class="footer-credit-sep">&bull;</span>
+          <a href="https://www.navabharathtechnologies.com/" target="_blank" rel="noopener noreferrer" class="footer-credit-link">Powered by Navabharath Technologies</a>
+        </span>
+      </div>
+      <div class="footer-legal-links">
+        <button type="button" class="legal-link-btn" id="openDisclaimerBtn">Medical Disclaimer</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openPrivacyBtn">Privacy Policy</button>
+        <span class="legal-sep">&bull;</span>
+        <button type="button" class="legal-link-btn" id="openTermsBtn">Terms of Use</button>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- Reusable Modal Dialog for Medical Disclaimer & Policies -->
   <div class="modal-backdrop" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
@@ -871,13 +889,13 @@
     "about": [
       "Dr. Laxme Gowda is the Director and Chairman of Sulakshaa Multi Speciality Hospital, with extensive clinical and academic expertise in Internal Medicine.",
       "Former Professor of Medicine at Mysore Medical College & Research Institute (MMCRI), having trained multiple generations of physicians across Karnataka.",
-      "Distinguished authority in adult internal medicine, multi-system disorders, diabetes mellitus, cardiovascular risk management, and geriatric care.",
-      "Passionate about ethical, evidence-based medicine and providing personalized patient care across Mysuru, Mandya, Chamrajnagar, and Kodagu."
+      "Distinguished authority in adult internal medicine, multi-system disorders, diabetes mellitus, cardiovascular risk management and geriatric care.",
+      "Passionate about ethical, evidence-based medicine and providing personalized patient care across Mysuru, Mandya, Chamrajnagar and Kodagu."
     ],
     "expBullets": [
-      "Over four decades of inpatient hospital clinical leadership, intensive care supervision, and outpatient diagnostics.",
-      "Comprehensive management of severe diabetes, diabetic neuropathy, nephropathy, and diabetic foot complications.",
-      "Advanced clinical management of hypertension, ischemic heart disease, heart failure, and cardiometabolic syndrome.",
+      "Over four decades of inpatient hospital clinical leadership, intensive care supervision and outpatient diagnostics.",
+      "Comprehensive management of severe diabetes, diabetic neuropathy, nephropathy and diabetic foot complications.",
+      "Advanced clinical management of hypertension, ischemic heart disease, heart failure and cardiometabolic syndrome.",
       "Former Professor and Head of Medical Units at Mysore Medical College and KR Hospital, Mysuru."
     ]
   },
@@ -894,13 +912,13 @@
     "image": "assets/dr-ananya-c-l.jpg",
     "initials": "AC",
     "about": [
-      "Dr. Ananya C L is a compassionate and skilled consultant general physician specializing in adult disease diagnosis, lifestyle medicine, and preventative care.",
-      "Expertise in acute adult infections, metabolic syndrome, thyroid disorders, and systemic autoimmune conditions.",
-      "Dedicated to patient counseling, continuous health monitoring, and personalized therapeutic regimens."
+      "Dr. Ananya C L is a compassionate and skilled consultant general physician specializing in adult disease diagnosis, lifestyle medicine and preventative care.",
+      "Expertise in acute adult infections, metabolic syndrome, thyroid disorders and systemic autoimmune conditions.",
+      "Dedicated to patient counseling, continuous health monitoring and personalized therapeutic regimens."
     ],
     "expBullets": [
-      "Clinical diagnosis and management of infectious diseases, dengue, typhoid, viral fevers, and respiratory tract infections.",
-      "Long-term management of hypertension, dyslipidemia, adult diabetes, and metabolic health.",
+      "Clinical diagnosis and management of infectious diseases, dengue, typhoid, viral fevers and respiratory tract infections.",
+      "Long-term management of hypertension, dyslipidemia, adult diabetes and metabolic health.",
       "Inpatient adult critical care stabilization and multi-disciplinary medical consultations."
     ]
   },
@@ -918,13 +936,13 @@
     "initials": "SG",
     "about": [
       "Dr. Sumangala G N is a senior obstetrician and gynecologist with extensive clinical and academic expertise in Internal Medicine.",
-      "Specializes in comprehensive antenatal care, natural deliveries, painless labor, emergency Caesarean sections, and gynecological surgeries.",
+      "Specializes in comprehensive antenatal care, natural deliveries, painless labor, emergency Caesarean sections and gynecological surgeries.",
       "Strong advocate of compassionate, woman-centric clinical care from adolescence through menopause."
     ],
     "expBullets": [
-      "Expert management of high-risk pregnancies, pre-eclampsia, gestational diabetes, and multiple gestations.",
-      "Extensive surgical experience in abdominal and vaginal hysterectomy, ovarian cystectomy, and fibroid myomectomy.",
-      "Adolescent gynecology, menstrual irregularities, PCOS/PCOD management, and menopause health clinics."
+      "Expert management of high-risk pregnancies, pre-eclampsia, gestational diabetes and multiple gestations.",
+      "Extensive surgical experience in abdominal and vaginal hysterectomy, ovarian cystectomy and fibroid myomectomy.",
+      "Adolescent gynecology, menstrual irregularities, PCOS/PCOD management and menopause health clinics."
     ]
   },
   {
@@ -940,15 +958,15 @@
     "image": "assets/surg-lt-cdr-dr-prajwal-s.jpg",
     "initials": "PS",
     "about": [
-      "Surg Lt Cdr (Dr) Prajwal S, Retd, is an esteemed reproductive medicine specialist, fertility consultant, and minimal access surgeon.",
-      "Former Surgeon Lieutenant Commander in the Indian Navy, bringing military-grade discipline, precision, and surgical excellence to reproductive healthcare.",
+      "Surg Lt Cdr (Dr) Prajwal S, Retd, is an esteemed reproductive medicine specialist, fertility consultant and minimal access surgeon.",
+      "Former Surgeon Lieutenant Commander in the Indian Navy, bringing military-grade discipline, precision and surgical excellence to reproductive healthcare.",
       "Holds advanced fellowships in Minimal Access Surgery (FMAS, DMAS) and Assisted Reproductive Technology (ART / IVF).",
-      "Specializes in reproductive endocrinology, advanced IVF protocols, fertility preservation, and 3D laparoscopic fertility enhancement surgery."
+      "Specializes in reproductive endocrinology, advanced IVF protocols, fertility preservation and 3D laparoscopic fertility enhancement surgery."
     ],
     "expBullets": [
-      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
-      "Advanced laparoscopic and hysteroscopic surgeries for severe endometriosis, uterine septums, and tubal recanalization.",
-      "Male infertility evaluation, surgical sperm retrieval (TESA/PESA/Micro-TESE), and hormonal optimization.",
+      "Hospital clinical leadership, patient care and outpatient diagnostics..",
+      "Advanced laparoscopic and hysteroscopic surgeries for severe endometriosis, uterine septums and tubal recanalization.",
+      "Male infertility evaluation, surgical sperm retrieval (TESA/PESA/Micro-TESE) and hormonal optimization.",
       "Distinguished military medical service recipient with exemplary clinical protocols and high IVF success rates."
     ]
   },
@@ -962,17 +980,17 @@
     "experience": "12+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 7:30 PM",
-    "image": null,
+    "image": "assets/dr-hoysala-kantharaju.jpg",
     "initials": "HK",
     "about": [
       "Dr. Hoysala Kantharaju is an accomplished orthopaedic surgeon trained at the prestigious SMS Hospital, Jaipur, with a specialized FIFA Diploma in Football Medicine.",
-      "Specializes in arthroscopic joint reconstruction, complex trauma management, ligament reconstructions, and sports injury rehabilitation.",
+      "Specializes in arthroscopic joint reconstruction, complex trauma management, ligament reconstructions and sports injury rehabilitation.",
       "Dedicated to restoring mobility and athletic performance through minimally invasive surgical techniques and structured physiotherapy."
     ],
     "expBullets": [
-      "Arthroscopic ACL/PCL reconstruction, meniscal repair, shoulder rotator cuff repairs, and labral stabilization.",
-      "Complex articular fractures, polytrauma fixation, and geriatric fragility fractures.",
-      "Sports injury prevention, athlete screening, cartilage restoration, and musculoskeletal joint injections."
+      "Arthroscopic ACL/PCL reconstruction, meniscal repair, shoulder rotator cuff repairs and labral stabilization.",
+      "Complex articular fractures, polytrauma fixation and geriatric fragility fractures.",
+      "Sports injury prevention, athlete screening, cartilage restoration and musculoskeletal joint injections."
     ]
   },
   {
@@ -989,13 +1007,13 @@
     "initials": "MB",
     "about": [
       "Dr. Madhu B S is a veteran general and minimal access laparoscopic surgeon with dedicated clinical expertise.",
-      "Specializes in advanced gastrointestinal laparoscopy, hernia repairs, thyroid surgery, and emergency abdominal surgery.",
-      "Known for surgical precision, low complication rates, and rapid post-operative patient recovery."
+      "Specializes in advanced gastrointestinal laparoscopy, hernia repairs, thyroid surgery and emergency abdominal surgery.",
+      "Known for surgical precision, low complication rates and rapid post-operative patient recovery."
     ],
     "expBullets": [
-      "Over 6,000 successful laparoscopic cholecystectomies, appendectomies, and hernia repairs performed.",
-      "Advanced management of acute surgical emergencies including intestinal perforation, bowel obstruction, and peritonitis.",
-      "Thyroidectomy, parotid surgery, breast lump excision, and complex diabetic wound salvage."
+      "Over 6,000 successful laparoscopic cholecystectomies, appendectomies and hernia repairs performed.",
+      "Advanced management of acute surgical emergencies including intestinal perforation, bowel obstruction and peritonitis.",
+      "Thyroidectomy, parotid surgery, breast lump excision and complex diabetic wound salvage."
     ]
   },
   {
@@ -1012,13 +1030,13 @@
     "initials": "SV",
     "about": [
       "Dr. Sachin V is a dynamic general and minimal access surgeon known for his clinical excellence in laparoscopic procedures and therapeutic endoscopy.",
-      "Specializes in laparoscopic abdominal surgeries, inguinal hernia mesh repairs, gallbladder removal, and surgical gastroenterology support.",
-      "Committed to minimally invasive techniques that minimize pain, shorten hospital stay, and optimize healing."
+      "Specializes in laparoscopic abdominal surgeries, inguinal hernia mesh repairs, gallbladder removal and surgical gastroenterology support.",
+      "Committed to minimally invasive techniques that minimize pain, shorten hospital stay and optimize healing."
     ],
     "expBullets": [
-      "High-volume laparoscopic cholecystectomy, appendectomy, and laparoscopic inguinal and ventral hernia repairs.",
-      "Diagnostic upper GI endoscopy, endoscopic mucosal interventions, and gastrointestinal bleeding control.",
-      "Emergency trauma laparotomy, acute appendicitis, and surgical ICU management."
+      "High-volume laparoscopic cholecystectomy, appendectomy and laparoscopic inguinal and ventral hernia repairs.",
+      "Diagnostic upper GI endoscopy, endoscopic mucosal interventions and gastrointestinal bleeding control.",
+      "Emergency trauma laparotomy, acute appendicitis and surgical ICU management."
     ]
   },
   {
@@ -1034,14 +1052,14 @@
     "image": "assets/dr-nisha-n.jpg",
     "initials": "NN",
     "about": [
-      "Dr Nisha N is a skilled consultant general surgeon providing expert surgical care in abdominal, soft tissue, and trauma surgery.",
-      "Focused on empathetic patient care, precision operative techniques, and evidence-based pre- and post-operative surgical pathways.",
-      "Special interests include breast benign and malignant conditions, thyroid diseases, and minimally invasive hernia repairs."
+      "Dr Nisha N is a skilled consultant general surgeon providing expert surgical care in abdominal, soft tissue and trauma surgery.",
+      "Focused on empathetic patient care, precision operative techniques and evidence-based pre- and post-operative surgical pathways.",
+      "Special interests include breast benign and malignant conditions, thyroid diseases and minimally invasive hernia repairs."
     ],
     "expBullets": [
-      "Elective and emergency abdominal surgeries, laparoscopic appendectomy, and open/laparoscopic hernia repairs.",
-      "Comprehensive breast lump evaluation, fibroadenoma excision, and oncoplastic surgical techniques.",
-      "Soft tissue tumor excision, cystectomy, wound management, and diabetic foot ulcer care."
+      "Elective and emergency abdominal surgeries, laparoscopic appendectomy and open/laparoscopic hernia repairs.",
+      "Comprehensive breast lump evaluation, fibroadenoma excision and oncoplastic surgical techniques.",
+      "Soft tissue tumor excision, cystectomy, wound management and diabetic foot ulcer care."
     ]
   },
   {
@@ -1054,17 +1072,17 @@
     "experience": "12+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Mon - Sat: 2:00 PM - 6:00 PM",
-    "image": null,
+    "image": "assets/dr-lokesh-mg.jpg?v=2",
     "initials": "LM",
     "about": [
-      "Dr Lokesh MG is an experienced general surgeon with extensive expertise in open and minimally invasive abdominal surgeries, trauma care, and elective procedures.",
-      "Committed to rigorous surgical safety protocols, modern infection control, and prompt post-op recovery.",
-      "Provides expert consultations for gastrointestinal symptoms, abdominal wall defects, and surgical wound healing."
+      "Dr Lokesh MG is an experienced general surgeon with extensive expertise in open and minimally invasive abdominal surgeries, trauma care and elective procedures.",
+      "Committed to rigorous surgical safety protocols, modern infection control and prompt post-op recovery.",
+      "Provides expert consultations for gastrointestinal symptoms, abdominal wall defects and surgical wound healing."
     ],
     "expBullets": [
-      "Extensive experience in open and laparoscopic abdominal surgery, hernia repair, and appendectomy.",
-      "Management of acute surgical trauma, burn wound care, and diabetic foot salvage.",
-      "Daycare minor surgical procedures including sebaceous cyst excision, lipoma removal, and abscess drainage."
+      "Extensive experience in open and laparoscopic abdominal surgery, hernia repair and appendectomy.",
+      "Management of acute surgical trauma, burn wound care and diabetic foot salvage.",
+      "Daycare minor surgical procedures including sebaceous cyst excision, lipoma removal and abscess drainage."
     ]
   },
   {
@@ -1081,14 +1099,14 @@
     "initials": "HD",
     "about": [
       "Dr. H N Dinesh is a premier surgical gastroenterologist and senior laparoscopic surgeon with extensive clinical and academic expertise in Internal Medicine.",
-      "Fellow of Surgical Gastroenterology (FSGE), specializing in complex hepato-pancreato-biliary (HPB) surgery, GI tract tumors, and advanced laparoscopic procedures.",
+      "Fellow of Surgical Gastroenterology (FSGE), specializing in complex hepato-pancreato-biliary (HPB) surgery, GI tract tumors and advanced laparoscopic procedures.",
       "Renowned across the region for managing complex surgical cases with outstanding clinical outcomes."
     ],
     "expBullets": [
-      "Advanced laparoscopic GI surgery, laparoscopic fundoplication, colorectal resections, and splenectomy.",
-      "Complex biliary tract reconstruction, hepatic surgery, and pancreatic resection for benign and malignant conditions.",
-      "Surgical management of gastrointestinal malignancies, stomach cancer, and colorectal cancer.",
-      "Therapeutic endoscopy, ERCP support, and complicated intra-abdominal sepsis management."
+      "Advanced laparoscopic GI surgery, laparoscopic fundoplication, colorectal resections and splenectomy.",
+      "Complex biliary tract reconstruction, hepatic surgery and pancreatic resection for benign and malignant conditions.",
+      "Surgical management of gastrointestinal malignancies, stomach cancer and colorectal cancer.",
+      "Therapeutic endoscopy, ERCP support and complicated intra-abdominal sepsis management."
     ]
   },
   {
@@ -1101,17 +1119,17 @@
     "experience": "14+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Tue, Thu, Sat: 11:00 AM - 3:00 PM",
-    "image": null,
+    "image": "assets/dr-deepak-b-gowda.jpg",
     "initials": "DG",
     "about": [
       "Dr. Deepak B Gowda is a super-specialist surgical gastroenterologist and GI onco-surgeon trained at premier national institutes including JIPMER and GB Pant Hospital, New Delhi.",
-      "Holds MCh in Surgical Gastroenterology, DNB in General Surgery, and advanced fellowships in Minimal Access Surgery.",
-      "Specializes in gastrointestinal oncology, liver resections, pancreatic surgery, advanced laparoscopy, and multi-visceral resections."
+      "Holds MCh in Surgical Gastroenterology, DNB in General Surgery and advanced fellowships in Minimal Access Surgery.",
+      "Specializes in gastrointestinal oncology, liver resections, pancreatic surgery, advanced laparoscopy and multi-visceral resections."
     ],
     "expBullets": [
-      "Whipple's pancreaticoduodenectomy, distal pancreatectomy, and complex hepatic resections.",
+      "Whipple's pancreaticoduodenectomy, distal pancreatectomy and complex hepatic resections.",
       "Minimally invasive laparoscopic colorectal cancer surgery and radical gastrectomy.",
-      "Management of chronic pancreatitis, bile duct injuries, and portal hypertension surgeries.",
+      "Management of chronic pancreatitis, bile duct injuries and portal hypertension surgeries.",
       "Extensive academic research and clinical publications in national and international surgical journals."
     ]
   },
@@ -1129,12 +1147,12 @@
     "initials": "LH",
     "about": [
       "Dr Lokesh H M is a dedicated super-specialist surgical gastroenterologist holding an MCh in Surgical Gastroenterology.",
-      "Expert in surgical management of diseases of the esophagus, stomach, liver, gallbladder, bile ducts, pancreas, and intestines.",
+      "Expert in surgical management of diseases of the esophagus, stomach, liver, gallbladder, bile ducts, pancreas and intestines.",
       "Committed to precision minimal access surgical interventions and optimal oncological clearance."
     ],
     "expBullets": [
-      "Surgical management of gallstone disease, choledochal cyst excision, and biliary stricture repair.",
-      "Colorectal surgery for diverticular disease, ulcerative colitis, and GI malignancies.",
+      "Surgical management of gallstone disease, choledochal cyst excision and biliary stricture repair.",
+      "Colorectal surgery for diverticular disease, ulcerative colitis and GI malignancies.",
       "Laparoscopic GI oncology resections and complex emergency abdominal explorations."
     ]
   },
@@ -1153,14 +1171,14 @@
     "about": [
       "Dr. Thibbe Gowda C D is a beloved senior paediatrician with extensive clinical and academic expertise in Internal Medicine.",
       "Leads the Paediatric and Neonatal Care department at Sulakshaa Hospital with profound expertise and reassuring clinical empathy.",
-      "Specializes in childhood infectious diseases, growth and developmental monitoring, pediatric asthma, and newborn wellness.",
+      "Specializes in childhood infectious diseases, growth and developmental monitoring, pediatric asthma and newborn wellness.",
       "Trusted by thousands of families across Southern Karnataka for clinical accuracy and compassionate care."
     ],
     "expBullets": [
-      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
-      "Expertise in neonatal stabilization, neonatal jaundice, and childhood infectious illnesses.",
+      "Hospital clinical leadership, patient care and outpatient diagnostics..",
+      "Expertise in neonatal stabilization, neonatal jaundice and childhood infectious illnesses.",
       "Comprehensive vaccination schedule implementation according to Indian Academy of Pediatrics (IAP) guidelines.",
-      "Pediatric asthma management, allergic disorders, and adolescent nutritional counseling."
+      "Pediatric asthma management, allergic disorders and adolescent nutritional counseling."
     ]
   },
   {
@@ -1176,14 +1194,38 @@
     "image": "assets/dr-akshatha-p-deshpande.jpg",
     "initials": "AD",
     "about": [
-      "Dr. Akshatha P Deshpande is a gentle, knowledgeable consultant paediatrician specializing in newborn care, child development, and pediatric intensive care.",
-      "Trained at leading pediatric centers, with strong emphasis on proactive child health screening, pediatric allergy, and nutritional guidance.",
+      "Dr. Akshatha P Deshpande is a gentle, knowledgeable consultant paediatrician specializing in newborn care, child development and pediatric intensive care.",
+      "Trained at leading pediatric centers, with strong emphasis on proactive child health screening, pediatric allergy and nutritional guidance.",
       "Passionate about early childhood milestone monitoring and comforting parents through clear communication."
     ],
     "expBullets": [
-      "Newborn care, well-baby clinics, and premature infant developmental follow-up.",
-      "Management of pediatric respiratory infections, bronchiolitis, viral fevers, and gastroenteritis.",
-      "Immunization counseling, pediatric allergy testing, and childhood eczema management."
+      "Newborn care, well-baby clinics and premature infant developmental follow-up.",
+      "Management of pediatric respiratory infections, bronchiolitis, viral fevers and gastroenteritis.",
+      "Immunization counseling, pediatric allergy testing and childhood eczema management."
+    ]
+  },
+  {
+    "name": "Dr. Pallavi K",
+    "qual": "MBBS, DNB (Paediatrics)",
+    "designation": "Consultant Paediatrician",
+    "department": "Paediatrics",
+    "speciality": "Paediatrician",
+    "headline": "Dr. Pallavi K – Consultant Paediatrician & Child Health Specialist in Mysuru",
+    "experience": "8+ Years",
+    "languages": "English, Kannada, Hindi",
+    "opd": "Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 7:30 PM",
+    "image": "assets/dr-pallavi-k.jpg",
+    "initials": "PK",
+    "about": [
+      "Dr. Pallavi K is a dedicated consultant paediatrician specializing in comprehensive infant, child and adolescent healthcare at Sulakshaa Multi Speciality Hospital.",
+      "Expertise in neonatal care, routine and optional immunizations, acute pediatric illness management and early childhood growth and development.",
+      "Known for her compassionate, child-friendly approach and supportive guidance for parents on childhood nutrition, preventive health and wellness."
+    ],
+    "expBullets": [
+      "Comprehensive outpatient pediatric consultation and inpatient pediatric clinical management.",
+      "Newborn screening, neonatal monitoring, developmental milestones assessment and vaccination programs.",
+      "Management of childhood respiratory infections, pediatric allergies, fever disorders and gastrointestinal issues.",
+      "Active clinical participation in pediatric intensive care and emergency pediatric triage."
     ]
   },
   {
@@ -1199,16 +1241,16 @@
     "image": "assets/dr-keethiraj-d-b.jpg",
     "initials": "KD",
     "about": [
-      "Dr Keethiraj D B is a prominent super-specialist neurologist holding DM in Neurology, MD, and DNB qualifications.",
-      "Specializes in acute stroke diagnosis and thrombolysis, epilepsy, movement disorders, neuro-infections, and neurodegenerative illnesses.",
-      "Dedicated to cutting-edge clinical neurology, EEG/ENMG neuro-diagnostics, and long-term neuro-rehabilitation.",
-      "Known for thorough clinical assessments, accurate localized diagnostics, and compassionate patient care."
+      "Dr Keethiraj D B is a prominent super-specialist neurologist holding DM in Neurology, MD and DNB qualifications.",
+      "Specializes in acute stroke diagnosis and thrombolysis, epilepsy, movement disorders, neuro-infections and neurodegenerative illnesses.",
+      "Dedicated to cutting-edge clinical neurology, EEG/ENMG neuro-diagnostics and long-term neuro-rehabilitation.",
+      "Known for thorough clinical assessments, accurate localized diagnostics and compassionate patient care."
     ],
     "expBullets": [
-      "Emergency stroke care, thrombolytic therapy decision-making, and stroke prevention protocols.",
-      "Diagnosis and management of intractable epilepsy, seizure disorders, and status epilepticus.",
-      "Parkinson's disease, dystonia, tremor clinics, and movement disorder therapeutics.",
-      "Neuropathy, Guillain-Barré syndrome, Myasthenia Gravis, and chronic migraine therapies."
+      "Emergency stroke care, thrombolytic therapy decision-making and stroke prevention protocols.",
+      "Diagnosis and management of intractable epilepsy, seizure disorders and status epilepticus.",
+      "Parkinson's disease, dystonia, tremor clinics and movement disorder therapeutics.",
+      "Neuropathy, Guillain-Barré syndrome, Myasthenia Gravis and chronic migraine therapies."
     ]
   },
   {
@@ -1221,17 +1263,17 @@
     "experience": "15+ Years",
     "languages": "English, Kannada, Hindi",
     "opd": "Tue, Thu, Sat: 2:00 PM - 6:00 PM",
-    "image": null,
+    "image": "assets/dr-rajesh-t-s.jpg",
     "initials": "RT",
     "about": [
       "Dr. Rajesh T S is an experienced neurosurgeon and spine specialist holding an MCh in Neurosurgery with dedicated clinical expertise.",
-      "Specializes in microscopic brain tumor surgery, head trauma, spinal cord decompression, disc herniations, and minimally invasive spine surgery.",
+      "Specializes in microscopic brain tumor surgery, head trauma, spinal cord decompression, disc herniations and minimally invasive spine surgery.",
       "Leads advanced neuro-trauma stabilization and emergency cranial decompressive procedures at Sulakshaa Hospital."
     ],
     "expBullets": [
-      "Emergency craniotomy for traumatic brain injuries, extradural hematoma, and subdural hemorrhage.",
-      "Microsurgical excision of brain and spinal cord tumors, meningiomas, and schwannomas.",
-      "Lumbar and cervical microdiscectomy, spinal fusion, and spondylolisthesis fixation.",
+      "Emergency craniotomy for traumatic brain injuries, extradural hematoma and subdural hemorrhage.",
+      "Microsurgical excision of brain and spinal cord tumors, meningiomas and schwannomas.",
+      "Lumbar and cervical microdiscectomy, spinal fusion and spondylolisthesis fixation.",
       "Ventricular shunting for hydrocephalus and peripheral nerve surgical decompressions."
     ]
   },
@@ -1249,14 +1291,14 @@
     "initials": "GD",
     "about": [
       "Dr. Girish T D is an expert consultant urologist and endourologist with extensive clinical and academic expertise in Internal Medicine.",
-      "Specializes in endourology for kidney stones, laser prostate surgery (TURP/HoLEP), reconstructive urology, and male infertility.",
-      "Dedicated to minimally invasive urological procedures that offer rapid recovery, reduced hospital stay, and low recurrence rates."
+      "Specializes in endourology for kidney stones, laser prostate surgery (TURP/HoLEP), reconstructive urology and male infertility.",
+      "Dedicated to minimally invasive urological procedures that offer rapid recovery, reduced hospital stay and low recurrence rates."
     ],
     "expBullets": [
       "Laser lithotripsy for complex kidney and ureteral stones (PCNL, Mini-PCNL, URS, RIRS).",
       "Transurethral resection of the prostate (TURP) and medical management of benign prostatic hyperplasia (BPH).",
       "Uro-oncological surgeries for bladder and kidney tumors.",
-      "Evaluation and treatment of male sexual dysfunction, stricture urethra, and recurrent urinary infections."
+      "Evaluation and treatment of male sexual dysfunction, stricture urethra and recurrent urinary infections."
     ]
   },
   {
@@ -1272,15 +1314,15 @@
     "image": "assets/dr-kiran-p-k.jpg",
     "initials": "KP",
     "about": [
-      "Dr. Kiran P K is a skilled medical oncologist specializing in comprehensive systemic cancer therapy, immunotherapy, and targeted molecular oncology.",
+      "Dr. Kiran P K is a skilled medical oncologist specializing in comprehensive systemic cancer therapy, immunotherapy and targeted molecular oncology.",
       "Holds DNB in Medical Oncology with intensive clinical training in solid tumors and hematological malignancies.",
-      "Passionate about personalized cancer care protocols, evidence-based chemotherapy, and holistic supportive palliative support."
+      "Passionate about personalized cancer care protocols, evidence-based chemotherapy and holistic supportive palliative support."
     ],
     "expBullets": [
-      "Administration and supervision of intravenous chemotherapy, immunotherapy, and targeted therapy regimens.",
-      "Specialist in breast cancer, lung cancer, gastrointestinal malignancies, and gynecological cancers.",
+      "Administration and supervision of intravenous chemotherapy, immunotherapy and targeted therapy regimens.",
+      "Specialist in breast cancer, lung cancer, gastrointestinal malignancies and gynecological cancers.",
       "Hematological malignancy management including lymphoma and multiple myeloma.",
-      "Cancer symptom management, pain control, and patient and family counseling."
+      "Cancer symptom management, pain control and patient and family counseling."
     ]
   },
   {
@@ -1297,15 +1339,15 @@
     "initials": "NK",
     "about": [
       "Dr. Narendra Kumar M S is a distinguished psychiatrist trained at the prestigious National Institute of Mental Health and Neurosciences (NIMHANS), Bengaluru.",
-      "Holds DPM (NIMHANS), DNB in Psychiatry, and a Postgraduate Diploma in Medical Law & Ethics (PGDMLE).",
-      "Specializes in mood disorders, clinical depression, anxiety neurosis, obsessive-compulsive disorder, and adult de-addiction.",
+      "Holds DPM (NIMHANS), DNB in Psychiatry and a Postgraduate Diploma in Medical Law & Ethics (PGDMLE).",
+      "Specializes in mood disorders, clinical depression, anxiety neurosis, obsessive-compulsive disorder and adult de-addiction.",
       "Advocates strongly for empathetic, destigmatized psychiatric care and integrative biopsychosocial wellness."
     ],
     "expBullets": [
-      "Hospital clinical leadership, patient care, and outpatient diagnostics..",
-      "Treatment of major depressive disorder, bipolar affective disorder, panic attacks, and severe OCD.",
-      "De-addiction programs for alcohol, nicotine, and substance dependence with relapse prevention counseling.",
-      "Geriatric psychiatric care, dementia-related behavioral support, and stress resilience mentoring."
+      "Hospital clinical leadership, patient care and outpatient diagnostics..",
+      "Treatment of major depressive disorder, bipolar affective disorder, panic attacks and severe OCD.",
+      "De-addiction programs for alcohol, nicotine and substance dependence with relapse prevention counseling.",
+      "Geriatric psychiatric care, dementia-related behavioral support and stress resilience mentoring."
     ]
   },
   {
@@ -1322,14 +1364,14 @@
     "initials": "MD",
     "about": [
       "Dr Madhav D is a senior consultant ENT surgeon with extensive clinical and academic expertise in Internal Medicine.",
-      "Holds MS and DLO in OTO-Rhino-Laryngology, specializing in endoscopic sinus surgery, tympanoplasty, vertigo management, and micro-laryngeal surgery.",
-      "Committed to preserving auditory, nasal, and vocal health through advanced diagnostic and microscopic surgical interventions."
+      "Holds MS and DLO in OTO-Rhino-Laryngology, specializing in endoscopic sinus surgery, tympanoplasty, vertigo management and micro-laryngeal surgery.",
+      "Committed to preserving auditory, nasal and vocal health through advanced diagnostic and microscopic surgical interventions."
     ],
     "expBullets": [
       "Functional Endoscopic Sinus Surgery (FESS) for chronic sinusitis and nasal polyposis.",
-      "Microscopic ear surgery: tympanoplasty, mastoidectomy, and stapedotomy for hearing restoration.",
-      "Micro-laryngeal surgery for vocal cord polyps, nodules, and hoarseness of voice.",
-      "Comprehensive evaluation of vertigo, tinnitus, snoring, and obstructive sleep apnea (OSA)."
+      "Microscopic ear surgery: tympanoplasty, mastoidectomy and stapedotomy for hearing restoration.",
+      "Micro-laryngeal surgery for vocal cord polyps, nodules and hoarseness of voice.",
+      "Comprehensive evaluation of vertigo, tinnitus, snoring and obstructive sleep apnea (OSA)."
     ]
   },
   {
@@ -1345,14 +1387,14 @@
     "image": "assets/dr-nishanth-r-k.jpg",
     "initials": "NR",
     "about": [
-      "Dr. Nishanth R K is a consultant radiologist providing diagnostic precision across ultrasound, computed tomography (CT), X-ray, and Doppler imaging.",
-      "Specializes in abdominal imaging, emergency trauma radiology, obstetrical Doppler scans, and musculoskeletal ultrasonography.",
+      "Dr. Nishanth R K is a consultant radiologist providing diagnostic precision across ultrasound, computed tomography (CT), X-ray and Doppler imaging.",
+      "Specializes in abdominal imaging, emergency trauma radiology, obstetrical Doppler scans and musculoskeletal ultrasonography.",
       "Ensures rapid, highly accurate reporting to support immediate medical and surgical clinical decision-making."
     ],
     "expBullets": [
-      "High-resolution Ultrasonography (USG), Whole Abdomen, Pelvis, and Superficial small parts scans.",
-      "Obstetric anomaly scans, 3D/4D ultrasound, and feto-maternal Doppler assessments.",
-      "Multi-detector Computed Tomography (CT) scan interpretation for acute trauma, stroke, and abdominal emergencies.",
+      "High-resolution Ultrasonography (USG), Whole Abdomen, Pelvis and Superficial small parts scans.",
+      "Obstetric anomaly scans, 3D/4D ultrasound and feto-maternal Doppler assessments.",
+      "Multi-detector Computed Tomography (CT) scan interpretation for acute trauma, stroke and abdominal emergencies.",
       "USG-guided diagnostic fine-needle aspirations and therapeutic fluid collections."
     ]
   },
@@ -1370,14 +1412,14 @@
     "initials": "DS",
     "about": [
       "Dr. Shashidhar is a senior consultant pathologist and healthcare management specialist with extensive clinical and academic expertise in Internal Medicine.",
-      "Heads the central diagnostic pathology laboratory at Sulakshaa Hospital, overseeing histopathology, cytopathology, hematology, and clinical biochemistry.",
-      "Committed to rigorous external quality assurance, automated diagnostic accuracy, and rapid critical value reporting."
+      "Heads the central diagnostic pathology laboratory at Sulakshaa Hospital, overseeing histopathology, cytopathology, hematology and clinical biochemistry.",
+      "Committed to rigorous external quality assurance, automated diagnostic accuracy and rapid critical value reporting."
     ],
     "expBullets": [
-      "Expert histopathological evaluation of surgical biopsy specimens, cancer resections, and frozen sections.",
+      "Expert histopathological evaluation of surgical biopsy specimens, cancer resections and frozen sections.",
       "Fine Needle Aspiration Cytology (FNAC) and exfoliative cytology for early malignancy screening.",
-      "Supervision of fully automated hematology, clinical pathology, and blood bank transfusion cross-matching.",
-      "Quality assurance certifications, ISO lab management, and continuous clinical audit protocols."
+      "Supervision of fully automated hematology, clinical pathology and blood bank transfusion cross-matching.",
+      "Quality assurance certifications, ISO lab management and continuous clinical audit protocols."
     ]
   }
 ];

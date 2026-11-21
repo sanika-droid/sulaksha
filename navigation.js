@@ -102,16 +102,79 @@
     }
   }
 
+  function initFooterHelpers() {
+    // 1. Dynamic Year
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    // 2. Legal Policy Modals
+    const disclaimerBtn = document.getElementById('openDisclaimerBtn');
+    const privacyBtn = document.getElementById('openPrivacyBtn');
+    const termsBtn = document.getElementById('openTermsBtn');
+    const modal = document.getElementById('infoModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const okBtn = document.getElementById('modalOkBtn');
+
+    if (modal && modalTitle && modalBody && !window.__footerModalInit) {
+      window.__footerModalInit = true;
+
+      function openLegalModal(title, html) {
+        modalTitle.textContent = title;
+        modalBody.innerHTML = html;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLegalModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn?.addEventListener('click', closeLegalModal);
+      okBtn?.addEventListener('click', closeLegalModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLegalModal();
+      });
+
+      disclaimerBtn?.addEventListener('click', () => {
+        openLegalModal(
+          'Medical Disclaimer',
+          '<h4>1. General Information Only</h4><p>The information on this website is published for general public education and awareness only. It does not replace professional clinical diagnosis, physical examination, or tailored medical advice from a registered medical practitioner.</p><h4>2. Emergency Situations</h4><p>In case of acute medical emergencies, chest pain, stroke symptoms, major trauma, or poisoning, please call our 24/7 Emergency Casualty immediately at <strong>9535747478</strong> or visit Sulakshaa Multi Speciality Hospital, Mysuru.</p>'
+        );
+      });
+
+      privacyBtn?.addEventListener('click', () => {
+        openLegalModal(
+          'Privacy Policy',
+          '<h4>1. Confidentiality Commitment</h4><p>Sulakshaa Multi Speciality Hospital is deeply committed to upholding patient privacy and medical confidentiality. All clinical records, enquiry details, and personal data are held strictly secure and never sold or shared with unauthorized commercial entities.</p><h4>2. Data Protection</h4><p>Appointment inquiries submitted through our website are transmitted securely to authorized hospital reception coordinators exclusively for consultation scheduling and patient assistance.</p>'
+        );
+      });
+
+      termsBtn?.addEventListener('click', () => {
+        openLegalModal(
+          'Terms of Use',
+          '<h4>1. Terms Acceptance</h4><p>By accessing and utilizing this website, you agree to abide by all applicable Indian healthcare guidelines, digital laws, and hospital regulations.</p><h4>2. Hospital Enquiries</h4><p>Online appointment and second-opinion requests are subject to specialist availability and confirmed subsequent to hospital desk verification.</p>'
+        );
+      });
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initDepartmentsMegaDropdown();
       initMobileDepartmentsDropdown();
       initIcons();
+      initFooterHelpers();
     });
   } else {
     initDepartmentsMegaDropdown();
     initMobileDepartmentsDropdown();
     initIcons();
+    initFooterHelpers();
   }
 })();
 

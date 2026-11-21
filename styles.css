@@ -2262,16 +2262,36 @@ button, input, select, textarea {
   line-height: 1.6;
 }
 
-.solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+.solutions-section .container {
+  max-width: min(96vw, 1560px);
 }
 
-@media (max-width: 1100px) {
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.15rem;
+}
+
+@media (max-width: 1200px) {
+  .solutions-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.85rem;
+  }
+  .solution-card {
+    padding: 1.6rem 0.95rem 1.4rem !important;
+  }
+  .solution-card-heading {
+    font-size: 1.05rem !important;
+  }
+  .solution-card-description {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 991px) {
   .solutions-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1.15rem;
   }
 }
 
@@ -6778,6 +6798,40 @@ button, input, select, textarea {
   color: #A3D2FA;
 }
 
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  background: var(--accent-sky-blue);
+  color: var(--primary-navy);
+  border-color: var(--accent-sky-blue);
+  transform: translateY(-2px);
+}
+
+.footer-social-link i,
+.footer-social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
 .footer-bottom-bar {
   padding-top: 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -6788,6 +6842,50 @@ button, input, select, textarea {
   gap: 0.75rem;
   font-size: 0.8125rem;
   color: #DCE7F0;
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  color: #DCE7F0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footer-credit-sep {
+  color: rgba(255, 255, 255, 0.3);
+  user-select: none;
+}
+
+.footer-credit-link {
+  color: #A3D2FA;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: color var(--transition-fast, 0.25s ease);
+}
+
+.footer-credit-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .footer-credit-sep {
+    display: none;
+  }
+  .footer-credit {
+    display: block;
+    width: 100%;
+  }
 }
 
 .footer-bottom {
@@ -11390,4 +11488,74 @@ section[id], [id] {
   .top-bar-link {
     font-size: 0.78rem !important;
   }
+}
+
+/* ==========================================================================
+   WhatsApp Appointment Form Enhancements
+   ========================================================================== */
+.btn-whatsapp {
+  background-color: #25D366 !important;
+  color: #FFFFFF !important;
+  border-color: #25D366 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1EBE5D !important;
+  border-color: #1EBE5D !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-circle-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #E8F9EE;
+  color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+}
+
+.whatsapp-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #E8F9EE !important;
+  color: #128C7E !important;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(37, 211, 102, 0.3) !important;
+}
+
+.whatsapp-notice-subtext {
+  font-size: 0.85rem;
+  color: #475569;
+  margin: 0.45rem 0 1rem;
+  line-height: 1.5;
+  background: #F8FAFC;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #25D366;
+}
+
+.whatsapp-status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
 }

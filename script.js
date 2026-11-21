@@ -531,7 +531,7 @@ function initInteractiveEnquiries() {
         patientMessageInput.value = `Enquiring for consultation with ${doctor} (${dept}).`;
       }
 
-      const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+      const enquiryTarget = document.getElementById('appointmentEnquiryContainer') || document.getElementById('appointment') || document.getElementById('enquiry') || document.getElementById('contact');
       if (enquiryTarget) {
         enquiryTarget.scrollIntoView({ behavior: 'smooth' });
       }
@@ -548,7 +548,7 @@ function initInteractiveEnquiries() {
         patientMessageInput.value = 'Enquiry regarding upcoming Senior Sunday Health Check-up Camp.';
       }
 
-      const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+      const enquiryTarget = document.getElementById('appointmentEnquiryContainer') || document.getElementById('appointment') || document.getElementById('enquiry') || document.getElementById('contact');
       if (enquiryTarget) {
         enquiryTarget.scrollIntoView({ behavior: 'smooth' });
       }
@@ -573,7 +573,7 @@ function initInteractiveEnquiries() {
     }
     if ((urlDept || urlDoctor) && window.location.hash === '#enquiry') {
       setTimeout(() => {
-        const enquiryTarget = document.getElementById('enquiry') || document.getElementById('contact');
+        const enquiryTarget = document.getElementById('appointmentEnquiryContainer') || document.getElementById('appointment') || document.getElementById('enquiry') || document.getElementById('contact');
         if (enquiryTarget) {
           enquiryTarget.scrollIntoView({ behavior: 'smooth' });
         }
@@ -597,12 +597,14 @@ function initMultiStepBookingForm() {
   const specialitySelect = document.getElementById('preferredSpeciality');
   const doctorSelect = document.getElementById('preferredDoctor');
   const dateInput = document.getElementById('preferredDate');
+  const timeSelect = document.getElementById('preferredTime');
   const messageInput = document.getElementById('patientMessage');
   const consentCheckbox = document.getElementById('patientConsent');
 
   const successView = document.getElementById('formSuccessView');
   const submitBtn = document.getElementById('submitEnquiryBtn');
   const bookAnotherBtn = document.getElementById('bookAnotherBtn');
+  const whatsappDirectLink = document.getElementById('whatsappDirectLink');
 
   const deptChips = document.querySelectorAll('.dept-chip');
   const datePillToday = document.getElementById('datePillToday');
@@ -675,6 +677,12 @@ function initMultiStepBookingForm() {
     });
   }
 
+  if (timeSelect) {
+    timeSelect.addEventListener('change', () => {
+      clearFieldError('preferredTime');
+    });
+  }
+
   // Phone input formatting (numbers only, max 10 digits)
   if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
@@ -687,12 +695,13 @@ function initMultiStepBookingForm() {
   nameInput?.addEventListener('input', () => clearFieldError('patientName'));
   emailInput?.addEventListener('input', () => clearFieldError('patientEmail'));
   dateInput?.addEventListener('change', () => clearFieldError('preferredDate'));
+  timeSelect?.addEventListener('change', () => clearFieldError('preferredTime'));
   consentCheckbox?.addEventListener('change', () => clearFieldError('patientConsent'));
 
   // Backward compatibility object
   window.SulakshaaForm = {
     goToStep: () => {
-      const el = document.getElementById('enquiry') || document.getElementById('contact');
+      const el = document.getElementById('appointmentEnquiryContainer') || document.getElementById('enquiry') || document.getElementById('contact');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -717,26 +726,13 @@ function initMultiStepBookingForm() {
       showFieldError('patientPhone', 'Please enter your 10-digit mobile number.');
       valid = false;
     } else if (!phoneRegex.test(phoneVal)) {
-      showFieldError('patientPhone', 'Please enter a valid 10-digit Indian mobile number (starts with 6-9).');
+      showFieldError('patientPhone', 'Please enter a valid 10-digit mobile number (starts with 6, 7, 8 or 9).');
       valid = false;
     } else {
       clearFieldError('patientPhone');
     }
 
-    // 3. Email Address
-    const emailVal = emailInput ? emailInput.value.trim() : '';
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailVal) {
-      showFieldError('patientEmail', 'Please enter your email address for appointment confirmation.');
-      valid = false;
-    } else if (!emailRegex.test(emailVal)) {
-      showFieldError('patientEmail', 'Please enter a valid email address (e.g. name@domain.com).');
-      valid = false;
-    } else {
-      clearFieldError('patientEmail');
-    }
-
-    // 4. Medical Department / Speciality
+    // 3. Medical Department / Speciality
     const specVal = specialitySelect ? specialitySelect.value : '';
     if (!specVal) {
       showFieldError('preferredSpeciality', 'Please select a preferred medical department.');
@@ -745,16 +741,35 @@ function initMultiStepBookingForm() {
       clearFieldError('preferredSpeciality');
     }
 
-    // 5. Preferred Date
+    // 4. Preferred Date
     const dateVal = dateInput ? dateInput.value : '';
     if (!dateVal) {
-      showFieldError('preferredDate', 'Please select your preferred consultation date.');
+      showFieldError('preferredDate', 'Please select your preferred appointment date.');
       valid = false;
     } else {
       clearFieldError('preferredDate');
     }
 
-    // 6. Consent Checkbox
+    // 5. Preferred Appointment Time
+    const timeVal = timeSelect ? timeSelect.value : '';
+    if (!timeVal) {
+      showFieldError('preferredTime', 'Please select your preferred appointment time.');
+      valid = false;
+    } else {
+      clearFieldError('preferredTime');
+    }
+
+    // 6. Email Address (Optional, but if provided, must be valid)
+    const emailVal = emailInput ? emailInput.value.trim() : '';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailVal && !emailRegex.test(emailVal)) {
+      showFieldError('patientEmail', 'Please enter a valid email address (e.g. name@domain.com).');
+      valid = false;
+    } else {
+      clearFieldError('patientEmail');
+    }
+
+    // 7. Consent Checkbox
     if (consentCheckbox && !consentCheckbox.checked) {
       showFieldError('patientConsent', 'Please consent to allow our hospital reception to contact you.');
       valid = false;
@@ -765,13 +780,18 @@ function initMultiStepBookingForm() {
     return valid;
   };
 
-  // Form Submission
+  // Form Submission -> WhatsApp Click to Chat
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
       const firstInvalid = form.querySelector('.is-invalid');
       if (firstInvalid) firstInvalid.focus();
+      showToast(
+        'Incomplete Information',
+        'Please complete all required fields marked with * before proceeding to WhatsApp.',
+        'info'
+      );
       return;
     }
 
@@ -781,91 +801,109 @@ function initMultiStepBookingForm() {
     const specVal = specialitySelect ? specialitySelect.value : '';
     const doctorVal = doctorSelect && doctorSelect.value ? doctorSelect.value : 'Any Available Specialist';
     const dateVal = dateInput ? dateInput.value : '';
+    const timeVal = timeSelect ? timeSelect.value : '';
+    const reasonVal = messageInput ? messageInput.value.trim() : '';
 
-    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit';
+    // Prepare Structured WhatsApp Message
+    const whatsappNumber = '919535747478';
+    const messageLines = [
+      '🏥 *Sulakshaa Hospital - Appointment Request*',
+      '━━━━━━━━━━━━━━━━━━━━━',
+      `👤 *Patient Name:* ${nameVal}`,
+      `📱 *Mobile Number:* ${phoneVal}`
+    ];
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg class="icon-sm" style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
-          <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
-        </svg>
-        <span>Recording Enquiry...</span>
-      `;
+    // Include Email Address ONLY if patient entered one
+    if (emailVal) {
+      messageLines.push(`📧 *Email Address:* ${emailVal}`);
     }
 
-    // Simulated submission with animated response
-    setTimeout(() => {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
+    messageLines.push(
+      `🏥 *Department / Speciality:* ${specVal}`,
+      `👨‍⚕️ *Preferred Doctor:* ${doctorVal}`,
+      `📅 *Preferred Date:* ${dateVal}`,
+      `⏰ *Preferred Time:* ${timeVal}`,
+      `📝 *Reason for Visit:* ${reasonVal ? reasonVal : 'General Consultation / Regular Check-up'}`,
+      '━━━━━━━━━━━━━━━━━━━━━',
+      'ℹ️ _Submitted via Sulakshaa Hospital Website. Please review and confirm my appointment slot._'
+    );
+
+    const messageText = messageLines.join('\n');
+    const encodedText = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    // Open WhatsApp Chat in new tab/window
+    window.open(whatsappUrl, '_blank');
+
+    // Update Direct WhatsApp fallback link
+    if (whatsappDirectLink) {
+      whatsappDirectLink.href = whatsappUrl;
+    }
+
+    // Hide input rows and display WhatsApp status view (NO false booking confirmation)
+    const formRows = form.querySelectorAll('.form-row-2col, .interactive-group, .consent-group, .form-submit-row');
+    formRows.forEach(row => { row.style.display = 'none'; });
+
+    if (successView) {
+      successView.style.display = 'flex';
+
+      const summaryBox = document.getElementById('successSummaryBox');
+      if (summaryBox) {
+        summaryBox.innerHTML = `
+          <div class="success-summary-row">
+            <span class="text-muted">Patient Name:</span>
+            <strong>${escapeHtml(nameVal)}</strong>
+          </div>
+          <div class="success-summary-row">
+            <span class="text-muted">Mobile Number:</span>
+            <strong>+91 ${escapeHtml(phoneVal)}</strong>
+          </div>
+          ${emailVal ? `
+          <div class="success-summary-row">
+            <span class="text-muted">Email Address:</span>
+            <span>${escapeHtml(emailVal)}</span>
+          </div>` : ''}
+          <div class="success-summary-row">
+            <span class="text-muted">Department:</span>
+            <strong>${escapeHtml(specVal)}</strong>
+          </div>
+          <div class="success-summary-row">
+            <span class="text-muted">Preferred Doctor:</span>
+            <span>${escapeHtml(doctorVal)}</span>
+          </div>
+          <div class="success-summary-row">
+            <span class="text-muted">Preferred Date:</span>
+            <strong>${escapeHtml(dateVal)}</strong>
+          </div>
+          <div class="success-summary-row">
+            <span class="text-muted">Preferred Time:</span>
+            <strong>${escapeHtml(timeVal)}</strong>
+          </div>
+          <div class="success-summary-row">
+            <span class="text-muted">Reason for Visit:</span>
+            <span>${reasonVal ? escapeHtml(reasonVal) : 'General Consultation / Regular Check-up'}</span>
+          </div>
+        `;
       }
+    }
 
-      // Hide form input rows and show success view
-      const formRows = form.querySelectorAll('.form-row-2col, .interactive-group, .consent-group, .form-submit-row');
-      formRows.forEach(row => { row.style.display = 'none'; });
+    showToast(
+      'WhatsApp Request Prepared',
+      'Please click Send in WhatsApp to deliver your appointment request to Sulakshaa Hospital (9535747478). Staff will confirm your slot.',
+      'success'
+    );
 
-      if (successView) {
-        successView.style.display = 'flex';
-
-        const summaryBox = document.getElementById('successSummaryBox');
-        if (summaryBox) {
-          summaryBox.innerHTML = `
-            <div class="success-summary-row">
-              <span class="text-muted">Patient Name:</span>
-              <strong>${escapeHtml(nameVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Contact Phone:</span>
-              <strong>+91 ${escapeHtml(phoneVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Email Address:</span>
-              <strong>${escapeHtml(emailVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Department:</span>
-              <strong>${escapeHtml(specVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Preferred Doctor:</span>
-              <strong>${escapeHtml(doctorVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Preferred Date:</span>
-              <strong>${escapeHtml(dateVal)}</strong>
-            </div>
-            <div class="success-summary-row">
-              <span class="text-muted">Hospital Campus:</span>
-              <span>Sulakshaa Multi Speciality Hospital, Mysuru</span>
-            </div>
-          `;
-        }
-      }
-
-      showToast(
-        'Enquiry Submitted Successfully',
-        `Thank you, ${nameVal}. Your consultation enquiry has been recorded. Our reception coordinator will call +91 ${phoneVal} to confirm your appointment slot.`,
-        'success'
-      );
-
-      initLucideIcons();
-    }, 650);
+    if (window.lucide && lucide.createIcons) {
+      lucide.createIcons();
+    }
   });
 
-  // Book Another Appointment button
+  // Modify / Edit Details button
   if (bookAnotherBtn) {
     bookAnotherBtn.addEventListener('click', () => {
-      form.reset();
-      if (dateInput) dateInput.value = todayStr;
-      
-      deptChips.forEach(c => c.classList.remove('active'));
-
       if (successView) successView.style.display = 'none';
       const formRows = form.querySelectorAll('.form-row-2col, .interactive-group, .consent-group, .form-submit-row');
       formRows.forEach(row => { row.style.display = ''; });
-
       if (nameInput) nameInput.focus();
     });
   }
