@@ -1303,9 +1303,9 @@
                 <h3 class="dept-action-card-title">Second Opinion</h3>
                 <p class="dept-action-card-desc">Get in touch with us to get a second opinion from our experts.</p>
               </div>
-              <button type="button" class="dept-action-card-btn" id="heroSecondOpinionBtn">
+              <a href="https://wa.me/919535747478" target="_blank" rel="noopener noreferrer" class="dept-action-card-btn" id="heroSecondOpinionBtn" style="text-decoration: none;">
                 <span>Click here</span> <i data-lucide="arrow-right" class="icon-xs"></i>
-              </button>
+              </a>
             </div>
 
             <!-- Action Card 3: Request a Callback -->
@@ -1599,7 +1599,7 @@
           </p>
           <p>
             <i data-lucide="mail" class="icon-xs"></i>
-            <span>Email: <a href="mailto:info@sulakshaahospital.com" class="footer-link">info@sulakshaahospital.com</a></span>
+            <span>Email: <a href="mailto:reception@sulakshaamultispecialityhospital.com" class="footer-link">reception@sulakshaamultispecialityhospital.com</a></span>
           </p>
         </address>
         <div class="footer-badge-item">
@@ -1697,41 +1697,72 @@
     </div>
   </div>
 
-  <!-- Modal 2: Request a Call Back -->
+  <!-- Modal 2: Request a Callback -->
   <div class="dept-modal-backdrop" id="callbackModal" role="dialog" aria-modal="true" aria-labelledby="callbackTitle">
     <div class="dept-modal-box">
       <div class="dept-modal-header">
-        <h3 id="callbackTitle" class="dept-modal-title">Request a Call Back</h3>
+        <h3 id="callbackTitle" class="dept-modal-title">Request a Callback</h3>
         <button type="button" class="dept-modal-close" id="closeCallbackModalBtn" aria-label="Close modal">
           <i data-lucide="x" class="icon-sm"></i>
         </button>
       </div>
-      <div class="dept-modal-body">
-        <form id="callbackForm">
+      <div class="dept-modal-body" id="callbackModalBody">
+        <form id="callbackForm" novalidate>
           <div class="dept-form-group">
-            <label for="callbackName" class="dept-form-label">Your Name *</label>
-            <input type="text" id="callbackName" class="dept-form-input" required placeholder="e.g. Sunita Devi">
+            <label for="callbackName" class="dept-form-label">Patient Name *</label>
+            <input type="text" id="callbackName" class="dept-form-input" required placeholder="Enter patient full name">
+            <span class="callback-field-error" id="callbackNameError" style="display:none; color:#DC2626; font-size:0.78rem; margin-top:3px;">Please enter patient name (minimum 2 letters)</span>
           </div>
           <div class="dept-form-group">
-            <label for="callbackPhone" class="dept-form-label">Contact Phone Number *</label>
-            <input type="tel" id="callbackPhone" class="dept-form-input" required placeholder="e.g. 9845012345">
+            <label for="callbackPhone" class="dept-form-label">Mobile Number *</label>
+            <input type="tel" id="callbackPhone" class="dept-form-input" required placeholder="e.g. 9845012345" maxlength="10">
+            <span class="callback-field-error" id="callbackPhoneError" style="display:none; color:#DC2626; font-size:0.78rem; margin-top:3px;">Please enter a valid 10-digit mobile number</span>
           </div>
           <div class="dept-form-group">
-            <label for="callbackDept" class="dept-form-label">Department of Interest</label>
+            <label for="callbackDept" class="dept-form-label">Department *</label>
             <input type="text" id="callbackDept" class="dept-form-input" readonly>
           </div>
           <div class="dept-form-group">
-            <label for="callbackTime" class="dept-form-label">Preferred Time for Call Back *</label>
+            <label for="callbackTime" class="dept-form-label">Preferred Time for Callback *</label>
             <select id="callbackTime" class="dept-form-select" required>
-              <option value="morning">Morning (09:00 AM – 12:00 PM)</option>
-              <option value="afternoon">Afternoon (12:00 PM – 04:00 PM)</option>
-              <option value="evening">Evening (04:00 PM – 08:00 PM)</option>
+              <option value="" disabled selected>-- Select Preferred Time --</option>
+              <option value="Morning (09:00 AM – 12:00 PM)">Morning (09:00 AM – 12:00 PM)</option>
+              <option value="Afternoon (12:00 PM – 04:00 PM)">Afternoon (12:00 PM – 04:00 PM)</option>
+              <option value="Evening (04:00 PM – 08:00 PM)">Evening (04:00 PM – 08:00 PM)</option>
+              <option value="Immediate / As soon as possible">Immediate / As soon as possible</option>
             </select>
+            <span class="callback-field-error" id="callbackTimeError" style="display:none; color:#DC2626; font-size:0.78rem; margin-top:3px;">Please select your preferred time</span>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">
-            Submit Call Back Request
+          <div class="dept-form-group">
+            <label for="callbackReason" class="dept-form-label">Reason for Callback <span style="font-weight: normal; color: #64748B;">(Optional)</span></label>
+            <textarea id="callbackReason" class="dept-form-textarea" rows="2" placeholder="Briefly describe your symptoms or query..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="submitCallbackBtn" style="width: 100%;">
+            Submit Callback Request
           </button>
         </form>
+
+        <!-- Confirmation View (Shown on Successful Submission) -->
+        <div id="callbackSuccessView" style="display: none; text-align: center; padding: 1.25rem 0.5rem;">
+          <div style="width: 52px; height: 52px; border-radius: 50%; background: #DCFCE7; color: #16A34A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.85rem;">
+            <i data-lucide="check-circle-2" style="width: 28px; height: 28px;"></i>
+          </div>
+          <h4 style="font-family: var(--font-heading, 'Poppins', sans-serif); color: #0B2568; font-size: 1.2rem; margin-bottom: 0.4rem;">Callback Request Received!</h4>
+          <p style="color: #475569; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">
+            Thank you, <strong id="successPatientName"></strong>. Your callback request regarding <strong id="successDeptName"></strong> has been registered. Our medical team will reach out to you at <strong id="successPhone"></strong> during your requested time: <strong id="successTime"></strong>.
+          </p>
+          <div style="background: #F1F5F9; border-radius: 8px; padding: 0.85rem; margin-bottom: 1.25rem; font-size: 0.85rem; color: #334155; line-height: 1.45;">
+            Need immediate medical assistance? You can call our reception desk directly:
+          </div>
+          <div style="display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:08213525555" class="btn btn-primary" id="callbackHospitalCallBtn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <i data-lucide="phone-call" class="icon-xs"></i> <span>Call Hospital (0821-3525555)</span>
+            </a>
+            <button type="button" class="btn btn-outline" id="callbackSuccessCloseBtn">
+              <span>Close</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2320,11 +2351,19 @@
       document.getElementById('heroBookApptBtn').href = apptUrl;
       document.getElementById('overviewBookBtn').href = apptUrl;
 
-      // Update Modal Hidden Inputs
+      // Update Modal Hidden Inputs & Action Links
       const opinionDept = document.getElementById('opinionDept');
       if (opinionDept) opinionDept.value = dept.name;
       const callbackDept = document.getElementById('callbackDept');
       if (callbackDept) callbackDept.value = dept.name;
+
+      // Update Second Opinion WhatsApp Link with Selected Department
+      const waMsg = `Hello Sulakshaa Hospital, I would like to request a second medical opinion regarding ${dept.name}. Please assist me.`;
+      const waUrl = `https://wa.me/919535747478?text=${encodeURIComponent(waMsg)}`;
+      const heroSecondOpinionBtn = document.getElementById('heroSecondOpinionBtn');
+      if (heroSecondOpinionBtn) {
+        heroSecondOpinionBtn.href = waUrl;
+      }
 
       // Render Conditions Treated
       const conditionsList = document.getElementById('deptConditionsList');
@@ -2795,19 +2834,49 @@
     document.addEventListener('DOMContentLoaded', () => {
       loadDepartmentPage();
 
-      // Second Opinion Modal
-      const secondOpinionBtn = document.getElementById('heroSecondOpinionBtn');
+      // Second Opinion Modal (for general second opinion triggers if any)
       const secondOpinionModal = document.getElementById('secondOpinionModal');
       const closeOpinionModalBtn = document.getElementById('closeOpinionModalBtn');
-      secondOpinionBtn?.addEventListener('click', () => secondOpinionModal.classList.add('is-open'));
-      closeOpinionModalBtn?.addEventListener('click', () => secondOpinionModal.classList.remove('is-open'));
+      closeOpinionModalBtn?.addEventListener('click', () => secondOpinionModal?.classList.remove('is-open'));
 
       // Callback Modal
       const callbackBtn = document.getElementById('heroCallbackBtn');
       const callbackModal = document.getElementById('callbackModal');
       const closeCallbackModalBtn = document.getElementById('closeCallbackModalBtn');
-      callbackBtn?.addEventListener('click', () => callbackModal.classList.add('is-open'));
-      closeCallbackModalBtn?.addEventListener('click', () => callbackModal.classList.remove('is-open'));
+      const callbackSuccessCloseBtn = document.getElementById('callbackSuccessCloseBtn');
+      const callbackForm = document.getElementById('callbackForm');
+      const callbackSuccessView = document.getElementById('callbackSuccessView');
+
+      function openCallbackModal() {
+        if (callbackModal) {
+          // Reset form to fresh state
+          if (callbackForm) {
+            callbackForm.reset();
+            callbackForm.style.display = 'block';
+            const deptInput = document.getElementById('callbackDept');
+            const deptName = document.getElementById('deptHeroTitle')?.textContent;
+            // Ensure department name stays pre-filled
+            const currentDept = (typeof currentDeptSlug !== 'undefined' && departmentsData && departmentsData[currentDeptSlug])
+              ? departmentsData[currentDeptSlug].name
+              : '';
+            if (deptInput && currentDept) deptInput.value = currentDept;
+          }
+          if (callbackSuccessView) callbackSuccessView.style.display = 'none';
+          document.querySelectorAll('.callback-field-error').forEach(el => el.style.display = 'none');
+          callbackModal.classList.add('is-open');
+        }
+      }
+
+      function closeCallbackModal() {
+        callbackModal?.classList.remove('is-open');
+      }
+
+      callbackBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCallbackModal();
+      });
+      closeCallbackModalBtn?.addEventListener('click', closeCallbackModal);
+      callbackSuccessCloseBtn?.addEventListener('click', closeCallbackModal);
 
       // Doctor Profile Modal Close
       const docProfileModal = document.getElementById('doctorProfileModal');
@@ -2825,13 +2894,77 @@
       document.getElementById('opinionForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('Thank you! Your second opinion request has been submitted. Our clinical coordinators will contact you shortly.');
-        secondOpinionModal.classList.remove('is-open');
+        secondOpinionModal?.classList.remove('is-open');
       });
 
-      document.getElementById('callbackForm')?.addEventListener('submit', (e) => {
+      // Request a Callback Form Submission with Validation
+      callbackForm?.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Thank you! Your callback request has been recorded. Our team will reach out at your requested time.');
-        callbackModal.classList.remove('is-open');
+        let isValid = true;
+
+        const nameInput = document.getElementById('callbackName');
+        const phoneInput = document.getElementById('callbackPhone');
+        const deptInput = document.getElementById('callbackDept');
+        const timeInput = document.getElementById('callbackTime');
+        const reasonInput = document.getElementById('callbackReason');
+
+        const nameError = document.getElementById('callbackNameError');
+        const phoneError = document.getElementById('callbackPhoneError');
+        const timeError = document.getElementById('callbackTimeError');
+
+        // Reset errors
+        [nameError, phoneError, timeError].forEach(err => {
+          if (err) err.style.display = 'none';
+        });
+
+        // Validate Patient Name
+        const nameVal = nameInput ? nameInput.value.trim() : '';
+        if (!nameVal || nameVal.length < 2) {
+          if (nameError) nameError.style.display = 'block';
+          nameInput?.focus();
+          isValid = false;
+        }
+
+        // Validate Mobile Number (10 digits)
+        const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (isValid && (!phoneVal || !phoneRegex.test(phoneVal))) {
+          if (phoneError) phoneError.style.display = 'block';
+          phoneInput?.focus();
+          isValid = false;
+        }
+
+        // Validate Preferred Time
+        const timeVal = timeInput ? timeInput.value : '';
+        if (isValid && (!timeVal || timeVal === '')) {
+          if (timeError) timeError.style.display = 'block';
+          timeInput?.focus();
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Populate Confirmation View
+        const successPatientName = document.getElementById('successPatientName');
+        const successDeptName = document.getElementById('successDeptName');
+        const successPhone = document.getElementById('successPhone');
+        const successTime = document.getElementById('successTime');
+
+        if (successPatientName) successPatientName.textContent = nameVal;
+        if (successDeptName) successDeptName.textContent = deptInput ? deptInput.value : '';
+        if (successPhone) successPhone.textContent = phoneVal;
+        if (successTime) successTime.textContent = timeVal;
+
+        // Switch to Confirmation View
+        callbackForm.style.display = 'none';
+        if (callbackSuccessView) {
+          callbackSuccessView.style.display = 'block';
+        }
+
+        // Re-initialize any Lucide icons inside confirmation view
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
       });
 
       // Smooth Navigation Tabs Highlighting
