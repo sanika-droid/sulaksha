@@ -472,7 +472,13 @@ const SULAKSHAA_DOCTORS_ROSTER = [
   {
     name: "Dr. Laxme Gowda",
     label: "Dr. Laxme Gowda (General Medicine & Cardiology)",
-    departments: ["General Medicine", "Cardiology"],
+    departmentLabels: {
+      "Accident & Emergency": "Dr. Laxme Gowda (Director & Senior Physician)",
+      "Critical Care & ICU": "Dr. Laxme Gowda (Director & Senior Physician)",
+      "General Medicine": "Dr. Laxme Gowda (Director & Senior Physician - General Medicine)",
+      "Cardiology": "Dr. Laxme Gowda (Director & Senior Physician - Cardiology)"
+    },
+    departments: ["General Medicine", "Cardiology", "Accident & Emergency", "Critical Care & ICU"],
     role: "Director & Chairman, Senior General Physician, Diabetologist, Clinical Cardiologist"
   },
   {
@@ -632,7 +638,7 @@ function normalizeDepartmentName(deptInput) {
   if (/nephrol|kidney\s*dialysis/i.test(d)) return 'Nephrology';
   if (/pulmon|respirat|chest/i.test(d)) return 'Pulmonology';
   if (/emergenc|trauma|casualty/i.test(d)) return 'Accident & Emergency';
-  if (/critical|icu/i.test(d)) return 'Critical Care & ICU';
+  if (/critical|icu|anaesth|anesth/i.test(d)) return 'Critical Care & ICU';
   if (/other/i.test(d)) return 'Other Consultation';
 
   const specialitySelect = document.getElementById('preferredSpeciality');
@@ -652,9 +658,9 @@ function normalizeDepartmentName(deptInput) {
  */
 function getDoctorPrimaryDepartment(doctorName) {
   if (!doctorName) return '';
-  const clean = doctorName.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+  const clean = doctorName.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').replace(/lakshme/g, 'laxme').replace(/\s+/g, '').trim();
   const match = SULAKSHAA_DOCTORS_ROSTER.find(doc => {
-    const docClean = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
+    const docClean = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').replace(/lakshme/g, 'laxme').replace(/\s+/g, '').trim();
     return docClean === clean || doc.name.toLowerCase().includes(clean) || clean.includes(docClean);
   });
   return match && match.departments && match.departments.length ? match.departments[0] : '';
@@ -712,13 +718,14 @@ function updateDoctorDropdown(deptValue, doctorToSelect = '') {
     matchingDoctors.forEach(doc => {
       const option = document.createElement('option');
       option.value = doc.name;
-      option.textContent = doc.label || doc.name;
+      const labelText = (doc.departmentLabels && doc.departmentLabels[deptValue]) || doc.label || doc.name;
+      option.textContent = labelText;
       doctorSelect.appendChild(option);
 
       if (doctorToSelect) {
-        const cleanTarget = doctorToSelect.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
-        const cleanDoc = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').trim();
-        if (cleanDoc === cleanTarget || doc.name.toLowerCase() === doctorToSelect.toLowerCase()) {
+        const cleanTarget = doctorToSelect.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').replace(/lakshme/g, 'laxme').replace(/\s+/g, '').trim();
+        const cleanDoc = doc.name.toLowerCase().replace(/^(dr\.?|surg\s+lt\s+cdr\s*(\(dr\))?)\s*/i, '').replace(/lakshme/g, 'laxme').replace(/\s+/g, '').trim();
+        if (cleanDoc === cleanTarget || doc.name.toLowerCase() === doctorToSelect.toLowerCase() || cleanDoc.includes(cleanTarget) || cleanTarget.includes(cleanDoc)) {
           matchedDocOption = option;
         }
       }

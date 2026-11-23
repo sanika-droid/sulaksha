@@ -682,12 +682,15 @@
     /* Reference 4: Founder's Message */
     .founder-grid {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 2.25rem;
+      grid-template-columns: minmax(300px, 380px) 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
       align-items: center;
     }
 
     .founder-media-card {
+      max-width: 380px;
+      width: 100%;
+      margin: 0 auto;
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 16px;
@@ -698,31 +701,31 @@
 
     .founder-img-wrap {
       width: 100%;
-      height: 380px;
-      background: linear-gradient(180deg, #EBF4FC 0%, #FFFFFF 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: auto;
+      background: #F8FAFC;
+      display: block;
       overflow: hidden;
+      line-height: 0;
     }
 
     .founder-img-wrap img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
+      height: auto;
+      display: block;
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
 
     .founder-media-card:hover .founder-img-wrap img {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .founder-caption {
       padding: 0.85rem 1rem;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: #0B2568;
+      line-height: 1.4;
       border-top: 1px solid #EEF2F6;
       background: #FFFFFF;
     }
@@ -738,7 +741,11 @@
       }
       .founder-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.75rem;
+        justify-items: center;
+      }
+      .founder-media-card {
+        max-width: 340px;
       }
       .values-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -756,8 +763,8 @@
       .collage-top-img, .collage-bottom-img {
         height: 180px;
       }
-      .founder-img-wrap {
-        height: 300px;
+      .founder-media-card {
+        max-width: 300px;
       }
       .values-grid {
         grid-template-columns: 1fr;
@@ -1148,7 +1155,7 @@
           <div class="founder-media-card">
             <div class="founder-img-wrap">
               <img 
-                src="assets/dr-laxme-gowda.png" 
+                src="assets/founder-dr-laxme-gowda.jpg?v=3" 
                 alt="Dr. Laxme Gowda, Founder and Senior Consultant Physician of Sulakshaa Multi Speciality Hospital"
                 loading="lazy"
               >
