@@ -355,7 +355,7 @@
 
     /* Conditions Evaluated & Treated - Clean 2-Column Professional Healthcare Layout */
     .dept-conditions-box {
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       margin-bottom: 2.25rem;
       background: transparent !important;
       border: none !important;
@@ -365,10 +365,10 @@
 
     .dept-conditions-title {
       font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #0B2568;
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.25rem;
       display: block;
       letter-spacing: -0.01em;
     }
@@ -377,16 +377,16 @@
     .dept-conditions-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 2rem;
-      row-gap: 0.95rem;
+      column-gap: clamp(1.75rem, 3.5vw, 3rem);
+      row-gap: 1.15rem;
       align-items: start;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 680px) {
       .dept-conditions-pills,
       .dept-conditions-list {
         grid-template-columns: 1fr;
-        row-gap: 0.85rem;
+        row-gap: 0.95rem;
       }
     }
 
@@ -394,7 +394,7 @@
     .dept-condition-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.65rem;
+      gap: 0.75rem;
       background: none !important;
       background-color: transparent !important;
       border: none !important;
@@ -411,20 +411,21 @@
     .dept-condition-item svg {
       color: #0088D1 !important;
       stroke: #0088D1 !important;
-      width: 18px !important;
-      height: 18px !important;
-      min-width: 18px !important;
-      min-height: 18px !important;
+      width: 20px !important;
+      height: 20px !important;
+      min-width: 20px !important;
+      min-height: 20px !important;
+      stroke-width: 2.2 !important;
       flex-shrink: 0 !important;
-      margin-top: 3px !important;
+      margin-top: 2px !important;
     }
 
     .dept-condition-pill span,
     .dept-condition-item span {
       flex: 1;
       color: #0B2568;
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: 0.98rem;
+      font-weight: 600;
       line-height: 1.45;
       word-break: normal;
     }
@@ -548,7 +549,7 @@
 
     .dept-facilities-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
 
@@ -1367,35 +1368,35 @@
         <div class="dept-overview-left">
           <h2 class="dept-section-heading">Overview</h2>
           <p class="dept-overview-lead" id="deptOverviewText">
-            The Cardiac Care department at Sulakshaa Hospital focuses on early identification of heart disease, hypertension management, post-cardiac event recovery and diagnostic screening. Supported by round-the-clock intensive care telemetry, our team ensures rapid response to cardiac discomfort.
+            Our Cardiology department delivers specialized clinical and preventive cardiovascular care for ischemic heart disease, rhythm disorders and heart failure. Equipped with digital 12-lead ECG, 2D echocardiography and a 24/7 cardiac ICU telemetry monitoring unit.
           </p>
 
           <div class="dept-conditions-box">
-            <h3 class="dept-conditions-title">Conditions Evaluated &amp; Treated:</h3>
+            <h3 class="dept-conditions-title" id="deptConditionsTitle">Conditions Evaluated &amp; Treated:</h3>
             <div class="dept-conditions-pills" id="deptConditionsList">
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Acute Chest Pain &amp; Cardiac Emergencies</span>
+                <span>Coronary Artery Disease (CAD)</span>
               </div>
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Severe Road Accidents &amp; Multiple Trauma</span>
+                <span>Essential Systemic Hypertension</span>
               </div>
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Acute Stroke &amp; Sudden Neurological Deficits</span>
+                <span>Cardiac Arrhythmias &amp; Atrial Fibrillation</span>
               </div>
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Acute Respiratory Distress &amp; Oxygen Drop</span>
+                <span>Congestive Heart Failure (CHF)</span>
               </div>
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Severe Infections, Sepsis &amp; High Fevers</span>
+                <span>Atherosclerosis &amp; Hyperlipidemia</span>
               </div>
               <div class="dept-condition-pill">
                 <i data-lucide="check-circle" class="icon-xs"></i>
-                <span>Fractures, Dislocations &amp; Deep Lacerations</span>
+                <span>Valvular Heart Disease</span>
               </div>
             </div>
           </div>
@@ -1785,496 +1786,822 @@
   <!-- JavaScript Controller for Dynamic Department Data & Interactions -->
   <script>
     const DEPARTMENTS_DATA = {
-      'cardiac-care': {
-        name: 'Cardiology',
-        heroTitle: 'Best Cardiology Hospital in Mysore',
-        category: 'Centre of Clinical Excellence',
-        image: 'assets/cardiology-heart-ecg.jpg',
-        overviewImg: 'assets/journey-cardiology.jpg',
-        intro: 'Comprehensive cardiovascular assessment, preventive heart evaluations and acute cardiac stabilization in Mysuru.',
-        overview: 'The Cardiology Department at Sulakshaa Hospital is dedicated to the prevention, diagnosis and treatment of heart diseases. Equipped with advanced technology and led by experienced cardiologists, we offer comprehensive cardiac care, including non-invasive diagnostics, emergency coronary stabilization and cardiac rehabilitation.',
-        conditions: [
-          'Hypertension & Blood Pressure Fluctuations',
-          'Arrhythmia & Palpitations Evaluation',
-          'Heart Failure Management & Fluid Retention',
-          'High Cholesterol & Atherosclerosis Risk',
-          'Preventive Cardiac Risk Assessments',
-          'Angina & Chest Discomfort Triage'
-        ],
-        services: [
-          { title: 'Resting 12-Lead ECG', desc: 'Instant bedside multi-channel electrocardiograms with immediate specialist clinical evaluation.' },
-          { title: '2D Echocardiography', desc: 'Precision ultrasound imaging of heart chambers, valves and ejection fraction assessment.' },
-          { title: 'Preventive Cardiac Profiling', desc: 'Targeted lipid screening, cardiac biomarkers and lifestyle intervention protocols.' },
-          { title: 'Coronary ICU Telemetry', desc: '24/7 dedicated intensive care vital monitoring for unstable coronary conditions.' }
-        ],
-        faqs: [
-          { q: 'When should I consult a cardiologist?', a: 'You should seek immediate evaluation if experiencing sudden chest tightness, shortness of breath, unexplained dizziness, palpitations, or persistent high blood pressure.' },
-          { q: 'What should I bring to my cardiac consultation?', a: 'Please bring your previous ECG reports, lipid profile tests, a list of current medications and past discharge summaries.' },
-          { q: 'Are emergency cardiac beds available 24/7?', a: 'Yes, our hospital casualty and ICU maintain 24-hour telemetry monitoring and resident emergency medical officers.' }
-        ]
+  "cardiac-care": {
+    "name": "Cardiology",
+    "heroTitle": "Best Cardiology Hospital in Mysore",
+    "category": "Centre of Clinical Excellence",
+    "image": "assets/cardiology-heart-ecg.jpg",
+    "overviewImg": "assets/journey-cardiology.jpg",
+    "intro": "Comprehensive cardiovascular assessment, preventive heart evaluations and acute cardiac stabilization in Mysuru.",
+    "overview": "Our Cardiology department delivers specialized clinical and preventive cardiovascular care for ischemic heart disease, rhythm disorders and heart failure. Equipped with digital 12-lead ECG, 2D echocardiography and a 24/7 cardiac ICU telemetry monitoring unit.",
+    "conditions": [
+      "Coronary Artery Disease (CAD)",
+      "Essential Systemic Hypertension",
+      "Cardiac Arrhythmias & Atrial Fibrillation",
+      "Congestive Heart Failure (CHF)",
+      "Atherosclerosis & Hyperlipidemia",
+      "Valvular Heart Disease"
+    ],
+    "services": [
+      {
+        "title": "Resting 12-Lead Electrocardiogram (ECG)",
+        "desc": "Instant bedside multi-channel cardiac rhythm evaluation with immediate cardiologist review."
       },
-
-      'orthopedics': {
-        name: 'Orthopaedics',
-        heroTitle: 'Best Orthopaedics Hospital in Mysore',
-        category: 'Surgical & Trauma Centre of Excellence',
-        image: 'assets/specialty-orthopaedics-rehab.jpg',
-        overviewImg: 'assets/orthopaedics-knee-joint.jpg',
-        intro: 'Advanced management of bone fractures, degenerative arthritis, sports injuries, spine discomfort and joint reconstruction.',
-        overview: 'Sulakshaa Hospital’s Orthopaedics Centre provides compassionate, precision-driven musculoskeletal care. From emergency fracture fixation and accidental trauma triage to conservative joint pain management, arthroscopy and post-surgical rehabilitation.',
-        conditions: [
-          'Bone Fractures & Accidental Trauma',
-          'Osteoarthritis & Severe Knee/Hip Pain',
-          'Spinal Spondylosis, Disc Bulge & Sciatica',
-          'Ligament Tears & Sports Injuries',
-          'Osteoporosis & Bone Density Loss',
-          'Tendonitis, Bursitis & Frozen Shoulder'
-        ],
-        services: [
-          { title: 'Fracture Stabilization & Casting', desc: 'Emergency closed reduction, plaster casting and surgical internal fixation.' },
-          { title: 'Joint Pain & Arthritis Clinic', desc: 'Intra-articular viscosupplementation, PRP guidance and medical arthritis therapy.' },
-          { title: 'Digital X-Ray & Imaging', desc: 'High-resolution digital skeletal radiography with minimal radiation exposure.' },
-          { title: 'Post-Trauma Rehabilitation', desc: 'Structured physical therapy to restore range of motion and joint stability.' }
-        ],
-        faqs: [
-          { q: 'How do I know if an injury is fractured or sprained?', a: 'Severe swelling, deformity and inability to bear weight require immediate digital X-ray evaluation by our orthopedic team.' },
-          { q: 'Can knee osteoarthritis be treated without surgery?', a: 'Yes, early-stage arthritis is effectively managed with physiotherapy, lifestyle modification and targeted medications.' }
-        ]
+      {
+        "title": "2D Echocardiography & Color Doppler",
+        "desc": "Precision ultrasonic visualization of cardiac chambers, heart valves and ejection fraction."
       },
-
-      'gastroenterology': {
-        name: 'Gastroenterology',
-        heroTitle: 'Best Gastroenterology Hospital in Mysore',
-        category: 'Digestive & Hepatic Centre of Excellence',
-        image: 'assets/gastroenterology-digestive-health.png',
-        overviewImg: 'assets/gastroenterology-laparoscopy-model.jpg',
-        intro: 'Specialized diagnosis and clinical management of acid peptic disease, hepatic conditions, bowel disorders and acute pancreatitis.',
-        overview: 'Our Gastroenterology division focuses on restoring digestive harmony and gastrointestinal wellness. Our physicians provide targeted therapy for chronic acid reflux, fatty liver, abdominal pain, inflammatory bowel disease and intestinal disorders with modern clinical protocols.',
-        conditions: [
-          'Gastroesophageal Reflux Disease (GERD)',
-          'Peptic Ulcer Disease & Chronic Gastritis',
-          'Fatty Liver, Hepatitis & Hepatic Dysfunction',
-          'Irritable Bowel Syndrome (IBS) & Colitis',
-          'Acute & Chronic Pancreatitis',
-          'Unexplained Abdominal Pain & Bloating'
-        ],
-        services: [
-          { title: 'Diagnostic Digestive Workup', desc: 'Ultrasonography, automated liver function assays and stool microbiology.' },
-          { title: 'Liver Health Management', desc: 'Staging, metabolic counseling and medical therapy for hepatic steatosis.' },
-          { title: 'Nutritional & Dietary Therapy', desc: 'Structured patient meal guidance to alleviate inflammatory gastrointestinal conditions.' },
-          { title: 'Inpatient GI Care', desc: 'Hydration therapy, pain control and monitoring for acute pancreatitis.' }
-        ],
-        faqs: [
-          { q: 'How can chronic acidity and GERD be resolved?', a: 'Our gastroenterologist performs clinical assessment to distinguish simple gastritis from ulcer disease, prescribing targeted medical regimens.' }
-        ]
+      {
+        "title": "Preventive Cardiac Health Profiling",
+        "desc": "Comprehensive biomarker testing, lipid profiling and individual cardiovascular risk stratification."
       },
-
-      'general-medicine': {
-        name: 'General Medicine',
-        heroTitle: 'Best General Medicine Hospital in Mysore',
-        category: 'Primary & Internal Medicine Centre',
-        image: 'assets/general-medicine.png',
-        overviewImg: 'assets/general-medicine-consultation.png',
-        intro: 'Mysuru’s trusted clinical destination for adult health, diabetes control, viral fever triage and multisystem medical conditions.',
-        overview: 'Led by seasoned medical directors with over four decades of diagnostic acumen, our General Medicine department provides accurate diagnosis of complex symptoms, lifestyle disease therapy, adult immunization and emergency medical stabilization.',
-        conditions: [
-          'Type 2 Diabetes Mellitus & Metabolic Syndrome',
-          'Dengue, Typhoid, Malaria & Seasonal Fevers',
-          'Respiratory Tract Infections, Cough & Pneumonia',
-          'Thyroid Disorders (Hypo/Hyperthyroidism)',
-          'Chronic Kidney Disease Screening & Fluid Balances',
-          'Geriatric Health Concerns & Polypharmacy Review'
-        ],
-        services: [
-          { title: 'Comprehensive Medical Checkup', desc: 'Full-body vital examination, blood chemistry and health risk appraisal.' },
-          { title: 'Diabetes Management Clinic', desc: 'HbA1c monitoring, organ protection protocols and insulin adjustment.' },
-          { title: 'Inpatient General Wards & ICU', desc: 'Hygienic recovery beds with continuous nursing care and doctor rounds.' },
-          { title: 'Acute Infectious Disease Ward', desc: 'Barrier nursing and supportive care for severe viral and bacterial fevers.' }
-        ],
-        faqs: [
-          { q: 'How often should a diabetic patient have clinical reviews?', a: 'We recommend routine HbA1c reviews every 3 months, alongside annual renal, cardiac and foot examinations.' }
-        ]
-      },
-
-      'nephrology': {
-        name: 'Nephrology',
-        heroTitle: 'Best Nephrology Hospital in Mysore',
-        category: 'Renal Care Centre of Excellence',
-        image: 'assets/nephrology-renal-care-hologram.jpg',
-        overviewImg: 'assets/nephrology-doctor-kidney-model.png',
-        intro: 'Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy and hypertension-related renal care.',
-        overview: 'Sulakshaa Hospital’s Nephrology department emphasizes early identification and prevention of kidney function decline. Supported by advanced automated laboratory profiling, color Doppler ultrasound and intensive care beds.',
-        conditions: [
-          'Chronic Kidney Disease (CKD) Stages 1 to 5',
-          'Diabetic Nephropathy & Microalbuminuria',
-          'Acute Kidney Injury (AKI) & Oliguria',
-          'Hypertensive Renal Disease & Protein Loss',
-          'Glomerular Disorders & Nephrotic Syndrome',
-          'Recurrent Urinary Tract Infections & Nephritis'
-        ],
-        services: [
-          { title: 'Renal Function & eGFR Profiling', desc: 'Automated serum creatinine, BUN and urine protein-to-creatinine assays.' },
-          { title: 'Renal Doppler Ultrasonography', desc: 'Non-invasive acoustic imaging for kidney size, cortex thickness and blood perfusion.' },
-          { title: 'Diabetic Kidney Protection Protocol', desc: 'Targeted blood pressure and metabolic therapy to arrest renal decline.' },
-          { title: 'Inpatient Critical Care Nephrology', desc: 'Fluid and renal metabolic regulation for acute medical ICU admissions.' }
-        ],
-        faqs: [
-          { q: 'What are early signs of kidney issues?', a: 'Puffiness around the eyes, swelling in feet or ankles, frothy urine, fatigue and uncontrolled hypertension warrant renal evaluation.' }
-        ]
-      },
-
-      'urology': {
-        name: 'Urology',
-        heroTitle: 'Best Urology Hospital in Mysore',
-        category: 'Genitourinary Specialty Centre',
-        image: 'assets/urology-genitourinary-surgery.jpg',
-        overviewImg: 'assets/urology-urinary-anatomy-model.jpg',
-        intro: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections and bladder health.',
-        overview: 'Our Urology centre delivers specialized medical and surgical interventions for urinary tract and male reproductive system health. Equipped with advanced NCCT imaging, uroflowmetry and dedicated sterile surgical suites.',
-        conditions: [
-          'Kidney, Ureter & Bladder Calculi (Stones)',
-          'Benign Prostatic Hyperplasia (BPH) & Hesitancy',
-          'Recurrent Urinary Tract Infections (UTI)',
-          'Hematuria (Blood in Urine) Investigation',
-          'Urinary Incontinence & Overactive Bladder',
-          'Male Genitourinary Conditions & Varicocele'
-        ],
-        services: [
-          { title: 'Urinary Stone Evaluation & NCCT', desc: 'Precision low-dose computed tomography to locate and size renal and ureteric calculi.' },
-          { title: 'Uroflowmetry & Residual Volume Scan', desc: 'Computerized evaluation of urinary stream velocity and bladder emptying efficacy.' },
-          { title: 'Prostate Health & Serum PSA Testing', desc: 'Comprehensive digital prostate assessment and biomarker monitoring.' },
-          { title: 'Emergency Urological Triage', desc: '24/7 relief for acute renal colic pain and emergency urinary retention.' }
-        ],
-        faqs: [
-          { q: 'What are the main symptoms of kidney stones?', a: 'Intense flank pain radiating to the groin, nausea, blood in urine and painful urination are hallmark indicators.' }
-        ]
-      },
-
-      'emergency': {
-        name: 'Accident & Emergency',
-        heroTitle: 'Best Accident & Emergency Hospital in Mysore',
-        category: '24/7 Life-Saving Critical Care',
-        image: 'assets/emergency-critical-care.jpg',
-        overviewImg: 'assets/emergency-trauma-stretcher.jpg',
-        intro: 'Immediate emergency response with 24x7 life-saving critical care, trauma surgery, resuscitation bays and ICU support.',
-        overview: 'Sulakshaa Hospital’s Casualty and Emergency Medicine department operates 24/7 with resident trauma specialists, anesthesiologists and cardiac monitors ready for immediate life-saving care on Vijayanagar 3rd Stage, Mysuru.',
-        conditions: [
-          'Acute Chest Pain & Cardiac Emergencies',
-          'Severe Road Accidents & Multiple Trauma',
-          'Acute Stroke & Sudden Neurological Deficits',
-          'Acute Respiratory Distress & Oxygen Drop',
-          'Severe Infections, Sepsis & High Fevers',
-          'Fractures, Dislocations & Deep Lacerations'
-        ],
-        services: [
-          { title: '24/7 Resuscitation Bay', desc: 'Central oxygen, multi-channel telemetry and emergency defibrillators.' },
-          { title: 'Emergency Trauma Surgery', desc: 'Immediate surgical intervention by on-call trauma teams.' },
-          { title: 'Stat Diagnostics & Point-of-Care', desc: 'Instant ECG, troponin markers, arterial blood gases and X-ray.' },
-          { title: 'Advanced Cardiac Ambulance Bay', desc: 'Dedicated portico access for urgent transfer and patient reception.' }
-        ],
-        faqs: [
-          { q: 'Is the casualty open 24 hours including Sundays and holidays?', a: 'Yes, our casualty, emergency pharmacy, trauma surgeons and ICU team are on duty 24 hours a day, 365 days a year.' }
-        ]
-      },
-
-      'neurology': {
-        name: 'Neurology',
-        heroTitle: 'Best Neurology Hospital in Mysore',
-        category: 'Neurological & Brain Health Centre',
-        image: 'assets/specialty-neurology-brain.jpg',
-        overviewImg: 'assets/neurology-scan-analysis.jpg',
-        intro: 'Specialist care for stroke rehabilitation, migraine, seizures, cognitive health and nerve disorders.',
-        overview: 'Our Neurology department delivers prompt evaluation of central and peripheral nervous system disorders. Supported by multi-slice CT scanning and emergency resuscitation bays, we prioritize early neurological triage.',
-        conditions: [
-          'Acute Ischemic & Hemorrhagic Stroke',
-          'Chronic Migraine & Tension Headaches',
-          'Epileptic Seizures & Syncopal Episodes',
-          'Diabetic Neuropathy, Numbness & Tingling',
-          'Parkinson’s Disease & Tremor Disorders',
-          'Vertigo, Vestibular Imbalance & Dizziness'
-        ],
-        services: [
-          { title: 'Emergency Stroke Triage', desc: 'Stat multi-slice neuroimaging and immediate critical stabilization.' },
-          { title: 'Comprehensive Headache Clinic', desc: 'Systematic etiology identification and preventive migraine protocols.' },
-          { title: 'Seizure Management', desc: 'Optimized anticonvulsant therapeutic regimens and lifestyle counsel.' },
-          { title: 'Peripheral Nerve Assessment', desc: 'Clinical evaluation for entrapment neuropathies and nerve compression.' }
-        ],
-        faqs: [
-          { q: 'What are the emergency signs of a stroke?', a: 'Remember FAST: Face drooping, Arm weakness, Speech difficulty and Time to reach our 24/7 casualty portico immediately.' }
-        ]
-      },
-
-      'paediatrics': {
-        name: 'Paediatrics',
-        heroTitle: 'Best Paediatrics Hospital in Mysore',
-        category: 'Child & Neonatal Health Centre',
-        image: 'assets/paediatrics.png',
-        overviewImg: 'assets/dr-sneha-hegde.jpg',
-        intro: 'Compassionate child health, immunization schedules, newborn screening and developmental milestones tracking.',
-        overview: 'Sulakshaa Hospital’s Paediatric department provides child-friendly healthcare in a reassuring environment. Our paediatricians manage acute childhood infections, asthma, nutritional deficiencies and growth milestones.',
-        conditions: [
-          'Acute Pediatric Fevers & Viral Illnesses',
-          'Childhood Asthma, Bronchitis & Allergies',
-          'Neonatal Jaundice & Feeding Difficulties',
-          'Growth Stunting & Nutritional Deficiencies',
-          'Diarrhea, Dehydration & Pediatric Gastro',
-          'Vaccine Preventable Childhood Diseases'
-        ],
-        services: [
-          { title: 'Complete Child Immunization', desc: 'National Immunization Schedule vaccines stored under strict cold-chain.' },
-          { title: 'Developmental Milestone Checks', desc: 'Physical growth, height-weight tracking and speech/cognitive monitoring.' },
-          { title: 'Pediatric Nebulization Suite', desc: 'Gentle aerosol therapy for acute respiratory distress in children.' },
-          { title: '24/7 Pediatric Casualty Care', desc: 'Immediate triage for febrile convulsions, accidental falls and high fever.' }
-        ],
-        faqs: [
-          { q: 'Which vaccinations are available for newborns and infants?', a: 'We maintain all routine and optional vaccines according to Indian Academy of Pediatrics (IAP) recommendations.' }
-        ]
-      },
-
-      'maternity-care': {
-        name: 'Obstetrics & Gynaecology',
-        heroTitle: 'Best Obstetrics & Gynaecology Hospital in Mysore',
-        category: 'Maternal & Women Health Centre',
-        image: 'assets/maternity-obstetrics-gynaecology.png',
-        overviewImg: 'assets/gynecology-pregnant-consultation.jpg',
-        intro: 'Comprehensive maternal health, antenatal monitoring, safe deliveries and women\'s wellness throughout life.',
-        overview: 'Sulakshaa Hospital provides personalized, respectful care through every phase of womanhood. From family planning and prenatal care to high-risk pregnancy monitoring and gynecological disorder management.',
-        conditions: [
-          'Routine & High-Risk Pregnancy',
-          'Polycystic Ovarian Syndrome (PCOS / PCOD)',
-          'Uterine Fibroids & Pelvic Endometriosis',
-          'Irregular, Painful or Heavy Menstruation',
-          'Menopausal Symptoms & Bone Density Loss',
-          'Pelvic Infections & Reproductive Health'
-        ],
-        services: [
-          { title: 'Antenatal Clinical Checkups', desc: 'Trimester screening, blood pressure monitoring and fetal heart checks.' },
-          { title: 'Gynecological Ultrasound', desc: 'Pelvic sonography for ovarian, uterine and endometrial evaluation.' },
-          { title: 'PCOS Metabolic Counseling', desc: 'Targeted nutritional guidance and hormonal balancing therapy.' },
-          { title: 'Safe Labor & Inpatient Suites', desc: 'Private recovery suites with dedicated midwife support.' }
-        ],
-        faqs: [
-          { q: 'What is included in the routine antenatal checkup package?', a: 'Regular vital monitoring, fetal ultrasound scans, blood sugar screening, iron-calcium supplementation and diet guidance.' }
-        ]
-      },
-
-      'pulmonology': {
-        name: 'Pulmonology',
-        heroTitle: 'Best Pulmonology Hospital in Mysore',
-        category: 'Respiratory Care Centre of Excellence',
-        image: 'assets/pulmonology-chest-medicine.png',
-        overviewImg: 'assets/blog-preventive-health.jpg',
-        intro: 'Specialized chest medicine for asthma, COPD, pneumonia, sleep apnea and persistent cough management.',
-        overview: 'The Department of Pulmonology at Sulakshaa Multi Speciality Hospital delivers expert pulmonary evaluations, spirometry and intensive respiratory support. Supported by continuous non-invasive ventilation, nebulization suites and 24/7 ICU facilities.',
-        conditions: [
-          'Bronchial Asthma & Wheezing Exacerbations',
-          'Chronic Obstructive Pulmonary Disease (COPD)',
-          'Pneumonia, Bronchitis & Chest Infections',
-          'Allergic Rhinitis, Sinusitis & Chronic Cough',
-          'Sleep Apnea & Nocturnal Oxygen Desaturation',
-          'Post-Infection Lung Fibrosis & Breathlessness'
-        ],
-        services: [
-          { title: 'Spirometry & Pulmonary Function (PFT)', desc: 'Objective computerized measurement of lung capacity and airflow dynamics.' },
-          { title: 'Acute Bronchodilation & Nebulization', desc: 'Emergency aerosolized pharmacotherapy for acute bronchial spasms.' },
-          { title: 'Low-Dose Chest HRCT Diagnostics', desc: 'High-resolution cross-sectional radiological imaging for lung parenchyma.' },
-          { title: 'Non-Invasive Respiratory ICU Support', desc: 'CPAP, BiPAP and high-flow oxygen telemetry for respiratory failure.' }
-        ],
-        faqs: [
-          { q: 'When should I consult a pulmonologist?', a: 'Consult promptly if you experience cough lasting over 3 weeks, unexplained shortness of breath, or wheezing.' }
-        ]
-      },
-
-      'dermatology': {
-        name: 'Dermatology',
-        heroTitle: 'Best Dermatology Hospital in Mysore',
-        category: 'Clinical Dermatology & Skin Centre',
-        image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&h=500&q=80',
-        overviewImg: 'assets/dermatology-skin-treatment.jpg',
-        intro: 'Clinical skin, hair and nail treatments for chronic eczema, psoriasis, acne and cutaneous allergies.',
-        overview: 'Our Dermatology clinic addresses both common and complex skin diseases. Our dermatologist combines evidence-based medical treatments with patient lifestyle guidance to resolve stubborn dermatological conditions.',
-        conditions: [
-          'Acne Vulgaris & Post-Acne Hyperpigmentation',
-          'Eczema, Atopic Dermatitis & Contact Allergies',
-          'Psoriasis & Scalp Flaking Conditions',
-          'Fungal Infections & Ringworm (Tinea)',
-          'Hair Fall, Telogen Effluvium & Alopecia',
-          'Urticaria (Hives) & Acute Skin Rashes'
-        ],
-        services: [
-          { title: 'Skin Allergy Testing & Triage', desc: 'Detailed etiology investigation and oral/topical antihistaminic regimens.' },
-          { title: 'Medical Acne Protocols', desc: 'Retinoid guidance, barrier repair creams and clinical peels.' },
-          { title: 'Scalp & Hair Analysis', desc: 'Nutritional and hormonal workups for diffuse hair thinning.' },
-          { title: 'Minor Dermatological Procedures', desc: 'Electrocautery for skin tags, wart treatment and lesion biopsies.' }
-        ],
-        faqs: [
-          { q: 'Why do steroid creams worsen skin fungal infections?', a: 'Steroid creams suppress local skin immunity, causing fungal organisms to multiply uncontrollably. Always consult a dermatologist.' }
-        ]
-      },
-
-      'general-surgery': {
-        name: 'General Surgery',
-        heroTitle: 'Best General Surgery Hospital in Mysore',
-        category: 'Minimally Invasive Operations Centre',
-        image: 'assets/general-laparoscopic-surgery.png',
-        overviewImg: 'assets/general-surgery-operation-theatre.jpg',
-        intro: 'Advanced minimally invasive laparoscopy, hernia repair, appendectomy and acute surgical operations.',
-        overview: 'Sulakshaa Hospital’s Surgical Centre features state-of-the-art modular operating theatres equipped with laminar airflow HEPA filtration. Our surgical team prioritizes minimally invasive techniques for faster recovery and reduced pain.',
-        conditions: [
-          'Inguinal, Umbilical & Incisional Hernias',
-          'Acute & Recurrent Appendicitis',
-          'Gallbladder Stones (Cholelithiasis)',
-          'Hydrocele, Phimosis & Soft Tissue Swellings',
-          'Diabetic Foot Ulcers & Complex Wound Debridement',
-          'Emergency Abdominal Trauma & Hemostasis'
-        ],
-        services: [
-          { title: 'Laparoscopic Appendectomy & Hernia', desc: 'Keyhole surgical repair resulting in minimal scarring and quick discharge.' },
-          { title: 'Sterile Modular Operation Theatres', desc: 'Positive pressure HEPA filtered surgical environments.' },
-          { title: 'Post-Operative PACU Monitoring', desc: 'Continuous vital monitoring by trained surgical nurses and anesthesiologists.' },
-          { title: 'Advanced Wound Care Clinic', desc: 'Modern antiseptic dressings and negative-pressure wound therapy.' }
-        ],
-        faqs: [
-          { q: 'What are the advantages of laparoscopic surgery?', a: 'Smaller incisions, significantly less post-operative pain, lower infection risk and faster return to work compared to open surgery.' }
-        ]
-      },
-
-      'ent': {
-        name: 'ENT (Ear, Nose & Throat)',
-        heroTitle: 'Best ENT Hospital in Mysore',
-        category: 'Otorhinolaryngology Specialty Centre',
-        image: 'assets/ent-care-otorhinolaryngology.png',
-        overviewImg: 'assets/ent-anatomy-cross-section.jpg',
-        intro: 'Precision endoscopic diagnosis and care for sinusitis, hearing loss, vertigo, tonsils and nasal disorders.',
-        overview: 'The ENT department provides advanced diagnostic otoscopy, diagnostic nasal endoscopy and specialized care for all pediatric and adult ear, nose, throat and balance conditions in Mysuru.',
-        conditions: [
-          'Chronic Otitis Media, Ear Pain & Discharge',
-          'Conductive & Sensorineural Hearing Impairment',
-          'Chronic Sinusitis, Headache & Nasal Polyps',
-          'Deviated Nasal Septum (DNS) & Snoring',
-          'Tonsillitis, Pharyngitis & Adenoid Enlargement',
-          'Benign Paroxysmal Positional Vertigo (BPPV)'
-        ],
-        services: [
-          { title: 'Diagnostic Nasal Endoscopy (DNE)', desc: 'Magnified fiberoptic visual inspection of nasal pathways and sinus drainage.' },
-          { title: 'Video Otoscopy & Microsuction', desc: 'Safe precision ear examination and gentle clearing of debris and impacted wax.' },
-          { title: 'Pure Tone Audiometry Screening', desc: 'Accurate acoustic assessment to measure hearing sensitivity across frequencies.' },
-          { title: 'Emergency ENT Intervention', desc: 'Foreign body extraction, epistaxis (nosebleed) management and acute infection triage.' }
-        ],
-        faqs: [
-          { q: 'How is positional vertigo (BPPV) treated?', a: 'BPPV is frequently treated effectively in the clinic using canalith repositioning maneuvers (such as the Epley maneuver).' }
-        ]
-      },
-
-      'anaesthesiology': {
-        name: 'Anaesthesiology',
-        heroTitle: 'Best Anaesthesiology & Critical Care Hospital in Mysore',
-        category: 'Perioperative & ICU Centre',
-        image: 'assets/anaesthesiology-critical-care.png',
-        overviewImg: 'assets/anaesthesiology-ot-surgery.jpg',
-        intro: 'Vigilant perioperative anesthesia, continuous surgical telemetry, pain management and ICU ventilator care.',
-        overview: 'Our Anaesthesiology team ensures patient safety and comfort throughout the surgical process. Through comprehensive pre-anesthetic assessments and vigilant intraoperative monitoring, we ensure smooth anesthesia recovery and acute critical care.',
-        conditions: [
-          'Pre-Operative Cardiac & Respiratory Risk Stratification',
-          'Acute Surgical Pain Management',
-          'Critical Airway Compromise & Emergency Intubation',
-          'Severe Sepsis & Hemodynamic Instability',
-          'Ventilator Dependency & Weaning Protocol',
-          'Post-Surgical Pain Medicine Protocols'
-        ],
-        services: [
-          { title: 'Pre-Anesthetic Checkup (PAC)', desc: 'Detailed cardiopulmonary risk appraisal before planned operations.' },
-          { title: 'Multi-Modal Anesthesia Delivery', desc: 'General, spinal, epidural and peripheral nerve block techniques.' },
-          { title: 'Intraoperative Vital Telemetry', desc: 'Continuous capnography, invasive arterial blood pressure and pulse oximetry.' },
-          { title: '24/7 ICU Intensivist Coverage', desc: 'Senior anesthesiologists managing high-dependency medical beds.' }
-        ],
-        faqs: [
-          { q: 'Why is fasting necessary before general anesthesia?', a: 'Fasting prevents gastric contents from entering the lungs (pulmonary aspiration) during anesthesia induction, ensuring utmost safety.' }
-        ]
-      },
-
-      'oncology': {
-        name: 'Oncology',
-        heroTitle: 'Best Oncology & Cancer Screening Hospital in Mysore',
-        category: 'Screening & Supportive Care Centre',
-        image: 'assets/specialty-oncology-ribbon.jpg',
-        overviewImg: 'assets/oncology-cancer-cell-microscopy.jpg',
-        intro: 'Compassionate cancer screening, early symptom triage, histological coordination and multidisciplinary guidance.',
-        overview: 'The Oncology service at Sulakshaa Hospital emphasizes early cancer detection, preventive health checkups, histological diagnostic coordination and holistic patient guidance during challenging clinical journeys.',
-        conditions: [
-          'Breast Lump Evaluation & Mammography Referral',
-          'Cervical Cancer Screening & Pap Smears',
-          'Oral Cavity Lesion & Premalignant Triage',
-          'Gastrointestinal Malignancy Warning Signs',
-          'Unexplained Lymphadenopathy & Weight Loss',
-          'Palliative Symptom Management & Pain Relief'
-        ],
-        services: [
-          { title: 'Comprehensive Cancer Screening', desc: 'Multi-organ early warning checks and clinical examination.' },
-          { title: 'Histopathology Coordination', desc: 'Biopsy processing with accredited pathology laboratories.' },
-          { title: 'Second Opinion Board', desc: 'Review of diagnostic reports, staging scans and clinical plans.' },
-          { title: 'Supportive Pain Medicine', desc: 'Medical management of discomfort and treatment side effects.' }
-        ],
-        faqs: [
-          { q: 'Why is early cancer screening important?', a: 'Most malignancies detected in Stage 1 have substantially higher cure rates and require far less invasive treatment protocols.' }
-        ]
-      },
-
-      'psychiatry': {
-        name: 'Psychiatry',
-        heroTitle: 'Best Psychiatry Hospital in Mysore',
-        category: 'Mental Wellness & Behavioral Centre',
-        image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=800&h=500&q=80',
-        overviewImg: 'assets/gallery-camp-consultation.jpg',
-        intro: 'Confidential, empathetic mental health care, counseling, anxiety management and evidence-based behavioral therapy.',
-        overview: 'Mental wellness is integral to physical recovery. Sulakshaa Hospital offers a safe, dignified setting where experienced psychiatrists provide counseling, medical management of mood disorders and stress reduction.',
-        conditions: [
-          'Generalized Anxiety Disorder & Panic Attacks',
-          'Depressive Disorders & Loss of Motivation',
-          'Insomnia, Sleep Disturbances & Fatigue',
-          'Work-Related Burnout & Chronic Stress',
-          'Obsessive Compulsive Tendencies (OCD)',
-          'Elderly Cognitive Changes & Memory Lapses'
-        ],
-        services: [
-          { title: 'Confidential Clinical Evaluation', desc: 'Compassionate one-on-one psychiatric assessment in private suites.' },
-          { title: 'Pharmacotherapy & Medication Review', desc: 'Modern, well-tolerated neurochemical stabilization regimens.' },
-          { title: 'Stress & Sleep Hygiene Counseling', desc: 'Practical cognitive behavioural tools to restore sleep and peace of mind.' },
-          { title: 'Family Psychoeducation', desc: 'Guidance for caregivers to support recovery at home.' }
-        ],
-        faqs: [
-          { q: 'Are psychiatric consultations kept strictly confidential?', a: 'Yes, all clinical discussions, records and prescriptions are strictly protected by medical confidentiality ethics.' }
-        ]
-      },
-
-      'spine-surgery': {
-        name: 'Spine Surgery',
-        heroTitle: 'Best Spine Surgery & Neuro-Spine Care in Mysore',
-        category: 'Spinal Disorders & Robotic Minimally Invasive Centre',
-        image: 'assets/specialty-spine-surgery.jpg',
-        overviewImg: 'assets/specialty-spine-surgery.jpg',
-        intro: 'Advanced management of spinal disc herniations, degenerative spondylosis, scoliosis, robotic minimally invasive spine surgery and neuropathic spine care in Mysuru.',
-        overview: 'Sulakshaa Hospital’s Institute of Spine Surgery provides precision-driven neuro-spinal and orthopaedic spine care. Equipped with robotic surgical guidance, micro-endoscopic spine systems and dedicated post-operative neuro-rehabilitation, our surgeons offer advanced solutions for complex spinal conditions with minimal recovery time.',
-        conditions: [
-          'Lumbar & Cervical Disc Herniations (Slip Disc)',
-          'Sciatica & Radiating Nerve Compression',
-          'Spinal Stenosis & Degenerative Spondylolisthesis',
-          'Spine Fractures & Accidental Spinal Trauma',
-          'Scoliosis, Kyphosis & Spinal Deformity Correction',
-          'Chronic Lower Back & Neck Pain Syndromes'
-        ],
-        services: [
-          { title: 'Minimally Invasive Spine Surgery (MISS)', desc: 'Micro-endoscopic decompression and discectomy with tiny incisions, preserving muscle tissue for rapid recovery.' },
-          { title: 'Spinal Fusion & Stabilization', desc: 'Precision titanium pedicle screw fixation and cage reconstruction for spinal instability and spondylolisthesis.' },
-          { title: 'Spinal Trauma & Fracture Care', desc: 'Emergency stabilization of traumatic vertebral fractures and spinal cord decompression.' },
-          { title: 'Conservative Spine & Pain Management', desc: 'Targeted epidural injections, nerve blocks and customized spinal physiotherapy.' }
-        ],
-        faqs: [
-          { q: 'Is spine surgery always required for back pain or disc bulge?', a: 'No, over 85% of spine and disc conditions improve with structured conservative therapy, physical rehabilitation and targeted pain management.' },
-          { q: 'How soon can patients walk after minimally invasive spine surgery?', a: 'Most patients undergoing minimally invasive endoscopic spine surgery are able to stand and walk within 24 to 48 hours.' }
-        ]
+      {
+        "title": "Coronary Care & ICU Telemetry",
+        "desc": "24/7 continuous cardiac rhythm monitoring in dedicated high-dependency critical care beds."
       }
-    };
+    ],
+    "faqs": [
+      {
+        "q": "When should I consult a cardiologist?",
+        "a": "You should seek immediate evaluation if experiencing sudden chest tightness, shortness of breath, unexplained dizziness, palpitations, or persistent high blood pressure."
+      },
+      {
+        "q": "What should I bring to my cardiac consultation?",
+        "a": "Please bring your previous ECG reports, lipid profile tests, a list of current medications and past discharge summaries."
+      },
+      {
+        "q": "Are emergency cardiac beds available 24/7?",
+        "a": "Yes, our hospital casualty and ICU maintain 24-hour telemetry monitoring and resident emergency medical officers."
+      }
+    ]
+  },
+  "orthopedics": {
+    "name": "Orthopaedics",
+    "heroTitle": "Best Orthopaedics Hospital in Mysore",
+    "category": "Surgical & Trauma Centre of Excellence",
+    "image": "assets/specialty-orthopaedics-rehab.jpg",
+    "overviewImg": "assets/orthopaedics-knee-joint.jpg",
+    "intro": "Advanced management of bone fractures, degenerative arthritis, sports injuries, spine discomfort and joint reconstruction.",
+    "overview": "Our Orthopaedics centre delivers specialized musculoskeletal care, surgical fracture stabilization and rehabilitation for bone and joint disorders. Equipped with high-resolution digital radiography, modern fracture casting suites and dedicated physiotherapy units.",
+    "conditions": [
+      "Traumatic Bone Fractures & Dislocations",
+      "Osteoarthritis (Knee & Hip Arthritis)",
+      "Ligament & Meniscal Tears (ACL / PCL)",
+      "Cervical & Lumbar Spondylosis",
+      "Osteoporosis & Osteopenia",
+      "Rotator Cuff Tears & Adhesive Capsulitis"
+    ],
+    "services": [
+      {
+        "title": "Emergency Fracture Fixation & Plaster Casting",
+        "desc": "Closed reduction, modern synthetic immobilization and surgical fixation for traumatic bone fractures."
+      },
+      {
+        "title": "Joint Preservation & Arthritis Clinic",
+        "desc": "Evidence-based arthritis management, intra-articular injections and mobility enhancement programs."
+      },
+      {
+        "title": "High-Resolution Digital Skeletal X-Ray",
+        "desc": "Precision low-dose radiographic imaging for instant bone alignment and joint space assessment."
+      },
+      {
+        "title": "Specialized Orthopaedic Rehabilitation",
+        "desc": "Structured post-surgical and post-injury physiotherapy to restore range of motion and joint strength."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can knee osteoarthritis be treated without surgery?",
+        "a": "Yes, mild to moderate knee arthritis is effectively managed with lifestyle modifications, targeted physiotherapy, medications and intra-articular therapies."
+      },
+      {
+        "q": "What should I do immediately after a suspected bone fracture?",
+        "a": "Immobilize the affected limb, apply an ice pack wrapped in a cloth, avoid putting weight on it, and visit our emergency triage immediately."
+      }
+    ]
+  },
+  "gastroenterology": {
+    "name": "Medical & Surgical Gastroenterology",
+    "heroTitle": "Best Medical & Surgical Gastroenterology Hospital in Mysore",
+    "category": "Digestive, Liver & Surgical GI Centre",
+    "image": "assets/specialty-gastroenterology.png",
+    "overviewImg": "assets/gastroenterology-laparoscopy-model.jpg",
+    "intro": "Comprehensive medical and surgical care for diseases of the digestive system, including the oesophagus, stomach, intestines, liver, pancreas and gallbladder.",
+    "overview": "Our Medical & Surgical Gastroenterology department delivers comprehensive clinical evaluations, advanced diagnostic endoscopy and precision laparoscopic surgery for diseases of the gastrointestinal tract, liver and pancreatobiliary system. Supported by modern endoscopic suites, dedicated surgical theatres and 24/7 high-dependency medical care.",
+    "conditions": [
+      "Gastroesophageal Reflux Disease (GERD) & Acid Peptic Disorders",
+      "Gallbladder Calculi (Gallstones) & Cholecystitis",
+      "Peptic Ulcer Disease & Gastrointestinal Bleeding",
+      "Acute & Chronic Pancreatitis",
+      "Chronic Liver Disease & Hepatic Steatosis (Fatty Liver)",
+      "Colorectal Polyps & Gastrointestinal Neoplasms"
+    ],
+    "services": [
+      {
+        "title": "Diagnostic & Therapeutic GI Endoscopy",
+        "desc": "Upper gastrointestinal endoscopy and colonoscopy for mucosal examination, biopsies and endoscopic intervention for digestive disorders."
+      },
+      {
+        "title": "Advanced Laparoscopic GI Surgery",
+        "desc": "Minimally invasive keyhole surgical procedures including laparoscopic cholecystectomy, appendectomy and intestinal surgical management."
+      },
+      {
+        "title": "Medical Hepatology & Pancreatobiliary Care",
+        "desc": "Evidence-based medical management for fatty liver disease, hepatic cirrhosis, viral hepatitis and inflammatory pancreatic conditions."
+      },
+      {
+        "title": "Gastrointestinal Surgical Oncology",
+        "desc": "Comprehensive surgical evaluation and tumor resection for benign and malignant conditions of the stomach, colon, liver and pancreas."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is the difference between Medical and Surgical Gastroenterology?",
+        "a": "Medical Gastroenterology specializes in non-surgical diagnosis, medical therapy and endoscopy, whereas Surgical Gastroenterology performs advanced laparoscopic and open surgical interventions for complex digestive and hepatobiliary conditions."
+      },
+      {
+        "q": "When is laparoscopic surgery recommended for gallstones?",
+        "a": "Laparoscopic cholecystectomy is recommended when gallstones cause recurring abdominal pain, biliary colic, acute cholecystitis, jaundice or pancreatitis."
+      }
+    ]
+  },
+  "general-medicine": {
+    "name": "General Medicine",
+    "heroTitle": "Best General Medicine Hospital in Mysore",
+    "category": "Primary & Multi-System Care",
+    "image": "assets/general-medicine-consultation.png",
+    "overviewImg": "assets/dr-laxme-gowda.png",
+    "intro": "Mysuru’s trusted clinical destination for adult health, diabetes control, viral fever triage and multisystem medical conditions.",
+    "overview": "Our General Medicine department delivers comprehensive clinical evaluation, preventive health screening and inpatient management for acute and chronic adult illnesses. Equipped with 24/7 automated diagnostic lab support, dedicated medical wards and high-dependency care units.",
+    "conditions": [
+      "Type 2 Diabetes Mellitus",
+      "Essential Systemic Hypertension",
+      "Tropical Infectious Diseases (Dengue & Malaria)",
+      "Bacterial & Viral Pneumonia",
+      "Hypothyroidism & Hyperthyroidism",
+      "Dyslipidemia & Metabolic Syndrome"
+    ],
+    "services": [
+      {
+        "title": "Comprehensive Master Health Checkup",
+        "desc": "Full-body clinical evaluation, vital monitoring and automated blood chemistry profiling."
+      },
+      {
+        "title": "Diabetes Management & Glycemic Control",
+        "desc": "Personalized blood sugar stabilization, HbA1c monitoring and microvascular complication prevention."
+      },
+      {
+        "title": "Acute Febrile Illness & Fever Ward",
+        "desc": "Rapid diagnostic screening, intravenous rehydration and specialist monitoring for seasonal fevers."
+      },
+      {
+        "title": "Inpatient Medical Care & High Dependency Unit",
+        "desc": "Round-the-clock nursing supervision, physician rounds and medical stabilization for complex multi-system illness."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "When should I visit the hospital for a fever?",
+        "a": "Seek immediate medical evaluation if fever exceeds 101°F, lasts more than 48 hours, or is accompanied by severe body aches, rash, or vomiting."
+      },
+      {
+        "q": "How often should diabetic patients get checked?",
+        "a": "Diabetic individuals should monitor fasting glucose regularly and undergo comprehensive HbA1c and organ profiling every 3 to 6 months."
+      }
+    ]
+  },
+  "nephrology": {
+    "name": "Nephrology",
+    "heroTitle": "Best Nephrology Hospital in Mysore",
+    "category": "Renal Medicine & Kidney Care",
+    "image": "assets/specialty-nephrology-kidney.jpg",
+    "overviewImg": "assets/nephrology-kidney-diagram.jpg",
+    "intro": "Comprehensive clinical management for acute and chronic kidney disease, diabetic nephropathy and hypertension-related renal care.",
+    "overview": "Our Nephrology department delivers specialized medical evaluation and therapeutic management for kidney disorders, fluid imbalances and renal failure. Equipped with automated renal function profiling, color Doppler ultrasonography and dedicated medical ICU support.",
+    "conditions": [
+      "Chronic Kidney Disease (CKD Stages 1–5)",
+      "Diabetic Nephropathy & Proteinuria",
+      "Acute Kidney Injury (AKI)",
+      "Hypertensive Nephrosclerosis",
+      "Glomerulonephritis & Nephrotic Syndrome",
+      "Polycystic Kidney Disease (PKD)"
+    ],
+    "services": [
+      {
+        "title": "Renal Function & eGFR Profiling",
+        "desc": "Automated serum creatinine, blood urea, electrolytes and glomerular filtration rate estimation."
+      },
+      {
+        "title": "Renal Color Doppler Ultrasonography",
+        "desc": "Non-invasive acoustic imaging of renal parenchymal architecture and renal artery vascular flow."
+      },
+      {
+        "title": "Diabetic Kidney Protection Protocol",
+        "desc": "Targeted blood pressure optimization, proteinuria suppression and microalbuminuria control."
+      },
+      {
+        "title": "Inpatient Critical Care Nephrology",
+        "desc": "Specialist fluid balance regulation, electrolyte correction and high-dependency monitoring for renal failure."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What are early warning signs of kidney disease?",
+        "a": "Early kidney dysfunction is often silent, but puffiness around the eyes, swollen feet, foamy urine, and unexplained fatigue are key symptoms."
+      },
+      {
+        "q": "Can diabetic nephropathy be prevented or slowed?",
+        "a": "Yes, strict blood sugar control, optimal blood pressure management, and early screening for microalbuminuria can substantially slow progression."
+      }
+    ]
+  },
+  "urology": {
+    "name": "Urology",
+    "heroTitle": "Best Urology Hospital in Mysore",
+    "category": "Genitourinary Specialty Centre",
+    "image": "assets/urology-genitourinary-surgery.jpg",
+    "overviewImg": "assets/urology-urinary-anatomy-model.jpg",
+    "intro": "Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections and bladder health.",
+    "overview": "Our Urology Department provides specialized medical and surgical care through advanced diagnostic capabilities and modern treatment techniques. With a focus on precision, clinical excellence and patient comfort, our experienced team offers comprehensive evaluation and management of conditions affecting the kidneys, urinary tract, bladder, prostate and male reproductive system.",
+    "conditionsTitle": "Specialized Areas of Care",
+    "conditions": [
+      "Kidney Stone Diagnosis and Advanced Stone Treatment",
+      "Prostate Enlargement and Related Urinary Disorders",
+      "Complex and Recurrent Urinary Tract Infections",
+      "Diagnostic Evaluation of Blood in Urine",
+      "Bladder Control Disorders and Voiding Difficulties",
+      "Male Reproductive Health Conditions and Varicocele Management"
+    ],
+    "services": [
+      {
+        "title": "Kidney & Ureteric Stone Evaluation (NCCT KUB)",
+        "desc": "Low-dose non-contrast CT imaging (NCCT KUB) to detect and assess the location and size of kidney and ureteric stones."
+      },
+      {
+        "title": "Uroflowmetry & Residual Volume Scan",
+        "desc": "Computerized evaluation of urinary stream velocity and bladder emptying efficacy."
+      },
+      {
+        "title": "Prostate Health & Serum PSA Testing",
+        "desc": "Comprehensive digital prostate assessment and biomarker monitoring."
+      },
+      {
+        "title": "Emergency Urological Triage",
+        "desc": "24/7 relief for acute renal colic pain and emergency urinary retention."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What are the main symptoms of kidney stones?",
+        "a": "Intense flank pain radiating to the groin, nausea, blood in urine and painful urination are hallmark indicators."
+      }
+    ]
+  },
+  "emergency": {
+    "name": "Accident & Emergency",
+    "heroTitle": "Best Accident & Emergency Hospital in Mysore",
+    "category": "24/7 Life-Saving Critical Care",
+    "image": "assets/emergency-critical-care.jpg",
+    "overviewImg": "assets/emergency-trauma-stretcher.jpg",
+    "intro": "Immediate emergency response with 24x7 life-saving critical care, trauma surgery, resuscitation bays and ICU support.",
+    "overview": "Our Accident & Emergency department operates 24/7 to deliver immediate resuscitation, trauma triage and acute medical intervention for life-threatening conditions. Equipped with multi-bed resuscitation bays, point-of-care diagnostics and immediate ICU and surgical backup.",
+    "conditions": [
+      "Acute Myocardial Infarction (Heart Attack)",
+      "Severe Accidental Polytrauma & Head Injury",
+      "Acute Ischemic & Hemorrhagic Stroke",
+      "Acute Respiratory Distress Syndrome (ARDS)",
+      "Septic Shock & Severe Systemic Infection",
+      "Acute Peritonitis & Abdominal Emergencies"
+    ],
+    "services": [
+      {
+        "title": "24/7 Emergency Resuscitation Bay",
+        "desc": "Immediate airway stabilization, defibrillation, central oxygen delivery and continuous multi-parameter telemetry."
+      },
+      {
+        "title": "Rapid Trauma & Fracture Triage",
+        "desc": "On-call emergency orthopedic and general surgical evaluation for road traffic injuries and fractures."
+      },
+      {
+        "title": "Point-of-Care Stat Diagnostics",
+        "desc": "Instant bedside 12-lead ECG, troponin cardiac markers, blood gas analysis and emergency X-rays."
+      },
+      {
+        "title": "Dedicated Ambulance & Portico Reception",
+        "desc": "Seamless emergency stretcher access with dedicated triage nurses and emergency medical officers."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are emergency services open at night and on weekends?",
+        "a": "Yes, our Casualty and Emergency department operates 24 hours a day, 7 days a week, including all public holidays."
+      },
+      {
+        "q": "What should I do before the ambulance arrives?",
+        "a": "Keep the patient calm, ensure clear airway breathing, avoid feeding them solid foods, and have their prior medical records ready."
+      }
+    ]
+  },
+  "neurology": {
+    "name": "Neurology",
+    "heroTitle": "Best Neurology Hospital in Mysore",
+    "category": "Brain & Nervous System Sciences",
+    "image": "assets/specialty-neurology-brain.jpg",
+    "overviewImg": "assets/neurology-scan-analysis.jpg",
+    "intro": "Specialist care for stroke rehabilitation, migraine, seizures, cognitive health and nerve disorders.",
+    "overview": "Our Neurology department delivers comprehensive clinical evaluation, diagnostic neuro-imaging and therapeutic management for disorders of the brain, spinal cord and nerves. Equipped with multi-slice CT neuro-imaging, dedicated stroke triage protocols and continuous ICU telemetry.",
+    "conditions": [
+      "Acute Ischemic & Hemorrhagic Stroke",
+      "Epilepsy & Seizure Disorders",
+      "Chronic Migraine & Cluster Headaches",
+      "Parkinson's Disease & Tremor Syndromes",
+      "Diabetic Peripheral Neuropathy",
+      "Vestibular Dysfunction & Vertigo Disorders"
+    ],
+    "services": [
+      {
+        "title": "Emergency Acute Stroke Protocol",
+        "desc": "Stat multi-slice brain CT imaging, vital stabilization and immediate neuro-intensive monitoring."
+      },
+      {
+        "title": "Specialized Headache & Migraine Clinic",
+        "desc": "Comprehensive neurological assessment, trigger analysis and evidence-based preventive therapies."
+      },
+      {
+        "title": "Seizure & Epilepsy Care",
+        "desc": "Clinical classification, optimal anticonvulsant medication titration and lifestyle safety guidance."
+      },
+      {
+        "title": "Peripheral Neuropathy Evaluation",
+        "desc": "Targeted clinical examination, diabetic foot sensory screening and neuropathic symptom relief."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is the Golden Hour in stroke management?",
+        "a": "The first 4.5 hours following stroke symptom onset are crucial; immediate hospital evaluation drastically improves recovery prospects."
+      },
+      {
+        "q": "When is a headache considered serious?",
+        "a": "A sudden, severe headache (thunderclap), headache with fever and stiff neck, or headache accompanied by neurological weakness requires emergency care."
+      }
+    ]
+  },
+  "maternity-care": {
+    "name": "Obstetrics & Gynaecology",
+    "heroTitle": "Best Maternity Hospital in Mysore",
+    "category": "Maternal & Women’s Health Centre",
+    "image": "assets/gynecology-pregnant-consultation.jpg",
+    "overviewImg": "assets/gallery-daycare-recovery-ward.jpg",
+    "intro": "Comprehensive maternal health, antenatal monitoring, safe deliveries and women's wellness throughout life.",
+    "overview": "Our Obstetrics & Gynaecology department delivers personalized maternity care, advanced gynecological therapies and preventive screening across every stage of a woman’s life. Equipped with high-resolution pelvic ultrasound, sterile labor delivery suites and dedicated post-natal recovery rooms.",
+    "conditions": [
+      "High-Risk Pregnancy & Gestational Complications",
+      "Polycystic Ovarian Syndrome (PCOS / PCOD)",
+      "Uterine Leiomyomas (Fibroids)",
+      "Endometriosis & Adenomyosis",
+      "Pelvic Inflammatory Disease (PID)",
+      "Pelvic Organ Prolapse & Cervical Dysplasia"
+    ],
+    "services": [
+      {
+        "title": "Comprehensive Antenatal & Prenatal Care",
+        "desc": "Trimester-wise maternal checkups, fetal growth monitoring, blood pressure tracking and nutritional advice."
+      },
+      {
+        "title": "High-Resolution Pelvic Ultrasonography",
+        "desc": "Detailed pelvic imaging to assess fetal development, uterine anatomy, ovaries and endometrial thickness."
+      },
+      {
+        "title": "PCOS & Hormonal Disorder Management",
+        "desc": "Evidence-based medical therapy, ovulation regulation, insulin resistance management and lifestyle plans."
+      },
+      {
+        "title": "Modern Labor Suites & Post-Natal Wards",
+        "desc": "Sterile, comfortable delivery rooms supported 24/7 by experienced obstetricians and neonatal nurses."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "When should I begin antenatal checkups?",
+        "a": "You should schedule your first antenatal visit as soon as you confirm a positive pregnancy test, ideally within the first 6 to 8 weeks."
+      },
+      {
+        "q": "Can PCOS be cured permanently?",
+        "a": "While PCOS is a chronic metabolic-hormonal condition, its symptoms can be completely controlled through tailored nutrition, exercise and medical therapies."
+      }
+    ]
+  },
+  "paediatrics": {
+    "name": "Paediatrics",
+    "heroTitle": "Best Paediatric Hospital in Mysore",
+    "category": "Child Health & Adolescent Medicine",
+    "image": "assets/gallery-reception-lobby.jpg",
+    "overviewImg": "assets/facilities-hero-banner.jpg",
+    "intro": "Compassionate child health, immunization schedules, newborn screening and developmental milestones tracking.",
+    "overview": "Our Paediatrics department delivers child-centered medical care, routine developmental assessments and acute inpatient treatment in a warm, reassuring environment. Equipped with cold-chain vaccine storage, pediatric nebulization units and round-the-clock emergency casualty coverage.",
+    "conditions": [
+      "Pediatric Bronchial Asthma & Bronchiolitis",
+      "Acute Pediatric Viral & Bacterial Infections",
+      "Neonatal Hyperbilirubinemia (Jaundice)",
+      "Childhood Nutritional Deficiencies & Rickets",
+      "Pediatric Acute Gastroenteritis",
+      "Atopic Dermatitis & Childhood Eczema"
+    ],
+    "services": [
+      {
+        "title": "Complete Pediatric Immunization Program",
+        "desc": "National and IAP schedule vaccinations maintained under strict certified cold-chain refrigeration."
+      },
+      {
+        "title": "Growth & Developmental Milestone Screening",
+        "desc": "Systematic tracking of physical growth curves, motor milestones, cognitive progression and speech."
+      },
+      {
+        "title": "Pediatric Nebulization & Respiratory Care",
+        "desc": "Gentle aerosol bronchodilator therapy for acute wheezing, bronchitis and childhood asthma."
+      },
+      {
+        "title": "24/7 Pediatric Emergency Triage",
+        "desc": "Immediate medical attention for febrile convulsions, accidental falls, dehydration and high fevers."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Which vaccinations are essential for a newborn?",
+        "a": "BCG, Hepatitis B (birth dose) and OPV are given immediately at birth, followed by scheduled vaccinations at 6, 10 and 14 weeks according to National/IAP guidelines."
+      },
+      {
+        "q": "When should a fever in a baby be evaluated by a doctor?",
+        "a": "Any fever in infants under 3 months, or fevers above 102°F in older children with lethargy or refusal of feeds, requires prompt medical evaluation."
+      }
+    ]
+  },
+  "pulmonology": {
+    "name": "Pulmonology",
+    "heroTitle": "Best Pulmonology Hospital in Mysore",
+    "category": "Respiratory Medicine & Chest Centre",
+    "image": "assets/pulmonology-lungs-hero.jpg",
+    "overviewImg": "assets/pulmonology-lungs-anatomy.jpg",
+    "intro": "Specialized chest medicine for asthma, COPD, pneumonia, sleep apnea and persistent cough management.",
+    "overview": "Our Pulmonology department delivers advanced diagnostic testing and evidence-based medical treatment for lung, airway and sleep-related breathing disorders. Equipped with computerized spirometry, aerosol nebulization suites, high-resolution chest imaging and non-invasive ICU ventilation.",
+    "conditions": [
+      "Bronchial Asthma",
+      "Chronic Obstructive Pulmonary Disease (COPD)",
+      "Pneumonia & Bronchitis",
+      "Allergic Rhinitis & Sinusitis",
+      "Sleep Apnea",
+      "Post-Infectious Pulmonary Fibrosis"
+    ],
+    "services": [
+      {
+        "title": "Computerized Spirometry & Lung Function (PFT)",
+        "desc": "Precise electronic evaluation of airway resistance, forced vital capacity and bronchodilator reversibility."
+      },
+      {
+        "title": "Aerosolized Nebulization & Respiratory Care",
+        "desc": "Rapid relief for acute bronchospasm and wheezing through monitored medical inhalation therapy."
+      },
+      {
+        "title": "HRCT – High-Resolution Computed Tomography",
+        "desc": "Diagnostic cross-sectional thoracic imaging to evaluate interstitial lung disease, parenchymal architecture and pulmonary infections."
+      },
+      {
+        "title": "CECT – Contrast-Enhanced Computed Tomography",
+        "desc": "Contrast-enhanced chest computed tomography for detailed anatomical assessment of mediastinal anatomy, thoracic vasculature and chest lesions."
+      },
+      {
+        "title": "Invasive & Non-Invasive Respiratory Support",
+        "desc": "Respiratory support services including CPAP, BiPAP and invasive mechanical ventilation for patients requiring respiratory care."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is a Spirometry (PFT) test?",
+        "a": "Spirometry is a simple, non-invasive breathing test that measures the volume and speed of air you exhale to assess asthma or COPD severity."
+      },
+      {
+        "q": "When should a chronic cough be investigated?",
+        "a": "Any cough lasting longer than 3 to 4 weeks, or accompanied by blood in phlegm, chest pain, or unexplained weight loss, requires immediate specialist evaluation."
+      }
+    ]
+  },
+  "dermatology": {
+    "name": "Dermatology",
+    "heroTitle": "Best Dermatology Hospital in Mysore",
+    "category": "Clinical Dermatology & Cutaneous Health",
+    "image": "assets/specialty-dermatology.png",
+    "overviewImg": "assets/gallery-reception-lobby.jpg",
+    "intro": "Clinical skin, hair and nail treatments for chronic eczema, psoriasis, acne and cutaneous allergies.",
+    "overview": "Our Dermatology clinic delivers expert clinical diagnosis and specialized dermatological care for skin, hair and nail conditions. Equipped with diagnostic dermoscopy, radiofrequency electrocautery and dedicated treatment rooms for minor skin procedures.",
+    "conditions": [
+      "Acne Vulgaris & Rosacea",
+      "Atopic Dermatitis & Contact Eczema",
+      "Psoriasis Vulgaris & Seborrheic Dermatitis",
+      "Cutaneous Fungal Infections (Tinea)",
+      "Alopecia Areata & Telogen Effluvium",
+      "Chronic Urticaria & Angioedema"
+    ],
+    "services": [
+      {
+        "title": "Clinical Allergy Assessment & Triage",
+        "desc": "Systematic diagnosis of contact allergens, environmental triggers and targeted antihistaminic therapy."
+      },
+      {
+        "title": "Medical Acne & Skin Blemish Protocols",
+        "desc": "Topical and systemic therapies, medical chemical peels and barrier restoration creams."
+      },
+      {
+        "title": "Scalp, Hair & Nail Disorders Clinic",
+        "desc": "Comprehensive nutritional, hormonal and microscopic evaluation for persistent hair loss and brittle nails."
+      },
+      {
+        "title": "Minor Dermatological Surgical Procedures",
+        "desc": "Radiofrequency electrocautery, wart removal, skin tag excision and diagnostic punch biopsies."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How can I prevent frequent eczema flare-ups?",
+        "a": "Keep your skin moisturized with gentle emollients, avoid harsh soaps, take lukewarm showers and identify environmental triggers."
+      },
+      {
+        "q": "Is adult acne different from adolescent acne?",
+        "a": "Yes, adult acne is often hormonally mediated and requires specialized medical therapies rather than generic over-the-counter drying agents."
+      }
+    ]
+  },
+  "general-surgery": {
+    "name": "General Surgery",
+    "heroTitle": "Best General Surgery Hospital in Mysore",
+    "category": "Minimally Invasive Surgical Centre",
+    "image": "assets/general-surgery-operation-theatre.jpg",
+    "overviewImg": "assets/facility-operation-theatre.jpg",
+    "intro": "Advanced minimally invasive laparoscopy, hernia repair, appendectomy and acute surgical operations.",
+    "overview": "Our General Surgery centre delivers precision minimally invasive laparoscopic procedures and general surgical interventions for abdominal and soft-tissue conditions. Equipped with modular operating theatres, laminar airflow HEPA filtration and a continuous post-anesthesia recovery unit.",
+    "conditions": [
+      "Inguinal, Umbilical & Incisional Hernias",
+      "Acute Appendicitis",
+      "Cholelithiasis & Cholecystitis (Gallstones)",
+      "Perianal Fistula, Fissure & Hemorrhoids",
+      "Diabetic Foot Ulcerations & Soft Tissue Abscesses",
+      "Benign Subcutaneous Neoplasms (Lipomas & Cysts)"
+    ],
+    "services": [
+      {
+        "title": "Minimally Invasive Laparoscopic Surgery",
+        "desc": "Keyhole laparoscopic appendectomy and hernia repairs resulting in minimal pain, tiny scars and rapid discharge."
+      },
+      {
+        "title": "Modular Operation Theatres with HEPA Airflow",
+        "desc": "Sterile surgical suites adhering to strict infection control with positive-pressure laminar airflow."
+      },
+      {
+        "title": "Post-Anesthesia Care Unit (PACU)",
+        "desc": "Continuous multi-parameter hemodynamic monitoring by specialized surgical recovery nursing teams."
+      },
+      {
+        "title": "Advanced Diabetic Foot & Wound Clinic",
+        "desc": "Surgical wound debridement, negative-pressure wound therapy and specialized antiseptic dressings."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What are the benefits of laparoscopic surgery?",
+        "a": "Laparoscopic keyhole procedures involve tiny incisions, resulting in significantly less postoperative pain, shorter hospital stays and faster return to work."
+      },
+      {
+        "q": "Can a hernia heal without surgery?",
+        "a": "No, a hernia is an anatomical defect in the abdominal wall and does not heal spontaneously; elective surgical repair prevents acute strangulation."
+      }
+    ]
+  },
+  "ent": {
+    "name": "ENT (Ear, Nose & Throat)",
+    "heroTitle": "Best ENT Hospital in Mysore",
+    "category": "Otorhinolaryngology & Head-Neck Centre",
+    "image": "assets/specialty-ent-sciences.jpg",
+    "overviewImg": "assets/ent-anatomy-cross-section.jpg",
+    "intro": "Precision endoscopic diagnosis and care for sinusitis, hearing loss, vertigo, tonsils and nasal disorders.",
+    "overview": "Our ENT department delivers specialized diagnostic evaluations and medical management for disorders of the ear, nose, throat, voice and balance system. Equipped with diagnostic video otoscopy, rigid nasal endoscopy, pure tone audiometry and emergency foreign body removal facilities.",
+    "conditions": [
+      "Chronic Suppurative Otitis Media (CSOM)",
+      "Sensorineural & Conductive Hearing Loss",
+      "Chronic Rhinosinusitis & Nasal Polyposis",
+      "Deviated Nasal Septum (DNS) & Turbinate Hypertrophy",
+      "Chronic Tonsillitis & Adenoid Hypertrophy",
+      "Benign Paroxysmal Positional Vertigo (BPPV)"
+    ],
+    "services": [
+      {
+        "title": "Diagnostic Nasal Endoscopy (DNE)",
+        "desc": "High-definition endoscopic visualization of the nasal cavity, sinus ostia and nasopharynx."
+      },
+      {
+        "title": "Video Otoscopy & Ear Microsuction",
+        "desc": "High-resolution magnified ear examination and safe, painless removal of impacted cerumen and debris."
+      },
+      {
+        "title": "Pure Tone Audiometry (PTA) Screening",
+        "desc": "Calibrated diagnostic hearing assessments to detect hearing loss degrees and auditory thresholds."
+      },
+      {
+        "title": "Emergency ENT Care & Foreign Body Removal",
+        "desc": "Immediate clinical relief for severe epistaxis (nosebleeds), acute ear trauma and foreign body impactions."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is BPPV and how is it treated?",
+        "a": "Benign Paroxysmal Positional Vertigo is an inner ear balance disorder causing spinning sensations; it is quickly treated with targeted repositioning maneuvers."
+      },
+      {
+        "q": "Is nasal endoscopy painful?",
+        "a": "No, diagnostic nasal endoscopy is a quick outpatient procedure performed with gentle topical decongestant spray for maximum comfort."
+      }
+    ]
+  },
+  "anaesthesiology": {
+    "name": "Anaesthesiology",
+    "heroTitle": "Best Anaesthesiology & Critical Care in Mysore",
+    "category": "Perioperative Medicine & Intensive Care",
+    "image": "assets/specialty-anaesthesiology-care.jpg",
+    "overviewImg": "assets/anaesthesiology-ot-surgery.jpg",
+    "intro": "Vigilant perioperative anesthesia, continuous surgical telemetry, pain management and ICU ventilator care.",
+    "overview": "Our Anaesthesiology & Critical Care department provides comprehensive pre-operative risk assessment, vigilant intraoperative anesthesia and post-operative critical care. Equipped with multi-channel vital telemetry, advanced anesthesia workstations and continuous intensive care ventilator monitoring.",
+    "conditions": [
+      "Pre-Operative Cardiopulmonary Comorbidities",
+      "Critical Airway Compromise & Difficult Intubation",
+      "Severe Sepsis & Hemodynamic Instability",
+      "Acute Respiratory Failure & Ventilator Dependence",
+      "Acute Post-Surgical Pain Syndromes",
+      "Multi-Organ Dysfunction Syndrome (MODS)"
+    ],
+    "services": [
+      {
+        "title": "Pre-Anesthetic Checkup (PAC) Clinic",
+        "desc": "Comprehensive organ function review, cardiopulmonary optimization and personalized anesthesia planning."
+      },
+      {
+        "title": "Multi-Modal Anesthesia Delivery",
+        "desc": "Precision general, spinal, epidural and targeted ultrasound-guided peripheral nerve block techniques."
+      },
+      {
+        "title": "Intraoperative Vital Telemetry Monitoring",
+        "desc": "Continuous real-time tracking of invasive blood pressure, capnography, ECG and oxygen saturation."
+      },
+      {
+        "title": "24/7 Intensivist & Critical Care Coverage",
+        "desc": "Senior anesthesiologists managing high-dependency beds, ventilator care and immediate code response."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is a Pre-Anesthetic Checkup (PAC)?",
+        "a": "A PAC evaluates your medical history, allergies, cardiopulmonary health and current medications before surgery to ensure maximum anesthesia safety."
+      },
+      {
+        "q": "Why is fasting required prior to surgery?",
+        "a": "Fasting prevents stomach contents from entering the lungs (aspiration) while your protective airway reflexes are asleep under anesthesia."
+      }
+    ]
+  },
+  "oncology": {
+    "name": "Oncology",
+    "heroTitle": "Best Oncology & Cancer Care in Mysore",
+    "category": "Preventive & Medical Oncology Centre",
+    "image": "assets/specialty-oncology-ribbon.jpg",
+    "overviewImg": "assets/oncology-cancer-cell-microscopy.jpg",
+    "intro": "Compassionate cancer screening, early symptom triage, histological coordination and multidisciplinary guidance.",
+    "overview": "Our Oncology service provides compassionate cancer screening, early symptom evaluation and multidisciplinary clinical coordination. Equipped with automated tumor marker testing, diagnostic cross-sectional imaging and seamless pathology coordination.",
+    "conditions": [
+      "Breast Carcinoma & Benign Breast Neoplasms",
+      "Cervical Dysplasia & Gynecological Malignancies",
+      "Oral Cavity Pre-Malignant Lesions & Carcinomas",
+      "Colorectal & Gastrointestinal Malignancies",
+      "Malignant Lymphomas & Lymphadenopathy",
+      "Neoplastic Pain & Cancer Cachexia Syndromes"
+    ],
+    "services": [
+      {
+        "title": "Comprehensive Cancer Screening Checkup",
+        "desc": "Targeted multi-organ clinical assessments, tumor marker analysis and preventive health profiling."
+      },
+      {
+        "title": "Histopathology & Biopsy Coordination",
+        "desc": "Precise tissue processing, cytology evaluation and immunohistochemistry with accredited laboratories."
+      },
+      {
+        "title": "Multidisciplinary Second Opinion Board",
+        "desc": "Thorough review of diagnostic radiology, clinical staging and individualized medical plans."
+      },
+      {
+        "title": "Supportive Pain & Palliative Care",
+        "desc": "Specialist relief for cancer-related discomfort, nausea, appetite loss and chronic pain management."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What cancer screening tests should adults undergo regularly?",
+        "a": "Routine screenings include annual mammograms after age 40, cervical Pap smears every 3 years, and oral cavity checks for tobacco users."
+      },
+      {
+        "q": "What are early warning symptoms of cancer?",
+        "a": "Unexplained weight loss, persistent lumps, non-healing ulcers, prolonged hoarseness, and abnormal bleeding warrant immediate specialist investigation."
+      }
+    ]
+  },
+  "psychiatry": {
+    "name": "Psychiatry",
+    "heroTitle": "Best Psychiatry Hospital in Mysore",
+    "category": "Mental Health & Behavioral Sciences",
+    "image": "assets/specialty-psychiatry.jpg",
+    "overviewImg": "assets/gallery-daycare-recovery-ward.jpg",
+    "intro": "Confidential, empathetic mental health care, counseling, anxiety management and evidence-based behavioral therapy.",
+    "overview": "Our Psychiatry & Behavioral Health department provides confidential clinical consultations, psychological counseling and medical therapy for emotional and mental well-being. Delivered in a private, supportive setting by experienced psychiatrists and clinical psychologists.",
+    "conditions": [
+      "Generalized Anxiety Disorder (GAD) & Panic Disorder",
+      "Major Depressive Disorder (MDD)",
+      "Obsessive-Compulsive Disorder (OCD)",
+      "Chronic Insomnia & Sleep Architecture Disorders",
+      "Bipolar Affective Disorder (BPAD)",
+      "Mild Cognitive Impairment & Dementia Syndromes"
+    ],
+    "services": [
+      {
+        "title": "Confidential Psychiatric Evaluation",
+        "desc": "Thorough, dignified diagnostic assessment in dedicated private consultation suites."
+      },
+      {
+        "title": "Pharmacotherapy & Medication Management",
+        "desc": "Evidence-based neurochemical stabilization regimens with close follow-up and monitoring."
+      },
+      {
+        "title": "Cognitive & Sleep Hygiene Counseling",
+        "desc": "Structured behavioural strategies and relaxation techniques to restore natural sleep patterns."
+      },
+      {
+        "title": "Family Guidance & Psychoeducation",
+        "desc": "Compassionate caregiver counseling to foster understanding, emotional resilience and recovery at home."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are psychiatric medications addictive?",
+        "a": "Modern medications prescribed for anxiety and depression are safe, non-addictive and selected carefully to restore neurochemical balance."
+      },
+      {
+        "q": "When should someone see a mental health specialist?",
+        "a": "If persistent sadness, overwhelming worry, panic or sleeplessness interferes with your daily work, relationships or peace of mind, seek support."
+      }
+    ]
+  },
+  "spine-surgery": {
+    "name": "Spine Surgery",
+    "heroTitle": "Best Spine Surgery Hospital in Mysore",
+    "category": "Neuro-Spinal & Orthopaedic Spine Centre",
+    "image": "assets/specialty-spine-surgery.jpg",
+    "overviewImg": "assets/orthopaedics-spine-model.jpg",
+    "intro": "Advanced management of spinal disc herniations, degenerative spondylosis, scoliosis, robotic minimally invasive spine surgery and neuropathic spine care in Mysuru.",
+    "overview": "Our Spine Surgery centre delivers advanced medical and surgical care for spinal disc disease, nerve compression and spinal deformities. Equipped with micro-endoscopic surgical instrumentation, digital spinal radiography and specialized post-operative rehabilitation.",
+    "conditions": [
+      "Lumbar & Cervical Disc Herniations (Slip Disc)",
+      "Lumbar Canal Stenosis & Neurogenic Claudication",
+      "Degenerative Spondylolisthesis & Spinal Instability",
+      "Traumatic Vertebral Fractures & Spinal Cord Injuries",
+      "Cervical & Lumbar Radiculopathy (Sciatica)",
+      "Structural Spinal Deformities (Scoliosis & Kyphosis)"
+    ],
+    "services": [
+      {
+        "title": "Minimally Invasive Spine Surgery (MISS)",
+        "desc": "Micro-endoscopic decompression and discectomy through minimal keyhole incisions for faster recovery."
+      },
+      {
+        "title": "Spinal Fusion & Stabilization",
+        "desc": "Precision titanium pedicle screw fixation and cage reconstruction for spinal instability."
+      },
+      {
+        "title": "Spinal Trauma & Fracture Care",
+        "desc": "Emergency surgical stabilization and neural decompression for acute traumatic spinal injuries."
+      },
+      {
+        "title": "Conservative Spine & Pain Clinic",
+        "desc": "Targeted epidural injections, facet joint blocks and structured spinal physiotherapy rehabilitation."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is spine surgery always required for back pain or disc bulge?",
+        "a": "No, over 85% of spine and disc conditions improve with structured conservative therapy, physical rehabilitation and targeted pain management."
+      },
+      {
+        "q": "How soon can patients walk after minimally invasive spine surgery?",
+        "a": "Most patients undergoing minimally invasive endoscopic spine surgery are able to stand and walk within 24 to 48 hours."
+      }
+    ]
+  }
+};
 
     function loadDepartmentPage() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -2289,6 +2616,9 @@
         'orthopedics-joint-replacement': 'orthopedics',
         'gastro': 'gastroenterology',
         'gastro-digestive-health': 'gastroenterology',
+        'medical-surgical-gastroenterology': 'gastroenterology',
+        'surgical-gastroenterology': 'gastroenterology',
+        'medical-gastroenterology': 'gastroenterology',
         'neurology-neurosurgery': 'neurology',
         'neuro': 'neurology',
         'obstetrics-gynecology': 'maternity-care',
@@ -2365,7 +2695,12 @@
         heroSecondOpinionBtn.href = waUrl;
       }
 
-      // Render Conditions Treated
+      // Render Conditions / Specialized Areas Title & Checklist
+      const conditionsTitle = document.getElementById('deptConditionsTitle');
+      if (conditionsTitle) {
+        conditionsTitle.textContent = dept.conditionsTitle || 'Conditions Evaluated & Treated:';
+      }
+
       const conditionsList = document.getElementById('deptConditionsList');
       if (conditionsList && dept.conditions) {
         conditionsList.innerHTML = '';
@@ -2647,6 +2982,28 @@
                 "initials": "S",
                 "viewHref": "doctor-details.html?doctor=Dr.%20Shashidhar",
                 "bookHref": "contact.html?doctor=Dr.%20Shashidhar&dept=Pathology#appointmentEnquiryContainer"
+        },
+        {
+                "name": "Dr. Nellur Srinivas",
+                "speciality": "Nephrology",
+                "department": "Nephrology",
+                "role": "Consultant Nephrologist",
+                "qual": "MBBS, MD (General Medicine), DM (Nephrology), Fellowship in Adult Nephrology (Toronto)",
+                "image": null,
+                "initials": "NS",
+                "viewHref": "doctor-details.html?doctor=Dr.%20Nellur%20Srinivas",
+                "bookHref": "contact.html?doctor=Dr.%20Nellur%20Srinivas&dept=Nephrology#appointmentEnquiryContainer"
+        },
+        {
+                "name": "Dr. Shashank M S",
+                "speciality": "Nephrology",
+                "department": "Nephrology",
+                "role": "Consultant Nephrologist",
+                "qual": "MBBS, MD (General Medicine), DM (Nephrology)",
+                "image": null,
+                "initials": "SM",
+                "viewHref": "doctor-details.html?doctor=Dr.%20Shashank%20M%20S",
+                "bookHref": "contact.html?doctor=Dr.%20Shashank%20M%20S&dept=Nephrology#appointmentEnquiryContainer"
         }
 ];
 
@@ -2660,7 +3017,7 @@
         'paediatrics': (d) => /paediat|pediat/i.test(d.speciality) || /paediat|pediat/i.test(d.department),
         'neurology': (d) => /^neurology$/i.test(d.speciality.trim()) || /^neurology$/i.test(d.department.trim()),
         'spine-surgery': (d) => /neurosurgery|spine/i.test(d.speciality) || /neurosurgery|spine/i.test(d.department) || /spine\s*surgeon/i.test(d.role),
-        'urology': (d) => /urology/i.test(d.speciality) || /urology/i.test(d.department),
+        'urology': (d) => !/neuro/i.test(d.speciality) && !/neuro/i.test(d.department) && (/\burolog/i.test(d.speciality) || /\burolog/i.test(d.department) || /\burolog/i.test(d.role)),
         'maternity-care': (d) => /\bobg\b|obstetrics|gynaec|\bivf\b|fertility/i.test(d.speciality) || /\bobg\b|obstetrics|gynaec|\bivf\b|fertility/i.test(d.department),
         'oncology': (d) => /oncology/i.test(d.speciality) || /oncology/i.test(d.department),
         'psychiatry': (d) => /psychiat|psychiart/i.test(d.speciality) || /psychiat|psychiart/i.test(d.department),

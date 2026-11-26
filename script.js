@@ -612,6 +612,18 @@ const SULAKSHAA_DOCTORS_ROSTER = [
     label: "Dr. Shashidhar (Pathology)",
     departments: ["Diagnostics"],
     role: "Senior Consultant Pathologist & Lab Director"
+  },
+  {
+    name: "Dr. Nellur Srinivas",
+    label: "Dr. Nellur Srinivas (Nephrology)",
+    departments: ["Nephrology"],
+    role: "Consultant Nephrologist"
+  },
+  {
+    name: "Dr. Shashank M S",
+    label: "Dr. Shashank M S (Nephrology)",
+    departments: ["Nephrology"],
+    role: "Consultant Nephrologist"
   }
 ];
 
@@ -1733,7 +1745,7 @@ function initInfoModals() {
       img: 'assets/urology-genitourinary-surgery.jpg',
       scope: 'Comprehensive diagnosis and evidence-based clinical management for kidney stones, prostate enlargement (BPH), urinary tract infections, and bladder health.',
       conditions: 'Kidney &amp; Ureteric Stones, Benign Prostatic Hyperplasia (BPH), Recurrent UTIs, Hematuria, Overactive Bladder, Male Genitourinary Disorders.',
-      diagnostics: 'Urinary Stone Evaluation &amp; NCCT, Computerized Uroflowmetry, Serum PSA Testing, Emergency Renal Colic Intervention.',
+      diagnostics: 'Kidney &amp; Ureteric Stone Evaluation (NCCT KUB), Computerized Uroflowmetry, Serum PSA Testing, Emergency Renal Colic Intervention.',
       doctors: 'Dr. Chandrashekar B. (Senior Consultant Urologist &bull; MBBS, MS, MCh)'
     },
     'Nephrology': {
@@ -1750,8 +1762,8 @@ function initInfoModals() {
       badge: 'Respiratory Care Centre',
       img: 'assets/pulmonology-chest-medicine.png',
       scope: 'Advanced diagnosis and clinical treatment for chronic bronchial asthma, COPD, pneumonia, sleep apnea, and persistent cough disorders.',
-      conditions: 'Bronchial Asthma, COPD &amp; Chronic Bronchitis, Pneumonia &amp; Lung Infections, Allergic Rhinitis, Sleep Apnea, Post-Infection Fibrosis.',
-      diagnostics: 'Spirometry &amp; Pulmonary Function Tests (PFT), Emergency Nebulization Suites, Low-Dose Chest HRCT, Non-Invasive ICU Ventilation.',
+      conditions: 'Bronchial Asthma, COPD, Pneumonia &amp; Bronchitis, Allergic Rhinitis &amp; Sinusitis, Sleep Apnea, Post-Infectious Pulmonary Fibrosis.',
+      diagnostics: 'Computerized Spirometry (PFT), Aerosolized Nebulization, HRCT &amp; CECT Thoracic Imaging, Invasive &amp; Non-Invasive Respiratory Support.',
       doctors: 'Dr. Ramesh Narayan (Consultant Pulmonologist &bull; MBBS, MD Pulmonary Medicine)'
     }
   };
@@ -1997,9 +2009,11 @@ function initDoctorsPageFilters() {
       const cardBio = (card.textContent || '').toLowerCase().replace(/\s+/g, ' ');
       const cardImgAlt = (card.querySelector('img')?.getAttribute('alt') || '').toLowerCase();
 
+      const isUrology = activeSpeciality.toLowerCase() === 'urology';
+      const specRegex = new RegExp('\\b' + activeSpeciality.toLowerCase().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i');
       const matchesSpeciality = (activeSpeciality === 'all') ||
         cardSpec === activeSpeciality.toLowerCase() ||
-        cardSpec.includes(activeSpeciality.toLowerCase());
+        (specRegex.test(cardSpec) && !(isUrology && /neuro/i.test(cardSpec)));
 
       const matchesSearch = !q ||
         cardName.includes(q) ||
